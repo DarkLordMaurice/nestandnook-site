@@ -1,9 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import WinnieNote from '../components/WinnieNote.astro';
 import { SITE, DISCLOSURE } from '../config.ts';
 ---
 <BaseLayout title={`Affiliate Disclosure — ${SITE.brand}`} description={`How ${SITE.brand} earns from affiliate links.`} showDisclosure={false}>
+  <span class="washi">Straight talk</span>
   <h1>Affiliate Disclosure</h1>
+
+  <WinnieNote signed={false}>
+    <p><strong>— Winnie:</strong> I'd rather over-explain this than have you wonder about it later. Here's exactly how the money side works.</p>
+  </WinnieNote>
+
   <p>{DISCLOSURE.ftc}</p>
   <p><strong>{DISCLOSURE.associate}</strong></p>
   <p>{SITE.brand} is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com. We may also participate in other affiliate programs. Commissions never cost you anything extra and never change which products we recommend — our rankings are based on independent evaluation.</p>

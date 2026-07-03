@@ -1,0 +1,20 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="nnGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d6a419"/>
+      <stop offset="100%" stop-color="#c1602e"/>
+    </linearGradient>
+  </defs>
+  <!-- Nook arch: an abstract alcove/nest shape -->
+  <path d="M28 208
+           C28 118, 90 48, 128 48
+           C166 48, 228 118, 228 208
+           L196 208
+           C196 138, 158 82, 128 82
+           C98 82, 60 138, 60 208
+           Z"
+        fill="url(#nnGradient)"/>
+  <!-- Nest egg -->
+  <ellipse cx="128" cy="176" rx="26" ry="20" fill="#faf4e8"/>
+  <ellipse cx="119" cy="170" rx="8" ry="6" fill="#f0e6d2"/>
+</svg>

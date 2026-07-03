@@ -73,7 +73,7 @@ internalLinks:
     href: "/home-office/ergonomic-home-office-setup-under-150/"
 ---
 
-If you're 5'6" or shorter, most desks and chairs simply weren't built for you. Raise your chair enough to reach the keyboard comfortably and your feet start to dangle — which throws your weight onto the backs of your thighs, cuts circulation, and quietly wrecks your lower back by mid-afternoon. A footrest is the cheapest fix in ergonomics, but for short people the one number that matters most is **how much lift it gives**. Many footrests top out around 4–5 inches, which barely helps if your feet hang several inches off the floor.
+Let's talk about the drawer that's having a moment — except today it's your feet. If you're 5'6" or shorter, most desks and chairs simply weren't built for you. Raise your chair enough to reach the keyboard comfortably and your feet start to dangle — which throws your weight onto the backs of your thighs, cuts circulation, and quietly wrecks your lower back by mid-afternoon. A footrest is the cheapest fix in ergonomics, but for short people the one number that matters most is **how much lift it gives**. Many footrests top out around 4–5 inches, which barely helps if your feet hang several inches off the floor.
 
 Our top pick for most short users is the **HUANUO Ergonomic Under-Desk Footrest**, purely because it elevates higher than anything else here (up to about 6.7 inches) while still tilting and rocking. If you want to fine-tune the exact height, the **Kensington SoleMate Plus** is the more precise tool. Below, all five picks with who each one is really for.
 
@@ -114,3 +114,5 @@ A random stool rarely lands at the right height or angle and tends to slide. A p
 Supporting your feet takes pressure off the backs of your thighs and helps you sit back into the chair, which many people find eases desk-related aches. It's a comfort and posture aid, not a medical device — if you have persistent pain, check with a professional.
 
 *Prices and availability change constantly, so we don't quote figures here — tap through to see the current price on Amazon.*
+
+> **Winnie's take:** If you only fix one thing at your desk this year, make it this. It's the cheapest, fastest win on the whole list — twenty minutes and your knees stop complaining by 3pm.

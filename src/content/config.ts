@@ -9,7 +9,7 @@ const reviews = defineCollection({
     description: z.string().max(160),      // meta description
     primaryKeyword: z.string(),
     hub: z.string(),                       // e.g. 'home-office'
-    pageType: z.enum(['comparison', 'roundup', 'single_review', 'buying_guide', 'setup_build']),
+    pageType: z.enum(['comparison', 'roundup', 'single_review', 'buying_guide', 'setup_build', 'how_to', 'product_page', 'lifestyle', 'pillar']),
     publishDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     disclosure: z.boolean().default(true), // must be true — compliance-gate checks it
@@ -28,4 +28,23 @@ const reviews = defineCollection({
   }),
 });
 
-export const collections = { reviews };
+// Blog — Winnie Hollowell's voice. Distinct from the `reviews` collection:
+// these are personality-led posts (her opinions, her "here's what I'd do"
+// takes), not the SEO cluster roundups/how-tos. She never claims personal
+// product testing here — that stays with the real editorial team; she can
+// point to their picks. Every post shows an explicit virtual-host disclosure
+// via the WinnieByline component (see src/components/WinnieByline.astro).
+const blog = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string().max(70),
+    description: z.string().max(160),
+    publishDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    ogImage: z.string().optional(),
+    category: z.string().default('Notes from the nook'),
+    relatedGuides: z.array(z.object({ label: z.string(), href: z.string() })).default([]),
+  }),
+});
+
+export const collections = { reviews, blog };

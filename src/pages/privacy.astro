@@ -1,10 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import WinnieNote from '../components/WinnieNote.astro';
 import { SITE } from '../config.ts';
 ---
 <BaseLayout title={`Privacy Policy — ${SITE.brand}`} description={`How ${SITE.brand} handles data, cookies, and advertising.`} showDisclosure={false}>
+  <span class="washi">The legal stuff</span>
   <h1>Privacy Policy</h1>
   <p><em>Last updated: {new Date().toISOString().slice(0,10)}</em></p>
+
+  <WinnieNote signed={false}>
+    <p><strong>— Winnie:</strong> Nobody reads privacy policies for fun, so I'll keep the framing short: this page is the accurate, unglamorous truth about what we collect and why. No surprises.</p>
+  </WinnieNote>
 
   <p>{SITE.brand} ("we") respects your privacy. This page explains what we collect and why. (Placeholder — finalize with your details and jurisdiction before launch; required for ad networks like AdSense/Mediavine.)</p>
 

@@ -4,8 +4,25 @@ import { SITE } from '../config.ts';
 import { AUTHORS } from '../authors.ts';
 ---
 <BaseLayout title={`About — ${SITE.brand}`} description={`Who's behind ${SITE.brand} and how we test and rank the gear we recommend.`} showDisclosure={false}>
+  <span class="washi">About the nook</span>
   <h1>About {SITE.brand}</h1>
-  <p>{SITE.brand} helps people build better home office and small-space kitchen setups without overspending. We focus on the affordable accessories that actually change how a space feels day to day — footrests, stands, cable management, desk pads, kitchen space-savers — and we rank them by who each product genuinely suits.</p>
+  <p class="lede">{SITE.brand} helps people build better home office and small-space kitchen setups without overspending. We focus on the affordable accessories that actually change how a space feels day to day — footrests, stands, cable management, desk pads, kitchen space-savers — and we rank them by who each product genuinely suits.</p>
+
+  <section id="meet-winnie" class="meet-winnie">
+    <img src="/winnie/portrait.jpg" alt="Winnie Hollowell" class="winnie-portrait" width="320" height="427" />
+    <div>
+      <h2>Meet Winnie</h2>
+      <p><strong>Winnie Hollowell is a fully virtual, AI-generated spokesperson — not a real person.</strong> She's the face and voice of Nest & Nook: the personality behind our social content, our blog, and the little asides you'll see scattered through our guides. Think of her as our host, not our reporter.</p>
+      <p>That distinction matters, so we'll say it plainly: Winnie doesn't test products. She doesn't own the desks or kitchens she talks about. The actual hands-on testing, ranking, and research behind every guide is done by our real editorial team below — Winnie just makes sure it doesn't read like a spec sheet. When you see her voice on a blog post or a callout, treat it as our take, delivered with personality, not as a first-hand product review.</p>
+      <p>We're upfront about this because we think you'd rather know than wonder. If a video or post ever features her likeness, it'll say so.</p>
+    </div>
+  </section>
+
+  <h2>What we actually care about</h2>
+  <p>We built Nest & Nook around a small idea: most home office and kitchen problems don't need a full redesign, they need one specific, well-chosen fix. So we optimize for a few things above everything else.</p>
+  <p><strong>Specific over generic.</strong> "Best overall" means nothing without knowing who it's for. We rank by who a product genuinely suits — height, space constraints, budget — not by what photographs well.</p>
+  <p><strong>Honest about the trade-offs.</strong> Every pick gets real pros and cons, not just a highlight reel. If something's not for you, we'll say so.</p>
+  <p><strong>No pay-to-play.</strong> Nothing on this site is ranked higher because a brand paid us. Our affiliate commissions don't change our picks — see how below.</p>
 
   <h2>How we make money</h2>
   <p>We earn affiliate commissions when you buy through our links, and we run display ads. Neither ever changes our rankings or costs you anything extra. See our <a href="/disclosure/">affiliate disclosure</a> and <a href="/editorial-standards/">editorial standards</a>.</p>

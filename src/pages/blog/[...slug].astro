@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import WinnieByline from '../../components/WinnieByline.astro';
+import { SITE } from '../../config.ts';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const d = entry.data;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: d.title,
+  description: d.description,
+  datePublished: d.publishDate,
+  dateModified: d.updatedDate ?? d.publishDate,
+  author: { '@type': 'Person', name: 'Winnie Hollowell', description: "Nest & Nook's virtual host — an AI-generated brand spokesperson, not a real person." },
+  publisher: { '@type': 'Organization', name: SITE.brand },
+};
+---
+<BaseLayout title={d.title} description={d.description} ogImage={d.ogImage} jsonLd={jsonLd} showDisclosure={false}>
+  <span class="washi">{d.category}</span>
+  <h1>{d.title}</h1>
+  <WinnieByline />
+
+  <Content />
+
+  {d.relatedGuides.length > 0 && (
+    <nav class="related">
+      <h2>Related guides</h2>
+      <ul>{d.relatedGuides.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+    </nav>
+  )}
+</BaseLayout>

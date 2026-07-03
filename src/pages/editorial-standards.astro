@@ -1,10 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import WinnieNote from '../components/WinnieNote.astro';
 import { SITE } from '../config.ts';
 ---
 <BaseLayout title={`Editorial Standards — ${SITE.brand}`} description={`How ${SITE.brand} researches, tests, and ranks products.`} showDisclosure={false}>
+  <span class="washi">The fine print, warmly</span>
   <h1>Editorial Standards</h1>
-  <p>These standards apply to every guide on {SITE.brand}. They exist so you can trust our picks and so our content stays genuinely useful.</p>
+  <p class="lede">These standards apply to every guide on {SITE.brand}. They exist so you can trust our picks and so our content stays genuinely useful.</p>
+
+  <WinnieNote>
+    <p>Boring-but-important stuff ahead — I promise it's short. Here's exactly how we decide what earns a spot on this site, so you're not just taking our word for it.</p>
+  </WinnieNote>
 
   <h2>How we rank products</h2>
   <ul>

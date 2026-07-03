@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import { SITE, amazonLink } from '../../config.ts';
 import { DEFAULT_AUTHOR } from '../../authors.ts';
+import { HUBS } from '../../hubs.ts';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -42,6 +43,7 @@ const jsonLd = d.products.length > 0 ? {
 };
 ---
 <BaseLayout title={d.title} description={d.description} ogImage={d.ogImage} jsonLd={jsonLd} author={authorName}>
+  <span class="washi">{HUBS[d.hub]?.name ?? d.hub}</span>
   <h1>{d.title}</h1>
 
   <Content />
