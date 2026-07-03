@@ -1,0 +1,79 @@
+---
+import { SITE } from '../config.ts';
+import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  showDisclosure?: boolean;   // true on all content pages
+  jsonLd?: object;            // ItemList/Product/Article schema from the page
+  author?: string;            // byline name for content pages (E-E-A-T)
+}
+const { title, description, ogImage, showDisclosure = true, jsonLd, author } = Astro.props;
+const canonical = new URL(Astro.url.pathname, SITE.url).toString();
+
+// Sitewide publisher entity — supports E-E-A-T / entity authority.
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE.brand,
+  url: SITE.url,
+  description: SITE.tagline,
+};
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  {author && <meta name="author" content={author} />}
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content={canonical} />
+  {ogImage && <meta property="og:image" content={ogImage} />}
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+  {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+</head>
+<body>
+  <header class="site-header">
+    <a href="/" class="brand">{SITE.brand}</a>
+    <nav>
+      <a href="/home-office/">Home Office</a>
+      <a href="/kitchen/">Kitchen</a>
+    </nav>
+  </header>
+
+  <main>
+    {showDisclosure && <AffiliateDisclosure />}
+    {author && <p class="byline">By <a href="/about/">{author}</a></p>}
+    <slot />
+  </main>
+
+  <footer class="site-footer">
+    <p>{SITE.brand} — {SITE.tagline}</p>
+    <p class="small">As an Amazon Associate we earn from qualifying purchases. Prices and availability are accurate as of the date/time indicated and are subject to change.</p>
+    <p class="small"><a href="/about/">About</a> · <a href="/editorial-standards/">Editorial Standards</a> · <a href="/disclosure/">Affiliate Disclosure</a> · <a href="/privacy/">Privacy</a></p>
+  </footer>
+
+  <style>
+    :root { --ink:#1a1a1a; --accent:#c9a227; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color: var(--ink); max-width: 760px; margin: 0 auto; padding: 0 1rem 3rem; line-height: 1.6; }
+    .site-header { display:flex; justify-content:space-between; align-items:center; padding:1rem 0; border-bottom:1px solid #eee; }
+    .brand { font-weight:800; font-size:1.25rem; text-decoration:none; color:var(--ink); }
+    nav a { margin-left:1rem; text-decoration:none; color:#444; }
+    .byline { color:#666; font-size:0.85rem; margin:0 0 1rem; }
+    .byline a { color:#666; }
+    .site-footer { margin-top:3rem; padding-top:1rem; border-top:1px solid #eee; color:#666; font-size:0.9rem; }
+    .small { font-size:0.78rem; color:#888; }
+    main :global(h1) { line-height:1.2; }
+    table { border-collapse: collapse; width:100%; margin:1.25rem 0; }
+    th, td { border:1px solid #e5e5e0; padding:0.5rem 0.6rem; text-align:left; font-size:0.92rem; }
+  </style>
+</body>
+</html>

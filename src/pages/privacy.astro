@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config.ts';
+---
+<BaseLayout title={`Privacy Policy — ${SITE.brand}`} description={`How ${SITE.brand} handles data, cookies, and advertising.`} showDisclosure={false}>
+  <h1>Privacy Policy</h1>
+  <p><em>Last updated: {new Date().toISOString().slice(0,10)}</em></p>
+
+  <p>{SITE.brand} ("we") respects your privacy. This page explains what we collect and why. (Placeholder — finalize with your details and jurisdiction before launch; required for ad networks like AdSense/Mediavine.)</p>
+
+  <h2>Cookies &amp; advertising</h2>
+  <p>We use cookies for basic analytics and to serve ads. Third-party vendors, including Google and our ad partners, may use cookies to serve ads based on your prior visits. You can opt out of personalized advertising via Google's Ads Settings.</p>
+
+  <h2>Affiliate links</h2>
+  <p>We use affiliate links (including the Amazon Associates Program). When you click them, the retailer may set cookies to attribute a purchase to us. See our <a href="/disclosure/">affiliate disclosure</a>.</p>
+
+  <h2>Analytics</h2>
+  <p>We use privacy-respecting analytics to understand aggregate traffic. We do not sell personal information.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about this policy? Contact us via the address listed on our <a href="/about/">About</a> page.</p>
+</BaseLayout>

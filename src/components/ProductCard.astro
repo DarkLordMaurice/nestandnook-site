@@ -1,0 +1,35 @@
+---
+import { amazonLink } from '../config.ts';
+interface Props {
+  name: string;
+  asin: string;
+  bestFor: string;
+  blurb: string;
+  pros?: string[];
+  cons?: string[];
+}
+const { name, asin, bestFor, blurb, pros = [], cons = [] } = Astro.props;
+const link = amazonLink(asin);
+---
+<article class="product-card">
+  <div class="badge">{bestFor}</div>
+  <h3>{name}</h3>
+  <p>{blurb}</p>
+  {pros.length > 0 && (
+    <ul class="pros">{pros.map((p) => <li>{p}</li>)}</ul>
+  )}
+  {cons.length > 0 && (
+    <ul class="cons">{cons.map((c) => <li>{c}</li>)}</ul>
+  )}
+  <!-- Honest, uncloaked Amazon link. No price stated as fact. -->
+  <a class="cta" href={link} rel="nofollow sponsored" target="_blank">Check price on Amazon →</a>
+</article>
+
+<style>
+  .product-card { border: 1px solid #e5e5e0; border-radius: 8px; padding: 1rem 1.15rem; margin: 1rem 0; }
+  .badge { display: inline-block; background: #1f2d3d; color: #fff; font-size: 0.72rem; padding: 0.15rem 0.5rem; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.03em; }
+  .product-card h3 { margin: 0.5rem 0 0.35rem; }
+  .pros li::marker { content: '✓ '; color: #2e7d32; }
+  .cons li::marker { content: '✕ '; color: #b23b3b; }
+  .cta { display: inline-block; margin-top: 0.6rem; background: #c9a227; color: #1a1a1a; font-weight: 600; padding: 0.5rem 0.9rem; border-radius: 6px; text-decoration: none; }
+</style>

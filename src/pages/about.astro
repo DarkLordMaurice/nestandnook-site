@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config.ts';
+import { AUTHORS } from '../authors.ts';
+---
+<BaseLayout title={`About — ${SITE.brand}`} description={`Who's behind ${SITE.brand} and how we test and rank the gear we recommend.`} showDisclosure={false}>
+  <h1>About {SITE.brand}</h1>
+  <p>{SITE.brand} helps people build better home office and small-space kitchen setups without overspending. We focus on the affordable accessories that actually change how a space feels day to day — footrests, stands, cable management, desk pads, kitchen space-savers — and we rank them by who each product genuinely suits.</p>
+
+  <h2>How we make money</h2>
+  <p>We earn affiliate commissions when you buy through our links, and we run display ads. Neither ever changes our rankings or costs you anything extra. See our <a href="/disclosure/">affiliate disclosure</a> and <a href="/editorial-standards/">editorial standards</a>.</p>
+
+  <h2>Who writes this</h2>
+  {Object.values(AUTHORS).map((a) => (
+    <section>
+      <h3>{a.name} — <span>{a.role}</span></h3>
+      <p>{a.bio}</p>
+    </section>
+  ))}
+</BaseLayout>

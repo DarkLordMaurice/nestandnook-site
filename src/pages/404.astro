@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config.ts';
+---
+<BaseLayout title={`Page not found — ${SITE.brand}`} description="That page doesn't exist." showDisclosure={false}>
+  <h1>Page not found</h1>
+  <p>We couldn't find that page. Try the <a href="/">homepage</a>, or browse <a href="/home-office/">Home Office</a> guides.</p>
+</BaseLayout>

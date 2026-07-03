@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config.ts';
+---
+<BaseLayout title={`Editorial Standards — ${SITE.brand}`} description={`How ${SITE.brand} researches, tests, and ranks products.`} showDisclosure={false}>
+  <h1>Editorial Standards</h1>
+  <p>These standards apply to every guide on {SITE.brand}. They exist so you can trust our picks and so our content stays genuinely useful.</p>
+
+  <h2>How we rank products</h2>
+  <ul>
+    <li>Picks are chosen by fit for a specific person or use case — never by commission rate.</li>
+    <li>We compare the specs that actually matter for the job and state the trade-offs plainly.</li>
+    <li>We say who a product is <em>not</em> right for, not just who it's for.</li>
+  </ul>
+
+  <h2>Accuracy &amp; honesty</h2>
+  <ul>
+    <li>We don't invent review counts, ratings, or testimonials.</li>
+    <li>We don't quote live prices as fact — prices change, so we link you to the current price instead.</li>
+    <li>We make comfort and ergonomics points, not medical claims.</li>
+    <li>Guides are dated and refreshed as products, stock, and prices change.</li>
+  </ul>
+
+  <h2>Disclosure</h2>
+  <p>{SITE.brand} is an Amazon Associate and may participate in other affiliate programs; we also run display ads. This never affects our recommendations. Full <a href="/disclosure/">affiliate disclosure</a>.</p>
+</BaseLayout>

@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { SITE, amazonLink } from '../../config.ts';
+import { DEFAULT_AUTHOR } from '../../authors.ts';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const reviews = await getCollection('reviews');
+  return reviews.map((entry) => ({
+    params: { hub: entry.data.hub, slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const d = entry.data;
+const authorName = DEFAULT_AUTHOR.name;
+
+// JSON-LD ItemList from the product array (only real fields — no fake ratings).
+const jsonLd = d.products.length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: d.title,
+  author: { '@type': 'Organization', name: authorName },
+  itemListElement: d.products.map((p, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: p.name,
+    url: amazonLink(p.asin),
+  })),
+} : {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: d.title,
+  description: d.description,
+  datePublished: d.publishDate,
+  dateModified: d.updatedDate ?? d.publishDate,
+  author: { '@type': 'Organization', name: authorName },
+  publisher: { '@type': 'Organization', name: SITE.brand },
+};
+---
+<BaseLayout title={d.title} description={d.description} ogImage={d.ogImage} jsonLd={jsonLd} author={authorName}>
+  <h1>{d.title}</h1>
+
+  <Content />
+
+  {d.products.length > 0 && (
+    <section>
+      {d.products.map((p) => (
+        <ProductCard name={p.name} asin={p.asin} bestFor={p.bestFor} blurb={p.blurb} pros={p.pros} cons={p.cons} />
+      ))}
+    </section>
+  )}
+
+  {d.internalLinks.length > 0 && (
+    <nav class="related">
+      <h2>Related guides</h2>
+      <ul>{d.internalLinks.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+    </nav>
+  )}
+</BaseLayout>
