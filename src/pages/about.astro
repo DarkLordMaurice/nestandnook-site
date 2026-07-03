@@ -3,25 +3,34 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE } from '../config.ts';
 import { AUTHORS } from '../authors.ts';
 ---
-<BaseLayout title={`About — ${SITE.brand}`} description={`Who's behind ${SITE.brand} and how we test and rank the gear we recommend.`} showDisclosure={false}>
-  <span class="washi">About the nook</span>
+<BaseLayout title={`About — ${SITE.brand}`} description={`Who's behind ${SITE.brand} and how we review and rank the gear we recommend.`} showDisclosure={false}>
+  <span class="washi washi-teal">About the nook</span>
   <h1>About {SITE.brand}</h1>
   <p class="lede">{SITE.brand} helps people build better home office and small-space kitchen setups without overspending. We focus on the affordable accessories that actually change how a space feels day to day — footrests, stands, cable management, desk pads, kitchen space-savers — and we rank them by who each product genuinely suits.</p>
 
   <section class="hero-banner hero-banner-single">
     <div class="hero-banner-inner">
-      <img src="/winnie/about-hero.jpg" alt="Winnie Hollowell, Nest & Nook's virtual host" class="hero-photo" width="800" height="450" />
+      <div class="polaroid tilt-right">
+        <img src="/winnie/about-hero.jpg" alt="Winnie Hollowell, Nest & Nook's virtual host" class="hero-photo" width="800" height="450" />
+      </div>
     </div>
   </section>
 
   <section id="meet-winnie" class="meet-winnie">
-    <img src="/winnie/portrait.jpg" alt="Winnie Hollowell" class="winnie-portrait" width="380" height="380" />
+    <div class="polaroid" style="max-width:260px">
+      <img src="/winnie/portrait.jpg" alt="Winnie Hollowell" class="winnie-portrait" width="380" height="380" />
+    </div>
     <div>
       <h2>Meet Winnie</h2>
       <p><strong>Winnie Hollowell is a fully virtual, AI-generated spokesperson — not a real person.</strong> She's the face and voice of Nest & Nook: the personality behind our social content, our blog, and the little asides you'll see scattered through our guides. Think of her as our host, not our reporter.</p>
-      <p>That distinction matters, so we'll say it plainly: Winnie doesn't test products. She doesn't own the desks or kitchens she talks about. The actual hands-on testing, ranking, and research behind every guide is done by our real editorial team below — Winnie just makes sure it doesn't read like a spec sheet. When you see her voice on a blog post or a callout, treat it as our take, delivered with personality, not as a first-hand product review.</p>
+      <p>That distinction matters, so we'll say it plainly: Winnie doesn't test products, and she doesn't own the desks or kitchens she talks about. We don't buy and personally test everything we recommend, either — the actual research behind every guide is our real editorial team digging through verified buyer reviews and comparing specs, then ranking picks by fit. Winnie showcases those findings in her own voice — "the reviews say," "here's what buyers keep picking" — she's presenting the results, not claiming to be the one who tested them.</p>
       <p>We're upfront about this because we think you'd rather know than wonder. If a video or post ever features her likeness, it'll say so.</p>
     </div>
+  </section>
+
+  <section class="affiliate-disclosure">
+    <h3 style="margin-top:0">A note on Winnie's photos</h3>
+    <p>Some images show Winnie holding, using, or standing near a product, or in a home office/kitchen setting. Those images are AI-rendered for demonstration purposes — they're illustrating the pick, not documenting a real photoshoot or real personal use. The actual product details, specs, and pricing always come from the real listing, which we link to directly.</p>
   </section>
 
   <h2>What we actually care about</h2>

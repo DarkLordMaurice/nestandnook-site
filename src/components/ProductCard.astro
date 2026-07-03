@@ -7,11 +7,20 @@ interface Props {
   blurb: string;
   pros?: string[];
   cons?: string[];
+  image?: string;         // real product photo — not populated until PA-API unlocks
+  winnieImage?: string;   // AI-rendered "Winnie with this product" lifestyle shot — used sporadically
 }
-const { name, asin, bestFor, blurb, pros = [], cons = [] } = Astro.props;
+const { name, asin, bestFor, blurb, pros = [], cons = [], image, winnieImage } = Astro.props;
 const link = amazonLink(asin);
+const photo = image ?? winnieImage; // prefer the real product photo once available
 ---
 <article class="product-card">
+  {photo && (
+    <div class="product-card-photo">
+      <img src={photo} alt={name} width="400" height="300" loading="lazy" />
+      {!image && winnieImage && <span class="ai-tag">AI-rendered demo</span>}
+    </div>
+  )}
   <div class="badge">{bestFor}</div>
   <h3>{name}</h3>
   <p>{blurb}</p>
@@ -26,4 +35,6 @@ const link = amazonLink(asin);
 </article>
 
 <!-- Styling lives in src/styles/global.css (.product-card, .badge, .pros, .cons, .cta)
-     so every card on the site — roundups, product-page deep dives — looks consistent. -->
+     so every card on the site — roundups, product-page deep dives — looks consistent.
+     Any AI-rendered Winnie/product image carries a small "AI-rendered demo" tag inline
+     AND is covered by the fuller disclosure on the About page ("A note on Winnie's photos"). -->

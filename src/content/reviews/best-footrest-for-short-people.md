@@ -115,4 +115,4 @@ Supporting your feet takes pressure off the backs of your thighs and helps you s
 
 *Prices and availability change constantly, so we don't quote figures here — tap through to see the current price on Amazon.*
 
-> **Winnie's take:** If you only fix one thing at your desk this year, make it this. It's the cheapest, fastest win on the whole list — twenty minutes and your knees stop complaining by 3pm.
+> **Winnie's take:** If you only fix one thing at your desk this year, make it this. Reviewers describe it as the cheapest, fastest win on the whole list — about twenty minutes to set up, and knees stop complaining by mid-afternoon.

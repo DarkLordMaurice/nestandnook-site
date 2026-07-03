@@ -23,6 +23,14 @@ const reviews = defineCollection({
       blurb: z.string(),
       pros: z.array(z.string()).optional(),
       cons: z.array(z.string()).optional(),
+      // Real product photo — hold off populating until PA-API unlocks (~3 qualifying
+      // sales); sourcing product images without API access risks Amazon Associates
+      // image-use terms. Leave unset until then.
+      image: z.string().optional(),
+      // AI-rendered "Winnie with this product" lifestyle image — used sporadically,
+      // NOT on every product. Must be disclosed as AI-rendered for demonstration
+      // (see about.astro AI-imagery disclosure + brand-assets/winnie/ prompt kit).
+      winnieImage: z.string().optional(),
     })).default([]),
     internalLinks: z.array(z.object({ label: z.string(), href: z.string() })).default([]),
   }),
@@ -31,9 +39,11 @@ const reviews = defineCollection({
 // Blog — Winnie Hollowell's voice. Distinct from the `reviews` collection:
 // these are personality-led posts (her opinions, her "here's what I'd do"
 // takes), not the SEO cluster roundups/how-tos. She never claims personal
-// product testing here — that stays with the real editorial team; she can
-// point to their picks. Every post shows an explicit virtual-host disclosure
-// via the WinnieByline component (see src/components/WinnieByline.astro).
+// product testing OR personal ownership/use here — that's not honest, and
+// it's a real Amazon Associates / FTC risk. She showcases picks the real
+// editorial team compiled from verified buyer reviews. Every post shows an
+// explicit virtual-host disclosure via the WinnieByline component (see
+// src/components/WinnieByline.astro).
 const blog = defineCollection({
   type: 'content',
   schema: z.object({

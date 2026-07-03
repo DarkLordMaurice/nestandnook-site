@@ -18,7 +18,7 @@ We're not decorating. We're deploying. That's the whole difference between a spa
 
 This site isn't trying to sell you an aesthetic. It's trying to hand you the specific, boring, cheap fix for the specific, boring, annoying problem in your specific home office or kitchen. That's a narrower promise than most "home inspo" content makes, and I think it's a better one.
 
-So when you see a roundup here, it's not fifty options ranked by how nice they photograph. It's the shortlist our team actually tested, organized by who each pick genuinely suits — because "best overall" means nothing if you're 5'2" and the "best overall" footrest was clearly designed for someone with much longer legs than either of us.
+So when you see a roundup here, it's not fifty options ranked by how nice they photograph. It's the shortlist our team actually compiled from real verified-buyer reviews, organized by who each pick genuinely suits — because "best overall" means nothing if you're 5'2" and the "best overall" footrest was clearly designed for someone with much longer legs.
 
 If that's the kind of specific you're here for, welcome. This drawer is about to have a very good week.
 

@@ -1,7 +1,7 @@
 // Single source of brand + affiliate config. Swap BRAND / domain / tag here only.
 export const SITE = {
   brand: 'Nest & Nook',
-  tagline: 'Smarter home office & kitchen setups, tested and ranked.',
+  tagline: 'Smarter home office & kitchen setups, reviewed and ranked.',
   url: 'https://nestandnook.org',           // registered via Cloudflare, 2026-07-03
   amazonAssociateTag: 'CHANGEME-20',         // Amazon Associates tracking id (set after approval)
   amazonMarketplace: 'www.amazon.com',

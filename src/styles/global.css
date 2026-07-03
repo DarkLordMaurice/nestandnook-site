@@ -22,9 +22,17 @@
   --good: #4f7a4a;
   --bad: #a8452f;
 
+  /* Maximalist accent pops — pulled from Winnie's hair streak + tape-measure
+     coil. Used sparingly and loudly: washi tags, stickers, doodle accents. */
+  --hotpink: #d6336c;
+  --hotpink-dark: #a8244f;
+  --teal: #2f8f8a;
+  --teal-dark: #226b67;
+
   /* Type */
   --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
   --font-body: "Inter", -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-hand: "Caveat", "Segoe Script", cursive;
 
   --radius: 14px;
   --radius-sm: 8px;
@@ -164,6 +172,32 @@ main .wrap { max-width: 780px; padding-top: 2.25rem; }
   transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 .product-card:hover { box-shadow: var(--shadow-card-hover); transform: translateY(-1px); }
+.product-card-photo {
+  position: relative;
+  margin: -1.4rem -1.5rem 1rem;
+  border-radius: var(--radius) var(--radius) 0 0;
+  overflow: hidden;
+}
+.product-card-photo img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+.product-card-photo .ai-tag {
+  position: absolute;
+  bottom: 0.6rem;
+  right: 0.6rem;
+  background: rgba(44, 36, 24, 0.72);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+}
 .product-card .badge {
   display: inline-block;
   background: var(--sage);
@@ -176,6 +210,11 @@ main .wrap { max-width: 780px; padding-top: 2.25rem; }
   letter-spacing: 0.06em;
   transform: rotate(-1.5deg);
 }
+/* Alternate badge colors down a roundup list — mixed-pattern scrapbook feel
+   instead of every "Best for" tag being identical sage. */
+.product-card:nth-of-type(4n+2) .badge { background: var(--terracotta); transform: rotate(1.2deg); }
+.product-card:nth-of-type(4n+3) .badge { background: var(--hotpink); transform: rotate(-1deg); }
+.product-card:nth-of-type(4n+4) .badge { background: var(--teal); transform: rotate(1.5deg); }
 .product-card h3 { margin: 0.65rem 0 0.4rem; font-size: 1.25rem; }
 .product-card .pros, .product-card .cons {
   list-style: none;
@@ -227,7 +266,12 @@ main .wrap { max-width: 780px; padding-top: 2.25rem; }
   box-shadow: var(--shadow-card);
   transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
-.guide-card:hover { box-shadow: var(--shadow-card-hover); transform: translateY(-1px); }
+.guide-card:hover { box-shadow: var(--shadow-card-hover); transform: translateY(-1px) rotate(0deg) !important; }
+/* Subtle scrapbook scatter — alternating tilt so the grid doesn't look like
+   a rigid corporate table. */
+.guide-card:nth-child(3n+1) { transform: rotate(-0.6deg); }
+.guide-card:nth-child(3n+2) { transform: rotate(0.5deg); }
+.guide-card:nth-child(3n+3) { transform: rotate(-0.4deg); }
 .guide-card .eyebrow { display: block; margin-bottom: 0.35rem; }
 .guide-card a.title-link {
   font-family: var(--font-display);
@@ -300,8 +344,6 @@ main .wrap { max-width: 780px; padding-top: 2.25rem; }
   width: 100%;
   height: auto;
   display: block;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-card-hover);
   object-fit: cover;
   aspect-ratio: 16 / 10;
 }
@@ -327,18 +369,18 @@ main .wrap { max-width: 780px; padding-top: 2.25rem; }
   width: 100%;
   height: auto;
   display: block;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-card);
   object-fit: cover;
   aspect-ratio: 16 / 9;
-  margin: 0.5rem 0 1.5rem;
 }
+.polaroid:has(.blog-header-photo) { margin: 0.5rem 0 1.75rem; }
 @media (min-width: 800px) {
   .hero-banner-inner.two-col { grid-template-columns: 1.05fr 1fr; }
 }
 
 /* Washi-tape sticker accent — used to pin the "eyebrow" label on hub/hero
-   sections, playful scrapbook touch matching Winnie's personality. */
+   sections, playful scrapbook touch matching Winnie's personality. Color
+   varies by page (washi-pink / washi-teal / washi-sage) so the site doesn't
+   read as one mustard tag repeated everywhere — mixed-pattern scrapbook feel. */
 .washi {
   display: inline-block;
   background: var(--mustard);
@@ -353,6 +395,59 @@ main .wrap { max-width: 780px; padding-top: 2.25rem; }
   border-radius: 3px;
   box-shadow: 0 2px 4px rgba(44, 36, 24, 0.15);
   margin-bottom: 0.9rem;
+}
+.washi.washi-pink { background: var(--hotpink); transform: rotate(2deg); }
+.washi.washi-teal { background: var(--teal); transform: rotate(-3deg); }
+.washi.washi-sage { background: var(--sage); transform: rotate(3deg); }
+
+/* Hand-drawn doodle accent — Caveat script for scribbled asides, arrows,
+   "psst" callouts. Self-authored, no stock asset. */
+.doodle {
+  font-family: var(--font-hand);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--hotpink);
+  display: inline-block;
+  transform: rotate(-3deg);
+}
+
+/* ---------- Scrapbook photo frame (polaroid + tape) ----------
+   Wraps hero/feature photos: white photo-paper border, a washi-tape strip
+   across a top corner, slight rotation. This is the "full maximalist"
+   scrapbook treatment — used on the biggest, highest-impact photos. */
+.polaroid {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  background: #fff;
+  padding: 10px 10px 10px;
+  box-shadow: var(--shadow-card-hover);
+  position: relative;
+  transform: rotate(-2deg);
+}
+.polaroid.tilt-right { transform: rotate(2deg); }
+.polaroid img { display: block; width: 100%; height: auto; }
+.polaroid::before {
+  content: "";
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  width: 100px;
+  height: 32px;
+  margin-left: -50px;
+  background: var(--hotpink);
+  opacity: 0.88;
+  transform: rotate(-4deg);
+  box-shadow: 0 2px 4px rgba(44, 36, 24, 0.2);
+}
+.polaroid.tilt-right::before { background: var(--teal); transform: rotate(4deg); }
+
+.hero-doodle {
+  margin-left: 0.9rem;
+  font-size: 1.3rem;
+}
+@media (max-width: 799px) {
+  .hero-doodle { display: block; margin: 0.6rem 0 0; }
 }
 
 /* ---------- Winnie host note ---------- */
@@ -429,12 +524,10 @@ tr:nth-child(even) td { background: rgba(214, 164, 25, 0.05); }
 }
 .meet-winnie .winnie-portrait {
   width: 100%;
-  max-width: 260px;
   height: auto;
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-card);
   flex: none;
   margin: 0 auto;
 }
+.meet-winnie .polaroid { flex: none; margin: 0 auto; }
 .meet-winnie h2 { margin-top: 0; }
 .meet-winnie p:last-child { margin-bottom: 0; }

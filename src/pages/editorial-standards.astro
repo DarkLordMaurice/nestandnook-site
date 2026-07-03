@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import WinnieNote from '../components/WinnieNote.astro';
 import { SITE } from '../config.ts';
 ---
-<BaseLayout title={`Editorial Standards — ${SITE.brand}`} description={`How ${SITE.brand} researches, tests, and ranks products.`} showDisclosure={false}>
+<BaseLayout title={`Editorial Standards — ${SITE.brand}`} description={`How ${SITE.brand} researches, reviews, and ranks products.`} showDisclosure={false}>
   <span class="washi">The fine print, warmly</span>
   <h1>Editorial Standards</h1>
   <p class="lede">These standards apply to every guide on {SITE.brand}. They exist so you can trust our picks and so our content stays genuinely useful.</p>
@@ -14,6 +14,7 @@ import { SITE } from '../config.ts';
 
   <h2>How we rank products</h2>
   <ul>
+    <li>We don't buy and personally test every product — we compile and weigh what verified buyers and other reviewers actually report, then rank by fit.</li>
     <li>Picks are chosen by fit for a specific person or use case — never by commission rate.</li>
     <li>We compare the specs that actually matter for the job and state the trade-offs plainly.</li>
     <li>We say who a product is <em>not</em> right for, not just who it's for.</li>
