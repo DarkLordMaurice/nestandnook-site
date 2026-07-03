@@ -43,6 +43,7 @@ const blog = defineCollection({
     updatedDate: z.coerce.date().optional(),
     ogImage: z.string().optional(),
     category: z.string().default('Notes from the nook'),
+    image: z.string().default('/winnie/blog-header.jpg'),
     relatedGuides: z.array(z.object({ label: z.string(), href: z.string() })).default([]),
   }),
 });

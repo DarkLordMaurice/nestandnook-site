@@ -1,20 +1,25 @@
 <svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="nnGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#d6a419"/>
+      <stop offset="0%" stop-color="#e0b32a"/>
       <stop offset="100%" stop-color="#c1602e"/>
     </linearGradient>
   </defs>
-  <!-- Nook arch: an abstract alcove/nest shape -->
-  <path d="M28 208
-           C28 118, 90 48, 128 48
-           C166 48, 228 118, 228 208
-           L196 208
-           C196 138, 158 82, 128 82
-           C98 82, 60 138, 60 208
-           Z"
-        fill="url(#nnGradient)"/>
-  <!-- Nest egg -->
-  <ellipse cx="128" cy="176" rx="26" ry="20" fill="#faf4e8"/>
-  <ellipse cx="119" cy="170" rx="8" ry="6" fill="#f0e6d2"/>
+  <!-- Concept: a coiled tape measure that doubles as a woven nest ring —
+       Winnie's signature prop reimagined as the brand mark. The tick marks
+       make the tape-measure reading unmistakable; the egg keeps the "nest"
+       reading. -->
+  <path d="M112,37 A92,92 0 1 1 37,112" fill="none" stroke="url(#nnGradient)" stroke-width="22" stroke-linecap="round"/>
+  <g stroke="#2c2418" stroke-width="4.5" stroke-linecap="round">
+    <line x1="155" y1="54" x2="164" y2="29"/>
+    <line x1="196" y1="89" x2="219" y2="76"/>
+    <line x1="206" y1="142" x2="231" y2="146"/>
+    <line x1="179" y1="189" x2="196" y2="208"/>
+    <line x1="128" y1="207" x2="128" y2="233"/>
+    <line x1="77" y1="189" x2="61" y2="208"/>
+    <line x1="50" y1="142" x2="25" y2="146"/>
+  </g>
+  <rect x="118" y="8" width="14" height="30" rx="3" fill="#e0b32a" transform="rotate(8 125 23)"/>
+  <ellipse cx="128" cy="188" rx="34" ry="25" fill="#c1602e"/>
+  <ellipse cx="116" cy="179" rx="10" ry="7" fill="#e8a878"/>
 </svg>

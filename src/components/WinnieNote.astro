@@ -9,7 +9,7 @@ interface Props {
 const { signed = true } = Astro.props;
 ---
 <aside class="winnie-note" role="note">
-  <img src="/winnie/avatar.jpg" alt="Winnie Hollowell" class="avatar" width="44" height="44" />
+  <img src="/winnie/avatar.jpg" alt="Winnie Hollowell" class="avatar" width="64" height="64" />
   <div class="winnie-note-body">
     <slot />
     {signed && <span class="signed">— Winnie</span>}

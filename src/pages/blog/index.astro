@@ -20,9 +20,12 @@ posts.sort((a, b) => +b.data.publishDate - +a.data.publishDate);
   {posts.length === 0 ? (
     <p><em>First notes publishing soon.</em></p>
   ) : (
-    <ul class="guide-grid">
+    <ul class="guide-grid post-grid">
       {posts.map((p) => (
-        <li class="guide-card">
+        <li class="guide-card post-card">
+          <a href={`/blog/${p.slug}/`} class="post-card-image-link">
+            <img src={p.data.image} alt="" class="post-card-image" width="500" height="300" />
+          </a>
           <span class="eyebrow">{p.data.category}</span>
           <a class="title-link" href={`/blog/${p.slug}/`}>{p.data.title}</a>
           <p>{p.data.description}</p>

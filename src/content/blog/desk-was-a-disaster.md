@@ -3,6 +3,7 @@ title: "My Desk Was a Disaster. Here's What Actually Fixed It"
 description: "A running list of the small, cheap fixes that turned a cramped, achy desk setup into somewhere I don't mind spending all day."
 publishDate: 2026-07-03
 category: "Desk fixes"
+image: "/winnie/product-hold.jpg"
 relatedGuides:
   - label: "Best Footrest for Short People"
     href: "/home-office/best-footrest-for-short-people/"
