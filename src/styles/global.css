@@ -371,7 +371,12 @@ main .wrap { max-width: 780px; padding-top: 2.25rem; }
   transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 .content-card:hover { box-shadow: var(--shadow-card-hover); }
-.content-card img { width: 100%; height: auto; display: block; }
+/* height:auto let a portrait-oriented source photo (e.g. winnie-office-
+   wide-overview.jpg, 1105x1400) render as an oddly tall card even outside
+   the featured slot. Cap all card photos to a consistent height and crop
+   with object-fit so the grid stays visually uniform regardless of the
+   source photo's native aspect ratio (2026-07-10). */
+.content-card img { width: 100%; height: 220px; max-height: 220px; object-fit: cover; display: block; }
 .content-card .card-body { padding: 1rem 1.2rem 1.3rem; }
 .content-card h3 {
   font-family: var(--font-display);
@@ -383,6 +388,11 @@ main .wrap { max-width: 780px; padding-top: 2.25rem; }
 }
 .content-card p { color: var(--ink-soft); font-size: 0.9rem; margin: 0; }
 .content-card.featured h3 { font-size: 1.35rem; }
+/* Featured cards column-span full width, so cap the photo height with
+   object-fit:cover — without this, a tall/portrait source photo balloons to
+   an enormous, jarring height (flagged 2026-07-10). */
+.content-card.featured img { height: 320px; max-height: 320px; object-fit: cover; }
+@media (min-width: 640px) { .content-card.featured img { height: 380px; max-height: 380px; } }
 
 /* Review card — gold/teal/terracotta rotation, corner badge naming the guide type */
 .review-card { border-top: 4px solid var(--gold); transform: rotate(-0.4deg); }
@@ -436,6 +446,46 @@ main .wrap { max-width: 780px; padding-top: 2.25rem; }
   transform: rotate(-2deg);
   margin: 0.5rem 0 0.1rem;
 }
+
+/* ---------- Side rail (left-margin "runner") ----------
+   Fills the wide empty gutter beside the 780px reading column on desktop —
+   flagged 2026-07-10 as too much dead space on the sides of every page.
+   Hidden below 1300px: under that width there's no real gutter for it to
+   sit in, and it would otherwise collide with the centered .wrap column. */
+.side-rail { display: none; }
+@media (min-width: 1300px) {
+  main { position: relative; }
+  .side-rail {
+    display: block;
+    position: absolute;
+    top: 0.5rem;
+    left: max(1.5rem, calc(50% - 780px / 2 - 210px));
+    width: 180px;
+  }
+}
+.side-rail-doodle {
+  display: block;
+  font-size: 1.4rem;
+  color: var(--gold);
+  margin-bottom: 0.35rem;
+}
+.side-rail-heading {
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  color: var(--teal-dark);
+  margin: 0 0 0.6rem;
+  transform: rotate(-2deg);
+}
+.side-rail-list { list-style: none; margin: 0; padding: 0; border-left: 2px dashed var(--border); padding-left: 0.9rem; }
+.side-rail-list li { margin-bottom: 0.7rem; }
+.side-rail-list a {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.side-rail-list a:hover { color: var(--terracotta-dark); border-bottom-color: var(--terracotta); }
 
 /* ---------- Hero (homepage) ---------- */
 .hero {
@@ -514,9 +564,15 @@ main .wrap { max-width: 780px; padding-top: 2.25rem; }
 }
 /* Single-photo hero banners (hub pages, blog index, About) were spanning the
    full 1100px inner container at 16:9 — read as "almost the entire screen."
-   Cap it to a modest, centered frame instead — present but not dominant. */
-.hero-banner-single .hero-banner-inner { max-width: 560px; }
+   Cap it to a modest, centered frame instead — present but not dominant.
+   Reduced again 2026-07-10 (Home Office / Kitchen hub heroes still read as
+   too large/dominant even at the 560px cap). */
+.hero-banner-single { padding: 1.5rem 0 1.75rem; }
+.hero-banner-single .hero-banner-inner { max-width: 420px; }
 .hero-banner-single .hero-photo { aspect-ratio: 4 / 3; }
+/* Square source photos (e.g. portrait-v2.jpg on About) shouldn't be force-
+   cropped into a 4:3 frame — render them as a clean square instead. */
+.hero-banner-single .hero-photo-portrait { aspect-ratio: 1 / 1; }
 
 .post-card { padding: 0; overflow: hidden; }
 .post-card .post-card-image-link { display: block; line-height: 0; }
@@ -605,7 +661,7 @@ main .wrap { max-width: 780px; padding-top: 2.25rem; }
    smaller print to one side so paragraphs wrap beside it instead of getting
    interrupted by a near-full-bleed photo every few sentences. */
 .polaroid.inset {
-  max-width: 220px;
+  max-width: 300px;
   float: right;
   margin: 0.25rem 0 1rem 1.5rem;
 }

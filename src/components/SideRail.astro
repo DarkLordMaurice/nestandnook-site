@@ -1,0 +1,22 @@
+---
+// Decorative + functional left-margin "runner" — fills the wide empty
+// gutter next to the 780px reading column on desktop screens (flagged
+// 2026-07-10: too much dead space on the sides of every page). Hidden
+// entirely below 1300px viewport width since there's no gutter to sit in
+// there — never competes with the main content column.
+// Used on the homepage and hub index pages only (not individual long-form
+// posts, where it would compete with reading).
+interface RailLink { label: string; href: string; }
+interface Props {
+  heading: string;
+  links: RailLink[];
+}
+const { heading, links } = Astro.props;
+---
+<aside class="side-rail" aria-label={heading}>
+  <span class="side-rail-doodle" aria-hidden="true">✦</span>
+  <p class="side-rail-heading">{heading}</p>
+  <ul class="side-rail-list">
+    {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+  </ul>
+</aside>

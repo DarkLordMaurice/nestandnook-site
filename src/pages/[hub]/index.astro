@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import WinnieNote from '../../components/WinnieNote.astro';
 import ReviewCard from '../../components/ReviewCard.astro';
+import SideRail from '../../components/SideRail.astro';
 import { SITE } from '../../config.ts';
 import { HUBS } from '../../hubs.ts';
 import { getCollection } from 'astro:content';
@@ -19,12 +20,24 @@ const { hub } = Astro.params;
 const meta = HUBS[hub as string];
 const reviews = (await getCollection('reviews')).filter((r) => r.data.hub === hub);
 reviews.sort((a, b) => +b.data.publishDate - +a.data.publishDate);
+
+const otherHubKey = Object.keys(HUBS).find((k) => k !== hub);
+const otherHub = otherHubKey ? HUBS[otherHubKey] : null;
 ---
 <BaseLayout
   title={`${meta.name} — ${SITE.brand}`}
   description={meta.blurb}
   showDisclosure={false}
 >
+  <SideRail
+    heading="Explore more"
+    links={[
+      ...(otherHub && otherHubKey ? [{ label: otherHub.name, href: `/${otherHubKey}/` }] : []),
+      { label: 'Recipes', href: '/recipes/' },
+      { label: "Winnie's Notes", href: '/blog/' },
+      { label: 'About Winnie', href: '/about/' },
+    ]}
+  />
   <section class="hero">
     <span class="washi">{meta.name}</span>
     <h1>{meta.name}</h1>
