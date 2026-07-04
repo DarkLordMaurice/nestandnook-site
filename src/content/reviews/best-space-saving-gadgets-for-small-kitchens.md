@@ -13,7 +13,6 @@ pageType: "roundup"
 publishDate: 2026-07-05
 disclosure: true
 schemaType: "ItemList"
-image: "/winnie/kitchen-hero.jpg"
 products:
   - name: "NiHome Over-the-Sink Cutting Board with Collapsible Colander"
     asin: "B0BM798RYV"

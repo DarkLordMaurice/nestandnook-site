@@ -11,7 +11,6 @@ publishDate: 2026-07-04
 updatedDate: 2026-07-04
 disclosure: true
 schemaType: "ItemList"
-image: "/winnie/product-hold.jpg"
 products:
   - name: "StrongTek 4-Angle Wooden Footrest"
     asin: "B0BTL7QLT5"
