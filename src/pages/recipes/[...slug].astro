@@ -64,6 +64,13 @@ const jsonLd = {
 
   <WinnieRecipeByline />
 
+  {d.winnieImage && (
+    <div class="recipe-hero polaroid recipe-winnie-shot">
+      <img src={d.winnieImage} alt={`Winnie Hollowell (AI-rendered) narrating ${d.title}`} width="1200" height="800" loading="lazy" />
+      <p class="ai-tag">AI-rendered — narration only, Winnie didn't develop or test this recipe</p>
+    </div>
+  )}
+
   <div class="recipe-quickmeta no-print">
     <div><span class="label">Prep</span>{fmtMins(d.prepTimeMinutes)}</div>
     <div><span class="label">Cook</span>{fmtMins(d.cookTimeMinutes)}</div>

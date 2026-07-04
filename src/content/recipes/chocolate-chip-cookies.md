@@ -1,7 +1,4 @@
 ---
-# Image file does not exist yet — Maurice generates it via ChatGPT using
-# brand-assets/winnie/Recipe-Image-Prompts.md §B.5 and saves it to
-# site/public/recipes/recipe-chocolate-chip-cookies.jpg
 title: "Chewy Chocolate Chip Cookies (No Chilling Required)"
 description: "The most-searched cookie recipe in America, built for soft, chewy centers and crisp edges — no dough-chilling detour required."
 primaryKeyword: "chocolate chip cookies recipe"
@@ -14,6 +11,7 @@ servings: 24
 difficulty: "easy"
 image: "/recipes/recipe-chocolate-chip-cookies.jpg"
 imageAlt: "A stack of chocolate chip cookies with one broken in half showing a soft, chewy center"
+winnieImage: "/winnie/winnie-kitchen-taste.jpg"
 ingredientGroups:
   - items:
       - "1 cup unsalted butter, softened (not melted)"

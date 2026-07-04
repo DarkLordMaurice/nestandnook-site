@@ -1,7 +1,4 @@
 ---
-# Image file does not exist yet — Maurice generates it via ChatGPT using
-# brand-assets/winnie/Recipe-Image-Prompts.md §B.10 and saves it to
-# site/public/recipes/recipe-sheet-pan-chicken-fajitas.jpg
 title: "Sheet-Pan Chicken Fajitas (One Pan, One Oven, No Stovetop Juggling)"
 description: "Restaurant-style fajitas without babysitting a hot skillet — everything roasts on one sheet pan, ideal for small kitchens with limited stovetop space."
 primaryKeyword: "sheet pan chicken fajitas"
@@ -14,6 +11,7 @@ servings: 4
 difficulty: "easy"
 image: "/recipes/recipe-sheet-pan-chicken-fajitas.jpg"
 imageAlt: "Sheet-pan chicken fajitas with charred bell peppers and onions, fresh from the oven"
+winnieImage: "/winnie/winnie-kitchen-present.jpg"
 ingredientGroups:
   - groupName: "For the fajitas"
     items:

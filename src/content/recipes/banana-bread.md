@@ -1,7 +1,4 @@
 ---
-# Image file does not exist yet — Maurice generates it via ChatGPT using
-# brand-assets/winnie/Recipe-Image-Prompts.md §B.1 and saves it to
-# site/public/recipes/recipe-banana-bread.jpg
 title: "Classic Banana Bread (Moist, No Mixer Needed)"
 description: "The most-searched recipe on the internet, made simple: one bowl, no mixer, and a foolproof way to tell when it's really done."
 primaryKeyword: "banana bread recipe"
@@ -14,6 +11,7 @@ servings: 8
 difficulty: "easy"
 image: "/recipes/recipe-banana-bread.jpg"
 imageAlt: "A sliced loaf of banana bread on a wooden cutting board, showing the moist interior"
+winnieImage: "/winnie/winnie-kitchen-stir.jpg"
 ingredientGroups:
   - items:
       - "3 very ripe bananas (the more brown-spotted, the better)"
