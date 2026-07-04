@@ -29,6 +29,16 @@
   --teal: #2f8f8a;
   --teal-dark: #226b67;
 
+  /* Grandmillennial jewel-tone escalation — deep saturated backgrounds +
+     metallic gold, used for header/footer/callouts so the site has real
+     dark, ornate "gallery wall" moments instead of accent pops on cream
+     everywhere. Reference: deep teal walls + gold frames + gallery density. */
+  --jewel-teal: #123a37;
+  --jewel-teal-light: #1d5450;
+  --gold: #c9a227;
+  --gold-light: #e6c757;
+  --cream-on-dark: #f6ecd6;
+
   /* Type */
   --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
   --font-body: "Inter", -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -47,9 +57,13 @@ html { scroll-behavior: smooth; }
 body {
   font-family: var(--font-body);
   background-color: var(--cream);
-  /* Subtle self-authored paper-grain texture (inline SVG noise) — the
-     "humanized design" 2026 trend: texture over slick flat AI-polish. */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.17  0 0 0 0 0.14  0 0 0 0 0.09  0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  /* Two layered self-authored inline SVGs: a subtle damask-style "wallpaper"
+     flourish repeat (the grandmillennial background motif) UNDER a
+     paper-grain noise texture on top — texture over slick flat AI-polish,
+     plus real pattern-on-pattern instead of a flat accent-only background. */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.17  0 0 0 0 0.14  0 0 0 0 0.09  0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cg fill='none' stroke='%235f6e54' stroke-width='1.3' opacity='0.065'%3E%3Cpath d='M110,26 C144,58 144,98 110,110 C76,98 76,58 110,26 Z'/%3E%3Cpath d='M110,194 C144,162 144,122 110,110 C76,122 76,162 110,194 Z'/%3E%3Cpath d='M26,110 C58,76 98,76 110,110 C98,144 58,144 26,110 Z'/%3E%3Cpath d='M194,110 C162,76 122,76 110,110 C122,144 162,144 194,110 Z'/%3E%3Ccircle cx='110' cy='110' r='7'/%3E%3Ccircle cx='0' cy='0' r='4'/%3E%3Ccircle cx='220' cy='0' r='4'/%3E%3Ccircle cx='0' cy='220' r='4'/%3E%3Ccircle cx='220' cy='220' r='4'/%3E%3C/g%3E%3C/svg%3E");
   color: var(--ink);
   margin: 0;
   line-height: 1.65;
@@ -75,6 +89,9 @@ h2 {
   font-size: 1.5rem;
   margin: 2.4rem 0 0.9rem;
   padding-top: 0.1rem;
+  position: relative;
+  padding-left: 1rem;
+  border-left: 4px solid var(--gold);
 }
 h3 { font-size: 1.2rem; margin: 0.4rem 0 0.3rem; }
 
@@ -99,10 +116,13 @@ main a:hover { color: var(--terracotta-dark); }
   color: var(--sage-dark);
 }
 
-/* ---------- Header ---------- */
+/* ---------- Header ----------
+   Deep jewel-teal, not paper-white — the site's first "dark wall, gold
+   frame" moment, matching the grandmillennial reference interiors. */
 .site-header {
-  border-bottom: 1px solid var(--border);
-  background: var(--paper);
+  border-bottom: 3px solid var(--gold);
+  background: var(--jewel-teal);
+  background-image: linear-gradient(180deg, var(--jewel-teal-light), var(--jewel-teal) 60%);
 }
 .site-header .wrap {
   display: flex;
@@ -112,30 +132,40 @@ main a:hover { color: var(--terracotta-dark); }
   max-width: 860px;
 }
 .brand {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.4rem;
   text-decoration: none;
-  color: var(--ink);
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.65rem;
 }
 .brand .brand-mark {
   display: inline-block;
-  width: 2.15rem;
-  height: 2.15rem;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 50%;
+}
+/* Art deco wordmark — dark + fancy per brand direction, replacing the
+   Fraunces plain-text lockup. Cinzel Decorative is loaded above alongside
+   Fraunces/Inter/Caveat. */
+.brand-word {
+  font-family: "Cinzel Decorative", var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  line-height: 1;
 }
 nav.site-nav a {
   margin-left: 1.5rem;
   text-decoration: none;
-  color: var(--ink-soft);
+  color: var(--cream-on-dark);
+  opacity: 0.82;
   font-weight: 600;
   font-size: 0.94rem;
   border-bottom: 2px solid transparent;
   padding-bottom: 2px;
 }
-nav.site-nav a:hover { color: var(--terracotta); border-bottom-color: var(--terracotta); }
+nav.site-nav a:hover { color: var(--gold-light); opacity: 1; border-bottom-color: var(--gold-light); }
 
 /* ---------- Main content shell ---------- */
 main { padding: 0 0 3rem; }
@@ -165,6 +195,7 @@ main .wrap { max-width: 780px; padding-top: 2.25rem; }
 .product-card {
   background: var(--paper);
   border: 1px solid var(--border);
+  border-top: 3px solid var(--gold);
   border-radius: var(--radius);
   padding: 1.4rem 1.5rem;
   margin: 1.5rem 0;
@@ -212,9 +243,10 @@ main .wrap { max-width: 780px; padding-top: 2.25rem; }
 }
 /* Alternate badge colors down a roundup list — mixed-pattern scrapbook feel
    instead of every "Best for" tag being identical sage. */
-.product-card:nth-of-type(4n+2) .badge { background: var(--terracotta); transform: rotate(1.2deg); }
-.product-card:nth-of-type(4n+3) .badge { background: var(--hotpink); transform: rotate(-1deg); }
-.product-card:nth-of-type(4n+4) .badge { background: var(--teal); transform: rotate(1.5deg); }
+.product-card:nth-of-type(5n+2) .badge { background: var(--terracotta); transform: rotate(1.2deg); }
+.product-card:nth-of-type(5n+3) .badge { background: var(--hotpink); transform: rotate(-1deg); }
+.product-card:nth-of-type(5n+4) .badge { background: var(--teal); transform: rotate(1.5deg); }
+.product-card:nth-of-type(5n+5) .badge { background: var(--gold-light); color: var(--ink); transform: rotate(-1.8deg); }
 .product-card h3 { margin: 0.65rem 0 0.4rem; font-size: 1.25rem; }
 .product-card .pros, .product-card .cons {
   list-style: none;
@@ -261,6 +293,7 @@ main .wrap { max-width: 780px; padding-top: 2.25rem; }
 .guide-card {
   background: var(--paper);
   border: 1px solid var(--border);
+  border-top: 3px solid var(--gold);
   border-radius: var(--radius);
   padding: 1.25rem 1.4rem;
   box-shadow: var(--shadow-card);
@@ -268,10 +301,11 @@ main .wrap { max-width: 780px; padding-top: 2.25rem; }
 }
 .guide-card:hover { box-shadow: var(--shadow-card-hover); transform: translateY(-1px) rotate(0deg) !important; }
 /* Subtle scrapbook scatter — alternating tilt so the grid doesn't look like
-   a rigid corporate table. */
+   a rigid corporate table. Gallery-wall variety: each card's "frame" edge
+   cycles through the palette instead of every card wearing gold. */
 .guide-card:nth-child(3n+1) { transform: rotate(-0.6deg); }
-.guide-card:nth-child(3n+2) { transform: rotate(0.5deg); }
-.guide-card:nth-child(3n+3) { transform: rotate(-0.4deg); }
+.guide-card:nth-child(3n+2) { transform: rotate(0.5deg); border-top-color: var(--teal); }
+.guide-card:nth-child(3n+3) { transform: rotate(-0.4deg); border-top-color: var(--terracotta); }
 .guide-card .eyebrow { display: block; margin-bottom: 0.35rem; }
 .guide-card a.title-link {
   font-family: var(--font-display);
@@ -313,11 +347,21 @@ main .wrap { max-width: 780px; padding-top: 2.25rem; }
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  background: var(--paper);
-  border-bottom: 1px solid var(--border);
-  padding: 2.75rem 0 3rem;
+  /* Deep jewel-teal "gallery wall" backdrop — the polaroid photo reads as a
+     framed piece hung on a painted wall, matching the grandmillennial
+     reference rooms, instead of sitting flat on plain paper. */
+  background: var(--jewel-teal);
+  background-image:
+    radial-gradient(ellipse at 20% 20%, rgba(230, 199, 87, 0.08), transparent 55%),
+    linear-gradient(160deg, var(--jewel-teal-light), var(--jewel-teal) 65%);
+  border-top: 3px solid var(--gold);
+  border-bottom: 3px solid var(--gold);
+  padding: 3rem 0 3.25rem;
   margin-bottom: 2.25rem;
 }
+.hero-banner .washi { box-shadow: 0 2px 6px rgba(0,0,0,0.25); }
+.hero-banner h1, .hero-banner .lede, .hero-banner .eyebrow:not(.washi) { color: var(--cream-on-dark); }
+.hero-banner .hero-doodle { color: var(--gold-light); }
 .hero-banner-inner {
   max-width: 1100px;
   margin: 0 auto;
@@ -426,6 +470,7 @@ main .wrap { max-width: 780px; padding-top: 2.25rem; }
   transform: rotate(-2deg);
 }
 .polaroid.tilt-right { transform: rotate(2deg); }
+.polaroid.tilt-left { transform: rotate(-3deg); }
 .polaroid img { display: block; width: 100%; height: auto; }
 .polaroid::before {
   content: "";
@@ -441,6 +486,7 @@ main .wrap { max-width: 780px; padding-top: 2.25rem; }
   box-shadow: 0 2px 4px rgba(44, 36, 24, 0.2);
 }
 .polaroid.tilt-right::before { background: var(--teal); transform: rotate(4deg); }
+.polaroid.tilt-left::before { background: var(--mustard); transform: rotate(-7deg); }
 
 .hero-doodle {
   margin-left: 0.9rem;
@@ -450,28 +496,35 @@ main .wrap { max-width: 780px; padding-top: 2.25rem; }
   .hero-doodle { display: block; margin: 0.6rem 0 0; }
 }
 
-/* ---------- Winnie host note ---------- */
+/* ---------- Winnie host note ----------
+   Deep jewel-teal card + gold rule — Winnie's asides get a real "framed on
+   the wall" treatment instead of blending into the paper cards around them. */
 .winnie-note {
   display: flex;
-  gap: 0.9rem;
+  gap: 1rem;
   align-items: flex-start;
-  background: var(--paper);
-  border: 1px solid var(--border);
+  background: var(--jewel-teal);
+  background-image: linear-gradient(135deg, var(--jewel-teal-light), var(--jewel-teal) 70%);
+  border: none;
+  border-left: 5px solid var(--gold);
   border-radius: var(--radius);
-  padding: 1.1rem 1.3rem;
-  margin: 1.5rem 0;
+  padding: 1.2rem 1.4rem;
+  margin: 1.75rem 0;
+  color: var(--cream-on-dark);
+  box-shadow: var(--shadow-card-hover);
 }
+.winnie-note p { color: var(--cream-on-dark); }
 .winnie-note .avatar {
   flex: none;
-  width: 4rem;
-  height: 4rem;
+  width: 4.2rem;
+  height: 4.2rem;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 0 0 3px var(--mustard);
+  box-shadow: 0 0 0 3px var(--gold);
 }
 .winnie-note .signed {
   font-weight: 700;
-  color: var(--sage-dark);
+  color: var(--gold-light);
   font-size: 0.85rem;
   margin-top: 0.4rem;
   display: block;
@@ -495,15 +548,16 @@ tr:nth-child(even) td { background: rgba(214, 164, 25, 0.05); }
 
 /* ---------- Footer ---------- */
 .site-footer {
-  border-top: 1px solid var(--border);
-  background: var(--paper);
+  border-top: 3px solid var(--gold);
+  background: var(--jewel-teal);
   margin-top: 3rem;
-  padding: 2rem 0;
+  padding: 2.25rem 0;
 }
 .site-footer .wrap { max-width: 780px; }
-.site-footer p { color: var(--ink-soft); font-size: 0.92rem; margin: 0 0 0.5rem; }
-.site-footer .small { font-size: 0.78rem; color: #8a7d68; }
-.site-footer a { color: var(--ink-soft); }
+.site-footer p { color: var(--cream-on-dark); opacity: 0.85; font-size: 0.92rem; margin: 0 0 0.5rem; }
+.site-footer .small { font-size: 0.78rem; color: var(--cream-on-dark); opacity: 0.55; }
+.site-footer a { color: var(--gold-light); }
+.site-footer a:hover { color: var(--gold); }
 
 @media (min-width: 640px) {
   .guide-grid { grid-template-columns: 1fr 1fr; }

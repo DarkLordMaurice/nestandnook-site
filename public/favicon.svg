@@ -1,25 +1,35 @@
-<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Art deco emblem: sunburst rays + double gold ring around a serif
+       ampersand, on a near-black jewel-teal ground. Replaces the earlier
+       tape-measure/nest concept — dropped per brand direction: dark, fancy,
+       typographic-led art deco instead of an illustrated motif. -->
   <defs>
-    <linearGradient id="nnGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#e0b32a"/>
-      <stop offset="100%" stop-color="#c1602e"/>
+    <linearGradient id="goldg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f0d878"/>
+      <stop offset="55%" stop-color="#c9a227"/>
+      <stop offset="100%" stop-color="#9c7d18"/>
     </linearGradient>
   </defs>
-  <!-- Concept: a coiled tape measure that doubles as a woven nest ring —
-       Winnie's signature prop reimagined as the brand mark. The tick marks
-       make the tape-measure reading unmistakable; the egg keeps the "nest"
-       reading. -->
-  <path d="M112,37 A92,92 0 1 1 37,112" fill="none" stroke="url(#nnGradient)" stroke-width="22" stroke-linecap="round"/>
-  <g stroke="#2c2418" stroke-width="4.5" stroke-linecap="round">
-    <line x1="155" y1="54" x2="164" y2="29"/>
-    <line x1="196" y1="89" x2="219" y2="76"/>
-    <line x1="206" y1="142" x2="231" y2="146"/>
-    <line x1="179" y1="189" x2="196" y2="208"/>
-    <line x1="128" y1="207" x2="128" y2="233"/>
-    <line x1="77" y1="189" x2="61" y2="208"/>
-    <line x1="50" y1="142" x2="25" y2="146"/>
+  <rect width="300" height="300" fill="#0d1f1d"/>
+  <circle cx="150" cy="150" r="132" fill="none" stroke="url(#goldg)" stroke-width="2.5"/>
+  <circle cx="150" cy="150" r="120" fill="none" stroke="url(#goldg)" stroke-width="1.5"/>
+  <g stroke="url(#goldg)" stroke-width="3" stroke-linecap="round">
+    <line x1="150" y1="40" x2="150" y2="16"/>
+    <line x1="184" y1="46" x2="196" y2="24"/>
+    <line x1="116" y1="46" x2="104" y2="24"/>
+    <line x1="212" y1="64" x2="230" y2="46"/>
+    <line x1="88" y1="64" x2="70" y2="46"/>
   </g>
-  <rect x="118" y="8" width="14" height="30" rx="3" fill="#e0b32a" transform="rotate(8 125 23)"/>
-  <ellipse cx="128" cy="188" rx="34" ry="25" fill="#c1602e"/>
-  <ellipse cx="116" cy="179" rx="10" ry="7" fill="#e8a878"/>
+  <g stroke="url(#goldg)" stroke-width="3" stroke-linecap="round" opacity="0.85">
+    <line x1="150" y1="260" x2="150" y2="282"/>
+    <line x1="184" y1="254" x2="196" y2="272"/>
+    <line x1="116" y1="254" x2="104" y2="272"/>
+  </g>
+  <g fill="url(#goldg)">
+    <rect x="44" y="146" width="9" height="9" transform="rotate(45 48.5 150.5)"/>
+    <rect x="247" y="146" width="9" height="9" transform="rotate(45 251.5 150.5)"/>
+  </g>
+  <line x1="66" y1="150" x2="108" y2="150" stroke="url(#goldg)" stroke-width="2"/>
+  <line x1="192" y1="150" x2="234" y2="150" stroke="url(#goldg)" stroke-width="2"/>
+  <text x="150" y="196" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="150" text-anchor="middle" fill="url(#goldg)">&amp;</text>
 </svg>
