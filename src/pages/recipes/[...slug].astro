@@ -81,7 +81,7 @@ const jsonLd = {
           <img src={d.winnieImage} alt={`Winnie Hollowell narrating ${d.title}`} width="1200" height="800" loading="lazy" />
         </div>
       )}
-      {d.winnieNote && <WinnieNote>{d.winnieNote}</WinnieNote>}
+      {d.winnieNote && <WinnieNote photo={d.winnieHeadshot}>{d.winnieNote}</WinnieNote>}
     </div>
   )}
 

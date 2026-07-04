@@ -13,6 +13,7 @@ image: "/recipes/recipe-sheet-pan-chicken-fajitas.jpg"
 imageAlt: "Sheet-pan chicken fajitas with charred bell peppers and onions, fresh from the oven"
 winnieImage: "/winnie/winnie-kitchen-chop-side.jpg"
 winnieNote: "One pan, minimal juggling, cleanup that doesn't turn into its own production — this is basically feral efficiency mode translated into dinner. If I had a labeled bin for 'meals with one dish to wash,' this would live in it."
+winnieHeadshot: "/winnie/headshot-v4-2.jpg"
 ingredientGroups:
   - groupName: "For the fajitas"
     items:

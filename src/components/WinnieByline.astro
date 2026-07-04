@@ -1,16 +1,24 @@
 ---
-// Byline + mandatory disclosure for every blog post. Keep this exact framing:
-// Winnie is disclosed as a virtual/AI host, not a real person. We do NOT claim
-// hands-on product testing anywhere on this site — Winnie showcases picks the
-// real editorial team compiled from verified buyer reviews, she doesn't test
-// or own the products herself (see about.astro "Meet Winnie" section +
-// Brand-Guide.md §2).
+// Byline for every blog post. As of 2026-07-03 this no longer repeats the
+// AI/virtual-host disclosure inline — that lives once, clearly, on the About
+// page (#meet-winnie). Repeating it on every post undercut the read and
+// duplicated the same paragraph across dozens of pages; Maurice called this
+// out as an immersion problem, same fix already applied to WinnieRecipeByline.
+// Winnie is still, in fact, a disclosed virtual/AI host — see Brand-Guide.md
+// §2 — this component just doesn't re-explain that every time anymore.
+//
+// `photo` lets callers vary which headshot shows up so the same face isn't
+// repeated on every single post — see brand-assets/winnie/headshots/ for the
+// full pool (headshot-v4-1.jpg through -4.jpg, plus the original avatar.jpg).
+interface Props {
+  photo?: string;
+}
+const { photo = '/winnie/avatar.jpg' } = Astro.props;
 ---
 <div class="winnie-byline">
-  <img src="/winnie/avatar.jpg" alt="Winnie Hollowell" width="76" height="76" />
+  <img src={photo} alt="Winnie Hollowell" width="76" height="76" />
   <div>
     <p class="name">Winnie Hollowell <span class="role">— Nest &amp; Nook's virtual host</span></p>
-    <p class="disclosure-line">Winnie is a virtual, AI-generated spokesperson, not a real person. She's showcasing picks here, not testing them herself — the actual review research behind every pick is done by our real editorial team. <a href="/about/#meet-winnie">What does that mean?</a></p>
   </div>
 </div>
 
@@ -39,11 +47,4 @@
     color: var(--ink-soft);
     font-size: 0.85rem;
   }
-  .winnie-byline .disclosure-line {
-    margin: 0;
-    font-size: 0.8rem;
-    color: var(--ink-soft);
-    max-width: 52ch;
-  }
-  .winnie-byline .disclosure-line a { color: var(--ink-soft); font-weight: 600; }
 </style>

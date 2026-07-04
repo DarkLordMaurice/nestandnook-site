@@ -41,9 +41,11 @@ const reviews = defineCollection({
 // takes), not the SEO cluster roundups/how-tos. She never claims personal
 // product testing OR personal ownership/use here — that's not honest, and
 // it's a real Amazon Associates / FTC risk. She showcases picks the real
-// editorial team compiled from verified buyer reviews. Every post shows an
-// explicit virtual-host disclosure via the WinnieByline component (see
-// src/components/WinnieByline.astro).
+// editorial team compiled from verified buyer reviews. As of 2026-07-03,
+// posts no longer repeat the AI/virtual-host disclosure inline (that's a
+// one-time explanation on the About page now, not a per-post paragraph) —
+// see WinnieByline.astro. Aim for a real 2-4 minute read (~500-800 words)
+// that actually digs into its stated topic, not a short generic take.
 const blog = defineCollection({
   type: 'content',
   schema: z.object({
@@ -54,6 +56,7 @@ const blog = defineCollection({
     ogImage: z.string().optional(),
     category: z.string().default('Notes from the nook'),
     image: z.string().default('/winnie/blog-header.jpg'),
+    winniePhoto: z.string().optional(), // vary the byline headshot — see WinnieByline.astro
     relatedGuides: z.array(z.object({ label: z.string(), href: z.string() })).default([]),
   }),
 });
@@ -87,6 +90,7 @@ const recipes = defineCollection({
     imageAlt: z.string(),
     winnieImage: z.string().optional(),  // Winnie-in-kitchen lifestyle shot (AI-rendered; disclosed on the About page, not repeated per-page)
     winnieNote: z.string().optional(),   // Short personality blurb in Winnie's voice about this specific dish — paired with her headshot via WinnieNote.astro
+    winnieHeadshot: z.string().optional(), // vary which headshot shows next to winnieNote — don't repeat avatar.jpg on every recipe
     // Ingredients grouped so recipes with e.g. "for the sauce" sub-lists render cleanly.
     ingredientGroups: z.array(z.object({
       groupName: z.string().optional(),  // omit for a single flat list

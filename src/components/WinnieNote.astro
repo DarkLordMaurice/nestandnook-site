@@ -3,13 +3,18 @@
 // from the factual editorial content around it. Uses her real (photorealistic,
 // virtual-spokesperson) avatar — see brand-assets/winnie/ for the source image
 // and Brand-Guide.md §2 for the disclosure framing.
+//
+// `photo` lets callers vary which headshot shows — don't let every instance
+// site-wide use the same avatar.jpg (flagged 2026-07-03 as too repetitive).
+// Pool: /winnie/avatar.jpg, /winnie/headshot-v4-1.jpg through -4.jpg.
 interface Props {
   signed?: boolean; // show "— Winnie" signature line at the end
+  photo?: string;
 }
-const { signed = true } = Astro.props;
+const { signed = true, photo = '/winnie/avatar.jpg' } = Astro.props;
 ---
 <aside class="winnie-note" role="note">
-  <img src="/winnie/avatar.jpg" alt="Winnie Hollowell" class="avatar" width="64" height="64" />
+  <img src={photo} alt="Winnie Hollowell" class="avatar" width="64" height="64" />
   <div class="winnie-note-body">
     <slot />
     {signed && <span class="signed">— Winnie</span>}
