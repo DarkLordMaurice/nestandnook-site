@@ -13,6 +13,7 @@ publishDate: 2026-07-04
 updatedDate: 2026-07-04
 disclosure: true
 schemaType: "ItemList"
+image: "/winnie/winnie-office-couch-laptop.jpg"
 products:
   - name: "WorkEZ Laptop Stand & Lap Desk"
     asin: "B005SHHZ9E"

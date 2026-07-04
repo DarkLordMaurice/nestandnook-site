@@ -14,6 +14,7 @@ publishDate: 2026-07-03
 updatedDate: 2026-07-03
 disclosure: true
 schemaType: "ItemList"
+image: "/winnie/winnie-office-standing-desk.jpg"
 products:
   - name: "HUANUO Ergonomic Under-Desk Footrest"
     asin: "B07L3RVF7C"

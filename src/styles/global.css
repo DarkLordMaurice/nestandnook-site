@@ -92,6 +92,7 @@ h2 {
   position: relative;
   padding-left: 1rem;
   border-left: 4px solid var(--gold);
+  clear: both;
 }
 h3 { font-size: 1.2rem; margin: 0.4rem 0 0.3rem; }
 
@@ -317,6 +318,125 @@ main .wrap { max-width: 780px; padding-top: 2.25rem; }
 .guide-card a.title-link:hover { color: var(--terracotta); }
 .guide-card p { margin: 0.4rem 0 0; color: var(--ink-soft); font-size: 0.92rem; }
 
+/* ==========================================================================
+   Content-type cards + masonry (2026-07-08 rebuild)
+   Three distinct card identities (ReviewCard/RecipeCard/BlogCard components)
+   so a reader can tell content type at a glance without reading a label,
+   arranged in a real CSS-columns masonry so cards stagger by actual height
+   instead of sitting in a uniform grid. Used on the homepage's four sections,
+   hub pages, and the recipe/blog index pages — one shared system everywhere.
+   ========================================================================== */
+
+.card-section { margin: 2.75rem 0; }
+.card-section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.card-section-head h2 { margin: 0; }
+.card-section-link {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--terracotta-dark);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.card-section-link:hover { color: var(--terracotta); }
+
+.masonry {
+  columns: 1;
+  column-gap: 1.25rem;
+  margin: 1.25rem 0 0;
+}
+@media (min-width: 640px) { .masonry { columns: 2; } }
+@media (min-width: 960px) { .masonry { columns: 3; } }
+.masonry > .content-card {
+  break-inside: avoid;
+  margin: 0 0 1.25rem;
+  width: 100%;
+}
+.masonry > .content-card.featured { column-span: all; }
+
+.content-card {
+  display: block;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+.content-card:hover { box-shadow: var(--shadow-card-hover); }
+.content-card img { width: 100%; height: auto; display: block; }
+.content-card .card-body { padding: 1rem 1.2rem 1.3rem; }
+.content-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0.5rem 0 0.4rem;
+  color: var(--ink);
+}
+.content-card p { color: var(--ink-soft); font-size: 0.9rem; margin: 0; }
+.content-card.featured h3 { font-size: 1.35rem; }
+
+/* Review card — gold/teal/terracotta rotation, corner badge naming the guide type */
+.review-card { border-top: 4px solid var(--gold); transform: rotate(-0.4deg); }
+.review-card:nth-of-type(3n+2) { border-top-color: var(--teal); transform: rotate(0.5deg); }
+.review-card:nth-of-type(3n+3) { border-top-color: var(--terracotta); transform: rotate(-0.6deg); }
+.review-card:hover { transform: translateY(-2px) rotate(0deg); }
+.review-card .card-photo { position: relative; }
+.review-card .card-badge {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  background: var(--jewel-teal);
+  color: var(--gold-light);
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+}
+
+/* Recipe card — terracotta identity, photo sits in a white polaroid-style frame */
+.recipe-tile-card { border-top: 4px solid var(--terracotta); transform: rotate(0.5deg); }
+.recipe-tile-card:nth-of-type(3n+2) { transform: rotate(-0.5deg); }
+.recipe-tile-card:nth-of-type(3n+3) { transform: rotate(0.6deg); }
+.recipe-tile-card:hover { transform: translateY(-2px) rotate(0deg); }
+.recipe-tile-card .card-photo-frame { background: #fff; padding: 8px 8px 0; }
+.recipe-tile-card .card-time-badge {
+  display: inline-block;
+  background: var(--terracotta);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 0.22rem 0.6rem;
+  border-radius: 999px;
+  margin-bottom: 0.5rem;
+}
+
+/* Blog card — teal/sage/hotpink identity, hand-drawn doodle-style category tag */
+.blog-card-tile { border-top: 4px solid var(--teal); transform: rotate(-0.5deg); }
+.blog-card-tile:nth-of-type(3n+2) { border-top-color: var(--sage); transform: rotate(0.4deg); }
+.blog-card-tile:nth-of-type(3n+3) { border-top-color: var(--hotpink); transform: rotate(-0.3deg); }
+.blog-card-tile:hover { transform: translateY(-2px) rotate(0deg); }
+.blog-card-tile .card-doodle-tag {
+  font-family: var(--font-hand);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--hotpink);
+  display: block;
+  transform: rotate(-2deg);
+  margin: 0.5rem 0 0.1rem;
+}
+
 /* ---------- Hero (homepage) ---------- */
 .hero {
   padding: 2.5rem 0 1.75rem;
@@ -419,6 +539,7 @@ main .wrap { max-width: 780px; padding-top: 2.25rem; }
   height: auto;
   display: block;
   object-fit: cover;
+  object-position: top center;
   aspect-ratio: 16 / 9;
 }
 .polaroid:has(.blog-header-photo) { margin: 0.5rem 0 1.75rem; }
@@ -477,6 +598,26 @@ main .wrap { max-width: 780px; padding-top: 2.25rem; }
 .polaroid.tilt-right { transform: rotate(2deg); }
 .polaroid.tilt-left { transform: rotate(-3deg); }
 .polaroid img { display: block; width: 100%; height: auto; }
+
+/* Inset photo-essay variant — for photos embedded inline in blog-post body
+   copy (e.g. the "daily life" posts). Full-width .polaroid reads enormous
+   inside a ~780px text column and buries the writing; this floats a much
+   smaller print to one side so paragraphs wrap beside it instead of getting
+   interrupted by a near-full-bleed photo every few sentences. */
+.polaroid.inset {
+  max-width: 220px;
+  float: right;
+  margin: 0.25rem 0 1rem 1.5rem;
+}
+.polaroid.inset.float-left { float: left; margin: 0.25rem 1.5rem 1rem 0; }
+.polaroid.inset::before { width: 70px; height: 22px; margin-left: -35px; top: -12px; }
+@media (max-width: 560px) {
+  .polaroid.inset, .polaroid.inset.float-left {
+    float: none;
+    max-width: 260px;
+    margin: 1rem auto;
+  }
+}
 .polaroid::before {
   content: "";
   position: absolute;

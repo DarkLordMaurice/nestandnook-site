@@ -3,6 +3,7 @@ title: "Every Nook Wants a Job to Do"
 description: "The whole philosophy behind Nest & Nook: a space that doesn't have a job to do is just clutter waiting to happen — here's what that looks like in practice."
 publishDate: 2026-06-28
 category: "Behind the nook"
+image: "/winnie/portrait.jpg"
 winniePhoto: "/winnie/headshot-v4-3.jpg"
 relatedGuides:
   - label: "About Nest & Nook"

@@ -1,0 +1,38 @@
+---
+// Distinct card identity for the `reviews` collection — gold top border,
+// a small corner badge naming the guide type, alternating tilt. Used on the
+// homepage's Home Office/Kitchen sections, hub pages, and nowhere else, so
+// reviews always look the same across the site.
+interface Props {
+  href: string;
+  image: string;
+  title: string;
+  description: string;
+  pageType?: string;
+  featured?: boolean;
+}
+const { href, image, title, description, pageType, featured = false } = Astro.props;
+
+const TYPE_LABELS: Record<string, string> = {
+  roundup: 'Roundup',
+  comparison: 'Comparison',
+  single_review: 'Review',
+  buying_guide: 'Buying Guide',
+  setup_build: 'Setup Build',
+  how_to: 'How-To',
+  product_page: 'Product',
+  lifestyle: 'Lifestyle',
+  pillar: 'Guide',
+};
+const badgeLabel = pageType ? (TYPE_LABELS[pageType] ?? pageType) : null;
+---
+<a href={href} class:list={['content-card', 'review-card', { featured }]}>
+  <div class="card-photo">
+    <img src={image} alt="" width="500" height="340" loading="lazy" />
+    {badgeLabel && <span class="card-badge">{badgeLabel}</span>}
+  </div>
+  <div class="card-body">
+    <h3>{title}</h3>
+    <p>{description}</p>
+  </div>
+</a>

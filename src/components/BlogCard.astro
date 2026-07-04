@@ -1,0 +1,25 @@
+---
+// Distinct card identity for the `blog` collection — teal/sage top border,
+// full-bleed photo, hand-drawn doodle-style category tag instead of a plain
+// eyebrow label. Used on the homepage's Winnie's Notes section and the blog
+// index page.
+interface Props {
+  href: string;
+  image: string;
+  title: string;
+  description: string;
+  category?: string;
+  featured?: boolean;
+}
+const { href, image, title, description, category, featured = false } = Astro.props;
+---
+<a href={href} class:list={['content-card', 'blog-card-tile', { featured }]}>
+  <div class="card-photo">
+    <img src={image} alt="" width="500" height="340" loading="lazy" />
+  </div>
+  <div class="card-body">
+    {category && <span class="card-doodle-tag">{category}</span>}
+    <h3>{title}</h3>
+    <p>{description}</p>
+  </div>
+</a>

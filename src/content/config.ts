@@ -15,6 +15,13 @@ const reviews = defineCollection({
     disclosure: z.boolean().default(true), // must be true — compliance-gate checks it
     schemaType: z.enum(['ItemList', 'Product', 'Article']).default('ItemList'),
     ogImage: z.string().optional(),
+    // Card thumbnail for homepage/hub grids — a Winnie office/kitchen action
+    // shot from the winnie-office-*/winnie-kitchen-* variety batch, NOT a
+    // literal product photo (those stay unset per compliance note above until
+    // PA-API/sales unlock real product photography) and NOT a hero-banner or
+    // byline photo reused from elsewhere — one photo, one job, see
+    // ChatGPT-Image-Prompts.md §v6 usage notes.
+    image: z.string().optional(),
     // Product list drives the comparison table AND the JSON-LD ItemList.
     products: z.array(z.object({
       name: z.string(),

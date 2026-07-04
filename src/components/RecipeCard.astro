@@ -1,0 +1,28 @@
+---
+// Distinct card identity for the `recipes` collection — terracotta top
+// border, photo in a white polaroid-style frame instead of edge-to-edge, and
+// a prep+cook time badge. Used on the homepage's Recipes section and the
+// recipe index page.
+interface Props {
+  href: string;
+  image: string;
+  title: string;
+  description: string;
+  totalMinutes?: number;
+  servings?: number;
+  featured?: boolean;
+}
+const { href, image, title, description, totalMinutes, servings, featured = false } = Astro.props;
+---
+<a href={href} class:list={['content-card', 'recipe-tile-card', { featured }]}>
+  <div class="card-photo-frame">
+    <img src={image} alt="" width="500" height="340" loading="lazy" />
+  </div>
+  <div class="card-body">
+    {totalMinutes && (
+      <span class="card-time-badge">{totalMinutes} min{servings ? ` · Serves ${servings}` : ''}</span>
+    )}
+    <h3>{title}</h3>
+    <p>{description}</p>
+  </div>
+</a>

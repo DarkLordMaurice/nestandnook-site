@@ -11,6 +11,7 @@ publishDate: 2026-07-04
 updatedDate: 2026-07-04
 disclosure: true
 schemaType: "ItemList"
+image: "/winnie/winnie-office-cable-reach.jpg"
 products:
   - name: "VIVO Under Desk 17\" Cable Management Tray"
     asin: "B089B4XZM4"

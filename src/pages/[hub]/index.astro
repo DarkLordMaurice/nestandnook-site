@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import WinnieNote from '../../components/WinnieNote.astro';
+import ReviewCard from '../../components/ReviewCard.astro';
 import { SITE } from '../../config.ts';
 import { HUBS } from '../../hubs.ts';
 import { getCollection } from 'astro:content';
@@ -46,13 +47,17 @@ reviews.sort((a, b) => +b.data.publishDate - +a.data.publishDate);
   {reviews.length === 0 ? (
     <p><em>Guides publishing soon.</em></p>
   ) : (
-    <ul class="guide-grid">
-      {reviews.map((r) => (
-        <li class="guide-card">
-          <a class="title-link" href={`/${r.data.hub}/${r.slug}/`}>{r.data.title}</a>
-          <p>{r.data.description}</p>
-        </li>
+    <div class="masonry">
+      {reviews.map((r, i) => (
+        <ReviewCard
+          href={`/${r.data.hub}/${r.slug}/`}
+          image={r.data.image ?? meta.hero}
+          title={r.data.title}
+          description={r.data.description}
+          pageType={r.data.pageType}
+          featured={i === 0}
+        />
       ))}
-    </ul>
+    </div>
   )}
 </BaseLayout>

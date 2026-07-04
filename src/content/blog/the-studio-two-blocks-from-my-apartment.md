@@ -12,38 +12,40 @@ relatedGuides:
     href: "/blog/"
 ---
 
-If you've read more than one of these notes, you have a pretty good read on me by now: labels, spreadsheets, an opinion about drawer dividers I will share whether or not you asked. So it might be a little surprising that the one appointment on my calendar I have never once cancelled in two years is a Tuesday night movement class at a little studio two blocks from my apartment, which has nothing to do with organizing anything and is, if I'm honest, the whole point.
+If you've read more than one of these notes, you already have a fair read on me: labels, spreadsheets, a fully-formed opinion about drawer dividers that nobody asked for. So it might surprise you that the one standing appointment I have never once cancelled in two years has nothing to do with organizing anything. It's a Tuesday night movement class at a studio two blocks from my apartment, and it is, if I'm honest, the whole point of my week.
 
-## It started as a stretching class and did not stay that way
+## It started as physical therapy and did not stay that way
 
-I signed up originally because my back was unhappy about how many hours I spend hunched toward a laptop, which is a very on-brand reason for me to start anything. What I found instead was a mixed studio that runs a bit of everything through the week — mat work, some genuinely challenging floor sequences, and on Tuesdays specifically, a dance class that I was fully prepared to hate and did not.
+I signed up originally because my back had filed a formal complaint about how many hours I spend hunched toward a laptop — a very on-brand reason for me to start anything. What I found instead was a small studio that runs a rotating mix through the week: mat work, some genuinely humbling floor sequences, and on Tuesdays specifically, a dance class I fully expected to hate and did not.
 
-<div class="polaroid tilt-right">
+<div class="polaroid inset">
   <img src="/winnie/winnie-life-yoga-seated.jpg" alt="Winnie seated on a yoga mat in a studio with incense burning" width="800" height="1000" />
 </div>
 
-## My body does not get organized, and I've made peace with that
+## A backbend does not care about your system
 
-Here's the thing about a floor sequence: it does not care that you labeled your spice drawer. There's no system to impose on a backbend. You either get your leg where it's supposed to go or you don't, and the entire appeal, for someone who runs the rest of her life like a card catalog, is that this is the one hour of my week where being right about something isn't the point.
+Here is the appeal, for someone who runs the rest of her life like a card catalog: a floor sequence has no interest in being filed. There's no taxonomy to impose on a spine that won't bend the way you're asking it to. You either get your leg where it needs to go, or you don't, and for one hour a week, being right about something simply isn't on the table. That turns out to be a genuine relief, not a failure.
 
-<div class="polaroid tilt-left">
+<div class="polaroid inset float-left">
   <img src="/winnie/winnie-life-yoga-pose.jpg" alt="Winnie in a seated backbend yoga pose on a mat" width="800" height="1000" />
 </div>
 
-<div class="polaroid">
+<div class="polaroid inset">
   <img src="/winnie/winnie-life-yoga-balance.jpg" alt="Winnie in a standing balance yoga pose with one leg extended" width="800" height="1000" />
 </div>
 
-## Tuesdays are dance night, and I am still not good at it
+## Tuesdays are dance night, and I remain a work in progress
 
-The dance portion of the class is run by an instructor who has spent two years patiently correcting my sense of timing, and if you look closely at these next two photos you can see her hand in the mirror, mid-correction, which is a more accurate picture of what this actually looks like than a solo shot would be. I am not naturally coordinated. I am the person who counts steps under her breath. I have gotten meaningfully better in two years and I am still, generously, "developing," and I have decided I don't mind being bad at something in public once a week — it's a genuinely useful muscle to exercise alongside the actual muscles.
+The dance portion is led by an instructor who has spent two patient years correcting my sense of timing. Look closely at the photo below and you'll see her hand in the mirror, mid-correction — a more honest picture of what this actually looks like than a solo shot would give you. I am not naturally coordinated. I count steps under my breath like it's an incantation. Two years in, I've gotten meaningfully, unglamorously better, and I've decided there's real value in being visibly bad at something once a week, in public, on purpose.
 
-<div class="polaroid tilt-left">
+<div class="polaroid inset float-left">
   <img src="/winnie/winnie-life-dance-2.jpg" alt="Winnie mid-turn on a dance studio floor with an instructor's hand visible in the mirror" width="800" height="1000" />
 </div>
 
-There's a specific moment in week one that I still think about: the instructor called out a turn, I went the wrong direction, collided gently with another student, and instead of the mortification I expected, everyone just laughed and reset. Nobody wrote it down. Nobody filed it under "areas for improvement." It just happened and then it was over, which is not how I process most mistakes — I am, by nature, the person who wants a debrief. Two years in, I still don't get every turn right, and I've started to suspect that's not a bug in the hobby, it's the actual design of it. A room where getting it wrong costs nothing is apparently exactly the kind of room my brain needed one night a week.
+There's a specific moment from week one I still think about. The instructor called a turn, I went the wrong direction, and collided gently with another student. I braced for the mortification I was certain was coming. Instead: everyone laughed, and we reset. Nobody logged it. Nobody filed it under areas for improvement. It happened, and then it was simply over — which is not how I typically process a mistake. I am, by disposition, a person who wants a debrief.
 
-There isn't a tidy lesson here I'm going to loop back to a footrest recommendation — I try to do that when it's honest, and this genuinely isn't that kind of post. I just think a person who spends this much time telling other people how to organize their desks and kitchens should occasionally admit to the one thing in her week that resists being organized at all, and let that be the whole story.
+Two years later I still don't land every turn, and I've started to suspect that's not a flaw in the hobby. It's the design of it. A room where getting it wrong costs nothing turned out to be exactly the room my brain needed, one night a week, and I didn't know I was looking for it until I found it.
+
+I'm not going to loop this back to a footrest recommendation — I do that when it's honest, and this genuinely isn't that kind of post. I just think a person who spends this much time telling strangers how to organize their desks should occasionally admit to the one hour of her week that resists being organized entirely, and let that be the whole story.
 
 — Winnie

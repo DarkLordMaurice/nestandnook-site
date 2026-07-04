@@ -3,6 +3,7 @@ title: "Why Your Feet Fall Asleep at Your Desk (and the Cheap Fix)"
 description: "That pins-and-needles feeling in your feet by mid-afternoon isn't random. Here's what's actually happening at your desk, and what reviewers say fixes it."
 publishDate: 2026-07-04
 category: "Desk fixes"
+image: "/winnie/office-hero.jpg"
 winniePhoto: "/winnie/headshot-v4-1.jpg"
 relatedGuides:
   - label: "Best Footrest for Short People"

@@ -1,11 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WinnieNote from '../components/WinnieNote.astro';
+import ReviewCard from '../components/ReviewCard.astro';
+import RecipeCard from '../components/RecipeCard.astro';
+import BlogCard from '../components/BlogCard.astro';
 import { SITE } from '../config.ts';
+import { HUBS } from '../hubs.ts';
 import { getCollection } from 'astro:content';
 
 const reviews = await getCollection('reviews');
-reviews.sort((a, b) => +b.data.publishDate - +a.data.publishDate);
+const blogPosts = await getCollection('blog');
+const recipes = await getCollection('recipes');
+
+const officeReviews = reviews.filter((r) => r.data.hub === 'home-office')
+  .sort((a, b) => +b.data.publishDate - +a.data.publishDate);
+const kitchenReviews = reviews.filter((r) => r.data.hub === 'kitchen')
+  .sort((a, b) => +b.data.publishDate - +a.data.publishDate);
+const latestRecipes = [...recipes].sort((a, b) => +b.data.publishDate - +a.data.publishDate).slice(0, 6);
+const latestPosts = [...blogPosts].sort((a, b) => +b.data.publishDate - +a.data.publishDate).slice(0, 6);
 ---
 <BaseLayout
   title={`${SITE.brand} — ${SITE.tagline}`}
@@ -31,17 +43,88 @@ reviews.sort((a, b) => +b.data.publishDate - +a.data.publishDate);
     <p>Hi, I'm Winnie — resident magpie for anything that makes a desk or a kitchen less annoying, and I have zero chill about a good spec sheet. I don't test anything myself (see the fine print, it matters), but I read reviews with the focus most people save for true crime, and this whole site is basically my "here's what buyers actually keep" list. Every pick below earned its spot — nothing's here because a brand slipped us a check.</p>
   </WinnieNote>
 
-  <h2>Latest guides</h2>
-  {reviews.length === 0 ? (
-    <p><em>First guides publishing soon.</em></p>
-  ) : (
-    <ul class="guide-grid">
-      {reviews.map((r) => (
-        <li class="guide-card">
-          <a class="title-link" href={`/${r.data.hub}/${r.slug}/`}>{r.data.title}</a>
-          <p>{r.data.description}</p>
-        </li>
-      ))}
-    </ul>
+  {officeReviews.length > 0 && (
+    <section class="card-section">
+      <div class="card-section-head">
+        <h2>Home Office</h2>
+        <a class="card-section-link" href="/home-office/">See all Home Office guides →</a>
+      </div>
+      <div class="masonry">
+        {officeReviews.map((r, i) => (
+          <ReviewCard
+            href={`/${r.data.hub}/${r.slug}/`}
+            image={r.data.image ?? HUBS[r.data.hub]?.hero}
+            title={r.data.title}
+            description={r.data.description}
+            pageType={r.data.pageType}
+            featured={i === 0}
+          />
+        ))}
+      </div>
+    </section>
+  )}
+
+  {kitchenReviews.length > 0 && (
+    <section class="card-section">
+      <div class="card-section-head">
+        <h2>Kitchen</h2>
+        <a class="card-section-link" href="/kitchen/">See all Kitchen guides →</a>
+      </div>
+      <div class="masonry">
+        {kitchenReviews.map((r, i) => (
+          <ReviewCard
+            href={`/${r.data.hub}/${r.slug}/`}
+            image={r.data.image ?? HUBS[r.data.hub]?.hero}
+            title={r.data.title}
+            description={r.data.description}
+            pageType={r.data.pageType}
+            featured={i === 0}
+          />
+        ))}
+      </div>
+    </section>
+  )}
+
+  {latestRecipes.length > 0 && (
+    <section class="card-section">
+      <div class="card-section-head">
+        <h2>Recipes</h2>
+        <a class="card-section-link" href="/recipes/">See all recipes →</a>
+      </div>
+      <div class="masonry">
+        {latestRecipes.map((r, i) => (
+          <RecipeCard
+            href={`/recipes/${r.slug}/`}
+            image={r.data.image}
+            title={r.data.title}
+            description={r.data.description}
+            totalMinutes={r.data.prepTimeMinutes + r.data.cookTimeMinutes}
+            servings={r.data.servings}
+            featured={i === 0}
+          />
+        ))}
+      </div>
+    </section>
+  )}
+
+  {latestPosts.length > 0 && (
+    <section class="card-section">
+      <div class="card-section-head">
+        <h2>Winnie's Notes</h2>
+        <a class="card-section-link" href="/blog/">See all notes →</a>
+      </div>
+      <div class="masonry">
+        {latestPosts.map((p, i) => (
+          <BlogCard
+            href={`/blog/${p.slug}/`}
+            image={p.data.image}
+            title={p.data.title}
+            description={p.data.description}
+            category={p.data.category}
+            featured={i === 0}
+          />
+        ))}
+      </div>
+    </section>
   )}
 </BaseLayout>

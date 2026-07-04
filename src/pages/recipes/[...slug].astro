@@ -23,8 +23,7 @@ const fmtMins = (m: number) => (m >= 60 ? `${Math.floor(m / 60)} hr ${m % 60 ? `
 // schema.org Recipe — rich-result eligible (photo, times, ratings-free since we
 // don't fabricate ratings). Every optional field we can honestly fill is filled;
 // per 2026 SEO guidance, complete data is what earns the recipe carousel.
-const jsonLd = {
-  '@context': 'https://schema.org',
+const recipeSchema = {
   '@type': 'Recipe',
   name: d.title,
   description: d.description,
@@ -52,6 +51,27 @@ const jsonLd = {
       ...(d.nutrition.servingSize && { servingSize: d.nutrition.servingSize }),
     },
   }),
+};
+
+// FAQPage schema — question/answer pairs are the single most AI-extractable
+// format (ChatGPT/Perplexity/Google AI Overviews lean on FAQPage + direct
+// Q&A text when picking what to cite). The `faqs` field was already being
+// collected and rendered on-page; this was the missing piece that actually
+// tells search/AI crawlers "here are clean, structured answers," not just
+// prose they have to parse themselves. Combined with Recipe via @graph so a
+// page can carry both schema types at once.
+const faqSchema = d.faqs.length > 0 ? {
+  '@type': 'FAQPage',
+  mainEntity: d.faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+} : null;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [recipeSchema, ...(faqSchema ? [faqSchema] : [])],
 };
 ---
 <BaseLayout title={d.title} description={d.description} ogImage={d.image} jsonLd={jsonLd} showDisclosure={d.disclosure}>
