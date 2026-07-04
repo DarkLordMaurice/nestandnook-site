@@ -58,4 +58,55 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { reviews, blog };
+// Recipes — a distinct traffic channel from reviews/blog. High-search-volume,
+// kitchen-adjacent recipe content (schema.org Recipe rich-result eligible).
+// Recipes are ORIGINAL content, not "Winnie's family recipes" — she doesn't
+// have a kitchen history (she's a disclosed AI/virtual host, see
+// Character-Bible.md), so recipe posts must never imply she personally
+// developed/tested/inherited them. Framing: developed by the Nest & Nook
+// kitchen team using standard, well-established techniques and ratios;
+// Winnie narrates the tips/voice layer, same disclosed-host pattern as blog.
+// Recipes should link to relevant Kitchen hub product roundups where a real
+// verified product page exists (see internalLinks) — that's the whole point
+// of this content: it drives search traffic AND cross-sells gear.
+const recipes = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string().max(70),
+    description: z.string().max(160),
+    primaryKeyword: z.string(),
+    publishDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    category: z.enum(['breakfast', 'main', 'side', 'dessert', 'snack']),
+    cuisine: z.string().default('American'),
+    prepTimeMinutes: z.number(),
+    cookTimeMinutes: z.number(),
+    servings: z.number(),
+    difficulty: z.enum(['easy', 'intermediate', 'advanced']).default('easy'),
+    image: z.string(),
+    imageAlt: z.string(),
+    winnieImage: z.string().optional(),  // AI-rendered Winnie-in-kitchen shot, disclosed
+    // Ingredients grouped so recipes with e.g. "for the sauce" sub-lists render cleanly.
+    ingredientGroups: z.array(z.object({
+      groupName: z.string().optional(),  // omit for a single flat list
+      items: z.array(z.string()),
+    })),
+    instructions: z.array(z.object({
+      step: z.string(),
+    })),
+    // Nutrition is an estimate, never a medical/dietary claim — keep it labeled as such
+    // in the template, and only include fields we're confident estimating.
+    nutrition: z.object({
+      calories: z.number().optional(),
+      servingSize: z.string().optional(),
+    }).optional(),
+    tips: z.array(z.string()).default([]),
+    faqs: z.array(z.object({ q: z.string(), a: z.string() })).default([]),
+    keywords: z.array(z.string()).default([]),
+    disclosure: z.boolean().default(true),  // true whenever relatedProducts has affiliate links
+    relatedProducts: z.array(z.object({ label: z.string(), href: z.string() })).default([]),
+    relatedRecipes: z.array(z.object({ label: z.string(), href: z.string() })).default([]),
+  }),
+});
+
+export const collections = { reviews, blog, recipes };

@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import WinnieRecipeByline from '../../components/WinnieRecipeByline.astro';
+import { SITE } from '../../config.ts';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const recipes = await getCollection('recipes');
+  return recipes.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const d = entry.data;
+
+const toISODuration = (mins: number) => `PT${mins}M`;
+const totalTime = d.prepTimeMinutes + d.cookTimeMinutes;
+const fmtMins = (m: number) => (m >= 60 ? `${Math.floor(m / 60)} hr ${m % 60 ? `${m % 60} min` : ''}`.trim() : `${m} min`);
+
+// schema.org Recipe — rich-result eligible (photo, times, ratings-free since we
+// don't fabricate ratings). Every optional field we can honestly fill is filled;
+// per 2026 SEO guidance, complete data is what earns the recipe carousel.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Recipe',
+  name: d.title,
+  description: d.description,
+  image: [`${SITE.url}${d.image}`],
+  author: { '@type': 'Organization', name: 'Nest & Nook Kitchen Team', url: `${SITE.url}/about/` },
+  datePublished: d.publishDate,
+  dateModified: d.updatedDate ?? d.publishDate,
+  prepTime: toISODuration(d.prepTimeMinutes),
+  cookTime: toISODuration(d.cookTimeMinutes),
+  totalTime: toISODuration(totalTime),
+  recipeYield: `${d.servings}`,
+  recipeCategory: d.category,
+  recipeCuisine: d.cuisine,
+  keywords: d.keywords.join(', '),
+  recipeIngredient: d.ingredientGroups.flatMap((g) => g.items),
+  recipeInstructions: d.instructions.map((s, i) => ({
+    '@type': 'HowToStep',
+    position: i + 1,
+    text: s.step,
+  })),
+  ...(d.nutrition && {
+    nutrition: {
+      '@type': 'NutritionInformation',
+      ...(d.nutrition.calories && { calories: `${d.nutrition.calories} calories` }),
+      ...(d.nutrition.servingSize && { servingSize: d.nutrition.servingSize }),
+    },
+  }),
+};
+---
+<BaseLayout title={d.title} description={d.description} ogImage={d.image} jsonLd={jsonLd} showDisclosure={d.disclosure}>
+  <span class="washi washi-pink">{d.category} · {d.cuisine}</span>
+  <h1>{d.title}</h1>
+
+  <div class="recipe-hero polaroid">
+    <img src={d.image} alt={d.imageAlt} width="1200" height="800" />
+  </div>
+
+  <WinnieRecipeByline />
+
+  <div class="recipe-quickmeta no-print">
+    <div><span class="label">Prep</span>{fmtMins(d.prepTimeMinutes)}</div>
+    <div><span class="label">Cook</span>{fmtMins(d.cookTimeMinutes)}</div>
+    <div><span class="label">Total</span>{fmtMins(totalTime)}</div>
+    <div><span class="label">Servings</span>{d.servings}</div>
+    <div><span class="label">Difficulty</span>{d.difficulty}</div>
+  </div>
+
+  <p class="jump-to-recipe no-print"><a href="#recipe-card">↓ Jump to recipe card</a></p>
+
+  <Content />
+
+  {d.tips.length > 0 && (
+    <section class="recipe-tips">
+      <h2>Tips &amp; variations</h2>
+      <ul>{d.tips.map((t) => <li>{t}</li>)}</ul>
+    </section>
+  )}
+
+  <section id="recipe-card" class="recipe-card">
+    <h2>{d.title} — Recipe Card</h2>
+    <div class="recipe-card-meta">
+      <div><span class="label">Prep</span>{fmtMins(d.prepTimeMinutes)}</div>
+      <div><span class="label">Cook</span>{fmtMins(d.cookTimeMinutes)}</div>
+      <div><span class="label">Total</span>{fmtMins(totalTime)}</div>
+      <div><span class="label">Servings</span>{d.servings}</div>
+    </div>
+
+    <h3>Ingredients</h3>
+    {d.ingredientGroups.map((g) => (
+      <div class="ingredient-group">
+        {g.groupName && <p class="group-name">{g.groupName}</p>}
+        <ul class="ingredient-list">
+          {g.items.map((item) => <li><label><input type="checkbox" /> {item}</label></li>)}
+        </ul>
+      </div>
+    ))}
+
+    <h3>Instructions</h3>
+    <ol class="instruction-list">
+      {d.instructions.map((s) => <li>{s.step}</li>)}
+    </ol>
+
+    {d.nutrition && (
+      <p class="nutrition-note">
+        Estimated nutrition{d.nutrition.servingSize ? ` per ${d.nutrition.servingSize}` : ' per serving'}
+        {d.nutrition.calories && <>: ~{d.nutrition.calories} calories</>}. This is a rough estimate for planning, not a substitute for exact dietary tracking.
+      </p>
+    )}
+
+    <button class="print-btn no-print" onclick="window.print()">🖨 Print this recipe</button>
+  </section>
+
+  {d.faqs.length > 0 && (
+    <section class="recipe-faq">
+      <h2>Frequently asked questions</h2>
+      {d.faqs.map((f) => (
+        <div class="faq-item">
+          <p class="faq-q">{f.q}</p>
+          <p class="faq-a">{f.a}</p>
+        </div>
+      ))}
+    </section>
+  )}
+
+  {(d.relatedProducts.length > 0 || d.relatedRecipes.length > 0) && (
+    <nav class="related">
+      {d.relatedProducts.length > 0 && (
+        <>
+          <h2>Gear that makes this easier</h2>
+          <ul>{d.relatedProducts.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+        </>
+      )}
+      {d.relatedRecipes.length > 0 && (
+        <>
+          <h2>More recipes</h2>
+          <ul>{d.relatedRecipes.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+        </>
+      )}
+    </nav>
+  )}
+</BaseLayout>

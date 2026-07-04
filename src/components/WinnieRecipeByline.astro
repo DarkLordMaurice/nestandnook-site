@@ -1,0 +1,49 @@
+---
+// Byline for recipe posts — distinct wording from WinnieByline (blog posts).
+// Winnie is a disclosed AI/virtual host with no real cooking history (see
+// Character-Bible.md), so this must never imply she personally developed,
+// tested, or has a family history with a recipe. Recipes are credited to the
+// Nest & Nook kitchen team; Winnie narrates tips/voice, same honest framing
+// used sitewide.
+---
+<div class="winnie-byline">
+  <img src="/winnie/avatar.jpg" alt="Winnie Hollowell" width="76" height="76" />
+  <div>
+    <p class="name">Recipe by the Nest &amp; Nook Kitchen Team <span class="role">— narrated by Winnie Hollowell</span></p>
+    <p class="disclosure-line">Winnie is a virtual, AI-generated spokesperson, not a real person — she's not the one who developed or tested this recipe. That's our real editorial team, using standard, well-established ratios and techniques. <a href="/about/#meet-winnie">What does that mean?</a></p>
+  </div>
+</div>
+
+<style>
+  .winnie-byline {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    margin: 0 0 1.75rem;
+  }
+  .winnie-byline img {
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 0 2px var(--gold);
+    flex: none;
+  }
+  .winnie-byline .name {
+    margin: 0 0 0.2rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .winnie-byline .role {
+    font-family: var(--font-body);
+    font-weight: 500;
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+  }
+  .winnie-byline .disclosure-line {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    max-width: 52ch;
+  }
+  .winnie-byline .disclosure-line a { color: var(--ink-soft); font-weight: 600; }
+</style>
