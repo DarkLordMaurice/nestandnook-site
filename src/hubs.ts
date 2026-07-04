@@ -9,15 +9,15 @@ export const HUBS: Record<string, { name: string; blurb: string; winnieIntro: st
   'home-office': {
     name: 'Home Office & Ergonomics',
     blurb: 'Affordable upgrades that fix a cramped, uncomfortable desk — footrests, stands, cable management, lighting, and full setup builds.',
-    winnieIntro: "I've rearranged this desk of mine more times than I can count, and every single fix that actually stuck lives in this corner of the site. No overpriced fantasy setups — just the footrests, stands, and cable wrangling that turn a cramped desk into somewhere you don't mind spending your whole day.",
+    winnieIntro: "I've read approximately one million \"is this desk hack real or just aesthetic\" arguments in review sections, and I have Opinions. This corner of the site is the distilled version — no overpriced fantasy setups, just the footrests, stands, and cable wrangling that solve the specific, annoying problem you actually have.",
     hero: '/winnie/office-hero.jpg',
-    heroAlt: "Winnie Hollowell perched on her desk with a mug that reads 'make beautiful things,' surrounded by her gallery wall and plants",
+    heroAlt: "Winnie Hollowell perched on a desk with a mug that reads 'make beautiful things,' surrounded by a gallery wall and plants",
   },
   'kitchen': {
     name: 'Small-Space Kitchen Gear',
     blurb: 'Space-saving gadgets and tools for tiny kitchens and apartments. Guides publishing soon.',
-    winnieIntro: "A tiny kitchen taught me more about efficiency than any office ever did. I'm building this section out with the gadgets that earn their cabinet space — check back soon.",
+    winnieIntro: "Small kitchens turn people either very efficient or very feral, and I respect both outcomes. I'm building this section out with the gadgets that earn their cabinet space when every inch is under negotiation — check back soon.",
     hero: '/winnie/kitchen-hero.jpg',
-    heroAlt: 'Winnie Hollowell stirring a pot on the stove in her small, plant-filled kitchen',
+    heroAlt: 'Winnie Hollowell stirring a pot on the stove in a small, plant-filled kitchen',
   },
 };
