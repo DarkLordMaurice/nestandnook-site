@@ -12,6 +12,7 @@ difficulty: "easy"
 image: "/recipes/recipe-banana-bread.jpg"
 imageAlt: "A sliced loaf of banana bread on a wooden cutting board, showing the moist interior"
 winnieImage: "/winnie/winnie-kitchen-stir.jpg"
+winnieNote: "A one-bowl recipe with a built-in excuse to use up bananas you were both attached to and slightly worried about — that's efficient in a way I respect. Softened butter, one bowl, no mixer required: structurally, this is just correct."
 ingredientGroups:
   - items:
       - "3 very ripe bananas (the more brown-spotted, the better)"

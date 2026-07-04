@@ -85,7 +85,8 @@ const recipes = defineCollection({
     difficulty: z.enum(['easy', 'intermediate', 'advanced']).default('easy'),
     image: z.string(),
     imageAlt: z.string(),
-    winnieImage: z.string().optional(),  // AI-rendered Winnie-in-kitchen shot, disclosed
+    winnieImage: z.string().optional(),  // Winnie-in-kitchen lifestyle shot (AI-rendered; disclosed on the About page, not repeated per-page)
+    winnieNote: z.string().optional(),   // Short personality blurb in Winnie's voice about this specific dish — paired with her headshot via WinnieNote.astro
     // Ingredients grouped so recipes with e.g. "for the sauce" sub-lists render cleanly.
     ingredientGroups: z.array(z.object({
       groupName: z.string().optional(),  // omit for a single flat list

@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import WinnieRecipeByline from '../../components/WinnieRecipeByline.astro';
+import WinnieNote from '../../components/WinnieNote.astro';
 import { SITE } from '../../config.ts';
 import { getCollection } from 'astro:content';
 
@@ -62,15 +62,6 @@ const jsonLd = {
     <img src={d.image} alt={d.imageAlt} width="1200" height="800" />
   </div>
 
-  <WinnieRecipeByline />
-
-  {d.winnieImage && (
-    <div class="recipe-hero polaroid recipe-winnie-shot">
-      <img src={d.winnieImage} alt={`Winnie Hollowell (AI-rendered) narrating ${d.title}`} width="1200" height="800" loading="lazy" />
-      <p class="ai-tag">AI-rendered — narration only, Winnie didn't develop or test this recipe</p>
-    </div>
-  )}
-
   <div class="recipe-quickmeta no-print">
     <div><span class="label">Prep</span>{fmtMins(d.prepTimeMinutes)}</div>
     <div><span class="label">Cook</span>{fmtMins(d.cookTimeMinutes)}</div>
@@ -82,6 +73,17 @@ const jsonLd = {
   <p class="jump-to-recipe no-print"><a href="#recipe-card">↓ Jump to recipe card</a></p>
 
   <Content />
+
+  {(d.winnieNote || d.winnieImage) && (
+    <div class="recipe-winnie-aside">
+      {d.winnieImage && (
+        <div class="recipe-winnie-shot polaroid tilt-right">
+          <img src={d.winnieImage} alt={`Winnie Hollowell narrating ${d.title}`} width="1200" height="800" loading="lazy" />
+        </div>
+      )}
+      {d.winnieNote && <WinnieNote>{d.winnieNote}</WinnieNote>}
+    </div>
+  )}
 
   {d.tips.length > 0 && (
     <section class="recipe-tips">

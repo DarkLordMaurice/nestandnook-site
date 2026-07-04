@@ -12,6 +12,7 @@ difficulty: "easy"
 image: "/recipes/recipe-chocolate-chip-cookies.jpg"
 imageAlt: "A stack of chocolate chip cookies with one broken in half showing a soft, chewy center"
 winnieImage: "/winnie/winnie-kitchen-taste.jpg"
+winnieNote: "No dough-chilling detour, no waiting around for a craving to pass — I appreciate a recipe that respects a schedule. Softened butter, not melted, is the entire secret here, and I will die on that particular hill."
 ingredientGroups:
   - items:
       - "1 cup unsalted butter, softened (not melted)"
