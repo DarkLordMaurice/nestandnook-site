@@ -2,10 +2,50 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WinnieNote from '../components/WinnieNote.astro';
 import { SITE } from '../config.ts';
+import { HUBS } from '../hubs.ts';
 import { getCollection } from 'astro:content';
 
 const reviews = await getCollection('reviews');
-reviews.sort((a, b) => +b.data.publishDate - +a.data.publishDate);
+const blogPosts = await getCollection('blog');
+const recipes = await getCollection('recipes');
+
+type Card = {
+  href: string;
+  image: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+  date: Date;
+};
+
+const reviewCards: Card[] = reviews.map((r) => ({
+  href: `/${r.data.hub}/${r.slug}/`,
+  image: r.data.image ?? HUBS[r.data.hub]?.hero ?? '/winnie/office-hero.jpg',
+  eyebrow: HUBS[r.data.hub]?.name ?? r.data.hub,
+  title: r.data.title,
+  description: r.data.description,
+  date: r.data.publishDate,
+}));
+
+const blogCards: Card[] = blogPosts.map((p) => ({
+  href: `/blog/${p.slug}/`,
+  image: p.data.image,
+  eyebrow: `Winnie's Notes`,
+  title: p.data.title,
+  description: p.data.description,
+  date: p.data.publishDate,
+}));
+
+const recipeCards: Card[] = recipes.map((r) => ({
+  href: `/recipes/${r.slug}/`,
+  image: r.data.image,
+  eyebrow: `Recipe`,
+  title: r.data.title,
+  description: r.data.description,
+  date: r.data.publishDate,
+}));
+
+const feed = [...reviewCards, ...blogCards, ...recipeCards].sort((a, b) => +b.date - +a.date);
 ---
 <BaseLayout
   title={`${SITE.brand} — ${SITE.tagline}`}
@@ -31,15 +71,26 @@ reviews.sort((a, b) => +b.data.publishDate - +a.data.publishDate);
     <p>Hi, I'm Winnie — resident magpie for anything that makes a desk or a kitchen less annoying, and I have zero chill about a good spec sheet. I don't test anything myself (see the fine print, it matters), but I read reviews with the focus most people save for true crime, and this whole site is basically my "here's what buyers actually keep" list. Every pick below earned its spot — nothing's here because a brand slipped us a check.</p>
   </WinnieNote>
 
-  <h2>Latest guides</h2>
-  {reviews.length === 0 ? (
+  <nav class="section-nav" aria-label="Browse by section">
+    <a class="section-nav-item" href="/home-office/">Home Office →</a>
+    <a class="section-nav-item" href="/kitchen/">Kitchen →</a>
+    <a class="section-nav-item" href="/recipes/">Recipes →</a>
+    <a class="section-nav-item" href="/blog/">Winnie's Notes →</a>
+  </nav>
+
+  <h2>Fresh from the nest</h2>
+  {feed.length === 0 ? (
     <p><em>First guides publishing soon.</em></p>
   ) : (
-    <ul class="guide-grid">
-      {reviews.map((r) => (
-        <li class="guide-card">
-          <a class="title-link" href={`/${r.data.hub}/${r.slug}/`}>{r.data.title}</a>
-          <p>{r.data.description}</p>
+    <ul class="guide-grid post-grid dense-grid">
+      {feed.map((c) => (
+        <li class="guide-card post-card">
+          <a href={c.href} class="post-card-image-link">
+            <img src={c.image} alt="" class="post-card-image" width="500" height="300" />
+          </a>
+          <span class="eyebrow">{c.eyebrow}</span>
+          <a class="title-link" href={c.href}>{c.title}</a>
+          <p>{c.description}</p>
         </li>
       ))}
     </ul>

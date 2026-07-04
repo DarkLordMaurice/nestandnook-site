@@ -317,6 +317,45 @@ main .wrap { max-width: 780px; padding-top: 2.25rem; }
 .guide-card a.title-link:hover { color: var(--terracotta); }
 .guide-card p { margin: 0.4rem 0 0; color: var(--ink-soft); font-size: 0.92rem; }
 
+/* Denser magazine grid — used on the homepage's mixed-content feed and hub
+   guide lists, so the page reads as a packed wall of content (reference:
+   colleenpatrickgoudreau.com's tile grid) instead of a thin single column. */
+@media (min-width: 960px) {
+  .dense-grid { grid-template-columns: 1fr 1fr 1fr; }
+}
+
+/* ---------- Section quick-nav (homepage) ----------
+   Scrapbook-pill row linking to each hub/section — a cheap, high-density way
+   to surface the whole site map above the fold instead of one hero + a slow
+   scroll. Each pill cycles a different accent color, like the badge/guide
+   card rotation elsewhere on the site. */
+.section-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 0.25rem 0 2.25rem;
+}
+.section-nav-item {
+  display: inline-block;
+  background: var(--paper);
+  border: 2px solid var(--gold);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+.section-nav-item:hover { background: var(--mustard); color: #fff; transform: translateY(-1px); }
+.section-nav-item:nth-child(2) { border-color: var(--teal); }
+.section-nav-item:nth-child(2):hover { background: var(--teal); color: #fff; }
+.section-nav-item:nth-child(3) { border-color: var(--terracotta); }
+.section-nav-item:nth-child(3):hover { background: var(--terracotta); color: #fff; }
+.section-nav-item:nth-child(4) { border-color: var(--hotpink); }
+.section-nav-item:nth-child(4):hover { background: var(--hotpink); color: #fff; }
+
 /* ---------- Hero (homepage) ---------- */
 .hero {
   padding: 2.5rem 0 1.75rem;

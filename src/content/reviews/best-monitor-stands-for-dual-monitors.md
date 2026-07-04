@@ -13,6 +13,7 @@ publishDate: 2026-07-04
 updatedDate: 2026-07-04
 disclosure: true
 schemaType: "ItemList"
+image: "/winnie/portrait-v2.jpg"
 products:
   - name: "VIVO 39-Inch Monitor Stand"
     asin: "B07B44D7FX"
