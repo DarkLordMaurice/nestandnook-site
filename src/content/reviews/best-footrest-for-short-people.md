@@ -1,4 +1,10 @@
 ---
+# ASINs re-verified 2026-07-04 against live Amazon listings — the HUANUO and
+# Kensington ASINs were wrong (pointed to real but different variants than
+# the one described in the copy); both corrected. The 3 StrongTek ASINs were
+# already accurate. No PA-API/Creators API access yet (see CLAUDE.md), so
+# this is manual verification, not a live API pull — re-check before
+# Associates goes live in case a listing has since changed.
 title: "Best Footrests for Short People (2026): 5 Under-Desk Picks"
 description: "If your feet dangle at your desk, a footrest with enough lift fixes it. Our 5 picks for short users, ranked by height range, stability, and comfort."
 primaryKeyword: "best footrest for short people"
@@ -10,7 +16,7 @@ disclosure: true
 schemaType: "ItemList"
 products:
   - name: "HUANUO Ergonomic Under-Desk Footrest"
-    asin: "B082KWJRDL"
+    asin: "B07L3RVF7C"
     bestFor: "Best overall for short people"
     blurb: "The most lift of anything here — three heights up to about 6.7 inches, plus a 30° tilt and a cushioned, textured top that rocks. If your feet dangle even in a lowered chair, the extra elevation is exactly what short legs need."
     pros:
@@ -21,7 +27,7 @@ products:
       - "Foam-topped surface isn't as hard-wearing as solid wood"
       - "Softer platform flexes slightly under heavy pressure"
   - name: "Kensington SoleMate Plus (SmartFit System)"
-    asin: "B07X1TK1D2"
+    asin: "B01NBWCTFD"
     bestFor: "Best precise height control"
     blurb: "Kensington's SmartFit system lets you dial in height and angle in fine steps rather than jumping between fixed notches — handy when you're between sizes and want your knees at exactly 90°."
     pros:

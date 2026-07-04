@@ -10,8 +10,11 @@ interface Props {
   showDisclosure?: boolean;   // true on all content pages
   jsonLd?: object;            // ItemList/Product/Article schema from the page
   author?: string;            // byline name for content pages (E-E-A-T)
+  publishDate?: Date;         // visible freshness signal alongside the byline
+  updatedDate?: Date;
 }
-const { title, description, ogImage, showDisclosure = true, jsonLd, author } = Astro.props;
+const { title, description, ogImage, showDisclosure = true, jsonLd, author, publishDate, updatedDate } = Astro.props;
+const dateFmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 const canonical = new URL(Astro.url.pathname, SITE.url).toString();
 
 // Sitewide publisher entity — supports E-E-A-T / entity authority.
@@ -61,7 +64,12 @@ const orgSchema = {
   <main>
     <div class="wrap">
       {showDisclosure && <AffiliateDisclosure />}
-      {author && <p class="byline">By <a href="/about/">{author}</a></p>}
+      {author && (
+        <p class="byline">
+          By <a href="/about/">{author}</a>
+          {publishDate && <span class="byline-date"> · Published {dateFmt(publishDate)}{updatedDate && updatedDate.getTime() !== publishDate.getTime() && <> · Updated {dateFmt(updatedDate)}</>}</span>}
+        </p>
+      )}
       <slot />
     </div>
   </main>

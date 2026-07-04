@@ -20,11 +20,17 @@ const d = entry.data;
 const authorName = DEFAULT_AUTHOR.name;
 
 // JSON-LD ItemList from the product array (only real fields — no fake ratings).
+// datePublished/dateModified + author included here too (not just the Article
+// fallback) — visible freshness + authorship are trust signals AI Overviews /
+// GEO citation surfaces weigh heavily as of the 2026 update.
 const jsonLd = d.products.length > 0 ? {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
   name: d.title,
-  author: { '@type': 'Organization', name: authorName },
+  description: d.description,
+  datePublished: d.publishDate,
+  dateModified: d.updatedDate ?? d.publishDate,
+  author: { '@type': 'Organization', name: authorName, url: `${SITE.url}/about/` },
   itemListElement: d.products.map((p, i) => ({
     '@type': 'ListItem',
     position: i + 1,
@@ -42,7 +48,7 @@ const jsonLd = d.products.length > 0 ? {
   publisher: { '@type': 'Organization', name: SITE.brand },
 };
 ---
-<BaseLayout title={d.title} description={d.description} ogImage={d.ogImage} jsonLd={jsonLd} author={authorName}>
+<BaseLayout title={d.title} description={d.description} ogImage={d.ogImage} jsonLd={jsonLd} author={authorName} publishDate={d.publishDate} updatedDate={d.updatedDate}>
   <span class="washi">{HUBS[d.hub]?.name ?? d.hub}</span>
   <h1>{d.title}</h1>
 
