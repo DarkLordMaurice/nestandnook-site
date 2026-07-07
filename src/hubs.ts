@@ -13,7 +13,6 @@ interface HeroAccent { src: string; alt: string; tilt?: 'left' | 'right'; }
 export const HUBS: Record<string, {
   name: string; blurb: string; winnieIntro: string; winniePhoto: string;
   hero: string; heroAlt: string; heroAccents: HeroAccent[];
-  heroDoodle: string; photoDoodle: string;
 }> = {
   'home-office': {
     name: 'Home Office & Ergonomics',
@@ -26,8 +25,6 @@ export const HUBS: Record<string, {
       { src: '/winnie/winnie-office-standing-desk.jpg', alt: 'Winnie at her standing desk mid-adjustment', tilt: 'right' },
       { src: '/winnie/winnie-office-wide-overview.jpg', alt: "A wide view of Winnie's actual gallery-wall home office", tilt: 'left' },
     ],
-    heroDoodle: 'psst, no overpriced fantasy setups here',
-    photoDoodle: 'yes, it really looks like this',
   },
   'kitchen': {
     name: 'Small-Space Kitchen Gear',
@@ -40,7 +37,5 @@ export const HUBS: Record<string, {
       { src: '/winnie/kitchen-side.jpg', alt: 'Winnie working the counter from a side angle in her kitchen', tilt: 'right' },
       { src: '/winnie/winnie-kitchen-cabinet-reach.jpg', alt: 'Winnie reaching into a packed kitchen cabinet', tilt: 'left' },
     ],
-    heroDoodle: 'small kitchen, big feelings',
-    photoDoodle: "we don't talk about the spice drawer",
   },
 };

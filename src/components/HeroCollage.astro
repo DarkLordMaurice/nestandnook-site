@@ -15,10 +15,9 @@ interface Photo {
   tilt?: 'left' | 'right';
   portrait?: boolean;
 }
-const { anchor, accents = [], doodle } = Astro.props as {
+const { anchor, accents = [] } = Astro.props as {
   anchor: Photo;
   accents?: Photo[];
-  doodle?: string;
 };
 const photos = [anchor, ...accents];
 ---
@@ -28,5 +27,4 @@ const photos = [anchor, ...accents];
       <img src={p.src} alt={p.alt} class={`collage-photo-img${p.portrait ? ' collage-photo-img-portrait' : ''}`} width="500" height="500" />
     </div>
   ))}
-  {doodle && <span class="doodle collage-row-doodle">{doodle}</span>}
 </div>

@@ -591,11 +591,6 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
   object-fit: cover;
   aspect-ratio: 1 / 1;
 }
-.collage-row-doodle {
-  flex: 0 0 100%;
-  margin-top: 0.25rem;
-  color: var(--gold-light);
-}
 @media (max-width: 560px) {
   .collage-photo { flex-basis: 45%; max-width: none; }
 }

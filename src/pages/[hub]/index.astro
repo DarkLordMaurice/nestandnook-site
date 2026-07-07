@@ -32,13 +32,11 @@ reviews.sort((a, b) => +b.data.publishDate - +a.data.publishDate);
         <span class="washi">{meta.name}</span>
         <h1>{meta.name}</h1>
         <p class="lede">{meta.blurb}</p>
-        <span class="doodle hero-doodle">{meta.heroDoodle}</span>
         <p class="hero-stats">{reviews.length} guide{reviews.length === 1 ? '' : 's'} in this hub so far</p>
       </div>
       <HeroCollage
         anchor={{ src: meta.hero, alt: meta.heroAlt, tilt: 'left' }}
         accents={meta.heroAccents}
-        doodle={meta.photoDoodle}
       />
     </div>
   </section>
