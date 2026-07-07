@@ -12,10 +12,16 @@ const reviews = await getCollection('reviews');
 const blogPosts = await getCollection('blog');
 const recipes = await getCollection('recipes');
 
+// Capped to a teaser (matching latestRecipes/latestPosts below) — previously
+// unbounded, so as the Home Office hub grew past a handful of pages the
+// homepage was just reprinting the entire hub instead of teasing it. The
+// "See all Home Office guides" link is the actual destination for the rest.
 const officeReviews = reviews.filter((r) => r.data.hub === 'home-office')
-  .sort((a, b) => +b.data.publishDate - +a.data.publishDate);
+  .sort((a, b) => +b.data.publishDate - +a.data.publishDate)
+  .slice(0, 6);
 const kitchenReviews = reviews.filter((r) => r.data.hub === 'kitchen')
-  .sort((a, b) => +b.data.publishDate - +a.data.publishDate);
+  .sort((a, b) => +b.data.publishDate - +a.data.publishDate)
+  .slice(0, 6);
 const latestRecipes = [...recipes].sort((a, b) => +b.data.publishDate - +a.data.publishDate).slice(0, 6);
 const latestPosts = [...blogPosts].sort((a, b) => +b.data.publishDate - +a.data.publishDate).slice(0, 6);
 ---

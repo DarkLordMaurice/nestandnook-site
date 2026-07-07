@@ -75,6 +75,8 @@ internalLinks:
     href: "/home-office/how-to-position-dual-monitors/"
   - label: "Correct Monitor Height: The Ergonomics Guide"
     href: "/home-office/monitor-height-ergonomics-guide/"
+  - label: "Best Monitor Risers for a Small Desk"
+    href: "/home-office/best-monitor-risers-small-desk/"
   - label: "Best Footrests for Short People"
     href: "/home-office/best-footrest-for-short-people/"
   - label: "Best Laptop Stands for Bed & Couch"

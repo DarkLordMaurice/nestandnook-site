@@ -57,6 +57,12 @@ products:
 internalLinks:
   - label: "The Ergonomic Desk Setup Checklist"
     href: "/home-office/ergonomic-desk-setup-checklist/"
+  - label: "Best Desk Pads"
+    href: "/home-office/best-desk-pads/"
+  - label: "Best Anti-Fatigue Mats for a Standing Desk"
+    href: "/home-office/best-anti-fatigue-mats-standing-desk/"
+  - label: "Best Desk Lamps for Eye Strain"
+    href: "/home-office/best-desk-lamps-for-eye-strain/"
   - label: "Best Footrests for Short People"
     href: "/home-office/best-footrest-for-short-people/"
   - label: "Best Monitor Stands for Dual Monitors"
