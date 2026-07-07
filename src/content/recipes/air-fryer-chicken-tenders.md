@@ -1,8 +1,4 @@
 ---
-# Image not yet generated — see brand-assets/recipes/Recipe-Image-Prompts.md
-# §B.21 for the prompt. Maurice needs to run it in ChatGPT and save the
-# result to site/public/recipes/recipe-air-fryer-chicken-tenders.jpg before
-# this page is publish-ready.
 title: "Air Fryer Chicken Tenders Recipe (Crispy, No Deep Fryer)"
 description: "This air fryer chicken tenders recipe uses a double-dredge and dry-basket method that gets a real crunchy crust without a drop of frying oil."
 primaryKeyword: "air fryer chicken tenders recipe"
@@ -13,7 +9,7 @@ prepTimeMinutes: 15
 cookTimeMinutes: 14
 servings: 4
 difficulty: "easy"
-image: "/recipes/recipe-air-fryer-chicken-tenders.jpg"
+image: "/recipes/recipe-air-fryer-chicken-tenders.png"
 imageAlt: "A plate of golden, crispy air fryer chicken tenders with dipping sauces on the side"
 winnieImage: "/winnie/winnie-kitchen-stir.jpg"
 winnieHeadshot: "/winnie/headshot-v4-4.jpg"
