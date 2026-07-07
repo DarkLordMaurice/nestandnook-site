@@ -26,18 +26,19 @@ reviews.sort((a, b) => +b.data.publishDate - +a.data.publishDate);
   description={meta.blurb}
   showDisclosure={false}
 >
-  <section class="hero">
-    <span class="washi">{meta.name}</span>
-    <h1>{meta.name}</h1>
-    <p class="lede">{meta.blurb}</p>
-  </section>
-
-  <section class="hero-banner hero-banner-single hero-banner-collage">
-    <div class="hero-banner-inner">
+  <section class="hero-banner hero-banner-collage">
+    <div class="hero-banner-inner two-col">
+      <div>
+        <span class="washi">{meta.name}</span>
+        <h1>{meta.name}</h1>
+        <p class="lede">{meta.blurb}</p>
+        <span class="doodle hero-doodle">{meta.heroDoodle}</span>
+        <p class="hero-stats">{reviews.length} guide{reviews.length === 1 ? '' : 's'} in this hub so far</p>
+      </div>
       <HeroCollage
         anchor={{ src: meta.hero, alt: meta.heroAlt, tilt: 'left' }}
         accents={meta.heroAccents}
-        doodle={meta.heroDoodle}
+        doodle={meta.photoDoodle}
       />
     </div>
   </section>

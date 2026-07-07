@@ -13,20 +13,21 @@ posts.sort((a, b) => +b.data.publishDate - +a.data.publishDate);
   description="Winnie Hollowell's take on the small fixes, favorite finds, and slice-of-life stuff behind Nest & Nook."
   showDisclosure={false}
 >
-  <section class="hero">
-    <span class="washi washi-pink">Notes from the nook</span>
-    <h1>Winnie's Notes</h1>
-    <p class="lede">The running commentary — my honest reactions, the fixes I'd tell a neighbor about over the fence, and the occasional detour into whatever's making my nook happy this week.</p>
-  </section>
-
-  <section class="hero-banner hero-banner-single hero-banner-collage">
-    <div class="hero-banner-inner">
+  <section class="hero-banner hero-banner-collage">
+    <div class="hero-banner-inner two-col">
+      <div>
+        <span class="washi washi-pink">Notes from the nook</span>
+        <h1>Winnie's Notes</h1>
+        <p class="lede">The running commentary — my honest reactions, the fixes I'd tell a neighbor about over the fence, and the occasional detour into whatever's making my nook happy this week.</p>
+        <span class="doodle hero-doodle">handwriting included</span>
+        <p class="hero-stats">{posts.length} note{posts.length === 1 ? '' : 's'} from Winnie so far</p>
+      </div>
       <HeroCollage
         anchor={{ src: '/winnie/scrapbook-desk.jpg', alt: 'Winnie sorting through a desk full of clippings and photos', tilt: 'left' }}
         accents={[
           { src: '/winnie/winnie-life-bookstore.jpg', alt: 'Winnie browsing shelves at a used bookstore', pos: 'br', tilt: 'right' },
         ]}
-        doodle="handwriting included"
+        doodle="margins may contain opinions"
       />
     </div>
   </section>

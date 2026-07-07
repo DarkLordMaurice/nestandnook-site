@@ -504,7 +504,6 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
   padding: 3rem 0 3.25rem;
   margin-bottom: 2.25rem;
 }
-.hero-banner-single { padding: 2rem 0 2.25rem; }
 .hero-banner .washi { box-shadow: 0 2px 6px rgba(0,0,0,0.25); }
 .hero-banner h1, .hero-banner .lede, .hero-banner .eyebrow:not(.washi) { color: var(--cream-on-dark); }
 .hero-banner .hero-doodle { color: var(--gold-light); }
@@ -549,33 +548,28 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
   object-fit: cover;
   aspect-ratio: 16 / 10;
 }
-/* Single-photo hero banners (hub pages, blog index, About) were spanning the
-   full 1100px inner container at 16:9 — read as "almost the entire screen."
-   Cap it to a modest, centered frame instead — present but not dominant.
-   Reduced again 2026-07-10 (Home Office / Kitchen hub heroes still read as
-   too large/dominant even at the 560px cap). */
-.hero-banner-single { padding: 1.5rem 0 1.75rem; }
-.hero-banner-single .hero-banner-inner { max-width: 420px; }
-.hero-banner-single .hero-photo { aspect-ratio: 4 / 3; }
-/* Square source photos (e.g. portrait-v2.jpg on About) shouldn't be force-
-   cropped into a 4:3 frame — render them as a clean square instead. */
-.hero-banner-single .hero-photo-portrait { aspect-ratio: 1 / 1; }
+/* `.hero-banner-single` (a capped-width single-photo variant) is retired —
+   every hero-banner page (homepage, hub pages, About, blog index) now uses
+   the same `.hero-banner-inner.two-col` text+photo layout, so there's no
+   longer a "single photo, no text column" variant to special-case. See the
+   `.collage` block below for the current multi-photo hero treatment. */
 
 /* ---------- Collage hero (multi-photo scrapbook treatment) ----------
    Replaces the old single small centered polaroid on hub/About/blog-index
    heroes, which read as a lone passport photo floating in a big empty
-   jewel-teal band — small, static, and off-brand for a maximalist collector
-   character. This layers 2-3 real photos with overlap, tape, and a
+   jewel-teal band. This layers 2-3 real photos with overlap, tape, and a
    hand-drawn doodle aside so the hero reads as a gallery-wall snapshot of
-   Winnie's actual (cluttered, pattern-rich) space. Add `hero-banner-collage`
-   alongside `hero-banner-single` on the parent <section> to widen the inner
-   container for this layout. */
-.hero-banner-collage .hero-banner-inner { max-width: 640px; }
+   Winnie's actual (cluttered, pattern-rich) space.
+   IMPORTANT — this sits INSIDE `.hero-banner-inner.two-col`, side by side
+   with the text column (washi/h1/lede), same pattern as the homepage hero.
+   Earlier version stacked a plain-text `.hero` section on top of a
+   full-width photo section below it — two stacked full-bleed bands, which
+   is what made the whole hero read as "way too tall." Text and photo now
+   share one row and fill the width left-to-right instead of stacking. */
 .collage {
   position: relative;
-  max-width: 620px;
-  margin: 0 auto;
-  padding: 0.5rem 3rem 3.75rem;
+  width: 100%;
+  padding: 0.5rem 2.75rem 2.75rem;
 }
 .collage-anchor { position: relative; z-index: 1; width: 100%; }
 .collage-anchor-img {
@@ -588,7 +582,7 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
 .collage-anchor-img.collage-anchor-img-portrait { aspect-ratio: 1 / 1; }
 .collage-accent {
   position: absolute;
-  width: 42%;
+  width: 40%;
   z-index: 2;
 }
 .collage-accent-img {
@@ -598,27 +592,33 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
   object-fit: cover;
   aspect-ratio: 1 / 1;
 }
-.collage-accent.pos-br { right: -9%; bottom: -11%; }
-.collage-accent.pos-bl { left: -9%; bottom: -7%; }
-.collage-accent.pos-tr { right: -7%; top: -13%; }
-.collage-accent.pos-tl { left: -7%; top: -15%; }
+.collage-accent.pos-br { right: -8%; bottom: -9%; }
+.collage-accent.pos-bl { left: -8%; bottom: -6%; }
+.collage-accent.pos-tr { right: -6%; top: -11%; }
+.collage-accent.pos-tl { left: -6%; top: -13%; }
 .collage-doodle {
   position: absolute;
   z-index: 3;
-  right: 0.5rem;
-  bottom: 0.5rem;
-  max-width: 7.5rem;
+  right: 0.25rem;
+  bottom: 0.25rem;
+  max-width: 7rem;
   text-align: center;
   line-height: 1.2;
   color: var(--gold-light);
 }
-@media (max-width: 680px) {
-  .collage { max-width: 300px; padding: 0.5rem 1.5rem 2.75rem; }
-  .collage-accent { width: 54%; }
-  .collage-accent.pos-br { right: -12%; bottom: -9%; }
-  .collage-accent.pos-bl { left: -12%; bottom: -9%; }
-  .collage-accent.pos-tr { right: -10%; top: -9%; }
-  .collage-accent.pos-tl { left: -10%; top: -9%; }
+@media (max-width: 799px) {
+  /* Below the two-col breakpoint the grid stacks to 1fr, so the collage
+     drops beneath the text as a single centered block instead of a side
+     column — cap its width here so it doesn't sprawl edge to edge. */
+  .collage { max-width: 420px; margin: 0 auto; padding: 0.5rem 2.25rem 2.5rem; }
+}
+@media (max-width: 480px) {
+  .collage { max-width: 280px; padding: 0.5rem 1.5rem 2.25rem; }
+  .collage-accent { width: 52%; }
+  .collage-accent.pos-br { right: -11%; bottom: -8%; }
+  .collage-accent.pos-bl { left: -11%; bottom: -8%; }
+  .collage-accent.pos-tr { right: -9%; top: -8%; }
+  .collage-accent.pos-tl { left: -9%; top: -8%; }
   .collage-doodle { display: none; }
 }
 

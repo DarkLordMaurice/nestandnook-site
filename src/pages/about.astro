@@ -5,23 +5,25 @@ import { AUTHORS } from '../authors.ts';
 import HeroCollage from '../components/HeroCollage.astro';
 ---
 <BaseLayout title={`About — ${SITE.brand}`} description={`Who's behind ${SITE.brand} and how we review and rank the gear we recommend.`} showDisclosure={false}>
-  <div class="prose">
-  <span class="washi washi-teal">About the nook</span>
-  <h1>About {SITE.brand}</h1>
-  <p class="lede">{SITE.brand} helps people build better home office and small-space kitchen setups without overspending. We focus on the affordable accessories that actually change how a space feels day to day — footrests, stands, cable management, desk pads, kitchen space-savers — and we rank them by who each product genuinely suits.</p>
-
-  <section class="hero-banner hero-banner-single hero-banner-collage">
-    <div class="hero-banner-inner">
+  <section class="hero-banner hero-banner-collage">
+    <div class="hero-banner-inner two-col">
+      <div>
+        <span class="washi washi-teal">About the nook</span>
+        <h1>About {SITE.brand}</h1>
+        <p class="lede">{SITE.brand} helps people build better home office and small-space kitchen setups without overspending. We focus on the affordable accessories that actually change how a space feels day to day — footrests, stands, cable management, desk pads, kitchen space-savers — and we rank them by who each product genuinely suits.</p>
+        <span class="doodle hero-doodle">she collects pins. don't ask.</span>
+      </div>
       <HeroCollage
         anchor={{ src: '/winnie/portrait-v2.jpg', alt: "Winnie Hollowell, Nest & Nook's virtual host", tilt: 'right', portrait: true }}
         accents={[
           { src: '/winnie/winnie-life-journaling.jpg', alt: 'Winnie journaling at her cluttered desk', pos: 'bl', tilt: 'left' },
         ]}
-        doodle="she collects pins. don't ask."
+        doodle="handwritten margin notes, guaranteed"
       />
     </div>
   </section>
 
+  <div class="prose">
   <section id="meet-winnie" class="meet-winnie">
     <div class="polaroid" style="max-width:260px">
       <img src="/winnie/portrait.jpg" alt="Winnie Hollowell" class="winnie-portrait" width="380" height="380" />

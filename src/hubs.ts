@@ -9,7 +9,8 @@ interface HeroAccent { src: string; alt: string; pos: 'br' | 'bl' | 'tr' | 'tl';
 
 export const HUBS: Record<string, {
   name: string; blurb: string; winnieIntro: string; winniePhoto: string;
-  hero: string; heroAlt: string; heroAccents: HeroAccent[]; heroDoodle: string;
+  hero: string; heroAlt: string; heroAccents: HeroAccent[];
+  heroDoodle: string; photoDoodle: string;
 }> = {
   'home-office': {
     name: 'Home Office & Ergonomics',
@@ -22,7 +23,8 @@ export const HUBS: Record<string, {
       { src: '/winnie/winnie-office-standing-desk.jpg', alt: 'Winnie at her standing desk mid-adjustment', pos: 'br', tilt: 'right' },
       { src: '/winnie/winnie-office-wide-overview.jpg', alt: "A wide view of Winnie's actual gallery-wall home office", pos: 'tl', tilt: 'left' },
     ],
-    heroDoodle: 'yes, it really looks like this',
+    heroDoodle: 'psst, no overpriced fantasy setups here',
+    photoDoodle: 'yes, it really looks like this',
   },
   'kitchen': {
     name: 'Small-Space Kitchen Gear',
@@ -35,6 +37,7 @@ export const HUBS: Record<string, {
       { src: '/winnie/kitchen-side.jpg', alt: 'Winnie working the counter from a side angle in her kitchen', pos: 'br', tilt: 'right' },
       { src: '/winnie/winnie-kitchen-cabinet-reach.jpg', alt: 'Winnie reaching into a packed kitchen cabinet', pos: 'tl', tilt: 'left' },
     ],
-    heroDoodle: "we don't talk about the spice drawer",
+    heroDoodle: 'small kitchen, big feelings',
+    photoDoodle: "we don't talk about the spice drawer",
   },
 };
