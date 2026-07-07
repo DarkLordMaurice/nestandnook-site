@@ -554,72 +554,50 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
    longer a "single photo, no text column" variant to special-case. See the
    `.collage` block below for the current multi-photo hero treatment. */
 
-/* ---------- Collage hero (multi-photo scrapbook treatment) ----------
+/* ---------- Collage hero (multi-photo row treatment) ----------
    Replaces the old single small centered polaroid on hub/About/blog-index
-   heroes, which read as a lone passport photo floating in a big empty
-   jewel-teal band. This layers 2-3 real photos with overlap, tape, and a
-   hand-drawn doodle aside so the hero reads as a gallery-wall snapshot of
-   Winnie's actual (cluttered, pattern-rich) space.
-   IMPORTANT — this sits INSIDE `.hero-banner-inner.two-col`, side by side
-   with the text column (washi/h1/lede), same pattern as the homepage hero.
-   Earlier version stacked a plain-text `.hero` section on top of a
-   full-width photo section below it — two stacked full-bleed bands, which
-   is what made the whole hero read as "way too tall." Text and photo now
-   share one row and fill the width left-to-right instead of stacking. */
-.collage {
+   heroes. THIRD attempt at this — history matters here:
+   v1: one small polaroid, capped to 420px, in a huge empty teal band — read
+       as boring and tiny.
+   v2: 2-3 photos meant to overlap corner-to-corner via position:absolute —
+       broke silently because `.polaroid`'s own `position: relative` was
+       defined LATER in this file and won the specificity tie, so the
+       "accent" photos actually rendered in normal flow and stacked
+       vertically like a filmstrip, with the whole tall stack sitting in a
+       narrow side column next to mostly-empty space. Exactly the "why is
+       this so tall / why is there so much empty space on the sides" bug.
+   v3 (this version): no absolute positioning at all. Every photo (anchor +
+       accents) renders as a plain flex row, left to right, spanning the
+       FULL width of the hero-banner-inner container — not squeezed into a
+       side column. `.hero-banner-inner` for these pages goes back to a
+       single column (text block, then this row below it), so the row gets
+       the entire ~1100px width instead of half of it. */
+.collage-row {
   position: relative;
   width: 100%;
-  padding: 0.5rem 2.75rem 2.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 0.5rem 0 0.5rem;
 }
-.collage-anchor { position: relative; z-index: 1; width: 100%; }
-.collage-anchor-img {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  aspect-ratio: 4 / 3;
+.collage-photo {
+  flex: 1 1 220px;
+  max-width: 320px;
 }
-.collage-anchor-img.collage-anchor-img-portrait { aspect-ratio: 1 / 1; }
-.collage-accent {
-  position: absolute;
-  width: 40%;
-  z-index: 2;
-}
-.collage-accent-img {
+.collage-photo-img {
   display: block;
   width: 100%;
   height: auto;
   object-fit: cover;
   aspect-ratio: 1 / 1;
 }
-.collage-accent.pos-br { right: -8%; bottom: -9%; }
-.collage-accent.pos-bl { left: -8%; bottom: -6%; }
-.collage-accent.pos-tr { right: -6%; top: -11%; }
-.collage-accent.pos-tl { left: -6%; top: -13%; }
-.collage-doodle {
-  position: absolute;
-  z-index: 3;
-  right: 0.25rem;
-  bottom: 0.25rem;
-  max-width: 7rem;
-  text-align: center;
-  line-height: 1.2;
+.collage-row-doodle {
+  flex: 0 0 100%;
+  margin-top: 0.25rem;
   color: var(--gold-light);
 }
-@media (max-width: 799px) {
-  /* Below the two-col breakpoint the grid stacks to 1fr, so the collage
-     drops beneath the text as a single centered block instead of a side
-     column — cap its width here so it doesn't sprawl edge to edge. */
-  .collage { max-width: 420px; margin: 0 auto; padding: 0.5rem 2.25rem 2.5rem; }
-}
-@media (max-width: 480px) {
-  .collage { max-width: 280px; padding: 0.5rem 1.5rem 2.25rem; }
-  .collage-accent { width: 52%; }
-  .collage-accent.pos-br { right: -11%; bottom: -8%; }
-  .collage-accent.pos-bl { left: -11%; bottom: -8%; }
-  .collage-accent.pos-tr { right: -9%; top: -8%; }
-  .collage-accent.pos-tl { left: -9%; top: -8%; }
-  .collage-doodle { display: none; }
+@media (max-width: 560px) {
+  .collage-photo { flex-basis: 45%; max-width: none; }
 }
 
 .post-card { padding: 0; overflow: hidden; }

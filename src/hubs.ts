@@ -5,7 +5,10 @@
 //
 // `blurb` is the plain, SEO-facing meta description (kept factual/neutral).
 // `winnieIntro` is Winnie's on-page narration — the personality layer.
-interface HeroAccent { src: string; alt: string; pos: 'br' | 'bl' | 'tr' | 'tl'; tilt?: 'left' | 'right'; }
+// pos was for the old absolute-position overlap collage (retired — see
+// global.css .collage-row comment). Photos now render in a plain left-to-
+// right row via HeroCollage, so only src/alt/tilt matter.
+interface HeroAccent { src: string; alt: string; tilt?: 'left' | 'right'; }
 
 export const HUBS: Record<string, {
   name: string; blurb: string; winnieIntro: string; winniePhoto: string;
@@ -20,8 +23,8 @@ export const HUBS: Record<string, {
     hero: '/winnie/office-hero.jpg',
     heroAlt: "Winnie Hollowell perched on a desk with a mug that reads 'make beautiful things,' surrounded by a gallery wall and plants",
     heroAccents: [
-      { src: '/winnie/winnie-office-standing-desk.jpg', alt: 'Winnie at her standing desk mid-adjustment', pos: 'br', tilt: 'right' },
-      { src: '/winnie/winnie-office-wide-overview.jpg', alt: "A wide view of Winnie's actual gallery-wall home office", pos: 'tl', tilt: 'left' },
+      { src: '/winnie/winnie-office-standing-desk.jpg', alt: 'Winnie at her standing desk mid-adjustment', tilt: 'right' },
+      { src: '/winnie/winnie-office-wide-overview.jpg', alt: "A wide view of Winnie's actual gallery-wall home office", tilt: 'left' },
     ],
     heroDoodle: 'psst, no overpriced fantasy setups here',
     photoDoodle: 'yes, it really looks like this',
@@ -34,8 +37,8 @@ export const HUBS: Record<string, {
     hero: '/winnie/kitchen-hero.jpg',
     heroAlt: 'Winnie Hollowell stirring a pot on the stove in a small, plant-filled kitchen',
     heroAccents: [
-      { src: '/winnie/kitchen-side.jpg', alt: 'Winnie working the counter from a side angle in her kitchen', pos: 'br', tilt: 'right' },
-      { src: '/winnie/winnie-kitchen-cabinet-reach.jpg', alt: 'Winnie reaching into a packed kitchen cabinet', pos: 'tl', tilt: 'left' },
+      { src: '/winnie/kitchen-side.jpg', alt: 'Winnie working the counter from a side angle in her kitchen', tilt: 'right' },
+      { src: '/winnie/winnie-kitchen-cabinet-reach.jpg', alt: 'Winnie reaching into a packed kitchen cabinet', tilt: 'left' },
     ],
     heroDoodle: 'small kitchen, big feelings',
     photoDoodle: "we don't talk about the spice drawer",

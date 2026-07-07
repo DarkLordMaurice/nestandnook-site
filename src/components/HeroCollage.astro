@@ -1,34 +1,32 @@
 ---
-// Multi-photo "gallery wall" hero treatment — replaces the old single small
-// centered polaroid on hub/About/blog-index heroes. That version read as a
-// lone passport photo floating in a big empty jewel-teal band; this layers
-// 2-3 real photos with overlap, tape, and a hand-drawn doodle aside so the
-// hero reads as an actual snapshot of Winnie's cluttered, collector-brained
-// space rather than a stock headshot. Pairs with the .collage CSS block in
-// global.css and the `hero-banner-collage` modifier on the parent section.
+// Multi-photo hero treatment — replaces the old single small centered
+// polaroid on hub/About/blog-index heroes. Renders every photo (anchor +
+// accents) as a plain horizontal row, left to right, filling the full
+// width of its container. No absolute positioning, no overlap math — a
+// prior version tried an overlapping "corner accent" collage using
+// position:absolute, which silently broke because `.polaroid`'s own
+// `position: relative` was defined later in global.css and won the
+// specificity tie, so the accents rendered in normal flow and stacked
+// vertically like a filmstrip instead of overlapping. This version can't
+// hit that bug because nothing here depends on absolute positioning.
 interface Photo {
   src: string;
   alt: string;
   tilt?: 'left' | 'right';
   portrait?: boolean;
 }
-interface Accent extends Photo {
-  pos: 'br' | 'bl' | 'tr' | 'tl';
-}
 const { anchor, accents = [], doodle } = Astro.props as {
   anchor: Photo;
-  accents?: Accent[];
+  accents?: Photo[];
   doodle?: string;
 };
+const photos = [anchor, ...accents];
 ---
-<div class="collage">
-  <div class={`polaroid collage-anchor tilt-${anchor.tilt ?? 'left'}`}>
-    <img src={anchor.src} alt={anchor.alt} class={`collage-anchor-img${anchor.portrait ? ' collage-anchor-img-portrait' : ''}`} width="800" height="600" />
-  </div>
-  {accents.map((a) => (
-    <div class={`polaroid collage-accent pos-${a.pos} tilt-${a.tilt ?? 'right'}`}>
-      <img src={a.src} alt={a.alt} class="collage-accent-img" width="500" height="500" />
+<div class="collage-row">
+  {photos.map((p, i) => (
+    <div class={`polaroid collage-photo tilt-${p.tilt ?? (i % 2 === 0 ? 'left' : 'right')}`}>
+      <img src={p.src} alt={p.alt} class={`collage-photo-img${p.portrait ? ' collage-photo-img-portrait' : ''}`} width="500" height="500" />
     </div>
   ))}
-  {doodle && <span class="doodle collage-doodle">{doodle}</span>}
+  {doodle && <span class="doodle collage-row-doodle">{doodle}</span>}
 </div>

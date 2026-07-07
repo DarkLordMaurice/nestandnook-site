@@ -6,7 +6,7 @@ import HeroCollage from '../components/HeroCollage.astro';
 ---
 <BaseLayout title={`About — ${SITE.brand}`} description={`Who's behind ${SITE.brand} and how we review and rank the gear we recommend.`} showDisclosure={false}>
   <section class="hero-banner hero-banner-collage">
-    <div class="hero-banner-inner two-col">
+    <div class="hero-banner-inner">
       <div>
         <span class="washi washi-teal">About the nook</span>
         <h1>About {SITE.brand}</h1>
@@ -16,7 +16,7 @@ import HeroCollage from '../components/HeroCollage.astro';
       <HeroCollage
         anchor={{ src: '/winnie/portrait-v2.jpg', alt: "Winnie Hollowell, Nest & Nook's virtual host", tilt: 'right', portrait: true }}
         accents={[
-          { src: '/winnie/winnie-life-journaling.jpg', alt: 'Winnie journaling at her cluttered desk', pos: 'bl', tilt: 'left' },
+          { src: '/winnie/winnie-life-journaling.jpg', alt: 'Winnie journaling at her cluttered desk', tilt: 'left' },
         ]}
         doodle="handwritten margin notes, guaranteed"
       />
