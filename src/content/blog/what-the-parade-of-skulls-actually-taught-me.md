@@ -7,6 +7,8 @@ category: "Life outside the nook"
 image: "/winnie/winnie-life-dia-de-muertos.jpg"
 winniePhoto: "/winnie/headshot-v4-4.jpg"
 relatedGuides:
+  - label: "The Year I Lost an Apple-Bobbing Contest"
+    href: "/blog/the-year-i-lost-an-apple-bobbing-contest/"
   - label: "About Nest & Nook"
     href: "/about/"
   - label: "More of Winnie's Notes"
