@@ -356,19 +356,23 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
 }
 .card-section-link:hover { color: var(--terracotta); }
 
+/* Switched from CSS multi-column (`columns:`) to CSS Grid (2026-07-06).
+   Multi-column relies on the browser's height-balancing algorithm, which
+   with a small number of break-inside:avoid cards after a column-span:all
+   featured card would often under-fill the declared column count — e.g. 4
+   leftover cards rendering as 2 filled columns instead of 3, inconsistent
+   with pages that had enough cards to force the full column count. Grid
+   places items left-to-right, row-by-row, deterministically, so the same
+   viewport always yields the same column count regardless of item count. */
 .masonry {
-  columns: 1;
-  column-gap: 1.25rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
   margin: 1.25rem 0 0;
 }
-@media (min-width: 640px) { .masonry { columns: 2; } }
-@media (min-width: 960px) { .masonry { columns: 3; } }
-.masonry > .content-card {
-  break-inside: avoid;
-  margin: 0 0 1.25rem;
-  width: 100%;
-}
-.masonry > .content-card.featured { column-span: all; }
+@media (min-width: 640px) { .masonry { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 960px) { .masonry { grid-template-columns: repeat(3, 1fr); } }
+.masonry > .content-card.featured { grid-column: 1 / -1; }
 
 .content-card {
   display: block;

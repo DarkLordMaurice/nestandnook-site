@@ -71,6 +71,10 @@ products:
       - "Less structurally rigid at full extension than a one-piece stand"
       - "More assembly/adjustment than a simple fixed platform"
 internalLinks:
+  - label: "How to Position Dual Monitors Ergonomically"
+    href: "/home-office/how-to-position-dual-monitors/"
+  - label: "Correct Monitor Height: The Ergonomics Guide"
+    href: "/home-office/monitor-height-ergonomics-guide/"
   - label: "Best Footrests for Short People"
     href: "/home-office/best-footrest-for-short-people/"
   - label: "Best Laptop Stands for Bed & Couch"

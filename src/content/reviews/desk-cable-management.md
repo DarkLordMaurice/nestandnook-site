@@ -69,6 +69,10 @@ products:
       - "Mesh is less rigid than a metal tray — not for heavy power strips"
       - "Slightly more involved setup than a single fixed tray"
 internalLinks:
+  - label: "How to Hide Cables Under Your Desk"
+    href: "/home-office/how-to-hide-cables-under-desk/"
+  - label: "Cable Management for a Standing Desk"
+    href: "/home-office/cable-management-standing-desk/"
   - label: "Best Footrests for Short People"
     href: "/home-office/best-footrest-for-short-people/"
   - label: "Best Monitor Stands for Dual Monitors"

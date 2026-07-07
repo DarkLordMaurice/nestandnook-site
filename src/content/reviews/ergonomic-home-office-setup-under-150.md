@@ -55,6 +55,8 @@ products:
     cons:
       - "Adhesive is semi-permanent — pick clip spots deliberately"
 internalLinks:
+  - label: "The Ergonomic Desk Setup Checklist"
+    href: "/home-office/ergonomic-desk-setup-checklist/"
   - label: "Best Footrests for Short People"
     href: "/home-office/best-footrest-for-short-people/"
   - label: "Best Monitor Stands for Dual Monitors"

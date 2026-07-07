@@ -72,6 +72,10 @@ products:
       - "Tilt adjusts but height is largely fixed"
       - "Hard, uncushioned surface"
 internalLinks:
+  - label: "How to Sit Correctly at a Small Desk"
+    href: "/home-office/how-to-sit-correctly-at-a-small-desk/"
+  - label: "Chair Too Low for Your Desk? Here's What Actually Fixes It"
+    href: "/home-office/chair-too-low-for-desk-fixes/"
   - label: "Best Laptop Stands for Working From Bed or Couch"
     href: "/home-office/best-laptop-stand-for-couch-and-bed/"
   - label: "Best Monitor Stands for Dual Monitors"
