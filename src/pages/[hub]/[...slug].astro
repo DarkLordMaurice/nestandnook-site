@@ -65,23 +65,25 @@ const jsonLd = {
 };
 ---
 <BaseLayout title={d.title} description={d.description} ogImage={d.ogImage} jsonLd={jsonLd} author={authorName} publishDate={d.publishDate} updatedDate={d.updatedDate}>
-  <span class="washi">{HUBS[d.hub]?.name ?? d.hub}</span>
-  <h1>{d.title}</h1>
+  <div class="prose">
+    <span class="washi">{HUBS[d.hub]?.name ?? d.hub}</span>
+    <h1>{d.title}</h1>
 
-  <Content />
+    <Content />
 
-  {d.products.length > 0 && (
-    <section>
-      {d.products.map((p) => (
-        <ProductCard name={p.name} asin={p.asin} bestFor={p.bestFor} blurb={p.blurb} pros={p.pros} cons={p.cons} image={p.image} winnieImage={p.winnieImage} />
-      ))}
-    </section>
-  )}
+    {d.products.length > 0 && (
+      <section>
+        {d.products.map((p) => (
+          <ProductCard name={p.name} asin={p.asin} bestFor={p.bestFor} blurb={p.blurb} pros={p.pros} cons={p.cons} image={p.image} winnieImage={p.winnieImage} />
+        ))}
+      </section>
+    )}
 
-  {d.internalLinks.length > 0 && (
-    <nav class="related">
-      <h2>Related guides</h2>
-      <ul>{d.internalLinks.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
-    </nav>
-  )}
+    {d.internalLinks.length > 0 && (
+      <nav class="related">
+        <h2>Related guides</h2>
+        <ul>{d.internalLinks.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+      </nav>
+    )}
+  </div>
 </BaseLayout>

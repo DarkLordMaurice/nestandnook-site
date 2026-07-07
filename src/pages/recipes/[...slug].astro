@@ -75,6 +75,7 @@ const jsonLd = {
 };
 ---
 <BaseLayout title={d.title} description={d.description} ogImage={d.image} jsonLd={jsonLd} showDisclosure={d.disclosure}>
+  <div class="prose">
   <span class="washi washi-pink">{d.category} · {d.cuisine}</span>
   <h1>{d.title}</h1>
 
@@ -179,4 +180,5 @@ const jsonLd = {
       )}
     </nav>
   )}
+  </div>
 </BaseLayout>

@@ -4,6 +4,7 @@ import WinnieNote from '../components/WinnieNote.astro';
 import { SITE } from '../config.ts';
 ---
 <BaseLayout title={`Editorial Standards — ${SITE.brand}`} description={`How ${SITE.brand} researches, reviews, and ranks products.`} showDisclosure={false}>
+  <div class="prose">
   <span class="washi">The fine print, warmly</span>
   <h1>Editorial Standards</h1>
   <p class="lede">These standards apply to every guide on {SITE.brand}. They exist so you can trust our picks and so our content stays genuinely useful.</p>
@@ -30,4 +31,5 @@ import { SITE } from '../config.ts';
 
   <h2>Disclosure</h2>
   <p>{SITE.brand} is an Amazon Associate and may participate in other affiliate programs; we also run display ads. This never affects our recommendations. Full <a href="/disclosure/">affiliate disclosure</a>.</p>
+  </div>
 </BaseLayout>

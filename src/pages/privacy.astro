@@ -4,6 +4,7 @@ import WinnieNote from '../components/WinnieNote.astro';
 import { SITE } from '../config.ts';
 ---
 <BaseLayout title={`Privacy Policy — ${SITE.brand}`} description={`How ${SITE.brand} handles data, cookies, and advertising.`} showDisclosure={false}>
+  <div class="prose">
   <span class="washi">The legal stuff</span>
   <h1>Privacy Policy</h1>
   <p><em>Last updated: {new Date().toISOString().slice(0,10)}</em></p>
@@ -25,4 +26,5 @@ import { SITE } from '../config.ts';
 
   <h2>Contact</h2>
   <p>Questions about this policy? Contact us via the address listed on our <a href="/about/">About</a> page.</p>
+  </div>
 </BaseLayout>

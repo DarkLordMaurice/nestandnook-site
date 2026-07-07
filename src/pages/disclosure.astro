@@ -4,6 +4,7 @@ import WinnieNote from '../components/WinnieNote.astro';
 import { SITE, DISCLOSURE } from '../config.ts';
 ---
 <BaseLayout title={`Affiliate Disclosure — ${SITE.brand}`} description={`How ${SITE.brand} earns from affiliate links.`} showDisclosure={false}>
+  <div class="prose">
   <span class="washi">Straight talk</span>
   <h1>Affiliate Disclosure</h1>
 
@@ -15,4 +16,5 @@ import { SITE, DISCLOSURE } from '../config.ts';
   <p><strong>{DISCLOSURE.associate}</strong></p>
   <p>{SITE.brand} is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com. We may also participate in other affiliate programs. Commissions never cost you anything extra and never change which products we recommend — our rankings are based on independent evaluation.</p>
   <p>Prices and availability shown or linked are accurate as of the date/time indicated and are subject to change. Any price displayed on Amazon at the time of purchase applies.</p>
+  </div>
 </BaseLayout>

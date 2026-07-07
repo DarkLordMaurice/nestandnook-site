@@ -71,9 +71,20 @@ body {
 }
 
 .wrap {
-  max-width: 780px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 1.25rem;
+}
+
+/* Narrower reading column for actual long-form paragraph copy (article
+   bodies on blog/review/recipe detail pages + static text pages). The outer
+   .wrap went wide (1100px) so header/footer/card-grids fill the screen
+   instead of leaving big dead cream margins on wide monitors, but long
+   paragraphs at 1100px measure way too wide to read comfortably — so this
+   sits inside that wider shell and caps prose at a normal ~80ch line. */
+.prose {
+  max-width: 740px;
+  margin: 0 auto;
 }
 
 /* ---------- Typography ---------- */
@@ -170,7 +181,7 @@ nav.site-nav a:hover { color: var(--gold-light); opacity: 1; border-bottom-color
 
 /* ---------- Main content shell ---------- */
 main { padding: 0 0 3rem; }
-main .wrap { max-width: 780px; padding-top: 2.25rem; }
+main .wrap { max-width: 1100px; padding-top: 2.25rem; }
 
 .byline {
   color: var(--ink-soft);
@@ -741,7 +752,7 @@ tr:nth-child(even) td { background: rgba(214, 164, 25, 0.05); }
   margin-top: 3rem;
   padding: 2.25rem 0;
 }
-.site-footer .wrap { max-width: 780px; }
+.site-footer .wrap { max-width: 1100px; }
 .site-footer p { color: var(--cream-on-dark); opacity: 0.85; font-size: 0.92rem; margin: 0 0 0.5rem; }
 .site-footer .small { font-size: 0.78rem; color: var(--cream-on-dark); opacity: 0.55; }
 .site-footer a { color: var(--gold-light); }

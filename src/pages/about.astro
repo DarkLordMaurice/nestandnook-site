@@ -4,6 +4,7 @@ import { SITE } from '../config.ts';
 import { AUTHORS } from '../authors.ts';
 ---
 <BaseLayout title={`About — ${SITE.brand}`} description={`Who's behind ${SITE.brand} and how we review and rank the gear we recommend.`} showDisclosure={false}>
+  <div class="prose">
   <span class="washi washi-teal">About the nook</span>
   <h1>About {SITE.brand}</h1>
   <p class="lede">{SITE.brand} helps people build better home office and small-space kitchen setups without overspending. We focus on the affordable accessories that actually change how a space feels day to day — footrests, stands, cable management, desk pads, kitchen space-savers — and we rank them by who each product genuinely suits.</p>
@@ -49,4 +50,5 @@ import { AUTHORS } from '../authors.ts';
       <p>{a.bio}</p>
     </section>
   ))}
+  </div>
 </BaseLayout>
