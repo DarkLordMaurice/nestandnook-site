@@ -1,6 +1,6 @@
 ---
-title: "Classic Beef Chili (Thick, Never Watery)"
-description: "The layered-spice and reduction trick that makes chili taste simmered for hours and stay thick, instead of thin and soupy, in about 90 minutes."
+title: "Classic Beef Chili Recipe (Thick, Never Watery)"
+description: "This chili recipe uses a layered-spice and reduction trick that makes it taste simmered for hours and stay thick, not thin and soupy, in about 90 min."
 primaryKeyword: "chili recipe"
 publishDate: 2026-07-04
 category: "main"
@@ -10,6 +10,8 @@ cookTimeMinutes: 75
 servings: 6
 difficulty: "easy"
 image: "/recipes/recipe-chili.jpg"
+altImage: "/recipes/recipe-chili-alt.jpg"
+altImageAlt: "A close-up of a bowl of thick beef chili topped with cheese and green onion"
 imageAlt: "A bowl of thick beef chili topped with shredded cheese, sour cream, and sliced green onion"
 winnieImage: "/winnie/winnie-holding-chili.jpg"
 winnieHeadshot: "/winnie/headshot-v4-3.jpg"
@@ -75,7 +77,7 @@ relatedRecipes:
     href: "/recipes/"
 ---
 
-Chili has a reputation as one of those recipes everybody already "knows how to make," which is exactly why so much of it turns out thinner and flatter than the version someone's uncle swears by. The actual gap almost never comes down to a secret ingredient. It's two habits: blooming the spices in fat before any liquid goes in, and giving the pot real time uncovered at the end so it can actually reduce. Do those two things and the rest of the recipe is mostly just simmering.
+This chili recipe exists because chili has a reputation as one of those recipes everybody already "knows how to make," which is exactly why so much of it turns out thinner and flatter than the version someone's uncle swears by. The actual gap almost never comes down to a secret ingredient. It's two habits: blooming the spices in fat before any liquid goes in, and giving the pot real time uncovered at the end so it can actually reduce. Do those two things and the rest of the recipe is mostly just simmering.
 
 ## Blooming the spices is not optional
 

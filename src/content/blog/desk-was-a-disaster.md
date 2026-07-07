@@ -1,6 +1,7 @@
 ---
 title: "The Desk Complaint That Shows Up in Every Review Section"
 description: "One complaint keeps showing up across footrest and desk-setup reviews: feet dangling all day. Here's what buyers say actually fixes it, and why."
+primaryKeyword: "feet dangling all day"
 publishDate: 2026-07-03
 category: "Desk fixes"
 image: "/winnie/product-hold.jpg"

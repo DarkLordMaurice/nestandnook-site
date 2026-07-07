@@ -1,6 +1,7 @@
 ---
 title: "Why Your Feet Fall Asleep at Your Desk (and the Cheap Fix)"
-description: "That pins-and-needles feeling in your feet by mid-afternoon isn't random. Here's what's actually happening at your desk, and what reviewers say fixes it."
+description: "Feet fall asleep at your desk for a reason — the pins-and-needles feeling isn't random. Here's what's actually happening, and what fixes it."
+primaryKeyword: "feet fall asleep at your desk"
 publishDate: 2026-07-04
 category: "Desk fixes"
 image: "/winnie/office-hero.jpg"
@@ -12,7 +13,7 @@ relatedGuides:
     href: "/home-office/"
 ---
 
-Somewhere around 2pm, a specific and very unglamorous thing happens to a lot of people at their desks: their feet go fuzzy. Not painful, exactly. Just that buzzing, slightly-numb, "wait, when did that start" feeling that makes you shift in your chair and wonder if you're coming down with something. You're not. You're sitting wrong, and I say that with the full affection of someone who has spent a genuinely alarming number of hours thinking about chairs.
+Somewhere around 2pm, feet fall asleep at your desk for a lot of people — a specific and very unglamorous thing. Their feet go fuzzy. Not painful, exactly. Just that buzzing, slightly-numb, "wait, when did that start" feeling that makes you shift in your chair and wonder if you're coming down with something. You're not. You're sitting wrong, and I say that with the full affection of someone who has spent a genuinely alarming number of hours thinking about chairs.
 
 ## What's actually going on (and it's not what people assume)
 

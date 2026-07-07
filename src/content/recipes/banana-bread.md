@@ -1,6 +1,6 @@
 ---
-title: "Classic Banana Bread (Moist, No Mixer Needed)"
-description: "The most-searched recipe on the internet, made simple: one bowl, no mixer, and a foolproof way to tell when it's really done."
+title: "Classic Banana Bread Recipe (Moist, No Mixer Needed)"
+description: "This banana bread recipe is the most-searched recipe on the internet, made simple: one bowl, no mixer, and a foolproof way to tell when it's really done."
 primaryKeyword: "banana bread recipe"
 publishDate: 2026-07-05
 category: "dessert"
@@ -10,6 +10,8 @@ cookTimeMinutes: 60
 servings: 8
 difficulty: "easy"
 image: "/recipes/recipe-banana-bread.jpg"
+altImage: "/recipes/recipe-banana-bread-alt.jpg"
+altImageAlt: "A close-up slice of banana bread showing the moist, tender crumb"
 imageAlt: "A sliced loaf of banana bread on a wooden cutting board, showing the moist interior"
 winnieImage: "/winnie/winnie-kitchen-stir.jpg"
 winnieNote: "A one-bowl recipe with a built-in excuse to use up bananas you were both attached to and slightly worried about — that's efficient in a way I respect. Softened butter, one bowl, no mixer required: structurally, this is just correct."
@@ -56,7 +58,7 @@ relatedRecipes:
     href: "/recipes/chocolate-chip-cookies/"
 ---
 
-Banana bread is the single most-searched recipe on the internet — by a wide margin — and honestly, that tracks. It's the thing you make with bananas that are one day past "fine to eat plain," it doesn't need a mixer or any special equipment, and it makes the whole kitchen smell like a bakery for the price of ingredients you probably already have.
+This banana bread recipe is for the single most-searched recipe on the internet — by a wide margin — and honestly, that tracks. It's the thing you make with bananas that are one day past "fine to eat plain," it doesn't need a mixer or any special equipment, and it makes the whole kitchen smell like a bakery for the price of ingredients you probably already have.
 
 This version skips the stand mixer entirely — one bowl, a fork for mashing, and a spoon. The whole point of banana bread is that it's forgiving and fast, so this recipe stays out of its own way.
 

@@ -1,6 +1,6 @@
 ---
-title: "Chicken Alfredo (Silky Sauce That Won't Break)"
-description: "The off-heat, freshly-grated-cheese method that keeps alfredo sauce silky instead of grainy or broken, without relying on jarred sauce."
+title: "Chicken Alfredo Recipe (Silky Sauce That Won't Break)"
+description: "This chicken alfredo recipe keeps the sauce silky (not grainy) using the off-heat, freshly-grated-cheese method — no jarred sauce needed."
 primaryKeyword: "chicken alfredo recipe"
 publishDate: 2026-07-06
 category: "main"
@@ -10,6 +10,8 @@ cookTimeMinutes: 25
 servings: 4
 difficulty: "easy"
 image: "/recipes/recipe-chicken-alfredo.jpg"
+altImage: "/recipes/recipe-chicken-alfredo-alt.jpg"
+altImageAlt: "A close-up of chicken alfredo pasta twirled on a fork, showing the silky sauce"
 imageAlt: "A bowl of fettuccine alfredo topped with sliced grilled chicken and cracked black pepper"
 winnieImage: "/winnie/winnie-holding-chicken-alfredo.jpg"
 winnieHeadshot: "/winnie/headshot-v4-2.jpg"
@@ -68,7 +70,7 @@ relatedRecipes:
     href: "/recipes/"
 ---
 
-Alfredo sauce has a reputation for being temperamental, breaking into a grainy, oil-slicked mess right when it should be coming together silky. That reputation is mostly earned by one habit: adding cheese to a sauce that's too hot, too fast. Fix the temperature and the timing, and alfredo turns out to be one of the more forgiving sauces in the whole pasta-night rotation.
+This chicken alfredo recipe fixes alfredo sauce's reputation for being temperamental — breaking into a grainy, oil-slicked mess right when it should be coming together silky. That reputation is mostly earned by one habit: adding cheese to a sauce that's too hot, too fast. Fix the temperature and the timing, and alfredo turns out to be one of the more forgiving sauces in the whole pasta-night rotation.
 
 ## Broken sauce is a heat problem, not a recipe problem
 

@@ -1,5 +1,5 @@
 ---
-title: "Classic Meatloaf (Moist, Never Dense)"
+title: "Classic Meatloaf Recipe (Moist, Never Dense)"
 description: "A real, no-nonsense meatloaf recipe with the two tricks that keep it moist instead of dense: a proper panade and a glaze that actually caramelizes."
 primaryKeyword: "meatloaf recipe"
 publishDate: 2026-07-04
@@ -10,6 +10,8 @@ cookTimeMinutes: 60
 servings: 6
 difficulty: "easy"
 image: "/recipes/recipe-meatloaf.jpg"
+altImage: "/recipes/recipe-meatloaf-alt.jpg"
+altImageAlt: "A sliced meatloaf with a glossy glaze, showing a moist, tender interior"
 imageAlt: "A sliced classic meatloaf with a glossy ketchup glaze on top, served on a platter"
 winnieImage: "/winnie/winnie-kitchen-chop.jpg"
 winnieHeadshot: "/winnie/avatar.jpg"
@@ -68,7 +70,7 @@ relatedRecipes:
     href: "/recipes/"
 ---
 
-Meatloaf gets a bad reputation it mostly doesn't deserve. The dry, dense, sad-brick version most people have suffered through at some point isn't a flaw in the concept — it's what happens when two small technique details get skipped: something to hold moisture in the meat as it cooks, and a light enough hand when mixing everything together. Fix those two things and meatloaf turns into what it's actually supposed to be — genuinely tender, a little sweet-and-tangy on top, and one of the easiest make-ahead dinners in regular rotation.
+This meatloaf recipe exists because meatloaf gets a bad reputation it mostly doesn't deserve. The dry, dense, sad-brick version most people have suffered through at some point isn't a flaw in the concept — it's what happens when two small technique details get skipped: something to hold moisture in the meat as it cooks, and a light enough hand when mixing everything together. Fix those two things and meatloaf turns into what it's actually supposed to be — genuinely tender, a little sweet-and-tangy on top, and one of the easiest make-ahead dinners in regular rotation.
 
 ## The panade is the whole trick
 

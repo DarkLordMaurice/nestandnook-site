@@ -1,6 +1,6 @@
 ---
 title: "Sheet-Pan Chicken Fajitas (One Pan, One Oven, No Stovetop Juggling)"
-description: "Restaurant-style fajitas without babysitting a hot skillet — everything roasts on one sheet pan, ideal for small kitchens with limited stovetop space."
+description: "These sheet pan chicken fajitas skip babysitting a hot skillet — everything roasts on one sheet pan, ideal for small kitchens with limited stovetop space."
 primaryKeyword: "sheet pan chicken fajitas"
 publishDate: 2026-07-05
 category: "main"
@@ -10,6 +10,8 @@ cookTimeMinutes: 25
 servings: 4
 difficulty: "easy"
 image: "/recipes/recipe-sheet-pan-chicken-fajitas.jpg"
+altImage: "/recipes/recipe-sheet-pan-chicken-fajitas-alt.jpg"
+altImageAlt: "A sheet pan of roasted chicken fajita strips with charred peppers and onions"
 imageAlt: "Sheet-pan chicken fajitas with charred bell peppers and onions, fresh from the oven"
 winnieImage: "/winnie/winnie-kitchen-chop-side.jpg"
 winnieNote: "One pan, minimal juggling, cleanup that doesn't turn into its own production — this is basically feral efficiency mode translated into dinner. If I had a labeled bin for 'meals with one dish to wash,' this would live in it."
@@ -67,7 +69,7 @@ relatedRecipes:
     href: "/recipes/"
 ---
 
-Fajitas are traditionally a stovetop, stand-over-the-pan dish — sear the chicken, remove it, sear the peppers, combine, repeat until your smoke alarm has an opinion. This version skips all of that. Everything goes on one sheet pan into a hot oven, which matters most if your stovetop is small, your ventilation is worse, or you just don't want to deal with hot oil splatter on a single burner.
+These sheet pan chicken fajitas skip the traditional stovetop, stand-over-the-pan routine — sear the chicken, remove it, sear the peppers, combine, repeat until your smoke alarm has an opinion. Everything goes on one sheet pan into a hot oven, which matters most if your stovetop is small, your ventilation is worse, or you just don't want to deal with hot oil splatter on a single burner.
 
 ## Why the single layer actually matters
 

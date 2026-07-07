@@ -1,6 +1,6 @@
 ---
-title: "Classic Meat Lasagna (No Watery Layers)"
-description: "The ricotta-draining and sauce-ratio habits that keep lasagna layers from turning watery, plus a real make-ahead method that actually works."
+title: "Classic Meat Lasagna Recipe (No Watery Layers)"
+description: "This lasagna recipe uses ricotta-draining and sauce-ratio habits that keep the layers from turning watery, plus a real make-ahead method that actually works."
 primaryKeyword: "lasagna recipe"
 publishDate: 2026-07-06
 category: "main"
@@ -10,6 +10,8 @@ cookTimeMinutes: 60
 servings: 8
 difficulty: "intermediate"
 image: "/recipes/recipe-lasagna.jpg"
+altImage: "/recipes/recipe-lasagna-alt.jpg"
+altImageAlt: "A slice of meat lasagna lifted from the pan, showing distinct, non-watery layers"
 imageAlt: "A slice of layered meat lasagna being lifted from the pan, cheese stretching"
 winnieImage: "/winnie/winnie-holding-lasagna.jpg"
 winnieHeadshot: "/winnie/headshot-v4-1.jpg"
@@ -75,7 +77,7 @@ relatedRecipes:
     href: "/recipes/"
 ---
 
-Lasagna's reputation as a weekend project comes less from the number of steps and more from how often the result turns out swimming in liquid instead of neatly layered. That's not bad luck or a bad pan — it's moisture that had nowhere to go, and it traces back to one of two habits almost every time.
+This lasagna recipe fixes lasagna's reputation as a weekend project — a reputation that comes less from the number of steps and more from how often the result turns out swimming in liquid instead of neatly layered. That's not bad luck or a bad pan — it's moisture that had nowhere to go, and it traces back to one of two habits almost every time.
 
 ## Ricotta holds more water than it looks like
 

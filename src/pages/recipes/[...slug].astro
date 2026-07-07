@@ -108,6 +108,11 @@ const jsonLd = {
   {d.tips.length > 0 && (
     <section class="recipe-tips">
       <h2>Tips &amp; variations</h2>
+      {d.altImage && (
+        <div class="polaroid inset tilt-left">
+          <img src={d.altImage} alt={d.altImageAlt ?? `Another look at the finished ${d.title}`} width="1200" height="1200" loading="lazy" />
+        </div>
+      )}
       <ul>{d.tips.map((t) => <li>{t}</li>)}</ul>
     </section>
   )}

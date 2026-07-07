@@ -10,6 +10,11 @@ import { HUBS } from '../hubs';
 export const GET: APIRoute = async () => {
   const reviews = await getCollection('reviews');
   const posts = await getCollection('blog');
+  // recipes was missing from this sitemap entirely until 2026-07-06 — all 10
+  // recipe pages + the /recipes/ index were unlisted and effectively invisible
+  // to anything relying on sitemap.xml for discovery. Fixed as part of the
+  // technical SEO/AEO pass.
+  const recipes = await getCollection('recipes');
 
   const toDateStr = (d?: Date) => (d ? d.toISOString().split('T')[0] : undefined);
 
@@ -22,6 +27,7 @@ export const GET: APIRoute = async () => {
     { loc: '/privacy/', changefreq: 'yearly' },
     { loc: '/disclosure/', changefreq: 'yearly' },
     { loc: '/blog/', changefreq: 'daily' },
+    { loc: '/recipes/', changefreq: 'daily' },
   ];
 
   const hubPages: Entry[] = Object.keys(HUBS).map((hub) => ({
@@ -41,7 +47,13 @@ export const GET: APIRoute = async () => {
     changefreq: 'monthly',
   }));
 
-  const all = [...staticPages, ...hubPages, ...reviewPages, ...blogPages];
+  const recipePages: Entry[] = recipes.map((r) => ({
+    loc: `/recipes/${r.slug}/`,
+    lastmod: toDateStr(r.data.updatedDate ?? r.data.publishDate),
+    changefreq: 'monthly',
+  }));
+
+  const all = [...staticPages, ...hubPages, ...reviewPages, ...blogPages, ...recipePages];
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

@@ -1,6 +1,6 @@
 ---
-title: "Classic French Toast (Custardy, Never Soggy)"
-description: "The bread-choice and soak-time rules that make French toast custardy in the middle and crisp outside, instead of soggy, dry, or eggy-tasting."
+title: "Classic French Toast Recipe (Custardy, Never Soggy)"
+description: "This french toast recipe uses the bread-choice and soak-time rules that make it custardy in the middle and crisp outside, instead of soggy, dry, or eggy."
 primaryKeyword: "french toast recipe"
 publishDate: 2026-07-05
 category: "breakfast"
@@ -10,6 +10,8 @@ cookTimeMinutes: 15
 servings: 4
 difficulty: "easy"
 image: "/recipes/recipe-french-toast.jpg"
+altImage: "/recipes/recipe-french-toast-alt.jpg"
+altImageAlt: "A stack of custardy French toast topped with syrup and powdered sugar"
 imageAlt: "Two slices of golden French toast topped with berries and a dusting of powdered sugar"
 winnieImage: "/winnie/winnie-holding-french-toast.jpg"
 winnieHeadshot: "/winnie/avatar.jpg"
@@ -66,7 +68,7 @@ relatedRecipes:
     href: "/recipes/"
 ---
 
-French toast has a short ingredient list and a reputation for being foolproof, which makes it a little surprising how often it actually goes wrong — soggy in the middle, or dry and eggy on the outside. The custard is rarely the issue. The bread almost always is.
+This french toast recipe exists because french toast has a short ingredient list and a reputation for being foolproof, which makes it a little surprising how often it actually goes wrong — soggy in the middle, or dry and eggy on the outside. The custard is rarely the issue. The bread almost always is.
 
 ## Stale bread isn't a compromise, it's the requirement
 

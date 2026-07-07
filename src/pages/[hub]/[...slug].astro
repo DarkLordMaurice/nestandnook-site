@@ -23,8 +23,7 @@ const authorName = DEFAULT_AUTHOR.name;
 // datePublished/dateModified + author included here too (not just the Article
 // fallback) — visible freshness + authorship are trust signals AI Overviews /
 // GEO citation surfaces weigh heavily as of the 2026 update.
-const jsonLd = d.products.length > 0 ? {
-  '@context': 'https://schema.org',
+const mainSchema = d.products.length > 0 ? {
   '@type': 'ItemList',
   name: d.title,
   description: d.description,
@@ -38,7 +37,6 @@ const jsonLd = d.products.length > 0 ? {
     url: amazonLink(p.asin),
   })),
 } : {
-  '@context': 'https://schema.org',
   '@type': 'Article',
   headline: d.title,
   description: d.description,
@@ -46,6 +44,24 @@ const jsonLd = d.products.length > 0 ? {
   dateModified: d.updatedDate ?? d.publishDate,
   author: { '@type': 'Organization', name: authorName },
   publisher: { '@type': 'Organization', name: SITE.brand },
+};
+
+// FAQPage schema — same rationale as the recipes template: the "Frequently
+// asked questions" section already on every review page is now backed by
+// structured d.faqs data, not just prose, so AI Overviews/answer engines have
+// a clean Q&A block to cite instead of having to parse it out of body copy.
+const faqSchema = d.faqs.length > 0 ? {
+  '@type': 'FAQPage',
+  mainEntity: d.faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+} : null;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [mainSchema, ...(faqSchema ? [faqSchema] : [])],
 };
 ---
 <BaseLayout title={d.title} description={d.description} ogImage={d.ogImage} jsonLd={jsonLd} author={authorName} publishDate={d.publishDate} updatedDate={d.updatedDate}>

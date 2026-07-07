@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://nestandnook.org/sitemap.xml
+Sitemap: https://nestandnook.org/image-sitemap.xml

@@ -447,46 +447,6 @@ main .wrap { max-width: 780px; padding-top: 2.25rem; }
   margin: 0.5rem 0 0.1rem;
 }
 
-/* ---------- Side rail (left-margin "runner") ----------
-   Fills the wide empty gutter beside the 780px reading column on desktop —
-   flagged 2026-07-10 as too much dead space on the sides of every page.
-   Hidden below 1300px: under that width there's no real gutter for it to
-   sit in, and it would otherwise collide with the centered .wrap column. */
-.side-rail { display: none; }
-@media (min-width: 1300px) {
-  main { position: relative; }
-  .side-rail {
-    display: block;
-    position: absolute;
-    top: 0.5rem;
-    left: max(1.5rem, calc(50% - 780px / 2 - 210px));
-    width: 180px;
-  }
-}
-.side-rail-doodle {
-  display: block;
-  font-size: 1.4rem;
-  color: var(--gold);
-  margin-bottom: 0.35rem;
-}
-.side-rail-heading {
-  font-family: var(--font-hand);
-  font-size: 1.3rem;
-  color: var(--teal-dark);
-  margin: 0 0 0.6rem;
-  transform: rotate(-2deg);
-}
-.side-rail-list { list-style: none; margin: 0; padding: 0; border-left: 2px dashed var(--border); padding-left: 0.9rem; }
-.side-rail-list li { margin-bottom: 0.7rem; }
-.side-rail-list a {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--ink-soft);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-}
-.side-rail-list a:hover { color: var(--terracotta-dark); border-bottom-color: var(--terracotta); }
-
 /* ---------- Hero (homepage) ---------- */
 .hero {
   padding: 2.5rem 0 1.75rem;
@@ -555,6 +515,18 @@ main .wrap { max-width: 780px; padding-top: 2.25rem; }
   transition: background 0.15s ease;
 }
 .hero-banner .hero-cta:hover { background: var(--terracotta-dark); color: #fff; }
+/* Small, real (not fabricated) content-count line — added 2026-07-06 to give
+   the hero's text column something to sit next to besides whitespace when
+   Winnie's photo runs taller than the washi/h1/lede/CTA block. Counts are
+   computed from the actual collections at build time, not hardcoded. */
+.hero-banner .hero-stats {
+  margin: 0.9rem 0 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--gold-light);
+  opacity: 0.9;
+}
 .hero-photo {
   width: 100%;
   height: auto;
@@ -600,7 +572,18 @@ main .wrap { max-width: 780px; padding-top: 2.25rem; }
 }
 .polaroid:has(.blog-header-photo) { margin: 0.5rem 0 1.75rem; }
 @media (min-width: 800px) {
-  .hero-banner-inner.two-col { grid-template-columns: 1.05fr 1fr; }
+  .hero-banner-inner.two-col {
+    grid-template-columns: 1.05fr 1fr;
+    /* The text column (washi tag + h1 + lede + CTA) is shorter than Winnie's
+       photo, and the shared .hero-banner-inner rule vertically centers grid
+       items as a block — that left the text sitting mid-row with a visible
+       empty gap below the CTA button, to the left of the photo, since the
+       photo (taller) sets the row height. Top-aligning just this two-col
+       variant starts the text flush with the photo's top edge instead, so
+       any leftover space falls naturally below both columns rather than
+       reading as a hole in the middle of the hero. */
+    align-items: start;
+  }
 }
 
 /* Washi-tape sticker accent — used to pin the "eyebrow" label on hub/hero

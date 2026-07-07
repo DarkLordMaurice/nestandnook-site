@@ -4,7 +4,6 @@ import WinnieNote from '../components/WinnieNote.astro';
 import ReviewCard from '../components/ReviewCard.astro';
 import RecipeCard from '../components/RecipeCard.astro';
 import BlogCard from '../components/BlogCard.astro';
-import SideRail from '../components/SideRail.astro';
 import { SITE } from '../config.ts';
 import { HUBS } from '../hubs.ts';
 import { getCollection } from 'astro:content';
@@ -25,15 +24,6 @@ const latestPosts = [...blogPosts].sort((a, b) => +b.data.publishDate - +a.data.
   description="Review-backed rankings and buying guides for home office ergonomics and small-space kitchen gear. Independent picks, honest trade-offs."
   showDisclosure={false}
 >
-  <SideRail
-    heading="Jump to"
-    links={[
-      { label: 'Home Office', href: '#home-office' },
-      { label: 'Kitchen', href: '#kitchen' },
-      { label: 'Recipes', href: '#recipes' },
-      { label: "Winnie's Notes", href: '#winnies-notes' },
-    ]}
-  />
   <section class="hero-banner">
     <div class="hero-banner-inner two-col">
       <div>
@@ -42,6 +32,9 @@ const latestPosts = [...blogPosts].sort((a, b) => +b.data.publishDate - +a.data.
         <p class="lede">I've read more desk and kitchen reviews than any reasonable person should admit to, and I've turned all of it into one shortlist: gear that actually earns its spot in a small space — starting with home office ergonomics and small-space kitchen tools.</p>
         <a class="hero-cta" href="/home-office/">Start with Home Office →</a>
         <span class="doodle hero-doodle">psst, start here!</span>
+        <p class="hero-stats">
+          {reviews.length} buying guide{reviews.length === 1 ? '' : 's'} · {recipes.length} recipe{recipes.length === 1 ? '' : 's'} · {blogPosts.length} note{blogPosts.length === 1 ? '' : 's'} from Winnie
+        </p>
       </div>
       <div class="polaroid">
         <img src="/winnie/hero-full.jpg" alt="Winnie Hollowell, Nest & Nook's virtual host, in her home office" class="hero-photo" width="800" height="500" />

@@ -3,7 +3,7 @@
 # than introducing new unverified products. ASINs already verified 2026-07-04
 # in their source roundups (footrest / monitor-stand / cable-management pages).
 title: "Ergonomic Home Office Setup Under $150 (2026)"
-description: "Four small, cheap upgrades that fix the most common desk complaints — footrest, monitor riser, and cable management — all together for under $150."
+description: "This ergonomic home office setup under $150 fixes the most common desk complaints — footrest, monitor riser, and cable management — all together."
 primaryKeyword: "ergonomic home office setup under $150"
 hub: "home-office"
 pageType: "setup_build"
@@ -11,7 +11,7 @@ publishDate: 2026-07-04
 updatedDate: 2026-07-04
 disclosure: true
 schemaType: "ItemList"
-image: "/winnie/winnie-office-wide-overview.jpg"
+image: "/winnie/winnie-gear-desk-relieved.jpg"
 products:
   - name: "StrongTek 4-Angle Wooden Footrest"
     asin: "B0BTL7QLT5"
@@ -63,9 +63,20 @@ internalLinks:
     href: "/home-office/desk-cable-management/"
   - label: "Best Laptop Stands for Bed & Couch"
     href: "/home-office/best-laptop-stand-for-couch-and-bed/"
+faqs:
+  - q: "Should I buy the whole bundle at once or one piece at a time?"
+    a: "If budget forces a choice, the footrest usually has the most immediate, noticeable effect on comfort. The cable tray has the most immediate effect on how the desk looks. Pick based on which bothers you more."
+  - q: "Will this work with a standing desk?"
+    a: "The footrest and monitor riser both work fine. For cable management on a sit-stand desk specifically, see the flexible mesh option in our full cable management guide instead of a rigid tray."
+  - q: "Is $150 realistic, or will taxes/shipping push it over?"
+    a: "This bundle is priced to leave room under $150 even with typical tax, based on each product's usual price range — but prices change, so check the current total at checkout."
 ---
 
-You don't need a $2,000 standing-desk overhaul to fix most of what's actually wrong with a home office setup. The complaints that show up over and over in reviews — dangling feet, a screen that's too low, cables everywhere — are each solved by one small, cheap product. Put together, this bundle covers all three for well under $150, and every item here is the budget pick from a full category roundup, not a random guess.
+You don't need a $2,000 standing-desk overhaul to fix most of what's actually wrong with a home office setup. The complaints that show up over and over in reviews — dangling feet, a screen that's too low, cables everywhere — are each solved by one small, cheap product. Put together, this ergonomic home office setup under $150 covers all three, and every item here is the budget pick from a full category roundup, not a random guess.
+
+<div class="polaroid inset">
+  <img src="/winnie/winnie-gear-desk-frustrated.jpg" alt="Winnie frustrated at a dual-monitor desk with a sticky note reading 'Don't forget bar-risers!'" width="1402" height="1122" />
+</div>
 
 This isn't "buy the cheapest thing in every category" — each pick earned its spot in its own dedicated roundup (linked below each product) against real alternatives. If you want more lift, more adjustability, or a nicer finish than the budget tier, the full roundups cover that.
 

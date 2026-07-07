@@ -1,6 +1,7 @@
 ---
 title: "Every Nook Wants a Job to Do"
-description: "The whole philosophy behind Nest & Nook: a space that doesn't have a job to do is just clutter waiting to happen — here's what that looks like in practice."
+description: "Nest & Nook's small space organizing philosophy in one line: a space without a job to do is just clutter waiting to happen."
+primaryKeyword: "small space organizing philosophy"
 publishDate: 2026-06-28
 category: "Behind the nook"
 image: "/winnie/portrait.jpg"
@@ -10,7 +11,7 @@ relatedGuides:
     href: "/about/"
 ---
 
-Here's a sentence I say a lot, apparently: every nook wants a job to do.
+Here's a sentence I say a lot, apparently: every nook wants a job to do. It's my whole small space organizing philosophy, distilled into six words.
 
 I don't mean that in a productivity-guru, optimize-your-mornings way. I mean it much more literally. That awkward corner of your desk that catches loose cables. The drawer that's supposedly "for office supplies" but is actually a landfill. The shelf above your monitor that exists purely to collect dust and a single dead plant. Every one of those spaces already has a job — it's just doing the wrong one, and it's going to keep doing the wrong one until something with an actual purpose moves in and claims the territory.
 

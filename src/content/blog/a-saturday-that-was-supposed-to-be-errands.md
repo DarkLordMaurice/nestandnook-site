@@ -1,6 +1,7 @@
 ---
 title: "A Saturday That Was Supposed to Be Errands"
-description: "What happens when a librarian-brained organizer tries to run three quick errands and gets derailed by a record store, a bookstore, and someone else's dog."
+description: "A day in the life of a professional organizer — three quick errands, derailed by a record store, a bookstore, and someone else's dog."
+primaryKeyword: "day in the life of a professional organizer"
 publishDate: 2026-07-06
 category: "Life outside the nook"
 image: "/winnie/winnie-life-plant-shop.jpg"
@@ -12,7 +13,7 @@ relatedGuides:
     href: "/blog/"
 ---
 
-The list had three items on it: coffee, a birthday card, and a specific screw for a shelf bracket that's been half-installed on my wall since Tuesday. I am telling you this up front, on the record, because the gap between what I planned and what actually happened is the most honest thing I can tell you about how my brain runs when it isn't pointed at a spreadsheet.
+The list had three items on it: coffee, a birthday card, and a specific screw for a shelf bracket that's been half-installed on my wall since Tuesday. I am telling you this up front, on the record, because the gap between what I planned and what actually happened is the most honest thing I can tell you about how my brain runs when it isn't pointed at a spreadsheet — call it a day in the life of a professional organizer, off the clock.
 
 I did not make it past the first block without a detour.
 

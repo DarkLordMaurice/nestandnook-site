@@ -1,6 +1,6 @@
 ---
-title: "Chewy Chocolate Chip Cookies (No Chilling Required)"
-description: "The most-searched cookie recipe in America, built for soft, chewy centers and crisp edges — no dough-chilling detour required."
+title: "Chewy Chocolate Chip Cookies Recipe (No Chilling Required)"
+description: "This chocolate chip cookies recipe is the most-searched cookie recipe in America — soft, chewy centers, crisp edges, no dough-chilling required."
 primaryKeyword: "chocolate chip cookies recipe"
 publishDate: 2026-07-05
 category: "dessert"
@@ -10,6 +10,8 @@ cookTimeMinutes: 12
 servings: 24
 difficulty: "easy"
 image: "/recipes/recipe-chocolate-chip-cookies.jpg"
+altImage: "/recipes/recipe-chocolate-chip-cookies-alt.jpg"
+altImageAlt: "A stack of chewy chocolate chip cookies with one broken in half showing a gooey center"
 imageAlt: "A stack of chocolate chip cookies with one broken in half showing a soft, chewy center"
 winnieImage: "/winnie/winnie-kitchen-taste.jpg"
 winnieNote: "No dough-chilling detour, no waiting around for a craving to pass — I appreciate a recipe that respects a schedule. Softened butter, not melted, is the entire secret here, and I will die on that particular hill."
@@ -59,7 +61,7 @@ relatedRecipes:
     href: "/recipes/banana-bread/"
 ---
 
-Chocolate chip cookies are the most-searched cookie recipe in the country, and nearly every version online falls into one of two camps: thin and crispy all the way through, or so precious about chilling and resting that a cookie craving turns into a two-hour project. This one splits the difference — chewy centers, just-crisp edges, dough that goes straight from bowl to oven.
+This chocolate chip cookies recipe exists because chocolate chip cookies are the most-searched cookie recipe in the country, and nearly every version online falls into one of two camps: thin and crispy all the way through, or so precious about chilling and resting that a cookie craving turns into a two-hour project. This one splits the difference — chewy centers, just-crisp edges, dough that goes straight from bowl to oven.
 
 ## Why softened butter matters more than any other step
 

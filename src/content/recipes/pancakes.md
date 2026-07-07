@@ -1,7 +1,7 @@
 ---
-title: "Fluffy Buttermilk Pancakes (No Lumpy Batter)"
-description: "The one mixing rule that makes pancakes fluffy instead of flat or rubbery, plus a buttermilk substitute that actually works if you're out."
-primaryKeyword: "pancake recipe"
+title: "Fluffy Buttermilk Pancakes Recipe (No Lumpy Batter)"
+description: "This pancakes recipe uses one mixing rule that makes them fluffy instead of flat or rubbery, plus a buttermilk substitute that actually works if you're out."
+primaryKeyword: "pancakes recipe"
 publishDate: 2026-07-05
 category: "breakfast"
 cuisine: "American"
@@ -10,6 +10,8 @@ cookTimeMinutes: 15
 servings: 4
 difficulty: "easy"
 image: "/recipes/recipe-pancakes.jpg"
+altImage: "/recipes/recipe-pancakes-alt.jpg"
+altImageAlt: "A stack of fluffy buttermilk pancakes with butter melting on top"
 imageAlt: "A stack of fluffy buttermilk pancakes topped with butter, syrup, and berries"
 winnieImage: "/winnie/winnie-holding-pancakes.jpg"
 winnieHeadshot: "/winnie/headshot-v4-4.jpg"
@@ -66,7 +68,7 @@ relatedRecipes:
     href: "/recipes/"
 ---
 
-Pancakes are one of the few recipes where the technique is more important than the ingredient list, and most recipes bury that fact instead of leading with it. The batter itself is simple, forgiving flour math. Whether the result is fluffy or flat comes down to one habit: how much you mix it, and how much you don't.
+This pancakes recipe exists because pancakes are one of the few recipes where the technique is more important than the ingredient list, and most recipes bury that fact instead of leading with it. The batter itself is simple, forgiving flour math. Whether the result is fluffy or flat comes down to one habit: how much you mix it, and how much you don't.
 
 ## Overmixing is the whole problem
 

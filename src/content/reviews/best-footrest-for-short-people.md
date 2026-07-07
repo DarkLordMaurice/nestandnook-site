@@ -6,8 +6,8 @@
 # this is manual verification, not a live API pull — re-check before
 # Associates goes live in case a listing has since changed.
 title: "Best Footrests for Short People (2026): 5 Under-Desk Picks"
-description: "If your feet dangle at your desk, a footrest with enough lift fixes it. Our 5 picks for short users, ranked by height range, stability, and comfort."
-primaryKeyword: "best footrest for short people"
+description: "The best footrests for short people add enough lift to stop your feet from dangling. Our 5 picks, ranked by height range, stability, and comfort."
+primaryKeyword: "best footrests for short people"
 hub: "home-office"
 pageType: "roundup"
 publishDate: 2026-07-03
@@ -78,9 +78,18 @@ internalLinks:
     href: "/home-office/best-monitor-stands-for-dual-monitors/"
   - label: "Ergonomic Home Office Setup Under $150"
     href: "/home-office/ergonomic-home-office-setup-under-150/"
+faqs:
+  - q: "How high should a footrest be if I'm short?"
+    a: "Aim to get your knees to about 90° with your thighs roughly parallel to the floor. For many people 5'6\" and under that lands somewhere in the 4–7 inch range, which is why maximum height is the spec to check first."
+  - q: "Do I really need an adjustable one?"
+    a: "If you share the desk, switch between chairs, or aren't sure of your ideal height yet, adjustable is worth it. If you already know your number, a fixed platform at the right height is cheaper and rock-solid."
+  - q: "Footrest or a small stool?"
+    a: "A random stool rarely lands at the right height or angle and tends to slide. A purpose-built footrest gives you the correct elevation, a non-slip base, and usually a tilt — all of which matter more than they sound."
+  - q: "Will a footrest help with lower-back discomfort at my desk?"
+    a: "Supporting your feet takes pressure off the backs of your thighs and helps you sit back into the chair, which many people find eases desk-related aches. It's a comfort and posture aid, not a medical device — if you have persistent pain, check with a professional."
 ---
 
-Let's talk about the drawer that's having a moment — except today it's your feet. If you're 5'6" or shorter, most desks and chairs simply weren't built for you. Raise your chair enough to reach the keyboard comfortably and your feet start to dangle — which throws your weight onto the backs of your thighs, cuts circulation, and quietly wrecks your lower back by mid-afternoon. A footrest is the cheapest fix in ergonomics, but for short people the one number that matters most is **how much lift it gives**. Many footrests top out around 4–5 inches, which barely helps if your feet hang several inches off the floor.
+Let's talk about the drawer that's having a moment — except today it's your feet. If you're 5'6" or shorter, most desks and chairs simply weren't built for you. Raise your chair enough to reach the keyboard comfortably and your feet start to dangle — which throws your weight onto the backs of your thighs, cuts circulation, and quietly wrecks your lower back by mid-afternoon. The best footrests for short people are the cheapest fix in ergonomics, but the one number that matters most is **how much lift it gives**. Many footrests top out around 4–5 inches, which barely helps if your feet hang several inches off the floor.
 
 Our top pick for most short users is the **HUANUO Ergonomic Under-Desk Footrest**, purely because it elevates higher than anything else here (up to about 6.7 inches) while still tilting and rocking. If you want to fine-tune the exact height, the **Kensington SoleMate Plus** is the more precise tool. Below, all five picks with who each one is really for.
 

@@ -17,13 +17,63 @@ const { title, description, ogImage, showDisclosure = true, jsonLd, author, publ
 const dateFmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 const canonical = new URL(Astro.url.pathname, SITE.url).toString();
 
-// Sitewide publisher entity — supports E-E-A-T / entity authority.
+// Sitewide entity graph — Organization + WebSite + a real named Person
+// (Maurice, publisher/editor of record), linked via @id so every page's
+// specific schema (ItemList/Article/Recipe/FAQPage from `jsonLd`) hangs off
+// the same graph instead of shipping as a disconnected second <script> tag.
+//
+// Deliberately NOT modeling Winnie as schema.org Person: she's disclosed
+// sitewide (see about.astro) as a fully virtual, AI-generated host, not a
+// real individual. schema.org Person is meant to represent real, identifiable
+// people — marking an AI persona as one would be exactly the kind of
+// misleading structured data Google's guidelines warn against, and it cuts
+// against this site's own honesty commitments. Maurice is real and named, so
+// he's the Person entity; Winnie stays a voice/character, not a schema node.
+const orgId = `${SITE.url}/#organization`;
+const websiteId = `${SITE.url}/#website`;
+const publisherId = `${SITE.url}/#maurice`;
+
 const orgSchema = {
-  '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': orgId,
   name: SITE.brand,
   url: SITE.url,
   description: SITE.tagline,
+  founder: { '@id': publisherId },
+};
+
+const websiteSchema = {
+  '@type': 'WebSite',
+  '@id': websiteId,
+  url: SITE.url,
+  name: SITE.brand,
+  publisher: { '@id': orgId },
+};
+
+const publisherSchema = {
+  '@type': 'Person',
+  '@id': publisherId,
+  name: 'Maurice',
+  jobTitle: 'Founder & Publisher',
+  url: `${SITE.url}/about/`,
+};
+
+// Flatten whatever the page passed in `jsonLd` (a single node, or its own
+// {'@context', '@graph': [...]} shape like the recipe pages build) into this
+// page's graph, stripping any nested '@context' so there's exactly one.
+const pageNodes: object[] = jsonLd
+  ? (Array.isArray((jsonLd as any)['@graph'])
+      ? (jsonLd as any)['@graph']
+      : [jsonLd]
+    ).map((n: any) => {
+      const { '@context': _drop, ...rest } = n;
+      return rest;
+    })
+  : [];
+
+const fullGraph = {
+  '@context': 'https://schema.org',
+  '@graph': [orgSchema, websiteSchema, publisherSchema, ...pageNodes],
 };
 ---
 <!doctype html>
@@ -45,8 +95,7 @@ const orgSchema = {
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&family=Cinzel+Decorative:wght@700;900&display=swap" rel="stylesheet" />
-  <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
-  {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+  <script type="application/ld+json" set:html={JSON.stringify(fullGraph)} />
 </head>
 <body>
   <header class="site-header">

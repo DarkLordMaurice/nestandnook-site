@@ -1,6 +1,6 @@
 ---
-title: "Baked Mac and Cheese (Creamy Inside, Crispy Top)"
-description: "The roux stage and cheese-blend rule that keeps baked mac and cheese creamy underneath a crisp top, instead of dry, greasy, or grainy."
+title: "Baked Mac and Cheese Recipe (Creamy Inside, Crispy Top)"
+description: "This mac and cheese recipe uses the roux stage and cheese-blend rule that keeps it creamy underneath a crisp top, instead of dry, greasy, or grainy."
 primaryKeyword: "mac and cheese recipe"
 publishDate: 2026-07-07
 category: "main"
@@ -10,6 +10,8 @@ cookTimeMinutes: 35
 servings: 6
 difficulty: "easy"
 image: "/recipes/recipe-mac-and-cheese.jpg"
+altImage: "/recipes/recipe-mac-and-cheese-alt.jpg"
+altImageAlt: "A close-up of baked mac and cheese with a golden, crispy top"
 imageAlt: "A skillet of baked mac and cheese with a golden, crispy breadcrumb top"
 winnieImage: "/winnie/winnie-holding-mac-and-cheese.jpg"
 winnieHeadshot: "/winnie/headshot-v4-3.jpg"
@@ -69,7 +71,7 @@ relatedRecipes:
     href: "/recipes/"
 ---
 
-Baked mac and cheese sounds like it should be one of the simpler dishes in weeknight rotation, and the ingredient list backs that up — pasta, cheese, a few pantry staples. The gap between "fine" and genuinely good mac and cheese comes down to two decisions most recipes rush past: how long the roux cooks, and which cheeses actually go into the sauce.
+This mac and cheese recipe exists because baked mac and cheese sounds like it should be one of the simpler dishes in weeknight rotation, and the ingredient list backs that up — pasta, cheese, a few pantry staples. The gap between "fine" and genuinely good mac and cheese comes down to two decisions most recipes rush past: how long the roux cooks, and which cheeses actually go into the sauce.
 
 ## The roux needs a real minute or two
 

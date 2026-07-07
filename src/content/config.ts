@@ -40,6 +40,12 @@ const reviews = defineCollection({
       winnieImage: z.string().optional(),
     })).default([]),
     internalLinks: z.array(z.object({ label: z.string(), href: z.string() })).default([]),
+    // Structured Q&A — mirrors the recipes collection's `faqs` field. Added
+    // 2026-07-06 so the "Frequently asked questions" section already written
+    // in prose on every review page can also emit FAQPage schema (previously
+    // only visible to human readers, invisible to AI Overviews/crawlers that
+    // look for structured Q&A). Keep this in sync with the on-page prose.
+    faqs: z.array(z.object({ q: z.string(), a: z.string() })).default([]),
   }),
 });
 
@@ -58,6 +64,7 @@ const blog = defineCollection({
   schema: z.object({
     title: z.string().max(70),
     description: z.string().max(160),
+    primaryKeyword: z.string().optional(), // added 2026-07-06 keyword retrofit — blog posts now carry a real target phrase like reviews/recipes do
     publishDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     ogImage: z.string().optional(),
@@ -95,6 +102,12 @@ const recipes = defineCollection({
     difficulty: z.enum(['easy', 'intermediate', 'advanced']).default('easy'),
     image: z.string(),
     imageAlt: z.string(),
+    // Second, alternate plated-dish photo (no Winnie) — added 2026-07-06 from
+    // the Food folder batch. Optional; rendered as a small inset photo near
+    // the recipe card if present, giving readers a second look at the finished
+    // dish without replacing the primary hero image.
+    altImage: z.string().optional(),
+    altImageAlt: z.string().optional(),
     winnieImage: z.string().optional(),  // Winnie-in-kitchen lifestyle shot (AI-rendered; disclosed on the About page, not repeated per-page)
     winnieNote: z.string().optional(),   // Short personality blurb in Winnie's voice about this specific dish — paired with her headshot via WinnieNote.astro
     winnieHeadshot: z.string().optional(), // vary which headshot shows next to winnieNote — don't repeat avatar.jpg on every recipe
