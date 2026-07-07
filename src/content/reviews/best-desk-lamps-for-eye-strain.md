@@ -69,6 +69,8 @@ products:
       - "Smaller light output than full desk lamps"
       - "Fewer color modes than the premium options"
 internalLinks:
+  - label: "How to Light a Home Office (Without Eye Strain)"
+    href: "/home-office/how-to-light-a-home-office/"
   - label: "Ergonomic Home Office Setup Under $150"
     href: "/home-office/ergonomic-home-office-setup-under-150/"
   - label: "The Ergonomic Desk Setup Checklist"

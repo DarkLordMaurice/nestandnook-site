@@ -1,0 +1,34 @@
+---
+// Multi-photo "gallery wall" hero treatment — replaces the old single small
+// centered polaroid on hub/About/blog-index heroes. That version read as a
+// lone passport photo floating in a big empty jewel-teal band; this layers
+// 2-3 real photos with overlap, tape, and a hand-drawn doodle aside so the
+// hero reads as an actual snapshot of Winnie's cluttered, collector-brained
+// space rather than a stock headshot. Pairs with the .collage CSS block in
+// global.css and the `hero-banner-collage` modifier on the parent section.
+interface Photo {
+  src: string;
+  alt: string;
+  tilt?: 'left' | 'right';
+  portrait?: boolean;
+}
+interface Accent extends Photo {
+  pos: 'br' | 'bl' | 'tr' | 'tl';
+}
+const { anchor, accents = [], doodle } = Astro.props as {
+  anchor: Photo;
+  accents?: Accent[];
+  doodle?: string;
+};
+---
+<div class="collage">
+  <div class={`polaroid collage-anchor tilt-${anchor.tilt ?? 'left'}`}>
+    <img src={anchor.src} alt={anchor.alt} class={`collage-anchor-img${anchor.portrait ? ' collage-anchor-img-portrait' : ''}`} width="800" height="600" />
+  </div>
+  {accents.map((a) => (
+    <div class={`polaroid collage-accent pos-${a.pos} tilt-${a.tilt ?? 'right'}`}>
+      <img src={a.src} alt={a.alt} class="collage-accent-img" width="500" height="500" />
+    </div>
+  ))}
+  {doodle && <span class="doodle collage-doodle">{doodle}</span>}
+</div>

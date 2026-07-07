@@ -561,6 +561,67 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
    cropped into a 4:3 frame — render them as a clean square instead. */
 .hero-banner-single .hero-photo-portrait { aspect-ratio: 1 / 1; }
 
+/* ---------- Collage hero (multi-photo scrapbook treatment) ----------
+   Replaces the old single small centered polaroid on hub/About/blog-index
+   heroes, which read as a lone passport photo floating in a big empty
+   jewel-teal band — small, static, and off-brand for a maximalist collector
+   character. This layers 2-3 real photos with overlap, tape, and a
+   hand-drawn doodle aside so the hero reads as a gallery-wall snapshot of
+   Winnie's actual (cluttered, pattern-rich) space. Add `hero-banner-collage`
+   alongside `hero-banner-single` on the parent <section> to widen the inner
+   container for this layout. */
+.hero-banner-collage .hero-banner-inner { max-width: 640px; }
+.collage {
+  position: relative;
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 0.5rem 3rem 3.75rem;
+}
+.collage-anchor { position: relative; z-index: 1; width: 100%; }
+.collage-anchor-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+}
+.collage-anchor-img.collage-anchor-img-portrait { aspect-ratio: 1 / 1; }
+.collage-accent {
+  position: absolute;
+  width: 42%;
+  z-index: 2;
+}
+.collage-accent-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+}
+.collage-accent.pos-br { right: -9%; bottom: -11%; }
+.collage-accent.pos-bl { left: -9%; bottom: -7%; }
+.collage-accent.pos-tr { right: -7%; top: -13%; }
+.collage-accent.pos-tl { left: -7%; top: -15%; }
+.collage-doodle {
+  position: absolute;
+  z-index: 3;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  max-width: 7.5rem;
+  text-align: center;
+  line-height: 1.2;
+  color: var(--gold-light);
+}
+@media (max-width: 680px) {
+  .collage { max-width: 300px; padding: 0.5rem 1.5rem 2.75rem; }
+  .collage-accent { width: 54%; }
+  .collage-accent.pos-br { right: -12%; bottom: -9%; }
+  .collage-accent.pos-bl { left: -12%; bottom: -9%; }
+  .collage-accent.pos-tr { right: -10%; top: -9%; }
+  .collage-accent.pos-tl { left: -10%; top: -9%; }
+  .collage-doodle { display: none; }
+}
+
 .post-card { padding: 0; overflow: hidden; }
 .post-card .post-card-image-link { display: block; line-height: 0; }
 .post-card .post-card-image {

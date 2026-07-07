@@ -5,7 +5,12 @@
 //
 // `blurb` is the plain, SEO-facing meta description (kept factual/neutral).
 // `winnieIntro` is Winnie's on-page narration — the personality layer.
-export const HUBS: Record<string, { name: string; blurb: string; winnieIntro: string; winniePhoto: string; hero: string; heroAlt: string }> = {
+interface HeroAccent { src: string; alt: string; pos: 'br' | 'bl' | 'tr' | 'tl'; tilt?: 'left' | 'right'; }
+
+export const HUBS: Record<string, {
+  name: string; blurb: string; winnieIntro: string; winniePhoto: string;
+  hero: string; heroAlt: string; heroAccents: HeroAccent[]; heroDoodle: string;
+}> = {
   'home-office': {
     name: 'Home Office & Ergonomics',
     blurb: 'Affordable upgrades that fix a cramped, uncomfortable desk — footrests, stands, cable management, lighting, and full setup builds.',
@@ -13,6 +18,11 @@ export const HUBS: Record<string, { name: string; blurb: string; winnieIntro: st
     winniePhoto: '/winnie/headshot-v4-1.jpg',
     hero: '/winnie/office-hero.jpg',
     heroAlt: "Winnie Hollowell perched on a desk with a mug that reads 'make beautiful things,' surrounded by a gallery wall and plants",
+    heroAccents: [
+      { src: '/winnie/winnie-office-standing-desk.jpg', alt: 'Winnie at her standing desk mid-adjustment', pos: 'br', tilt: 'right' },
+      { src: '/winnie/winnie-office-wide-overview.jpg', alt: "A wide view of Winnie's actual gallery-wall home office", pos: 'tl', tilt: 'left' },
+    ],
+    heroDoodle: 'yes, it really looks like this',
   },
   'kitchen': {
     name: 'Small-Space Kitchen Gear',
@@ -21,5 +31,10 @@ export const HUBS: Record<string, { name: string; blurb: string; winnieIntro: st
     winniePhoto: '/winnie/headshot-v4-2.jpg',
     hero: '/winnie/kitchen-hero.jpg',
     heroAlt: 'Winnie Hollowell stirring a pot on the stove in a small, plant-filled kitchen',
+    heroAccents: [
+      { src: '/winnie/kitchen-side.jpg', alt: 'Winnie working the counter from a side angle in her kitchen', pos: 'br', tilt: 'right' },
+      { src: '/winnie/winnie-kitchen-cabinet-reach.jpg', alt: 'Winnie reaching into a packed kitchen cabinet', pos: 'tl', tilt: 'left' },
+    ],
+    heroDoodle: "we don't talk about the spice drawer",
   },
 };

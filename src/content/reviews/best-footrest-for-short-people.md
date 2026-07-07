@@ -72,6 +72,10 @@ products:
       - "Tilt adjusts but height is largely fixed"
       - "Hard, uncushioned surface"
 internalLinks:
+  - label: "HUANUO Ergonomic Footrest Review"
+    href: "/home-office/huanuo-ergonomic-footrest-review/"
+  - label: "Kensington SoleMate Plus Footrest Review"
+    href: "/home-office/kensington-solemate-plus-review/"
   - label: "How to Sit Correctly at a Small Desk"
     href: "/home-office/how-to-sit-correctly-at-a-small-desk/"
   - label: "Chair Too Low for Your Desk? Here's What Actually Fixes It"

@@ -69,6 +69,8 @@ products:
       - "Build quality and app polish trail Govee's premium line"
       - "Wi-Fi-dependent smart features can be less reliable than remote-only control"
 internalLinks:
+  - label: "How to Light a Home Office (Without Eye Strain)"
+    href: "/home-office/how-to-light-a-home-office/"
   - label: "Ergonomic Home Office Setup Under $150"
     href: "/home-office/ergonomic-home-office-setup-under-150/"
   - label: "Best Desk Lamps for Eye Strain"
