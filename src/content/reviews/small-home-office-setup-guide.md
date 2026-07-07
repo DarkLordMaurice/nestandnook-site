@@ -7,7 +7,7 @@ pageType: "pillar"
 publishDate: 2026-07-06
 disclosure: true
 schemaType: "Article"
-image: "/winnie/office-hero.jpg"
+image: "/winnie/winnie-office-pillar-overview.jpg"
 products: []
 internalLinks:
   - label: "Ergonomic Home Office Setup Under $150"
