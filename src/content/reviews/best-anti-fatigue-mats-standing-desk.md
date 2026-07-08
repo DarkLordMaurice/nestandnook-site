@@ -11,7 +11,7 @@ publishDate: 2026-07-06
 updatedDate: 2026-07-06
 disclosure: true
 schemaType: "ItemList"
-image: "/winnie/office-hero.jpg"
+image: "/winnie/winnie-office-antifatigue-mat.jpg"
 products:
   - name: "Topo by Ergodriven (Full-Size)"
     asin: "B00V3TO9EK"

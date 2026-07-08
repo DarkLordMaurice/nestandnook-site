@@ -4,7 +4,7 @@ description: "Feet fall asleep at your desk for a reason — the pins-and-needle
 primaryKeyword: "feet fall asleep at your desk"
 publishDate: 2026-07-04
 category: "Desk fixes"
-image: "/winnie/office-hero.jpg"
+image: "/winnie/winnie-office-feet-asleep.jpg"
 winniePhoto: "/winnie/headshot-v4-1.jpg"
 relatedGuides:
   - label: "Best Footrest for Short People"

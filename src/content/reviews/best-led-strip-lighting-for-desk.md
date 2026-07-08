@@ -11,7 +11,7 @@ publishDate: 2026-07-06
 updatedDate: 2026-07-06
 disclosure: true
 schemaType: "ItemList"
-image: "/winnie/office-hero.jpg"
+image: "/winnie/winnie-office-led-strip-light.jpg"
 products:
   - name: "Govee RGBIC LED Strip Lights M1 (6.56ft)"
     asin: "B0BWLHHV8M"

@@ -7,7 +7,7 @@ pageType: "how_to"
 publishDate: 2026-07-06
 disclosure: true
 schemaType: "Article"
-image: "/winnie/office-hero.jpg"
+image: "/winnie/winnie-office-chair-too-low.jpg"
 products: []
 internalLinks:
   - label: "Best Footrests for Short People"

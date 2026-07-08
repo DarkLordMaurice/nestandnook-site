@@ -7,7 +7,7 @@ pageType: "how_to"
 publishDate: 2026-07-06
 disclosure: true
 schemaType: "Article"
-image: "/winnie/office-hero.jpg"
+image: "/winnie/winnie-office-monitor-height-test.jpg"
 products: []
 internalLinks:
   - label: "Best Monitor Stands for Dual Monitors"

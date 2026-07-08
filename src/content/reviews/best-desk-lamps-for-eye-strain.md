@@ -11,7 +11,7 @@ publishDate: 2026-07-06
 updatedDate: 2026-07-06
 disclosure: true
 schemaType: "ItemList"
-image: "/winnie/office-hero.jpg"
+image: "/winnie/winnie-office-lamp-eye-strain.jpg"
 products:
   - name: "BenQ e-Reading Desk Lamp"
     asin: "B017NOD9KI"

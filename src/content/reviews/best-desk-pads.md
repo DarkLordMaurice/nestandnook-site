@@ -11,7 +11,7 @@ publishDate: 2026-07-06
 updatedDate: 2026-07-06
 disclosure: true
 schemaType: "ItemList"
-image: "/winnie/office-hero.jpg"
+image: "/winnie/winnie-office-desk-pad.jpg"
 products:
   - name: "Aothia Leather Office Desk Pad Protector (31.5\" x 15.7\")"
     asin: "B082F5ZLS5"

@@ -10,7 +10,7 @@ pageType: "product_page"
 publishDate: 2026-07-06
 disclosure: true
 schemaType: "Product"
-image: "/winnie/winnie-office-couch-laptop.jpg"
+image: "/winnie/winnie-office-footrest-rocking.jpg"
 products:
   - name: "Kensington SoleMate Plus (SmartFit System)"
     asin: "B01NBWCTFD"

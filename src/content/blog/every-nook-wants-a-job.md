@@ -4,7 +4,7 @@ description: "Nest & Nook's small space organizing philosophy in one line: a spa
 primaryKeyword: "small space organizing philosophy"
 publishDate: 2026-06-28
 category: "Behind the nook"
-image: "/winnie/portrait.jpg"
+image: "/winnie/winnie-life-sorting-drawer.jpg"
 winniePhoto: "/winnie/headshot-v4-3.jpg"
 relatedGuides:
   - label: "About Nest & Nook"
