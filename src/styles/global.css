@@ -388,14 +388,18 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
 .content-card:hover { box-shadow: var(--shadow-card-hover); }
 /* height:auto let a portrait-oriented source photo (e.g. winnie-office-
    wide-overview.jpg, 1105x1400) render as an oddly tall card even outside
-   the featured slot. Cap all card photos to a consistent height and crop
-   with object-fit so the grid stays visually uniform regardless of the
-   source photo's native aspect ratio (2026-07-10). */
-/* object-position: top center — without this, cover-cropping a portrait
-   4:5 Winnie photo centers on the torso and cuts off the head entirely
-   (flagged by Maurice 2026-07-07 on the home-office hub grid). Matches the
-   same fix already used on .blog-header-photo. */
-.content-card img { width: 100%; height: 220px; max-height: 220px; object-fit: cover; object-position: top center; display: block; }
+   the featured slot. Cap all card photos to a consistent height so the grid
+   stays visually uniform regardless of the source photo's native aspect
+   ratio (2026-07-10).
+   2026-07-07 correction: object-fit:cover + a fixed object-position (tried
+   "top center") still cropped people out of frame — different photos
+   compose the subject differently (a portrait desk shot vs. a wide fireworks
+   shot with her head lower in frame), so any single fixed anchor point crops
+   SOME photos wrong. object-fit:contain guarantees the full photo is always
+   visible regardless of composition — the card background (--paper) fills
+   any resulting letterbox space, so it reads as intentional matting, not a
+   bug. This trades a little empty space for never cutting off a face again. */
+.content-card img { width: 100%; height: 240px; max-height: 240px; object-fit: contain; background: var(--paper); display: block; }
 .content-card .card-body { padding: 1rem 1.2rem 1.3rem; }
 .content-card h3 {
   font-family: var(--font-display);
@@ -407,10 +411,11 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
 }
 .content-card p { color: var(--ink-soft); font-size: 0.9rem; margin: 0; }
 .content-card.featured h3 { font-size: 1.35rem; }
-/* Featured cards column-span full width, so cap the photo height with
-   object-fit:cover — without this, a tall/portrait source photo balloons to
-   an enormous, jarring height (flagged 2026-07-10). */
-.content-card.featured img { height: 320px; max-height: 320px; object-fit: cover; object-position: top center; }
+/* Featured cards column-span full width, so cap the photo height — without
+   this, a tall/portrait source photo balloons to an enormous, jarring height
+   (flagged 2026-07-10). object-fit:contain (2026-07-07 correction, see note
+   above .content-card img) so the featured slot never crops a face either. */
+.content-card.featured img { height: 320px; max-height: 320px; object-fit: contain; background: var(--paper); }
 @media (min-width: 640px) { .content-card.featured img { height: 380px; max-height: 380px; } }
 
 /* Review card — gold/teal/terracotta rotation, corner badge naming the guide type */
@@ -623,19 +628,24 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
 .review-hero-photo {
   width: 100%;
   height: auto;
-  max-height: 620px;
+  max-height: 410px;
   display: block;
   object-fit: contain;
   background: var(--paper);
   margin: 0 auto;
 }
+/* object-fit:cover + a fixed object-position cropped the fireworks blog
+   photo's face out of frame (flagged 2026-07-07 — same root cause as the
+   .content-card img fix above: a single anchor point is wrong for some
+   compositions). contain + max-height guarantees the full photo always
+   shows, same treatment as .review-hero-photo. */
 .blog-header-photo {
   width: 100%;
   height: auto;
+  max-height: 410px;
   display: block;
-  object-fit: cover;
-  object-position: top center;
-  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: var(--paper);
 }
 .polaroid:has(.blog-header-photo) { margin: 0.5rem 0 1.75rem; }
 @media (min-width: 800px) {
