@@ -71,8 +71,8 @@ products:
 internalLinks:
   - label: "Ergonomic Home Office Setup Under $150"
     href: "/home-office/ergonomic-home-office-setup-under-150/"
-  - label: "The Ergonomic Desk Setup Checklist"
-    href: "/home-office/ergonomic-desk-setup-checklist/"
+  - label: "How to Sit Correctly at a Small Desk"
+    href: "/home-office/how-to-sit-correctly-at-a-small-desk/"
   - label: "Desk Cable Management: 5 Products That Actually Work"
     href: "/home-office/desk-cable-management/"
 faqs:

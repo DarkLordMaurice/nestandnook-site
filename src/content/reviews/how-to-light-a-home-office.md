@@ -14,8 +14,8 @@ internalLinks:
     href: "/home-office/best-desk-lamps-for-eye-strain/"
   - label: "Best LED Strip Lights for a Desk Setup"
     href: "/home-office/best-led-strip-lighting-for-desk/"
-  - label: "The Ergonomic Desk Setup Checklist"
-    href: "/home-office/ergonomic-desk-setup-checklist/"
+  - label: "How to Sit Correctly at a Small Desk"
+    href: "/home-office/how-to-sit-correctly-at-a-small-desk/"
 faqs:
   - q: "What's the single biggest lighting mistake in a home office?"
     a: "Relying on one light source — usually an overhead ceiling light or just the glow of the monitor itself — instead of layering task, ambient, and bias lighting together. A single source creates hard contrast between the bright screen and a dim room, which is a major driver of end-of-day eye strain."

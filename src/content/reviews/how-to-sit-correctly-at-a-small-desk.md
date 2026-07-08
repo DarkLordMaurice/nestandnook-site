@@ -1,6 +1,6 @@
 ---
 title: "How to Sit Correctly at a Small Desk (2026 Guide)"
-description: "How to sit correctly at a desk when space is tight — the four angles that actually matter, and the cheap fixes for the ones you're getting wrong."
+description: "An ergonomic desk setup checklist for tight spaces: the four body angles that actually matter, the order to fix them in, and the cheap fixes for the ones you're getting wrong."
 primaryKeyword: "how to sit correctly at a desk"
 hub: "home-office"
 pageType: "how_to"
@@ -23,9 +23,11 @@ faqs:
     a: "A shallow desk mostly affects monitor distance, not the other three angles. Push your keyboard and mouse close to the front edge so your elbows stay near your body, and use a monitor arm or stand if the screen ends up too close to focus on comfortably."
   - q: "Do standing desks fix bad sitting posture automatically?"
     a: "No — they just change which posture problem you have. Standing at the wrong monitor height or with your weight on one hip creates the same strain standing up. The four angles below apply either way; only the numbers for seat height change."
+  - q: "How often should I recheck this checklist?"
+    a: "Any time something else about your setup changes — new chair, new desk, new monitor, even a different pair of shoes that changes your seated height slightly. A setup that was correct in January can quietly drift wrong by summer without anyone touching it on purpose."
 ---
 
-How to sit correctly at a desk comes down to four angles, and in a small home office you usually only have real control over two of them — the other two get quietly sacrificed to whatever chair and desk you already own. That's the actual problem worth solving, not "sit up straighter," which is advice with no mechanism behind it.
+How to sit correctly at a desk comes down to four angles, and in a small home office you usually only have real control over two of them — the other two get quietly sacrificed to whatever chair and desk you already own. That's the actual problem worth solving, not "sit up straighter," which is advice with no mechanism behind it. Think of this as an ergonomic desk setup checklist in the order that actually works: each fix below assumes the one before it is already correct, so working top to bottom saves you from redoing an earlier step later.
 
 ## The four angles, in order of how often they're wrong
 
@@ -36,6 +38,10 @@ How to sit correctly at a desk comes down to four angles, and in a small home of
 **Eyes, level with the top third of the monitor.** Look down at a screen for eight hours and your neck spends the whole day in a mild forward tilt it never fully recovers from between glances. A stand or arm that lifts the screen a few inches fixes this outright — see the [monitor stand roundup](/home-office/best-monitor-stands-for-dual-monitors/) if your screen currently sits flat on the desk.
 
 **Elbows, close to your sides, near 90°.** This one's mostly about keyboard and mouse placement rather than a product purchase — pull them close enough that you're not reaching forward, and keep them roughly level with your desk surface rather than significantly above or below it.
+
+## The fifth thing people skip: what's actually reachable
+
+Past the four angles, one more fix belongs on this checklist even though it's not really a body angle: the things you reach for most — mouse, water, whatever reference item lives on your desk — should be reachable without leaning or twisting your torso. It's easy to skip because it feels minor next to a sore neck or dangling feet, but it's also the one that happens dozens of times a day, and that repetition is exactly what turns a small, forgettable strain into a noticeable one by the end of the week.
 
 ## Why small desks make this harder, specifically
 

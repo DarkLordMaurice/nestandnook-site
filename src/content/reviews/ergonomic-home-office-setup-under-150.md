@@ -55,8 +55,8 @@ products:
     cons:
       - "Adhesive is semi-permanent — pick clip spots deliberately"
 internalLinks:
-  - label: "The Ergonomic Desk Setup Checklist"
-    href: "/home-office/ergonomic-desk-setup-checklist/"
+  - label: "How to Sit Correctly at a Small Desk"
+    href: "/home-office/how-to-sit-correctly-at-a-small-desk/"
   - label: "Best Desk Pads"
     href: "/home-office/best-desk-pads/"
   - label: "Best Anti-Fatigue Mats for a Standing Desk"

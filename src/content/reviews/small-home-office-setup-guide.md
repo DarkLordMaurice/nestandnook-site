@@ -47,7 +47,7 @@ This is the category that doesn't hurt anything physically but makes a desk feel
 
 ## 4. Desk surface and working position
 
-This cluster covers where and how you actually work day to day. Working from a couch or bed more than occasionally is its own ergonomic problem with its own fix — see [best laptop stands for working from bed or couch](/home-office/best-laptop-stand-for-couch-and-bed/). At an actual desk, [a desk pad](/home-office/best-desk-pads/) protects the surface and adds a bit of wrist comfort, and if you've got or are considering a standing desk, [an anti-fatigue mat](/home-office/best-anti-fatigue-mats-standing-desk/) is the difference between twenty comfortable minutes on your feet and an achy afternoon. Once the pieces are in place, run through [the ergonomic desk setup checklist](/home-office/ergonomic-desk-setup-checklist/) to confirm everything actually lines up.
+This cluster covers where and how you actually work day to day. Working from a couch or bed more than occasionally is its own ergonomic problem with its own fix — see [best laptop stands for working from bed or couch](/home-office/best-laptop-stand-for-couch-and-bed/). At an actual desk, [a desk pad](/home-office/best-desk-pads/) protects the surface and adds a bit of wrist comfort, and if you've got or are considering a standing desk, [an anti-fatigue mat](/home-office/best-anti-fatigue-mats-standing-desk/) is the difference between twenty comfortable minutes on your feet and an achy afternoon. Once the pieces are in place, run back through [how to sit correctly at a small desk](/home-office/how-to-sit-correctly-at-a-small-desk/) to confirm everything actually lines up.
 
 ## 5. Lighting
 

@@ -73,8 +73,8 @@ internalLinks:
     href: "/home-office/how-to-light-a-home-office/"
   - label: "Ergonomic Home Office Setup Under $150"
     href: "/home-office/ergonomic-home-office-setup-under-150/"
-  - label: "The Ergonomic Desk Setup Checklist"
-    href: "/home-office/ergonomic-desk-setup-checklist/"
+  - label: "How to Sit Correctly at a Small Desk"
+    href: "/home-office/how-to-sit-correctly-at-a-small-desk/"
   - label: "Correct Monitor Height: The Ergonomics Guide"
     href: "/home-office/monitor-height-ergonomics-guide/"
 faqs:
