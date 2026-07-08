@@ -72,6 +72,8 @@ products:
       - "Tilt adjusts but height is largely fixed"
       - "Hard, uncushioned surface"
 internalLinks:
+  - label: "Best Under-Desk Footrests by Type"
+    href: "/home-office/best-under-desk-footrests/"
   - label: "HUANUO Ergonomic Footrest Review"
     href: "/home-office/huanuo-ergonomic-footrest-review/"
   - label: "Kensington SoleMate Plus Footrest Review"
