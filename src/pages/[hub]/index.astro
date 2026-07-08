@@ -53,6 +53,7 @@ reviews.sort((a, b) => +b.data.publishDate - +a.data.publishDate);
         <ReviewCard
           href={`/${r.data.hub}/${r.slug}/`}
           image={r.data.image ?? meta.hero}
+          imagePosition={r.data.imagePosition}
           title={r.data.title}
           description={r.data.description}
           pageType={r.data.pageType}

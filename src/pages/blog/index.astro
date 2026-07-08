@@ -37,6 +37,7 @@ posts.sort((a, b) => +b.data.publishDate - +a.data.publishDate);
         <BlogCard
           href={`/blog/${p.slug}/`}
           image={p.data.image}
+          imagePosition={p.data.imagePosition}
           title={p.data.title}
           description={p.data.description}
           category={p.data.category}

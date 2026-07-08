@@ -5,6 +5,7 @@ primaryKeyword: "fourth of july fireworks"
 publishDate: 2026-07-13
 category: "Life outside the nook"
 image: "/winnie/winnie-life-july4-fireworks.jpg"
+imagePosition: "center 30%"
 winniePhoto: "/winnie/headshot-v4-2.jpg"
 relatedGuides:
   - label: "About Nest & Nook"

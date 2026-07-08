@@ -34,10 +34,14 @@ const jsonLd = {
 ---
 <BaseLayout title={d.title} description={d.description} ogImage={d.ogImage} jsonLd={jsonLd} showDisclosure={false}>
   <div class="prose">
-    <span class="washi washi-pink">{d.category}</span>
-    <h1>{d.title}</h1>
-    <div class="polaroid">
-      <img src={d.image} alt="Winnie Hollowell" class="blog-header-photo" width="1200" height="675" />
+    <div class="article-hero-band">
+      <div class="article-hero-text">
+        <span class="washi washi-pink">{d.category}</span>
+        <h1>{d.title}</h1>
+      </div>
+      <div class="article-hero-photo-inset">
+        <img src={d.image} alt="Winnie Hollowell" style={d.imagePosition ? `--img-pos: ${d.imagePosition}` : undefined} />
+      </div>
     </div>
     <WinnieByline photo={d.winniePhoto} />
 

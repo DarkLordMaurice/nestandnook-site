@@ -25,6 +25,16 @@ const reviews = defineCollection({
     // previously card-thumbnail-only, which meant a bespoke per-page image
     // never actually appeared once a reader clicked into the article).
     image: z.string().optional(),
+    // Optional CSS object-position value (e.g. "center 25%") for the card
+    // thumbnail crop — cards use object-fit:cover so SOME cropping is
+    // expected (2026-07-08: reverted from object-fit:contain, which fixed
+    // cropping but left large empty cream margins that read as sparse/flat
+    // against the brand's maximalist "grandmillennial" identity, see
+    // Brand-Guide.md §3). Defaults to a "faces sit in the upper third" bias
+    // (see .review-card img in global.css) that fits most Winnie office
+    // shots; only set this when a specific photo's composition needs a
+    // different crop (e.g. a wide action shot where she's lower in frame).
+    imagePosition: z.string().optional(),
     // Product list drives the comparison table AND the JSON-LD ItemList.
     products: z.array(z.object({
       name: z.string(),
@@ -73,6 +83,8 @@ const blog = defineCollection({
     ogImage: z.string().optional(),
     category: z.string().default('Notes from the nook'),
     image: z.string().default('/winnie/blog-header.jpg'),
+    // See matching field on the `reviews` schema above for why this exists.
+    imagePosition: z.string().optional(),
     winniePhoto: z.string().optional(), // vary the byline headshot — see WinnieByline.astro
     relatedGuides: z.array(z.object({ label: z.string(), href: z.string() })).default([]),
   }),

@@ -395,11 +395,19 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
    "top center") still cropped people out of frame — different photos
    compose the subject differently (a portrait desk shot vs. a wide fireworks
    shot with her head lower in frame), so any single fixed anchor point crops
-   SOME photos wrong. object-fit:contain guarantees the full photo is always
-   visible regardless of composition — the card background (--paper) fills
-   any resulting letterbox space, so it reads as intentional matting, not a
-   bug. This trades a little empty space for never cutting off a face again. */
-.content-card img { width: 100%; height: 240px; max-height: 240px; object-fit: contain; background: var(--paper); display: block; }
+   SOME photos wrong. Tried object-fit:contain next, which guarantees the
+   full photo is always visible — but Maurice flagged (2026-07-08) that the
+   resulting letterboxed cream margins read as sparse/flat, directly against
+   the brand's documented "grandmillennial"/maximalist identity (dense,
+   textured, no dead space — see Brand-Guide.md §3). Reverted to
+   object-fit:cover for vibrant, edge-to-edge cards. The single-fixed-anchor
+   problem is solved differently this time: object-position is a CSS custom
+   property (--img-pos) with a collection-level default (see .review-card
+   img / .blog-card-tile img below) that suits most shots, and any page can
+   override it per-photo via the optional `imagePosition` frontmatter field
+   (rendered as an inline --img-pos style by the card component) when a
+   specific composition needs a different crop. */
+.content-card img { width: 100%; height: 240px; max-height: 240px; object-fit: cover; object-position: var(--img-pos, center); background: var(--paper); display: block; }
 .content-card .card-body { padding: 1rem 1.2rem 1.3rem; }
 .content-card h3 {
   font-family: var(--font-display);
@@ -413,12 +421,16 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
 .content-card.featured h3 { font-size: 1.35rem; }
 /* Featured cards column-span full width, so cap the photo height — without
    this, a tall/portrait source photo balloons to an enormous, jarring height
-   (flagged 2026-07-10). object-fit:contain (2026-07-07 correction, see note
-   above .content-card img) so the featured slot never crops a face either. */
-.content-card.featured img { height: 320px; max-height: 320px; object-fit: contain; background: var(--paper); }
+   (flagged 2026-07-10). object-fit:cover (2026-07-08, see note above
+   .content-card img) so the featured slot stays vibrant/edge-to-edge too. */
+.content-card.featured img { height: 320px; max-height: 320px; object-fit: cover; object-position: var(--img-pos, center); background: var(--paper); }
 @media (min-width: 640px) { .content-card.featured img { height: 380px; max-height: 380px; } }
 
-/* Review card — gold/teal/terracotta rotation, corner badge naming the guide type */
+/* Review card — gold/teal/terracotta rotation, corner badge naming the guide type.
+   Default crop bias: Winnie's identity-lock photos consistently place her face
+   in the upper third of the frame, so this is a sane default for most review/
+   blog cards without needing a per-page override every time (2026-07-08). */
+.review-card img, .blog-card-tile img { --img-pos: center 20%; }
 .review-card { border-top: 4px solid var(--gold); transform: rotate(-0.4deg); }
 .review-card:nth-of-type(3n+2) { border-top-color: var(--teal); transform: rotate(0.5deg); }
 .review-card:nth-of-type(3n+3) { border-top-color: var(--terracotta); transform: rotate(-0.6deg); }
@@ -620,34 +632,58 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
 .post-card .eyebrow { display: block; margin-top: 1.1rem; margin-bottom: 0.35rem; }
 .post-card p { margin-bottom: 1.25rem; }
 
-/* Review-article hero — the page-specific image page-builder now generates
-   per page was previously card-thumbnail-only and never appeared once a
-   reader clicked into the article (flagged by Maurice 2026-07-07: "a
-   waste"). object-fit:contain + a paper backdrop guarantees the FULL photo
-   is always visible (no cropping), unlike the cover-cropped card version. */
-.review-hero-photo {
-  width: 100%;
-  height: auto;
-  max-height: 410px;
-  display: block;
-  object-fit: contain;
-  background: var(--paper);
-  margin: 0 auto;
+/* Article hero band — replaces the old single boxed full-photo hero
+   (.review-hero-photo / .blog-header-photo, retired 2026-07-08). History:
+   the image was originally card-thumbnail-only and never appeared once a
+   reader clicked into the article (Maurice, 2026-07-07: "a waste") — fixed
+   by adding a full-width polaroid hero. object-fit:cover then cropped some
+   compositions badly (the fireworks blog photo's face got cut), so it was
+   switched to object-fit:contain to guarantee the whole photo always shows.
+   That traded cropping for large empty cream margins either side of the
+   letterboxed photo, which Maurice flagged as reading sparse/flat against
+   the brand's documented "grandmillennial" maximalist identity (dense,
+   textured, gold-framed dark sections — see Brand-Guide.md §3) — also
+   redundant, since the card grid already shows this same full photo.
+   Fix: a small rotated corner snapshot inset into a real jewel-teal band
+   (same dark-wall texture as .hero-banner/.winnie-note elsewhere on the
+   site), matching the approved mockup's "option B". Photo stays present
+   without being the whole point of the hero. */
+.article-hero-band {
+  background: var(--jewel-teal);
+  background-image:
+    radial-gradient(ellipse at 15% 20%, rgba(230, 199, 87, 0.1), transparent 55%),
+    linear-gradient(160deg, var(--jewel-teal-light), var(--jewel-teal) 65%);
+  border-top: 3px solid var(--gold);
+  border-bottom: 3px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 1.6rem 1.75rem;
+  margin: 0 0 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
-/* object-fit:cover + a fixed object-position cropped the fireworks blog
-   photo's face out of frame (flagged 2026-07-07 — same root cause as the
-   .content-card img fix above: a single anchor point is wrong for some
-   compositions). contain + max-height guarantees the full photo always
-   shows, same treatment as .review-hero-photo. */
-.blog-header-photo {
-  width: 100%;
-  height: auto;
-  max-height: 410px;
-  display: block;
-  object-fit: contain;
-  background: var(--paper);
+.article-hero-band .washi { box-shadow: 0 2px 6px rgba(0,0,0,0.25); }
+.article-hero-band h1 { color: var(--cream-on-dark); margin: 0.5rem 0 0; }
+.article-hero-text { flex: 1 1 260px; min-width: 0; }
+.article-hero-photo-inset {
+  flex: none;
+  background: #fff;
+  padding: 6px;
+  box-shadow: var(--shadow-card-hover);
+  transform: rotate(-4deg);
+  margin-left: auto;
 }
-.polaroid:has(.blog-header-photo) { margin: 0.5rem 0 1.75rem; }
+.article-hero-photo-inset img {
+  display: block;
+  width: 92px;
+  height: 92px;
+  object-fit: cover;
+  object-position: var(--img-pos, center 20%);
+}
+@media (min-width: 640px) {
+  .article-hero-photo-inset img { width: 120px; height: 120px; }
+}
 @media (min-width: 800px) {
   .hero-banner-inner.two-col {
     grid-template-columns: 1.05fr 1fr;
