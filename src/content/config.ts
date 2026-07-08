@@ -117,6 +117,11 @@ const recipes = defineCollection({
     difficulty: z.enum(['easy', 'intermediate', 'advanced']).default('easy'),
     image: z.string(),
     imageAlt: z.string(),
+    // See matching field on the `reviews`/`blog` schemas above — per-photo
+    // object-position override for the article hero inset + card thumbnail
+    // crop. Added 2026-07-08 when recipes got the same .article-hero-band
+    // treatment as reviews/blog.
+    imagePosition: z.string().optional(),
     // Second, alternate plated-dish photo (no Winnie) — added 2026-07-06 from
     // the Food folder batch. Optional; rendered as a small inset photo near
     // the recipe card if present, giving readers a second look at the finished
@@ -127,9 +132,25 @@ const recipes = defineCollection({
     winnieNote: z.string().optional(),   // Short personality blurb in Winnie's voice about this specific dish — paired with her headshot via WinnieNote.astro
     winnieHeadshot: z.string().optional(), // vary which headshot shows next to winnieNote — don't repeat avatar.jpg on every recipe
     // Ingredients grouped so recipes with e.g. "for the sauce" sub-lists render cleanly.
+    // Items are usually plain strings. An item can instead be an object to make
+    // it a portal to an Amazon product — added 2026-07-08 per Maurice: "every
+    // opportunity we get needs to be utilized to send people to purchase
+    // things," extending affiliate links from just `relatedProducts` (gear) to
+    // individual groceries/ingredients too. Use `asin` for a real, verified
+    // Amazon product (grocery item, specialty ingredient, pantry staple) or
+    // `href` to point at an owned page (e.g. a Kitchen hub review). Never
+    // invent an ASIN — only wire a link once the specific product has been
+    // looked up and confirmed to actually match the ingredient.
     ingredientGroups: z.array(z.object({
       groupName: z.string().optional(),  // omit for a single flat list
-      items: z.array(z.string()),
+      items: z.array(z.union([
+        z.string(),
+        z.object({
+          text: z.string(),
+          asin: z.string().optional(),
+          href: z.string().optional(),
+        }),
+      ])),
     })),
     instructions: z.array(z.object({
       step: z.string(),
@@ -143,7 +164,7 @@ const recipes = defineCollection({
     tips: z.array(z.string()).default([]),
     faqs: z.array(z.object({ q: z.string(), a: z.string() })).default([]),
     keywords: z.array(z.string()).default([]),
-    disclosure: z.boolean().default(true),  // true whenever relatedProducts has affiliate links
+    disclosure: z.boolean().default(true),  // true whenever relatedProducts OR any ingredient item carries an asin/href affiliate link
     relatedProducts: z.array(z.object({ label: z.string(), href: z.string() })).default([]),
     relatedRecipes: z.array(z.object({ label: z.string(), href: z.string() })).default([]),
   }),

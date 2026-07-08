@@ -527,7 +527,6 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
 }
 .hero-banner .washi { box-shadow: 0 2px 6px rgba(0,0,0,0.25); }
 .hero-banner h1, .hero-banner .lede, .hero-banner .eyebrow:not(.washi) { color: var(--cream-on-dark); }
-.hero-banner .hero-doodle { color: var(--gold-light); }
 .hero-banner-inner {
   max-width: 1100px;
   margin: 0 auto;
@@ -785,14 +784,6 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
 }
 .polaroid.tilt-right::before { background: var(--teal); transform: rotate(4deg); }
 .polaroid.tilt-left::before { background: var(--mustard); transform: rotate(-7deg); }
-
-.hero-doodle {
-  margin-left: 0.9rem;
-  font-size: 1.3rem;
-}
-@media (max-width: 799px) {
-  .hero-doodle { display: block; margin: 0.6rem 0 0; }
-}
 
 /* ---------- Winnie host note ----------
    Deep jewel-teal card + gold rule — Winnie's asides get a real "framed on
