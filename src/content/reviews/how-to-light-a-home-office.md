@@ -27,9 +27,11 @@ faqs:
 
 Learning how to light a home office properly comes down to one idea: stop relying on a single light source and start layering three different kinds — task, ambient, and bias — so your eyes never have to work against harsh contrast for eight hours straight.
 
-## Why one light source isn't enough
+<p id="quick-answer">Light a home office in three layers: task lighting (a desk lamp aimed at your work surface, not your screen), ambient lighting (the room's general brightness, kept close to your screen's brightness), and bias lighting (a soft glow behind the monitor that closes the gap between a bright screen and a dark wall). Most under-lit setups are missing bias lighting specifically — it's the cheapest layer and the one people forget to add.</p>
 
-Most under-lit home offices have exactly one light doing all the work — an overhead fixture, a window, or worse, just the glow of the monitor itself in an otherwise dark room. The problem isn't brightness, it's contrast: your pupils constantly adjusting between a bright screen and a dark surrounding room is genuinely tiring over a full workday. The fix is adding light in layers so no single element is dramatically brighter than everything around it.
+<h2 id="measure-first-check">Check which layer your setup is actually missing</h2>
+
+Most under-lit home offices have exactly one light doing all the work — an overhead fixture, a window, or worse, just the glow of the monitor itself in an otherwise dark room. Sit at your desk after dark and notice: is your keyboard and work surface actually lit (task), does the room feel evenly bright rather than dim around the edges (ambient), and is there anything softening the dark space directly behind your monitor (bias)? The problem isn't brightness, it's contrast — your pupils constantly adjusting between a bright screen and a dark surrounding room is genuinely tiring over a full workday. Whichever layer you can't answer "yes" to is the one to fix first.
 
 ## Layer one: task lighting
 
@@ -46,6 +48,12 @@ Bias lighting is the one people skip and the one that makes the biggest differen
 ## Matching light temperature to time of day
 
 Cooler, more neutral-white light (roughly 4000-5000K) tends to support focus during actual work hours, while warmer tones suit evening use or wind-down time. If your schedule runs irregular hours, an adjustable-temperature desk lamp is worth prioritizing over a fixed-color one so your lighting can shift along with your day instead of staying one temperature regardless of the time.
+
+<h2 id="do-not-buy-if">Skip adding more lighting if&#x2026;</h2>
+
+- You already have task, ambient, and bias lighting covered and still feel eye strain by end of day — that's more likely a screen brightness/contrast setting or an actual vision issue than a lighting-layer gap; check those before buying another light.
+- You work primarily during bright daylight hours with good natural window light — you may only need task lighting for close work, not the full three-layer setup built for evening or windowless-room use.
+- Your eye strain is a persistent, unchanging ache regardless of lighting changes you've already tried — that's worth raising with an eye care professional rather than continuing to adjust lighting.
 
 ## Putting the three layers together
 

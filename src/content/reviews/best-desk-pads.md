@@ -86,11 +86,17 @@ faqs:
 
 The best desk pad does three unglamorous jobs at once: protects the desk surface from scratches and spills, quiets the clack of a mechanical keyboard against bare wood, and gives a cluttered desk one clean visual anchor that makes everything on top of it look more organized than it technically is.
 
-Our top pick for most desks is the **Aothia Leather Desk Pad Protector**, sized for a standard keyboard-and-mouse zone without overwhelming a smaller desk. If you want the option to flip between two looks, the **Aothia Dual-Sided** pad with a cork reverse side is the more versatile buy.
+<p id="quick-answer">Our top pick for most desks is the <strong>Aothia Leather Desk Pad Protector</strong> — sized for a standard keyboard-and-mouse zone without overwhelming a smaller desk. Want the option to flip between two looks? The <strong>Aothia Dual-Sided</strong> pad's cork reverse side is the more versatile buy, just in a smaller footprint.</p>
 
-## Size matters more than material
+<h2 id="measure-first-check">Measure your desk before you pick a size</h2>
 
-The single most common regret in desk pad reviews isn't about material quality — it's buying a size that doesn't match the actual desk. Measure your available surface before choosing, and remember that "large" on a product listing means large relative to a typical desk, not necessarily yours.
+The single most common regret in desk pad reviews isn't about material quality — it's buying a size that doesn't match the actual desk. Measure the area from the front edge of your desk to where your monitor or stand starts, and side to side across your keyboard and mouse zone, before choosing a size. Remember that "large" on a product listing means large relative to a typical desk, not necessarily yours — the biggest option isn't automatically the right one.
+
+<h2 id="do-not-buy-if">Don't buy a full desk pad if&#x2026;</h2>
+
+- Your desk is already a laminate or glass surface you don't mind wiping down directly — a pad solves scratch and spill protection you may not actually need.
+- You only want a mouse-tracking surface, not a full keyboard-and-wrist zone — a standard mouse pad is cheaper and takes up far less desk real estate.
+- You have a very small or shared desk where any full-size pad would hang off the edge — a compact option like the Gallaway Medium below, or none at all, may suit better.
 
 ## Material: leather-look vs. cork
 

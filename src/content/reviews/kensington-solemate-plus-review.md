@@ -41,9 +41,11 @@ faqs:
 
 If you've read our footrest roundup and are trying to decide between the top two picks, this kensington solemate plus review is for the specific case where dial precision matters more to you than raw maximum height.
 
-## The SmartFit dial vs. stepped height settings
+<p id="quick-answer">The Kensington SoleMate Plus is the pick if you need to dial in a precise, in-between footrest height rather than pick the closest of two or three fixed steps — its SmartFit dial adjusts continuously. It tops out lower than the HUANUO's tallest setting, so it's the better fit for precision, not for readers who need maximum possible lift.</p>
 
-Most footrests, including our top overall pick, use a small number of fixed height settings — you climb a step or two and pick whichever is closest to right. The SoleMate Plus instead uses a SmartFit dial that adjusts continuously, which means you can land on the actual height your legs need rather than rounding to the nearest available step. For some people that difference is negligible; for people whose ideal height falls awkwardly between two fixed settings, it solves a real annoyance.
+<h2 id="measure-first-check">Check whether you need precision or maximum height</h2>
+
+Most footrests, including our top overall pick, use a small number of fixed height settings — you climb a step or two and pick whichever is closest to right. Sit at your desk with your chair at the correct keyboard height and note your actual foot-to-floor gap: if it lands awkwardly between two typical fixed settings, that's the specific annoyance the SmartFit dial solves, since it adjusts continuously rather than in steps. If your gap is large enough that you need the tallest lift available regardless of precision, check the HUANUO's height range against your number first.
 
 ## Where it gives up ground to the HUANUO
 
@@ -56,6 +58,12 @@ Like the HUANUO, this platform rocks and tilts rather than staying flat and rigi
 ## Who should pick this over the HUANUO
 
 This is the better call if you've tried a stepped footrest before and found yourself stuck between "a little too low" and "a little too high" — the dial removes that guesswork entirely. It's a worse call if your main problem is that your feet don't reach anywhere close to the floor and you need the tallest lift available; in that case, the extra height ceiling on the HUANUO solves your actual problem more directly.
+
+<h2 id="do-not-buy-if">Don't buy this specific footrest if&#x2026;</h2>
+
+- Your feet dangle significantly even with your chair at the correct height — the SoleMate Plus's dial range tops out lower than the HUANUO's tallest setting, so it won't fully close a large gap.
+- You want the fastest possible adjustment — flipping between a couple of fixed steps on a stepped footrest is quicker than turning a dial each time you want a different height.
+- Your feet already reach the floor comfortably with your knees near 90° — neither this nor any footrest is solving a problem you actually have.
 
 *Prices and availability change constantly, so we don't quote figures here — tap through to see the current price on Amazon.*
 

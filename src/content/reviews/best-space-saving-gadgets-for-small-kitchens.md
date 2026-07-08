@@ -88,14 +88,17 @@ faqs:
 
 Small kitchens don't actually need less stuff — they need stuff that stops taking up space the second you're done using it. That's the thread connecting the best space-saving gadgets for small kitchens: each one either collapses, nests, mounts off the counter, or replaces something bulkier doing the same job. None of these require more square footage than you already have; they just stop wasting the square footage you've got.
 
-The **NiHome Over-the-Sink Cutting Board** is the single highest-impact pick if counter space is your actual bottleneck — it turns your sink into a second prep station for the five minutes you need it, then gets out of the way. If storage is the bigger issue, the **Dexas Collapsible Colander** and **dokaworld Nesting Bowl Set** solve that directly by shrinking down to almost nothing between uses.
+<p id="quick-answer">The <strong>NiHome Over-the-Sink Cutting Board</strong> is the single highest-impact pick if counter space is your actual bottleneck — it turns your sink into a second prep station for the five minutes you need it, then gets out of the way. Storage is the bigger issue instead? The <strong>Dexas Collapsible Colander</strong> and <strong>dokaworld Nesting Bowl Set</strong> solve that directly by shrinking to almost nothing between uses.</p>
 
-## How to choose
+<h2 id="measure-first-check">Identify your actual constraint before buying</h2>
 
-- **Identify your actual constraint first:** counter space and cabinet space are different problems with different fixes — a collapsible colander doesn't help if your real issue is a cluttered counter, and vice versa.
-- **Measure before buying anything "over the sink":** sink dimensions vary enough that a board sized for a standard single-basin sink may not fit a large or double-basin setup.
-- **Multi-purpose beats single-purpose:** the nesting bowl set doing double duty as food storage, or a food processor small enough to skip the "do I have room for this appliance" debate, save more space than any single-use gadget.
-- **Wall-mounted options need a wall you're allowed to drill into** — renters should check lease terms before the magnetic knife strip.
+Counter space and cabinet space are different problems with different fixes — a collapsible colander doesn't help if your real issue is a cluttered counter, and vice versa, so name the actual bottleneck first. If you're considering anything "over the sink," measure your sink's width and edge depth before buying — sink dimensions vary enough that a board sized for a standard single-basin sink may not fit a large or double-basin setup. If a product needs wall-mounting (like the magnetic knife strip), confirm you actually have a wall you're allowed to drill into — check lease terms first if you rent.
+
+<h2 id="do-not-buy-if">Don't buy a space-saving kitchen gadget if&#x2026;</h2>
+
+- Your actual problem is too much stuff, not too little space — decluttering solves that faster and cheaper than any collapsible or nesting product.
+- You cook in large batches regularly — the compact/mini versions here (the 3-cup food processor especially) are built for small-batch use and will frustrate you if that's not your typical cooking style.
+- Your sink is a large or double-basin setup — measure before buying the over-the-sink cutting board specifically; it's the single most common fit complaint in this category.
 
 ## Quick comparison
 

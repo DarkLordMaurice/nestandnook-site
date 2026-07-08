@@ -88,15 +88,21 @@ faqs:
 
 The best desk lamp for eye strain isn't just the brightest one — it's the one that avoids flicker, softens harsh contrast, and adjusts to the room instead of staying at one fixed intensity regardless of what else is lit around it. A lot of lamp marketing leans on "eye-caring" language without independent verification behind it, which is worth knowing before paying a premium for the phrase alone.
 
-Our top pick is the **BenQ e-Reading Desk Lamp**, the rare option with actual third-party TÜV Rheinland certification for both flicker-free and low blue light performance, not just a manufacturer's own description. If budget is the priority, the **Lepro LED Desk Lamp**'s frosted diffused shade delivers a meaningfully softer light than a bare LED at a fraction of the price.
+<p id="quick-answer">Our top pick is the <strong>BenQ e-Reading Desk Lamp</strong> — the rare option with actual third-party TÜV Rheinland certification for flicker-free and low blue light performance, not just marketing language. Budget-conscious instead? The <strong>Lepro LED Desk Lamp</strong>'s frosted, diffused shade softens harsh contrast at a fraction of the price, even without the certification.</p>
 
 ## Certification vs. marketing language
 
 "Eye-caring" and "low blue light" appear on nearly every desk lamp listing, certified or not. TÜV Rheinland certification is an independently tested, verifiable standard — a lamp that has it has actually been measured against a threshold, not just described that way by the company selling it. It's worth specifically checking for the certification if this is the deciding factor for you, rather than assuming similar-sounding language means the same thing.
 
-## Diffusion matters as much as brightness
+<h2 id="measure-first-check">Check your room's existing light before buying</h2>
 
-A bare, uncovered LED creates a small, intensely bright point of light next to a comparatively dim screen — your eyes keep readjusting between the two. A frosted shade, wider reflector, or wraparound diffuser spreads that same light output over a larger area, which several of the picks here specifically address through shade design rather than raw lumen count.
+A desk lamp doesn't work in isolation — it competes with whatever ambient light is already in the room and whatever brightness your monitor is set to. If your overhead lighting is dim or warm-toned, even a great lamp will feel harsh by contrast; if your monitor runs very bright, a soft lamp might not close the gap on its own. Note your room's baseline (bright or dim, warm or cool) and your monitor's typical brightness setting before choosing — it tells you whether you need a strong, adjustable lamp or just enough fill light to even things out. A bare, uncovered LED also creates a small, intensely bright point of light next to a comparatively dim screen, which is why diffusion (a frosted shade, wider reflector, or wraparound diffuser) matters as much as raw brightness.
+
+<h2 id="do-not-buy-if">Don't buy a dedicated desk lamp if&#x2026;</h2>
+
+- You already have a monitor light bar or strong, adjustable ambient lighting — a second light source can create more competing shadows and glare than it solves.
+- Your eye strain persists regardless of lighting changes — that's a sign to check with an eye care professional, not to keep buying lamps.
+- You need a clamp-mounted lamp but your desk edge is too thick or rounded to grip securely — check the clamp's stated maximum grip width before choosing that style over a base lamp.
 
 ## Mount style: clamp vs. base
 

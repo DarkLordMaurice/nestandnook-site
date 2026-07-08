@@ -29,6 +29,12 @@ faqs:
 
 How to sit correctly at a desk comes down to four angles, and in a small home office you usually only have real control over two of them — the other two get quietly sacrificed to whatever chair and desk you already own. That's the actual problem worth solving, not "sit up straighter," which is advice with no mechanism behind it. Think of this as an ergonomic desk setup checklist in the order that actually works: each fix below assumes the one before it is already correct, so working top to bottom saves you from redoing an earlier step later.
 
+<p id="quick-answer">Fix four angles in order: knees near 90&#xB0; (chair height), feet flat via a footrest if they dangle, eyes level with the top third of your monitor, and elbows close to your sides near 90&#xB0;. On a small desk you rarely control all four independently, so a footrest and a monitor stand — not a bigger desk — are usually the actual fix.</p>
+
+<h2 id="measure-first-check">Check all four angles right now, in order</h2>
+
+Sit the way you normally do and actually look down at your knees, then your feet, then straight ahead at your screen, then your elbows. Most people find one angle is clearly off the moment they check deliberately, rather than on autopilot — usually the one they can't see without looking down (their feet) rather than the one that's visually obvious (the monitor). That's usually the cheapest single fix on this list, not the most expensive one.
+
 ## The four angles, in order of how often they're wrong
 
 **Knees, roughly 90°.** Your chair height should put your thighs close to parallel with the floor. This is the setting most people get right, because it's the one adjustment every office chair actually has.
@@ -47,8 +53,12 @@ Past the four angles, one more fix belongs on this checklist even though it's no
 
 A full-size office desk gives you room to fix all four angles independently — separate keyboard tray, monitor arm with real reach, footrest with space underneath. A small desk couples them: raise the monitor and there's less clearance underneath for your knees; push the chair in to reach the keyboard and your feet lose whatever floor contact they had. The fix isn't a bigger desk, it's picking the two or three cheap accessories that decouple the angles from each other again — a footrest handles feet independently of chair height, and a monitor stand handles eye level independently of desk height. Neither requires more desk space to install.
 
-## A five-minute check, right now
+<h2 id="do-not-buy-if">Skip buying accessories if&#x2026;</h2>
 
-Sit the way you normally do and actually look down at your knees, then your feet, then straight ahead at your screen. Most people find one angle is clearly off the moment they check deliberately, rather than on autopilot. That's usually the cheapest single fix on this list, not the most expensive one — see the full [ergonomic setup under $150](/home-office/ergonomic-home-office-setup-under-150/) for how the pieces work together as a system rather than one-off purchases.
+- All four angles already check out when you actually look — the discomfort you're feeling may be from something this checklist doesn't cover, like chair lumbar support or how long you sit without a break.
+- You just changed one part of your setup (new chair, new desk, new monitor) — recheck the angles first; a single change often only breaks one angle, not all four, so you may not need a full accessory bundle.
+- Your desk genuinely has room to fix all four angles independently already — a small-desk-specific fix (footrest decoupled from chair height, monitor stand decoupled from desk height) matters most when space is the actual constraint, which may not be your situation.
+
+See the full [ergonomic setup under $150](/home-office/ergonomic-home-office-setup-under-150/) for how the pieces work together as a system rather than one-off purchases.
 
 > **Winnie's take:** I've read enough of these reviews to notice a pattern — people fix the angle they can *see* is wrong (usually the monitor) and never check the one they can't see without looking down (their feet). Check all four. It takes ten seconds and one of them is probably the actual culprit.

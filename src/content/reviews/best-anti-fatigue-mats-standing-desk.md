@@ -86,15 +86,21 @@ faqs:
 
 The best anti fatigue mat for standing desk use is the difference between twenty comfortable minutes on your feet and an afternoon your knees and lower back remember the next day. Standing on a hard floor for hours concentrates pressure straight up through your joints in a way sitting simply doesn't — the mat's whole job is breaking up that pressure.
 
-Our top pick for most people is the **Topo by Ergodriven**, whose raised terrain design is the single most-cited reason reviewers say it beats a flat mat for a full day of standing. If floor space is tight, the **Topo Mini** gives the same design in a smaller footprint. If budget is the priority, the **Sky Solutions** flat mat does the core job well without the terrain premium.
+<p id="quick-answer">Our top pick for most standing-desk users is the <strong>Topo by Ergodriven</strong> — its raised terrain design is the single most-cited reason reviewers say a full day standing feels different than on a flat mat. Tight on floor space? The <strong>Topo Mini</strong> gives the same terrain in a smaller footprint. Prioritizing budget instead? The <strong>Sky Solutions</strong> flat mat covers the core job well without the terrain premium.</p>
 
 ## Terrain vs. flat: the real trade-off
 
 A terrain mat's raised zones aren't decorative — they nudge your feet into slightly different positions throughout the day without you consciously deciding to move, which several reviewers describe as the actual mechanism behind less end-of-day fatigue. A flat mat is simpler and usually cheaper, and it's a perfectly reasonable choice if you don't want a textured surface underfoot or you stand in shorter stretches rather than for hours at a time.
 
-## Size should match how you actually move
+<h2 id="measure-first-check">Measure first: how much floor do you actually use?</h2>
 
-Some people stand nearly still at a fixed spot; others shift their stance across a wider area, lean side to side, or take a half-step in either direction throughout the day. If that's you, a larger mat like the Kangaroo Original is worth the extra floor space — a mat too small to cover your actual movement just means stepping on and off the hard floor anyway.
+Grab a tape measure and mark where your feet actually land through a normal work session — most people are surprised it's a 2-3 foot zone, not their full desk width. That's the mat size to buy, not the widest option on the page. Standing on carpet rather than hard flooring changes the math too: a thin mat over carpet barely shifts how it feels underfoot, so a terrain design (which works through contour, not just cushioning) matters more there than raw thickness does. If you shift your stance widely or lean side to side through the day, size up — a larger mat like the Kangaroo Original is worth the extra floor space, since a mat too small for your actual movement just means stepping on and off the hard floor anyway.
+
+<h2 id="do-not-buy-if">Don't buy an anti-fatigue mat if&#x2026;</h2>
+
+- You stand for under 15-20 minutes at a stretch — the fatigue these mats solve mostly shows up on longer stints, and a mat won't fix a desk that's the wrong height for standing in the first place.
+- Your standing desk height itself is off — no mat compensates for a monitor or keyboard positioned for sitting; fix that first (see our small-desk posture guide below).
+- You already stand on thick carpet or a padded rug most of the day — you're closer to already having cushioning than someone on bare hardwood or tile, so the upgrade is smaller than it looks on paper.
 
 ## Quick comparison
 

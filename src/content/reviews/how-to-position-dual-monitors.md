@@ -27,9 +27,17 @@ faqs:
 
 How to position dual monitors ergonomically is really a question about eliminating repeated small movements — the neck tilt when your eyes go from a lower screen to a higher one, or the head turn when two monitors sit too far apart. None of that feels dramatic in the moment. It adds up over an eight-hour day the same way any repeated small strain does.
 
-## Get both screens to matching height first
+<p id="quick-answer">Get both monitors to matching height first — it's the single highest-impact fix, since most monitors ship on stands of slightly different heights by default. From there, close the gap between them so your head doesn't have to turn between screens, and decide which one is actually primary so you're not centering your body between two displays you don't use equally.</p>
 
-This is the single highest-impact fix and the one people skip most often, because most monitors ship on stands of slightly different heights and nobody thinks to check. Sit normally and look straight ahead — the top third of each screen should land roughly at eye level, and both screens should match each other. If one is noticeably lower, that's the monitor your neck dips toward dozens of times an hour without you noticing. See the [monitor stand roundup](/home-office/best-monitor-stands-for-dual-monitors/) for stands built specifically to bring two mismatched monitors to the same height.
+<h2 id="measure-first-check">Check your actual eye-level and screen heights</h2>
+
+This is the fix people skip most often, because most monitors ship on stands of slightly different heights and nobody thinks to check. Sit normally and look straight ahead — the top third of each screen should land roughly at eye level, and both screens should match each other. If one is noticeably lower, that's the monitor your neck dips toward dozens of times an hour without you noticing. See the [monitor stand roundup](/home-office/best-monitor-stands-for-dual-monitors/) for stands built specifically to bring two mismatched monitors to the same height.
+
+<h2 id="do-not-buy-if">Skip a dual-monitor stand if&#x2026;</h2>
+
+- Your two monitors already sit at matching height on their stock stands — the height-mismatch problem this page centers on isn't actually your issue; focus on gap and angle instead.
+- You use one monitor for 90%+ of your work — center your setup on that primary screen and treat the second as a reference display, rather than trying to split the difference between both.
+- Your desk is too shallow for both screens angled inward — check your desk depth against the stand's footprint before assuming a stand fixes the whole picture.
 
 ## Close the gap between them
 

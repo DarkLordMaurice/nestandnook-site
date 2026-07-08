@@ -27,6 +27,12 @@ faqs:
 
 How to hide cables under desk furniture is less about finding the one right product and more about realizing it's actually three separate small problems wearing a trench coat: loose cable slack, a heavy power brick with nowhere to sit, and individual cords that need a path to follow instead of dangling free.
 
+<p id="quick-answer">Hide desk cables by solving three problems in order: a tray to give the power brick and bulk of the mess a home off the floor, a sleeve to bundle the slack into one tidy run, and clips to route individual cords along a fixed path to your monitor or laptop. Skip any one of the three and the mess just relocates instead of disappearing.</p>
+
+<h2 id="measure-first-check">Count your actual cables and power bricks first</h2>
+
+Before buying anything, look under your desk and count what's actually there: how many power bricks need a resting spot, roughly how much slack is coiled in each cable, and how many individual cords need routing to a monitor, laptop, or charging pad. A one-laptop desk might only need a small tray and a couple of clips; a full multi-monitor setup with a dock and multiple chargers needs the full tray-plus-sleeve-plus-clips system. Sizing your purchase to what's actually under the desk avoids buying a tray too small for the real power-brick pile, or a sleeve for cable runs you don't have.
+
 ## Problem 1: the power brick with nowhere to go
 
 Almost every desk has at least one bulky power adapter that doesn't hang neatly from a cable clip and instead just sits wherever gravity puts it — often directly on the floor where it becomes a dust magnet and a thing you kick. A cable tray mounted under the desk gives it (and the general tangle of cords running to it) an actual home, off the floor and out of sight, without needing to be unplugged or moved every time you clean.
@@ -43,7 +49,11 @@ The last piece is getting cables from the tray or sleeve to where they're actual
 
 Start with the tray, since it defines where everything is heading. Add the sleeve next, to bundle the slack now that you know the destination. Finish with clips, which route the final stretch to your monitor, laptop, or outlet. Doing this in reverse order — clips first — usually means redoing the clips once you add the tray and realize the routing needs to change anyway.
 
-## When it's genuinely not a product problem
+<h2 id="do-not-buy-if">Skip a fully hidden cable setup if&#x2026;</h2>
+
+- You're constantly unplugging and replugging things — swapping monitors, moving a laptop dock in and out — a fully hidden setup will fight you every time you need to make a change.
+- Your desk is sit-stand, not fixed-height — a rigid tray or sleeve sized for a stationary desk can pull taut or snag as the desk moves; see our [standing-desk cable guide](/home-office/cable-management-standing-desk/) instead.
+- You only have one or two cables total — the full three-piece system is overkill; a couple of adhesive clips likely solves it on their own.
 
 If you're constantly unplugging and replugging things — swapping monitors, moving a laptop dock in and out — a fully hidden cable setup will fight you every time you need to make a change. In that specific case, a looser, more accessible arrangement might genuinely serve you better than a fully concealed one, and that's worth admitting rather than forcing a "perfectly hidden" setup you'll just have to undo weekly.
 

@@ -27,9 +27,17 @@ faqs:
 
 Cable management for standing desk setups inherits every problem a regular desk has, then adds one uniquely annoying complication: the desk actually moves, and every cable running to it has to survive that motion, twice a day, indefinitely.
 
-## The problem regular cable management advice misses
+<p id="quick-answer">Fix cables in two separate groups: anything living on the desktop (monitor, laptop, speakers) needs a flexible cable spine that moves with the desk through its full range, while anything running to a fixed point (a wall outlet, a mounted power strip) needs built-in slack management instead of a rigid mount. Handle the moving group first — it defines how much slack the fixed-point group needs to absorb.</p>
 
-Most cable management content assumes a fixed-height desk, where "route it and forget it" is genuinely the whole job. A sit-stand desk changes that math — a cable with exactly enough slack for the sitting height will pull taut and strain at a connector when the desk rises, and a cable with enough slack for standing height will bunch up, sag, and potentially snag the desk's moving base when it's lowered.
+<h2 id="measure-first-check">Test your desk's full height range before calling it done</h2>
+
+The problem regular cable management advice misses: it assumes a fixed-height desk, where "route it and forget it" is genuinely the whole job. Before buying anything, raise your desk to its highest setting and lower it to its lowest, and watch what every cable actually does at both extremes — a cable with exactly enough slack for sitting height will pull taut and strain at a connector when the desk rises, and a cable with enough slack for standing height will bunch up, sag, and potentially snag the desk's moving base when it's lowered. That test tells you how much slack to actually buy for, rather than guessing.
+
+<h2 id="do-not-buy-if">Skip the standing-desk-specific setup if&#x2026;</h2>
+
+- Your desk is fixed-height, not sit-stand — use our [general cable-hiding guide](/home-office/how-to-hide-cables-under-desk/) instead; the moving-desk problem this page solves doesn't apply to you.
+- You only adjust height rarely (a few times a year, not daily) — simple slack coiled with a velcro strap may cover you without a dedicated cable spine.
+- You already have a monitor arm with built-in cable channels and route everything through it — you may only need the fixed-point wall-outlet slack handled, not a full spine setup.
 
 ## Fix the cables that travel with the desk first
 

@@ -92,11 +92,17 @@ Working from the couch or bed is either a nice occasional change of scenery or, 
   <img src="/winnie/winnie-gear-laptop-couch-before.jpg" alt="Winnie hunched over a bare laptop balanced directly on a couch cushion, no stand" width="1122" height="1402" />
 </div>
 
-The **WorkEZ Laptop Stand & Lap Desk** is the pick for anyone who actually wants the ergonomic fix — it extends far enough to bring the screen up rather than just tilting it. If you want something more flexible for less money, the **SAIJI Adjustable Laptop Stand** does double duty as a cushioned lap rest and a small table. Below, all five, ranked by who they actually suit.
+<p id="quick-answer">The <strong>WorkEZ Laptop Stand & Lap Desk</strong> is the pick for anyone who actually wants the ergonomic fix — it extends far enough to bring the screen up rather than just tilting it. Want something more flexible for less money instead? The <strong>SAIJI Adjustable Laptop Stand</strong> does double duty as a cushioned lap rest and a small table.</p>
 
-## What actually matters here (it's not the cushion)
+<h2 id="measure-first-check">Check your actual eye level and couch height first</h2>
 
-Most people shopping this category focus on softness, but the two specs worth checking first are **height range** (does it get the screen anywhere near eye level, or just tilt it a few degrees) and **airflow** (does the design leave the vents open, or just trap heat against a cushion). Stability matters too — a stand that wobbles when you type defeats the purpose.
+Most people shopping this category focus on cushion softness, but the two specs worth checking against your own setup first are **height range** (does it get the screen anywhere near eye level from where you actually sit or lie, or just tilt it a few degrees) and **airflow** (does the design leave the vents open, or just trap heat against a cushion). Sit in your normal spot and estimate how many inches the screen would need to rise to stop you from looking down — that's the number to check a stand's height range against, not just "adjustable" as a vague promise. Stability matters too — a stand that wobbles when you type defeats the purpose.
+
+<h2 id="do-not-buy-if">Don't buy a lap stand if&#x2026;</h2>
+
+- You only ever watch video, never type — a simple fixed cushion or pillow may do the job for less than any of these picks.
+- Your couch or bed setup is genuinely stationary and you have floor space to spare — a rolling cart like the LINGMI below is more stable and adjustable than any lap desk.
+- You already prop your laptop on a fixed surface at a comfortable eye level — the actual problem these stands solve is height and airflow, and if neither is currently an issue, you don't need one.
 
 ## How to choose
 

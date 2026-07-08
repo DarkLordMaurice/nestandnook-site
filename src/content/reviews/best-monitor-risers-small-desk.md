@@ -86,15 +86,21 @@ faqs:
 
 The best monitor riser for small desk setups has to solve two problems at once — get your screen to eye level, and not eat the desk space you were trying to protect in the first place. A lot of monitor risers are designed like they're going on a desk with room to spare. On a small desk, the size of the riser itself is as much a spec as its height range.
 
-Our top pick for most small desks is the **WALI Adjustable Monitor Stand**, because it's the rare riser that adds storage clearance instead of just taking up more surface — you get eye-level height and a spot for a keyboard underneath in the same footprint. If budget is the main constraint, the **Amazon Basics** riser does the core job without paying for extra features you may not need.
+<p id="quick-answer">Our top pick for most small desks is the <strong>WALI Adjustable Monitor Stand</strong> — it's the rare riser that adds storage clearance instead of just taking up more surface, so you get eye-level height and a spot for a keyboard underneath in the same footprint. Budget is the main constraint instead? The <strong>Amazon Basics</strong> riser does the core job without paying for extra features you may not need.</p>
 
-## What actually matters on a small desk
+<h2 id="measure-first-check">Measure your desk's actual footprint before buying</h2>
 
-**Footprint, not just height.** A riser that's wider or deeper than your monitor's base defeats the purpose on a small desk — check the platform dimensions against your available space, not just the height range.
+**Footprint, not just height.** A riser that's wider or deeper than your monitor's base defeats the purpose on a small desk — measure the platform dimensions against your available space, not just the height range, before choosing. Also check the eye-level number itself: sit in your normal chair and note roughly how many inches your monitor's top edge needs to rise to hit eye level, so you're shopping the height spec against a real number, not a guess.
 
 **Clearance underneath.** The best small-desk risers reclaim the space they occupy by leaving room for a keyboard, phone, or notebook underneath, rather than just adding a platform on top of dead space.
 
 **Weight rating.** Bigger monitors need a rating that covers them with margin, not right at the limit — check your monitor's actual weight, not just its screen size.
+
+<h2 id="do-not-buy-if">Don't buy a monitor riser if&#x2026;</h2>
+
+- Your monitor already sits at eye level on its stock stand — a riser would push it too high and create the opposite neck strain problem.
+- You need to tilt, swivel, or VESA-mount the monitor, not just raise it — a monitor arm or full stand (see our dual-monitor stand guide) fits that need better than a fixed riser.
+- Your desk surface is already at capacity — a riser without clearance underneath just adds bulk instead of reclaiming space; check the "clearance underneath" spec above before buying one that doesn't help.
 
 ## Quick comparison
 

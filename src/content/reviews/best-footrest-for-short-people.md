@@ -99,11 +99,17 @@ faqs:
 
 Let's talk about the drawer that's having a moment — except today it's your feet. If you're 5'6" or shorter, most desks and chairs simply weren't built for you. Raise your chair enough to reach the keyboard comfortably and your feet start to dangle — which throws your weight onto the backs of your thighs, cuts circulation, and quietly wrecks your lower back by mid-afternoon. The best footrests for short people are the cheapest fix in ergonomics, but the one number that matters most is **how much lift it gives**. Many footrests top out around 4–5 inches, which barely helps if your feet hang several inches off the floor.
 
-Our top pick for most short users is the **HUANUO Ergonomic Under-Desk Footrest**, purely because it elevates higher than anything else here (up to about 6.7 inches) while still tilting and rocking. If you want to fine-tune the exact height, the **Kensington SoleMate Plus** is the more precise tool. Below, all five picks with who each one is really for.
+<p id="quick-answer">Our top pick for most short users is the <strong>HUANUO Ergonomic Under-Desk Footrest</strong> — it elevates higher than anything else here (up to about 6.7 inches) while still tilting and rocking. Want to fine-tune the exact height instead? The <strong>Kensington SoleMate Plus</strong> is the more precise tool, adjusting in fine steps rather than fixed notches.</p>
 
-## Why lift matters more than anything if you're short
+<h2 id="measure-first-check">Check your actual knee height before buying</h2>
 
-A footrest's job is to get your knees to roughly 90° with your feet fully supported. Tall users often need almost no lift; short users usually need the most. When you shop, check the **maximum height**, not just "adjustable" — a rest that adjusts between 2 and 4 inches is useless if you need 6. After height, the things worth weighing are surface (cushioned vs. hard wood), whether it tilts for circulation, and how stable the base is so it doesn't slide out from under you.
+A footrest's job is to get your knees to roughly 90° with your feet fully supported. Sit in your normal chair at your normal height and note how far your feet hang below the floor, or how much lift would bring your thighs level — that's the number to shop against, not "adjustable" as a vague reassurance. Tall users often need almost no lift; short users usually need the most, so check the **maximum height** spec specifically. A rest that adjusts between 2 and 4 inches is useless if you actually need 6. After height, the things worth weighing are surface (cushioned vs. hard wood), whether it tilts for circulation, and how stable the base is so it doesn't slide out from under you.
+
+<h2 id="do-not-buy-if">Don't buy one of these footrests if&#x2026;</h2>
+
+- Your feet already rest flat on the floor with your knees near 90° — you don't need lift, and adding a footrest would push your knees uncomfortably higher instead of helping.
+- You need more than about 7 inches of lift — even the tallest pick here (the HUANUO, at roughly 6.7") may not fully close that gap; raising your chair and using a footrest for balance may work better than expecting one product to solve it alone.
+- You have a diagnosed circulation or nerve issue in your legs or feet — check with a doctor about the right setup rather than choosing based on general ergonomics advice.
 
 ## How to choose
 

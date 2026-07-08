@@ -27,9 +27,17 @@ faqs:
 
 "Chair too low for desk" is a search that usually means something slightly different than it sounds — it's rarely that the chair itself is defective, it's that the chair and desk were never actually matched to each other, and one of them has to give.
 
-## How to tell it's actually a height mismatch
+<p id="quick-answer">Raise your chair first — it's free and takes ten seconds, and it fixes the wrist and shoulder strain that's the real symptom of this mismatch. If your feet stop reaching the floor as a result, add a footrest rather than lowering the chair back down. If the chair is already maxed out and still feels low, the desk itself needs raising instead, via a riser or leg extenders.</p>
 
-The clearest sign is your wrists. If they bend upward to reach the keyboard, or your shoulders sit noticeably higher than relaxed while you type, your desk surface is effectively too tall for your current seat height. A second sign: leaning forward in your chair to get closer to the keyboard, which is your body compensating for a gap the chair alone can't close.
+<h2 id="measure-first-check">Check your wrists and shoulders, not just how the chair feels</h2>
+
+The clearest sign is your wrists. If they bend upward to reach the keyboard, or your shoulders sit noticeably higher than relaxed while you type, your desk surface is effectively too tall for your current seat height. A second sign: leaning forward in your chair to get closer to the keyboard, which is your body compensating for a gap the chair alone can't close. Test this before buying anything — sit in your normal position, type a sentence, and actually look at your wrist angle and shoulder height instead of guessing from how the chair "feels."
+
+<h2 id="do-not-buy-if">Skip these fixes if&#x2026;</h2>
+
+- Your wrists and shoulders are already neutral while typing — the mismatch this page solves isn't your actual problem; look at monitor height or chair lumbar support instead.
+- Your chair is already at max height and your desk is already the right height — the issue may be your keyboard sitting on a thick desk surface (see Fix 3 below) rather than chair-to-desk height at all.
+- You have persistent wrist, shoulder, or back pain regardless of posture changes — that's worth raising with a doctor or physical therapist, not just solving with furniture adjustments.
 
 ## Fix 1: raise the chair (and deal with your feet separately)
 

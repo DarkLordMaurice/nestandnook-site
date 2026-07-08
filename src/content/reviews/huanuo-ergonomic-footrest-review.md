@@ -41,9 +41,11 @@ faqs:
 
 This huanuo ergonomic footrest review exists because our footrest roundup gets one follow-up question more than any other: why does this specific model rank highest? The short answer is lift — it reaches higher than anything else our team's review research turned up, which is the single spec that matters most if you're on the shorter side and your feet don't reach the floor even with your chair lowered.
 
-## Why lift is the spec that decides this purchase
+<p id="quick-answer">The HUANUO Ergonomic Under-Desk Footrest is the pick if your feet dangle noticeably even with your chair set to the correct keyboard height — its roughly 6.7-inch tallest setting is the highest lift in our footrest roundup, plus a 30&#xB0; rocking tilt that keeps ankles moving through the day instead of locking in one position.</p>
 
-A footrest's entire job is closing the gap between your feet and the floor once your chair is set to the correct height for your keyboard. Most footrests on the market top out around 4 to 5 inches — fine for someone who's only slightly short, but not enough if the gap is bigger. The HUANUO's three-step range reaches close to 6.7 inches at its tallest setting, which is the reason it sits at the top of a shorter-user's shortlist rather than further down it.
+<h2 id="measure-first-check">Check your actual gap before buying for maximum lift</h2>
+
+A footrest's entire job is closing the gap between your feet and the floor once your chair is set to the correct height for your keyboard. Sit at your desk with your chair at that correct height and note how far your feet hang above the floor — that's the number this footrest needs to close, not a guess. Most footrests on the market top out around 4 to 5 inches — fine for someone who's only slightly short, but not enough if your actual gap is bigger. The HUANUO's three-step range reaches close to 6.7 inches at its tallest setting, which is the reason it sits at the top of a shorter-user's shortlist rather than further down it.
 
 ## What the rocking and tilt actually do
 
@@ -56,6 +58,12 @@ The cushioned, textured top is genuinely pleasant against bare feet or socks, an
 ## Who this is actually for
 
 This is squarely built for people whose feet don't reach the floor at a correct keyboard-height chair setting — most commonly shorter users, but also anyone who inherited a desk-and-chair combination that wasn't sized for them. If your feet already reach the floor comfortably with your knees near 90°, the extra lift here isn't solving a problem you have, and a simpler, lower-profile footrest (or none at all) makes more sense.
+
+<h2 id="do-not-buy-if">Don't buy this specific footrest if&#x2026;</h2>
+
+- Your feet already reach the floor comfortably with your knees near 90° — you don't need the lift this model is built for, and adding it would raise your knees too high instead of helping.
+- You want a completely rigid, non-moving platform — the rocking tilt here is a deliberate feature, but if that description sounds unappealing rather than useful, a fixed wood footrest is the better fit.
+- You need precise, fine-grained height control rather than maximum lift — the [Kensington SoleMate Plus](/home-office/kensington-solemate-plus-review/) below solves that specific need better, even though it doesn't reach quite as high.
 
 ## How it compares to the Kensington SoleMate Plus
 

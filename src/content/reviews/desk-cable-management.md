@@ -94,11 +94,21 @@ Desk cable management is the one desk problem people try to fix with a single pr
   <img src="/winnie/winnie-gear-cable-tangle-before.jpg" alt="Winnie kneeling in front of a desk, exasperated at a tangled mess of cables and a power strip on the floor" width="1122" height="1402" />
 </div>
 
-The **VIVO Under Desk Tray** is the right starting point for most people — it's the product reviewers land on most often for holding a power strip. From there, a **JOTO Cable Management Sleeve** bundles the long runs, and **Sinjimoru Magnetic Cable Clips** handle the daily-use cords. All five below, with what each one actually solves.
+<p id="quick-answer">The <strong>VIVO Under Desk Tray</strong> is the right starting point for most people — it's the product reviewers land on most often for holding a power strip. From there, a <strong>JOTO Cable Management Sleeve</strong> bundles the long runs, and <strong>Sinjimoru Magnetic Cable Clips</strong> handle the daily-use cords.</p>
 
 ## Why this is a layered problem, not a single-product one
 
 Think of it as three separate jobs: **containment** (a tray or box for the power strip and bulk of the mess), **routing** (a sleeve or raceway for the runs between desk and outlet), and **access** (clips for the one or two cables you plug and unplug daily). Buying only a tray leaves the visible runs messy. Buying only a sleeve leaves the power strip on the floor. The fix that actually looks clean uses one product from each category.
+
+<h2 id="measure-first-check">Check your desk edge and legroom before buying a tray</h2>
+
+Most trays clamp on, so check your desk's edge thickness and material before buying — glass desks and unusually thick or thin edges sometimes need a different clamp style than a standard wood desk. Also measure the legroom under your desk: a bigger tray holds more cable and a bulkier power strip, but it eats more of the space your knees or a footrest need, so don't default to the largest option without checking clearance first.
+
+<h2 id="do-not-buy-if">Don't buy a full cable-management kit if&#x2026;</h2>
+
+- You only have one or two cables total — a couple of adhesive clips (see the Sinjimoru pick below) solve that without a tray or sleeve at all.
+- Your desk is sit-stand, not fixed-height — a rigid tray can yank cables taut as the desk rises; see our [standing-desk cable guide](/home-office/cable-management-standing-desk/) for the flexible option instead.
+- Your desk edge is fully enclosed or an unusual material a clamp can't grip — check clamp compatibility specifically before buying any of the clamp-mount options here.
 
 ## How to choose
 

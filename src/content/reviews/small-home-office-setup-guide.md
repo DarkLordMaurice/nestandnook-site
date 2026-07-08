@@ -31,7 +31,17 @@ faqs:
 
 This small home office setup guide covers the five things that actually determine whether a cramped desk feels tolerable or genuinely comfortable: seating and posture, monitor position, cable management, desk surface ergonomics, and lighting — in the order we'd tackle them if we were starting from zero.
 
-Everything linked below is a guide we've actually built out, ranked, and kept updated — not a generic list. If you want the fastest path to a fully upgraded setup, our [ergonomic home office setup under $150](/home-office/ergonomic-home-office-setup-under-150/) bundles the budget pick from each category into one build. If you'd rather work through it category by category and pick what actually applies to your desk, keep reading.
+<p id="quick-answer">Fix a small home office in this order: seating and posture first (cheapest, most immediate relief), then monitor position, then cable management and desk surface, then lighting last. If you want the fastest path, our under-$150 build bundles the budget pick from each category into one purchase; if you'd rather fix one thing at a time, jump straight to whichever category is bothering you most right now.</p>
+
+<h2 id="measure-first-check">Figure out which category is actually bothering you</h2>
+
+Everything linked below is a guide we've actually built out, ranked, and kept updated — not a generic list. Before working through all five categories, name your actual complaint: sore back or dangling feet points to seating, a stiff neck by evening points to monitor position, visual clutter points to cable management, and tired eyes point to lighting. Start there rather than reading the whole guide top to bottom if only one thing is genuinely bothering you. If you want the fastest path to a fully upgraded setup, our [ergonomic home office setup under $150](/home-office/ergonomic-home-office-setup-under-150/) bundles the budget pick from each category into one build. If you'd rather work through it category by category and pick what actually applies to your desk, keep reading.
+
+<h2 id="do-not-buy-if">Skip straight to a specific guide instead of this whole pillar if&#x2026;</h2>
+
+- You already know exactly which category is bothering you — jump directly to that section's linked guide rather than reading all five in order; this page exists to help you find the right one, not as a required first step.
+- You're specifically comparing two footrests or two monitor stands — the dedicated product reviews linked in each section go deeper than this overview does.
+- You just want the single cheapest complete fix — go straight to the [under-$150 build](/home-office/ergonomic-home-office-setup-under-150/) instead of researching each category individually.
 
 ## 1. Seating and posture
 
