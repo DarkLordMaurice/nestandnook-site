@@ -1,6 +1,6 @@
 ---
 title: "How to Sit Correctly at a Small Desk (2026 Guide)"
-description: "An ergonomic desk setup checklist for tight spaces: the four body angles that actually matter, the order to fix them in, and the cheap fixes for the ones you're getting wrong."
+description: "An ergonomic desk setup checklist for tight spaces: the four body angles that matter, the order to fix them, and cheap fixes for the ones you're getting wrong."
 primaryKeyword: "how to sit correctly at a desk"
 hub: "home-office"
 pageType: "how_to"
