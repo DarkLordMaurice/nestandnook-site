@@ -28,8 +28,8 @@ export const HUBS: Record<string, {
   },
   'kitchen': {
     name: 'Small-Space Kitchen Gear',
-    blurb: 'Space-saving gadgets and tools for tiny kitchens and apartments. Guides publishing soon.',
-    winnieIntro: "Small kitchens turn people either very efficient or very feral, and I respect both outcomes. I'm building this section out with the gadgets that earn their cabinet space when every inch is under negotiation — check back soon.",
+    blurb: 'Space-saving gadgets and tools for tiny kitchens and apartments — storage, multi-function appliances, pantry organization, and full setup guides.',
+    winnieIntro: "Small kitchens turn people either very efficient or very feral, and I respect both outcomes. This section covers the gadgets that earn their cabinet space when every inch is under negotiation — more clusters landing as we build this hub out.",
     winniePhoto: '/winnie/headshot-v4-2.jpg',
     hero: '/winnie/kitchen-hero.jpg',
     heroAlt: 'Winnie Hollowell stirring a pot on the stove in a small, plant-filled kitchen',
