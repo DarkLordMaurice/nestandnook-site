@@ -139,6 +139,11 @@ const jsonLd = {
     </div>
 
     <h3>Ingredients</h3>
+    {d.ingredientsImage && (
+      <div class="polaroid inset tilt-left">
+        <img src={d.ingredientsImage} alt={d.ingredientsImageAlt ?? `Ingredients laid out for ${d.title}`} width="1200" height="1200" loading="lazy" />
+      </div>
+    )}
     {d.ingredientGroups.map((g) => (
       <div class="ingredient-group">
         {g.groupName && <p class="group-name">{g.groupName}</p>}

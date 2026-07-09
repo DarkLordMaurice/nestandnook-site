@@ -128,6 +128,14 @@ const recipes = defineCollection({
     // dish without replacing the primary hero image.
     altImage: z.string().optional(),
     altImageAlt: z.string().optional(),
+    // Third photo slot — a real ingredients flatlay (no Winnie), rendered near
+    // the recipe card's "Ingredients" heading. Added 2026-07-08 for
+    // tomato-soup.md's real 3-photo shoot (finished bowl, prep action, and
+    // this flatlay); going forward recipes may ship with more photos than
+    // just the hero + alt, per Maurice — optional so older recipes without a
+    // flatlay shot don't break.
+    ingredientsImage: z.string().optional(),
+    ingredientsImageAlt: z.string().optional(),
     winnieImage: z.string().optional(),  // Winnie-in-kitchen lifestyle shot (AI-rendered; disclosed on the About page, not repeated per-page)
     winnieNote: z.string().optional(),   // Short personality blurb in Winnie's voice about this specific dish — paired with her headshot via WinnieNote.astro
     winnieHeadshot: z.string().optional(), // vary which headshot shows next to winnieNote — don't repeat avatar.jpg on every recipe
