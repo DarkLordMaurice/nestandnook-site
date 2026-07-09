@@ -549,18 +549,6 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
   transition: background 0.15s ease;
 }
 .hero-banner .hero-cta:hover { background: var(--terracotta-dark); color: #fff; }
-/* Small, real (not fabricated) content-count line — added 2026-07-06 to give
-   the hero's text column something to sit next to besides whitespace when
-   Winnie's photo runs taller than the washi/h1/lede/CTA block. Counts are
-   computed from the actual collections at build time, not hardcoded. */
-.hero-banner .hero-stats {
-  margin: 0.9rem 0 0;
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: var(--gold-light);
-  opacity: 0.9;
-}
 .hero-photo {
   width: 100%;
   height: auto;

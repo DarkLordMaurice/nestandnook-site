@@ -37,9 +37,6 @@ const latestPosts = [...blogPosts].sort((a, b) => +b.data.publishDate - +a.data.
         <h1>{SITE.brand}</h1>
         <p class="lede">I've read more desk and kitchen reviews than any reasonable person should admit to, and I've turned all of it into one shortlist: gear that actually earns its spot in a small space — starting with home office ergonomics and small-space kitchen tools.</p>
         <a class="hero-cta" href="/home-office/">Start with Home Office →</a>
-        <p class="hero-stats">
-          {reviews.length} buying guide{reviews.length === 1 ? '' : 's'} · {recipes.length} recipe{recipes.length === 1 ? '' : 's'} · {blogPosts.length} note{blogPosts.length === 1 ? '' : 's'} from Winnie
-        </p>
       </div>
       <div class="polaroid">
         <img src="/winnie/hero-full.jpg" alt="Winnie Hollowell, Nest & Nook's virtual host, in her home office" class="hero-photo" width="800" height="500" />
