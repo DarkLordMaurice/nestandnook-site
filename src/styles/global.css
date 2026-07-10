@@ -53,19 +53,20 @@
      hero-banner, article-hero-band, winnie-note, footer) — added 2026-07-10
      because those sections were flat gradient-only and read as plain next
      to the site's cream background pattern and Winnie's eclectic-maximalist
-     "gallery wall" identity. FIRST attempt (a pair of freehand fern-sprig
-     curves) read as illegible scribble and was also too dense/loud once
-     boosted for visibility — Maurice: "not sure what thats supposed to be
-     as well, it looks like scribbles... none of those were scribbles on
-     the wall" (referencing his botanical-wallpaper reference photos, all
-     clean identifiable leaf/floral silhouettes, not abstract line art).
-     Fixed by replacing it with a single unambiguous leaf glyph (a closed
-     outline + center vein + a few short side-vein ticks, the same
-     construction language a real leaf-print wallpaper uses), spaced out on
-     a large 190px tile so it reads as sparse, deliberate texture — not a
-     packed illustration competing with text. One shared variable, one
-     place to tune if it's ever too loud/quiet again. */
-  --wallpaper-sprig: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='190' height='190'%3E%3Cg transform='translate(95,95) rotate(-18)' fill='none' stroke='%23e6c757' stroke-width='1.6' opacity='0.13' stroke-linecap='round'%3E%3Cpath d='M0,-35 C18,-20 18,20 0,35 C-18,20 -18,-20 0,-35 Z'/%3E%3Cpath d='M0,-30 L0,30'/%3E%3Cpath d='M0,-15 L-10,-23 M0,-15 L10,-23 M0,4 L-11,-4 M0,4 L11,-4 M0,21 L-9,14 M0,21 L9,14'/%3E%3C/g%3E%3C/svg%3E");
+     "gallery wall" identity. THIRD attempt — history matters:
+     v1: a pair of freehand fern-sprig curves read as illegible scribble.
+     v2: a single clean leaf glyph fixed the "scribble" problem but Maurice
+         wanted real maximalism, not botanical — he pointed at an Art Deco
+         gold-arch/fan wallpaper reference ("do something like this") and
+         separately had an "Arthur Wallpaper" / "maximalist decor wallpaper"
+         search open, so the brief is a Deco geometric motif, not a plant.
+     v3 (this version): 3 nested Deco arches (a "sunrise/rainbow" fan, the
+     same motif as the reference) on a repeating tile — an unmistakable,
+     identifiable geometric pattern instead of a botanical stand-in. Kept to
+     a single gold stroke color and moderate opacity (not the reference's
+     full-saturation gold-fill wall treatment) since this sits BEHIND body
+     text sitewide, not as a standalone accent wall. */
+  --wallpaper-sprig: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='100'%3E%3Cg fill='none' stroke='%23e6c757' stroke-width='1.6' opacity='0.16'%3E%3Cpath d='M8,100 L8,58 A62,50 0 0 1 132,58 L132,100'/%3E%3Cpath d='M26,100 L26,64 A44,38 0 0 1 114,64 L114,100'/%3E%3Cpath d='M44,100 L44,70 A26,26 0 0 1 96,70 L96,100'/%3E%3Cline x1='70' y1='100' x2='70' y2='20'/%3E%3Cline x1='36' y1='100' x2='36' y2='62'/%3E%3Cline x1='104' y1='100' x2='104' y2='62'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 * { box-sizing: border-box; }
@@ -707,8 +708,12 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
     linear-gradient(160deg, var(--jewel-teal-light), var(--jewel-teal) 65%);
   border-top: 3px solid var(--gold);
   border-bottom: 3px solid var(--gold);
-  padding: 3rem 0 3.25rem;
-  margin-bottom: 2.25rem;
+  /* Was 3rem/3.25rem — Maurice: hero bands were taking up almost the whole
+     screen on hub/guides/about pages, pushing real content below the fold.
+     Trimmed padding here and the collage photo size below so a visitor can
+     see actual cards without scrolling. */
+  padding: 1.5rem 0 1.75rem;
+  margin-bottom: 1.5rem;
 }
 .hero-banner .washi { box-shadow: 0 2px 6px rgba(0,0,0,0.25); }
 .hero-banner h1, .hero-banner .lede, .hero-banner .eyebrow:not(.washi) { color: var(--cream-on-dark); }
@@ -787,12 +792,17 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
-  padding: 0.5rem 0 0.5rem;
+  gap: 1rem;
+  padding: 0.25rem 0 0.25rem;
 }
 .collage-photo {
-  flex: 1 1 220px;
-  max-width: 320px;
+  /* Was flex-basis 220px / max-width 320px — at aspect-ratio 1:1 that made
+     each photo (and the whole hero band, since these sit below the text
+     block) up to 320px tall, which is most of a viewport on hub/guides/
+     about pages. Nearly halved so the hero reads as a banner, not the
+     whole first screen. */
+  flex: 1 1 140px;
+  max-width: 190px;
 }
 .collage-photo-img {
   display: block;
@@ -802,7 +812,7 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
   aspect-ratio: 1 / 1;
 }
 @media (max-width: 560px) {
-  .collage-photo { flex-basis: 45%; max-width: none; }
+  .collage-photo { flex-basis: 30%; max-width: none; }
 }
 
 .post-card { padding: 0; overflow: hidden; }
