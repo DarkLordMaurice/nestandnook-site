@@ -48,6 +48,17 @@
   --radius-sm: 8px;
   --shadow-card: 0 2px 10px rgba(44, 36, 24, 0.06), 0 1px 2px rgba(44, 36, 24, 0.05);
   --shadow-card-hover: 0 8px 24px rgba(44, 36, 24, 0.1), 0 2px 6px rgba(44, 36, 24, 0.06);
+
+  /* Shared "wallpaper" motif for every dark jewel-teal section (header,
+     hero-banner, article-hero-band, winnie-note, footer) — added 2026-07-10
+     because those sections were flat gradient-only and read as plain next
+     to the site's cream background pattern and Winnie's eclectic-maximalist
+     "gallery wall" identity. A pair of hand-drawn fern sprigs in faint gold,
+     the same restrained-line-art register as botanical wallpaper (jungle
+     leaf / floral references), tiled small and kept low-opacity so it reads
+     as texture in the negative space, never competes with text on top of
+     it. One shared variable, one place to tune if it's ever too loud/quiet. */
+  --wallpaper-sprig: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cg fill='none' stroke='%23e6c757' stroke-width='1.4' opacity='0.09'%3E%3Cpath d='M20,150 C18,110 34,90 26,55 C22,38 30,24 40,16'/%3E%3Cpath d='M26,55 C42,58 55,50 60,36'/%3E%3Cpath d='M24,85 C40,88 53,79 58,66'/%3E%3Cpath d='M20,112 C36,110 48,101 52,89'/%3E%3Ccircle cx='40' cy='16' r='3'/%3E%3Cpath d='M120,140 C140,115 138,88 152,65'/%3E%3Cpath d='M138,88 C122,86 110,94 105,108'/%3E%3Cpath d='M148,72 C132,72 120,80 116,93'/%3E%3Ccircle cx='152' cy='65' r='2.6'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 * { box-sizing: border-box; }
@@ -63,7 +74,7 @@ body {
      plus real pattern-on-pattern instead of a flat accent-only background. */
   background-image:
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.17  0 0 0 0 0.14  0 0 0 0 0.09  0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cg fill='none' stroke='%235f6e54' stroke-width='1.3' opacity='0.065'%3E%3Cpath d='M110,26 C144,58 144,98 110,110 C76,98 76,58 110,26 Z'/%3E%3Cpath d='M110,194 C144,162 144,122 110,110 C76,122 76,162 110,194 Z'/%3E%3Cpath d='M26,110 C58,76 98,76 110,110 C98,144 58,144 26,110 Z'/%3E%3Cpath d='M194,110 C162,76 122,76 110,110 C122,144 162,144 194,110 Z'/%3E%3Ccircle cx='110' cy='110' r='7'/%3E%3Ccircle cx='0' cy='0' r='4'/%3E%3Ccircle cx='220' cy='0' r='4'/%3E%3Ccircle cx='0' cy='220' r='4'/%3E%3Ccircle cx='220' cy='220' r='4'/%3E%3C/g%3E%3C/svg%3E");
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cg fill='none' stroke='%235f6e54' stroke-width='1.5' opacity='0.16'%3E%3Cpath d='M110,26 C144,58 144,98 110,110 C76,98 76,58 110,26 Z'/%3E%3Cpath d='M110,194 C144,162 144,122 110,110 C76,122 76,162 110,194 Z'/%3E%3Cpath d='M26,110 C58,76 98,76 110,110 C98,144 58,144 26,110 Z'/%3E%3Cpath d='M194,110 C162,76 122,76 110,110 C122,144 162,144 194,110 Z'/%3E%3Ccircle cx='110' cy='110' r='7'/%3E%3Ccircle cx='0' cy='0' r='4'/%3E%3Ccircle cx='220' cy='0' r='4'/%3E%3Ccircle cx='0' cy='220' r='4'/%3E%3Ccircle cx='220' cy='220' r='4'/%3E%3C/g%3E%3C/svg%3E");
   color: var(--ink);
   margin: 0;
   line-height: 1.65;
@@ -186,7 +197,9 @@ main a:hover { color: var(--terracotta-dark); }
 .site-header {
   border-bottom: 3px solid var(--gold);
   background: var(--jewel-teal);
-  background-image: linear-gradient(180deg, var(--jewel-teal-light), var(--jewel-teal) 60%);
+  background-image:
+    var(--wallpaper-sprig),
+    linear-gradient(180deg, var(--jewel-teal-light), var(--jewel-teal) 60%);
 }
 .site-header .wrap {
   display: flex;
@@ -682,6 +695,7 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
      reference rooms, instead of sitting flat on plain paper. */
   background: var(--jewel-teal);
   background-image:
+    var(--wallpaper-sprig),
     radial-gradient(ellipse at 20% 20%, rgba(230, 199, 87, 0.08), transparent 55%),
     linear-gradient(160deg, var(--jewel-teal-light), var(--jewel-teal) 65%);
   border-top: 3px solid var(--gold);
@@ -819,6 +833,7 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
 .article-hero-band {
   background: var(--jewel-teal);
   background-image:
+    var(--wallpaper-sprig),
     radial-gradient(ellipse at 15% 20%, rgba(230, 199, 87, 0.1), transparent 55%),
     linear-gradient(160deg, var(--jewel-teal-light), var(--jewel-teal) 65%);
   border-top: 3px solid var(--gold);
@@ -984,7 +999,9 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
   gap: 1rem;
   align-items: flex-start;
   background: var(--jewel-teal);
-  background-image: linear-gradient(135deg, var(--jewel-teal-light), var(--jewel-teal) 70%);
+  background-image:
+    var(--wallpaper-sprig),
+    linear-gradient(135deg, var(--jewel-teal-light), var(--jewel-teal) 70%);
   border: none;
   border-left: 5px solid var(--gold);
   border-radius: var(--radius);
@@ -1033,6 +1050,7 @@ tr:nth-child(even) td { background: rgba(214, 164, 25, 0.05); }
 .site-footer {
   border-top: 3px solid var(--gold);
   background: var(--jewel-teal);
+  background-image: var(--wallpaper-sprig);
   margin-top: 3rem;
   padding: 2.25rem 0;
 }
