@@ -105,13 +105,15 @@ const fullGraph = {
         <a href="/home-office/">Home Office</a>
         <a href="/kitchen/">Kitchen</a>
         <a href="/recipes/">Recipes</a>
+        <a href="/guides/">Guides</a>
         <a href="/blog/">Winnie's Notes</a>
         <a href="/about/">About</a>
+        <a href="/search/" class="site-nav-search" aria-label="Search">Search</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main data-pagefind-body>
     <div class="wrap">
       {showDisclosure && <AffiliateDisclosure />}
       {author && (

@@ -1,0 +1,52 @@
+---
+// Home for the informational, product-adjacent posts that used to be
+// commingled with Winnie's Notes life content under /blog/ — "Desk fixes"
+// and "Kitchen fixes" category posts (Maurice, 2026-07-10: "there are 'blog'
+// posts that arent blogs at all, they are about products - these need to go
+// to the right section"). These posts still physically live in the `blog`
+// content collection at /blog/{slug}/ (no URLs changed, no files moved) —
+// this page is a second, purpose-specific index over the same collection,
+// filtered to the opposite category set from src/pages/blog/index.astro.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import { SITE } from '../../config.ts';
+import { getCollection } from 'astro:content';
+
+const TIP_CATEGORIES = ['Desk fixes', 'Kitchen fixes'];
+const allPosts = await getCollection('blog');
+const posts = allPosts.filter((p) => TIP_CATEGORIES.includes(p.data.category));
+posts.sort((a, b) => +b.data.publishDate - +a.data.publishDate);
+---
+<BaseLayout
+  title={`Guides — ${SITE.brand}`}
+  description="Quick, specific fixes for common home office and small kitchen annoyances — the practical companion to Winnie's Notes."
+  showDisclosure={false}
+>
+  <section class="hero-banner">
+    <div class="hero-banner-inner two-col">
+      <div>
+        <span class="washi washi-teal">Fixes worth knowing</span>
+        <h1>Guides</h1>
+        <p class="lede">Short, specific answers to "why does this keep happening" — the mechanism behind a common desk or kitchen annoyance, the fixes people try first that only half-work, and what actually resolves it. Looking for Winnie's actual life outside the nook instead? That's over in <a href="/blog/">Winnie's Notes</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  {posts.length === 0 ? (
+    <p><em>First guides publishing soon.</em></p>
+  ) : (
+    <div class="masonry">
+      {posts.map((p, i) => (
+        <BlogCard
+          href={`/blog/${p.slug}/`}
+          image={p.data.image}
+          imagePosition={p.data.imagePosition}
+          title={p.data.title}
+          description={p.data.description}
+          category={p.data.category}
+          featured={i === 0}
+        />
+      ))}
+    </div>
+  )}
+</BaseLayout>

@@ -5,12 +5,21 @@ import HeroCollage from '../../components/HeroCollage.astro';
 import { SITE } from '../../config.ts';
 import { getCollection } from 'astro:content';
 
-const posts = await getCollection('blog');
+// Winnie's Notes is personality/life content only — "Desk fixes" and
+// "Kitchen fixes" are product-tip informational posts that were previously
+// commingled here, which read as "blog posts that aren't blogs at all,
+// they're about products" (Maurice, 2026-07-10). Those now live under
+// /guides/ (see src/pages/guides/index.astro) with their own section. The
+// underlying files stay in this same `blog` content collection and keep
+// their /blog/{slug}/ URLs — nothing moves on disk, only what's listed here.
+const LIFE_CATEGORIES = ['Life outside the nook', 'Behind the nook'];
+const allPosts = await getCollection('blog');
+const posts = allPosts.filter((p) => LIFE_CATEGORIES.includes(p.data.category));
 posts.sort((a, b) => +b.data.publishDate - +a.data.publishDate);
 ---
 <BaseLayout
   title={`Winnie's Notes — ${SITE.brand}`}
-  description="Winnie Hollowell's take on the small fixes, favorite finds, and slice-of-life stuff behind Nest & Nook."
+  description="Winnie Hollowell's take on life outside the nook — the stuff that has nothing to do with desks or kitchens, and everything to do with who she is."
   showDisclosure={false}
 >
   <section class="hero-banner hero-banner-collage">
@@ -18,7 +27,7 @@ posts.sort((a, b) => +b.data.publishDate - +a.data.publishDate);
       <div>
         <span class="washi washi-pink">Notes from the nook</span>
         <h1>Winnie's Notes</h1>
-        <p class="lede">The running commentary — my honest reactions, the fixes I'd tell a neighbor about over the fence, and the occasional detour into whatever's making my nook happy this week.</p>
+        <p class="lede">The personal stuff — my actual life outside of ranking footrests: the classes, the mishaps, the holidays, the hobbies. Looking for the practical desk-and-kitchen fixes instead? Those live over in <a href="/guides/">Guides</a>.</p>
       </div>
       <HeroCollage
         anchor={{ src: '/winnie/scrapbook-desk.jpg', alt: 'Winnie sorting through a desk full of clippings and photos', tilt: 'left' }}

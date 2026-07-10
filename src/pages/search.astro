@@ -1,0 +1,59 @@
+---
+// Site search — added 2026-07-10 (Maurice: "we need a fucking search feature
+// on our site to actually find things or topics" after the Kitchen/Home
+// Office hubs grew past what a nav menu can browse comfortably). Uses
+// Pagefind, a static full-text search index generated at build time
+// (package.json's build script runs `pagefind --site dist` right after
+// `astro build`) — no server, no API cost, works on Cloudflare Pages as-is.
+// Pagefind's UI bundle (/pagefind/pagefind-ui.js + .css) only exists in the
+// real production build output, not in `astro dev` — this page will show an
+// empty box locally until you run a real `npm run build` at least once.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config.ts';
+---
+<BaseLayout
+  title={`Search — ${SITE.brand}`}
+  description={`Search all of ${SITE.brand}'s reviews, guides, recipes, and Winnie's Notes.`}
+  showDisclosure={false}
+>
+  <section class="hero-banner">
+    <div class="hero-banner-inner two-col">
+      <div>
+        <span class="washi washi-teal">Find something</span>
+        <h1>Search {SITE.brand}</h1>
+        <p class="lede">Every review, guide, recipe, and note in one place — search by product, problem, or topic.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="prose">
+    <div id="search"></div>
+  </div>
+
+  <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+  <script is:inline src="/pagefind/pagefind-ui.js"></script>
+  <script is:inline>
+    window.addEventListener('DOMContentLoaded', () => {
+      if (typeof PagefindUI === 'undefined') return;
+      new PagefindUI({ element: '#search', showSubResults: true, showImages: true });
+    });
+  </script>
+</BaseLayout>
+
+<style>
+  #search {
+    max-width: 700px;
+    margin: 0 auto 3rem;
+  }
+  /* Pagefind's default UI ships its own styles via pagefind-ui.css; these
+     just nudge it to sit inside our --paper/--ink palette instead of its
+     stock blue-and-white defaults. */
+  :global(.pagefind-ui) {
+    --pagefind-ui-primary: var(--ink);
+    --pagefind-ui-text: var(--ink);
+    --pagefind-ui-background: var(--paper);
+    --pagefind-ui-border: var(--border);
+    --pagefind-ui-tag: var(--teal);
+    font-family: inherit;
+  }
+</style>

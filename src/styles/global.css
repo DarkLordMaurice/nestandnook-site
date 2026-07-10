@@ -813,6 +813,28 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
 .polaroid.tilt-right::before { background: var(--teal); transform: rotate(4deg); }
 .polaroid.tilt-left::before { background: var(--mustard); transform: rotate(-7deg); }
 
+/* Explicit tape-color classes (set by HeroCollage.astro, one per photo in a
+   row) — win over the tilt-based color above by source order, since tilt now
+   only controls rotation angle. Fixes every hero collage on every page
+   showing the exact same 2-color mustard/teal repeat (Maurice, 2026-07-10). */
+.polaroid.tape-teal::before { background: var(--teal); }
+.polaroid.tape-hotpink::before { background: var(--hotpink); }
+.polaroid.tape-sage::before { background: var(--sage); }
+.polaroid.tape-mustard::before { background: var(--mustard); }
+.polaroid.tape-gold::before { background: var(--gold-light); }
+
+/* Plain .polaroid figures with no explicit tilt/tape class (mostly inline
+   photo-essay shots inside blog-post bodies — e.g. the-studio-two-blocks-
+   from-my-apartment.md's `<div class="polaroid inset">` figures) previously
+   all fell back to the single default hotpink tape with zero variation.
+   Cycle by sibling position instead so a post with several inline photos
+   shows different tape colors across them. */
+.polaroid:not(.tilt-right):not(.tilt-left):not([class*="tape-"]):nth-of-type(5n+1)::before { background: var(--hotpink); }
+.polaroid:not(.tilt-right):not(.tilt-left):not([class*="tape-"]):nth-of-type(5n+2)::before { background: var(--teal); }
+.polaroid:not(.tilt-right):not(.tilt-left):not([class*="tape-"]):nth-of-type(5n+3)::before { background: var(--sage); }
+.polaroid:not(.tilt-right):not(.tilt-left):not([class*="tape-"]):nth-of-type(5n+4)::before { background: var(--mustard); }
+.polaroid:not(.tilt-right):not(.tilt-left):not([class*="tape-"]):nth-of-type(5n+5)::before { background: var(--gold-light); }
+
 /* ---------- Winnie host note ----------
    Deep jewel-teal card + gold rule — Winnie's asides get a real "framed on
    the wall" treatment instead of blending into the paper cards around them. */
