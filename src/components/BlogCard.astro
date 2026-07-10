@@ -13,8 +13,16 @@ interface Props {
   featured?: boolean;
 }
 const { href, image, imagePosition, title, description, category, featured = false } = Astro.props;
+// This component is reused for both genuine Off the Clock (life) posts and
+// the homepage's Guides teaser section (Desk fixes/Kitchen fixes posts) —
+// same card, same class, two different content types. The notebook cursor
+// should only apply to real Off the Clock cards; guide-category cards get
+// the same wrench/fix cursor as the /guides/ index for consistency. See
+// `.blog-card-tile-guide` in global.css.
+const GUIDE_CATEGORIES = ['Desk fixes', 'Kitchen fixes'];
+const isGuidePost = category ? GUIDE_CATEGORIES.includes(category) : false;
 ---
-<a href={href} class:list={['content-card', 'blog-card-tile', { featured }]}>
+<a href={href} class:list={['content-card', 'blog-card-tile', { featured }, isGuidePost && 'blog-card-tile-guide']}>
   <div class="card-photo">
     <img src={image} alt="" width="500" height="340" loading="lazy" style={imagePosition ? `--img-pos: ${imagePosition}` : undefined} />
   </div>

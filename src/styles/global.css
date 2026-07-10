@@ -1270,8 +1270,17 @@ main a[rel~="sponsored"] {
 a.guide-list-item {
   cursor: url('/cursors/cursor-fix.png') 16 16, pointer;
 }
-a.blog-card-tile {
+/* `.blog-card-tile` (BlogCard.astro) is reused for both real Off the Clock
+   (life) posts and the homepage's Guides teaser section (Desk fixes/Kitchen
+   fixes posts) — same component, same class. Maurice: the notebook cursor
+   should only show over Off the Clock content. BlogCard now adds a
+   `.blog-card-tile-guide` class when the post's category is a guide
+   category, so the two cases can be styled separately here. */
+a.blog-card-tile:not(.blog-card-tile-guide) {
   cursor: url('/cursors/cursor-notebook.png') 16 16, pointer;
+}
+a.blog-card-tile-guide {
+  cursor: url('/cursors/cursor-fix.png') 16 16, pointer;
 }
 
 @media print {
