@@ -725,6 +725,14 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
 }
 .hero-banner .washi { box-shadow: 0 2px 6px rgba(0,0,0,0.25); }
 .hero-banner h1, .hero-banner .lede, .hero-banner .eyebrow:not(.washi) { color: var(--cream-on-dark); }
+/* Hub/about/guides/blog/recipes index heroes (the `-collage` variant) got
+   their photos sized back up per Maurice's "too small" feedback — trimmed
+   the headline/lede here to compensate so the band still reads as a
+   banner, not a second full screen before you reach real content. Scoped
+   to `-collage` only: the homepage's hand-lettered wordmark and the
+   compact article-hero-band keep their own sizing untouched. */
+.hero-banner-collage h1 { font-size: clamp(1.6rem, 2.6vw, 2.15rem); }
+.hero-banner-collage .lede { font-size: 1rem; }
 /* Homepage-only hand-lettered wordmark (added 2026-07-10) — Maurice: the
    plain Fraunces serif on the literal "Nest & Nook" headline "doesn't read
    as designed by Winnie." Reuses --font-hand (Caveat), the same script
@@ -800,17 +808,21 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  /* Was left-aligned by default — with only 2-3 photos capped well under
+     the row's full width, that left them stranded on the left with a wall
+     of empty teal to the right. Maurice: "images being stuffed to one
+     side." Centered instead. */
+  justify-content: center;
+  gap: 1.1rem;
   padding: 0.25rem 0 0.25rem;
 }
 .collage-photo {
-  /* Was flex-basis 220px / max-width 320px — at aspect-ratio 1:1 that made
-     each photo (and the whole hero band, since these sit below the text
-     block) up to 320px tall, which is most of a viewport on hub/guides/
-     about pages. Nearly halved so the hero reads as a banner, not the
-     whole first screen. */
-  flex: 1 1 140px;
-  max-width: 190px;
+  /* First pass (320px→190px) fixed an oversized hero but overshot — Maurice:
+     "a little too small." Settled here, with the hero h1/lede below sized
+     down to compensate so the band overall still doesn't dominate the
+     screen. */
+  flex: 1 1 170px;
+  max-width: 240px;
 }
 .collage-photo-img {
   display: block;
