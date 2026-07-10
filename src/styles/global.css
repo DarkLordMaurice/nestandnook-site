@@ -53,12 +53,19 @@
      hero-banner, article-hero-band, winnie-note, footer) — added 2026-07-10
      because those sections were flat gradient-only and read as plain next
      to the site's cream background pattern and Winnie's eclectic-maximalist
-     "gallery wall" identity. A pair of hand-drawn fern sprigs in faint gold,
-     the same restrained-line-art register as botanical wallpaper (jungle
-     leaf / floral references), tiled small and kept low-opacity so it reads
-     as texture in the negative space, never competes with text on top of
-     it. One shared variable, one place to tune if it's ever too loud/quiet. */
-  --wallpaper-sprig: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='130'%3E%3Cg fill='none' stroke='%23e6c757' stroke-width='2' opacity='0.3'%3E%3Cpath d='M16,122 C14,90 28,74 21,45 C18,31 25,19 33,13'/%3E%3Cpath d='M21,45 C35,48 46,41 50,29'/%3E%3Cpath d='M19,70 C33,72 44,64 48,53'/%3E%3Cpath d='M16,91 C30,89 40,82 44,72'/%3E%3Ccircle cx='33' cy='13' r='3.2'/%3E%3Cpath d='M98,114 C114,93 112,71 124,53'/%3E%3Cpath d='M112,71 C99,69 89,76 85,88'/%3E%3Cpath d='M120,58 C107,58 97,65 93,76'/%3E%3Ccircle cx='124' cy='53' r='2.8'/%3E%3C/g%3E%3C/svg%3E");
+     "gallery wall" identity. FIRST attempt (a pair of freehand fern-sprig
+     curves) read as illegible scribble and was also too dense/loud once
+     boosted for visibility — Maurice: "not sure what thats supposed to be
+     as well, it looks like scribbles... none of those were scribbles on
+     the wall" (referencing his botanical-wallpaper reference photos, all
+     clean identifiable leaf/floral silhouettes, not abstract line art).
+     Fixed by replacing it with a single unambiguous leaf glyph (a closed
+     outline + center vein + a few short side-vein ticks, the same
+     construction language a real leaf-print wallpaper uses), spaced out on
+     a large 190px tile so it reads as sparse, deliberate texture — not a
+     packed illustration competing with text. One shared variable, one
+     place to tune if it's ever too loud/quiet again. */
+  --wallpaper-sprig: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='190' height='190'%3E%3Cg transform='translate(95,95) rotate(-18)' fill='none' stroke='%23e6c757' stroke-width='1.6' opacity='0.13' stroke-linecap='round'%3E%3Cpath d='M0,-35 C18,-20 18,20 0,35 C-18,20 -18,-20 0,-35 Z'/%3E%3Cpath d='M0,-30 L0,30'/%3E%3Cpath d='M0,-15 L-10,-23 M0,-15 L10,-23 M0,4 L-11,-4 M0,4 L11,-4 M0,21 L-9,14 M0,21 L9,14'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 * { box-sizing: border-box; }
