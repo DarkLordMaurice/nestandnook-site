@@ -27,6 +27,26 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 const d = entry.data;
 
+// The Winnie-shot / alt-image / ingredients-image polaroids below used to
+// hardcode tilt-right / tilt-left / tilt-left literally in this template —
+// identical on all 24 recipes, so every recipe page showed the same tilt
+// pattern and (since tilt was hardcoded, not seeded) the same 2-color
+// teal/mustard tape every time regardless of the 5-color palette added
+// earlier (Maurice, 2026-07-10, second time: "they don't fucking rotate
+// between pages"). Fixed the same way as HeroCollage: hash the recipe's own
+// slug into a stable per-recipe offset so each recipe lands on a different
+// tilt+color combination, deterministic per recipe (reproducible builds),
+// not identical across all of them.
+function hashSeed(s: string): number {
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
+  return h;
+}
+const recipeOffset = hashSeed(entry.slug);
+const tapeColors = ['teal', 'hotpink', 'sage', 'mustard', 'gold'];
+const tiltFor = (i: number) => (((i + recipeOffset) % 2 === 0) ? 'right' : 'left');
+const tapeFor = (i: number) => tapeColors[(i + recipeOffset) % tapeColors.length];
+
 const toISODuration = (mins: number) => `PT${mins}M`;
 const totalTime = d.prepTimeMinutes + d.cookTimeMinutes;
 const fmtMins = (m: number) => (m >= 60 ? `${Math.floor(m / 60)} hr ${m % 60 ? `${m % 60} min` : ''}`.trim() : `${m} min`);
@@ -112,7 +132,7 @@ const jsonLd = {
   {(d.winnieNote || d.winnieImage) && (
     <div class="recipe-winnie-aside">
       {d.winnieImage && (
-        <div class="recipe-winnie-shot polaroid tilt-right">
+        <div class={`recipe-winnie-shot polaroid tilt-${tiltFor(0)} tape-${tapeFor(0)}`}>
           <img src={d.winnieImage} alt={`Winnie Hollowell narrating ${d.title}`} width="1200" height="800" loading="lazy" />
         </div>
       )}
@@ -124,7 +144,7 @@ const jsonLd = {
     <section class="recipe-tips">
       <h2>Tips &amp; variations</h2>
       {d.altImage && (
-        <div class="polaroid inset tilt-left">
+        <div class={`polaroid inset tilt-${tiltFor(1)} tape-${tapeFor(1)}`}>
           <img src={d.altImage} alt={d.altImageAlt ?? `Another look at the finished ${d.title}`} width="1200" height="1200" loading="lazy" />
         </div>
       )}
@@ -143,7 +163,7 @@ const jsonLd = {
 
     <h3>Ingredients</h3>
     {d.ingredientsImage && (
-      <div class="polaroid inset tilt-left">
+      <div class={`polaroid inset tilt-${tiltFor(2)} tape-${tapeFor(2)}`}>
         <img src={d.ingredientsImage} alt={d.ingredientsImageAlt ?? `Ingredients laid out for ${d.title}`} width="1200" height="1200" loading="lazy" />
       </div>
     )}

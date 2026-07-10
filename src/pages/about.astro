@@ -13,10 +13,11 @@ import HeroCollage from '../components/HeroCollage.astro';
         <p class="lede">{SITE.brand} helps people build better home office and small-space kitchen setups without overspending. We focus on the affordable accessories that actually change how a space feels day to day — footrests, stands, cable management, desk pads, kitchen space-savers — and we rank them by who each product genuinely suits.</p>
       </div>
       <HeroCollage
-        anchor={{ src: '/winnie/portrait-v2.jpg', alt: "Winnie Hollowell, Nest & Nook's virtual host", tilt: 'right', portrait: true }}
+        seed="about"
+        anchor={{ src: '/winnie/portrait-v2.jpg', alt: "Winnie Hollowell, Nest & Nook's virtual host", portrait: true }}
         accents={[
-          { src: '/winnie/winnie-life-journaling.jpg', alt: 'Winnie journaling at her cluttered desk', tilt: 'left' },
-          { src: '/winnie/winnie-life-sorting-drawer.jpg', alt: 'Winnie reorganizing a packed junk drawer', tilt: 'right' },
+          { src: '/winnie/about-hero.jpg', alt: 'Winnie pointing across her workspace, tool apron on, "Measure Cut Swear Repeat" sign on the wall' },
+          { src: '/winnie/winnie-life-sorting-drawer.jpg', alt: 'Winnie reorganizing a packed junk drawer' },
         ]}
       />
     </div>

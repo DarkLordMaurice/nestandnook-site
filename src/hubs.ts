@@ -22,8 +22,8 @@ export const HUBS: Record<string, {
     hero: '/winnie/office-hero.jpg',
     heroAlt: "Winnie Hollowell perched on a desk with a mug that reads 'make beautiful things,' surrounded by a gallery wall and plants",
     heroAccents: [
-      { src: '/winnie/winnie-office-standing-desk.jpg', alt: 'Winnie at her standing desk mid-adjustment', tilt: 'right' },
-      { src: '/winnie/winnie-office-wide-overview.jpg', alt: "A wide view of Winnie's actual gallery-wall home office", tilt: 'left' },
+      { src: '/winnie/winnie-office-standing-desk.jpg', alt: 'Winnie at her standing desk mid-adjustment' },
+      { src: '/winnie/winnie-office-wide-overview.jpg', alt: "A wide view of Winnie's actual gallery-wall home office" },
     ],
   },
   'kitchen': {
@@ -34,8 +34,8 @@ export const HUBS: Record<string, {
     hero: '/winnie/kitchen-hero.jpg',
     heroAlt: 'Winnie Hollowell stirring a pot on the stove in a small, plant-filled kitchen',
     heroAccents: [
-      { src: '/winnie/kitchen-side.jpg', alt: 'Winnie working the counter from a side angle in her kitchen', tilt: 'right' },
-      { src: '/winnie/winnie-kitchen-cabinet-reach.jpg', alt: 'Winnie reaching into a packed kitchen cabinet', tilt: 'left' },
+      { src: '/winnie/kitchen-side.jpg', alt: 'Winnie working the counter from a side angle in her kitchen' },
+      { src: '/winnie/winnie-kitchen-cabinet-reach.jpg', alt: 'Winnie reaching into a packed kitchen cabinet' },
     ],
   },
 };

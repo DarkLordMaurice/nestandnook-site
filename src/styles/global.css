@@ -231,6 +231,107 @@ nav.site-nav a {
 }
 nav.site-nav a:hover { color: var(--gold-light); opacity: 1; border-bottom-color: var(--gold-light); }
 
+/* Header search — inline widget replacing the old standalone /search/ page
+   (Maurice, 2026-07-10: "not a separate page all together, that shit is
+   wild"). Lives in the header on every page via BaseLayout, backed by
+   Pagefind's core JS API (not the full-page pagefind-ui.js widget). */
+.site-header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.site-search { position: relative; }
+.site-search-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.15rem;
+  height: 2.15rem;
+  border-radius: 50%;
+  border: 1px solid rgba(246, 236, 214, 0.35);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--cream-on-dark);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  padding: 0;
+}
+.site-search-toggle:hover,
+.site-search-toggle[aria-expanded="true"] {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: var(--gold-light);
+  color: var(--gold-light);
+}
+.site-search-panel {
+  position: absolute;
+  top: calc(100% + 0.85rem);
+  right: 0;
+  width: min(380px, 90vw);
+  background: var(--cream);
+  border-radius: 12px;
+  border: 1px solid rgba(44, 36, 24, 0.1);
+  box-shadow: 0 20px 44px rgba(18, 58, 55, 0.28);
+  padding: 0.9rem;
+  z-index: 60;
+}
+.site-search-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.65rem 0.8rem;
+  border-radius: 8px;
+  border: 1.5px solid rgba(44, 36, 24, 0.16);
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: #fff;
+}
+.site-search-input:focus {
+  outline: none;
+  border-color: var(--jewel-teal-light);
+}
+.site-search-results {
+  margin-top: 0.65rem;
+  max-height: 60vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.site-search-result {
+  display: block;
+  padding: 0.55rem 0.6rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+}
+.site-search-result:hover { background: rgba(44, 36, 24, 0.06); }
+.site-search-result-title {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.94rem;
+  color: var(--ink);
+}
+.site-search-result-excerpt {
+  display: block;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--ink-soft);
+  margin-top: 0.15rem;
+}
+.site-search-result-excerpt mark { background: none; color: var(--jewel-teal); font-weight: 700; }
+.site-search-empty,
+.site-search-loading {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  padding: 0.4rem 0.2rem;
+  margin: 0;
+}
+@media (max-width: 640px) {
+  .site-header-right { gap: 0.6rem; }
+  nav.site-nav a { margin-left: 0.85rem; font-size: 0.85rem; }
+  .site-search-panel { position: fixed; top: 4.4rem; left: 0.75rem; right: 0.75rem; width: auto; }
+}
+
 /* ---------- Main content shell ---------- */
 main { padding: 0 0 3rem; }
 main .wrap { max-width: 1100px; padding-top: 2.25rem; }

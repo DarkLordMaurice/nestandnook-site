@@ -34,7 +34,8 @@ reviews.sort((a, b) => +b.data.publishDate - +a.data.publishDate);
         <p class="lede">{meta.blurb}</p>
       </div>
       <HeroCollage
-        anchor={{ src: meta.hero, alt: meta.heroAlt, tilt: 'left' }}
+        seed={hub}
+        anchor={{ src: meta.hero, alt: meta.heroAlt }}
         accents={meta.heroAccents}
       />
     </div>

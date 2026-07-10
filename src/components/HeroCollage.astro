@@ -15,26 +15,47 @@ interface Photo {
   tilt?: 'left' | 'right';
   portrait?: boolean;
 }
-const { anchor, accents = [] } = Astro.props as {
+const { anchor, accents = [], seed = '' } = Astro.props as {
   anchor: Photo;
   accents?: Photo[];
+  seed?: string;
 };
 const photos = [anchor, ...accents];
-// Tape color used to be hard-tied to tilt direction (tilt-right = teal,
-// tilt-left = mustard) — since every collage call site alternates left/right
-// in the same order, every hero collage on every page rendered the exact
-// same mustard-teal-mustard (or teal-mustard-teal) pattern with zero real
-// variation (Maurice, 2026-07-10: "the tape holding the photos is exactly
-// the same color on all the pages"). Tilt still controls rotation angle;
-// color now cycles independently through a 5-color pool keyed to the
-// photo's position, so a 3-photo row shows 3 distinct colors instead of an
-// ABA repeat, and different pages naturally land on different combinations.
+
+// Round 1 fix (earlier today) made tape color cycle across a 3-photo row
+// instead of a hard-coded tilt-tied binary — but every call site still
+// started that cycle at index 0 AND still passed an explicit `tilt` per
+// photo, so every page's collage rendered the identical color+tilt sequence
+// anyway (About: right/left/right, Blog/Recipes/both hubs: left/right/left
+// — only 2 patterns existed site-wide). Maurice, 2026-07-10, second time:
+// "they don't fucking rotate between pages... the colored tape is still
+// exactly the same on each fucking page."
+//
+// Real fix: every call site now passes a distinct `seed` (page identity —
+// 'about', 'blog', 'recipes', the hub slug, etc.) instead of hardcoding
+// `tilt` per photo. The seed is hashed into a stable per-page offset that
+// shifts BOTH the tilt-alternation start point and the tape-color start
+// point, so each page's 3-photo row lands on a different combination —
+// deterministic per page (same seed always renders the same way, so builds
+// stay reproducible), but no longer identical across pages. Passing an
+// explicit `tilt` on an individual photo still overrides the computed one,
+// for the rare case a specific photo genuinely needs to force a direction.
+function hashSeed(s: string): number {
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
+  return h;
+}
+const offset = hashSeed(seed);
 const tapeColors = ['teal', 'hotpink', 'sage', 'mustard', 'gold'];
 ---
 <div class="collage-row">
-  {photos.map((p, i) => (
-    <div class={`polaroid collage-photo tilt-${p.tilt ?? (i % 2 === 0 ? 'left' : 'right')} tape-${tapeColors[i % tapeColors.length]}`}>
-      <img src={p.src} alt={p.alt} class={`collage-photo-img${p.portrait ? ' collage-photo-img-portrait' : ''}`} width="500" height="500" />
-    </div>
-  ))}
+  {photos.map((p, i) => {
+    const tilt = p.tilt ?? (((i + offset) % 2 === 0) ? 'left' : 'right');
+    const tape = tapeColors[(i + offset) % tapeColors.length];
+    return (
+      <div class={`polaroid collage-photo tilt-${tilt} tape-${tape}`}>
+        <img src={p.src} alt={p.alt} class={`collage-photo-img${p.portrait ? ' collage-photo-img-portrait' : ''}`} width="500" height="500" />
+      </div>
+    );
+  })}
 </div>

@@ -21,10 +21,11 @@ recipes.sort((a, b) => +b.data.publishDate - +a.data.publishDate);
         <p class="lede">The dishes people actually search for, written for real kitchens — small counters, one pan, no fuss. Every recipe links to the gear that makes it easier, if you want it.</p>
       </div>
       <HeroCollage
-        anchor={{ src: '/winnie/winnie-kitchen-card.jpg', alt: 'Winnie holding a handwritten recipe card in her kitchen', tilt: 'left' }}
+        seed="recipes"
+        anchor={{ src: '/winnie/winnie-kitchen-card.jpg', alt: 'Winnie holding a handwritten recipe card in her kitchen' }}
         accents={[
-          { src: '/winnie/winnie-holding-chocolate-chip-cookies.jpg', alt: 'Winnie holding a tray of chocolate chip cookies', tilt: 'right' },
-          { src: '/winnie/winnie-holding-banana-bread.jpg', alt: 'Winnie holding a fresh loaf of banana bread', tilt: 'left' },
+          { src: '/winnie/winnie-holding-chocolate-chip-cookies.jpg', alt: 'Winnie holding a tray of chocolate chip cookies' },
+          { src: '/winnie/winnie-holding-banana-bread.jpg', alt: 'Winnie holding a fresh loaf of banana bread' },
         ]}
       />
     </div>
