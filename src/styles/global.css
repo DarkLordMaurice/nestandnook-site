@@ -193,7 +193,11 @@ main a:hover { color: var(--terracotta-dark); }
   align-items: center;
   justify-content: space-between;
   padding: 1.1rem 1.25rem;
-  max-width: 860px;
+  /* Was 860px — narrower than main content's 1100px, which is what made
+     the header logo look small/lost with dead space around it in the
+     first place. Matched to main's max-width 2026-07-10 so the bigger
+     logo + full nav have room to sit on one line instead of wrapping. */
+  max-width: 1100px;
 }
 .brand {
   text-decoration: none;
