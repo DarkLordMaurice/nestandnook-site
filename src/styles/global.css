@@ -1158,7 +1158,7 @@ tr:nth-child(even) td { background: rgba(214, 164, 25, 0.05); }
 .recipe-index-meta { font-size: 0.8rem; color: var(--ink-soft); margin-top: 0.3rem !important; }
 
 /* Guide posts ("Desk fixes"/"Kitchen fixes") get a distinct reference-style
-   scaffold from Winnie's Notes life posts, even though both still live in
+   scaffold from Off the Clock life posts, even though both still live in
    the same `blog` content collection and share [...slug].astro (Maurice,
    2026-07-10: guides need real structure, shouldn't read like a diary
    entry — "doesn't follow the same format... doesn't present any real
@@ -1199,7 +1199,7 @@ tr:nth-child(even) td { background: rgba(214, 164, 25, 0.05); }
 .guide-fix-box strong { color: var(--jewel-teal); }
 
 /* Guides index — deliberately a scannable list, not the masonry card grid
-   used for Winnie's Notes/reviews/recipes, so the section itself reads as
+   used for Off the Clock/reviews/recipes, so the section itself reads as
    a reference index rather than a feed. */
 .guide-list { display: flex; flex-direction: column; gap: 0; margin-top: 1.5rem; }
 .guide-list-item {
@@ -1244,6 +1244,28 @@ tr:nth-child(even) td { background: rgba(214, 164, 25, 0.05); }
 @media (max-width: 560px) {
   .guide-list-thumb { width: 64px; height: 64px; }
   .guide-list-title { font-size: 1.02rem; }
+}
+
+/* Custom hover cursors (added 2026-07-10) — a small on-brand icon replaces
+   the arrow over specific link types (a spoon over recipe links, a
+   transaction icon over product/review links, etc.) instead of the default
+   pointer. Icons are flat UI assets generated via ChatGPT, not Winnie
+   photography — see Custom-Cursor-Prompts-2026-07-10.md. Until those PNGs
+   exist at site/public/cursors/, the url() fails to load and every browser
+   falls back to the next value in the list (plain `pointer`), so this
+   degrades gracefully with zero code change needed once the files land. */
+a.recipe-tile-card {
+  cursor: url('/cursors/cursor-spoon.png') 16 16, pointer;
+}
+a.review-card,
+main a[rel~="sponsored"] {
+  cursor: url('/cursors/cursor-transaction.png') 16 16, pointer;
+}
+a.guide-list-item {
+  cursor: url('/cursors/cursor-fix.png') 16 16, pointer;
+}
+a.blog-card-tile {
+  cursor: url('/cursors/cursor-notebook.png') 16 16, pointer;
 }
 
 @media print {

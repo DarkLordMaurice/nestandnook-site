@@ -23,7 +23,7 @@ const kitchenReviews = reviews.filter((r) => r.data.hub === 'kitchen')
   .sort((a, b) => +b.data.publishDate - +a.data.publishDate)
   .slice(0, 6);
 const latestRecipes = [...recipes].sort((a, b) => +b.data.publishDate - +a.data.publishDate).slice(0, 6);
-// Winnie's Notes on the homepage should tease the same life-only content as
+// Off the Clock on the homepage should tease the same life-only content as
 // /blog/ itself — "Desk fixes"/"Kitchen fixes" posts surface via the
 // /guides/ section instead (see src/pages/guides/index.astro and
 // src/pages/blog/index.astro for the full split rationale, 2026-07-10).
@@ -146,10 +146,10 @@ const latestGuides = blogPosts.filter((p) => TIP_CATEGORIES.includes(p.data.cate
   )}
 
   {latestPosts.length > 0 && (
-    <section class="card-section" id="winnies-notes">
+    <section class="card-section" id="off-the-clock">
       <div class="card-section-head">
-        <h2>Winnie's Notes</h2>
-        <a class="card-section-link" href="/blog/">See all notes →</a>
+        <h2>Off the Clock</h2>
+        <a class="card-section-link" href="/blog/">See more →</a>
       </div>
       <div class="masonry">
         {latestPosts.map((p, i) => (

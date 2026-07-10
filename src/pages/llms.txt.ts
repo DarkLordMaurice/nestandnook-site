@@ -47,7 +47,7 @@ export const GET: APIRoute = async () => {
   }
 
   if (posts.length > 0) {
-    lines.push("## Winnie's Notes (blog)");
+    lines.push("## Off the Clock (blog)");
     lines.push('');
     for (const p of posts) {
       lines.push(`- [${p.data.title}](${SITE.url}/blog/${p.slug}/): ${p.data.description}`);

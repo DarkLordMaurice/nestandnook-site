@@ -11,7 +11,7 @@ relatedGuides:
     href: "/blog/the-year-i-lost-an-apple-bobbing-contest/"
   - label: "About Nest & Nook"
     href: "/about/"
-  - label: "More of Winnie's Notes"
+  - label: "More from Off the Clock"
     href: "/blog/"
 ---
 

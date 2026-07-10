@@ -11,7 +11,7 @@ relatedGuides:
     href: "/blog/what-the-parade-of-skulls-actually-taught-me/"
   - label: "About Nest & Nook"
     href: "/about/"
-  - label: "More of Winnie's Notes"
+  - label: "More from Off the Clock"
     href: "/blog/"
 ---
 

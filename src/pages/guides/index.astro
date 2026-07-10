@@ -1,6 +1,6 @@
 ---
 // Home for the informational, product-adjacent posts that used to be
-// commingled with Winnie's Notes life content under /blog/ — "Desk fixes"
+// commingled with Off the Clock life content under /blog/ — "Desk fixes"
 // and "Kitchen fixes" category posts (Maurice, 2026-07-10: "there are 'blog'
 // posts that arent blogs at all, they are about products - these need to go
 // to the right section"). These posts still physically live in the `blog`
@@ -8,26 +8,49 @@
 // this page is a second, purpose-specific index over the same collection,
 // filtered to the opposite category set from src/pages/blog/index.astro.
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeroCollage from '../../components/HeroCollage.astro';
 import { SITE } from '../../config.ts';
 import { getCollection } from 'astro:content';
+import { existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 
 const TIP_CATEGORIES = ['Desk fixes', 'Kitchen fixes'];
 const allPosts = await getCollection('blog');
 const posts = allPosts.filter((p) => TIP_CATEGORIES.includes(p.data.category));
 posts.sort((a, b) => +b.data.publishDate - +a.data.publishDate);
+
+// The Guides section hero photos are new (2026-07-10, see
+// Guides-Section-Image-Prompts-2026-07-10.md) and not generated yet at the
+// time this code shipped. Rather than ship a broken-image box until Maurice
+// runs the prompts through ChatGPT and drops the files into
+// site/public/winnie/, check at build time and skip the collage entirely
+// until all three exist — matches the project's "missing image doesn't ship"
+// convention (see CLAUDE.md) without needing a second deploy for the code.
+const heroImagesReady = ['guides-hero.jpg', 'guides-accent-magnifier.jpg', 'guides-accent-checklist.jpg']
+  .every((f) => existsSync(fileURLToPath(new URL(`../../../public/winnie/${f}`, import.meta.url))));
 ---
 <BaseLayout
   title={`Guides — ${SITE.brand}`}
   description="Specific, mechanism-first fixes for common home office and small-kitchen annoyances — what's actually happening and what resolves it, not just a list of products."
   showDisclosure={false}
 >
-  <section class="hero-banner">
-    <div class="hero-banner-inner two-col">
+  <section class={`hero-banner ${heroImagesReady ? 'hero-banner-collage' : ''}`}>
+    <div class={heroImagesReady ? 'hero-banner-inner' : 'hero-banner-inner two-col'}>
       <div>
         <span class="washi washi-teal">Fixes worth knowing</span>
         <h1>Guides</h1>
-        <p class="lede">A reference shelf, not a feed: the mechanism behind a common desk or kitchen annoyance, the fixes people try first that only half-work, and the specific thing that actually resolves it. Looking for Winnie's actual life outside the nook instead? That's over in <a href="/blog/">Winnie's Notes</a>.</p>
+        <p class="lede">A reference shelf, not a feed: the mechanism behind a common desk or kitchen annoyance, the fixes people try first that only half-work, and the specific thing that actually resolves it. Looking for Winnie's actual life outside the nook instead? That's over in <a href="/blog/">Off the Clock</a>.</p>
       </div>
+      {heroImagesReady && (
+        <HeroCollage
+          seed="guides"
+          anchor={{ src: '/winnie/guides-hero.jpg', alt: 'Winnie at a small desk covered in index cards, mid-tick on a checklist' }}
+          accents={[
+            { src: '/winnie/guides-accent-magnifier.jpg', alt: 'Winnie holding a magnifying glass over a spec sheet, cross-checking a detail' },
+            { src: '/winnie/guides-accent-checklist.jpg', alt: 'Winnie holding up a numbered checklist card, tapping item two' },
+          ]}
+        />
+      )}
     </div>
   </section>
 

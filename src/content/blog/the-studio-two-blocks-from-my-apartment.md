@@ -9,7 +9,7 @@ winniePhoto: "/winnie/avatar.jpg"
 relatedGuides:
   - label: "About Nest & Nook"
     href: "/about/"
-  - label: "More of Winnie's Notes"
+  - label: "More from Off the Clock"
     href: "/blog/"
 ---
 
