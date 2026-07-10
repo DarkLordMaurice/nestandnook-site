@@ -1,6 +1,8 @@
 import { defineConfig } from 'astro/config';
 import { SITE } from './src/config.ts';
 
+import cloudflare from "@astrojs/cloudflare";
+
 // Static output — deploys to Cloudflare Pages via git push (no adapter needed for static).
 // NOTE: @astrojs/sitemap integration removed 2026-07-03 — it was crashing the build
 // ("Cannot read properties of undefined (reading 'reduce')") due to a version mismatch
@@ -9,6 +11,7 @@ import { SITE } from './src/config.ts';
 export default defineConfig({
   site: SITE.url,
   build: { format: 'directory' },
+
   // The header search widget (BaseLayout.astro) dynamically imports
   // /pagefind/pagefind.js at runtime — a file that only exists after
   // `pagefind --site dist` runs as part of this same build script, so it
@@ -22,5 +25,8 @@ export default defineConfig({
         external: ['/pagefind/pagefind.js']
       }
     }
-  }
+  },
+
+  output: "hybrid",
+  adapter: cloudflare()
 });
