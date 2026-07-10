@@ -12,7 +12,7 @@ import HeroCollage from '../../components/HeroCollage.astro';
 import { SITE } from '../../config.ts';
 import { getCollection } from 'astro:content';
 import { existsSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
+import { join } from 'node:path';
 
 const TIP_CATEGORIES = ['Desk fixes', 'Kitchen fixes'];
 const allPosts = await getCollection('blog');
@@ -27,7 +27,7 @@ posts.sort((a, b) => +b.data.publishDate - +a.data.publishDate);
 // until all three exist — matches the project's "missing image doesn't ship"
 // convention (see CLAUDE.md) without needing a second deploy for the code.
 const heroImagesReady = ['guides-hero.jpg', 'guides-accent-magnifier.jpg', 'guides-accent-checklist.jpg']
-  .every((f) => existsSync(fileURLToPath(new URL(`../../../public/winnie/${f}`, import.meta.url))));
+  .every((f) => existsSync(join(process.cwd(), 'public', 'winnie', f)));
 ---
 <BaseLayout
   title={`Guides — ${SITE.brand}`}

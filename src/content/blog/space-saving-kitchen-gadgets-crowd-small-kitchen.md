@@ -4,7 +4,7 @@ description: "Space-saving kitchen gadgets don't automatically save space — ev
 primaryKeyword: "space saving kitchen gadgets"
 publishDate: 2026-07-10
 category: "Kitchen fixes"
-image: "/winnie/winnie-kitchen-card.jpg"
+image: "/winnie/winnie-guide-gadget-drawer-test.jpg"
 winniePhoto: "/winnie/headshot-v4-3.jpg"
 relatedGuides:
   - label: "Best Multi-Function Kitchen Gadgets for Small Kitchens"

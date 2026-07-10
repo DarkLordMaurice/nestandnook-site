@@ -4,7 +4,7 @@ description: "Neck pain from working on a laptop at home isn't random — it's a
 primaryKeyword: "neck pain working from home laptop"
 publishDate: 2026-07-07
 category: "Desk fixes"
-image: "/winnie/winnie-office-couch-laptop.jpg"
+image: "/winnie/winnie-guide-laptop-stand-setup.jpg"
 winniePhoto: "/winnie/headshot-v4-2.jpg"
 relatedGuides:
   - label: "Best Laptop Stands for Bed & Couch"

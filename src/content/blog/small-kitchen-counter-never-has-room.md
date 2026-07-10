@@ -4,7 +4,7 @@ description: "It's not clutter and it's not you — a small kitchen counter runs
 primaryKeyword: "not enough counter space small kitchen"
 publishDate: 2026-07-09
 category: "Kitchen fixes"
-image: "/winnie/winnie-kitchen-cabinet-reach.jpg"
+image: "/winnie/winnie-guide-counter-workflow.jpg"
 winniePhoto: "/winnie/headshot-v4-4.jpg"
 relatedGuides:
   - label: "How to Prep Food With Minimal Counter Space"
