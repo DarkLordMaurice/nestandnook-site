@@ -125,6 +125,11 @@ faqs:
 
 A collapsible kitchen tool only earns its keep if the fold-flat version does the same job as the rigid one it's replacing — nobody wants a colander that saves cabinet space but can't actually hold a full pot of pasta water. The eight picks below cover the specific small-kitchen jobs — draining, steaming, drying, prepping, spinning, pouring — where a fold-flat design genuinely changes how much shelf you get back.
 
+<figure class="inline-photo">
+  <img src="/winnie/collapsible-kitchen-tools-small-space-problem.jpg" alt="Bulky rigid kitchen tools spilling out of an overcrowded small-kitchen cabinet" loading="lazy" />
+  <figcaption>The bulky-tool problem: rigid colanders, dish racks, and cutting boards eating every inch of cabinet space.</figcaption>
+</figure>
+
 <p id="quick-answer">The best collapsible kitchen tools for small spaces fold or nest down to a fraction of their working size without sacrificing real capacity. The <strong>OXO Good Grips Silicone Collapsible Colander</strong> is the best overall pick for most kitchens. On a tight budget, the <strong>Comfify two-piece strainer set</strong> covers more sizes for less. For sinks a standard colander won't fit, the <strong>KitchenAid over-the-sink colander</strong> bridges the basin instead of sitting in it.</p>
 
 <h2 id="measure-first-check">Measure before you buy a collapsible tool</h2>
@@ -144,7 +149,17 @@ Check two things before ordering: the tool's fully expanded size (does it actual
 - **What it actually replaces:** the biggest space wins come from replacing genuinely bulky, awkward-shaped items — colanders, dish racks — not small items that were never taking up much room.
 - **How often you'll actually use it:** a collapsible tool for something you use twice a year isn't a space-saver, it's clutter that folds flat.
 
+<figure class="inline-photo">
+  <img src="/winnie/collapsible-kitchen-tools-seam-stability-detail.jpg" alt="Checking the fold seam and base of a collapsible kitchen tool for durability" loading="lazy" />
+  <figcaption>Check the fold seam and base before buying — this is what separates a tool that lasts from one that tears.</figcaption>
+</figure>
+
 ## Quick comparison
+
+<figure class="inline-photo">
+  <img src="/winnie/bulky-vs-collapsible-kitchen-tools-comparison.jpg" alt="Side-by-side height comparison of bulky rigid kitchen tools versus their collapsible counterparts" loading="lazy" />
+  <figcaption>Same tools, folded: the height difference between rigid and collapsible versions, stacked side by side.</figcaption>
+</figure>
 
 | Tool | Best for | Job | Collapsed footprint |
 |------|----------|-----|---------------------|
