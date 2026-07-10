@@ -1248,16 +1248,22 @@ tr:nth-child(even) td { background: rgba(214, 164, 25, 0.05); }
 
 /* Custom hover cursors (added 2026-07-10) — a small on-brand icon replaces
    the arrow over specific link types (a spoon over recipe links, a
-   transaction icon over product/review links, etc.) instead of the default
-   pointer. Icons are flat UI assets generated via ChatGPT, not Winnie
-   photography — see Custom-Cursor-Prompts-2026-07-10.md. Until those PNGs
-   exist at site/public/cursors/, the url() fails to load and every browser
-   falls back to the next value in the list (plain `pointer`), so this
-   degrades gracefully with zero code change needed once the files land. */
+   transaction icon over real outbound Amazon links, etc.) instead of the
+   default pointer. Icons are flat UI assets generated via ChatGPT, not
+   Winnie photography — see Custom-Cursor-Prompts-2026-07-10.md. Until those
+   PNGs exist at site/public/cursors/, the url() fails to load and every
+   browser falls back to the next value in the list (plain `pointer`), so
+   this degrades gracefully with zero code change needed once the files land.
+   FIX (2026-07-10, 2nd pass): the transaction cursor was originally also
+   applied to `a.review-card`, but that link goes to our OWN review article
+   (/{hub}/{slug}/), not to Amazon — so the bag icon was showing on every
+   review card sitewide, not just real purchase links. Amazon links (the
+   ProductCard "Check price on Amazon" CTA and recipe ingredient links) all
+   carry rel="sponsored", so that attribute selector alone is the correct,
+   narrow scope — no class-based selector needed. */
 a.recipe-tile-card {
   cursor: url('/cursors/cursor-spoon.png') 16 16, pointer;
 }
-a.review-card,
 main a[rel~="sponsored"] {
   cursor: url('/cursors/cursor-transaction.png') 16 16, pointer;
 }
