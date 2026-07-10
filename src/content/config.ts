@@ -149,6 +149,14 @@ const recipes = defineCollection({
     // `href` to point at an owned page (e.g. a Kitchen hub review). Never
     // invent an ASIN — only wire a link once the specific product has been
     // looked up and confirmed to actually match the ingredient.
+    // `query` (added 2026-07-10): a tagged Amazon SEARCH RESULTS link
+    // (amazonSearchLink() in config.ts) instead of one specific product page —
+    // use this for generic groceries/pantry staples (flour, eggs, butter, a
+    // specific spice) where there's no single canonical product to point at
+    // and inventing one specific ASIN would be a guess. This is the default
+    // for plain ingredients; reserve `asin` for cases where a specific product
+    // has genuinely been looked up and confirmed, and `href` for utensils/tools
+    // that already have a matching Kitchen hub review.
     ingredientGroups: z.array(z.object({
       groupName: z.string().optional(),  // omit for a single flat list
       items: z.array(z.union([
@@ -157,6 +165,7 @@ const recipes = defineCollection({
           text: z.string(),
           asin: z.string().optional(),
           href: z.string().optional(),
+          query: z.string().optional(),
         }),
       ])),
     })),

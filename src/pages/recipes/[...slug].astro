@@ -1,15 +1,18 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import WinnieNote from '../../components/WinnieNote.astro';
-import { SITE, amazonLink } from '../../config.ts';
+import { SITE, amazonLink, amazonSearchLink } from '../../config.ts';
 import { getCollection } from 'astro:content';
 
-// Ingredient items are either a plain string or a { text, asin?, href? }
-// object (see content/config.ts) — this normalizes both shapes into
-// { text, href } so the template only has one rendering path.
-const ingredientHref = (item: string | { text: string; asin?: string; href?: string }) =>
-  typeof item === 'string' ? undefined : (item.asin ? amazonLink(item.asin) : item.href);
-const ingredientText = (item: string | { text: string; asin?: string; href?: string }) =>
+// Ingredient items are either a plain string or a { text, asin?, href?,
+// query? } object (see content/config.ts) — this normalizes all shapes into
+// { text, href } so the template only has one rendering path. Priority:
+// asin (specific, verified product) > href (owned page, e.g. a Kitchen hub
+// review) > query (tagged Amazon search results — the safe default for
+// generic groceries with no single canonical product).
+const ingredientHref = (item: string | { text: string; asin?: string; href?: string; query?: string }) =>
+  typeof item === 'string' ? undefined : (item.asin ? amazonLink(item.asin) : item.href ? item.href : (item.query ? amazonSearchLink(item.query) : undefined));
+const ingredientText = (item: string | { text: string; asin?: string; href?: string; query?: string }) =>
   typeof item === 'string' ? item : item.text;
 
 export async function getStaticPaths() {

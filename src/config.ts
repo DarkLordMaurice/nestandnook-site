@@ -17,3 +17,14 @@ export const DISCLOSURE = {
 export function amazonLink(asin: string): string {
   return `https://${SITE.amazonMarketplace}/dp/${asin}/?tag=${SITE.amazonAssociateTag}`;
 }
+
+// Build a tagged Amazon SEARCH RESULTS link from a plain-text query — added
+// 2026-07-10 for generic recipe ingredients (flour, eggs, a specific spice)
+// where there's no single canonical product to point at and picking one
+// specific ASIN would mean guessing. This never fabricates a product; it's
+// Amazon's real search endpoint with our tag attached, same mechanism as
+// clicking "search" on amazon.com. Use amazonLink(asin) instead whenever a
+// specific product has actually been looked up and confirmed.
+export function amazonSearchLink(query: string): string {
+  return `https://${SITE.amazonMarketplace}/s?k=${encodeURIComponent(query)}&tag=${SITE.amazonAssociateTag}`;
+}
