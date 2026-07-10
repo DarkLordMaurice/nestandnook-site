@@ -15,6 +15,8 @@ relatedGuides:
 
 Somewhere around 2pm, feet fall asleep at your desk for a lot of people — a specific and very unglamorous thing. Their feet go fuzzy. Not painful, exactly. Just that buzzing, slightly-numb, "wait, when did that start" feeling that makes you shift in your chair and wonder if you're coming down with something. You're not. You're sitting wrong, and I say that with the full affection of someone who has spent a genuinely alarming number of hours thinking about chairs, cross-referencing complaints in reviews the way I used to cross-reference call numbers at a reference desk, because apparently that instinct never actually clocks out.
 
+<p id="quick-answer" class="guide-quick-answer"><span class="label">Quick answer</span>Feet fall asleep at a desk when a seat edge presses on the nerves behind your knee for hours, usually because your feet don't reach the floor or the seat is too deep for your legs. The fix isn't a new chair — it's a footrest with real height range and a flat surface wide enough for your whole foot, which removes the pressure point directly. Most people feel it resolve within days.</p>
+
 ## What's actually going on (and it's not what people assume)
 
 Most people blame poor circulation like it's a personal failing, which isn't fair and also isn't quite the mechanism. What's usually happening is much more mechanical: when your feet don't reach the floor, or your chair seat is a little too deep for your legs, the back of your knee or the underside of your thigh ends up resting against a hard edge for hours at a time. That pressure point sits directly over nerves and blood vessels that run close to the surface there. Compress them steadily enough, for long enough, and your nervous system starts sending you static instead of a clean signal — that's the pins-and-needles. It's not a circulation problem in the scary sense; it's a "you've been leaning on the same half-inch of skin since 9am" problem, and it resolves the second the pressure does.
@@ -33,10 +35,29 @@ One thing that struck me, reading through enough of these reviews back to back, 
 
 ## What reviewers say actually resolves it
 
-The pattern that shows up over and over in real buyer reviews is a lot simpler than a new chair: something under the feet that restores the missing support, so your legs stop needing the seat edge to hold their weight. A few specifics reviewers mention consistently: a footrest with some height range (not one fixed height) so it actually matches your particular desk-and-chair combo, and a surface wide enough that your whole foot rests flat instead of just your toes reaching down at an angle, which just relocates the pressure instead of removing it. [The footrest roundup](/home-office/best-footrest-for-short-people/) walks through the models our team's review research points to most often for exactly this complaint — it's a five-minute fix, not a furniture overhaul, which is precisely the kind of ratio I have a lot of respect for after a decade of retail buying spent watching people overspend on the wrong half of a problem.
+The pattern that shows up over and over in real buyer reviews is a lot simpler than a new chair: something under the feet that restores the missing support, so your legs stop needing the seat edge to hold their weight. [The footrest roundup](/home-office/best-footrest-for-short-people/) walks through the models our team's review research points to most often for exactly this complaint — it's a five-minute fix, not a furniture overhaul, which is precisely the kind of ratio I have a lot of respect for after a decade of retail buying spent watching people overspend on the wrong half of a problem.
 
-One honest caveat, because I'd rather say it than not: if the tingling doesn't resolve within a few minutes of standing and moving around, or it's showing up somewhere other than your feet, that's a conversation for an actual doctor, not a blog about desks. What I'm describing here is the extremely common, purely-mechanical, "I've been sitting the same way for six hours" version — which, for most desk workers, is exactly what it is. It's also usually one piece of a bigger setup mismatch, which is worth a look through the [Home Office & Ergonomics hub](/home-office/) if this is the first of several small desk annoyances you've been meaning to sort out. I keep a running list of the ones people mention most, the same way I've kept a running list of everything else in my life since roughly 1998, and this one has been near the top of it for a while now.
+<div class="guide-fix-box">
+<span class="label">The fix, step by step</span>
 
-If I'm being fully honest, a small part of why this particular complaint stuck with me is how avoidable it is once you actually know the mechanism. I spent ten years at a reference desk watching people struggle with problems that had genuinely difficult, unsatisfying answers — grant applications, custody paperwork, things with no clean fix available. This is not that. This is a five-minute, twenty-dollar problem wearing the costume of a medical mystery, and there's something almost restorative about getting to hand someone the actual, complete answer for once instead of the "here's where to start looking" answer I gave for most of that decade.
+1. **Stop adjusting chair height first.** It's a two-variable problem — raising the seat clears your knees but drops your feet further from the floor; lowering it does the opposite. Fix the feet directly instead.
+2. **Get a footrest with a real height range**, not a single fixed height — something in the 3–7" adjustable range covers most desk-and-chair combinations. A fixed-height block only works if you got lucky on the math.
+3. **Check the surface width.** Your whole foot needs to rest flat. If only your toes reach it at an angle, you've relocated the pressure point, not removed it — look for a platform at least 15" wide.
+4. **Give it three to five days.** Most people feel the tingling drop off within the first week of consistent use, once the seat-edge pressure line stops getting hit for six-plus hours a day.
+5. **If it's not resolving, check chair depth.** A seat pan that's too deep for your legs (the back of your knee doesn't clear the front edge with your back against the backrest) needs a seat-depth adjustment or a cushion, not just a footrest.
+</div>
+
+## Two questions people ask after this one
+
+<div class="faq-item">
+<p class="faq-q">Is a footrest actually necessary, or will just standing up periodically fix it?</p>
+<p class="faq-a">Standing up resets the pressure for as long as you're standing, but the numbness comes back the moment you sit back down the same way — it treats the symptom, not the seat-edge contact causing it. A footrest removes the cause, so you're not re-solving the same problem every 45 minutes.</p>
+</div>
+<div class="faq-item">
+<p class="faq-q">Does a footrest help if my feet already reach the floor?</p>
+<p class="faq-a">Less consistently. This specific mechanism is driven by feet not reaching the floor or a seat that's too deep — if yours already sit flat with your knees near 90°, a footrest may just add a fidget surface rather than fix an actual pressure problem. Worth confirming chair fit first.</p>
+</div>
+
+One honest caveat, because I'd rather say it than not: if the tingling doesn't resolve within a week of a properly-fitted footrest, or it's showing up somewhere other than your feet, that's a conversation for an actual doctor, not a blog about desks. What I'm describing here is the extremely common, purely-mechanical version — and it's usually one piece of a bigger setup mismatch, worth a look through the [Home Office & Ergonomics hub](/home-office/) if this is the first of several small desk annoyances you've been meaning to sort out.
 
 — Winnie

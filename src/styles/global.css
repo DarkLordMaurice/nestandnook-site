@@ -1157,6 +1157,95 @@ tr:nth-child(even) td { background: rgba(214, 164, 25, 0.05); }
 
 .recipe-index-meta { font-size: 0.8rem; color: var(--ink-soft); margin-top: 0.3rem !important; }
 
+/* Guide posts ("Desk fixes"/"Kitchen fixes") get a distinct reference-style
+   scaffold from Winnie's Notes life posts, even though both still live in
+   the same `blog` content collection and share [...slug].astro (Maurice,
+   2026-07-10: guides need real structure, shouldn't read like a diary
+   entry — "doesn't follow the same format... doesn't present any real
+   value"). This is raw HTML embedded directly in the markdown body, same
+   pattern already used for inline photos — no schema/template change
+   needed, Astro passes it through. */
+.guide-quick-answer {
+  background: rgba(201, 162, 39, 0.1);
+  border-left: 4px solid var(--gold);
+  border-radius: 4px;
+  padding: 1rem 1.2rem;
+  margin: 1.4rem 0 1.8rem;
+  font-size: 1.02rem;
+}
+.guide-quick-answer .label,
+.guide-fix-box .label {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+.guide-quick-answer .label { color: var(--jewel-teal); }
+.guide-fix-box .label { color: var(--terracotta); }
+.guide-fix-box {
+  background: #fff;
+  border: 1.5px solid rgba(18, 58, 55, 0.14);
+  border-radius: 8px;
+  padding: 1.1rem 1.3rem;
+  margin: 1.2rem 0 1.6rem;
+}
+.guide-fix-box ol,
+.guide-fix-box ul { margin: 0; padding-left: 1.2rem; }
+.guide-fix-box li { margin-bottom: 0.5rem; }
+.guide-fix-box li:last-child { margin-bottom: 0; }
+.guide-fix-box strong { color: var(--jewel-teal); }
+
+/* Guides index — deliberately a scannable list, not the masonry card grid
+   used for Winnie's Notes/reviews/recipes, so the section itself reads as
+   a reference index rather than a feed. */
+.guide-list { display: flex; flex-direction: column; gap: 0; margin-top: 1.5rem; }
+.guide-list-item {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid rgba(44, 36, 24, 0.1);
+  text-decoration: none;
+  color: inherit;
+}
+.guide-list-item:first-child { padding-top: 0; }
+.guide-list-thumb {
+  flex: none;
+  width: 88px;
+  height: 88px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--cream-dark, #efe6d4);
+}
+.guide-list-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.guide-list-body { flex: 1; min-width: 0; }
+.guide-list-cat {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 0.25rem;
+}
+.guide-list-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 0.25rem;
+}
+.guide-list-hook { font-size: 0.92rem; color: var(--ink-soft); margin: 0; }
+.guide-list-item:hover .guide-list-title { color: var(--terracotta); }
+@media (max-width: 560px) {
+  .guide-list-thumb { width: 64px; height: 64px; }
+  .guide-list-title { font-size: 1.02rem; }
+}
+
 @media print {
   .no-print, .site-header, .site-footer, .winnie-byline, .affiliate-disclosure, nav.related { display: none !important; }
   .recipe-card { border: 1px solid #000; }

@@ -8,7 +8,6 @@
 // this page is a second, purpose-specific index over the same collection,
 // filtered to the opposite category set from src/pages/blog/index.astro.
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import BlogCard from '../../components/BlogCard.astro';
 import { SITE } from '../../config.ts';
 import { getCollection } from 'astro:content';
 
@@ -19,7 +18,7 @@ posts.sort((a, b) => +b.data.publishDate - +a.data.publishDate);
 ---
 <BaseLayout
   title={`Guides — ${SITE.brand}`}
-  description="Quick, specific fixes for common home office and small kitchen annoyances — the practical companion to Winnie's Notes."
+  description="Specific, mechanism-first fixes for common home office and small-kitchen annoyances — what's actually happening and what resolves it, not just a list of products."
   showDisclosure={false}
 >
   <section class="hero-banner">
@@ -27,7 +26,7 @@ posts.sort((a, b) => +b.data.publishDate - +a.data.publishDate);
       <div>
         <span class="washi washi-teal">Fixes worth knowing</span>
         <h1>Guides</h1>
-        <p class="lede">Short, specific answers to "why does this keep happening" — the mechanism behind a common desk or kitchen annoyance, the fixes people try first that only half-work, and what actually resolves it. Looking for Winnie's actual life outside the nook instead? That's over in <a href="/blog/">Winnie's Notes</a>.</p>
+        <p class="lede">A reference shelf, not a feed: the mechanism behind a common desk or kitchen annoyance, the fixes people try first that only half-work, and the specific thing that actually resolves it. Looking for Winnie's actual life outside the nook instead? That's over in <a href="/blog/">Winnie's Notes</a>.</p>
       </div>
     </div>
   </section>
@@ -35,17 +34,18 @@ posts.sort((a, b) => +b.data.publishDate - +a.data.publishDate);
   {posts.length === 0 ? (
     <p><em>First guides publishing soon.</em></p>
   ) : (
-    <div class="masonry">
-      {posts.map((p, i) => (
-        <BlogCard
-          href={`/blog/${p.slug}/`}
-          image={p.data.image}
-          imagePosition={p.data.imagePosition}
-          title={p.data.title}
-          description={p.data.description}
-          category={p.data.category}
-          featured={i === 0}
-        />
+    <div class="guide-list">
+      {posts.map((p) => (
+        <a href={`/blog/${p.slug}/`} class="guide-list-item">
+          <div class="guide-list-thumb">
+            <img src={p.data.image} alt="" width="88" height="88" loading="lazy" style={p.data.imagePosition ? `object-position: ${p.data.imagePosition}` : undefined} />
+          </div>
+          <div class="guide-list-body">
+            <span class="guide-list-cat">{p.data.category}</span>
+            <h2 class="guide-list-title">{p.data.title}</h2>
+            <p class="guide-list-hook">{p.data.description}</p>
+          </div>
+        </a>
       ))}
     </div>
   )}
