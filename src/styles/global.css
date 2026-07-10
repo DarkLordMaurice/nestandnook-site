@@ -133,9 +133,17 @@ main a:hover { color: var(--terracotta-dark); }
    section (buying-criteria detail, comparison, payoff) directly in the
    markdown body, not just a single page-level hero. Plain <img> inside
    .prose had no styling at all before this — needed the moment more than
-   one image lives on a page. */
+   one image lives on a page.
+   Fixed 2026-07-10: a solo figure's `width: 100%` filled the entire .prose
+   column (740px) — for a portrait-oriented photo that's tall enough to fill
+   most of a screen at normal viewing with no text visible around it at all
+   (Maurice: "people hate that shit"). Capped solo figures at 480px, centered,
+   so they read as an inline photo alongside the surrounding text instead of
+   a full-bleed hero — matching the (already correctly sized) paired-photo
+   scale below, not blowing past it. */
 .prose figure.inline-photo {
-  margin: 1.75rem 0;
+  margin: 1.75rem auto;
+  max-width: 480px;
 }
 .prose figure.inline-photo img {
   width: 100%;
@@ -152,7 +160,10 @@ main a:hover { color: var(--terracotta-dark); }
   font-style: italic;
   text-align: center;
 }
-/* Side-by-side pair for problem/solution or comparison beats */
+/* Side-by-side pair for problem/solution or comparison beats — grid cells
+   are already ~350px wide inside the 740px prose column, well under the
+   480px solo cap above, so reset margin/max-width back to fill the cell
+   instead of being double-constrained. */
 .prose .inline-photo-pair {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -161,6 +172,7 @@ main a:hover { color: var(--terracotta-dark); }
 }
 .prose .inline-photo-pair figure.inline-photo {
   margin: 0;
+  max-width: none;
 }
 @media (max-width: 640px) {
   .prose .inline-photo-pair {
