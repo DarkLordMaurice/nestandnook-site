@@ -58,7 +58,7 @@
      leaf / floral references), tiled small and kept low-opacity so it reads
      as texture in the negative space, never competes with text on top of
      it. One shared variable, one place to tune if it's ever too loud/quiet. */
-  --wallpaper-sprig: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cg fill='none' stroke='%23e6c757' stroke-width='1.4' opacity='0.09'%3E%3Cpath d='M20,150 C18,110 34,90 26,55 C22,38 30,24 40,16'/%3E%3Cpath d='M26,55 C42,58 55,50 60,36'/%3E%3Cpath d='M24,85 C40,88 53,79 58,66'/%3E%3Cpath d='M20,112 C36,110 48,101 52,89'/%3E%3Ccircle cx='40' cy='16' r='3'/%3E%3Cpath d='M120,140 C140,115 138,88 152,65'/%3E%3Cpath d='M138,88 C122,86 110,94 105,108'/%3E%3Cpath d='M148,72 C132,72 120,80 116,93'/%3E%3Ccircle cx='152' cy='65' r='2.6'/%3E%3C/g%3E%3C/svg%3E");
+  --wallpaper-sprig: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='130'%3E%3Cg fill='none' stroke='%23e6c757' stroke-width='2' opacity='0.3'%3E%3Cpath d='M16,122 C14,90 28,74 21,45 C18,31 25,19 33,13'/%3E%3Cpath d='M21,45 C35,48 46,41 50,29'/%3E%3Cpath d='M19,70 C33,72 44,64 48,53'/%3E%3Cpath d='M16,91 C30,89 40,82 44,72'/%3E%3Ccircle cx='33' cy='13' r='3.2'/%3E%3Cpath d='M98,114 C114,93 112,71 124,53'/%3E%3Cpath d='M112,71 C99,69 89,76 85,88'/%3E%3Cpath d='M120,58 C107,58 97,65 93,76'/%3E%3Ccircle cx='124' cy='53' r='2.8'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 * { box-sizing: border-box; }
