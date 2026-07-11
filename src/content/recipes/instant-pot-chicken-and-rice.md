@@ -11,6 +11,7 @@ servings: 5
 difficulty: "easy"
 image: "/recipes/recipe-instant-pot-chicken-and-rice.jpg"
 imageAlt: "A bowl of chicken and rice with vegetables, served straight from the Instant Pot"
+altImage: "/recipes/recipe-instant-pot-chicken-and-rice-alt.jpg"
 ingredientsImage: "/recipes/recipe-instant-pot-chicken-and-rice-ingredients.jpg"
 winnieImage: "/winnie/winnie-kitchen-stir.jpg"
 winnieHeadshot: "/winnie/headshot-v4-4.jpg"
