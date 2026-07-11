@@ -18,7 +18,6 @@ image: "/winnie/winnie-office-cable-reach.jpg"
 products:
   - name: "HUANUO Ergonomic Under-Desk Footrest"
     asin: "B07L3RVF7C"
-    image: "/products/best-footrest-for-short-people-1.jpg"
     bestFor: "Best overall for short people"
     blurb: "The most lift of anything here — three heights up to about 6.7 inches, plus a 30° tilt and a cushioned, textured top that rocks. If your feet dangle even in a lowered chair, the extra elevation is exactly what short legs need."
     pros:
@@ -30,7 +29,6 @@ products:
       - "Softer platform flexes slightly under heavy pressure"
   - name: "Kensington SoleMate Plus (SmartFit System)"
     asin: "B01NBWCTFD"
-    image: "/products/best-footrest-for-short-people-2.jpg"
     bestFor: "Best precise height control"
     blurb: "Kensington's SmartFit system lets you dial in height and angle in fine steps rather than jumping between fixed notches — handy when you're between sizes and want your knees at exactly 90°."
     pros:
@@ -42,7 +40,6 @@ products:
       - "Utilitarian plastic look"
   - name: "StrongTek Rocking Under-Desk Footrest"
     asin: "B0CZ5YDV1L"
-    image: "/products/best-footrest-for-short-people-3.jpg"
     bestFor: "Best for active, fidgety sitters"
     blurb: "A three-position rocker with a grippy non-slip top that turns sitting into gentle motion. Good if you tend to bounce your legs and want that energy channeled into something that helps circulation."
     pros:
@@ -54,7 +51,6 @@ products:
       - "Less about raw height lift than the HUANUO"
   - name: "StrongTek Wooden 3-Height Footrest"
     asin: "B09X1RQSPL"
-    image: "/products/best-footrest-for-short-people-4.jpg"
     bestFor: "Best sturdy fixed platform"
     blurb: "A solid anti-slip wood platform with three height settings that holds up to 400 lb, so it won't flex or creep. The tall settings give short users real elevation on a rock-steady base."
     pros:
@@ -66,7 +62,6 @@ products:
       - "Heavier and less portable than foam options"
   - name: "StrongTek 4-Angle Wooden Footrest"
     asin: "B0BTL7QLT5"
-    image: "/products/best-footrest-for-short-people-5.jpg"
     bestFor: "Best tilt flexibility on a budget"
     blurb: "If your issue is angle more than height, this gives four tilt positions on a simple, durable anti-slip wood stand — the most affordable way to get your feet to a comfortable slope."
     pros:

@@ -15,7 +15,6 @@ image: "/winnie/winnie-office-antifatigue-mat.jpg"
 products:
   - name: "Topo by Ergodriven (Full-Size)"
     asin: "B00V3TO9EK"
-    image: "/products/best-anti-fatigue-mats-standing-desk-1.jpg"
     bestFor: "Best overall for daily standing"
     blurb: "A 'not-flat' terrain design with raised zones that gently invite small shifts in stance throughout the day — the single feature reviewers credit most for making a full afternoon on it feel different from a flat foam mat."
     pros:
@@ -27,7 +26,6 @@ products:
       - "Textured surface isn't for everyone — some prefer a flat platform"
   - name: "Topo Mini by Ergodriven"
     asin: "B01N8YE3VI"
-    image: "/products/best-anti-fatigue-mats-standing-desk-2.jpg"
     bestFor: "Best for tight floor space"
     blurb: "Same calculated-terrain design as the full-size Topo, scaled down for a standing desk setup where the full footprint doesn't fit — a smaller mat rather than a cheaper compromise."
     pros:
@@ -39,7 +37,6 @@ products:
       - "Still a premium price for the smaller size"
   - name: "Sky Solutions Anti-Fatigue Mat (20\" x 39\")"
     asin: "B00M8O122G"
-    image: "/products/best-anti-fatigue-mats-standing-desk-3.jpg"
     bestFor: "Best budget flat mat"
     blurb: "A straightforward cushioned flat mat at a fraction of the terrain-design options, doing the core job — softening a hard floor — without the extra features some standing-desk users don't need or want."
     pros:
@@ -51,7 +48,6 @@ products:
       - "Basic foam may compress faster over time than premium foam"
   - name: "Kangaroo Original Standing Mat (46\" x 30\", Corner)"
     asin: "B074T4J5JB"
-    image: "/products/best-anti-fatigue-mats-standing-desk-4.jpg"
     bestFor: "Best for larger stance or corner desks"
     blurb: "A noticeably bigger mat than the standard 20x32 size, built for a corner standing desk or anyone who shifts their stance widely rather than staying planted in one small spot."
     pros:
@@ -63,7 +59,6 @@ products:
       - "Flat design, not terrain — same trade-off as the Sky Solutions mat"
   - name: "Sky Solutions Oasis Anti-Fatigue Mat"
     asin: "B07F3C6WCL"
-    image: "/products/best-anti-fatigue-mats-standing-desk-5.jpg"
     bestFor: "Best multi-room use"
     blurb: "Marketed as equally at home in a kitchen or standing desk setup, which matters if the mat needs to move between rooms rather than living permanently under one desk."
     pros:

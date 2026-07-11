@@ -14,7 +14,6 @@ imageCaption: "A clean cable setup usually needs three layers: a home for the po
 products:
   - name: "VIVO Under Desk 17\" Cable Management Tray"
     asin: "B089B4XZM4"
-    image: "/products/desk-cable-management-1.jpg"
     bestFor: "Best overall power-strip tray"
     blurb: "A sturdy metal tray sized to lift a typical power strip and its bundled connections off the floor without taking over the entire knee zone."
     pros:
@@ -34,7 +33,6 @@ products:
     smallSpaceNote: "Measure the tray's drop below the desktop so it does not compete with knees, drawers, or a footrest."
   - name: "Yecaye No-Drill Under Desk Cable Management Tray"
     asin: "B0F59F5BPX"
-    image: "/products/desk-cable-management-2.jpg"
     bestFor: "Best no-drill install"
     blurb: "A reversible F-clamp and protective pads make this a practical choice for renters or desks that should not be drilled."
     pros:
@@ -47,7 +45,6 @@ products:
     smallSpaceNote: "Confirm both desktop thickness and the clearance between the clamp and any drawer or crossbar."
   - name: "JOTO Cable Management Sleeve (4-Pack)"
     asin: "B015HWXG4M"
-    image: "/products/desk-cable-management-3.jpg"
     bestFor: "Best for hiding cable runs"
     blurb: "A zippered sleeve turns several loose cords between the desk and outlet into one controlled route while still allowing later changes."
     pros:
@@ -60,7 +57,6 @@ products:
     smallSpaceNote: "Route the sleeve along a rear desk leg instead of letting it hang through the center of the leg area."
   - name: "Sinjimoru Magnetic Cable Clips (6-Pack)"
     asin: "B0FP16B355"
-    image: "/products/desk-cable-management-4.jpg"
     bestFor: "Best for daily-use charging cables"
     blurb: "These clips solve the separate access problem: keeping charging connectors at the desk edge instead of letting them fall behind the furniture."
     pros:
@@ -73,7 +69,6 @@ products:
     smallSpaceNote: "Place clips where a connector can rest without crossing the mouse, keyboard, or writing zone."
   - name: "VIVO No-Drill Clamp-On 36\" Mesh Net Cable Management"
     asin: "B0BS5PVNSX"
-    image: "/products/desk-cable-management-5.jpg"
     bestFor: "Best for standing desks"
     blurb: "A flexible mesh net gives a sit-stand desk more cable slack than a rigid fixed-height route while keeping connections off the floor."
     pros:

@@ -15,7 +15,6 @@ image: "/winnie/winnie-office-desk-pad.jpg"
 products:
   - name: "Aothia Leather Office Desk Pad Protector (31.5\" x 15.7\")"
     asin: "B082F5ZLS5"
-    image: "/products/best-desk-pads-1.jpg"
     bestFor: "Best overall"
     blurb: "PU leather top with a non-slip backing, sized to cover a standard keyboard-and-mouse zone without swallowing the whole desk — the size most people actually need, not the largest one available."
     pros:
@@ -27,7 +26,6 @@ products:
       - "Can develop a faint new-material smell for the first few days"
   - name: "Aothia Dual-Sided Desk Pad with Cork (25.6\" x 13.7\")"
     asin: "B08JLMMWM9"
-    image: "/products/best-desk-pads-2.jpg"
     bestFor: "Best reversible option"
     blurb: "One leather side, one natural cork side, so the same pad can match a different desk or mood without buying a second one — a genuinely useful feature rather than a marketing add-on."
     pros:
@@ -39,7 +37,6 @@ products:
       - "Cork side is less waterproof than the leather side"
   - name: "Gallaway Leather Desk Mat, Large (36\" x 17\")"
     asin: "B083JP5QY4"
-    image: "/products/best-desk-pads-3.jpg"
     bestFor: "Best for large or dual-monitor desks"
     blurb: "The largest option here, built to cover a full keyboard, mouse, and notebook zone on a desk that actually has the room — worth the larger size only if your desk does."
     pros:
@@ -51,7 +48,6 @@ products:
       - "Premium feel comes with a higher price than the budget options here"
   - name: "Gallaway Leather Desk Mat, Medium (24\" x 14\")"
     asin: "B09XLXKJHP"
-    image: "/products/best-desk-pads-4.jpg"
     bestFor: "Best for small or compact desks"
     blurb: "The same material and finish as the large Gallaway mat, sized down for a desk where the full 36-inch version would hang off the edge or crowd out other things you keep on the surface."
     pros:
@@ -63,7 +59,6 @@ products:
       - "Same higher price point as the large version, just less material"
   - name: "Aothia Leather Desk Pad, Extra-Large (48\" x 17\")"
     asin: "B0D5B4S886"
-    image: "/products/best-desk-pads-5.jpg"
     bestFor: "Best for extra-wide desks"
     blurb: "Sized for desks that run wider than a standard single-monitor setup — a corner desk, a shared two-person surface, or anyone who wants the pad to span nearly the whole desk rather than just the typing zone."
     pros:

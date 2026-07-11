@@ -15,7 +15,6 @@ image: "/winnie/winnie-kitchen-pantry-shelf.jpg"
 products:
   - name: "Vtopmart 24-Piece Airtight Container Set"
     asin: "B08ZK5WDWN"
-    image: "/products/best-stackable-pantry-containers-small-kitchen-1.jpg"
     bestFor: "Best variety pack for a small pantry shelf"
     blurb: "Four sizes across 24 pieces means you can match container to ingredient — small for spices, tall for pasta, medium for baking staples — instead of forcing everything into one bulk size that wastes shelf height."
     pros:
@@ -27,7 +26,6 @@ products:
       - "Uniform square shape doesn't flex to an oddly shaped shelf"
   - name: "PANTRYSTAR Large Food Storage Containers (3-Pack)"
     asin: "B08DHCDJHK"
-    image: "/products/best-stackable-pantry-containers-small-kitchen-2.jpg"
     bestFor: "Best for flour, sugar, and bulk staples"
     blurb: "Three large 5.2-liter containers sized for a full 5-lb bag of flour or sugar each — the pick if your actual problem is bulky bags taking up disproportionate shelf space, not small spice-jar clutter."
     pros:
@@ -39,7 +37,6 @@ products:
       - "Three containers alone won't fully organize a mixed pantry"
   - name: "Uamector Airtight Pop-Button Containers (4-Pack)"
     asin: "B0B8SKHCC6"
-    image: "/products/best-stackable-pantry-containers-small-kitchen-3.jpg"
     bestFor: "Best one-handed access"
     blurb: "A pop-up button seal you can open with one hand — genuinely useful mid-cooking when your other hand is holding a measuring cup, not just a nice-to-have feature."
     pros:
@@ -51,7 +48,6 @@ products:
       - "Doesn't cover the largest bulk sizes the way the PANTRYSTAR set does"
   - name: "P PRETIRENO 10-Inch Lazy Susan Turntable"
     asin: "B089QHKWB1"
-    image: "/products/best-stackable-pantry-containers-small-kitchen-4.jpg"
     bestFor: "Best for deep or awkward cabinet corners"
     blurb: "Not a container at all — a rotating tray that solves the specific problem stackable containers can't: reaching what's buried at the back of a deep or corner cabinet without unloading everything in front of it."
     pros:

@@ -17,7 +17,6 @@ image: "/winnie/winnie-gear-monitor-measure.jpg"
 products:
   - name: "VIVO 39-Inch Monitor Stand"
     asin: "B07B44D7FX"
-    image: "/products/best-monitor-stands-for-dual-monitors-1.jpg"
     bestFor: "Best overall for dual monitors"
     blurb: "At nearly 40 inches wide, this is the rare stand that fits two 24-27 inch monitors side by side without crowding — most \"dual monitor\" stands are actually just barely wide enough. Steel frame and wood surface hold weight well past what two monitors need."
     pros:
@@ -29,7 +28,6 @@ products:
       - "Fixed height, no riser adjustment"
   - name: "WALI Monitor Stand"
     asin: "B07SXGJBSV"
-    image: "/products/best-monitor-stands-for-dual-monitors-2.jpg"
     bestFor: "Best budget all-around"
     blurb: "Metal construction, three height settings, and a 44-pound capacity add up to the most complete package for the price — not the widest option here, but the best balance of sturdy, adjustable, and affordable."
     pros:
@@ -41,7 +39,6 @@ products:
       - "Basic looks, purely functional"
   - name: "HUANUO Dual Spring Arm Monitor Mount"
     asin: "B072J1CSCD"
-    image: "/products/best-monitor-stands-for-dual-monitors-3.jpg"
     bestFor: "Best value dual-arm mount"
     blurb: "A gas-spring dual arm instead of a platform stand — clears the desk surface entirely and lets each monitor swing, tilt, and rotate independently. One of the best-selling mounts in the category for a reason, though it's worth sizing down your expectations if you're running two large panels."
     pros:
@@ -53,7 +50,6 @@ products:
       - "Clamp or grommet desk mounting required — not a drop-and-go setup"
   - name: "AMERIERGO Adjustable Monitor Riser"
     asin: "B0855QBHTZ"
-    image: "/products/best-monitor-stands-for-dual-monitors-4.jpg"
     bestFor: "Best adjustable riser under $30"
     blurb: "The only riser in this lineup with both length and angle adjustment, which matters more than it sounds — a fixed-width riser either crowds your monitors or leaves an awkward gap. This one flexes to fit the desk you actually have."
     pros:
@@ -65,7 +61,6 @@ products:
       - "Less premium feel than the steel-frame options"
   - name: "Mind Reader Adjustable Monitor Riser"
     asin: "B08H7BV5TS"
-    image: "/products/best-monitor-stands-for-dual-monitors-5.jpg"
     bestFor: "Best expandable option for tight desks"
     blurb: "Each side extends and angles independently, expanding up to about 51 inches wide — useful if your two monitors aren't the same size, or your desk is oddly shaped and a fixed-width stand just won't sit right."
     pros:
