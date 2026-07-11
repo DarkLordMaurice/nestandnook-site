@@ -95,7 +95,9 @@ const jsonLd = {
       </div>
       {d.image && (
         <figure class="article-hero-photo-inset">
-          <img src={d.image} alt={heroAlt} loading="eager" fetchpriority="high" style={d.imagePosition ? `--img-pos: ${d.imagePosition}` : undefined} />
+          <div class="article-hero-photo-card">
+            <img src={d.image} alt={heroAlt} loading="eager" fetchpriority="high" style={d.imagePosition ? `--img-pos: ${d.imagePosition}` : undefined} />
+          </div>
           <figcaption>{heroCaption}</figcaption>
         </figure>
       )}

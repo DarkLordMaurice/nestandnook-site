@@ -886,13 +886,30 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
 .article-hero-band .washi { box-shadow: 0 2px 6px rgba(0,0,0,0.25); }
 .article-hero-band h1 { color: var(--cream-on-dark); margin: 0.5rem 0 0; }
 .article-hero-text { flex: 1 1 260px; min-width: 0; }
+/* 2026-07-10 bugfix: figcaption used to live directly inside this figure,
+   which also carried the white polaroid background/shadow/rotate. The
+   figcaption's cream text color (#e9e0cd, meant to sit on the dark teal
+   band) was invisible against that white card, and its 36rem max-width
+   stretched the white box into a huge mostly-empty rectangle with the tiny
+   photo stranded in one corner (Maurice: "horrible looking garbage small
+   photo white box thing"). Fix: the white/shadow/rotate treatment now
+   lives on a narrower inner .article-hero-photo-card wrapping only the
+   <img>, so the polaroid stays small and square; the figure itself is just
+   a flex column with no background, sized to the photo, so the caption
+   sits underneath it on the teal band at a matching narrow width. */
 .article-hero-photo-inset {
   flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 120px;
+  margin-left: auto;
+}
+.article-hero-photo-card {
   background: #fff;
   padding: 6px;
   box-shadow: var(--shadow-card-hover);
   transform: rotate(-4deg);
-  margin-left: auto;
 }
 .article-hero-photo-inset img {
   display: block;
@@ -902,6 +919,7 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
   object-position: var(--img-pos, center 20%);
 }
 @media (min-width: 640px) {
+  .article-hero-photo-inset { max-width: 150px; }
   .article-hero-photo-inset img { width: 120px; height: 120px; }
 }
 @media (min-width: 800px) {
