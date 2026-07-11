@@ -1341,33 +1341,23 @@ tr:nth-child(even) td { background: rgba(214, 164, 25, 0.05); }
 }
 
 /* Custom hover cursors (added 2026-07-10) — a small on-brand icon replaces
-   the arrow over specific link types (a spoon over recipe links, a
-   transaction icon over real outbound Amazon links, etc.) instead of the
-   default pointer. Icons are flat UI assets generated via ChatGPT, not
-   Winnie photography — see Custom-Cursor-Prompts-2026-07-10.md. Until those
-   PNGs exist at site/public/cursors/, the url() fails to load and every
-   browser falls back to the next value in the list (plain `pointer`), so
-   this degrades gracefully with zero code change needed once the files land.
-   FIX (2026-07-10, 2nd pass): the transaction cursor was originally also
-   applied to `a.review-card`, but that link goes to our OWN review article
-   (/{hub}/{slug}/), not to Amazon — so the bag icon was showing on every
-   review card sitewide, not just real purchase links.
-   FIX (2026-07-11, 3rd pass): scoped to rel="sponsored" instead, on the
-   assumption every real Amazon link carries that token — but
-   AMAZON_LINK_REL (config.ts) only adds "sponsored" once
-   amazonAssociatesStatus is 'approved'; while it's 'pending' (current
-   state) the rel is just "nofollow noopener", so the selector matched
-   nothing sitewide and the cursor silently never showed on any Amazon
-   link, not just recipe ingredients (Maurice caught it on recipes, but the
-   ProductCard "Check price on Amazon" CTA had the same bug). Matching on
-   the actual amazon.com domain instead — true regardless of Associates
-   approval status, and still can't false-positive on internal links since
-   those never point there. */
+   the arrow over specific link types (a spoon over recipe links, etc.)
+   instead of the default pointer. Icons are flat UI assets generated via
+   ChatGPT, not Winnie photography — see Custom-Cursor-Prompts-2026-07-10.md.
+   Until those PNGs exist at site/public/cursors/, the url() fails to load
+   and every browser falls back to the next value in the list (plain
+   `pointer`), so this degrades gracefully with zero code change needed once
+   the files land.
+   REMOVED 2026-07-11: the transaction/bag cursor over Amazon links (was
+   `main a[href*="amazon.com"]`, previously `rel="sponsored"` before that —
+   see git history for the two earlier fix attempts). Maurice: the custom
+   cursor image is large enough that it covers multiple lines of wrapped
+   inline text (recipe ingredient links, ProductCard CTAs), making the
+   actual link hard to click precisely. Removed outright rather than
+   attempting a third fix — real Amazon links keep the plain pointer
+   cursor now, same as any other link. */
 a.recipe-tile-card {
   cursor: url('/cursors/cursor-spoon.png') 16 16, pointer;
-}
-main a[href*="amazon.com"] {
-  cursor: url('/cursors/cursor-transaction.png') 16 16, pointer;
 }
 a.guide-list-item {
   cursor: url('/cursors/cursor-fix.png') 16 16, pointer;
