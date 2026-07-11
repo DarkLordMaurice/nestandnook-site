@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config.ts';
+---
+<BaseLayout title={`Terms of Use — ${SITE.brand}`} description={`Terms governing use of ${SITE.brand}, its editorial content, retailer links, and recipes.`} showDisclosure={false}>
+  <div class="prose">
+    <span class="washi">Use of the site</span>
+    <h1>Terms of Use</h1>
+    <p><em>Effective July 10, 2026</em></p>
+
+    <p>By using {SITE.brand}, you agree to these terms. If you do not agree, do not use the site.</p>
+
+    <h2>Informational content</h2>
+    <p>The site provides general editorial information about home-office setups, small-space kitchens, products, and recipes. Content is not medical, legal, financial, engineering, or other professional advice. Measure your own space, follow manufacturer instructions, and use appropriate safety judgment.</p>
+
+    <h2>Research and AI-generated host disclosure</h2>
+    <p>Winnie Hollowell is an AI-generated editorial host, not a real person or credentialed professional. Illustrative images do not prove personal ownership, purchase, or hands-on testing. Product guidance is research-led and may rely on public specifications and buyer-feedback patterns.</p>
+
+    <h2>Retailer links and purchases</h2>
+    <p>External retailer links take you to third-party websites. Prices, stock, shipping, warranties, returns, and transaction terms are controlled by the retailer. Nest & Nook is not the seller and is not responsible for a retailer transaction.</p>
+
+    <h2>Accuracy and changes</h2>
+    <p>We work to keep pages useful and accurate, but specifications, availability, policies, and links can change. We do not guarantee that every page is complete, current, or error-free at every moment.</p>
+
+    <h2>Recipes and safety</h2>
+    <p>Recipe times, nutrition estimates, and serving information are planning aids. Use safe food-handling practices, check doneness with appropriate methods, account for allergies and dietary needs, and follow appliance instructions.</p>
+
+    <h2>Intellectual property</h2>
+    <p>Unless otherwise stated, original site text, design, and commissioned or generated brand assets are owned by Nest & Nook. You may link to pages and quote short excerpts with attribution. Do not reproduce substantial portions, scrape content for republication, or present Winnie assets as your own brand character.</p>
+
+    <h2>Acceptable use</h2>
+    <p>Do not interfere with the site, attempt unauthorized access, submit malicious content, misuse contact channels, or use the site in a way that violates applicable law.</p>
+
+    <h2>Limitation of responsibility</h2>
+    <p>To the extent permitted by law, use of the site and reliance on its content are at your own risk. Nest & Nook is not responsible for indirect losses, product misuse, third-party sites, or decisions made without checking current specifications and instructions.</p>
+
+    <h2>Governing location</h2>
+    <p>These terms are administered from {SITE.operatorRegion}. Mandatory consumer rights that apply to a visitor are not waived by this paragraph.</p>
+
+    <h2>Changes and contact</h2>
+    <p>These terms may be updated as the site changes. Questions can be sent through the <a href="/contact/">contact page</a>.</p>
+  </div>
+</BaseLayout>

@@ -1,0 +1,20 @@
+{
+  "page_id": "desk-cable-management",
+  "claim_evidence": [
+    {
+      "claim": "A complete small-desk cable setup usually needs containment, routing, and access layers.",
+      "evidence_on_page": [
+        "#quick-answer",
+        "#measure-first-check",
+        "#product-recommendations"
+      ],
+      "supporting_assets": [
+        "problem image: loose power strip and cords",
+        "comparison table",
+        "product cards"
+      ],
+      "risk": "Do not make electrical-safety guarantees or imply one product fixes unsafe wiring.",
+      "refresh_trigger": "Product specification, desk compatibility, or retailer-listing change."
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "page_id": "ergonomic-home-office-setup-under-150",
+  "claim_evidence": [
+    {
+      "claim": "$150 is a planning target, not a guaranteed live bundle price.",
+      "evidence_on_page": [
+        "#quick-answer",
+        "#measure-first-check",
+        "#product-recommendations"
+      ],
+      "supporting_assets": [
+        "priority-order framework",
+        "current-listing CTAs"
+      ],
+      "risk": "Never present a changing cart total as fixed.",
+      "refresh_trigger": "Material price movement, product replacement, or budget-page query change."
+    }
+  ]
+}

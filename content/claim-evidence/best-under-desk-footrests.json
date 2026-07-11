@@ -1,0 +1,19 @@
+{
+  "page_id": "best-under-desk-footrests",
+  "claim_evidence": [
+    {
+      "claim": "Footrest type should match measured lift, knee clearance, and sitting style.",
+      "evidence_on_page": [
+        "#quick-answer",
+        "#measure-first-check",
+        "#product-recommendations"
+      ],
+      "supporting_assets": [
+        "type comparison table",
+        "illustrative hero"
+      ],
+      "risk": "No medical, circulation, chiropractor, or personal-use claims.",
+      "refresh_trigger": "Model specification or product-set change."
+    }
+  ]
+}

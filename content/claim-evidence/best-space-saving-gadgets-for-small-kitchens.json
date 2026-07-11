@@ -1,0 +1,20 @@
+{
+  "page_id": "best-space-saving-gadgets-for-small-kitchens",
+  "claim_evidence": [
+    {
+      "claim": "The broad roundup is a starter router; specialist pages own collapsible tools, nesting bowls, prep workflow, and cabinet storage.",
+      "evidence_on_page": [
+        "#quick-answer",
+        "#measure-first-check",
+        "#related-small-space-problems"
+      ],
+      "supporting_assets": [
+        "router section",
+        "specialist links",
+        "mechanism table"
+      ],
+      "risk": "Avoid cannibalizing specialist intent or repeating full category coverage.",
+      "refresh_trigger": "New specialist page or overlap detected in Search Console."
+    }
+  ]
+}

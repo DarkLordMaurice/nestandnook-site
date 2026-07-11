@@ -1,0 +1,19 @@
+{
+  "page_id": "small-kitchen-setup-guide",
+  "claim_evidence": [
+    {
+      "claim": "The live kitchen pillar should route readers to all existing specialist pages by bottleneck.",
+      "evidence_on_page": [
+        "#quick-answer",
+        "#measure-first-check",
+        "#related-small-space-problems"
+      ],
+      "supporting_assets": [
+        "problem-to-guide routing list",
+        "specialist page links"
+      ],
+      "risk": "Do not retain stale coming-next copy for already-live pages.",
+      "refresh_trigger": "Any new kitchen page, consolidation, or slug change."
+    }
+  ]
+}

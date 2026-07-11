@@ -1,0 +1,32 @@
+---
+interface Props {
+  hub: string;
+  pageType: string;
+  productCount?: number;
+}
+const { hub, pageType, productCount = 0 } = Astro.props;
+const category = hub === 'kitchen' ? 'small-kitchen' : 'home-office';
+---
+<section id="how-we-choose" class="methodology-box" aria-labelledby="how-we-choose-heading">
+  <h2 id="how-we-choose-heading">How we choose</h2>
+  <p>
+    This {pageType.replaceAll('_', ' ')} is research-led, not a claim of hands-on laboratory testing.
+    We compare public product specifications, recurring patterns in buyer feedback, and the measurements that matter most for a real {category} constraint.
+    Recommendations are organized by who each option fits, what to measure, and when to skip it—not by commission rate.
+  </p>
+  {productCount > 0 && (
+    <p>Products can change or disappear, so availability, specifications, and destination links should be rechecked during every scheduled refresh.</p>
+  )}
+  <p><a href="/editorial-standards/">Read the full editorial standards.</a></p>
+</section>
+
+<style>
+  .methodology-box {
+    margin: 2rem 0 1rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid rgba(76, 94, 82, 0.28);
+    border-radius: 10px;
+    background: rgba(244, 239, 226, 0.72);
+  }
+  .methodology-box h2 { margin-top: 0; }
+</style>

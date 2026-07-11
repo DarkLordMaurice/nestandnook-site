@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
+import BestForDecisionTable from '../../components/BestForDecisionTable.astro';
+import HowWeChoose from '../../components/HowWeChoose.astro';
+import LastReviewed from '../../components/LastReviewed.astro';
 import { SITE, amazonLink } from '../../config.ts';
 import { DEFAULT_AUTHOR } from '../../authors.ts';
 import { HUBS } from '../../hubs.ts';
@@ -18,40 +21,50 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 const d = entry.data;
 const authorName = DEFAULT_AUTHOR.name;
+const canonical = `${SITE.url}/${d.hub}/${entry.slug}/`;
+const reviewDate = d.updatedDate ?? d.publishDate;
+const heroAlt = d.imageAlt ?? `Winnie Hollowell illustrating ${d.primaryKeyword} in a practical small-space ${d.hub === 'kitchen' ? 'kitchen' : 'home office'} setup.`;
+const heroCaption = d.imageCaption ?? `An illustrative Winnie Hollowell scene showing the small-space problem addressed in this guide; it does not represent hands-on testing of a branded product.`;
 
-// JSON-LD ItemList from the product array (only real fields — no fake ratings).
-// datePublished/dateModified + author included here too (not just the Article
-// fallback) — visible freshness + authorship are trust signals AI Overviews /
-// GEO citation surfaces weigh heavily as of the 2026 update.
-const mainSchema = d.products.length > 0 ? {
-  '@type': 'ItemList',
-  name: d.title,
+const articleSchema = {
+  '@type': 'Article',
+  '@id': `${canonical}#article`,
+  headline: d.title,
   description: d.description,
   datePublished: d.publishDate,
-  dateModified: d.updatedDate ?? d.publishDate,
-  author: { '@type': 'Organization', name: authorName, url: `${SITE.url}/about/` },
+  dateModified: reviewDate,
+  mainEntityOfPage: canonical,
+  author: { '@type': 'Person', name: authorName, url: `${SITE.url}/about/` },
+  publisher: { '@id': `${SITE.url}/#organization` },
+  ...(d.image && { image: [`${SITE.url}${d.image}`] }),
+};
+
+const itemListSchema = d.products.length > 0 ? {
+  '@type': 'ItemList',
+  '@id': `${canonical}#recommendations`,
+  name: `${d.title} recommendations`,
+  numberOfItems: d.products.length,
   itemListElement: d.products.map((p, i) => ({
     '@type': 'ListItem',
     position: i + 1,
     name: p.name,
     url: amazonLink(p.asin),
   })),
-} : {
-  '@type': 'Article',
-  headline: d.title,
-  description: d.description,
-  datePublished: d.publishDate,
-  dateModified: d.updatedDate ?? d.publishDate,
-  author: { '@type': 'Organization', name: authorName },
-  publisher: { '@type': 'Organization', name: SITE.brand },
+} : null;
+
+const breadcrumbSchema = {
+  '@type': 'BreadcrumbList',
+  '@id': `${canonical}#breadcrumb`,
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.url}/` },
+    { '@type': 'ListItem', position: 2, name: HUBS[d.hub]?.name ?? d.hub, item: `${SITE.url}/${d.hub}/` },
+    { '@type': 'ListItem', position: 3, name: d.title, item: canonical },
+  ],
 };
 
-// FAQPage schema — same rationale as the recipes template: the "Frequently
-// asked questions" section already on every review page is now backed by
-// structured d.faqs data, not just prose, so AI Overviews/answer engines have
-// a clean Q&A block to cite instead of having to parse it out of body copy.
 const faqSchema = d.faqs.length > 0 ? {
   '@type': 'FAQPage',
+  '@id': `${canonical}#faq`,
   mainEntity: d.faqs.map((f) => ({
     '@type': 'Question',
     name: f.q,
@@ -61,38 +74,77 @@ const faqSchema = d.faqs.length > 0 ? {
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@graph': [mainSchema, ...(faqSchema ? [faqSchema] : [])],
+  '@graph': [articleSchema, breadcrumbSchema, ...(itemListSchema ? [itemListSchema] : []), ...(faqSchema ? [faqSchema] : [])],
 };
 ---
-<BaseLayout title={d.title} description={d.description} ogImage={d.ogImage} jsonLd={jsonLd} author={authorName} publishDate={d.publishDate} updatedDate={d.updatedDate}>
-  <div class="prose">
+<BaseLayout
+  title={d.title}
+  description={d.description}
+  ogImage={d.ogImage ?? d.image}
+  jsonLd={jsonLd}
+  author={authorName}
+  bylineLabel="Edited by"
+  publishDate={d.publishDate}
+  updatedDate={d.updatedDate}
+>
+  <article class="prose">
     <div class="article-hero-band">
       <div class="article-hero-text">
         <span class="washi">{HUBS[d.hub]?.name ?? d.hub}</span>
         <h1>{d.title}</h1>
       </div>
       {d.image && (
-        <div class="article-hero-photo-inset">
-          <img src={d.image} alt={d.title} loading="eager" style={d.imagePosition ? `--img-pos: ${d.imagePosition}` : undefined} />
-        </div>
+        <figure class="article-hero-photo-inset">
+          <img src={d.image} alt={heroAlt} loading="eager" fetchpriority="high" style={d.imagePosition ? `--img-pos: ${d.imagePosition}` : undefined} />
+          <figcaption>{heroCaption}</figcaption>
+        </figure>
       )}
     </div>
+
+    <BestForDecisionTable products={d.products} />
 
     <Content />
 
     {d.products.length > 0 && (
-      <section>
+      <section id="product-recommendations" aria-labelledby="product-recommendations-heading">
+        <h2 id="product-recommendations-heading">Product recommendations</h2>
         {d.products.map((p) => (
-          <ProductCard name={p.name} asin={p.asin} bestFor={p.bestFor} blurb={p.blurb} pros={p.pros} cons={p.cons} image={p.image} winnieImage={p.winnieImage} />
+          <ProductCard
+            name={p.name}
+            asin={p.asin}
+            bestFor={p.bestFor}
+            blurb={p.blurb}
+            pros={p.pros}
+            cons={p.cons}
+            lookFor={p.lookFor}
+            skipIf={p.skipIf}
+            smallSpaceNote={p.smallSpaceNote}
+            image={p.image}
+            winnieImage={p.winnieImage}
+          />
         ))}
       </section>
     )}
 
     {d.internalLinks.length > 0 && (
-      <nav class="related">
+      <nav class="related" id="related-small-space-problems" aria-label="Related guides">
         <h2>Related guides</h2>
         <ul>{d.internalLinks.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
       </nav>
     )}
-  </div>
+
+    <HowWeChoose hub={d.hub} pageType={d.pageType} productCount={d.products.length} />
+    <LastReviewed date={reviewDate} />
+  </article>
+
+  <style>
+    .article-hero-photo-inset { margin: 0; }
+    .article-hero-photo-inset figcaption {
+      margin-top: 0.45rem;
+      font-size: 0.76rem;
+      line-height: 1.35;
+      color: #e9e0cd;
+      max-width: 36rem;
+    }
+  </style>
 </BaseLayout>

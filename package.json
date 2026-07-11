@@ -1,11 +1,13 @@
 {
   "name": "nestandnook-site",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && pagefind --site dist --output-subdir pagefind",
+    "audit:readiness": "node scripts/site-readiness-audit.mjs",
+    "audit:readiness:strict": "node scripts/site-readiness-audit.mjs --strict",
+    "build": "npm run audit:readiness && astro build && pagefind --site dist --output-subdir pagefind",
     "preview": "astro preview",
     "astro": "astro"
   },

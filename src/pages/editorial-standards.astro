@@ -1,35 +1,48 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WinnieNote from '../components/WinnieNote.astro';
-import { SITE } from '../config.ts';
+import { SITE, isAmazonAssociatesApproved } from '../config.ts';
 ---
-<BaseLayout title={`Editorial Standards — ${SITE.brand}`} description={`How ${SITE.brand} researches, reviews, and ranks products.`} showDisclosure={false}>
+<BaseLayout title={`Editorial Standards — ${SITE.brand}`} description={`How ${SITE.brand} researches, reviews, updates, and corrects product guidance.`} showDisclosure={false}>
   <div class="prose">
-  <span class="washi">The fine print, warmly</span>
-  <h1>Editorial Standards</h1>
-  <p class="lede">These standards apply to every guide on {SITE.brand}. They exist so you can trust our picks and so our content stays genuinely useful.</p>
+    <span class="washi">The fine print, warmly</span>
+    <h1>Editorial Standards</h1>
+    <p class="lede">These standards apply to every guide on {SITE.brand}. They exist so readers can understand what our recommendations do—and do not—claim.</p>
 
-  <WinnieNote>
-    <p>Boring-but-important stuff ahead — I promise it's short. Here's exactly how we decide what earns a spot on this site, so you're not just taking our word for it.</p>
-  </WinnieNote>
+    <WinnieNote>
+      <p>Boring-but-important stuff ahead. Here is how something earns a spot, what gets checked, and what should block publication.</p>
+    </WinnieNote>
 
-  <h2>How we rank products</h2>
-  <ul>
-    <li>We don't buy and personally test every product — we compile and weigh what verified buyers and other reviewers actually report, then rank by fit.</li>
-    <li>Picks are chosen by fit for a specific person or use case — never by commission rate.</li>
-    <li>We compare the specs that actually matter for the job and state the trade-offs plainly.</li>
-    <li>We say who a product is <em>not</em> right for, not just who it's for.</li>
-  </ul>
+    <h2>How we research and rank products</h2>
+    <ul>
+      <li>We do not claim hands-on testing unless a page explicitly documents real testing.</li>
+      <li>We compare public product specifications and recurring patterns in buyer feedback.</li>
+      <li>Picks are organized by fit for a specific person, measurement, room, or use case—not by commission rate.</li>
+      <li>We explain what to measure, what to look for, and who should skip an option.</li>
+      <li>Generated Winnie images are illustrative demonstrations using generic product categories, not evidence of branded testing.</li>
+    </ul>
 
-  <h2>Accuracy &amp; honesty</h2>
-  <ul>
-    <li>We don't invent review counts, ratings, or testimonials.</li>
-    <li>We don't quote live prices as fact — prices change, so we link you to the current price instead.</li>
-    <li>We make comfort and ergonomics points, not medical claims.</li>
-    <li>Guides are dated and refreshed as products, stock, and prices change.</li>
-  </ul>
+    <h2>Accuracy and claim boundaries</h2>
+    <ul>
+      <li>We do not invent ratings, review counts, testimonials, credentials, prices, availability, or ASINs.</li>
+      <li>Changing prices are not stated as permanent facts; readers are sent to the current retailer listing.</li>
+      <li>Market-wide claims are narrowed to the products or evidence actually compared.</li>
+      <li>Comfort and setup guidance is not medical diagnosis or treatment.</li>
+      <li>Certification claims are attributed to model-specific manufacturer or certifier documentation and should be rechecked during refreshes.</li>
+    </ul>
 
-  <h2>Disclosure</h2>
-  <p>{SITE.brand} is an Amazon Associate and may participate in other affiliate programs; we also run display ads. This never affects our recommendations. Full <a href="/disclosure/">affiliate disclosure</a>.</p>
+    <h2>Updates and corrections</h2>
+    <ul>
+      <li>Pages display a published date and a visible last-reviewed date.</li>
+      <li>Product links, specifications, internal links, and claim wording are reviewed on a scheduled and event-triggered basis.</li>
+      <li>Correction requests can be sent through the <a href="/contact/">contact page</a>.</li>
+    </ul>
+
+    <h2>Monetization</h2>
+    {isAmazonAssociatesApproved ? (
+      <p>{SITE.brand} may earn qualifying affiliate commissions. Display ads are only described as active when they are actually active. Monetization does not change recommendation criteria. See the <a href="/disclosure/">full disclosure</a>.</p>
+    ) : (
+      <p>The Amazon Associates application is pending. Current Amazon links are untagged and do not earn a commission. Display ads are not currently represented as active. See the <a href="/disclosure/">full disclosure</a>.</p>
+    )}
   </div>
 </BaseLayout>

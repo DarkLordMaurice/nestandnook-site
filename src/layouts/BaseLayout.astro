@@ -1,5 +1,5 @@
 ---
-import { SITE } from '../config.ts';
+import { SITE, DISCLOSURE, isAmazonAssociatesApproved } from '../config.ts';
 import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
 import '../styles/global.css';
 
@@ -7,28 +7,28 @@ interface Props {
   title: string;
   description: string;
   ogImage?: string;
-  showDisclosure?: boolean;   // true on all content pages
-  jsonLd?: object;            // ItemList/Product/Article schema from the page
-  author?: string;            // byline name for content pages (E-E-A-T)
-  publishDate?: Date;         // visible freshness signal alongside the byline
+  showDisclosure?: boolean;
+  jsonLd?: object;
+  author?: string;
+  bylineLabel?: string;
+  publishDate?: Date;
   updatedDate?: Date;
 }
-const { title, description, ogImage, showDisclosure = true, jsonLd, author, publishDate, updatedDate } = Astro.props;
+const {
+  title,
+  description,
+  ogImage,
+  showDisclosure = true,
+  jsonLd,
+  author,
+  bylineLabel = 'By',
+  publishDate,
+  updatedDate,
+} = Astro.props;
 const dateFmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 const canonical = new URL(Astro.url.pathname, SITE.url).toString();
+const googleVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
 
-// Sitewide entity graph — Organization + WebSite + a real named Person
-// (Maurice, publisher/editor of record), linked via @id so every page's
-// specific schema (ItemList/Article/Recipe/FAQPage from `jsonLd`) hangs off
-// the same graph instead of shipping as a disconnected second <script> tag.
-//
-// Deliberately NOT modeling Winnie as schema.org Person: she's disclosed
-// sitewide (see about.astro) as a fully virtual, AI-generated host, not a
-// real individual. schema.org Person is meant to represent real, identifiable
-// people — marking an AI persona as one would be exactly the kind of
-// misleading structured data Google's guidelines warn against, and it cuts
-// against this site's own honesty commitments. Maurice is real and named, so
-// he's the Person entity; Winnie stays a voice/character, not a schema node.
 const orgId = `${SITE.url}/#organization`;
 const websiteId = `${SITE.url}/#website`;
 const publisherId = `${SITE.url}/#maurice`;
@@ -58,9 +58,6 @@ const publisherSchema = {
   url: `${SITE.url}/about/`,
 };
 
-// Flatten whatever the page passed in `jsonLd` (a single node, or its own
-// {'@context', '@graph': [...]} shape like the recipe pages build) into this
-// page's graph, stripping any nested '@context' so there's exactly one.
 const pageNodes: object[] = jsonLd
   ? (Array.isArray((jsonLd as any)['@graph'])
       ? (jsonLd as any)['@graph']
@@ -86,9 +83,10 @@ const fullGraph = {
   <link rel="canonical" href={canonical} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
   {author && <meta name="author" content={author} />}
+  {googleVerification && <meta name="google-site-verification" content={googleVerification} />}
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:type" content="article" />
+  <meta property="og:type" content={author ? 'article' : 'website'} />
   <meta property="og:url" content={canonical} />
   {ogImage && <meta property="og:image" content={ogImage} />}
   <meta name="twitter:card" content="summary_large_image" />
@@ -102,7 +100,7 @@ const fullGraph = {
     <div class="wrap">
       <a href="/" class="brand"><img src="/favicon.svg?v=2" alt="" class="brand-mark" width="34" height="34" /><span class="brand-word">{SITE.brand}</span></a>
       <div class="site-header-right">
-        <nav class="site-nav">
+        <nav class="site-nav" aria-label="Primary navigation">
           <a href="/home-office/">Home Office</a>
           <a href="/kitchen/">Kitchen</a>
           <a href="/recipes/">Recipes</a>
@@ -128,7 +126,7 @@ const fullGraph = {
       {showDisclosure && <AffiliateDisclosure />}
       {author && (
         <p class="byline">
-          By <a href="/about/">{author}</a>
+          {bylineLabel} <a href="/about/">{author}</a>
           {publishDate && <span class="byline-date"> · Published {dateFmt(publishDate)}{updatedDate && updatedDate.getTime() !== publishDate.getTime() && <> · Updated {dateFmt(updatedDate)}</>}</span>}
         </p>
       )}
@@ -139,19 +137,16 @@ const fullGraph = {
   <footer class="site-footer">
     <div class="wrap">
       <p>{SITE.brand} — {SITE.tagline}</p>
-      <p class="small">As an Amazon Associate we earn from qualifying purchases. Prices and availability are accurate as of the date/time indicated and are subject to change.</p>
-      <p class="small"><a href="/about/">About</a> · <a href="/editorial-standards/">Editorial Standards</a> · <a href="/disclosure/">Affiliate Disclosure</a> · <a href="/privacy/">Privacy</a></p>
+      <p class="small">
+        {isAmazonAssociatesApproved
+          ? DISCLOSURE.associate
+          : 'Amazon Associates application pending; current Amazon links are untagged and do not earn us a commission.'}
+      </p>
+      <p class="small"><a href="/about/">About</a> · <a href="/editorial-standards/">Editorial Standards</a> · <a href="/disclosure/">Retailer & Affiliate Disclosure</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/contact/">Contact</a></p>
     </div>
   </footer>
 
   <script>
-    // Inline header search — Pagefind core JS API, not the full-page
-    // pagefind-ui.js widget. Present on every page via BaseLayout (Maurice,
-    // 2026-07-10: search needs to be "a bar at the top, in the main header
-    // ... not a separate page all together"). /pagefind/pagefind.js only
-    // exists in a built `dist/` (generated by `astro build && pagefind
-    // --site dist ...`), so this is silently a no-op in local dev unless a
-    // build has been run first — expected, not a bug.
     const wrap = document.getElementById('site-search');
     const toggle = document.getElementById('site-search-toggle');
     const panel = document.getElementById('site-search-panel');
@@ -163,7 +158,7 @@ const fullGraph = {
 
     async function ensurePagefind() {
       if (!pagefind) {
-        // @ts-ignore — built at deploy time, path only resolves in dist/
+        // @ts-ignore — generated in dist/ by the production build.
         pagefind = await import(/* @vite-ignore */ '/pagefind/pagefind.js');
         await pagefind.init();
       }
@@ -188,7 +183,6 @@ const fullGraph = {
       if (!panel) return;
       if (panel.hidden) openPanel(); else closePanel();
     });
-
     document.addEventListener('click', (e) => {
       if (wrap && !wrap.contains(e.target as Node)) closePanel();
     });

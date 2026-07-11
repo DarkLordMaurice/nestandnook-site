@@ -1,0 +1,14 @@
+{
+  "version": "2026-07-10",
+  "publish_threshold": 85,
+  "rebuild_threshold": 75,
+  "areas": [
+    {"area":"buyer_intent_fit","points":20,"checks":["specific problem and small-space constraint in H1/intro","answer within first 120 words"]},
+    {"area":"trust_and_compliance","points":20,"checks":["status-accurate disclosure","no fake testing or prices","verified retailer links","honest AI image use"]},
+    {"area":"decision_quality","points":20,"checks":["comparison table","measurable criteria","alternatives","do-not-buy guidance"]},
+    {"area":"conversion_design","points":15,"checks":["clear best-for logic","nearby link disclosure after approval","low-friction current-listing CTA"]},
+    {"area":"information_gain","points":15,"checks":["measurement framework, checklist, planner, or before/after visual"]},
+    {"area":"maintenance_readiness","points":10,"checks":["visible last-reviewed date","how-we-choose block","internal links","refresh trigger"]}
+  ],
+  "hard_blocks": ["false Amazon status","fabricated ASIN","fake testing","unsupported price/rating claim","missing disclosure","missing required hero image","misleading schema"]
+}

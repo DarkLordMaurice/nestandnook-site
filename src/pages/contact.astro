@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WinnieNote from '../components/WinnieNote.astro';
+import { SITE } from '../config.ts';
+---
+<BaseLayout title={`Contact — ${SITE.brand}`} description={`Contact ${SITE.brand} with correction requests, privacy questions, and site feedback.`} showDisclosure={false}>
+  <div class="prose">
+    <span class="washi">Send a note</span>
+    <h1>Contact Nest &amp; Nook</h1>
+
+    <WinnieNote>
+      <p>Found a broken link, a spec that changed, or a sentence that needs a raised eyebrow? Those are exactly the useful messages.</p>
+    </WinnieNote>
+
+    {SITE.contactEmailVerified ? (
+      <p>Email: <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a></p>
+    ) : (
+      <p>We're still setting up a monitored contact email — check back soon.</p>
+    )}
+
+    <h2>Good reasons to contact us</h2>
+    <ul>
+      <li>Report a factual error, broken link, or changed product specification.</li>
+      <li>Ask a question about our editorial process or disclosures.</li>
+      <li>Submit a privacy request.</li>
+      <li>Share site-accessibility feedback.</li>
+    </ul>
+
+    <h2>Product support</h2>
+    <p>We cannot provide order support, returns, warranties, or manufacturer service. Contact the retailer or manufacturer for purchase-specific help.</p>
+
+  </div>
+</BaseLayout>

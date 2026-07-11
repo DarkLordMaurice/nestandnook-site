@@ -1,106 +1,57 @@
 import { defineCollection, z } from 'astro:content';
 
-// Content collection schema for review/roundup/comparison pages.
-// page-builder writes these; seo-optimizer finalizes title/description/schema.
 const reviews = defineCollection({
   type: 'content',
   schema: z.object({
-    title: z.string().max(65),            // title tag
-    description: z.string().max(160),      // meta description
+    title: z.string().max(65),
+    description: z.string().max(160),
     primaryKeyword: z.string(),
-    hub: z.string(),                       // e.g. 'home-office'
+    hub: z.string(),
     pageType: z.enum(['comparison', 'roundup', 'single_review', 'buying_guide', 'setup_build', 'how_to', 'product_page', 'lifestyle', 'pillar']),
     publishDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
-    disclosure: z.boolean().default(true), // must be true — compliance-gate checks it
+    disclosure: z.boolean().default(true),
     schemaType: z.enum(['ItemList', 'Product', 'Article']).default('ItemList'),
     ogImage: z.string().optional(),
-    // Card thumbnail for homepage/hub grids AND the in-article hero (rendered
-    // near the top of [...slug].astro, full photo via object-fit:contain, no
-    // crop) — a Winnie office/kitchen action shot from the winnie-office-*/
-    // winnie-kitchen-* variety batch, NOT a literal product photo (those stay
-    // unset per compliance note above until PA-API/sales unlock real product
-    // photography) and NOT a hero-banner or byline photo reused from
-    // elsewhere — one unique photo per page, used in both places (2026-07-07:
-    // previously card-thumbnail-only, which meant a bespoke per-page image
-    // never actually appeared once a reader clicked into the article).
     image: z.string().optional(),
-    // Optional CSS object-position value (e.g. "center 25%") for the card
-    // thumbnail crop — cards use object-fit:cover so SOME cropping is
-    // expected (2026-07-08: reverted from object-fit:contain, which fixed
-    // cropping but left large empty cream margins that read as sparse/flat
-    // against the brand's maximalist "grandmillennial" identity, see
-    // Brand-Guide.md §3). Defaults to a "faces sit in the upper third" bias
-    // (see .review-card img in global.css) that fits most Winnie office
-    // shots; only set this when a specific photo's composition needs a
-    // different crop (e.g. a wide action shot where she's lower in frame).
+    imageAlt: z.string().optional(),
+    imageCaption: z.string().optional(),
     imagePosition: z.string().optional(),
-    // Product list drives the comparison table AND the JSON-LD ItemList.
     products: z.array(z.object({
       name: z.string(),
-      asin: z.string(),                    // resolved to a tagged link at build
-      bestFor: z.string(),                 // 'Best overall' / 'Best budget' / segment
+      asin: z.string().regex(/^[A-Z0-9]{10}$/),
+      bestFor: z.string(),
       blurb: z.string(),
       pros: z.array(z.string()).optional(),
       cons: z.array(z.string()).optional(),
-      // Real product photo — hold off populating until PA-API unlocks (~3 qualifying
-      // sales); sourcing product images without API access risks Amazon Associates
-      // image-use terms. Leave unset until then.
+      lookFor: z.array(z.string()).optional(),
+      skipIf: z.array(z.string()).optional(),
+      smallSpaceNote: z.string().optional(),
       image: z.string().optional(),
-      // AI-rendered "Winnie with this product" lifestyle image — used sporadically,
-      // NOT on every product. Must be disclosed as AI-rendered for demonstration
-      // (see about.astro AI-imagery disclosure + brand-assets/winnie/ prompt kit).
       winnieImage: z.string().optional(),
     })).default([]),
     internalLinks: z.array(z.object({ label: z.string(), href: z.string() })).default([]),
-    // Structured Q&A — mirrors the recipes collection's `faqs` field. Added
-    // 2026-07-06 so the "Frequently asked questions" section already written
-    // in prose on every review page can also emit FAQPage schema (previously
-    // only visible to human readers, invisible to AI Overviews/crawlers that
-    // look for structured Q&A). Keep this in sync with the on-page prose.
     faqs: z.array(z.object({ q: z.string(), a: z.string() })).default([]),
   }),
 });
 
-// Blog — Winnie Hollowell's voice. Distinct from the `reviews` collection:
-// these are personality-led posts (her opinions, her "here's what I'd do"
-// takes), not the SEO cluster roundups/how-tos. She never claims personal
-// product testing OR personal ownership/use here — that's not honest, and
-// it's a real Amazon Associates / FTC risk. She showcases picks the real
-// editorial team compiled from verified buyer reviews. As of 2026-07-03,
-// posts no longer repeat the AI/virtual-host disclosure inline (that's a
-// one-time explanation on the About page now, not a per-post paragraph) —
-// see WinnieByline.astro. Aim for a real 2-4 minute read (~500-800 words)
-// that actually digs into its stated topic, not a short generic take.
 const blog = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string().max(70),
     description: z.string().max(160),
-    primaryKeyword: z.string().optional(), // added 2026-07-06 keyword retrofit — blog posts now carry a real target phrase like reviews/recipes do
+    primaryKeyword: z.string().optional(),
     publishDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     ogImage: z.string().optional(),
     category: z.string().default('Notes from the nook'),
     image: z.string().default('/winnie/blog-header.jpg'),
-    // See matching field on the `reviews` schema above for why this exists.
     imagePosition: z.string().optional(),
-    winniePhoto: z.string().optional(), // vary the byline headshot — see WinnieByline.astro
+    winniePhoto: z.string().optional(),
     relatedGuides: z.array(z.object({ label: z.string(), href: z.string() })).default([]),
   }),
 });
 
-// Recipes — a distinct traffic channel from reviews/blog. High-search-volume,
-// kitchen-adjacent recipe content (schema.org Recipe rich-result eligible).
-// Recipes are ORIGINAL content, not "Winnie's family recipes" — she doesn't
-// have a kitchen history (she's a disclosed AI/virtual host, see
-// Character-Bible.md), so recipe posts must never imply she personally
-// developed/tested/inherited them. Framing: developed by the Nest & Nook
-// kitchen team using standard, well-established techniques and ratios;
-// Winnie narrates the tips/voice layer, same disclosed-host pattern as blog.
-// Recipes should link to relevant Kitchen hub product roundups where a real
-// verified product page exists (see internalLinks) — that's the whole point
-// of this content: it drives search traffic AND cross-sells gear.
 const recipes = defineCollection({
   type: 'content',
   schema: z.object({
@@ -117,63 +68,27 @@ const recipes = defineCollection({
     difficulty: z.enum(['easy', 'intermediate', 'advanced']).default('easy'),
     image: z.string(),
     imageAlt: z.string(),
-    // See matching field on the `reviews`/`blog` schemas above — per-photo
-    // object-position override for the article hero inset + card thumbnail
-    // crop. Added 2026-07-08 when recipes got the same .article-hero-band
-    // treatment as reviews/blog.
     imagePosition: z.string().optional(),
-    // Second, alternate plated-dish photo (no Winnie) — added 2026-07-06 from
-    // the Food folder batch. Optional; rendered as a small inset photo near
-    // the recipe card if present, giving readers a second look at the finished
-    // dish without replacing the primary hero image.
     altImage: z.string().optional(),
     altImageAlt: z.string().optional(),
-    // Third photo slot — a real ingredients flatlay (no Winnie), rendered near
-    // the recipe card's "Ingredients" heading. Added 2026-07-08 for
-    // tomato-soup.md's real 3-photo shoot (finished bowl, prep action, and
-    // this flatlay); going forward recipes may ship with more photos than
-    // just the hero + alt, per Maurice — optional so older recipes without a
-    // flatlay shot don't break.
     ingredientsImage: z.string().optional(),
     ingredientsImageAlt: z.string().optional(),
-    winnieImage: z.string().optional(),  // Winnie-in-kitchen lifestyle shot (AI-rendered; disclosed on the About page, not repeated per-page)
-    winnieNote: z.string().optional(),   // Short personality blurb in Winnie's voice about this specific dish — paired with her headshot via WinnieNote.astro
-    winnieHeadshot: z.string().optional(), // vary which headshot shows next to winnieNote — don't repeat avatar.jpg on every recipe
-    // Ingredients grouped so recipes with e.g. "for the sauce" sub-lists render cleanly.
-    // Items are usually plain strings. An item can instead be an object to make
-    // it a portal to an Amazon product — added 2026-07-08 per Maurice: "every
-    // opportunity we get needs to be utilized to send people to purchase
-    // things," extending affiliate links from just `relatedProducts` (gear) to
-    // individual groceries/ingredients too. Use `asin` for a real, verified
-    // Amazon product (grocery item, specialty ingredient, pantry staple) or
-    // `href` to point at an owned page (e.g. a Kitchen hub review). Never
-    // invent an ASIN — only wire a link once the specific product has been
-    // looked up and confirmed to actually match the ingredient.
-    // `query` (added 2026-07-10): a tagged Amazon SEARCH RESULTS link
-    // (amazonSearchLink() in config.ts) instead of one specific product page —
-    // use this for generic groceries/pantry staples (flour, eggs, butter, a
-    // specific spice) where there's no single canonical product to point at
-    // and inventing one specific ASIN would be a guess. This is the default
-    // for plain ingredients; reserve `asin` for cases where a specific product
-    // has genuinely been looked up and confirmed, and `href` for utensils/tools
-    // that already have a matching Kitchen hub review.
+    winnieImage: z.string().optional(),
+    winnieNote: z.string().optional(),
+    winnieHeadshot: z.string().optional(),
     ingredientGroups: z.array(z.object({
-      groupName: z.string().optional(),  // omit for a single flat list
+      groupName: z.string().optional(),
       items: z.array(z.union([
         z.string(),
         z.object({
           text: z.string(),
-          asin: z.string().optional(),
+          asin: z.string().regex(/^[A-Z0-9]{10}$/).optional(),
           href: z.string().optional(),
           query: z.string().optional(),
         }),
       ])),
     })),
-    instructions: z.array(z.object({
-      step: z.string(),
-    })),
-    // Nutrition is an estimate, never a medical/dietary claim — keep it labeled as such
-    // in the template, and only include fields we're confident estimating.
+    instructions: z.array(z.object({ step: z.string() })),
     nutrition: z.object({
       calories: z.number().optional(),
       servingSize: z.string().optional(),
@@ -181,7 +96,7 @@ const recipes = defineCollection({
     tips: z.array(z.string()).default([]),
     faqs: z.array(z.object({ q: z.string(), a: z.string() })).default([]),
     keywords: z.array(z.string()).default([]),
-    disclosure: z.boolean().default(true),  // true whenever relatedProducts OR any ingredient item carries an asin/href affiliate link
+    disclosure: z.boolean().default(true),
     relatedProducts: z.array(z.object({ label: z.string(), href: z.string() })).default([]),
     relatedRecipes: z.array(z.object({ label: z.string(), href: z.string() })).default([]),
   }),

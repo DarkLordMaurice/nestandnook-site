@@ -1,0 +1,19 @@
+{
+  "page_id": "best-desk-lamps-for-eye-strain",
+  "claim_evidence": [
+    {
+      "claim": "Certification claims should be verified against the exact current lamp model and documentation.",
+      "evidence_on_page": [
+        "#quick-answer",
+        "#measure-first-check",
+        "#product-recommendations"
+      ],
+      "supporting_assets": [
+        "certification-check framework",
+        "comparison table"
+      ],
+      "risk": "Do not turn lighting comfort into a medical claim or extend one certification to a whole product line.",
+      "refresh_trigger": "Model number, certification document, or product-line change."
+    }
+  ]
+}

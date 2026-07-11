@@ -1,0 +1,14 @@
+---
+interface Props { date: Date; }
+const { date } = Astro.props;
+const formatted = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+<p id="last-reviewed" class="last-reviewed"><strong>Last reviewed:</strong> {formatted}</p>
+
+<style>
+  .last-reviewed {
+    margin: 0.75rem 0 1.5rem;
+    font-size: 0.86rem;
+    color: #615b52;
+  }
+</style>

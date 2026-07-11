@@ -1,6 +1,6 @@
 ---
 title: "The Year I Lost an Apple-Bobbing Contest"
-description: "Hosting a Halloween party, a dance with a plastic skeleton, and the humbling discovery that apple bobbing is much harder at 50-plus than it was at 8."
+description: "Hosting a Halloween party, a dance with a plastic skeleton, and the humbling discovery that apple bobbing is much harder as a grown-up than it was at 8."
 primaryKeyword: "hosting a halloween party"
 publishDate: 2026-07-12
 category: "Life outside the nook"
@@ -39,7 +39,7 @@ At some point in the evening I ended up slow-dancing with a prop skeleton in a t
   <img src="/winnie/winnie-life-halloween-apple-bobbing.jpg" alt="Winnie attempting to bite an apple during an apple-bobbing game at a Halloween party" width="1023" height="1537" />
 </div>
 
-I would like to formally retract every assumption I made walking up to that tub. Apple bobbing at eight years old is a game. Apple bobbing at fifty-plus, in full face paint, while a small crowd watches and at least one person has their phone out, is a genuine athletic event that I trained for exactly zero minutes and lost decisively. I approached the whole thing the way I approach everything — assess the variables, formulate a plan, execute with confidence — and the apple did not care about a single one of my variables. The apple won. I have never been more entertained by my own defeat, and I've decided that losing a children's game with this much enthusiasm is its own small, worthwhile skill.
+I would like to formally retract every assumption I made walking up to that tub. Apple bobbing at eight years old is a game. Apple bobbing as a grown woman, in full face paint, while a small crowd watches and at least one person has their phone out, is a genuine athletic event that I trained for exactly zero minutes and lost decisively. I approached the whole thing the way I approach everything — assess the variables, formulate a plan, execute with confidence — and the apple did not care about a single one of my variables. The apple won. I have never been more entertained by my own defeat, and I've decided that losing a children's game with this much enthusiasm is its own small, worthwhile skill.
 
 ## The playlist took more editorial effort than the menu
 
@@ -49,6 +49,6 @@ I will admit, slightly sheepishly, that I spent more deliberate planning time on
 
 None of it needed to be useful, and that was sort of the point — a night that exists purely to be a little ridiculous, with no organizing principle beyond "commit to the theme," turned out to be exactly the reset I didn't know I needed. I spend most of my working life insisting that everything needs a reason, a fit, a specific use case. A Tuesday night with a skeleton and a tub of apples had none of those, and it was one of the better nights I've had all year regardless. Not every evening has to teach you something. Some of them just need a skeleton with better posture than you and a tub of apples that will absolutely humble you in front of witnesses, and I've made my peace with that being enough.
 
-I found the apple the next morning, half-drowned at the bottom of a bin I'd forgotten to empty, and instead of throwing it out I cut it up for the world's least dignified breakfast. Somehow that felt like the correct, respectful way to close the whole chapter — not a trophy, not a photo caption, just a slightly bruised apple getting the ending it earned after a night of getting bitten at, unsuccessfully, by a fifty-two-year-old woman in full face paint. I'd like to say I've since developed a training regimen for next year. I have not. I fully intend to walk up to that tub with the exact same unearned confidence and lose the exact same way, because apparently that's become its own small tradition too.
+I found the apple the next morning, half-drowned at the bottom of a bin I'd forgotten to empty, and instead of throwing it out I cut it up for the world's least dignified breakfast. Somehow that felt like the correct, respectful way to close the whole chapter — not a trophy, not a photo caption, just a slightly bruised apple getting the ending it earned after a night of getting bitten at, unsuccessfully, by a woman who should have known better, in full face paint. I'd like to say I've since developed a training regimen for next year. I have not. I fully intend to walk up to that tub with the exact same unearned confidence and lose the exact same way, because apparently that's become its own small tradition too.
 
 — Winnie

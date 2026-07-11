@@ -1,0 +1,19 @@
+{
+  "page_id": "huanuo-ergonomic-footrest-review",
+  "claim_evidence": [
+    {
+      "claim": "HUANUO has the highest stated lift among the models in the site comparison, not necessarily the entire market.",
+      "evidence_on_page": [
+        "#quick-answer",
+        "#measure-first-check",
+        "#product-recommendations"
+      ],
+      "supporting_assets": [
+        "comparison-page link",
+        "current model specification"
+      ],
+      "risk": "Keep the claim bounded to the compared set and verify the exact variant.",
+      "refresh_trigger": "Listing variant, specification, or comparison-set change."
+    }
+  ]
+}

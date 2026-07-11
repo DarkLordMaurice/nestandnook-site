@@ -1,0 +1,13 @@
+{
+  "version": "2026-07-10",
+  "rules": [
+    {"id":"status-truth","severity":"block","rule":"Public Amazon language must match SITE.amazonAssociatesStatus."},
+    {"id":"pending-links","severity":"block","rule":"While status is pending, Amazon links must be untagged and must not use sponsored rel."},
+    {"id":"approved-links","severity":"block","rule":"After approval, links must use the verified tracking tag and nearby paid-link disclosure."},
+    {"id":"no-fake-testing","severity":"block","rule":"Do not state or imply that Winnie or the editorial team personally tested a product unless documented testing occurred."},
+    {"id":"no-live-price-facts","severity":"block","rule":"Do not state changing retailer prices as fixed facts. Budget pages must be framed as planning targets and require a current cart check."},
+    {"id":"no-fabricated-asin","severity":"block","rule":"Every ASIN must be exactly 10 uppercase alphanumeric characters and independently verified before use."},
+    {"id":"no-fake-ratings","severity":"block","rule":"Do not publish star ratings, review counts, availability, Product Offer data, or AggregateRating without a compliant current source."},
+    {"id":"generic-ai-products","severity":"block","rule":"Generated Winnie images must use generic product categories and must not imply branded hands-on testing."}
+  ]
+}

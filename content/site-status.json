@@ -1,0 +1,23 @@
+{
+  "as_of": "2026-07-10",
+  "amazon_associates": {
+    "status": "pending",
+    "tracking_tag": "CHANGEME-20",
+    "links_while_pending": "untagged",
+    "switch_rule": "Change status and tracking tag only after actual approval."
+  },
+  "display_ads": {
+    "active": false,
+    "language_rule": "Do not say display ads are running until they are live."
+  },
+  "analytics": {
+    "active": false,
+    "language_rule": "Privacy policy must describe only tools actually active."
+  },
+  "winnie": {
+    "type": "virtual AI editorial host",
+    "visual_age": "42-44",
+    "personal_testing_claims_allowed": false
+  },
+  "closed_clusters": ["home-office/footrests"]
+}

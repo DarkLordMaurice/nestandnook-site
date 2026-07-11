@@ -1,21 +1,35 @@
-# DwellGear site (Astro → Cloudflare Pages)
+# Nest & Nook site (Astro → Cloudflare Pages)
 
-Static affiliate content site. Pages live in `src/content/reviews/*.md` and render through `src/pages/[hub]/[...slug].astro`.
+Static small-space home-office, kitchen, recipe, and editorial content site.
+Review and buying-guide pages live in `src/content/reviews/*.md` and render through `src/pages/[hub]/[...slug].astro`.
 
-## Local
-```
+## Local verification
+
+```bash
 npm install
-npm run dev      # preview at localhost:4321
-npm run build    # outputs dist/
+npm run audit:readiness
+npm run audit:readiness:strict
+npm run build
+npm run preview
 ```
+
+`pagefind` must remain a production dependency because Cloudflare may omit dev dependencies during install.
 
 ## Deploy
-Push to `main` → Cloudflare Pages auto-builds (build command `npm run build`, output dir `dist`).
 
-## Where to change things
-- Brand / domain / Amazon tag / disclosures → `src/config.ts`
-- Disclosures render automatically via `BaseLayout.astro` → `AffiliateDisclosure.astro`
-- New page = new markdown file in `src/content/reviews/` (produced by the page-builder skill)
+Push to `main` → Cloudflare Pages builds with `npm run build` and serves `dist/`.
+Before pushing, verify the working tree, add explicit file paths only, and inspect the cache-busted live pages after deployment.
 
-## Compliance is structural
-Every content page renders the FTC + Amazon Associate disclosures via the layout, and `rel="nofollow sponsored"` on affiliate links, so pages pass the compliance-gate by construction. Don't bypass the layout.
+## Main configuration
+
+- Brand, domain, contact email, Amazon status/tag, and disclosures: `src/config.ts`
+- Content schemas: `src/content/config.ts`
+- Shared page layout and entity graph: `src/layouts/BaseLayout.astro`
+- Review pages: `src/content/reviews/*.md`
+- Blog posts: `src/content/blog/*.md`
+- Recipes: `src/content/recipes/*.md`
+
+## Compliance
+
+The Amazon application is pending until `src/config.ts` is deliberately changed after approval. While pending, Amazon links remain untagged and the site must not claim it earns Amazon commissions.
+Never fabricate ASINs, prices, ratings, testing, credentials, or first-person Winnie ownership/use.

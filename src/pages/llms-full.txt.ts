@@ -1,65 +1,59 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
-import { SITE } from '../config';
+import { SITE, isAmazonAssociatesApproved } from '../config';
 import { HUBS } from '../hubs';
 
-// llms-full.txt — same index as llms.txt, plus the target keyword for every
-// page. Kept as a second, separate file per the llms.txt convention (a
-// lightweight nav file + a fuller reference file) rather than one that
-// tries to do both jobs.
 export const GET: APIRoute = async () => {
   const reviews = await getCollection('reviews');
   const recipes = await getCollection('recipes');
   const posts = await getCollection('blog');
-
-  const byHub = (hub: string) => reviews.filter((r) => r.data.hub === hub);
-
-  const lines: string[] = [];
-  lines.push(`# ${SITE.brand} — Full Content Index`);
-  lines.push('');
-  lines.push(`> ${SITE.tagline}`);
-  lines.push('');
+  const lines: string[] = [
+    `# ${SITE.brand} — Full Content Index`,
+    '',
+    `> ${SITE.tagline}`,
+    '',
+    `Monetization status: ${isAmazonAssociatesApproved ? 'Amazon Associates approved' : 'Amazon Associates application pending; Amazon links are currently untagged'}.`,
+    '',
+  ];
 
   for (const hubKey of Object.keys(HUBS)) {
-    const hub = HUBS[hubKey];
-    const pages = byHub(hubKey);
-    if (pages.length === 0) continue;
-    lines.push(`## ${hub.name}`);
-    lines.push('');
+    const pages = reviews.filter((r) => r.data.hub === hubKey);
+    if (!pages.length) continue;
+    lines.push(`## ${HUBS[hubKey].name}`, '');
     for (const r of pages) {
       lines.push(`### ${r.data.title}`);
       lines.push(`URL: ${SITE.url}/${hubKey}/${r.slug}/`);
       lines.push(`Target keyword: ${r.data.primaryKeyword}`);
       lines.push(`Summary: ${r.data.description}`);
+      lines.push(`Published: ${r.data.publishDate.toISOString().slice(0, 10)}`);
+      lines.push(`Last reviewed: ${(r.data.updatedDate ?? r.data.publishDate).toISOString().slice(0, 10)}`);
       lines.push('');
     }
   }
 
-  if (recipes.length > 0) {
-    lines.push('## Recipes');
-    lines.push('');
+  if (recipes.length) {
+    lines.push('## Recipes', '');
     for (const r of recipes) {
       lines.push(`### ${r.data.title}`);
       lines.push(`URL: ${SITE.url}/recipes/${r.slug}/`);
       lines.push(`Target keyword: ${r.data.primaryKeyword}`);
       lines.push(`Summary: ${r.data.description}`);
+      lines.push(`Last reviewed: ${(r.data.updatedDate ?? r.data.publishDate).toISOString().slice(0, 10)}`);
       lines.push('');
     }
   }
 
-  if (posts.length > 0) {
-    lines.push("## Off the Clock (blog)");
-    lines.push('');
+  if (posts.length) {
+    lines.push('## Off the Clock and Guides', '');
     for (const p of posts) {
       lines.push(`### ${p.data.title}`);
       lines.push(`URL: ${SITE.url}/blog/${p.slug}/`);
       if (p.data.primaryKeyword) lines.push(`Target keyword: ${p.data.primaryKeyword}`);
       lines.push(`Summary: ${p.data.description}`);
+      lines.push(`Last reviewed: ${(p.data.updatedDate ?? p.data.publishDate).toISOString().slice(0, 10)}`);
       lines.push('');
     }
   }
 
-  return new Response(lines.join('\n') + '\n', {
-    headers: { 'Content-Type': 'text/plain; charset=utf-8' },
-  });
+  return new Response(lines.join('\n') + '\n', { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
 };

@@ -1,0 +1,19 @@
+{
+  "page_id": "small-home-office-setup-guide",
+  "claim_evidence": [
+    {
+      "claim": "A complete setup should be audited in five zones, while the under-$150 page covers only three core accessory priorities.",
+      "evidence_on_page": [
+        "#quick-answer",
+        "#measure-first-check",
+        "#related-small-space-problems"
+      ],
+      "supporting_assets": [
+        "five-zone checklist",
+        "specialist internal links"
+      ],
+      "risk": "Avoid claiming every category fits a fixed budget.",
+      "refresh_trigger": "New specialist page, cluster closure, or internal-link change."
+    }
+  ]
+}

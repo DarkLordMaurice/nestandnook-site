@@ -1,9 +1,7 @@
 ---
-// Renders BOTH required disclosures. Placed at the top of every content page by BaseLayout,
-// before any affiliate link — this is what satisfies FTC + Amazon Operating Agreement.
 import { DISCLOSURE } from '../config.ts';
 ---
-<aside class="affiliate-disclosure" role="note">
+<aside class="affiliate-disclosure" role="note" aria-label="Retailer and affiliate disclosure">
   <p>{DISCLOSURE.ftc}</p>
   <p><em>{DISCLOSURE.associate}</em></p>
 </aside>

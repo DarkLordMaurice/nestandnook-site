@@ -197,4 +197,4 @@ On a heat-safe counter spot with clear space behind and above it for airflow, ne
 
 *Prices and availability change constantly, so we don't quote figures here — tap through to see the current price on Amazon.*
 
-> **Winnie's take:** I bought a 2-quart model first because it was cheap and I wasn't sure I'd use it. I used it constantly, immediately hated cooking in tiny batches, and upgraded within a month. Buy the size that fits your actual dinner, not the size that fits your hesitation.
+> **Winnie's take:** The pattern in buyer reviews is remarkably consistent: people who start with a 2-quart model because it's cheap almost always say they regretted the tiny-batch cooking and upgraded within a month. Buy the size that fits your actual dinner, not the size that fits your hesitation.

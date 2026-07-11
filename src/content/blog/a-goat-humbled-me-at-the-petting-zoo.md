@@ -53,7 +53,7 @@ Nothing about my carefully organized brain had a category ready for "a toucan ma
 
 ## The gift shop was its own small negotiation
 
-On the way out, I did what I always do at any gift shop attached to any destination: I read every price tag like it owed me an explanation, a habit a decade of retail buying never let me shake. Most of it was exactly what you'd expect — plush animals priced for the captive audience they're aimed at — but there was a small bin of enamel pins by the register, animal-shaped, clearly meant for kids, and I bought a tiny goat one without an ounce of shame about the intended demographic. It's on the blazer now, next to the garden trowel from a plant shop and the stapler from a hardware store I couldn't name if you asked. I've genuinely stopped trying to justify the collection to anyone, myself included.
+On the way out, I did what I always do at any gift shop attached to any destination: I read every price tag like it owed me an explanation, a habit a decade of retail buying never let me shake. Most of it was exactly what you'd expect — plush animals priced for the captive audience they're aimed at — but there was a small bin of enamel pins by the register, animal-shaped, clearly meant for kids, and I picked up a tiny goat one without an ounce of shame about the intended demographic. It's on the blazer now, next to the garden trowel from a plant shop and the stapler from a hardware store I couldn't name if you asked. I've genuinely stopped trying to justify the collection to anyone, myself included.
 
 ## A small, useful reminder
 

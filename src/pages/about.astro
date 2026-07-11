@@ -1,22 +1,22 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { SITE } from '../config.ts';
+import { SITE, isAmazonAssociatesApproved } from '../config.ts';
 import { AUTHORS } from '../authors.ts';
 import HeroCollage from '../components/HeroCollage.astro';
 ---
-<BaseLayout title={`About — ${SITE.brand}`} description={`Who's behind ${SITE.brand} and how we review and rank the gear we recommend.`} showDisclosure={false}>
+<BaseLayout title={`About — ${SITE.brand}`} description={`Who's behind ${SITE.brand} and how we research and rank the gear we recommend.`} showDisclosure={false}>
   <section class="hero-banner hero-banner-collage">
     <div class="hero-banner-inner">
       <div>
         <span class="washi washi-teal">About the nook</span>
         <h1>About {SITE.brand}</h1>
-        <p class="lede">{SITE.brand} helps people build better home office and small-space kitchen setups without overspending. We focus on the affordable accessories that actually change how a space feels day to day — footrests, stands, cable management, desk pads, kitchen space-savers — and we rank them by who each product genuinely suits.</p>
+        <p class="lede">{SITE.brand} helps people build better home office and small-space kitchen setups without overspending. We focus on affordable accessories that solve a specific daily problem, and we rank them by who each option genuinely suits.</p>
       </div>
       <HeroCollage
         seed="about"
         anchor={{ src: '/winnie/portrait-v2.jpg', alt: "Winnie Hollowell, Nest & Nook's virtual host", portrait: true }}
         accents={[
-          { src: '/winnie/about-hero.jpg', alt: 'Winnie marking a measurement in pencil on a plank of wood, tool apron on, "Measure Cut Swear Repeat" sign visible on the wall behind her' },
+          { src: '/winnie/about-hero.jpg', alt: 'Winnie marking a measurement in pencil on a plank of wood in a practical home-project scene' },
           { src: '/winnie/winnie-life-sorting-drawer.jpg', alt: 'Winnie reorganizing a packed junk drawer' },
         ]}
       />
@@ -24,38 +24,44 @@ import HeroCollage from '../components/HeroCollage.astro';
   </section>
 
   <div class="prose">
-  <section id="meet-winnie" class="meet-winnie">
-    <div class="polaroid" style="max-width:260px">
-      <img src="/winnie/portrait.jpg" alt="Winnie Hollowell" class="winnie-portrait" width="380" height="380" />
-    </div>
-    <div>
-      <h2>Meet Winnie</h2>
-      <p><strong>Winnie Hollowell is a fully virtual, AI-generated spokesperson — not a real person.</strong> She's the face and voice of Nest & Nook: equal parts magpie for anything shiny and well-organized, walking citation machine for "but what do the reviews actually say," and the reason our copy has opinions instead of just specs. Think of her as our host, not our reporter. If you've ever reorganized a junk drawer at 1am out of pure spite, you already understand her a little.</p>
-      <p>That distinction matters, so we'll say it plainly: Winnie doesn't test products, and she doesn't own the desks or kitchens she talks about. We don't buy and personally test everything we recommend, either — the actual research behind every guide is our real editorial team digging through verified buyer reviews and comparing specs, then ranking picks by fit. Winnie showcases those findings in her own voice — "the reviews say," "here's what buyers keep picking" — she's presenting the results, opinions and all, not claiming to be the one who tested them.</p>
-      <p>We're upfront about this because we think you'd rather know than wonder. If a video or post ever features her likeness, it'll say so.</p>
-    </div>
-  </section>
-
-  <section class="affiliate-disclosure">
-    <h3 style="margin-top:0">A note on Winnie's photos</h3>
-    <p>Some images show Winnie holding, using, or standing near a product, or in a home office/kitchen setting. Those images are AI-rendered for demonstration purposes — they're illustrating the pick, not documenting a real photoshoot or real personal use. The actual product details, specs, and pricing always come from the real listing, which we link to directly.</p>
-  </section>
-
-  <h2>What we actually care about</h2>
-  <p>We built Nest & Nook around a small idea: most home office and kitchen problems don't need a full redesign, they need one specific, well-chosen fix. So we optimize for a few things above everything else.</p>
-  <p><strong>Specific over generic.</strong> "Best overall" means nothing without knowing who it's for. We rank by who a product genuinely suits — height, space constraints, budget — not by what photographs well.</p>
-  <p><strong>Honest about the trade-offs.</strong> Every pick gets real pros and cons, not just a highlight reel. If something's not for you, we'll say so.</p>
-  <p><strong>No pay-to-play.</strong> Nothing on this site is ranked higher because a brand paid us. Our affiliate commissions don't change our picks — see how below.</p>
-
-  <h2>How we make money</h2>
-  <p>We earn affiliate commissions when you buy through our links, and we run display ads. Neither ever changes our rankings or costs you anything extra. See our <a href="/disclosure/">affiliate disclosure</a> and <a href="/editorial-standards/">editorial standards</a>.</p>
-
-  <h2>Who writes this</h2>
-  {Object.values(AUTHORS).map((a) => (
-    <section>
-      <h3>{a.name} — <span>{a.role}</span></h3>
-      <p>{a.bio}</p>
+    <section id="meet-winnie" class="meet-winnie">
+      <div class="polaroid" style="max-width:260px">
+        <img src="/winnie/portrait.jpg" alt="Winnie Hollowell, the AI-generated editorial host of Nest & Nook" class="winnie-portrait" width="380" height="380" />
+      </div>
+      <div>
+        <h2>Meet Winnie</h2>
+        <p><strong>Winnie Hollowell is a fully virtual, AI-generated spokesperson—not a real person.</strong> She is the face and voice of Nest & Nook: equal parts magpie for anything shiny and well organized, walking citation machine for “but what do the reviews actually say,” and the reason our copy has opinions instead of just specs.</p>
+        <p>Winnie does not test products, own the desks or kitchens shown in her images, or provide professional credentials. Our guides are built by comparing public product specifications, recurring patterns in buyer feedback, and the practical measurements that matter for a specific small-space problem. Winnie presents those findings; she is not the person who physically tested them.</p>
+        <p>Any page that uses her likeness treats the scene as an illustration, not evidence of personal ownership or use.</p>
+      </div>
     </section>
-  ))}
+
+    <section class="affiliate-disclosure">
+      <h3 style="margin-top:0">A note on Winnie's photos</h3>
+      <p>Some images show Winnie holding, using, or standing near a generic product category in a home office or kitchen setting. Those images are AI-rendered demonstrations. They illustrate a setup problem, measurement, or solution category and do not document a real photoshoot, a personal purchase, or hands-on testing of a branded item.</p>
+    </section>
+
+    <h2>What we actually care about</h2>
+    <p><strong>Specific over generic.</strong> “Best overall” means little without knowing who it is for. We rank by use case, dimensions, space constraints, and trade-offs.</p>
+    <p><strong>Honest about the trade-offs.</strong> Every pick should explain who should skip it, not just who might like it.</p>
+    <p><strong>No pay-to-play.</strong> A commission opportunity does not determine which product is ranked first.</p>
+
+    <h2>How we make money</h2>
+    {isAmazonAssociatesApproved ? (
+      <p>We may earn affiliate commissions when readers buy through qualifying links. We may add display advertising later, but ads are not currently part of the site unless this page is updated to say otherwise. Neither commissions nor future ads change our rankings. See the <a href="/disclosure/">retailer and affiliate disclosure</a> and <a href="/editorial-standards/">editorial standards</a>.</p>
+    ) : (
+      <p>Our Amazon Associates application is currently pending. Amazon links are untagged and do not currently earn us a commission. We may add affiliate commissions and display advertising later, but only after updating the site’s public disclosures and configuration. See the <a href="/disclosure/">retailer and affiliate disclosure</a>.</p>
+    )}
+
+    <h2>Who is accountable for this site</h2>
+    {Object.values(AUTHORS).map((a) => (
+      <section>
+        <h3>{a.name} — <span>{a.role}</span></h3>
+        <p>{a.bio}</p>
+      </section>
+    ))}
+
+    <h2>Contact</h2>
+    <p>Questions, correction requests, and privacy inquiries can be sent through our <a href="/contact/">contact page</a>.</p>
   </div>
 </BaseLayout>

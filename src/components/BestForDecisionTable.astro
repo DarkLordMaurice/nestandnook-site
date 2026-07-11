@@ -1,0 +1,38 @@
+---
+interface ProductSummary {
+  name: string;
+  bestFor: string;
+  cons?: string[];
+}
+interface Props { products: ProductSummary[]; }
+const { products } = Astro.props;
+---
+{products.length > 0 && (
+  <section id="best-for" class="best-for-summary" aria-labelledby="best-for-heading">
+    <h2 id="best-for-heading">Best for, at a glance</h2>
+    <div class="table-scroll" role="region" aria-label="Product recommendations by use case" tabindex="0">
+      <table>
+        <thead>
+          <tr><th scope="col">Option</th><th scope="col">Best for</th><th scope="col">Main trade-off</th></tr>
+        </thead>
+        <tbody>
+          {products.map((p) => (
+            <tr>
+              <th scope="row">{p.name}</th>
+              <td>{p.bestFor}</td>
+              <td>{p.cons?.[0] ?? 'Confirm dimensions and fit before buying.'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+)}
+
+<style>
+  .best-for-summary { margin: 1.5rem 0; }
+  .table-scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { border: 1px solid rgba(76, 94, 82, 0.24); padding: 0.65rem; text-align: left; vertical-align: top; }
+  thead th { background: rgba(201, 162, 39, 0.14); }
+</style>

@@ -3,28 +3,55 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import WinnieNote from '../components/WinnieNote.astro';
 import { SITE } from '../config.ts';
 ---
-<BaseLayout title={`Privacy Policy — ${SITE.brand}`} description={`How ${SITE.brand} handles data, cookies, and advertising.`} showDisclosure={false}>
+<BaseLayout title={`Privacy Policy — ${SITE.brand}`} description={`How ${SITE.brand} handles technical data, cookies, retailer links, and contact messages.`} showDisclosure={false}>
   <div class="prose">
-  <span class="washi">The legal stuff</span>
-  <h1>Privacy Policy</h1>
-  <p><em>Last updated: {new Date().toISOString().slice(0,10)}</em></p>
+    <span class="washi">The legal stuff</span>
+    <h1>Privacy Policy</h1>
+    <p><em>Effective July 10, 2026</em></p>
 
-  <WinnieNote signed={false}>
-    <p><strong>— Winnie:</strong> Nobody reads privacy policies for fun, so I'll keep the framing short: this page is the accurate, unglamorous truth about what we collect and why. No surprises.</p>
-  </WinnieNote>
+    <WinnieNote signed={false}>
+      <p><strong>— Winnie:</strong> Nobody reads privacy policies for fun, so here is the accurate version without pretending the plumbing is glamorous.</p>
+    </WinnieNote>
 
-  <p>{SITE.brand} ("we") respects your privacy. This page explains what we collect and why. (Placeholder — finalize with your details and jurisdiction before launch; required for ad networks like AdSense/Mediavine.)</p>
+    <p>{SITE.brand} is operated from {SITE.operatorRegion}. This policy explains what information may be processed when you visit the site or contact us.</p>
 
-  <h2>Cookies &amp; advertising</h2>
-  <p>We use cookies for basic analytics and to serve ads. Third-party vendors, including Google and our ad partners, may use cookies to serve ads based on your prior visits. You can opt out of personalized advertising via Google's Ads Settings.</p>
+    <h2>Information you choose to send</h2>
+    <p>If you email us, we receive the information included in your message, such as your email address, name, and the content of your request. We use it to respond, handle corrections, and maintain site records. Do not send sensitive personal information that is not needed for the request.</p>
 
-  <h2>Affiliate links</h2>
-  <p>We use affiliate links (including the Amazon Associates Program). When you click them, the retailer may set cookies to attribute a purchase to us. See our <a href="/disclosure/">affiliate disclosure</a>.</p>
+    <h2>Technical and hosting data</h2>
+    <p>The site is hosted through Cloudflare Pages. Hosting and security providers may process standard technical information such as IP address, browser type, requested URL, timestamps, and security signals to deliver the site, prevent abuse, and maintain reliability. Nest & Nook does not sell personal information.</p>
 
-  <h2>Analytics</h2>
-  <p>We use privacy-respecting analytics to understand aggregate traffic. We do not sell personal information.</p>
+    <h2>Cookies, analytics, and advertising</h2>
+    {SITE.analyticsActive ? (
+      <p>Analytics are active. The specific provider, cookies, retention period, and opt-out instructions must be listed here before deployment.</p>
+    ) : (
+      <p>Nest & Nook does not currently run a third-party audience analytics service through the site’s base layout. The site’s search feature is generated locally at build time by Pagefind.</p>
+    )}
+    {SITE.displayAdsActive ? (
+      <p>Display advertising is active. The ad provider, consent controls, cookie behavior, and opt-out instructions must be listed here before deployment.</p>
+    ) : (
+      <p>Display advertising is not currently active. This policy must be updated before an ad network or advertising cookies are enabled.</p>
+    )}
 
-  <h2>Contact</h2>
-  <p>Questions about this policy? Contact us via the address listed on our <a href="/about/">About</a> page.</p>
+    <h2>Retailer and affiliate links</h2>
+    <p>Some pages link to external retailers. When you click an external link, the destination site may receive referral and technical information and may set its own cookies under its own privacy policy. Our current Amazon links are untagged while the Associates application is pending. See the <a href="/disclosure/">retailer and affiliate disclosure</a>.</p>
+
+    <h2>External websites</h2>
+    <p>We are not responsible for the privacy, security, availability, or content of external websites. Review the destination site’s policies before providing information or making a purchase.</p>
+
+    <h2>Data retention</h2>
+    <p>Contact messages are kept only as long as reasonably needed to respond, document a correction, resolve a dispute, or meet a legal obligation. Hosting and security logs are retained according to the service provider’s settings and policies.</p>
+
+    <h2>Children</h2>
+    <p>Nest & Nook is intended for a general adult audience and is not directed to children under 13. We do not knowingly collect personal information from children.</p>
+
+    <h2>Your choices</h2>
+    <p>You may ask us to correct or delete information you sent directly to us, subject to legal and recordkeeping needs. Use the <a href="/contact/">contact page</a>.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>We may update this policy when site tools, monetization, analytics, or legal requirements change. The effective date at the top will be updated when the policy changes materially.</p>
+
+    <h2>Contact</h2>
+    <p>Privacy questions can be sent through the <a href="/contact/">contact page</a>.</p>
   </div>
 </BaseLayout>

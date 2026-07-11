@@ -1,20 +1,40 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WinnieNote from '../components/WinnieNote.astro';
-import { SITE, DISCLOSURE } from '../config.ts';
+import { SITE, DISCLOSURE, isAmazonAssociatesApproved } from '../config.ts';
 ---
-<BaseLayout title={`Affiliate Disclosure — ${SITE.brand}`} description={`How ${SITE.brand} earns from affiliate links.`} showDisclosure={false}>
+<BaseLayout title={`Retailer & Affiliate Disclosure — ${SITE.brand}`} description={`How ${SITE.brand} uses retailer and affiliate links.`} showDisclosure={false}>
   <div class="prose">
-  <span class="washi">Straight talk</span>
-  <h1>Affiliate Disclosure</h1>
+    <span class="washi">Straight talk</span>
+    <h1>Retailer &amp; Affiliate Disclosure</h1>
+    <p><em>Effective July 10, 2026</em></p>
 
-  <WinnieNote signed={false}>
-    <p><strong>— Winnie:</strong> I'd rather over-explain this than have you wonder about it later. Here's exactly how the money side works.</p>
-  </WinnieNote>
+    <WinnieNote signed={false}>
+      <p><strong>— Winnie:</strong> I would rather over-explain this than have you wonder about it later. Here is exactly how the money side works.</p>
+    </WinnieNote>
 
-  <p>{DISCLOSURE.ftc}</p>
-  <p><strong>{DISCLOSURE.associate}</strong></p>
-  <p>{SITE.brand} is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com. We may also participate in other affiliate programs. Commissions never cost you anything extra and never change which products we recommend — our rankings are based on independent evaluation.</p>
-  <p>Prices and availability shown or linked are accurate as of the date/time indicated and are subject to change. Any price displayed on Amazon at the time of purchase applies.</p>
+    <p>{DISCLOSURE.ftc}</p>
+    <p><strong>{DISCLOSURE.associate}</strong></p>
+
+    {isAmazonAssociatesApproved ? (
+      <>
+        <p>{SITE.brand} participates in the Amazon Services LLC Associates Program. Qualifying links include the approved tracking tag configured by the publisher. A nearby “paid link” notice appears with Amazon calls to action.</p>
+        <p>Commissions do not increase the price paid by the reader and do not determine our rankings.</p>
+      </>
+    ) : (
+      <>
+        <p>{SITE.brand} has not yet activated an approved Amazon Associates tracking tag. Current Amazon links are ordinary, untagged retailer links and do not earn an Amazon commission.</p>
+        <p>When approval is obtained, the site configuration, footer, page-level disclosures, and this page must be updated before tagged links are enabled.</p>
+      </>
+    )}
+
+    <h2>How recommendations are made</h2>
+    <p>Recommendations are research-led and scenario-led. We compare public specifications, recurring patterns in buyer feedback, and practical small-space constraints. Winnie Hollowell is an AI-generated editorial host and does not personally test or own the products shown.</p>
+
+    <h2>Prices and availability</h2>
+    <p>We do not present changing retailer prices, stock status, star ratings, or review counts as fixed facts. The retailer page shown at the time of a visit controls the current price, availability, and purchase terms.</p>
+
+    <h2>Questions</h2>
+    <p>Use the <a href="/contact/">contact page</a> with questions.</p>
   </div>
 </BaseLayout>

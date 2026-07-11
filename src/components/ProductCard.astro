@@ -1,5 +1,11 @@
 ---
-import { amazonLink } from '../config.ts';
+import {
+  amazonLink,
+  AMAZON_LINK_REL,
+  isAmazonAssociatesApproved,
+} from '../config.ts';
+import LinkLevelDisclosure from './LinkLevelDisclosure.astro';
+
 interface Props {
   name: string;
   asin: string;
@@ -7,34 +13,64 @@ interface Props {
   blurb: string;
   pros?: string[];
   cons?: string[];
-  image?: string;         // real product photo — not populated until PA-API unlocks
-  winnieImage?: string;   // AI-rendered "Winnie with this product" lifestyle shot — used sporadically
+  lookFor?: string[];
+  skipIf?: string[];
+  smallSpaceNote?: string;
+  image?: string;
+  winnieImage?: string;
 }
-const { name, asin, bestFor, blurb, pros = [], cons = [], image, winnieImage } = Astro.props;
+const {
+  name,
+  asin,
+  bestFor,
+  blurb,
+  pros = [],
+  cons = [],
+  lookFor,
+  skipIf,
+  smallSpaceNote,
+  image,
+  winnieImage,
+} = Astro.props;
 const link = amazonLink(asin);
-const photo = image ?? winnieImage; // prefer the real product photo once available
+const photo = image ?? winnieImage;
+const lookForItems = lookFor?.length ? lookFor : pros;
+const skipItems = skipIf?.length ? skipIf : cons;
 ---
 <article class="product-card">
   {photo && (
     <div class="product-card-photo">
-      <img src={photo} alt={name} width="400" height="300" loading="lazy" />
+      <img src={photo} alt={image ? name : `Illustrative Winnie Hollowell setup for ${name}`} width="400" height="300" loading="lazy" />
       {!image && winnieImage && <span class="ai-tag">AI-rendered demo</span>}
     </div>
   )}
   <div class="badge">{bestFor}</div>
   <h3>{name}</h3>
-  <p>{blurb}</p>
-  {pros.length > 0 && (
-    <ul class="pros">{pros.map((p) => <li>{p}</li>)}</ul>
+  <p><strong>Why this fits:</strong> {blurb}</p>
+
+  {lookForItems.length > 0 && (
+    <div class="product-card-section">
+      <p><strong>Look for:</strong></p>
+      <ul class="pros">{lookForItems.map((p) => <li>{p}</li>)}</ul>
+    </div>
   )}
-  {cons.length > 0 && (
-    <ul class="cons">{cons.map((c) => <li>{c}</li>)}</ul>
+
+  {skipItems.length > 0 && (
+    <div class="product-card-section">
+      <p><strong>Skip if:</strong></p>
+      <ul class="cons">{skipItems.map((c) => <li>{c}</li>)}</ul>
+    </div>
   )}
-  <!-- Honest, uncloaked Amazon link. No price stated as fact. -->
-  <a class="cta" href={link} rel="nofollow sponsored" target="_blank">Check price on Amazon →</a>
+
+  <p class="small-space-note"><strong>Small-space note:</strong> {smallSpaceNote ?? 'Confirm the product dimensions, operating clearance, and storage location before ordering.'}</p>
+
+  <a class="cta" href={link} rel={AMAZON_LINK_REL} target="_blank">
+    {isAmazonAssociatesApproved ? 'Check current price on Amazon →' : 'View the current Amazon listing →'}
+  </a>
+  <LinkLevelDisclosure />
 </article>
 
-<!-- Styling lives in src/styles/global.css (.product-card, .badge, .pros, .cons, .cta)
-     so every card on the site — roundups, product-page deep dives — looks consistent.
-     Any AI-rendered Winnie/product image carries a small "AI-rendered demo" tag inline
-     AND is covered by the fuller disclosure on the About page ("A note on Winnie's photos"). -->
+<style>
+  .product-card-section > p { margin-bottom: 0.25rem; }
+  .small-space-note { font-size: 0.9rem; }
+</style>

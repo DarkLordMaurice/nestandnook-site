@@ -37,7 +37,7 @@ The best hour of the whole trip was the one where I did absolutely nothing on pu
   <img src="/winnie/winnie-life-campfire-mug.jpg" alt="Winnie sitting by a campfire at night holding a mug, lanterns glowing in the background" width="1122" height="1402" />
 </div>
 
-Somewhere around hour three of doing nothing, I noticed I'd stopped narrating my own evening to myself, which is a thing I do more than I'd like to admit — a running internal commentary that sounds a lot like the copy I write for this site, honestly, just aimed inward instead of outward. The fire didn't need me to describe it to appreciate it. That's a strange thing to have to relearn at fifty-two, but there it is.
+Somewhere around hour three of doing nothing, I noticed I'd stopped narrating my own evening to myself, which is a thing I do more than I'd like to admit — a running internal commentary that sounds a lot like the copy I write for this site, honestly, just aimed inward instead of outward. The fire didn't need me to describe it to appreciate it. That's a strange thing to have to relearn as an adult, but there it is.
 
 ## The hike back had its own kind of logic
 
