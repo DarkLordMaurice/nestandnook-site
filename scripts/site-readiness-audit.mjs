@@ -101,6 +101,22 @@ for (const file of walk('src/content/reviews', '.md')) {
   if (linkCount < 2 && !/internalLinks:\s*\n(?:\s+-[\s\S]*?){2}/m.test(fm)) addWarning(file, 'fewer than two apparent internal links');
   if (image === 'PENDING') addWarning(file, 'hero image intentionally pending — Winnie photo not generated yet, tracked in Winnie-Photo-Queue.md');
   else if (image && !exists(`public${image}`)) addFailure(file, `hero image does not exist: public${image}`);
+  // HARD RULE (2026-07-11, after Maurice caught 85 AI-generated stand-in
+  // images wired into ProductCard next to real product names/ASINs/buy
+  // links — presenting a fake image as if it's a photo of the specific
+  // real, named, purchasable product). A product's `image`/`winnieImage`
+  // field may only ever be a real photo (a genuine Winnie identity-lock
+  // photo, or a legitimately sourced/licensed product photo Maurice has
+  // explicitly approved) — never an AI-generated stand-in presented as the
+  // product itself. Permanent hard-fail — do not soften, warning-ify, or
+  // remove without Maurice explicitly asking for product-card images back,
+  // and even then confirm the sourcing model with him first.
+  for (const match of fm.matchAll(/^\s*(image|winnieImage):\s*"([^"]+)"/gm)) {
+    const [, field, value] = match;
+    if (value.startsWith('/products/')) {
+      addFailure(file, `product ${field} "${value}" — AI-generated stand-in images may not be wired into product cards (see 2026-07-11 incident); this field must be empty, a real Winnie photo, or an explicitly Maurice-approved sourced product photo`);
+    }
+  }
   for (const match of fm.matchAll(/^\s*asin:\s*["']?([A-Z0-9]+)["']?\s*$/gm)) {
     if (!/^[A-Z0-9]{10}$/.test(match[1])) addFailure(file, `invalid ASIN ${match[1]}`);
   }
