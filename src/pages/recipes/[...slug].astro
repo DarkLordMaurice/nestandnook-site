@@ -117,10 +117,11 @@ const jsonLd = {
         <span class="washi washi-pink">{d.category} · {d.cuisine}</span>
         <h1>{d.title}</h1>
       </div>
-      <div class="article-hero-photo-inset">
-        <img src={d.image} alt={d.imageAlt} style={d.imagePosition ? `--img-pos: ${d.imagePosition}` : undefined} fetchpriority="high" />
-      </div>
     </div>
+
+    <figure class="inline-photo hero-photo">
+      <img src={d.image} alt={d.imageAlt} loading="eager" fetchpriority="high" style={d.imagePosition ? `--img-pos: ${d.imagePosition}` : undefined} />
+    </figure>
 
     <div class="recipe-quickmeta no-print">
       <div><span class="label">Prep</span>{fmtMins(d.prepTimeMinutes)}</div>

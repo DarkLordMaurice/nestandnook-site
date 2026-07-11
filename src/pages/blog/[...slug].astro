@@ -39,10 +39,12 @@ const jsonLd = {
         <span class="washi washi-pink">{d.category}</span>
         <h1>{d.title}</h1>
       </div>
-      <div class="article-hero-photo-inset">
-        <img src={d.image} alt="Winnie Hollowell" style={d.imagePosition ? `--img-pos: ${d.imagePosition}` : undefined} />
-      </div>
     </div>
+
+    <figure class="inline-photo hero-photo">
+      <img src={d.image} alt="Winnie Hollowell" loading="eager" fetchpriority="high" style={d.imagePosition ? `--img-pos: ${d.imagePosition}` : undefined} />
+    </figure>
+
     <WinnieByline photo={d.winniePhoto} />
 
     <Content />
