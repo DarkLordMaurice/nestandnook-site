@@ -11,6 +11,8 @@ servings: 4
 difficulty: "easy"
 image: "/recipes/recipe-one-pan-chicken-fajita-bowl.jpg"
 imageAlt: "A chicken fajita bowl with rice, charred peppers and onions, sliced chicken, avocado, and lime"
+altImage: "/recipes/recipe-one-pan-chicken-fajita-bowl-alt.jpg"
+ingredientsImage: "/recipes/recipe-one-pan-chicken-fajita-bowl-ingredients.jpg"
 winnieImage: "/winnie/winnie-kitchen-chop-side.jpg"
 winnieHeadshot: "/winnie/headshot-v4-3.jpg"
 winnieNote: "A crowded pan is a steaming pan, and a steaming pan is why your fajita vegetables come out gray and limp instead of blistered. Cook in batches. It takes five extra minutes and it's worth it every time."

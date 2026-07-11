@@ -11,6 +11,8 @@ servings: 6
 difficulty: "easy"
 image: "/recipes/recipe-garlic-bread.jpg"
 imageAlt: "Slices of golden garlic bread with melted butter and herbs, cut from a crusty loaf"
+altImage: "/recipes/recipe-garlic-bread-alt.jpg"
+ingredientsImage: "/recipes/recipe-garlic-bread-ingredients.jpg"
 winnieImage: "/winnie/winnie-kitchen-chop.jpg"
 winnieHeadshot: "/winnie/headshot-v4-3.jpg"
 winnieNote: "Raw garlic straight onto bread and into a hot oven burns before the bread even browns — mellowing it in the butter first is the difference between garlic bread and slightly-scorched bread that tastes like regret."

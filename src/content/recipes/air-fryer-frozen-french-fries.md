@@ -11,6 +11,8 @@ servings: 4
 difficulty: "easy"
 image: "/recipes/recipe-air-fryer-french-fries.jpg"
 imageAlt: "Crispy golden air fryer French fries piled in a basket with a small bowl of ketchup on the side"
+altImage: "/recipes/recipe-air-fryer-frozen-french-fries-alt.jpg"
+ingredientsImage: "/recipes/recipe-air-fryer-frozen-french-fries-ingredients.jpg"
 winnieImage: "/winnie/winnie-kitchen-taste.jpg"
 winnieHeadshot: "/winnie/headshot-v4-4.jpg"
 winnieNote: "The single-layer rule is the whole recipe, honestly. Crowd the basket and you've built a very small, very sad steam room instead of an air fryer — spread them out and let the machine actually do the one job it's good at."

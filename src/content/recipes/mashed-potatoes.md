@@ -11,6 +11,8 @@ servings: 6
 difficulty: "easy"
 image: "/recipes/recipe-mashed-potatoes.jpg"
 imageAlt: "A bowl of creamy mashed potatoes with a well of melted butter in the center, topped with cracked pepper"
+altImage: "/recipes/recipe-mashed-potatoes-alt.jpg"
+ingredientsImage: "/recipes/recipe-mashed-potatoes-ingredients.jpg"
 winnieImage: "/winnie/winnie-kitchen-taste.jpg"
 winnieHeadshot: "/winnie/headshot-v4-2.jpg"
 winnieNote: "Overworking the potatoes is the one mistake I can't talk anyone out of once they've bought a food processor and decided it's the fastest tool in the kitchen. It is not. Not for this. A ricer or a hand masher, every time."

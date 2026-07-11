@@ -11,6 +11,7 @@ servings: 8
 difficulty: "intermediate"
 image: "/recipes/recipe-apple-pie.jpg"
 imageAlt: "A golden lattice-topped apple pie with a slice cut out, showing thick, glossy apple filling"
+ingredientsImage: "/recipes/recipe-apple-pie-ingredients.jpg"
 winnieImage: "/winnie/winnie-kitchen-knead.jpg"
 winnieHeadshot: "/winnie/headshot-v4-1.jpg"
 winnieNote: "Apples release an alarming amount of water once you slice and sugar them, and if you skip draining that off, it goes straight into your crust. Ask me how I know. Actually don't, it was a whole thing."

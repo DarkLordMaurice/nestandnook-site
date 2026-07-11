@@ -11,6 +11,8 @@ servings: 16
 difficulty: "easy"
 image: "/recipes/recipe-brownies.jpg"
 imageAlt: "A stack of fudgy chocolate brownies with a shiny, crackly top, one cut in half showing a dense interior"
+altImage: "/recipes/recipe-brownies-alt.jpg"
+ingredientsImage: "/recipes/recipe-brownies-ingredients.jpg"
 winnieImage: "/winnie/winnie-kitchen-present.jpg"
 winnieHeadshot: "/winnie/headshot-v4-4.jpg"
 winnieNote: "The crackly top is not luck, it's chemistry — whisking the sugar into the eggs and hot butter until it actually dissolves is the entire trick, and it takes about ninety extra seconds people usually skip."

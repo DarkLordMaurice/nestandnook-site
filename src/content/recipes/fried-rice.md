@@ -11,6 +11,8 @@ servings: 4
 difficulty: "easy"
 image: "/recipes/recipe-fried-rice.jpg"
 imageAlt: "Fried rice being tossed in a hot wok with peas, carrots, scrambled egg, and scallions, steam rising"
+altImage: "/recipes/recipe-fried-rice-alt.jpg"
+ingredientsImage: "/recipes/recipe-fried-rice-ingredients.jpg"
 winnieImage: "/winnie/winnie-kitchen-stir-pot.jpg"
 winnieHeadshot: "/winnie/headshot-v4-1.jpg"
 winnieNote: "The rice has to be cold and a little stale for this to work, which feels wrong every single time and is correct every single time. Fresh rice steams. Cold rice fries. That's the whole secret."

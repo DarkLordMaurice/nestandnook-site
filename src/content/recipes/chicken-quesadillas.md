@@ -11,6 +11,8 @@ servings: 4
 difficulty: "easy"
 image: "/recipes/recipe-quesadillas.jpg"
 imageAlt: "A chicken quesadilla cut into wedges, cheese pulling between the pieces, served with salsa and sour cream"
+altImage: "/recipes/recipe-chicken-quesadillas-alt.jpg"
+ingredientsImage: "/recipes/recipe-chicken-quesadillas-ingredients.jpg"
 winnieImage: "/winnie/winnie-kitchen-plating.jpg"
 winnieHeadshot: "/winnie/headshot-v4-3.jpg"
 winnieNote: "A wet filling is the reason quesadillas fall apart the second you cut them. Pat everything dry, drain everything you can, and the tortilla actually holds together like it's supposed to."

@@ -11,6 +11,8 @@ servings: 8
 difficulty: "easy"
 image: "/recipes/recipe-drop-biscuits.jpg"
 imageAlt: "A batch of golden, craggy drop biscuits on a baking sheet, split open showing flaky layers"
+altImage: "/recipes/recipe-drop-biscuits-alt.jpg"
+ingredientsImage: "/recipes/recipe-drop-biscuits-ingredients.jpg"
 winnieImage: "/winnie/winnie-kitchen-wipe-counter.jpg"
 winnieHeadshot: "/winnie/headshot-v4-2.jpg"
 winnieNote: "No rolling pin, no biscuit cutter, no flour explosion across the counter — drop biscuits are what I make when I want the payoff of homemade biscuits without turning my kitchen into a crime scene."

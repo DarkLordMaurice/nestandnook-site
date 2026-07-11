@@ -11,6 +11,8 @@ servings: 4
 difficulty: "easy"
 image: "/recipes/recipe-waffles.jpg"
 imageAlt: "A stack of crispy golden Belgian waffles with deep pockets, topped with butter and maple syrup"
+altImage: "/recipes/recipe-waffles-alt.jpg"
+ingredientsImage: "/recipes/recipe-waffles-ingredients.jpg"
 winnieImage: "/winnie/winnie-kitchen-measuring.jpg"
 winnieHeadshot: "/winnie/headshot-v4-2.jpg"
 winnieNote: "Whipping the egg whites separately feels like an extra dish for no reason until you taste the difference — that's the whole trick behind a waffle that's actually crisp instead of just dense pancake batter in a grid pattern."

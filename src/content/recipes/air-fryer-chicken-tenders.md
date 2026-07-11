@@ -11,6 +11,8 @@ servings: 4
 difficulty: "easy"
 image: "/recipes/recipe-air-fryer-chicken-tenders.png"
 imageAlt: "A plate of golden, crispy air fryer chicken tenders with dipping sauces on the side"
+altImage: "/recipes/recipe-air-fryer-chicken-tenders-alt.jpg"
+ingredientsImage: "/recipes/recipe-air-fryer-chicken-tenders-ingredients.jpg"
 winnieImage: "/winnie/winnie-kitchen-stir.jpg"
 winnieHeadshot: "/winnie/headshot-v4-4.jpg"
 winnieNote: "An air fryer is just a very confident countertop convection oven, and I respect anything that gets you a crunchy crust without committing to a pot of hot oil you then have to deal with for the rest of your life."

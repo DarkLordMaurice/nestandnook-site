@@ -11,6 +11,8 @@ servings: 4
 difficulty: "easy"
 image: "/recipes/recipe-sheet-pan-salmon-and-vegetables.jpg"
 imageAlt: "Sheet pan of roasted salmon fillets with asparagus and golden potatoes, garnished with lemon and fresh dill"
+altImage: "/recipes/recipe-sheet-pan-salmon-and-vegetables-alt.jpg"
+ingredientsImage: "/recipes/recipe-sheet-pan-salmon-and-vegetables-ingredients.jpg"
 winnieImage: "/winnie/winnie-kitchen-chop-colander.jpg"
 winnieHeadshot: "/winnie/headshot-v4-2.jpg"
 winnieNote: "The potatoes getting a fifteen-minute head start before anything else touches the pan is the whole trick, and I will die on the hill that staggered timing is just correct kitchen engineering, not an extra step. One pan, three components finishing at the same moment on purpose — structurally, this is just correct."
