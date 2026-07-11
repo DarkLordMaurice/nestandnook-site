@@ -34,26 +34,8 @@ const joke = jokes[Math.floor(Math.random() * jokes.length)];
     <p class="pending-text">{joke}</p>
   </div>
 </figure>
-
-<style>
-  .pending-photo {
-    position: relative;
-    background: repeating-linear-gradient(45deg, #f5f0e8, #f5f0e8 10px, #ede5d8 10px, #ede5d8 20px);
-    border: 1px solid rgba(0,0,0,0.08);
-  }
-  .pending-inner {
-    width: 100%;
-    height: 100%;
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    text-align: center;
-    padding: 1.25rem;
-    box-sizing: border-box;
-  }
-  .pending-icon { font-size: 1.75rem; }
-  .pending-text { font-size: 0.85rem; font-style: italic; color: #7a7266; margin: 0; max-width: 26ch; }
-</style>
+<!-- Styling for .pending-photo/.pending-inner/.pending-icon/.pending-text
+     lives in global.css (moved 2026-07-11) so the same classes also work on
+     raw HTML pasted directly into a markdown body (a second/third Winnie
+     placeholder per the 2-Winnie/3-non-Winnie page standard) — Astro's
+     scoped <style> only applied to markup this component itself renders. -->
