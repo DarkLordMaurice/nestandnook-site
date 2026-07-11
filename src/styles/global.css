@@ -1351,14 +1351,22 @@ tr:nth-child(even) td { background: rgba(214, 164, 25, 0.05); }
    FIX (2026-07-10, 2nd pass): the transaction cursor was originally also
    applied to `a.review-card`, but that link goes to our OWN review article
    (/{hub}/{slug}/), not to Amazon — so the bag icon was showing on every
-   review card sitewide, not just real purchase links. Amazon links (the
-   ProductCard "Check price on Amazon" CTA and recipe ingredient links) all
-   carry rel="sponsored", so that attribute selector alone is the correct,
-   narrow scope — no class-based selector needed. */
+   review card sitewide, not just real purchase links.
+   FIX (2026-07-11, 3rd pass): scoped to rel="sponsored" instead, on the
+   assumption every real Amazon link carries that token — but
+   AMAZON_LINK_REL (config.ts) only adds "sponsored" once
+   amazonAssociatesStatus is 'approved'; while it's 'pending' (current
+   state) the rel is just "nofollow noopener", so the selector matched
+   nothing sitewide and the cursor silently never showed on any Amazon
+   link, not just recipe ingredients (Maurice caught it on recipes, but the
+   ProductCard "Check price on Amazon" CTA had the same bug). Matching on
+   the actual amazon.com domain instead — true regardless of Associates
+   approval status, and still can't false-positive on internal links since
+   those never point there. */
 a.recipe-tile-card {
   cursor: url('/cursors/cursor-spoon.png') 16 16, pointer;
 }
-main a[rel~="sponsored"] {
+main a[href*="amazon.com"] {
   cursor: url('/cursors/cursor-transaction.png') 16 16, pointer;
 }
 a.guide-list-item {
