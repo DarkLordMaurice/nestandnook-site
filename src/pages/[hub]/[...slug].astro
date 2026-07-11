@@ -24,7 +24,6 @@ const authorName = DEFAULT_AUTHOR.name;
 const canonical = `${SITE.url}/${d.hub}/${entry.slug}/`;
 const reviewDate = d.updatedDate ?? d.publishDate;
 const heroAlt = d.imageAlt ?? `Winnie Hollowell illustrating ${d.primaryKeyword} in a practical small-space ${d.hub === 'kitchen' ? 'kitchen' : 'home office'} setup.`;
-const heroCaption = d.imageCaption ?? `An illustrative Winnie Hollowell scene showing the small-space problem addressed in this guide; it does not represent hands-on testing of a branded product.`;
 
 const articleSchema = {
   '@type': 'Article',
@@ -93,15 +92,13 @@ const jsonLd = {
         <span class="washi">{HUBS[d.hub]?.name ?? d.hub}</span>
         <h1>{d.title}</h1>
       </div>
-      {d.image && (
-        <figure class="article-hero-photo-inset">
-          <div class="article-hero-photo-card">
-            <img src={d.image} alt={heroAlt} loading="eager" fetchpriority="high" style={d.imagePosition ? `--img-pos: ${d.imagePosition}` : undefined} />
-          </div>
-          <figcaption>{heroCaption}</figcaption>
-        </figure>
-      )}
     </div>
+
+    {d.image && (
+      <figure class="inline-photo hero-photo">
+        <img src={d.image} alt={heroAlt} loading="eager" fetchpriority="high" style={d.imagePosition ? `--img-pos: ${d.imagePosition}` : undefined} />
+      </figure>
+    )}
 
     <BestForDecisionTable products={d.products} />
 
@@ -141,12 +138,5 @@ const jsonLd = {
 
   <style>
     .article-hero-photo-inset { margin: 0; }
-    .article-hero-photo-inset figcaption {
-      margin-top: 0.45rem;
-      font-size: 0.76rem;
-      line-height: 1.35;
-      color: #e9e0cd;
-      max-width: 36rem;
-    }
   </style>
 </BaseLayout>

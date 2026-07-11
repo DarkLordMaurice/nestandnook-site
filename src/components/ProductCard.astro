@@ -40,8 +40,7 @@ const skipItems = skipIf?.length ? skipIf : cons;
 <article class="product-card">
   {photo && (
     <div class="product-card-photo">
-      <img src={photo} alt={image ? name : `Illustrative Winnie Hollowell setup for ${name}`} width="400" height="300" loading="lazy" />
-      {!image && winnieImage && <span class="ai-tag">AI-rendered demo</span>}
+      <img src={photo} alt={image ? name : `Winnie Hollowell setup for ${name}`} width="400" height="300" loading="lazy" />
     </div>
   )}
   <div class="badge">{bestFor}</div>
