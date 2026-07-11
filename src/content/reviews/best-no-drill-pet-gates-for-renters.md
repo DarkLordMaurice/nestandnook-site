@@ -8,7 +8,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "ItemList"
-image: "PENDING"
+image: "/winnie/pet-care-no-drill-pet-gates-renters.jpg"
 imageAlt: "Winnie Hollowell measuring a generic pressure-mounted pet gate in an apartment doorway while a calm dog waits on the other side."
 imageCaption: "Winnie illustrates the small-space decision behind no-drill pet gates for renters. The scene is generic and does not document ownership or hands-on product testing."
 products:

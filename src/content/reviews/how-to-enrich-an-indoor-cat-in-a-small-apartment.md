@@ -8,7 +8,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "Article"
-image: "PENDING"
+image: "/winnie/pet-care-enrich-indoor-cat-small-apartment.jpg"
 imageAlt: "Winnie Hollowell arranging a generic compact cat tree, scratcher, hideaway, and toy basket near an apartment window while a cat explores."
 imageCaption: "Winnie illustrates the small-space decision behind indoor-cat enrichment in a small apartment. The scene is generic and does not document ownership or hands-on product testing."
 products: []

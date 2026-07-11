@@ -8,7 +8,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "Article"
-image: "PENDING"
+image: "/winnie/pet-care-litter-box-odor-routine.jpg"
 imageAlt: "Winnie Hollowell organizing a generic litter scoop, sealed waste pail, washable mat, and open window near a clean apartment litter-box station."
 imageCaption: "Odor control is a maintenance and airflow system: remove waste, keep the box dry, clean the surrounding zone, and avoid masking a neglected box. This scene is illustrative."
 products: []

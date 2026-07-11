@@ -11,7 +11,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "ItemList"
-image: "PENDING"
+image: "/winnie/pet-care-litter-box-furniture-small-space.jpg"
 imageAlt: "Winnie Hollowell measuring the interior and door swing of a generic litter-box cabinet in a small apartment while an adult cat stands nearby."
 imageCaption: "Litter-box furniture only works when the interior fits the pan and cat, the cabinet ventilates, and the doors still open for cleaning. This scene is illustrative and not hands-on product testing."
 products:

@@ -8,7 +8,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "ItemList"
-image: "PENDING"
+image: "/winnie/pet-care-water-fountains-small-spaces.jpg"
 imageAlt: "Winnie Hollowell comparing generic compact pet water fountain shapes on a washable mat in a small kitchen while a cat and dog wait nearby."
 imageCaption: "Winnie illustrates the small-space decision behind pet water fountains for small spaces. The scene is generic and does not document ownership or hands-on product testing."
 products:

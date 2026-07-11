@@ -8,7 +8,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "ItemList"
-image: "PENDING"
+image: "/winnie/pet-care-couch-covers-pets-apartment.jpg"
 imageAlt: "Winnie Hollowell measuring a generic apartment sofa for fitted, quilted, and blanket-style pet covers while a cat and dog sit nearby."
 imageCaption: "Winnie illustrates the small-space decision behind couch covers for pets in apartments. The scene is generic and does not document ownership or hands-on product testing."
 products:

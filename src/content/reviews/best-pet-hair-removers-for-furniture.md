@@ -8,7 +8,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "ItemList"
-image: "PENDING"
+image: "/winnie/pet-care-furniture-hair-removers.jpg"
 imageAlt: "Winnie Hollowell comparing generic reusable pet-hair rollers and detail tools on a compact apartment sofa beside a relaxed cat and dog."
 imageCaption: "Winnie illustrates the small-space decision behind pet-hair removers for furniture. The scene is generic and does not document ownership or hands-on product testing."
 products:

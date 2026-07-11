@@ -8,7 +8,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "Article"
-image: "PENDING"
+image: "/winnie/pet-care-remove-hair-couch-bedding.jpg"
 imageAlt: "Winnie Hollowell using a generic reusable pet-hair roller on a sofa cushion while clean bedding waits in a laundry basket."
 imageCaption: "Winnie illustrates the small-space decision behind removing pet hair from couches and bedding. The scene is generic and does not document ownership or hands-on product testing."
 products: []

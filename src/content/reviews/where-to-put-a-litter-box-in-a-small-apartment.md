@@ -8,7 +8,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "Article"
-image: "PENDING"
+image: "/winnie/pet-care-litter-box-placement-small-apartment.jpg"
 imageAlt: "Winnie Hollowell using a tape measure to compare two realistic litter-box locations in a compact apartment while a cat watches from the hallway."
 imageCaption: "A workable litter-box location needs quiet access, airflow, a clear exit, and room to clean—not just an empty corner. This scene is illustrative."
 products: []

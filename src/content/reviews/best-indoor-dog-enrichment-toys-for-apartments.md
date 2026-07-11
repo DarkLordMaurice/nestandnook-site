@@ -8,7 +8,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "ItemList"
-image: "PENDING"
+image: "/winnie/pet-care-indoor-dog-enrichment-apartment.jpg"
 imageAlt: "Winnie Hollowell arranging generic quiet dog puzzle toys on a rug in a compact apartment while a calm adult dog waits nearby."
 imageCaption: "Winnie illustrates the small-space decision behind quiet indoor dog enrichment for apartments. The scene is generic and does not document ownership or hands-on product testing."
 products:

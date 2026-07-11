@@ -8,7 +8,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "Article"
-image: "PENDING"
+image: "/winnie/pet-care-small-apartment-cleaning-reset.jpg"
 imageAlt: "Winnie Hollowell organizing a compact pet-cleaning caddy beside a sofa, washable mat, pet bed, and tidy feeding zone."
 imageCaption: "Winnie illustrates the small-space decision behind a small-apartment pet cleaning reset. The scene is generic and does not document ownership or hands-on product testing."
 products: []

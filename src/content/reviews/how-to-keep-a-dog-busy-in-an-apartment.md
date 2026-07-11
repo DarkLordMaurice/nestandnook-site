@@ -8,7 +8,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "Article"
-image: "PENDING"
+image: "/winnie/pet-care-keep-dog-busy-apartment.jpg"
 imageAlt: "Winnie Hollowell setting up a quiet generic dog puzzle, sniffing mat, and toy basket on an apartment rug while a calm dog waits."
 imageCaption: "Winnie illustrates the small-space decision behind quiet dog activities in an apartment. The scene is generic and does not document ownership or hands-on product testing."
 products: []

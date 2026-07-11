@@ -8,7 +8,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "Article"
-image: "PENDING"
+image: "/winnie/pet-care-clean-pet-bowls.jpg"
 imageAlt: "Winnie Hollowell washing generic stainless pet bowls with soap and hot water in a small kitchen sink, with a separate brush and drying rack."
 imageCaption: "Winnie illustrates the small-space decision behind cleaning pet food and water bowls. The scene is generic and does not document ownership or hands-on product testing."
 products: []

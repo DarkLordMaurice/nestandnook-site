@@ -8,7 +8,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "ItemList"
-image: "PENDING"
+image: "/winnie/pet-care-cat-trees-small-apartments.jpg"
 imageAlt: "Winnie Hollowell measuring generic compact cat-tree bases and platforms beside a sunny apartment window while an adult cat observes."
 imageCaption: "Winnie illustrates the small-space decision behind cat trees for small apartments. The scene is generic and does not document ownership or hands-on product testing."
 products:

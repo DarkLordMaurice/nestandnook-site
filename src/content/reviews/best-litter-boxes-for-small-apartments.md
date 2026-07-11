@@ -11,7 +11,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "ItemList"
-image: "PENDING"
+image: "/winnie/pet-care-small-apartment-litter-boxes.jpg"
 imageAlt: "Winnie Hollowell measuring several generic litter-box shapes in a compact apartment while a relaxed adult cat observes from a safe distance."
 imageCaption: "Small-space fit starts with the cat's usable room and entry access, not the smallest exterior box. This scene is illustrative and does not document hands-on product testing."
 products:

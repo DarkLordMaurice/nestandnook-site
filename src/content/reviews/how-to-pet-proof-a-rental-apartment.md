@@ -8,7 +8,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "Article"
-image: "PENDING"
+image: "/winnie/pet-care-pet-proof-rental-apartment.jpg"
 imageAlt: "Winnie Hollowell checking generic cord covers, cabinet latches, a pressure gate, secured trash, and a screened window in a rental apartment."
 imageCaption: "Winnie illustrates the small-space decision behind reversible pet-proofing in a rental apartment. The scene is generic and does not document ownership or hands-on product testing."
 products: []

@@ -8,7 +8,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "ItemList"
-image: "PENDING"
+image: "/winnie/pet-care-handheld-vacuums-pet-hair.jpg"
 imageAlt: "Winnie Hollowell comparing four generic compact handheld vacuum shapes beside an apartment sofa with visible pet hair on one cushion."
 imageCaption: "Winnie illustrates the small-space decision behind handheld vacuums for apartment pet hair. The scene is generic and does not document ownership or hands-on product testing."
 products:

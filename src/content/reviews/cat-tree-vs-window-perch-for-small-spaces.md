@@ -8,7 +8,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "ItemList"
-image: "PENDING"
+image: "/winnie/pet-care-cat-tree-vs-window-perch.jpg"
 imageAlt: "Winnie Hollowell comparing a generic compact cat tree in one corner with a generic suction window perch on clean glass in a small apartment."
 imageCaption: "Winnie illustrates the small-space decision behind cat tree versus window perch. The scene is generic and does not document ownership or hands-on product testing."
 products:

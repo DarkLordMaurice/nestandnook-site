@@ -8,7 +8,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "Article"
-image: "PENDING"
+image: "/winnie/pet-care-protect-rental-carpet-pets.jpg"
 imageAlt: "Winnie Hollowell arranging generic washable runners and mats along a pet travel path in a carpeted rental apartment."
 imageCaption: "Winnie illustrates the small-space decision behind protecting rental carpet from everyday pet mess. The scene is generic and does not document ownership or hands-on product testing."
 products: []

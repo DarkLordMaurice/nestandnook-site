@@ -8,7 +8,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "ItemList"
-image: "PENDING"
+image: "/winnie/pet-care-food-storage-small-apartment.jpg"
 imageAlt: "Winnie Hollowell measuring generic pet-food storage containers in a narrow pantry while keeping labeled original food bags inside."
 imageCaption: "Winnie illustrates the small-space decision behind pet-food storage in a small apartment. The scene is generic and does not document ownership or hands-on product testing."
 products:
