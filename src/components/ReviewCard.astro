@@ -29,7 +29,13 @@ const badgeLabel = pageType ? (TYPE_LABELS[pageType] ?? pageType) : null;
 ---
 <a href={href} class:list={['content-card', 'review-card', { featured }]}>
   <div class="card-photo">
-    <img src={image} alt="" width="500" height="340" loading="lazy" style={imagePosition ? `--img-pos: ${imagePosition}` : undefined} />
+    {image === 'PENDING' ? (
+      <div class="card-photo-pending">
+        <span aria-hidden="true">📸</span>
+      </div>
+    ) : (
+      <img src={image} alt="" width="500" height="340" loading="lazy" style={imagePosition ? `--img-pos: ${imagePosition}` : undefined} />
+    )}
     {badgeLabel && <span class="card-badge">{badgeLabel}</span>}
   </div>
   <div class="card-body">

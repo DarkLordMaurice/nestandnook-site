@@ -15,6 +15,7 @@ image: "/winnie/winnie-office-led-strip-light.jpg"
 products:
   - name: "Govee RGBIC LED Strip Lights M1 (6.56ft)"
     asin: "B0BWLHHV8M"
+    image: "/products/best-led-strip-lighting-for-desk-1.jpg"
     bestFor: "Best overall for a desk setup"
     blurb: "Matter-compatible smart control that works with Alexa, Google Assistant, and Apple Home in one strip, sized for wrapping a single desk or monitor rather than a whole room — the scale most desk setups actually need."
     pros:
@@ -26,6 +27,7 @@ products:
       - "Smart features require an app and Wi-Fi setup to unlock fully"
   - name: "Govee RGBIC Neon Rope Lights for Desks (16.4ft)"
     asin: "B0C6JV3ZRD"
+    image: "/products/best-led-strip-lighting-for-desk-2.jpg"
     bestFor: "Best for behind-monitor bias lighting"
     blurb: "A neon-style rope rather than a flat strip, designed specifically for desk setups and syncing with Razer Chroma — the pick if the goal is a glowing accent behind the monitor rather than general room lighting."
     pros:
@@ -37,6 +39,7 @@ products:
       - "Premium build costs more than standard flat LED strips"
   - name: "DAYBETTER LED Strip Lights, 32.8ft (2 Rolls of 16.4ft)"
     asin: "B07JN28KP3"
+    image: "/products/best-led-strip-lighting-for-desk-3.jpg"
     bestFor: "Best budget option"
     blurb: "Two full rolls with a 44-key IR remote and included power supply for a fraction of the smart-strip price — the right call if app control and voice assistants aren't priorities and a simple remote is enough."
     pros:
@@ -48,6 +51,7 @@ products:
       - "Color accuracy and smoothness lag behind premium options"
   - name: "Govee RGBWWIC Strip Light 2 Pro (6.56ft)"
     asin: "B0D7MHL8YB"
+    image: "/products/best-led-strip-lighting-for-desk-4.jpg"
     bestFor: "Best for warm-to-cool white range"
     blurb: "Adds dedicated warm and cool white LEDs alongside RGB, useful if the goal is a comfortable working white light in daytime and colored ambiance at night from the same strip."
     pros:
@@ -59,6 +63,7 @@ products:
       - "Full feature set again depends on app and Wi-Fi setup"
   - name: "DAYBETTER Smart WiFi LED Strip Lights (50ft)"
     asin: "B0DFPXBLKQ"
+    image: "/products/best-led-strip-lighting-for-desk-5.jpg"
     bestFor: "Best for a larger desk or wraparound setup"
     blurb: "Smart app and voice control at a much lower price than premium smart strips, with enough length to wrap a large desk, shelving, or a multi-monitor setup in one continuous run."
     pros:

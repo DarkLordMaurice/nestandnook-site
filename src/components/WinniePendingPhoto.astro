@@ -1,26 +1,34 @@
 ---
-// Placeholder shown in a Winnie photo slot when the page has been published
+// Placeholder shown in a Winnie photo slot when a page has been published
 // ahead of her real photo (image: "PENDING" in frontmatter). Tracked in
 // Winnie-Photo-Queue.md until Maurice drops the real photo in, at which
 // point the frontmatter switches from "PENDING" to the real file path and
 // this component stops rendering for that page. Not an image file, so it
 // can never trip check_duplicate_images.py / content-qa's reused-image gate.
+//
+// Uses the exact same "inline-photo hero-photo" figure classes as a real
+// hero photo (see .prose figure.inline-photo.hero-photo in global.css,
+// max-width: 420px) so it renders at the identical size — the first version
+// of this component used the small collage `.polaroid` classes instead and
+// rendered enormous/unstyled. Fixed 2026-07-11.
 interface Props {
-  tilt?: 'left' | 'right';
   tape?: 'teal' | 'hotpink' | 'sage' | 'mustard' | 'gold';
 }
-const { tilt = 'right', tape = 'mustard' } = Astro.props;
+const { tape = 'mustard' } = Astro.props;
+// Jokes are about Winnie herself — her personality, not a third party like
+// "her photographer." Maurice, 2026-07-11: "i want the message to say
+// something funny and clever about her, not her photographer."
 const jokes = [
-  "Winnie's camera-shy today — check back soon!",
-  "Winnie is off wrangling a cat for this one. Photo incoming.",
-  "This spot is reserved for Winnie. She's running late, as usual.",
-  "Photo pending — Winnie's still deciding what to wear.",
-  "Winnie's photographer overslept. Back shortly.",
-  "Winnie says the lighting wasn't right. She'll be back.",
+  "Winnie is currently negotiating with the camera about her best angle.",
+  "Winnie says this outfit isn't final. It will never be final.",
+  "Winnie is off measuring something that did not need measuring.",
+  "Winnie is mid-opinion about a throw pillow. Photo to follow.",
+  "Winnie insists she photographs better on her own schedule.",
+  "Somewhere, Winnie is rearranging a shelf that was already fine.",
 ];
 const joke = jokes[Math.floor(Math.random() * jokes.length)];
 ---
-<figure class={`polaroid polaroid-pending tilt-${tilt} tape-${tape}`}>
+<figure class={`inline-photo hero-photo pending-photo tape-${tape}`}>
   <div class="pending-inner">
     <span class="pending-icon" aria-hidden="true">📸</span>
     <p class="pending-text">{joke}</p>
@@ -28,17 +36,24 @@ const joke = jokes[Math.floor(Math.random() * jokes.length)];
 </figure>
 
 <style>
-  .polaroid-pending .pending-inner {
-    aspect-ratio: 4 / 5;
+  .pending-photo {
+    position: relative;
+    background: repeating-linear-gradient(45deg, #f5f0e8, #f5f0e8 10px, #ede5d8 10px, #ede5d8 20px);
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+  .pending-inner {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    background: repeating-linear-gradient(45deg, #f5f0e8, #f5f0e8 10px, #ede5d8 10px, #ede5d8 20px);
     text-align: center;
-    padding: 1.5rem;
+    padding: 1.25rem;
+    box-sizing: border-box;
   }
-  .pending-icon { font-size: 2rem; }
-  .pending-text { font-size: 0.9rem; font-style: italic; color: #7a7266; margin: 0; max-width: 22ch; }
+  .pending-icon { font-size: 1.75rem; }
+  .pending-text { font-size: 0.85rem; font-style: italic; color: #7a7266; margin: 0; max-width: 26ch; }
 </style>

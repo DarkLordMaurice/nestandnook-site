@@ -14,6 +14,7 @@ imageCaption: "Treat $150 as a planning ceiling, not a live-price promise: solve
 products:
   - name: "StrongTek 4-Angle Wooden Footrest"
     asin: "B0BTL7QLT5"
+    image: "/products/ergonomic-home-office-setup-under-150-1.jpg"
     bestFor: "The dangling-feet priority"
     blurb: "A simple angled platform for readers whose chair is correct for the desk but leaves their feet unsupported."
     pros:
@@ -26,6 +27,7 @@ products:
     smallSpaceNote: "Confirm the platform depth will not interfere with chair wheels or a low crossbar."
   - name: "AMERIERGO Adjustable Monitor Riser"
     asin: "B0855QBHTZ"
+    image: "/products/ergonomic-home-office-setup-under-150-2.jpg"
     bestFor: "The screen-height priority"
     blurb: "Adjustable length and angle make it easier to fit a small desk while raising a monitor closer to the reader's measured eye line."
     pros:
@@ -38,6 +40,7 @@ products:
     smallSpaceNote: "Measure the monitor base, target lift, and keyboard storage space before choosing a riser."
   - name: "VIVO Under Desk 17\" Cable Management Tray"
     asin: "B089B4XZM4"
+    image: "/products/ergonomic-home-office-setup-under-150-3.jpg"
     bestFor: "The floor-cable priority"
     blurb: "A clamp-mounted metal tray moves a typical power strip and its main connections off the floor."
     pros:
@@ -50,6 +53,7 @@ products:
     smallSpaceNote: "Check the tray's drop below the desktop so it does not reduce knee clearance."
   - name: "Sinjimoru Magnetic Cable Clips (6-Pack)"
     asin: "B0FP16B355"
+    image: "/products/ergonomic-home-office-setup-under-150-4.jpg"
     bestFor: "The falling-charger priority"
     blurb: "A small finishing tool for keeping frequently used cable connectors at the desk edge."
     pros:

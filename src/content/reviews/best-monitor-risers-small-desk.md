@@ -15,6 +15,7 @@ image: "/winnie/winnie-office-monitor-riser.jpg"
 products:
   - name: "WALI Adjustable Monitor Stand (STT003)"
     asin: "B094QTGHNZ"
+    image: "/products/best-monitor-risers-small-desk-1.jpg"
     bestFor: "Best overall for a small desk"
     blurb: "Three height settings, vented metal platform, and real storage clearance underneath for a keyboard or notebook — the combination that matters most when desk space is the actual constraint, not just monitor height."
     pros:
@@ -26,6 +27,7 @@ products:
       - "Only rated for a single monitor at this size"
   - name: "Amazon Basics Height Adjustable Monitor Riser with Storage"
     asin: "B00X4SCCFG"
+    image: "/products/best-monitor-risers-small-desk-2.jpg"
     bestFor: "Best budget option"
     blurb: "A 3-level stackable riser that does the one job — get the screen to eye level — without extra features to pay for. Straightforward ABS plastic construction, rated up to 22 lbs."
     pros:
@@ -37,6 +39,7 @@ products:
       - "Plastic build feels less substantial than metal"
   - name: "FITUEYES 2-Tier Monitor Stand"
     asin: "B01A6JLT3Q"
+    image: "/products/best-monitor-risers-small-desk-3.jpg"
     bestFor: "Best for reclaiming desk storage"
     blurb: "Wood-finish riser with a second shelf underneath, so a small desk gets monitor height and a dedicated spot for a keyboard, phone, or notebook instead of losing surface area to either."
     pros:
@@ -48,6 +51,7 @@ products:
       - "Lower weight capacity than metal platform stands"
   - name: "WALI Tempered Glass Monitor Riser (GTT001B)"
     asin: "B08HSXQQDK"
+    image: "/products/best-monitor-risers-small-desk-4.jpg"
     bestFor: "Best minimalist look"
     blurb: "A glass platform that visually disappears on the desk instead of adding another bulky object to a small surface — worth it specifically if the desk already feels cluttered and a chunky riser would make that worse."
     pros:
@@ -59,6 +63,7 @@ products:
       - "No underneath storage — form over function"
   - name: "WALI Dual Monitor Stand, 2-Pack (STT003-2)"
     asin: "B07T2374MN"
+    image: "/products/best-monitor-risers-small-desk-5.jpg"
     bestFor: "Best for two monitors that don't match"
     blurb: "Two identical risers sold together solve the single most common dual-monitor complaint — two screens sitting at different heights because they came on different stock stands — for less than buying two separate risers."
     pros:

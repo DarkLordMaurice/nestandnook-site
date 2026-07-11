@@ -31,22 +31,23 @@ export const HUBS: Record<string, {
     ],
   },
   // Pet Care hub added 2026-07-11 alongside the Pet Care Full-Hub Completion
-  // Pack implementation. The 3 image paths below (hero + 2 accents) are
-  // RESERVED, not yet generated — same as every other page-level hero in
-  // this batch, this hub landing page will not visibly work until Maurice
-  // generates and places these 3 files via ChatGPT. See the master image
-  // prompt doc for the exact prompts.
+  // Pack implementation. Hero + 2 accents use the "PENDING" sentinel
+  // (matching the review-page image: "PENDING" pattern) — HeroCollage.astro
+  // renders a same-size camera placeholder tile for any photo with
+  // src: "PENDING" instead of a broken <img>. Real filenames stay logged in
+  // Winnie-Photo-Queue.md / the master prompt doc; swap each `src` from
+  // "PENDING" back to its real path once Maurice delivers that photo.
   'pet-care': {
     name: 'Small-Space Pet Care',
     eyebrow: 'Cats, dogs, and not much square footage',
     blurb: 'Litter, cleanup, feeding, enrichment, and renter-friendly setups for apartment cats and dogs — picks organized by what actually fits a small home, not what looks best in a big one.',
     winnieIntro: "I don't have a cat or a dog myself — I'm not going to pretend I do — but I read an unreasonable number of apartment pet setups, and the pattern is always the same: most pet gear is designed for a house with a mudroom, and most of us don't have one. This section is the small-space version — litter and odor control, hair and cleanup, feeding and hydration, enrichment, and gear that won't cost you a security deposit.",
     winniePhoto: '/winnie/headshot-v4-3.jpg',
-    hero: '/winnie/pet-care-hero.jpg',
+    hero: 'PENDING',
     heroAlt: 'Winnie Hollowell in a small, tidy apartment living room set up for a cat and a dog, with space-conscious pet gear nearby.',
     heroAccents: [
-      { src: '/winnie/pet-care-side.jpg', alt: 'Winnie assessing a compact apartment corner set up for pet care.' },
-      { src: '/winnie/winnie-pet-care-small-space-check.jpg', alt: 'Winnie measuring floor space for pet gear in a small apartment.' },
+      { src: 'PENDING', alt: 'Winnie assessing a compact apartment corner set up for pet care.' },
+      { src: 'PENDING', alt: 'Winnie measuring floor space for pet gear in a small apartment.' },
     ],
   },
 };

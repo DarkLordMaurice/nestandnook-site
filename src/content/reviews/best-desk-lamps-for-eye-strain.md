@@ -14,6 +14,7 @@ imageCaption: "Desk-light comfort depends on diffusion, positioning, ambient lig
 products:
   - name: "BenQ e-Reading Desk Lamp"
     asin: "B017NOD9KI"
+    image: "/products/best-desk-lamps-for-eye-strain-1.jpg"
     bestFor: "Best overall feature set"
     blurb: "The product line is marketed with model-specific TÜV Rheinland flicker-free and low-blue-light certification claims, plus auto-dimming and a wide light spread. Verify the exact current model documentation before relying on the certification."
     pros:
@@ -33,6 +34,7 @@ products:
     smallSpaceNote: "Measure the base and arm swing so the lamp does not compete with a monitor stand or writing area."
   - name: "Lepro LED Desk Lamp (9.5W, 800lm)"
     asin: "B08LMPCX3D"
+    image: "/products/best-desk-lamps-for-eye-strain-2.jpg"
     bestFor: "Best value feature mix"
     blurb: "A frosted diffuser, several color modes, and multiple brightness levels provide useful control without relying on an unverified certification claim."
     pros:
@@ -45,6 +47,7 @@ products:
     smallSpaceNote: "Check whether the base fits beside the keyboard and monitor footprint."
   - name: "Airlonv LED Desk Lamp with Clamp"
     asin: "B0C4JTPPYY"
+    image: "/products/best-desk-lamps-for-eye-strain-3.jpg"
     bestFor: "Best for small or shared desks"
     blurb: "A clamp mount moves the lamp base off the work surface and a flexible neck allows more precise positioning."
     pros:
@@ -57,6 +60,7 @@ products:
     smallSpaceNote: "Measure the desk-edge thickness and check for drawers, cable trays, or monitor-arm clamps."
   - name: "BenQ Genie e-Reading Desk Lamp"
     asin: "B0CW8S6TSN"
+    image: "/products/best-desk-lamps-for-eye-strain-4.jpg"
     bestFor: "Best premium compact option"
     blurb: "A smaller member of the e-Reading line for readers who want the brand's wide-spread and automatic-light features in less desk space. Verify current model-specific certification documentation."
     pros:
@@ -69,6 +73,7 @@ products:
     smallSpaceNote: "Compare the smaller base with the full arm reach; compact bases can still have wide movement envelopes."
   - name: "Lepro Small Clip-On Desk Lamp"
     asin: "B09XF3HRGW"
+    image: "/products/best-desk-lamps-for-eye-strain-5.jpg"
     bestFor: "Best for very tight desks"
     blurb: "A lightweight clip-on option with several color modes and brightness steps for desks that cannot spare surface area."
     pros:

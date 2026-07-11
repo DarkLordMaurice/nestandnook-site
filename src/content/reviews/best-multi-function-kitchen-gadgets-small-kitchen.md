@@ -18,6 +18,7 @@ image: "/winnie/winnie-kitchen-multi-cooker-check.jpg"
 products:
   - name: "Instant Pot Duo Crisp 11-in-1"
     asin: "B07VT23JDM"
+    image: "/products/best-multi-function-kitchen-gadgets-small-kitchen-1.jpg"
     bestFor: "Best overall — replaces the most appliances"
     blurb: "One pot that pressure cooks, air fries, steams, slow cooks, and dehydrates — the appliance-count math is the whole point here. A single upright unit replaces what would otherwise be a pressure cooker, air fryer, steamer, and slow cooker taking up four separate cabinet spots."
     pros:
@@ -29,6 +30,7 @@ products:
       - "Two lids to store, not zero"
   - name: "Ninja MC1101 Foodi Everyday PossibleCooker Pro"
     asin: "B0CDHP76FP"
+    image: "/products/best-multi-function-kitchen-gadgets-small-kitchen-2.jpg"
     bestFor: "Best compact multicooker"
     blurb: "A smaller 6.5-quart footprint than most multicookers, built to replace a slow cooker, Dutch oven, sauté pan, and stockpot in one nonstick, oven-safe pot — the pick if counter space is tighter than what the Instant Pot needs."
     pros:
@@ -40,6 +42,7 @@ products:
       - "Glass lid adds fragility a fully enclosed unit wouldn't have"
   - name: "Instant Pot Omni Plus 19QT Toaster Oven Air Fryer"
     asin: "B08PL327W4"
+    image: "/products/best-multi-function-kitchen-gadgets-small-kitchen-3.jpg"
     bestFor: "Best for replacing a full-size oven too"
     blurb: "10 functions including bake, broil, roast, and toast in a unit that fits a 12-inch pizza — the right call if your small kitchen doesn't have a real oven at all, not just if you want to consolidate small appliances."
     pros:
@@ -51,6 +54,7 @@ products:
       - "Overkill if you already have a working oven and just want to declutter small appliances"
   - name: "MOOKA FAMILY 5-in-1 Immersion Blender Set"
     asin: "B09MM8PTCH"
+    image: "/products/best-multi-function-kitchen-gadgets-small-kitchen-4.jpg"
     bestFor: "Best budget / most compact"
     blurb: "A hand blender, food chopper, egg whisk, and milk frother that all store in one drawer instead of four separate appliance boxes — the pick if your multi-function problem is prep tools, not cooking appliances."
     pros:

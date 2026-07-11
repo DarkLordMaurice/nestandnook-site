@@ -54,7 +54,13 @@ const tapeColors = ['teal', 'hotpink', 'sage', 'mustard', 'gold'];
     const tape = tapeColors[(i + offset) % tapeColors.length];
     return (
       <div class={`polaroid collage-photo tilt-${tilt} tape-${tape}`}>
-        <img src={p.src} alt={p.alt} class={`collage-photo-img${p.portrait ? ' collage-photo-img-portrait' : ''}`} width="500" height="500" />
+        {p.src === 'PENDING' ? (
+          <div class="collage-photo-pending">
+            <span aria-hidden="true">📸</span>
+          </div>
+        ) : (
+          <img src={p.src} alt={p.alt} class={`collage-photo-img${p.portrait ? ' collage-photo-img-portrait' : ''}`} width="500" height="500" />
+        )}
       </div>
     );
   })}

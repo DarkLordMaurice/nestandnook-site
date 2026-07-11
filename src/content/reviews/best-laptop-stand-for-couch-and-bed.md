@@ -17,6 +17,7 @@ image: "/winnie/winnie-gear-laptop-stand-couch.jpg"
 products:
   - name: "WorkEZ Laptop Stand & Lap Desk"
     asin: "B005SHHZ9E"
+    image: "/products/best-laptop-stand-for-couch-and-bed-1.jpg"
     bestFor: "Best overall for real ergonomic lift"
     blurb: "Extends up to 18 inches above your lap, which is the difference between a stand and an actual ergonomic fix — high enough to bring the screen to eye level instead of hunching over it. Open underneath for airflow, so the laptop stops overheating mid-episode."
     pros:
@@ -28,6 +29,7 @@ products:
       - "No built-in cushion — better for a desk-adjacent chair than sprawled flat in bed"
   - name: "SAIJI Adjustable Laptop Stand"
     asin: "B08TBG3SPW"
+    image: "/products/best-laptop-stand-for-couch-and-bed-2.jpg"
     bestFor: "Best value / most versatile"
     blurb: "A 2-in-1 that works two ways — soft cushion side down for lap use, or flipped and extended into a small stable table for bed or couch-side. Height and angle both adjust, which most lap desks at this price don't bother with."
     pros:
@@ -39,6 +41,7 @@ products:
       - "Cushion side runs warm on bare legs after long stretches"
   - name: "LapGear Home Office Lap Desk"
     asin: "B07N9JMSW6"
+    image: "/products/best-laptop-stand-for-couch-and-bed-3.jpg"
     bestFor: "Best budget, most cushioned"
     blurb: "The classic shape done well: a cushioned underside that actually conforms instead of staying stiff, a hard top that keeps the laptop level, and small standoffs that restore some airflow. The lowest cost of entry here by a wide margin."
     pros:
@@ -50,6 +53,7 @@ products:
       - "Standoffs help airflow some, not as much as an open-frame stand"
   - name: "Lululook 2-in-1 Lap Desk & Tablet Stand"
     asin: "B0GCMTDSBK"
+    image: "/products/best-laptop-stand-for-couch-and-bed-4.jpg"
     bestFor: "Best for switching between laptop and tablet/reading"
     blurb: "Pairs a beanbag-style cushion base with an articulating arm that swings a tablet or Kindle into reading position — useful if your couch time splits between actual work and unwinding with a book, without needing two separate accessories."
     pros:
@@ -61,6 +65,7 @@ products:
       - "Less laptop-specific stability than a dedicated stand"
   - name: "LINGMI Rolling Desk"
     asin: "B0CH886G95"
+    image: "/products/best-laptop-stand-for-couch-and-bed-5.jpg"
     bestFor: "Best stationary rolling cart for a fixed couch setup"
     blurb: "Not portable in the \"toss it in a bag\" sense, but if your couch setup is stationary, this rolls into place, adjusts over a wide height range, and locks down with real wheels — a tray that swivels and tilts instead of one fixed angle."
     pros:

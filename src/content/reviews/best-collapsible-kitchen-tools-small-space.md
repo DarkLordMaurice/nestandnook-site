@@ -21,6 +21,7 @@ image: "/winnie/collapsible-kitchen-tools-small-space-solution.jpg"
 products:
   - name: "OXO Good Grips Silicone Collapsible Colander, 3.5 Quart"
     asin: "B073S4XTDR"
+    image: "/products/best-collapsible-kitchen-tools-small-space-1.jpg"
     bestFor: "Best overall"
     blurb: "The one to start with if you're only replacing one rigid colander. It expands to a real 3.5-quart capacity for draining pasta or rinsing produce, then folds down to about 2 inches for a drawer or a slim cabinet gap — no learning curve, no fussy parts."
     pros:
@@ -32,6 +33,7 @@ products:
       - "One-piece design means the whole thing goes in for washing at once"
   - name: "Comfify Ultimate Kitchen Strainers, Set of 2"
     asin: "B00L3QWJBI"
+    image: "/products/best-collapsible-kitchen-tools-small-space-2.jpg"
     bestFor: "Best budget"
     blurb: "Two collapsible silicone strainers for less than most single rigid colanders cost — genuinely useful if you want a small one for berries or a quick rinse and a larger one for pasta night, without paying twice for two full-size tools."
     pros:
@@ -43,6 +45,7 @@ products:
       - "Handles are smaller, so grip is less confident with hot, heavy contents"
   - name: "KitchenAid Over-the-Sink Collapsible Colander (KHQ867OSMIA)"
     asin: "B0FQQ9L4KV"
+    image: "/products/best-collapsible-kitchen-tools-small-space-3.jpg"
     bestFor: "Best for tiny sinks"
     blurb: "Bridges over the sink itself instead of needing to sit inside a basin — the pick if your sink is too shallow or too narrow for a standard colander to sit in without tipping. Folds flat when the sink needs to just be a sink again."
     pros:
@@ -54,6 +57,7 @@ products:
       - "Not as deep as a dedicated bowl-style colander for large batches"
   - name: "Joseph Joseph Chop2Pot Plus Folding Cutting Board"
     asin: "B09WG4KBFT"
+    image: "/products/best-collapsible-kitchen-tools-small-space-4.jpg"
     bestFor: "Best prep helper"
     blurb: "A cutting board that folds down the middle into a chute, so chopped vegetables slide straight into a pot or pan instead of needing a second bowl to hold them. It's a genuinely different space-saver than a colander — it removes a step, not just a shelf."
     pros:
@@ -65,6 +69,7 @@ products:
       - "Smaller cutting surface than a full-size board, so large-batch prep takes longer"
   - name: "madesmart Collapsible Drying Dish Rack"
     asin: "B010F6H9CU"
+    image: "/products/best-collapsible-kitchen-tools-small-space-5.jpg"
     bestFor: "Best drying solution"
     blurb: "A full dish rack that collapses flat when the dishes are done, instead of permanently occupying counter space you don't have between meals. Solves the specific small-kitchen problem of a drying rack eating the one counter strip you actually prep on."
     pros:
@@ -76,6 +81,7 @@ products:
       - "Rubber-coated wires can show wear faster than a solid plastic rack over years of use"
   - name: "Prep Solutions by Progressive Salad Spinner (PS-1200)"
     asin: "B00JG6R0I4"
+    image: "/products/best-collapsible-kitchen-tools-small-space-6.jpg"
     bestFor: "Best for salad people"
     blurb: "A 4-quart pull-cord salad spinner for anyone who actually eats greens regularly and is tired of a bulky crank-style spinner hogging a whole shelf. The pull-cord mechanism is simpler to store than most crank designs."
     pros:
@@ -87,6 +93,7 @@ products:
       - "Only earns its space if you actually wash greens often enough to use it"
   - name: "PrepWorks Kitchen Tool Collapsible Funnel, 3 Count"
     asin: "B0D92W51N1"
+    image: "/products/best-collapsible-kitchen-tools-small-space-7.jpg"
     bestFor: "Best small add-on"
     blurb: "Three nesting collapsible funnels for decanting oils, transferring dry goods, or filling narrow jars — a small, cheap add to an order that solves the specific problem of rigid funnels being an awkward shape to store anywhere."
     pros:
@@ -98,6 +105,7 @@ products:
       - "Easy to lose track of in a drawer since it's so small"
   - name: "Sur La Table Collapsible Colander & Steamer"
     asin: "B07CV2HXSL"
+    image: "/products/best-collapsible-kitchen-tools-small-space-8.jpg"
     bestFor: "Best multi-use"
     blurb: "Works as both a draining colander and a steamer basket, which matters if you're trying to avoid buying two separate collapsible tools for two related jobs. One fold-flat piece instead of two."
     pros:

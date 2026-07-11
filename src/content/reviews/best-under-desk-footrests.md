@@ -14,6 +14,7 @@ imageCaption: "Footrest type should match the measured floor gap and sitting sty
 products:
   - name: "Mount-It! Under Desk Footrest"
     asin: "B01N0SL2VV"
+    image: "/products/best-under-desk-footrests-1.jpg"
     bestFor: "Best overall / most adjustable"
     blurb: "A pedal-controlled height range and tilting platform make this the broadest fit for shared desks or readers who are still dialing in support."
     pros:
@@ -26,6 +27,7 @@ products:
     smallSpaceNote: "Check both maximum platform depth and the space needed for the pedal mechanism."
   - name: "ErgoFoam Foot Rest"
     asin: "B0837CT43Z"
+    image: "/products/best-under-desk-footrests-2.jpg"
     bestFor: "Best for soft support"
     blurb: "Dense foam prioritizes a cushioned feel for readers who prefer softness over precise mechanical height adjustment."
     pros:
@@ -38,6 +40,7 @@ products:
     smallSpaceNote: "Measure the full foam height and confirm it will not push the knees too high under a low desk."
   - name: "CasaZenith Foot Rest with Roller Massager"
     asin: "B0CPFTDT6P"
+    image: "/products/best-under-desk-footrests-3.jpg"
     bestFor: "Best for restless sitters"
     blurb: "A rocking base and textured roller give frequent movers something to shift against during long seated sessions."
     pros:
@@ -50,6 +53,7 @@ products:
     smallSpaceNote: "Leave enough front-to-back room for the full rocking range without hitting chair wheels."
   - name: "Everlasting Comfort Foot Rest"
     asin: "B07PGLBCFG"
+    image: "/products/best-under-desk-footrests-4.jpg"
     bestFor: "Best simple foam option"
     blurb: "A reversible memory-foam shape provides steady support on one side and gentle movement when flipped."
     pros:
@@ -62,6 +66,7 @@ products:
     smallSpaceNote: "Confirm the flipped rocking position will not slide into the chair base."
   - name: "Elevate Series by Everlasting Comfort (Cloud Foot Rest)"
     asin: "B0CN3CYTPX"
+    image: "/products/best-under-desk-footrests-5.jpg"
     bestFor: "Best multi-position option"
     blurb: "Three positions cover steady support, added elevation, and gentle rocking for a shared or changing setup."
     pros:

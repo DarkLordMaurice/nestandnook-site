@@ -17,6 +17,7 @@ imageCaption: "Portable cooking and cleanup capacity can help a rental kitchen�
 products:
   - name: "Duxtop 9600LS Portable Induction Cooktop"
     asin: "B07KSNTSVR"
+    image: "/products/best-kitchen-gadgets-for-renters-and-apartments-1.jpg"
     bestFor: "Best overall renter-friendly cooking upgrade"
     blurb: "A portable induction burner adds a responsive cooking zone without replacing the rental's range or altering the counter. The flat surface wipes clean and the unit can be stored between uses, but it only works with induction-compatible cookware and needs a suitable high-draw outlet."
     pros:
@@ -36,6 +37,7 @@ products:
     smallSpaceNote: "This earns its space when the rental stove is weak, short on burners, or awkward to clean—not simply because portable appliances are appealing."
   - name: "HAVA R01 Countertop Dishwasher"
     asin: "B0915X4BBP"
+    image: "/products/best-kitchen-gadgets-for-renters-and-apartments-2.jpg"
     bestFor: "Best no-dishwasher apartment upgrade"
     blurb: "The built-in water tank allows this countertop dishwasher to run without a permanent plumbing hookup, while the included faucet connection offers a second supply option. It can meaningfully reduce hand-washing, but it still needs a large, level counter footprint and a safe drain path."
     pros:
@@ -55,6 +57,7 @@ products:
     smallSpaceNote: "This is a capacity purchase, not a tiny gadget. Measure the full operating zone—including door swing, fill access, and drain hose—before ordering."
   - name: "Presto 07073 XL Tilt-N-Fold Electric Griddle"
     asin: "B01GD1JSOI"
+    image: "/products/best-kitchen-gadgets-for-renters-and-apartments-3.jpg"
     bestFor: "Best storable cooking surface for larger meals"
     blurb: "The cooking surface handles breakfast, sandwiches, or several portions at once, while the legs fold inward and the drip tray locks in place for cabinet storage. It is wide while operating, so the storage advantage only matters if you have a clear place to use it."
     pros:
@@ -74,6 +77,7 @@ products:
     smallSpaceNote: "The storage design is the reason it belongs here; the griddle is still physically broad when dinner is underway."
   - name: "Dash Mini Ceramic Rice Cooker"
     asin: "B0FT4TDZ1P"
+    image: "/products/best-kitchen-gadgets-for-renters-and-apartments-4.jpg"
     bestFor: "Best hands-off side dish helper"
     blurb: "A mini rice cooker can move a grain or oatmeal side off the stovetop while a single rental burner handles the main dish. Its value comes from freeing attention and burner space, not from replacing a full-size cooker for families or meal-prep batches."
     pros:
@@ -93,6 +97,7 @@ products:
     smallSpaceNote: "A mini cooker is useful when one burner has to do too much. It is not automatically useful just because the appliance is small."
   - name: "Cuisinart CPT-122BK Compact 2-Slice Toaster"
     asin: "B00K0ZT1BO"
+    image: "/products/best-kitchen-gadgets-for-renters-and-apartments-5.jpg"
     bestFor: "Best compact breakfast station"
     blurb: "This narrow two-slice toaster covers toast, bagels, reheating, and defrosting without taking the footprint of a toaster oven. The removable crumb tray makes routine cleanup easier, but a single-purpose toaster is only sensible if toast is frequent enough to justify permanent or semi-permanent counter space."
     pros:

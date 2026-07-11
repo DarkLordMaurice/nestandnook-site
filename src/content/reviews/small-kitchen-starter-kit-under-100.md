@@ -20,6 +20,7 @@ imageCaption: "A useful starter kit covers repeat jobs without becoming a giant 
 products:
   - name: "Mercer Culinary Millennia 8-Inch Chef's Knife"
     asin: "B000PS2XI4"
+    image: "/products/small-kitchen-starter-kit-under-100-1.jpg"
     bestFor: "The one-knife foundation"
     blurb: "An 8-inch chef's knife covers most everyday chopping, slicing, and mincing without forcing a small kitchen to store a block full of specialty blades. The textured handle and protective finger guard make it approachable, but every knife still needs careful handling and proper storage."
     pros:
@@ -39,6 +40,7 @@ products:
     smallSpaceNote: "A single good general-purpose knife is more storage-efficient than a block filled with blades that repeat the same job."
   - name: "Lipper International Bamboo Cutting and Serving Board"
     asin: "B01DF3DAYQ"
+    image: "/products/small-kitchen-starter-kit-under-100-2.jpg"
     bestFor: "The compact prep surface"
     blurb: "This bamboo board provides a stable everyday cutting surface with a juice groove and cork backing to help control mess and movement. It also doubles as a serving board, which gives it a second useful job instead of becoming a single-purpose slab."
     pros:
@@ -58,6 +60,7 @@ products:
     smallSpaceNote: "Measure the counter first; a board that is too small is unsafe, while one that is too large becomes the counter."
   - name: "Carote 8-Inch Ceramic Nonstick Frying Pan"
     asin: "B0F9NYSR7R"
+    image: "/products/small-kitchen-starter-kit-under-100-3.jpg"
     bestFor: "The everyday stovetop pan"
     blurb: "An 8-inch frying pan is a practical size for eggs, vegetables, reheating, and single portions without occupying the cabinet space of a large cookware set. The ceramic nonstick surface reduces sticking for everyday jobs, but the small diameter is not designed for batch cooking."
     pros:
@@ -77,6 +80,7 @@ products:
     smallSpaceNote: "This is the small-meal pan, not an entire cookware solution. Add a saucepan later only when the cooking routine proves it is needed."
   - name: "GoodCook Everyday Nonstick Baking Sheet Set"
     asin: "B0026RHI3M"
+    image: "/products/small-kitchen-starter-kit-under-100-4.jpg"
     bestFor: "The oven and sheet-pan layer"
     blurb: "A nesting baking-sheet set expands the starter kit beyond the stovetop for roasted vegetables, small sheet-pan dinners, cookies, and reheating. The pans stack together, but the exact set contents and dimensions should be confirmed on the current listing before publication."
     pros:
@@ -96,6 +100,7 @@ products:
     smallSpaceNote: "Measure the usable oven cavity, not the exterior appliance width. Small rental ovens vary more than product photos suggest."
   - name: "OXO Good Grips Stainless Steel Multi-Purpose Bench Scraper"
     asin: "B00004OCNJ"
+    image: "/products/small-kitchen-starter-kit-under-100-5.jpg"
     bestFor: "The prep-to-cleanup multiplier"
     blurb: "A bench scraper moves chopped food into a pan, gathers scraps, portions dough, and clears a cutting board without adding a bulky appliance. It is the smallest item in the kit and the one that most directly helps a tiny prep zone reset between ingredients."
     pros:

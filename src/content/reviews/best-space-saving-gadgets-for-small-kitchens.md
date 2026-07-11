@@ -14,6 +14,7 @@ imageCaption: "This is the starter overview: identify the zone first, then use t
 products:
   - name: "NiHome Over-the-Sink Cutting Board with Collapsible Colander"
     asin: "B0BM798RYV"
+    image: "/products/best-space-saving-gadgets-for-small-kitchens-1.jpg"
     bestFor: "Best for temporary prep space"
     blurb: "An over-sink board turns the sink zone into a short-term cutting and rinsing station when the counter is the real bottleneck."
     pros:
@@ -26,6 +27,7 @@ products:
     smallSpaceNote: "Measure the sink's full outside support span and edge depth, not only the basin opening."
   - name: "Dexas POP Collapsible Silicone Colander"
     asin: "B001TI1MP4"
+    image: "/products/best-space-saving-gadgets-for-small-kitchens-2.jpg"
     bestFor: "Representative collapsible-tool pick"
     blurb: "A collapsible colander illustrates the category's main benefit: a bulky bowl-shaped tool stores much flatter between uses. See the dedicated collapsible-tools guide for the full category decision."
     pros:
@@ -38,6 +40,7 @@ products:
     smallSpaceNote: "Use the dedicated collapsible-tools guide before choosing among colanders, drying racks, funnels, and other folding tools."
   - name: "HOSHANHO 16-Inch Acacia Wood Magnetic Knife Strip"
     asin: "B0921NX1WJ"
+    image: "/products/best-space-saving-gadgets-for-small-kitchens-3.jpg"
     bestFor: "Best drawer-space reclaimer"
     blurb: "A wall-mounted magnetic strip can move knives and compatible metal tools out of a crowded drawer."
     pros:
@@ -50,6 +53,7 @@ products:
     smallSpaceNote: "Confirm wall material, mounting rights, child safety, and a route that does not cross the main prep area."
   - name: "Cuisinart Mini-Prep Plus 3-Cup Food Processor"
     asin: "B0000645YL"
+    image: "/products/best-space-saving-gadgets-for-small-kitchens-4.jpg"
     bestFor: "Best compact powered prep helper"
     blurb: "A small-batch processor can reduce knife work without requiring the footprint of a full-size appliance."
     pros:
@@ -62,6 +66,7 @@ products:
     smallSpaceNote: "See the minimal-counter prep guide before buying; the appliance earns space only when it replaces repeated manual work."
   - name: "dokaworld 5-Piece Stackable Nesting Glass Bowl Set"
     asin: "B086WSY267"
+    image: "/products/best-space-saving-gadgets-for-small-kitchens-5.jpg"
     bestFor: "Representative nesting-bowl pick"
     blurb: "Nesting bowls show how a matched set can replace several mismatched shapes with one stack. Use the dedicated bowl guide for material and lid decisions."
     pros:
