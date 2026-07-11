@@ -82,6 +82,12 @@ faqs:
 
 An ergonomic home office setup under $150 should be treated as a **priority plan**, not a live-price guarantee. The most practical core is foot support, monitor height, and cable control. Those three areas can be addressed independently, so the right approach is to check current retailer totals and buy in the order that matches the problem actually affecting your desk.
 
+<figure class="inline-photo">
+  <img src="/winnie/ergonomic-home-office-setup-under-150-scene1.jpg" alt="A modest desk setup with a footrest, monitor riser, and cable tray together" loading="lazy" />
+  <figcaption>Three cheap fixes, one coherent setup — that's the whole budget target.</figcaption>
+</figure>
+
+
 <div class="polaroid inset">
   <img src="/winnie/winnie-gear-desk-frustrated.jpg" alt="Winnie Hollowell at a compact desk with low monitors and loose cables before a small-space setup audit." width="1402" height="1122" />
 </div>
@@ -104,6 +110,12 @@ It does **not** claim to cover every category in the complete office guide. A ch
 
 ## Buy in this order when the cart total changes
 
+<figure class="inline-photo">
+  <img src="/winnie/ergonomic-home-office-setup-under-150-scene2.jpg" alt="A flatlay of small ergonomic desk accessories arranged on a wood surface" loading="lazy" />
+  <figcaption>None of these are exciting purchases. That's exactly why they get skipped.</figcaption>
+</figure>
+
+
 - **Active discomfort first:** foot support or monitor position, depending on the measured mismatch.
 - **Mechanical clutter second:** lift the power strip and route the main cable bundle.
 - **Convenience third:** add desk-edge clips for the connectors that keep falling.
@@ -115,6 +127,12 @@ It does **not** claim to cover every category in the complete office guide. A ch
 - Two of the three core problems are already solved; buy only the remaining piece.
 - The desk edge cannot accept a clamp or a standing desk needs a movement-safe cable route.
 - The current cart total does not fit the budget; use the priority order rather than assuming the target is guaranteed.
+
+
+<figure class="inline-photo">
+  <img src="/winnie/ergonomic-home-office-setup-under-150-scene3.jpg" alt="A compact home office desk with basic ergonomic accessories in place" loading="lazy" />
+  <figcaption>Simple and tidy beats impressive and half-finished on a real budget.</figcaption>
+</figure>
 
 ## Frequently asked questions
 

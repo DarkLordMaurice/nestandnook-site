@@ -34,6 +34,12 @@ faqs:
 
 A small home office works when five systems agree with each other: chair and foot support, monitor position, cable routing, the working surface, and lighting. The order matters. Fix active discomfort and physical mismatches first, then handle visual clutter and workflow friction. This guide routes each problem to the deeper page that covers it.
 
+<figure class="inline-photo">
+  <img src="/winnie/small-home-office-setup-guide-scene1.jpg" alt="A monitor raised to eye level on a riser stand, footrest visible underneath" loading="lazy" />
+  <figcaption>Foot support and monitor height solved together, not as two separate purchases.</figcaption>
+</figure>
+
+
 <p id="quick-answer">Build a small home office in this order: <strong>chair and foot support, monitor position, cable control, desk surface, then lighting</strong>. Start with the category causing a measurable problem right now. The separate under-$150 page is a planning target for three core accessories—not a guaranteed all-five-category bundle.</p>
 
 <h2 id="measure-first-check">Run a five-zone desk audit</h2>
@@ -59,6 +65,12 @@ Set the chair for the keyboard and desk first. If that leaves the feet unsupport
 
 ## 2. Monitor position
 
+<figure class="inline-photo">
+  <img src="/winnie/small-home-office-setup-guide-scene2.jpg" alt="Neatly routed cables along the underside of a desk using a cable tray" loading="lazy" />
+  <figcaption>Cable control is step three for a reason — it's easiest once the furniture is settled.</figcaption>
+</figure>
+
+
 For two displays, start with [how to position dual monitors](/home-office/how-to-position-dual-monitors/) and then compare [dual-monitor stands](/home-office/best-monitor-stands-for-dual-monitors/). For one small desk, use the [monitor-riser guide](/home-office/best-monitor-risers-small-desk/) after checking the required lift and keyboard clearance.
 
 ## 3. Cable control
@@ -80,3 +92,9 @@ The [under-$150 setup](/home-office/ergonomic-home-office-setup-under-150/) prio
 *Retailer listings, specifications, and prices change. Confirm current compatibility and totals before ordering.*
 
 > **Winnie's take:** A complete setup is not a shopping list. It is five checks. Pass the checks you already pass, fix the one that keeps failing, and stop before the desk turns into a catalog.
+
+
+<figure class="inline-photo">
+  <img src="/winnie/small-home-office-setup-guide-scene3.jpg" alt="A home office desk lit with layered task and ambient lighting, warm inviting tone" loading="lazy" />
+  <figcaption>Lighting is the layer that makes the whole setup feel finished, not just functional.</figcaption>
+</figure>

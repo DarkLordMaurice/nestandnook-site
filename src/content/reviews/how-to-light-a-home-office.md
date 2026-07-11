@@ -5,6 +5,7 @@ primaryKeyword: "how to light a home office"
 hub: "home-office"
 pageType: "how_to"
 publishDate: 2026-07-06
+updatedDate: 2026-07-11
 disclosure: true
 schemaType: "Article"
 image: "/winnie/winnie-office-howto-lighting.jpg"
@@ -27,6 +28,12 @@ faqs:
 
 Learning how to light a home office properly comes down to one idea: stop relying on a single light source and start layering three different kinds — task, ambient, and bias — so your eyes never have to work against harsh contrast for eight hours straight.
 
+<figure class="inline-photo">
+  <img src="/winnie/how-to-light-a-home-office-scene1.jpg" alt="A focused desk lamp casting bright task lighting onto a keyboard and notebook" loading="lazy" />
+  <figcaption>Task lighting is the layer people buy first and rely on entirely — it's only one-third of the fix.</figcaption>
+</figure>
+
+
 <p id="quick-answer">Light a home office in three layers: task lighting (a desk lamp aimed at your work surface, not your screen), ambient lighting (the room's general brightness, kept close to your screen's brightness), and bias lighting (a soft glow behind the monitor that closes the gap between a bright screen and a dark wall). Most under-lit setups are missing bias lighting specifically — it's the cheapest layer and the one people forget to add.</p>
 
 <h2 id="measure-first-check">Check which layer your setup is actually missing</h2>
@@ -38,6 +45,12 @@ Most under-lit home offices have exactly one light doing all the work — an ove
 Task lighting is the focused, direct light your eyes actually need for reading, writing, or close work — this is what a good [desk lamp](/home-office/best-desk-lamps-for-eye-strain/) is for. Aim it at your desk surface and keyboard, not at your monitor, since light hitting the screen directly just creates glare and washes out contrast rather than helping you see it better. An adjustable-arm lamp lets you redirect light exactly where you're working instead of lighting the whole desk evenly, which matters less than people assume.
 
 ## Layer two: ambient lighting
+
+<figure class="inline-photo">
+  <img src="/winnie/how-to-light-a-home-office-scene2.jpg" alt="Soft ambient overhead lighting filling a home office room with warm, even light" loading="lazy" />
+  <figcaption>Ambient light is what keeps the room from feeling like a single spotlight.</figcaption>
+</figure>
+
 
 Ambient light is the general room-filling light — overhead fixtures, floor lamps, or daylight through a window — that sets the overall brightness of the space. The goal here isn't brightness for its own sake, it's keeping the room's baseline light level reasonably close to your screen's brightness so neither reads as jarringly dark or jarringly bright by comparison.
 
@@ -62,3 +75,9 @@ A well-lit home office isn't one bright light — it's a desk lamp aimed at your
 *Prices and availability change constantly, so we don't quote figures here — tap through to see current pricing on any linked product.*
 
 > **Winnie's take:** I ignored bias lighting for years because it sounded like a gamer thing. It's not — it's the difference between finishing a workday with tired eyes and not noticing your eyes at all. Cheapest fix on this list, biggest actual difference.
+
+
+<figure class="inline-photo">
+  <img src="/winnie/how-to-light-a-home-office-scene3.jpg" alt="Soft bias lighting glowing behind a monitor screen in a dim room" loading="lazy" />
+  <figcaption>Bias light behind the screen is the layer almost nobody adds, and the eye strain difference is real.</figcaption>
+</figure>

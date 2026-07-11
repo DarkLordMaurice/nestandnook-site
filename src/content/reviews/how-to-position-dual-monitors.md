@@ -5,6 +5,7 @@ primaryKeyword: "how to position dual monitors ergonomically"
 hub: "home-office"
 pageType: "how_to"
 publishDate: 2026-07-06
+updatedDate: 2026-07-11
 disclosure: true
 schemaType: "Article"
 image: "/winnie/winnie-office-dual-monitors.jpg"
@@ -27,6 +28,12 @@ faqs:
 
 How to position dual monitors ergonomically is really a question about eliminating repeated small movements — the neck tilt when your eyes go from a lower screen to a higher one, or the head turn when two monitors sit too far apart. None of that feels dramatic in the moment. It adds up over an eight-hour day the same way any repeated small strain does.
 
+<figure class="inline-photo">
+  <img src="/winnie/how-to-position-dual-monitors-scene1.jpg" alt="Two monitors positioned closely together with minimal gap, angled slightly inward" loading="lazy" />
+  <figcaption>Close the gap first — a wide bezel gap is a bigger neck problem than most height mistakes.</figcaption>
+</figure>
+
+
 <p id="quick-answer">Get both monitors to matching height first — it's the single highest-impact fix, since most monitors ship on stands of slightly different heights by default. From there, close the gap between them so your head doesn't have to turn between screens, and decide which one is actually primary so you're not centering your body between two displays you don't use equally.</p>
 
 <h2 id="measure-first-check">Check your actual eye-level and screen heights</h2>
@@ -45,6 +52,12 @@ Two monitors sitting far apart, or perfectly flat instead of angled slightly inw
 
 ## Decide which screen is actually primary
 
+<figure class="inline-photo">
+  <img src="/winnie/how-to-position-dual-monitors-scene2.jpg" alt="A dual monitor setup with one monitor centered ahead and the second angled to the side" loading="lazy" />
+  <figcaption>Pick a primary screen and build the angle around it, not around symmetry.</figcaption>
+</figure>
+
+
 If you split attention evenly, center the setup between both screens. If one is clearly primary — the one you read and type on most — center that one directly in front of you at eye level, and treat the second as a reference screen slightly off to the side. Trying to center your body between two monitors you don't actually use equally just means twisting toward the one you look at more, all day, for no reason.
 
 ## Distance matters as much as angle
@@ -56,3 +69,9 @@ Both screens should sit far enough away that you're not straining to focus up cl
 A dual-monitor stand or arm solves the height-matching and angle problems in one purchase, which is usually faster than trying to shim mismatched stock stands with books. It won't fix distance or which screen is primary — those are placement decisions you make once the stand gives you the freedom to actually move things.
 
 > **Winnie's take:** I've read a genuinely large number of dual-monitor complaints, and almost none of them are actually about screen size or resolution. They're about one monitor sitting two inches lower than the other for six months because nobody got around to fixing it. Fix the height mismatch first. Everything else is a smaller problem after that.
+
+
+<figure class="inline-photo">
+  <img src="/winnie/how-to-position-dual-monitors-scene3.jpg" alt="Overhead view showing monitor distance and angle relative to a desk chair" loading="lazy" />
+  <figcaption>Distance and angle are the same equation — fixing one without the other doesn't finish the job.</figcaption>
+</figure>

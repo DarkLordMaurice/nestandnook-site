@@ -88,6 +88,12 @@ faqs:
 
 Working from the couch or bed is either a nice occasional change of scenery or, if you do it daily, a slow-motion neck and back problem. The issue is almost never the couch — it's that a bare laptop on your lap puts the screen 10-15 inches below eye level and the fans about two inches from a cushion that's blocking every vent. The best laptop stands for bed and couch fix both problems at once: they lift the screen closer to eye level and open up airflow underneath.
 
+<figure class="inline-photo">
+  <img src="/winnie/best-laptop-stand-for-couch-and-bed-scene1.jpg" alt="A laptop stand holding a laptop above a couch cushion" loading="lazy" />
+  <figcaption>Off the lap, into airflow — the whole point in one shot.</figcaption>
+</figure>
+
+
 <div class="polaroid inset">
   <img src="/winnie/winnie-gear-laptop-couch-before.jpg" alt="Winnie hunched over a bare laptop balanced directly on a couch cushion, no stand" width="1122" height="1402" />
 </div>
@@ -111,7 +117,19 @@ Most people shopping this category focus on cushion softness, but the two specs 
 - **Stability while typing:** if you'll actually type on it (not just watch video), check that reviewers specifically mention it staying put.
 - **Portability vs. permanence:** a folding lap desk travels; a rolling cart doesn't, but it's more stable and adjustable if your setup is fixed.
 
+
+<figure class="inline-photo">
+  <img src="/winnie/best-laptop-stand-for-couch-and-bed-scene3.jpg" alt="A laptop stand positioned over a bed with rumpled blankets, laptop elevated" loading="lazy" />
+  <figcaption>Bed-height is a different problem than couch-height. The stand has to answer both.</figcaption>
+</figure>
+
 ## Quick comparison
+
+<figure class="inline-photo">
+  <img src="/winnie/best-laptop-stand-for-couch-and-bed-scene2.jpg" alt="Close-up of a laptop stand's base clamp and adjustable joint" loading="lazy" />
+  <figcaption>The joint is what holds the angle for an entire movie, not just a photo.</figcaption>
+</figure>
+
 
 | Stand | Best for | Height lift | Airflow | Portability |
 |-------|----------|:-----------:|:-------:|:-----------:|

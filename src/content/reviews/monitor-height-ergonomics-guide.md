@@ -5,6 +5,7 @@ primaryKeyword: "correct monitor height"
 hub: "home-office"
 pageType: "how_to"
 publishDate: 2026-07-06
+updatedDate: 2026-07-11
 disclosure: true
 schemaType: "Article"
 image: "/winnie/winnie-office-monitor-height-test.jpg"
@@ -27,6 +28,12 @@ faqs:
 
 Correct monitor height gets treated like a fixed spec — "raise your screen 4 inches" — when it's actually a simple test that gives a different right answer depending on your chair, your desk, and your own proportions. The test matters more than any specific number.
 
+<figure class="inline-photo">
+  <img src="/winnie/monitor-height-ergonomics-guide-scene1.jpg" alt="A monitor positioned below eye level on a desk, showing a downward viewing angle" loading="lazy" />
+  <figcaption>Too low is the far more common mistake, and it's the one people notice least.</figcaption>
+</figure>
+
+
 <p id="quick-answer">Correct monitor height isn't a fixed number — run the ten-second test: close your eyes, open them, and look straight ahead without adjusting your head. Wherever your eyes naturally land is where the top third of your screen should be. Most monitors sit too low rather than too high, and the fix is a stand or riser that changes height without touching anything else about your setup.</p>
 
 <h2 id="measure-first-check">The ten-second test</h2>
@@ -38,6 +45,12 @@ Sit at your desk the way you normally do, close your eyes for a second, then ope
 Most monitors ship on stands built for an average setup, and most desks are a standard height, so the combination frequently lands the screen a couple of inches below where your eyes naturally rest. That gap gets closed by tilting your head down, repeatedly, all day — a movement small enough to ignore in the moment and large enough to matter by the end of a workweek. This is almost always the actual mechanism behind "my neck hurts by evening," more often than any single dramatic cause.
 
 ## What actually fixes it
+
+<figure class="inline-photo">
+  <img src="/winnie/monitor-height-ergonomics-guide-scene2.jpg" alt="The same monitor raised on a riser stand to eye level, showing a level viewing angle" loading="lazy" />
+  <figcaption>Eye level, not screen-top level — that ten-second test changes the number.</figcaption>
+</figure>
+
 
 A monitor stand or riser is the direct fix — it changes the screen's height without changing anything else about your setup, which is exactly the kind of one-variable fix that's easy to get right. See the [monitor stand roundup](/home-office/best-monitor-stands-for-dual-monitors/) for picks ranked by how much lift and stability they actually provide, since a wobbly riser under a monitor is its own separate annoyance.
 
@@ -54,3 +67,9 @@ Stacked books work in a pinch and cost nothing, but they rarely hold a precise, 
 Height alone doesn't finish the job — if the screen sits at the right height but too close or too far away, you'll unconsciously tilt your head to compensate anyway, undoing the fix. Roughly an arm's length is the common starting distance; adjust from there based on your actual eyesight and screen size rather than treating it as a fixed rule.
 
 > **Winnie's take:** I've read enough of these threads to know the single most common mistake is fixing height once and never rechecking it after a chair swap, a new desk, or even just a different pair of shoes that changes your seated height by half an inch. Run the ten-second test again any time something else about your setup changes.
+
+
+<figure class="inline-photo">
+  <img src="/winnie/monitor-height-ergonomics-guide-scene3.jpg" alt="Overhead view showing the distance between a monitor screen and a desk chair" loading="lazy" />
+  <figcaption>Height fixes half the problem. Distance is the other half people skip.</figcaption>
+</figure>

@@ -5,6 +5,7 @@ primaryKeyword: "how to hide cables under desk"
 hub: "home-office"
 pageType: "how_to"
 publishDate: 2026-07-06
+updatedDate: 2026-07-11
 disclosure: true
 schemaType: "Article"
 image: "/winnie/winnie-office-hide-cables-under-desk.jpg"
@@ -27,6 +28,12 @@ faqs:
 
 How to hide cables under desk furniture is less about finding the one right product and more about realizing it's actually three separate small problems wearing a trench coat: loose cable slack, a heavy power brick with nowhere to sit, and individual cords that need a path to follow instead of dangling free.
 
+<figure class="inline-photo">
+  <img src="/winnie/how-to-hide-cables-under-desk-scene1.jpg" alt="A bulky power brick tucked into a small under-desk storage tray, cord routed neatly" loading="lazy" />
+  <figcaption>The power brick is always the ugliest piece — give it its own tray.</figcaption>
+</figure>
+
+
 <p id="quick-answer">Hide desk cables by solving three problems in order: a tray to give the power brick and bulk of the mess a home off the floor, a sleeve to bundle the slack into one tidy run, and clips to route individual cords along a fixed path to your monitor or laptop. Skip any one of the three and the mess just relocates instead of disappearing.</p>
 
 <h2 id="measure-first-check">Count your actual cables and power bricks first</h2>
@@ -38,6 +45,12 @@ Before buying anything, look under your desk and count what's actually there: ho
 Almost every desk has at least one bulky power adapter that doesn't hang neatly from a cable clip and instead just sits wherever gravity puts it — often directly on the floor where it becomes a dust magnet and a thing you kick. A cable tray mounted under the desk gives it (and the general tangle of cords running to it) an actual home, off the floor and out of sight, without needing to be unplugged or moved every time you clean.
 
 ## Problem 2: cable slack
+
+<figure class="inline-photo">
+  <img src="/winnie/how-to-hide-cables-under-desk-scene2.jpg" alt="Excess cable slack coiled and secured with a velcro tie under a desk" loading="lazy" />
+  <figcaption>Slack left loose is what turns a tidy desk back into a mess by week two.</figcaption>
+</figure>
+
 
 Even with a tray catching the mess, individual cables usually have several feet of unused slack coiled somewhere — a monitor cable rated for a much longer desk than you actually have, a charging cable with six extra feet doing nothing but tangling. A cable sleeve bundles multiple cords into a single, tidy tube, turning a nest of loose wires into one manageable cable running along its route.
 
@@ -60,3 +73,9 @@ If you're constantly unplugging and replugging things — swapping monitors, mov
 See the [full cable management roundup](/home-office/desk-cable-management/) for specific tray, sleeve, and clip picks that cover all three problems above.
 
 > **Winnie's take:** I have strong, possibly excessive opinions about cable management, and the one thing I'd tell anyone is: buy all three pieces at once, not one at a time over three separate frustrated weekends. It's genuinely a system, not a single purchase, and half-measures look almost as messy as doing nothing.
+
+
+<figure class="inline-photo">
+  <img src="/winnie/how-to-hide-cables-under-desk-scene3.jpg" alt="Cables routed along the underside of a desk surface using adhesive clips" loading="lazy" />
+  <figcaption>Routing along the desk itself is the step most people do last, if at all.</figcaption>
+</figure>
