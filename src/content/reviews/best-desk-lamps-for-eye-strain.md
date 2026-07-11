@@ -99,6 +99,12 @@ faqs:
 
 The best desk lamp for eye strain is not simply the brightest lamp. A useful setup reduces harsh contrast, avoids direct glare, diffuses the light source, and lets the reader adjust the output to the room. Certification claims can add evidence, but only when the claim is tied to the exact model being sold.
 
+<figure class="inline-photo">
+  <img src="/winnie/best-desk-lamps-for-eye-strain-scene1.jpg" alt="A warm desk lamp casting soft diffused light across an open notebook" loading="lazy" />
+  <figcaption>Diffusion matters more than brightness — a harsh point source is the actual eye-strain culprit.</figcaption>
+</figure>
+
+
 <p id="quick-answer">Choose a desk lamp with <strong>diffused output, useful dimming, adjustable placement, and model-specific documentation</strong>. For a small desk, a clamp lamp can preserve surface area. For a premium base lamp, verify that any flicker-free or low-blue-light certification claim applies to the exact current model rather than assuming the whole product line is identical.</p>
 
 ## Certification versus marketing language
@@ -116,7 +122,19 @@ Note the room's existing ambient light, screen brightness, desk-edge shape, avai
 - A certification claim cannot be matched to the exact current model and that claim is the main reason for the purchase.
 - Persistent eye discomfort continues regardless of lighting changes; that is a reason to seek appropriate professional advice rather than keep buying lamps.
 
+
+<figure class="inline-photo">
+  <img src="/winnie/best-desk-lamps-for-eye-strain-scene3.jpg" alt="Three desk lamp styles — clamp, gooseneck, and panel — arranged together" loading="lazy" />
+  <figcaption>Shape follows desk footprint before it follows style.</figcaption>
+</figure>
+
 ## Quick comparison
+
+<figure class="inline-photo">
+  <img src="/winnie/best-desk-lamps-for-eye-strain-scene2.jpg" alt="Close-up of even light diffusion across a desk surface with no harsh shadows" loading="lazy" />
+  <figcaption>No hot spot, no hard shadow edge. That's the test, not the lumen number.</figcaption>
+</figure>
+
 
 | Lamp | Best for | Evidence to verify | Mount |
 |---|---|---|---|

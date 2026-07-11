@@ -86,6 +86,12 @@ faqs:
 
 The best monitor riser for small desk setups has to solve two problems at once — get your screen to eye level, and not eat the desk space you were trying to protect in the first place. A lot of monitor risers are designed like they're going on a desk with room to spare. On a small desk, the size of the riser itself is as much a spec as its height range.
 
+<figure class="inline-photo">
+  <img src="/winnie/best-monitor-risers-small-desk-scene1.jpg" alt="A monitor riser elevating a monitor to eye level, storage space visible underneath" loading="lazy" />
+  <figcaption>Eye level and a little storage back — that's the whole pitch.</figcaption>
+</figure>
+
+
 <p id="quick-answer">Our top pick for most small desks is the <strong>WALI Adjustable Monitor Stand</strong> — it's the rare riser that adds storage clearance instead of just taking up more surface, so you get eye-level height and a spot for a keyboard underneath in the same footprint. Budget is the main constraint instead? The <strong>Amazon Basics</strong> riser does the core job without paying for extra features you may not need.</p>
 
 <h2 id="measure-first-check">Measure your desk's actual footprint before buying</h2>
@@ -102,6 +108,12 @@ The best monitor riser for small desk setups has to solve two problems at once �
 - You need to tilt, swivel, or VESA-mount the monitor, not just raise it — a monitor arm or full stand (see our dual-monitor stand guide) fits that need better than a fixed riser.
 - Your desk surface is already at capacity — a riser without clearance underneath just adds bulk instead of reclaiming space; check the "clearance underneath" spec above before buying one that doesn't help.
 
+
+<figure class="inline-photo">
+  <img src="/winnie/best-monitor-risers-small-desk-scene3.jpg" alt="Close-up of a monitor on a slim riser platform with a gap and storage space beneath" loading="lazy" />
+  <figcaption>The gap underneath is real usable space, not just clearance.</figcaption>
+</figure>
+
 ## Quick comparison
 
 | Riser | Best for | Height | Storage underneath |
@@ -113,6 +125,12 @@ The best monitor riser for small desk setups has to solve two problems at once �
 | WALI 2-Pack (STT003-2) | Dual monitors | 3 settings each | Yes, vented |
 
 ## Frequently asked questions
+
+<figure class="inline-photo">
+  <img src="/winnie/best-monitor-risers-small-desk-scene2.jpg" alt="Overhead comparison of two monitor risers with different footprints" loading="lazy" />
+  <figcaption>Footprint is the number that actually matters on a small desk, not the height range.</figcaption>
+</figure>
+
 
 **What's the difference between a monitor riser and a monitor stand?**
 In practice the terms overlap a lot. A riser is usually a simpler, often fixed or 2-3-step platform focused purely on adding height. A stand or arm typically adds more adjustment (tilt, swivel, VESA mounting) and is meant to replace the monitor's stock stand entirely rather than sit under it.

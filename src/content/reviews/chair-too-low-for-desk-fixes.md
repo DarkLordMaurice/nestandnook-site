@@ -5,6 +5,7 @@ primaryKeyword: "chair too low for desk"
 hub: "home-office"
 pageType: "how_to"
 publishDate: 2026-07-06
+updatedDate: 2026-07-11
 disclosure: true
 schemaType: "Article"
 image: "/winnie/winnie-office-chair-too-low.jpg"
@@ -27,6 +28,12 @@ faqs:
 
 "Chair too low for desk" is a search that usually means something slightly different than it sounds — it's rarely that the chair itself is defective, it's that the chair and desk were never actually matched to each other, and one of them has to give.
 
+<figure class="inline-photo">
+  <img src="/winnie/chair-too-low-for-desk-fixes-scene1.jpg" alt="An office chair's pneumatic height lever being adjusted, chair raised relative to a desk" loading="lazy" />
+  <figcaption>The cheapest fix is usually the first one people skip.</figcaption>
+</figure>
+
+
 <p id="quick-answer">Raise your chair first — it's free and takes ten seconds, and it fixes the wrist and shoulder strain that's the real symptom of this mismatch. If your feet stop reaching the floor as a result, add a footrest rather than lowering the chair back down. If the chair is already maxed out and still feels low, the desk itself needs raising instead, via a riser or leg extenders.</p>
 
 <h2 id="measure-first-check">Check your wrists and shoulders, not just how the chair feels</h2>
@@ -45,6 +52,12 @@ This is the first thing to try, because it's free and takes ten seconds. Raise y
 
 ## Fix 2: raise the desk instead
 
+<figure class="inline-photo">
+  <img src="/winnie/chair-too-low-for-desk-fixes-scene2.jpg" alt="Desk risers placed under each leg of a desk, slightly elevating the surface" loading="lazy" />
+  <figcaption>If the chair's already maxed out, the desk has to move instead.</figcaption>
+</figure>
+
+
 If your chair is already maxed out and still feels low, the desk is the actual mismatch — a desk riser or a set of desk-leg extenders lifts the whole work surface a couple of inches, which is usually cheaper and less disruptive than replacing the desk outright. This is worth trying before you assume new furniture is the only option.
 
 ## Fix 3: check the desk-to-keyboard relationship, not just desk-to-chair
@@ -56,3 +69,9 @@ Sometimes the desk height is fine but a keyboard sitting directly on top of a th
 None of these fixes exist in isolation — raising your chair to fix your wrists, then adding a footrest to fix your feet, is exactly the kind of two-step chain that a full ergonomic pass through your desk catches in one go. See the [complete setup guide](/home-office/ergonomic-home-office-setup-under-150/) if this is the first mismatch you've noticed and you suspect there are others.
 
 > **Winnie's take:** This is the one desk complaint where I see people quietly suffer the longest, because "just raise your chair" sounds too simple to be the actual fix. It usually is the fix. The footrest is just the follow-up step nobody mentions until their feet start complaining too.
+
+
+<figure class="inline-photo">
+  <img src="/winnie/chair-too-low-for-desk-fixes-scene3.jpg" alt="A keyboard tray mounted under a desk at a lower height than the desk surface" loading="lazy" />
+  <figcaption>Wrist angle is a separate problem from seat height — don't let one fix hide the other.</figcaption>
+</figure>

@@ -86,6 +86,12 @@ faqs:
 
 The best desk pad does three unglamorous jobs at once: protects the desk surface from scratches and spills, quiets the clack of a mechanical keyboard against bare wood, and gives a cluttered desk one clean visual anchor that makes everything on top of it look more organized than it technically is.
 
+<figure class="inline-photo">
+  <img src="/winnie/best-desk-pads-scene1.jpg" alt="A leather-look desk pad covering a wood desk, keyboard and mouse on top" loading="lazy" />
+  <figcaption>One material choice quiets the whole desk and gives it a visual edge.</figcaption>
+</figure>
+
+
 <p id="quick-answer">Our top pick for most desks is the <strong>Aothia Leather Desk Pad Protector</strong> — sized for a standard keyboard-and-mouse zone without overwhelming a smaller desk. Want the option to flip between two looks? The <strong>Aothia Dual-Sided</strong> pad's cork reverse side is the more versatile buy, just in a smaller footprint.</p>
 
 <h2 id="measure-first-check">Measure your desk before you pick a size</h2>
@@ -102,7 +108,19 @@ The single most common regret in desk pad reviews isn't about material quality �
 
 PU leather (most of the options here) resists water and wipes clean easily, which matters if coffee or crumbs are a regular desk hazard. Cork is more porous and shows wear differently, but has a warmer, more textured look that some people prefer over a uniform leather surface. Neither is objectively better — it's a look-and-feel choice more than a durability one.
 
+
+<figure class="inline-photo">
+  <img src="/winnie/best-desk-pads-scene3.jpg" alt="A large desk pad sized to a full small-desk surface, laptop and mug on top" loading="lazy" />
+  <figcaption>Size the pad to the desk, not to whatever was on the shelf.</figcaption>
+</figure>
+
 ## Quick comparison
+
+<figure class="inline-photo">
+  <img src="/winnie/best-desk-pads-scene2.jpg" alt="Split comparison of a leather-look texture and a natural cork texture" loading="lazy" />
+  <figcaption>Leather-look wipes clean. Cork forgives a coffee ring before it sets.</figcaption>
+</figure>
+
 
 | Desk Pad | Best for | Size | Material |
 |----------|----------|------|----------|

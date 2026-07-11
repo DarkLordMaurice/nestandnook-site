@@ -5,6 +5,7 @@ primaryKeyword: "cable management for standing desk"
 hub: "home-office"
 pageType: "how_to"
 publishDate: 2026-07-06
+updatedDate: 2026-07-11
 disclosure: true
 schemaType: "Article"
 image: "/winnie/winnie-office-standing-desk-cables.jpg"
@@ -27,6 +28,12 @@ faqs:
 
 Cable management for standing desk setups inherits every problem a regular desk has, then adds one uniquely annoying complication: the desk actually moves, and every cable running to it has to survive that motion, twice a day, indefinitely.
 
+<figure class="inline-photo">
+  <img src="/winnie/cable-management-standing-desk-scene1.jpg" alt="A flexible cable sleeve looping cables that flex with a standing desk's movement" loading="lazy" />
+  <figcaption>These cables move every single day — the sleeve has to survive that, not just look tidy once.</figcaption>
+</figure>
+
+
 <p id="quick-answer">Fix cables in two separate groups: anything living on the desktop (monitor, laptop, speakers) needs a flexible cable spine that moves with the desk through its full range, while anything running to a fixed point (a wall outlet, a mounted power strip) needs built-in slack management instead of a rigid mount. Handle the moving group first — it defines how much slack the fixed-point group needs to absorb.</p>
 
 <h2 id="measure-first-check">Test your desk's full height range before calling it done</h2>
@@ -45,6 +52,12 @@ Anything living on the desktop itself — monitor, laptop dock, speakers — nee
 
 ## Then handle the cables that stay fixed
 
+<figure class="inline-photo">
+  <img src="/winnie/cable-management-standing-desk-scene2.jpg" alt="A cable tray mounted underneath a desk surface, organizing several cables" loading="lazy" />
+  <figcaption>Fixed cables get the simple fix. Moving cables get the flexible one.</figcaption>
+</figure>
+
+
 Cables running to a wall outlet or a power strip mounted to a wall or fixed shelf are a different problem entirely — they need enough built-in slack to handle the desk's full height range without being so loose that they pool and tangle at the low end. A cable tray mounted to the desk's fixed frame (not the moving top) can catch this slack in one place rather than letting it drape across the floor.
 
 ## Don't forget the monitor arm, if you have one
@@ -58,3 +71,9 @@ Handle the desk-mounted cable spine first, since it defines how much slack the m
 See the [full cable management roundup](/home-office/desk-cable-management/) for tray, sleeve, and spine options, and the [general cable-hiding guide](/home-office/how-to-hide-cables-under-desk/) if you're setting this up on a fixed-height desk instead.
 
 > **Winnie's take:** The number of people who cable-manage a standing desk once, at whatever height it happened to be that day, and then wonder why something's pulling taut six months later — genuinely a lot. Test the full range of motion before you consider it done. It takes fifteen seconds and saves you a connector eventually.
+
+
+<figure class="inline-photo">
+  <img src="/winnie/cable-management-standing-desk-scene3.jpg" alt="Cables routed and clipped along a monitor arm's articulating joint" loading="lazy" />
+  <figcaption>The arm joint is the one spot people forget until a cable snags mid-adjustment.</figcaption>
+</figure>

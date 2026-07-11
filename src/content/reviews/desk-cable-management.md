@@ -99,6 +99,12 @@ faqs:
 
 Desk cable management is not one problem. It is three: the power strip and bulky connections need a home, the long runs between desk and outlet need a route, and the charging cords used every day need a parking spot. A tray handles containment. A sleeve handles routing. Clips handle access. Most disappointing setups happen when one product is expected to do all three jobs.
 
+<figure class="inline-photo">
+  <img src="/winnie/desk-cable-management-scene1.jpg" alt="A tangle of desk cables partially organized with a tray, sleeve, and clips together" loading="lazy" />
+  <figcaption>One product rarely finishes this. It's a layered fix, not a single purchase.</figcaption>
+</figure>
+
+
 <div class="polaroid inset">
   <img src="/winnie/winnie-gear-cable-tangle-before.jpg" alt="Winnie Hollowell beside a compact desk with a tangled power strip and loose cables on the floor." width="1122" height="1402" />
 </div>
@@ -120,7 +126,19 @@ Measure the power strip's length and depth, the desktop thickness, and the drop 
 - A standing desk is being treated like a fixed desk; use a route designed for movement.
 - The real problem is an overloaded or unsafe power strip. Organization does not replace electrical safety.
 
+
+<figure class="inline-photo">
+  <img src="/winnie/desk-cable-management-scene3.jpg" alt="Cables neatly routed through a cable tray mounted beneath a desk" loading="lazy" />
+  <figcaption>The tray does the heavy lifting once the sleeve and clips handle the rest.</figcaption>
+</figure>
+
 ## Quick comparison
+
+<figure class="inline-photo">
+  <img src="/winnie/desk-cable-management-scene2.jpg" alt="An under-desk tray, a cable sleeve, and adhesive clips arranged on a desk" loading="lazy" />
+  <figcaption>Containment, routing, and daily-access cables are three different jobs.</figcaption>
+</figure>
+
 
 | Product type | Solves | Best for | Installation check |
 |---|---|---|---|

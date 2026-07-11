@@ -101,6 +101,12 @@ faqs:
 
 Let's talk about the drawer that's having a moment — except today it's your feet. If you're 5'6" or shorter, most desks and chairs simply weren't built for you. Raise your chair enough to reach the keyboard comfortably and your feet start to dangle — which throws your weight onto the backs of your thighs, cuts circulation, and quietly wrecks your lower back by mid-afternoon. The best footrests for short people are the cheapest fix in ergonomics, but the one number that matters most is **how much lift it gives**. Many footrests top out around 4–5 inches, which barely helps if your feet hang several inches off the floor.
 
+<figure class="inline-photo">
+  <img src="/winnie/best-footrest-for-short-people-scene1.jpg" alt="An adjustable-height footrest platform under a desk, tilted at a comfortable angle" loading="lazy" />
+  <figcaption>The tilt matters as much as the height once your feet actually land on it.</figcaption>
+</figure>
+
+
 <p id="quick-answer">Our top pick for most short users is the <strong>HUANUO Ergonomic Under-Desk Footrest</strong> — it elevates higher than anything else here (up to about 6.7 inches) while still tilting and rocking. Want to fine-tune the exact height instead? The <strong>Kensington SoleMate Plus</strong> is the more precise tool, adjusting in fine steps rather than fixed notches.</p>
 
 <h2 id="measure-first-check">Check your actual knee height before buying</h2>
@@ -121,7 +127,19 @@ A footrest's job is to get your knees to roughly 90° with your feet fully suppo
 - **Stability:** a non-slip base or real weight rating keeps it planted on both carpet and hard floors.
 - **Motion vs. fixed:** rockers suit restless sitters; a solid platform suits anyone who wants to plant their feet and forget it.
 
+
+<figure class="inline-photo">
+  <img src="/winnie/best-footrest-for-short-people-scene3.jpg" alt="Three footrest styles — tilting platform, foam wedge, rocking — side by side" loading="lazy" />
+  <figcaption>Same problem, three genuinely different fixes.</figcaption>
+</figure>
+
 ## Quick comparison
+
+<figure class="inline-photo">
+  <img src="/winnie/best-footrest-for-short-people-scene2.jpg" alt="Close-up of a footrest's stepped height-adjustment mechanism" loading="lazy" />
+  <figcaption>A real range of settings, not just "low" and "regret it."</figcaption>
+</figure>
+
 
 | Footrest | Best for | Lift | Surface | Tilt |
 |----------|----------|------|---------|------|

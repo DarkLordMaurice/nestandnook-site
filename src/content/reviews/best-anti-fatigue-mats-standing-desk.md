@@ -86,6 +86,12 @@ faqs:
 
 The best anti fatigue mat for standing desk use is the difference between twenty comfortable minutes on your feet and an afternoon your knees and lower back remember the next day. Standing on a hard floor for hours concentrates pressure straight up through your joints in a way sitting simply doesn't — the mat's whole job is breaking up that pressure.
 
+<figure class="inline-photo">
+  <img src="/winnie/best-anti-fatigue-mats-standing-desk-scene1.jpg" alt="A textured anti-fatigue mat with raised ridges on a wood floor in front of a standing desk" loading="lazy" />
+  <figcaption>Terrain over flat foam, most days — the ridges are doing real work.</figcaption>
+</figure>
+
+
 <p id="quick-answer">Our top pick for most standing-desk users is the <strong>Topo by Ergodriven</strong> — its raised terrain design is the single most-cited reason reviewers say a full day standing feels different than on a flat mat. Tight on floor space? The <strong>Topo Mini</strong> gives the same terrain in a smaller footprint. Prioritizing budget instead? The <strong>Sky Solutions</strong> flat mat covers the core job well without the terrain premium.</p>
 
 ## Terrain vs. flat: the real trade-off
@@ -102,7 +108,19 @@ Grab a tape measure and mark where your feet actually land through a normal work
 - Your standing desk height itself is off — no mat compensates for a monitor or keyboard positioned for sitting; fix that first (see our small-desk posture guide below).
 - You already stand on thick carpet or a padded rug most of the day — you're closer to already having cushioning than someone on bare hardwood or tile, so the upgrade is smaller than it looks on paper.
 
+
+<figure class="inline-photo">
+  <img src="/winnie/best-anti-fatigue-mats-standing-desk-scene3.jpg" alt="Cross-section of a thick cushioned anti-fatigue mat showing layered foam construction" loading="lazy" />
+  <figcaption>The layers under the surface are what your knees actually notice.</figcaption>
+</figure>
+
 ## Quick comparison
+
+<figure class="inline-photo">
+  <img src="/winnie/best-anti-fatigue-mats-standing-desk-scene2.jpg" alt="Smooth flat foam mat beside a mat with raised terrain nubs and ridges" loading="lazy" />
+  <figcaption>Flat is comfortable standing still. Terrain is comfortable standing for an hour.</figcaption>
+</figure>
+
 
 | Mat | Best for | Design | Size |
 |-----|----------|--------|------|

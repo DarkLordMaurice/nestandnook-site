@@ -50,6 +50,12 @@ faqs:
 
 This review focuses on one reason the HUANUO appears near the top of the existing short-user comparison: its **stated lift is higher than the other models compared on that page**. That is a bounded claim about the visible comparison, not a claim about every footrest sold anywhere.
 
+<figure class="inline-photo">
+  <img src="/winnie/huanuo-ergonomic-footrest-review-scene1.jpg" alt="Close-up of a footrest's rocking platform mid-tilt motion, textured surface visible" loading="lazy" />
+  <figcaption>The rocking tilt is the feature that decides this footrest for most people, one way or the other.</figcaption>
+</figure>
+
+
 <p id="quick-answer">The HUANUO is most relevant when a measured floor gap requires more lift than the other models in our comparison provide. Its current listing has stated three height settings reaching roughly 6.7 inches, plus a rocking tilt. Verify the exact model and specification before ordering, then confirm the tallest setting still leaves comfortable knee clearance.</p>
 
 <h2 id="measure-first-check">Measure the actual floor gap before choosing maximum lift</h2>
@@ -61,6 +67,12 @@ Set the chair for the keyboard, then measure from the feet to the floor. Compare
 The platform is designed to move through a controlled tilt rather than remain fixed. That can suit readers who reposition their feet, but it is not automatically better than a rigid platform. Choose the mechanism deliberately.
 
 ## Surface and durability trade-off
+
+<figure class="inline-photo">
+  <img src="/winnie/huanuo-ergonomic-footrest-review-scene2.jpg" alt="Close-up texture detail of a footrest's ridged surface material" loading="lazy" />
+  <figcaption>Surface texture matters more after month three than it does on day one.</figcaption>
+</figure>
+
 
 The cushioned, textured top provides a softer contact surface than wood or hard plastic. The trade-off is that soft materials generally show wear sooner than a solid platform. Confirm the current model's material and care instructions on the listing.
 
@@ -78,3 +90,9 @@ The HUANUO is the higher-lift choice **within our compared set**. The [Kensingto
 *Model variants and specifications change. Verify the current retailer listing before relying on any stated dimension.*
 
 > **Winnie's take:** The useful claim is not “highest anywhere.” It is “highest among the models we compared.” That is still enough to make it the first page to read when the measured floor gap is the deciding problem.
+
+
+<figure class="inline-photo">
+  <img src="/winnie/huanuo-ergonomic-footrest-review-scene3.jpg" alt="Two footrest styles — a wider stepped platform and a dial-adjustable platform — side by side" loading="lazy" />
+  <figcaption>Stepped height versus dial precision is the real decision between these two.</figcaption>
+</figure>
