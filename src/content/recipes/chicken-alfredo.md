@@ -11,6 +11,7 @@ servings: 4
 difficulty: "easy"
 image: "/recipes/recipe-chicken-alfredo.jpg"
 altImage: "/recipes/recipe-chicken-alfredo-alt.jpg"
+ingredientsImage: "/recipes/recipe-chicken-alfredo-ingredients.jpg"
 altImageAlt: "A close-up of chicken alfredo pasta twirled on a fork, showing the silky sauce"
 imageAlt: "A bowl of fettuccine alfredo topped with sliced grilled chicken and cracked black pepper"
 winnieImage: "/winnie/winnie-holding-chicken-alfredo.jpg"

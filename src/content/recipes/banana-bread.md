@@ -11,6 +11,7 @@ servings: 8
 difficulty: "easy"
 image: "/recipes/recipe-banana-bread.jpg"
 altImage: "/recipes/recipe-banana-bread-alt.jpg"
+ingredientsImage: "/recipes/recipe-banana-bread-ingredients.jpg"
 altImageAlt: "A close-up slice of banana bread showing the moist, tender crumb"
 imageAlt: "A sliced loaf of banana bread on a wooden cutting board, showing the moist interior"
 winnieImage: "/winnie/winnie-kitchen-stir.jpg"
