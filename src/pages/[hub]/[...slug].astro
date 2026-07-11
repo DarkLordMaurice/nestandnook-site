@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
+import WinniePendingPhoto from '../../components/WinniePendingPhoto.astro';
 import BestForDecisionTable from '../../components/BestForDecisionTable.astro';
 import HowWeChoose from '../../components/HowWeChoose.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
@@ -94,7 +95,9 @@ const jsonLd = {
       </div>
     </div>
 
-    {d.image && (
+    {d.image === 'PENDING' ? (
+      <WinniePendingPhoto />
+    ) : d.image && (
       <figure class="inline-photo hero-photo">
         <img src={d.image} alt={heroAlt} loading="eager" fetchpriority="high" style={d.imagePosition ? `--img-pos: ${d.imagePosition}` : undefined} />
       </figure>

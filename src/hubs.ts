@@ -30,4 +30,23 @@ export const HUBS: Record<string, {
       { src: '/winnie/winnie-kitchen-cabinet-reach.jpg', alt: 'Winnie reaching into a compact kitchen cabinet.' },
     ],
   },
+  // Pet Care hub added 2026-07-11 alongside the Pet Care Full-Hub Completion
+  // Pack implementation. The 3 image paths below (hero + 2 accents) are
+  // RESERVED, not yet generated — same as every other page-level hero in
+  // this batch, this hub landing page will not visibly work until Maurice
+  // generates and places these 3 files via ChatGPT. See the master image
+  // prompt doc for the exact prompts.
+  'pet-care': {
+    name: 'Small-Space Pet Care',
+    eyebrow: 'Cats, dogs, and not much square footage',
+    blurb: 'Litter, cleanup, feeding, enrichment, and renter-friendly setups for apartment cats and dogs — picks organized by what actually fits a small home, not what looks best in a big one.',
+    winnieIntro: "I don't have a cat or a dog myself — I'm not going to pretend I do — but I read an unreasonable number of apartment pet setups, and the pattern is always the same: most pet gear is designed for a house with a mudroom, and most of us don't have one. This section is the small-space version — litter and odor control, hair and cleanup, feeding and hydration, enrichment, and gear that won't cost you a security deposit.",
+    winniePhoto: '/winnie/headshot-v4-3.jpg',
+    hero: '/winnie/pet-care-hero.jpg',
+    heroAlt: 'Winnie Hollowell in a small, tidy apartment living room set up for a cat and a dog, with space-conscious pet gear nearby.',
+    heroAccents: [
+      { src: '/winnie/pet-care-side.jpg', alt: 'Winnie assessing a compact apartment corner set up for pet care.' },
+      { src: '/winnie/winnie-pet-care-small-space-check.jpg', alt: 'Winnie measuring floor space for pet gear in a small apartment.' },
+    ],
+  },
 };

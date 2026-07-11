@@ -1,0 +1,44 @@
+---
+// Placeholder shown in a Winnie photo slot when the page has been published
+// ahead of her real photo (image: "PENDING" in frontmatter). Tracked in
+// Winnie-Photo-Queue.md until Maurice drops the real photo in, at which
+// point the frontmatter switches from "PENDING" to the real file path and
+// this component stops rendering for that page. Not an image file, so it
+// can never trip check_duplicate_images.py / content-qa's reused-image gate.
+interface Props {
+  tilt?: 'left' | 'right';
+  tape?: 'teal' | 'hotpink' | 'sage' | 'mustard' | 'gold';
+}
+const { tilt = 'right', tape = 'mustard' } = Astro.props;
+const jokes = [
+  "Winnie's camera-shy today — check back soon!",
+  "Winnie is off wrangling a cat for this one. Photo incoming.",
+  "This spot is reserved for Winnie. She's running late, as usual.",
+  "Photo pending — Winnie's still deciding what to wear.",
+  "Winnie's photographer overslept. Back shortly.",
+  "Winnie says the lighting wasn't right. She'll be back.",
+];
+const joke = jokes[Math.floor(Math.random() * jokes.length)];
+---
+<figure class={`polaroid polaroid-pending tilt-${tilt} tape-${tape}`}>
+  <div class="pending-inner">
+    <span class="pending-icon" aria-hidden="true">📸</span>
+    <p class="pending-text">{joke}</p>
+  </div>
+</figure>
+
+<style>
+  .polaroid-pending .pending-inner {
+    aspect-ratio: 4 / 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: repeating-linear-gradient(45deg, #f5f0e8, #f5f0e8 10px, #ede5d8 10px, #ede5d8 20px);
+    text-align: center;
+    padding: 1.5rem;
+  }
+  .pending-icon { font-size: 2rem; }
+  .pending-text { font-size: 0.9rem; font-style: italic; color: #7a7266; margin: 0; max-width: 22ch; }
+</style>

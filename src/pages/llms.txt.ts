@@ -10,7 +10,7 @@ export const GET: APIRoute = async () => {
   const byHub = (hub: string) => reviews.filter((r) => r.data.hub === hub);
   const lines: string[] = [`# ${SITE.brand}`, '', `> ${SITE.tagline}`, ''];
 
-  lines.push(`${SITE.brand} is an independently run content site covering home-office ergonomics, small-space kitchen gear, recipes, and practical guides. Product recommendations are research-led and based on public specifications and reported buyer experience, not first-party lab testing. Winnie Hollowell is a disclosed virtual AI host, not a real product tester.`);
+  lines.push(`${SITE.brand} is an independently run content site covering home-office ergonomics, small-space kitchen gear, apartment-friendly pet care, recipes, and practical guides. Product recommendations are research-led and based on public specifications and reported buyer experience, not first-party lab testing. Winnie Hollowell is a disclosed virtual AI host, not a real product tester.`);
   lines.push('');
   lines.push(isAmazonAssociatesApproved
     ? 'Monetization status: approved Amazon Associates participant; qualifying retailer links may earn commissions.'

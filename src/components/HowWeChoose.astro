@@ -5,7 +5,11 @@ interface Props {
   productCount?: number;
 }
 const { hub, pageType, productCount = 0 } = Astro.props;
-const category = hub === 'kitchen' ? 'small-kitchen' : 'home-office';
+const CATEGORY_BY_HUB: Record<string, string> = {
+  'kitchen': 'small-kitchen',
+  'pet-care': 'small-space pet-care',
+};
+const category = CATEGORY_BY_HUB[hub] ?? 'home-office';
 ---
 <section id="how-we-choose" class="methodology-box" aria-labelledby="how-we-choose-heading">
   <h2 id="how-we-choose-heading">How we choose</h2>

@@ -99,7 +99,8 @@ for (const file of walk('src/content/reviews', '.md')) {
   if (!/id=["']do-not-buy-(?:if|this-if)["']/i.test(text)) addWarning(file, 'missing do-not-buy stable ID');
   const linkCount = (text.match(/\]\(\//g) ?? []).length;
   if (linkCount < 2 && !/internalLinks:\s*\n(?:\s+-[\s\S]*?){2}/m.test(fm)) addWarning(file, 'fewer than two apparent internal links');
-  if (image && !exists(`public${image}`)) addFailure(file, `hero image does not exist: public${image}`);
+  if (image === 'PENDING') addWarning(file, 'hero image intentionally pending — Winnie photo not generated yet, tracked in Winnie-Photo-Queue.md');
+  else if (image && !exists(`public${image}`)) addFailure(file, `hero image does not exist: public${image}`);
   for (const match of fm.matchAll(/^\s*asin:\s*["']?([A-Z0-9]+)["']?\s*$/gm)) {
     if (!/^[A-Z0-9]{10}$/.test(match[1])) addFailure(file, `invalid ASIN ${match[1]}`);
   }
