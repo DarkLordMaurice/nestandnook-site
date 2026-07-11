@@ -881,9 +881,13 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
    surrounding text (unlike every other inline-photo, which has body copy
    above/below it) — at the standard 480px solo cap it read as filling the
    whole screen on load (Maurice, 2026-07-10). Capped narrower here so it
-   reads as "a photo at the top of the article," not a full-bleed banner. */
+   reads as "a photo at the top of the article," not a full-bleed banner.
+   Bumped 340 -> 420 same day (Maurice: "make the images just a little
+   bigger", pointing to best-collapsible-kitchen-tools-small-space as the
+   size reference) — still short of the 480px standard inline cap so it
+   doesn't dominate the fold, but closer to the page's own inline photos. */
 .prose figure.inline-photo.hero-photo {
-  max-width: 340px;
+  max-width: 420px;
 }
 @media (min-width: 800px) {
   .hero-banner-inner.two-col {
