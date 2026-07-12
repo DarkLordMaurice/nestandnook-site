@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import { SITE } from '../config';
 import { HUBS } from '../hubs';
+import { LIVE_TOOLS } from '../data/tools';
 
 export const GET: APIRoute = async () => {
   const reviews = await getCollection('reviews');
@@ -22,11 +23,17 @@ export const GET: APIRoute = async () => {
     { loc: '/blog/', changefreq: 'daily' },
     { loc: '/guides/', changefreq: 'daily' },
     { loc: '/recipes/', changefreq: 'daily' },
+    { loc: '/tools/', changefreq: 'monthly' },
   ];
 
   const hubPages: Entry[] = Object.keys(HUBS).map((hub) => ({
     loc: `/${hub}/`,
     changefreq: 'weekly',
+  }));
+
+  const toolPages: Entry[] = LIVE_TOOLS.map((tool) => ({
+    loc: tool.href,
+    changefreq: 'monthly',
   }));
 
   const reviewPages: Entry[] = reviews.map((r) => ({
@@ -45,7 +52,7 @@ export const GET: APIRoute = async () => {
     changefreq: 'monthly',
   }));
 
-  const all = [...staticPages, ...hubPages, ...reviewPages, ...blogPages, ...recipePages];
+  const all = [...staticPages, ...hubPages, ...toolPages, ...reviewPages, ...blogPages, ...recipePages];
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${all.map((p) => `  <url>\n    <loc>${SITE.url}${p.loc}</loc>${p.lastmod ? `\n    <lastmod>${p.lastmod}</lastmod>` : ''}\n    <changefreq>${p.changefreq}</changefreq>\n  </url>`).join('\n')}

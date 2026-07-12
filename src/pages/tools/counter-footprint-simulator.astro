@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import WinnieNote from '../../components/WinnieNote.astro';
+import { SITE } from '../../config';
+import { TOOLS } from '../../data/tools';
+import '../../styles/tools.css';
+
+const tool = TOOLS.find((item) => item.slug === 'counter-footprint-simulator')!;
+const canonical = `${SITE.url}${tool.href}`;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebApplication', '@id': `${canonical}#tool`, name: tool.title,
+      description: tool.description, url: canonical, applicationCategory: 'UtilitiesApplication',
+      operatingSystem: 'Any', isAccessibleForFree: true,
+      publisher: { '@id': `${SITE.url}/#organization` },
+    },
+    {
+      '@type': 'BreadcrumbList', '@id': `${canonical}#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.url}/` },
+        { '@type': 'ListItem', position: 2, name: 'Tools', item: `${SITE.url}/tools/` },
+        { '@type': 'ListItem', position: 3, name: tool.title, item: canonical },
+      ],
+    },
+  ],
+};
+---
+<BaseLayout title={`${tool.title} — ${SITE.brand}`} description={tool.description} showDisclosure={false} jsonLd={jsonLd}>
+  <article class="tool-page">
+    <div class="article-hero-band">
+      <div class="article-hero-text"><span class="washi washi-teal">{tool.eyebrow}</span><h1>{tool.title}</h1></div>
+    </div>
+
+    <p id="quick-answer" class="lede tool-lede">Enter the usable counter dimensions, the appliance or tool footprint, its required clearance, and the prep zone you refuse to surrender. The result estimates whether the item fits, crowds the work surface, or belongs in storage between uses.</p>
+    <div class="tool-privacy-note" role="note"><strong>Private by default:</strong> this calculator runs locally in your browser. Nest & Nook does not save or transmit the measurements you enter.</div>
+    <WinnieNote photo="/winnie/headshot-v4-2.jpg"><p>Counter space is not a vibe. It is width, depth, clearance, and the one patch of surface dinner still needs after the appliance arrives.</p></WinnieNote>
+
+    <div class="tool-layout">
+      <section class="tool-panel tool-form-panel" aria-labelledby="calculator-heading">
+        <h2 id="calculator-heading">Enter your measurements</h2>
+        <div id="tool-errors" class="tool-errors" role="alert" aria-live="assertive"></div>
+        <form id="counter-footprint-form" class="tool-form" novalidate>
+          <fieldset><legend>1. Unit and counter</legend><div class="tool-field-grid two">
+            <div class="tool-field"><label for="unit">Measurement unit</label><select id="unit" name="unit"><option value="in">Inches</option><option value="cm">Centimeters</option></select></div>
+            <div class="tool-field"><label for="frequency">How often will you use it?</label><select id="frequency" name="frequency"><option value="daily">Daily or nearly daily</option><option value="weekly">A few times a week</option><option value="occasional">Occasionally</option></select></div>
+            <div class="tool-field"><label for="counterWidth">Usable counter width</label><input id="counterWidth" name="counterWidth" type="number" min="0" step="0.1" inputmode="decimal" required /><small>Measure only the uninterrupted surface actually available.</small></div>
+            <div class="tool-field"><label for="counterDepth">Usable counter depth</label><input id="counterDepth" name="counterDepth" type="number" min="0" step="0.1" inputmode="decimal" required /><small>Stop at the wall, backsplash, sink edge, or fixed obstruction.</small></div>
+          </div></fieldset>
+
+          <fieldset><legend>2. Appliance or tool footprint</legend><div class="tool-field-grid two">
+            <div class="tool-field"><label for="itemWidth">Item width</label><input id="itemWidth" name="itemWidth" type="number" min="0" step="0.1" inputmode="decimal" required /></div>
+            <div class="tool-field"><label for="itemDepth">Item depth</label><input id="itemDepth" name="itemDepth" type="number" min="0" step="0.1" inputmode="decimal" required /></div>
+            <div class="tool-field"><label for="sideClearance">Required clearance on each side</label><input id="sideClearance" name="sideClearance" type="number" min="0" step="0.1" inputmode="decimal" value="0" required /><small>Use the exact model's instructions. Do not guess downward.</small></div>
+            <div class="tool-field"><label for="rearClearance">Required clearance behind</label><input id="rearClearance" name="rearClearance" type="number" min="0" step="0.1" inputmode="decimal" value="0" required /><small>Include cord bend and vent space where required.</small></div>
+          </div></fieldset>
+
+          <fieldset id="measure-first-check"><legend>3. Protected prep zone</legend><div class="tool-field-grid two">
+            <div class="tool-field"><label for="prepWidth">Prep-zone width to keep clear</label><input id="prepWidth" name="prepWidth" type="number" min="0" step="0.1" inputmode="decimal" required /></div>
+            <div class="tool-field"><label for="prepDepth">Prep-zone depth to keep clear</label><input id="prepDepth" name="prepDepth" type="number" min="0" step="0.1" inputmode="decimal" required /></div>
+          </div><label class="tool-checkbox" for="storageAvailable"><input id="storageAvailable" name="storageAvailable" type="checkbox" /><span>I have a realistic cabinet, shelf, or cart where this item can live between uses.</span></label></fieldset>
+          <div class="tool-actions no-print"><button class="tool-button" type="submit">Check the footprint</button><button class="tool-button ghost" type="reset">Clear</button></div>
+        </form>
+      </section>
+
+      <section id="counter-footprint-result" class="tool-panel tool-result" aria-labelledby="result-heading" aria-live="polite" tabindex="-1" hidden>
+        <span id="result-status" class="tool-result-status">Result</span><h2 id="result-heading">Your counter-fit result</h2><p id="result-summary"></p>
+        <div class="tool-metrics">
+          <div class="tool-metric"><span>Operating footprint</span><strong id="metric-footprint">—</strong></div>
+          <div class="tool-metric"><span>Counter used</span><strong id="metric-percent">—</strong></div>
+          <div class="tool-metric"><span>Physical fit</span><strong id="metric-fit">—</strong></div>
+          <div class="tool-metric"><span>Prep zone preserved</span><strong id="metric-prep">—</strong></div>
+        </div>
+        <div class="tool-result-section"><h3>Winnie noticed</h3><ul id="result-reasons"></ul></div>
+        <div class="tool-result-section"><h3>Fix first</h3><p id="result-fix-first"></p></div>
+        <div class="tool-result-section"><h3>Measure before buying</h3><ul id="result-measure"></ul></div>
+        <div class="tool-result-section" id="do-not-buy-this-if"><h3>Avoid</h3><ul id="result-avoid"></ul></div>
+        <p class="tool-disclaimer">This is a rectangular area and side-by-side planning estimate. Real counters have corners, sinks, outlets, upper cabinets, heat zones, cords, and door swings. Follow the exact product's manufacturer instructions and applicable safety guidance.</p>
+        <div class="tool-actions no-print"><button id="print-result" class="tool-button secondary" type="button">Print checklist</button><button id="copy-result" class="tool-button ghost" type="button">Copy result</button></div>
+      </section>
+    </div>
+    <section class="tool-related"><h2>Read next</h2><ul>{tool.relatedGuides.map((guide) => <li><a href={guide.href}>{guide.label}</a></li>)}</ul></section>
+  </article>
+
+  <script>
+    import { evaluateCounterFootprint, validateCounterFootprintInput } from '../../lib/tools/counter-footprint.mjs';
+    const form = document.querySelector('#counter-footprint-form');
+    const result = document.querySelector('#counter-footprint-result');
+    const errorsBox = document.querySelector('#tool-errors');
+    const value = (name) => Number(new FormData(form).get(name));
+    const text = (id, content) => { const el = document.querySelector(id); if (el) el.textContent = content; };
+    const list = (id, items) => { const el = document.querySelector(id); if (!el) return; el.innerHTML = ''; items.forEach((item) => { const li = document.createElement('li'); li.textContent = item; el.appendChild(li); }); };
+    const inputFromForm = () => { const data = new FormData(form); return {
+      unit: data.get('unit'), frequency: data.get('frequency'), counterWidth: value('counterWidth'), counterDepth: value('counterDepth'),
+      itemWidth: value('itemWidth'), itemDepth: value('itemDepth'), sideClearance: value('sideClearance'), rearClearance: value('rearClearance'),
+      prepWidth: value('prepWidth'), prepDepth: value('prepDepth'), storageAvailable: data.get('storageAvailable') === 'on',
+    }; };
+    const fixFirstCopy = {
+      permanent: 'Keep the item only if the measured prep zone remains genuinely usable after a normal meal, not just empty in a staged photo.',
+      'permanent-tight': 'Mark the footprint with painter’s tape and cook one normal meal around it before committing permanent counter space.',
+      'store-between-uses': 'Choose the storage location before buying, then confirm the item’s weight, handles, and cord make regular moving realistic.',
+      'too-large': 'Do not buy this size for this counter. Look for a narrower category, use a nearby cart, or choose a tool that stores away and operates elsewhere.',
+      recheck: 'Re-measure the narrowest point and verify the exact model dimensions. A one-inch or 2.5-centimeter margin is too small for confident planning.',
+    };
+    form?.addEventListener('submit', (event) => {
+      event.preventDefault(); const input = inputFromForm(); const errors = validateCounterFootprintInput(input);
+      if (errors.length) { errorsBox.innerHTML = '<strong>Check these measurements:</strong>'; const ul = document.createElement('ul'); errors.forEach((error) => { const li = document.createElement('li'); li.textContent = error; ul.appendChild(li); }); errorsBox.appendChild(ul); result.hidden = true; errorsBox.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+      errorsBox.innerHTML = ''; const output = evaluateCounterFootprint(input); const unitLabel = input.unit === 'cm' ? 'cm' : 'in';
+      text('#result-status', output.label); text('#result-summary', output.classification === 'too-large' ? 'The operating footprint does not fit inside the counter dimensions you entered.' : `The estimated operating footprint is ${output.effectiveItemWidth} × ${output.effectiveItemDepth} ${unitLabel}.`);
+      text('#metric-footprint', `${output.effectiveItemWidth} × ${output.effectiveItemDepth} ${unitLabel}`); text('#metric-percent', `${output.footprintPercent}%`); text('#metric-fit', output.physicallyFits ? 'Yes' : 'No'); text('#metric-prep', output.preservesPrepZone ? 'Yes' : 'No');
+      text('#result-fix-first', fixFirstCopy[output.classification]); list('#result-reasons', output.reasons); list('#result-measure', output.measureBeforeBuying); list('#result-avoid', output.avoid); result.hidden = false; result.focus();
+    });
+    form?.addEventListener('reset', () => { errorsBox.innerHTML = ''; result.hidden = true; });
+    document.querySelector('#print-result')?.addEventListener('click', () => window.print());
+    document.querySelector('#copy-result')?.addEventListener('click', async () => { const copy = [document.querySelector('#result-status')?.textContent, document.querySelector('#result-summary')?.textContent, `Operating footprint: ${document.querySelector('#metric-footprint')?.textContent}`, `Counter used: ${document.querySelector('#metric-percent')?.textContent}`].filter(Boolean).join('\n'); try { await navigator.clipboard.writeText(copy); text('#copy-result', 'Copied'); setTimeout(() => text('#copy-result', 'Copy result'), 1600); } catch { text('#copy-result', 'Copy unavailable'); } });
+  </script>
+</BaseLayout>

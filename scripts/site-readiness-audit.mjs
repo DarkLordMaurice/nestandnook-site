@@ -53,6 +53,10 @@ const prohibitedPersonalUse = [
   /\bI actually reach for\b/i,
   /\bmy desk-mate\b/i,
   /\bin my home office\b/i,
+  /\bchanged my (?:prep|cooking)\b/i,
+  /Winnie(?:'|’)s take:[^\n]*\bI use\b/i,
+  /Winnie(?:'|’)s take:[^\n]*\bI reach for\b/i,
+  /Winnie(?:'|’)s take:[^\n]*\bin my kitchen\b/i,
 ];
 const unsupportedClaims = [
   /highest lift on the market/i,

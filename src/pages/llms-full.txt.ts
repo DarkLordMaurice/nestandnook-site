@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import { SITE, isAmazonAssociatesApproved } from '../config';
 import { HUBS } from '../hubs';
+import { LIVE_TOOLS } from '../data/tools';
 
 export const GET: APIRoute = async () => {
   const reviews = await getCollection('reviews');
@@ -15,6 +16,18 @@ export const GET: APIRoute = async () => {
     `Monetization status: ${isAmazonAssociatesApproved ? 'Amazon Associates approved' : 'Amazon Associates application pending; Amazon links are currently untagged'}.`,
     '',
   ];
+
+  if (LIVE_TOOLS.length) {
+    lines.push('## Planning tools', '');
+    for (const tool of LIVE_TOOLS) {
+      lines.push(`### ${tool.title}`);
+      lines.push(`URL: ${SITE.url}${tool.href}`);
+      lines.push(`Category: ${tool.category}`);
+      lines.push(`Summary: ${tool.description}`);
+      lines.push('Data handling: calculations run locally in the browser; measurements are not saved or transmitted by Nest & Nook.');
+      lines.push('');
+    }
+  }
 
   for (const hubKey of Object.keys(HUBS)) {
     const pages = reviews.filter((r) => r.data.hub === hubKey);
