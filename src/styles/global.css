@@ -248,15 +248,21 @@ main a:hover { color: var(--terracotta-dark); }
     linear-gradient(180deg, var(--jewel-teal-light), var(--jewel-teal) 60%);
 }
 .site-header .wrap {
+  max-width: 1100px;
+}
+/* Two-tier header (restructured 2026-07-12) — row 1 is logo + search only,
+   row 2 is a dedicated full-width nav band. Was a single flex row; once
+   the nav grew to 9 items (Garage, Tools, Off the Clock all added the same
+   week) it silently overflowed and wrapped mid-link — "Off the / Clock"
+   split across two ragged lines with the search icon left stranded on row
+   1. Maurice: "figure something out... make everything nice and even."
+   A dedicated nav row gives every link room to sit on one line at normal
+   desktop widths, and wraps whole-link (never mid-word) if it ever has to. */
+.site-header-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.1rem 1.25rem;
-  /* Was 860px — narrower than main content's 1100px, which is what made
-     the header logo look small/lost with dead space around it in the
-     first place. Matched to main's max-width 2026-07-10 so the bigger
-     logo + full nav have room to sit on one line instead of wrapping. */
-  max-width: 1100px;
+  padding: 1.1rem 1.25rem 0.9rem;
 }
 .brand {
   text-decoration: none;
@@ -277,7 +283,13 @@ main a:hover { color: var(--terracotta-dark); }
 }
 /* Art deco wordmark — dark + fancy per brand direction, replacing the
    Fraunces plain-text lockup. Cinzel Decorative is loaded above alongside
-   Fraunces/Inter/Caveat. */
+   Fraunces/Inter/Caveat. Gold letter-stroke added 2026-07-12 (Maurice:
+   "add a gold outline around the letters... around each individual letter
+   to match the borders") — stroke uses the same --gold used for every
+   card/header border sitewide, fill stays the lighter --gold-light so the
+   letters read as outlined, not just recolored. -webkit-text-stroke has
+   real cross-browser support now (Chrome/Edge/Safari always, Firefox 49+),
+   so no SVG/text-shadow fallback needed. */
 .brand-word {
   font-family: "Cinzel Decorative", var(--font-display);
   font-weight: 700;
@@ -285,10 +297,27 @@ main a:hover { color: var(--terracotta-dark); }
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--gold-light);
+  -webkit-text-fill-color: var(--gold-light);
+  -webkit-text-stroke: 1px var(--gold);
+  paint-order: stroke fill;
   line-height: 1;
 }
+/* Nav band — its own full-width strip below the logo/search row, sharing
+   the header's teal background (nested inside <header>, no separate bg
+   needed) with a thin gold hairline dividing it from row 1. */
+nav.site-nav {
+  border-top: 1px solid rgba(201, 162, 39, 0.35);
+}
+.site-nav-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  column-gap: 1.85rem;
+  row-gap: 0.5rem;
+  padding: 0.65rem 1.25rem 0.8rem;
+}
 nav.site-nav a {
-  margin-left: 1.5rem;
   text-decoration: none;
   color: var(--cream-on-dark);
   opacity: 0.82;
@@ -303,11 +332,6 @@ nav.site-nav a:hover { color: var(--gold-light); opacity: 1; border-bottom-color
    (Maurice, 2026-07-10: "not a separate page all together, that shit is
    wild"). Lives in the header on every page via BaseLayout, backed by
    Pagefind's core JS API (not the full-page pagefind-ui.js widget). */
-.site-header-right {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
 .site-search { position: relative; }
 .site-search-toggle {
   display: inline-flex;
@@ -395,8 +419,8 @@ nav.site-nav a:hover { color: var(--gold-light); opacity: 1; border-bottom-color
   margin: 0;
 }
 @media (max-width: 640px) {
-  .site-header-right { gap: 0.6rem; }
-  nav.site-nav a { margin-left: 0.85rem; font-size: 0.85rem; }
+  .site-nav-inner { column-gap: 1rem; row-gap: 0.4rem; padding: 0.55rem 1rem 0.7rem; }
+  nav.site-nav a { font-size: 0.85rem; }
   .site-search-panel { position: fixed; top: 4.4rem; left: 0.75rem; right: 0.75rem; width: auto; }
   .brand .brand-mark { width: 2.5rem; height: 2.5rem; }
   .brand-word { font-size: 1.35rem; }
