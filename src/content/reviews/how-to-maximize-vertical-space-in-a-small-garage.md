@@ -30,11 +30,23 @@ faqs:
 
 Vertical space is the one real expansion option in a garage where the floor has to stay clear for the car — but "use your vertical space" only works as advice if you actually measure what vertical space exists before buying anything. This guide walks through finding it, in the order that makes the most sense for a genuinely small garage.
 
+<figure class="inline-photo">
+  <img src="/winnie/how-to-maximize-vertical-space-in-a-small-garage-scene1.jpg" alt="A small garage wall showing storage stacked from floor to ceiling in distinct zones" loading="lazy" />
+  <figcaption>Floor-to-ceiling, but organized into distinct zones, not one crowded stack.</figcaption>
+</figure>
+
 <p id="quick-answer">Maximizing vertical space in a small garage starts with measuring, not shopping: find your clear wall studs and ceiling joists, measure the actual usable width and height, then match a wall system or overhead rack to those real numbers. Start with wall storage for daily-access items, add overhead storage for seasonal or infrequent items once wall space is in use.</p>
 
 <h2 id="measure-first-check">Step 1: Find and measure your actual space</h2>
 
-Walk the garage with a stud finder rated for both walls and ceiling joists. On the walls, locate a continuous run of studs uninterrupted by a window, door swing, or existing fixture — measure its real width. On the ceiling, find a section with no garage door track, opener rail, light fixture, or HVAC duct running through it, and confirm the joists are accessible there too. Write both numbers down before looking at a single product listing — see our <a href="/garage/best-wall-mounted-garage-shelving-small-space/">wall shelving roundup</a> and <a href="/garage/best-overhead-garage-storage-racks-small-garage/">overhead rack roundup</a> for how those measurements map to specific product sizes.
+Walk the garage with a stud finder rated for both walls and ceiling joists. On the walls, locate a continuous run of studs uninterrupted by a window, door swing, or existing fixture — measure its real width. On the ceiling, find a section with no garage door track, opener rail, light fixture, or HVAC duct running through it, and confirm the joists are accessible there too.
+
+<figure class="inline-photo">
+  <img src="/winnie/how-to-maximize-vertical-space-in-a-small-garage-scene2.jpg" alt="A stud finder held against a garage wall, locating a mounting point before installation" loading="lazy" />
+  <figcaption>Locate real studs and joists before a single measurement goes on a shopping list.</figcaption>
+</figure>
+
+Write both numbers down before looking at a single product listing — see our <a href="/garage/best-wall-mounted-garage-shelving-small-space/">wall shelving roundup</a> and <a href="/garage/best-overhead-garage-storage-racks-small-garage/">overhead rack roundup</a> for how those measurements map to specific product sizes.
 
 <h2 id="do-not-buy-if">Skip vertical storage systems if&#x2026;</h2>
 
@@ -46,6 +58,11 @@ Walk the garage with a stud finder rated for both walls and ceiling joists. On t
 
 Wall-mounted systems solve the more common problem first — tools, sports equipment, and anything reached for regularly benefit from being at arm height rather than overhead. They're also cheaper to start small with: a single rail or one slatwall panel section is a low-risk way to find out whether wall storage actually gets used before committing further.
 
+<figure class="inline-photo">
+  <img src="/winnie/how-to-maximize-vertical-space-in-a-small-garage-scene3.jpg" alt="Floor-level shot looking straight up a garage wall, showing the full vertical storage zone" loading="lazy" />
+  <figcaption>The full vertical zone, from waist height to ceiling, is the real usable space.</figcaption>
+</figure>
+
 ## Step 3: Add overhead storage for what you touch rarely
 
 Once wall space is organized, overhead racks are the better fit for what's genuinely infrequent-access — holiday decor, off-season sports gear, camping equipment used a few times a year. The tradeoff is real: getting a bin down from an overhead rack is more effort than reaching a wall hook, so reserve that space for things worth that tradeoff.
@@ -53,6 +70,17 @@ Once wall space is organized, overhead racks are the better fit for what's genui
 ## Step 4: Match product size to your real measurements, not the "standard" size
 
 Most garage storage roundups default to sizing built for a 2-3 car garage — a 4x8 overhead rack, a 6-rail wall kit. If your Step 1 measurements come in smaller, look specifically for narrower options (a 2x8 rack, a single rail or two) rather than assuming you need to "make do" with an oversized standard kit or skip vertical storage altogether.
+
+<figure class="inline-photo-pair">
+  <figure class="inline-photo">
+    <img src="/winnie/how-to-maximize-vertical-space-in-a-small-garage-scene4.jpg" alt="A cluttered garage floor beside the same garage with items relocated to vertical wall storage" loading="lazy" />
+    <figcaption>Before/after: the same items, moved off the floor and onto the wall.</figcaption>
+  </figure>
+  <figure class="inline-photo">
+    <img src="/winnie/how-to-maximize-vertical-space-in-a-small-garage-scene5.jpg" alt="A tape measure held against a garage wall, marking a bracket height before drilling" loading="lazy" />
+    <figcaption>Mark the exact height before drilling — not after.</figcaption>
+  </figure>
+</figure>
 
 ## Step 5: Leave clearance for the door and the car
 

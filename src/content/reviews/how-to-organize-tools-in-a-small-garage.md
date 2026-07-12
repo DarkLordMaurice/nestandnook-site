@@ -30,6 +30,11 @@ faqs:
 
 A pegboard section only solves tool clutter if what goes on it is decided deliberately — hanging everything you own on a small board just relocates the clutter to eye level. This guide walks through sorting tools by how often they're actually used, then sizing and laying out a board section around that, not the other way around.
 
+<figure class="inline-photo">
+  <img src="/winnie/how-to-organize-tools-in-a-small-garage-scene1.jpg" alt="Hand tools sorted into two piles on a workbench, separating frequently-used tools from rarely-used ones" loading="lazy" />
+  <figcaption>Sort first, into two honest piles — then decide what earns board space.</figcaption>
+</figure>
+
 <p id="quick-answer">Organizing tools in a small garage starts with sorting by use-frequency, not tool type: hang what you reach for weekly at arm height on a pegboard section, and move rarely-used or seasonal tools to labeled bins instead. Size the pegboard to your actual sorted "frequent" pile, not to a full workshop wall — see our <a href="/garage/best-pegboard-kits-small-garage/">pegboard kit roundup</a> for options sized to a partial wall.</p>
 
 <h2 id="measure-first-check">Step 1: Sort before you mount anything</h2>
@@ -41,6 +46,11 @@ Pull every tool out and sort into two piles: things reached for regularly (weekl
 - Your full tool collection is small enough that a couple of wall hooks or a single drawer already handles it — a pegboard installation solves a clutter problem you may not actually have.
 - You don't have accessible wall studs in a usable section — pegboard panels mount into studs, same requirement as any wall-mounted system on this hub.
 - You're renting somewhere that prohibits wall penetrations — this isn't a renter-friendly, no-drill approach.
+
+<figure class="inline-photo">
+  <img src="/winnie/how-to-organize-tools-in-a-small-garage-scene2.jpg" alt="Tools being hung on a pegboard section, grouped by task rather than randomly placed" loading="lazy" />
+  <figcaption>Grouped by task, not by whatever order they came off the shelf.</figcaption>
+</figure>
 
 ## Step 2: Group by task, not just frequency
 
@@ -54,9 +64,25 @@ Mount the board with real gaps between tool groups, not edge-to-edge from day on
 
 Move the "used a few times a year" pile into labeled bins — on a shelf, in an overhead rack, wherever else your garage's storage lives. These items don't need arm-height access, and boarding them anyway is the fastest way to turn a small pegboard section back into visual clutter.
 
+<figure class="inline-photo-pair">
+  <figure class="inline-photo">
+    <img src="/winnie/how-to-organize-tools-in-a-small-garage-scene3.jpg" alt="Labeled storage bins holding rarely-used specialty tools" loading="lazy" />
+    <figcaption>Rarely-used tools belong in labeled bins, not on the board.</figcaption>
+  </figure>
+  <figure class="inline-photo">
+    <img src="/winnie/how-to-organize-tools-in-a-small-garage-scene4.jpg" alt="Overhead shot of a small garage tool zone showing a pegboard section above a workbench with bins below" loading="lazy" />
+    <figcaption>The full system: board above, bins below.</figcaption>
+  </figure>
+</figure>
+
 ## Step 5: Reassess every few months
 
 Revisit what's actually on the board periodically. Anything that hasn't been touched since the last check probably belongs in the bin pile instead — a small board only stays useful if it's actively curated, not treated as permanent once mounted.
+
+<figure class="inline-photo">
+  <img src="/winnie/how-to-organize-tools-in-a-small-garage-scene5.jpg" alt="Deliberate gaps left between tool groups on a pegboard, showing room to grow" loading="lazy" />
+  <figcaption>Real gaps between groups — a board with no room to grow fills up fast.</figcaption>
+</figure>
 
 ## Frequently asked questions
 
