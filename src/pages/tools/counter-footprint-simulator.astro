@@ -87,6 +87,7 @@ const jsonLd = {
     import { evaluateCounterFootprint, validateCounterFootprintInput } from '../../lib/tools/counter-footprint.mjs';
     const form = document.querySelector('#counter-footprint-form');
     const result = document.querySelector('#counter-footprint-result');
+    const layout = document.querySelector('.tool-layout');
     const errorsBox = document.querySelector('#tool-errors');
     const value = (name) => Number(new FormData(form).get(name));
     const text = (id, content) => { const el = document.querySelector(id); if (el) el.textContent = content; };
@@ -105,13 +106,13 @@ const jsonLd = {
     };
     form?.addEventListener('submit', (event) => {
       event.preventDefault(); const input = inputFromForm(); const errors = validateCounterFootprintInput(input);
-      if (errors.length) { errorsBox.innerHTML = '<strong>Check these measurements:</strong>'; const ul = document.createElement('ul'); errors.forEach((error) => { const li = document.createElement('li'); li.textContent = error; ul.appendChild(li); }); errorsBox.appendChild(ul); result.hidden = true; errorsBox.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+      if (errors.length) { errorsBox.innerHTML = '<strong>Check these measurements:</strong>'; const ul = document.createElement('ul'); errors.forEach((error) => { const li = document.createElement('li'); li.textContent = error; ul.appendChild(li); }); errorsBox.appendChild(ul); result.hidden = true; layout?.classList.remove('has-result'); errorsBox.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
       errorsBox.innerHTML = ''; const output = evaluateCounterFootprint(input); const unitLabel = input.unit === 'cm' ? 'cm' : 'in';
       text('#result-status', output.label); text('#result-summary', output.classification === 'too-large' ? 'The operating footprint does not fit inside the counter dimensions you entered.' : `The estimated operating footprint is ${output.effectiveItemWidth} × ${output.effectiveItemDepth} ${unitLabel}.`);
       text('#metric-footprint', `${output.effectiveItemWidth} × ${output.effectiveItemDepth} ${unitLabel}`); text('#metric-percent', `${output.footprintPercent}%`); text('#metric-fit', output.physicallyFits ? 'Yes' : 'No'); text('#metric-prep', output.preservesPrepZone ? 'Yes' : 'No');
-      text('#result-fix-first', fixFirstCopy[output.classification]); list('#result-reasons', output.reasons); list('#result-measure', output.measureBeforeBuying); list('#result-avoid', output.avoid); result.hidden = false; result.focus();
+      text('#result-fix-first', fixFirstCopy[output.classification]); list('#result-reasons', output.reasons); list('#result-measure', output.measureBeforeBuying); list('#result-avoid', output.avoid); result.hidden = false; layout?.classList.add('has-result'); result.focus();
     });
-    form?.addEventListener('reset', () => { errorsBox.innerHTML = ''; result.hidden = true; });
+    form?.addEventListener('reset', () => { errorsBox.innerHTML = ''; result.hidden = true; layout?.classList.remove('has-result'); });
     document.querySelector('#print-result')?.addEventListener('click', () => window.print());
     document.querySelector('#copy-result')?.addEventListener('click', async () => { const copy = [document.querySelector('#result-status')?.textContent, document.querySelector('#result-summary')?.textContent, `Operating footprint: ${document.querySelector('#metric-footprint')?.textContent}`, `Counter used: ${document.querySelector('#metric-percent')?.textContent}`].filter(Boolean).join('\n'); try { await navigator.clipboard.writeText(copy); text('#copy-result', 'Copied'); setTimeout(() => text('#copy-result', 'Copy result'), 1600); } catch { text('#copy-result', 'Copy unavailable'); } });
   </script>

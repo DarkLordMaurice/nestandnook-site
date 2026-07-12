@@ -1,7 +1,15 @@
 .tool-page { max-width: 1000px; margin: 0 auto; }
 .tool-lede { max-width: 760px; margin: 1.5rem auto; text-align: center; }
 .tool-privacy-note { max-width: 760px; margin: 0 auto 1.5rem; padding: .85rem 1rem; background: rgba(47,143,138,.1); border: 1px solid rgba(47,143,138,.28); border-radius: var(--radius-sm); color: var(--ink-soft); }
-.tool-layout { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(300px, .88fr); gap: 1.5rem; align-items: start; margin-top: 2rem; }
+/* Single-column by default, centered — the result panel is `hidden` until
+   a calculation runs, but the two-column grid track was reserved even
+   while empty, so the form sat stranded in the left ~56% of the layout
+   with a dead-space column to its right. Maurice: "can we center this
+   tool?" Now the form panel is centered on its own until a result exists
+   (JS adds .has-result to this element on submit), at which point it
+   switches to the real two-column layout. */
+.tool-layout { display: grid; grid-template-columns: 1fr; gap: 1.5rem; align-items: start; margin-top: 2rem; max-width: 640px; margin-left: auto; margin-right: auto; }
+.tool-layout.has-result { grid-template-columns: minmax(0, 1.12fr) minmax(300px, .88fr); max-width: none; margin-left: 0; margin-right: 0; }
 .tool-panel { background: var(--paper); border: 1px solid var(--border); border-top: 4px solid var(--gold); border-radius: var(--radius); padding: 1.4rem; box-shadow: var(--shadow-card); }
 .tool-panel h2 { margin-top: 0; }
 .tool-form fieldset { border: 0; border-top: 1px solid var(--border); margin: 1.4rem 0 0; padding: 1.25rem 0 0; }
@@ -39,6 +47,6 @@
 .tool-card h2 { border: 0; padding: 0; margin: .5rem 0; }
 .tool-card-link { font-weight: 700; color: var(--terracotta-dark); }
 .tool-related { margin-top: 2rem; }
-@media (max-width: 760px) { .tool-layout { grid-template-columns: 1fr; } }
+@media (max-width: 760px) { .tool-layout, .tool-layout.has-result { grid-template-columns: 1fr; max-width: 640px; } }
 @media (max-width: 520px) { .tool-field-grid.two, .tool-metrics { grid-template-columns: 1fr; } .tool-panel { padding: 1rem; } }
 @media print { .tool-form-panel, .tool-privacy-note, .winnie-note, .tool-related, .article-hero-band { display: none !important; } .tool-layout { display: block; } .tool-result { border: 1px solid #000; box-shadow: none; } }
