@@ -29,6 +29,22 @@ export const TOOLS: ToolDefinition[] = [
       { label: 'Best Space-Saving Gadgets for Small Kitchens', href: '/kitchen/best-space-saving-gadgets-for-small-kitchens/' },
     ],
   },
+  {
+    slug: 'desk-fit-reality-check',
+    title: 'Desk Fit Reality Check',
+    shortTitle: 'Desk Fit Reality Check',
+    description: 'Compare a desk, chair adjustment range, your measured seated proportions, and a footrest before buying a setup that cannot line up comfortably.',
+    category: 'Home Office',
+    status: 'live',
+    href: '/tools/desk-fit-reality-check/',
+    eyebrow: 'Make the measurements negotiate first',
+    relatedGuides: [
+      { label: 'How to Sit Correctly at a Small Desk', href: '/home-office/how-to-sit-correctly-at-a-small-desk/' },
+      { label: 'Chair Too Low for Desk: Practical Fixes', href: '/home-office/chair-too-low-for-desk-fixes/' },
+      { label: 'Best Footrests for Short People', href: '/home-office/best-footrest-for-short-people/' },
+      { label: 'Small Home Office Setup Guide', href: '/home-office/small-home-office-setup-guide/' },
+    ],
+  },
 ];
 
 export const LIVE_TOOLS = TOOLS.filter((tool) => tool.status === 'live');
