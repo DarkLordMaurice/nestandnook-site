@@ -29,10 +29,6 @@ Here's the thing about being handed someone else's smoker mid-cook: you are not 
   <img src="/winnie/winnie-life-bbq-grill-tongs.jpg" alt="Winnie working the grill with tongs, turning burgers and ribs over open flame" width="1122" height="1402" />
 </div>
 
-<div class="polaroid inset">
-  <img src="/winnie/winnie-life-bbq-smoker.jpg" alt="Winnie tending a backyard smoker at a barbecue with guests seated nearby under string lights" width="1122" height="1402" />
-</div>
-
 I'll admit, too, that a decade of retail buying gave me a specific, useless-in-the-moment reflex: I kept mentally cataloging which of the smoker's actual features were doing real work and which were just there to look good in a showroom. Turns out the thermometer mattered enormously and the fancy side shelf mattered not at all, which tracks with basically everything I've ever reviewed for this site. The unglamorous part is always the part doing the work.
 
 ## The part where three separate people tried to help

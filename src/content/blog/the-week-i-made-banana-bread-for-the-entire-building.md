@@ -15,10 +15,6 @@ relatedGuides:
 
 It started with six bananas that came home from a grocery run with real intentions and no actual plan, the way most of my kitchen disasters start. They sat on the counter doing the thing bananas do, going from "fine, eat one" to "these are now a chemistry experiment" in about the time it takes me to reorganize a spice rack, which is to say, not very long. By the time I actually looked at them again, they'd crossed a line I don't love admitting I let happen. Somewhere between "still edible" and "compost," I made a decision that turned into a solid week of my life: I was not throwing these away, and I was not eating six bananas' worth of anything by myself either.
 
-<div class="polaroid inset">
-  <img src="/winnie/winnie-holding-banana-bread.jpg" alt="Winnie holding a fresh-baked loaf of banana bread on a wooden board in her kitchen" width="1122" height="1402" />
-</div>
-
 ## One loaf turned into a decision I didn't fully think through
 
 I made one loaf first, the reasonable amount, the amount a person with a normal relationship to overripe produce would stop at. It came out of the oven smelling like every good decision I've ever made in a kitchen, and I ate exactly one slice before I started thinking about my neighbors. Not in a sentimental way — more in the very specific way I think about anything with a shelf life and a use-by problem. I had a loaf of bread that was going to go stale if I didn't do something about it, and I had a building full of people I nod at in the hallway and have never once had an actual conversation with. Both problems, I decided, had the same solution.

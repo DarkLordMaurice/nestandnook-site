@@ -15,10 +15,6 @@ relatedGuides:
 
 I almost left the tent in the garage. Not because I didn't want to go — because I'd talked myself into a four-day solo camping trip on a Tuesday and spent the following two days convincing myself I'd packed wrong, planned wrong, and generally set myself up to be the cautionary tale someone tells at a dinner party. I grew up assuming a weekend away meant a lake house full of relatives, not a tent with my name on nothing but the receipt. Going alone felt, for about forty-eight hours, like the kind of decision a more competent person would have vetted more thoroughly. Then Friday came, I put the tent in the car anyway, and drove two hours north with a paper map I didn't end up needing and a mug I definitely did.
 
-<div class="polaroid inset">
-  <img src="/winnie/winnie-life-campfire-hike.jpg" alt="Winnie hiking into a sunlit forest trail wearing a backpack" width="1122" height="1402" />
-</div>
-
 ## Setting up alone is a different kind of task list
 
 I organize things for a living, more or less, and I expected a campsite to be the one place that particular brain of mine could switch off. It did not switch off. It just redirected — tent poles became a sequencing problem, the firewood pile became an inventory question, and I caught myself mentally drafting a "next time, bring" list before I'd even finished setting up the first time. I'd bought a piece of camping gear beforehand that the packaging called "expedition-grade," and I want it on the record that a decade of retail buying makes a person deeply allergic to that phrase with no explanation attached. It turned out to be a perfectly fine tent stake. It did not need the adjective.

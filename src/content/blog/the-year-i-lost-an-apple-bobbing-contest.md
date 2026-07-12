@@ -35,10 +35,6 @@ At some point in the evening I ended up slow-dancing with a prop skeleton in a t
 
 ## Apple bobbing is a young person's sport
 
-<div class="polaroid inset">
-  <img src="/winnie/winnie-life-halloween-apple-bobbing.jpg" alt="Winnie attempting to bite an apple during an apple-bobbing game at a Halloween party" width="1023" height="1537" />
-</div>
-
 I would like to formally retract every assumption I made walking up to that tub. Apple bobbing at eight years old is a game. Apple bobbing as a grown woman, in full face paint, while a small crowd watches and at least one person has their phone out, is a genuine athletic event that I trained for exactly zero minutes and lost decisively. I approached the whole thing the way I approach everything — assess the variables, formulate a plan, execute with confidence — and the apple did not care about a single one of my variables. The apple won. I have never been more entertained by my own defeat, and I've decided that losing a children's game with this much enthusiasm is its own small, worthwhile skill.
 
 ## The playlist took more editorial effort than the menu

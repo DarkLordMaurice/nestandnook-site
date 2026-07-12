@@ -16,10 +16,6 @@ relatedGuides:
 
 Every single year I forget how loud fourth of july fireworks actually are up close, and every single year I stand at the front of the crowd anyway, novelty cup in hand, fully unprepared for the finale. This year's cup said "Let Freedom Ring" in block letters, came with a collapsible star-spangled straw topper, and was, I want to be clear, an entirely serious purchase. I have a small, growing shelf of these things at home — one per summer, going back further than I'd like to admit counting — and no, I don't have a system for displaying them yet, which for me is practically a scandal. Feral efficiency mode has apparently taken the week off.
 
-<div class="polaroid inset">
-  <img src="/winnie/winnie-life-july4-fireworks.jpg" alt="Winnie holding a patriotic novelty cup with fireworks exploding overhead near a waterfront boardwalk" width="1122" height="1402" />
-</div>
-
 ## Getting there is half the ritual
 
 I walked down early, the way I always do, mug already in hand before the actual cup even entered the picture — a smaller travel one, coffee, for the wait. The boardwalk fills in slowly for a show like this: folding chairs staked out hours in advance by people with a level of planning I genuinely respect, blankets claiming rectangles of grass, a kid two families over already vibrating with the specific anticipation only a nine-year-old can generate for something that hasn't happened yet. I people-watch at these things more than I watch the water, if I'm honest. Ten years at a reference desk teaches you to read a room fast, and a holiday crowd is its own kind of room — who's here for the tradition, who's here because someone dragged them, who brought exactly one (1) blanket for a family of six and is about to learn something about geometry.
