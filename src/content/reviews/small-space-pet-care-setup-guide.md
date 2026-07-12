@@ -40,11 +40,21 @@ faqs:
 
 A small-space pet setup is not a compressed version of a suburban mudroom. It is a set of routes: where the animal eats, drinks, rests, uses the bathroom, plays, sheds, and crosses the room. The home works when those routes are safe, washable, accessible, and separate enough that one problem does not spill into every other zone.
 
+<figure class="inline-photo">
+  <img src="/winnie/small-space-pet-care-setup-guide-scene1.jpg" alt="A small apartment floor plan with distinct marked zones for feeding, litter, rest, and play" loading="lazy" />
+  <figcaption>The whole setup is a set of separate, safe routes — not one general pet corner.</figcaption>
+</figure>
+
 <p id="quick-answer">Build a small-space pet setup in this order: essential bathroom access, food and water, a secure rest area, cleanup at the source, then enrichment and renter-friendly protection. Cats need litter and vertical-space planning; dogs need appropriate containment and activity routines. Measure the pet, pathways, doors, windows, storage, and cleaning access before buying products for either species.</p>
 
 <h2 id="measure-first-check">Draw the pet's daily route through the home</h2>
 
 Mark the entrance, feeding zone, water, litter or outdoor route, sleeping area, favorite furniture, window, play space, storage, trash, and cleaning sink. Open every door and appliance, then measure the narrowest walkways, jump paths, gate openings, floor protection, shelf clearance, and cord routes.
+
+<figure class="inline-photo">
+  <img src="/winnie/small-space-pet-care-setup-guide-scene2.jpg" alt="A tape measure being used to mark out a pet zone's footprint against a wall" loading="lazy" />
+  <figcaption>Measure every zone before buying anything for it.</figcaption>
+</figure>
 
 ## 1. Remove immediate access hazards
 
@@ -66,6 +76,17 @@ Keep a reusable furniture tool near the main couch, a floor tool near the highes
 
 Cats benefit from a stable vertical option, scratching, hiding, window views, and short interactive play. Dogs benefit from appropriately sized quiet puzzles, sniffing, food work within the normal plan, interaction, and rest. Rotate rather than accumulate.
 
+<figure class="inline-photo-pair">
+  <figure class="inline-photo">
+    <img src="/winnie/small-space-pet-care-setup-guide-scene3.jpg" alt="A small apartment room with a litter zone, a feeding zone, and a rest zone each visually separated" loading="lazy" />
+    <figcaption>Separate zones, so one problem never spills into the next.</figcaption>
+  </figure>
+  <figure class="inline-photo">
+    <img src="/winnie/small-space-pet-care-setup-guide-scene4.jpg" alt="A household cleaning caddy positioned beside a pet zone, showing quick-access maintenance planning" loading="lazy" />
+    <figcaption>A maintenance plan belongs next to the zone it maintains.</figcaption>
+  </figure>
+</figure>
+
 ## 6. Protect rental surfaces reversibly
 
 Use correctly fitted washable couch covers, compatible runners, stable mats, and appropriate no-drill gates. Test backings and adhesives, follow installation instructions, and never promise damage-free or landlord-approved outcomes.
@@ -77,6 +98,11 @@ Assign daily waste and spill removal, regular bowl and fountain cleaning, textil
 ## 8. Reassess as the pet and household change
 
 Size, mobility, confidence, chewing, shedding, and routines change. Re-measure and contact a veterinarian for sudden or concerning behavior, eating, drinking, mobility, or elimination changes.
+
+<figure class="inline-photo">
+  <img src="/winnie/small-space-pet-care-setup-guide-scene5.jpg" alt="A small apartment hallway with a pet gate and a litter zone visible at a safe distance from a feeding area" loading="lazy" />
+  <figcaption>Distance between zones is part of the plan, not an afterthought.</figcaption>
+</figure>
 
 <h2 id="do-not-buy-if">Do not add another pet-care product if…</h2>
 

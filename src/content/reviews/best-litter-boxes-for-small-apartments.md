@@ -132,6 +132,11 @@ faqs:
 
 A small apartment creates pressure to buy the smallest litter box that will physically fit. That is the wrong direction. The box still has to work as a bathroom: the cat needs room to enter, turn, dig, and leave without squeezing past a wall or appliance. The useful comparison is therefore not simply “compact versus large.” It is **usable interior room versus total operating footprint**.
 
+<figure class="inline-photo">
+  <img src="/winnie/best-litter-boxes-for-small-apartments-scene1.jpg" alt="An open-top compact litter box in a quiet apartment corner with a calm cat nearby, high side walls visible" loading="lazy" />
+  <figcaption>Usable interior room, not exterior size, is the real measurement.</figcaption>
+</figure>
+
 <p id="quick-answer">For most small apartments, start with a roomy open box that has high sides, such as the <strong>IRIS USA Open Top High-Sided box</strong>. It keeps access simple while containing more kicked litter than a low pan. Choose a square top-entry box only for an agile cat that accepts the format, and choose an automatic box only after measuring its outlet, tray-removal, and backup-box requirements.</p>
 
 <h2 id="measure-first-check">Measure the cat, the floor, and the cleaning motion</h2>
@@ -143,6 +148,11 @@ Before comparing boxes, measure three different things:
 3. **The cleaning motion.** Make sure a scoop can reach every corner and that a lid, top, or automatic tray can be removed without dragging the whole box into the room.
 
 Entry height matters as much as dimensions. A wall that contains litter for one cat can become an unnecessary barrier for another.
+
+<figure class="inline-photo">
+  <img src="/winnie/best-litter-boxes-for-small-apartments-scene2.jpg" alt="A litter box's low front entry step, showing easy in-and-out access" loading="lazy" />
+  <figcaption>Entry height is as important a measurement as the box's footprint.</figcaption>
+</figure>
 
 ## Small apartment does not mean smallest box
 
@@ -170,6 +180,17 @@ A stainless basin offers a smooth cleaning surface and can be useful for larger 
 
 A rake-style automatic box avoids the tall globe of many robot models, but it adds power, compatible litter or trays, moving parts, and drawer clearance. Measure the entire routine before calling it space-saving.
 
+<figure class="inline-photo-pair">
+  <figure class="inline-photo">
+    <img src="/winnie/best-litter-boxes-for-small-apartments-scene3.jpg" alt="A square-footprint top-entry litter box fitted into a tight room corner" loading="lazy" />
+    <figcaption>Square footprint fits a corner, but only agile cats accept the jump.</figcaption>
+  </figure>
+  <figure class="inline-photo">
+    <img src="/winnie/best-litter-boxes-for-small-apartments-scene4.jpg" alt="A long rectangular litter box beside a compact square one, showing footprint differences" loading="lazy" />
+    <figcaption>Footprint shape matters as much as total size.</figcaption>
+  </figure>
+</figure>
+
 <h2 id="do-not-buy-if">Do not buy a litter box for a small apartment if…</h2>
 
 - The cat cannot turn comfortably inside the usable pan.
@@ -178,6 +199,11 @@ A rake-style automatic box avoids the tall globe of many robot models, but it ad
 - A hood or cabinet is being used to hide poor airflow or delayed scooping.
 - An automatic model would leave no room for a familiar backup box during transition.
 - You are changing the box format in response to a sudden litter-habit change instead of talking with a veterinarian.
+
+<figure class="inline-photo">
+  <img src="/winnie/best-litter-boxes-for-small-apartments-scene5.jpg" alt="A litter box with a washable tracking mat placed just outside the entry" loading="lazy" />
+  <figcaption>A tracking mat outside the entry, added only after the box itself fits.</figcaption>
+</figure>
 
 ## A practical apartment-fit order
 

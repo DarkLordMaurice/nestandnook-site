@@ -93,11 +93,21 @@ faqs:
 
 A cat tree saves apartment space only when it uses vertical room without creating an unstable obstacle below. The useful numbers are not just overall height. Base width, top-bed size, platform spacing, wall-restraint requirements, window placement, and the cat's actual body size decide whether the tower becomes a daily perch or an expensive coat rack.
 
+<figure class="inline-photo">
+  <img src="/winnie/best-cat-trees-for-small-apartments-scene1.jpg" alt="A compact multi-level cat tree fitted into a small apartment corner near a sunny window" loading="lazy" />
+  <figcaption>The corner it fits, and the view it earns.</figcaption>
+</figure>
+
 <p id="quick-answer">The <strong>Amazon Basics multi-level tree</strong> is the straightforward corner pick with a square base and moderate height. The <strong>FEANDREA multi-level tree</strong> combines a hideaway, perches, and scratching in one vertical footprint. Choose the <strong>Mau Cento</strong> when the tree must live visibly in the main room, but only after confirming basket size, stability, and clear jump paths.</p>
 
 <h2 id="measure-first-check">Measure the base, platforms, and jump routes</h2>
 
 Tape the full base footprint onto the floor, then add the cat's approach, landing, and turn space. Compare every bed, basket, cubby, and platform with the cat's body—not just product height. Check ceiling, curtains, blinds, outlets, shelves, and any wall-restraint point before ordering.
+
+<figure class="inline-photo">
+  <img src="/winnie/best-cat-trees-for-small-apartments-scene2.jpg" alt="A measuring tape laid across a cat tree's square base footprint on an apartment floor" loading="lazy" />
+  <figcaption>Tape the base first — the platform sizes come after.</figcaption>
+</figure>
 
 ## Stability outranks maximum height
 
@@ -119,6 +129,17 @@ Carpet, faux fur, baskets, and cubbies collect hair. Check whether pads remove, 
 
 Furniture-forward trees can fit a visible room better, but a beautiful narrow basket or polished step is not useful when the cat cannot lie, grip, or climb comfortably. Measure the animal and follow weight guidance.
 
+<figure class="inline-photo-pair">
+  <figure class="inline-photo">
+    <img src="/winnie/best-cat-trees-for-small-apartments-scene3.jpg" alt="A wide stable base of a cat tree anchored beside a wall restraint point" loading="lazy" />
+    <figcaption>A wide base or a real restraint — not optimism.</figcaption>
+  </figure>
+  <figure class="inline-photo">
+    <img src="/winnie/best-cat-trees-for-small-apartments-scene4.jpg" alt="Two cat tree platform heights compared side by side to show step spacing" loading="lazy" />
+    <figcaption>Step spacing decides who can actually use it.</figcaption>
+  </figure>
+</figure>
+
 <h2 id="do-not-buy-if">Do not buy a cat tree if…</h2>
 
 - The platform or basket is too small for the cat to settle comfortably.
@@ -128,6 +149,11 @@ Furniture-forward trees can fit a visible room better, but a beautiful narrow ba
 - The household has no realistic plan for vacuuming, wiping, or replacing worn surfaces.
 
 For a floor-free alternative, compare the category trade-offs in [cat tree versus window perch](/pet-care/cat-tree-vs-window-perch-for-small-spaces/).
+
+<figure class="inline-photo">
+  <img src="/winnie/best-cat-trees-for-small-apartments-scene5.jpg" alt="A cat tree platform being vacuumed with a handheld attachment to remove trapped hair" loading="lazy" />
+  <figcaption>Cleanability is part of the footprint, not an afterthought.</figcaption>
+</figure>
 
 ## Frequently asked questions
 

@@ -34,11 +34,21 @@ faqs:
 
 Rental carpet protection works best as a route-management problem. Mud enters at the door, water leaves the bowl, litter leaves the mat, and hair settles where the pet rests. Covering the entire apartment can trap moisture and create new hazards. Protect the transfer points, clean quickly, and inspect what sits underneath.
 
+<figure class="inline-photo">
+  <img src="/winnie/how-to-protect-rental-carpet-from-pets-scene1.jpg" alt="A washable nonslip mat placed at a rental apartment entry to catch outdoor debris before it reaches carpet" loading="lazy" />
+  <figcaption>Catch the mess at the transfer point, not across the whole floor.</figcaption>
+</figure>
+
 <p id="quick-answer">Protect rental carpet by placing washable, nonslip mats at the entry, feeding area, litter zone, and pet bed, then using stable runners only on the highest-traffic path. Remove debris before it grinds into fibers, blot fresh moisture instead of scrubbing, follow carpet and cleaner instructions, lift protective layers to dry, and inspect backing for residue or color transfer.</p>
 
 <h2 id="measure-first-check">Map the stain and wear path</h2>
 
 Trace the route from exterior door to water, litter, couch, bed, and favorite window. Measure only the high-risk zones and choose covers that lie flat without blocking doors or vents. Check carpet pile, mat backing, washer size, and where wet mats can dry completely.
+
+<figure class="inline-photo">
+  <img src="/winnie/how-to-protect-rental-carpet-from-pets-scene2.jpg" alt="A traced stain and wear path from the entry door to a pet's feeding and rest zones on carpet" loading="lazy" />
+  <figcaption>Map the wear path before buying a single mat.</figcaption>
+</figure>
 
 ## 1. Stop outdoor debris at the entry
 
@@ -60,6 +70,17 @@ A washable pet bed cover or throw catches hair and skin oils before they reach t
 
 Use correctly sized runners on the main travel lane rather than carpeting the carpet. Check backing compatibility, edge height, door clearance, and whether the pet can bunch or chew the material.
 
+<figure class="inline-photo-pair">
+  <figure class="inline-photo">
+    <img src="/winnie/how-to-protect-rental-carpet-from-pets-scene3.jpg" alt="A stable runner placed along a high-traffic carpet path in a rental apartment" loading="lazy" />
+    <figcaption>Runners belong on the concentrated wear lane, not everywhere.</figcaption>
+  </figure>
+  <figure class="inline-photo">
+    <img src="/winnie/how-to-protect-rental-carpet-from-pets-scene4.jpg" alt="A washable pet bed cover being lifted from carpet to catch hair and skin oils" loading="lazy" />
+    <figcaption>The rest spot needs its own washable layer too.</figcaption>
+  </figure>
+</figure>
+
 ## 6. Respond to fresh mess promptly
 
 Remove solids carefully, blot liquid with clean absorbent material, and use only a cleaning product and method approved for the carpet and type of mess. Do not mix cleaners or saturate the backing.
@@ -71,6 +92,11 @@ Moisture trapped beneath a mat can create odor and damage. Lift the cover, venti
 ## 8. Inspect beneath every cover
 
 Check for moisture, dye transfer, adhesive residue, compressed pile, chewing, and frayed edges. Rotate or remove protection that creates a worse problem than the wear it prevents.
+
+<figure class="inline-photo">
+  <img src="/winnie/how-to-protect-rental-carpet-from-pets-scene5.jpg" alt="A carpet mat lifted to check for trapped moisture and residue underneath" loading="lazy" />
+  <figcaption>Check underneath — a trapped-moisture mat causes a worse problem.</figcaption>
+</figure>
 
 <h2 id="do-not-buy-if">Do not use a carpet protector if…</h2>
 

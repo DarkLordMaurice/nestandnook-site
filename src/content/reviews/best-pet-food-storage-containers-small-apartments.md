@@ -112,11 +112,21 @@ faqs:
 
 Pet-food storage is one of those categories where the neatest photo can erase the most useful information. The original bag carries the lot code, best-by date, manufacturer, and handling directions. A good apartment container protects that bag, fits the pantry, and lets the lid open without removing three other bins.
 
+<figure class="inline-photo">
+  <img src="/winnie/best-pet-food-storage-containers-small-apartments-scene1.jpg" alt="A rolling two-container pet food storage system tucked into a narrow pantry corner" loading="lazy" />
+  <figcaption>Fits the pantry, protects the bag, and still opens without a production.</figcaption>
+</figure>
+
 <p id="quick-answer">The <strong>IRIS two-container rolling combo</strong> is the most flexible choice for a full food bag plus smaller supplies, while the <strong>Van Ness 10-pound bin</strong> suits genuinely small bags. The <strong>simplehuman can</strong> is best for an exposed narrow feeding zone, and the <strong>Prepworks ProKeeper</strong> fits only small packages. Preserve the original bag whenever possible.</p>
 
 <h2 id="measure-first-check">Measure the bag, not the weight printed on the bin</h2>
 
 Record the bag's height, width, depth, folded top, and shape when nearly empty. Compare those numbers with the container's interior—not just exterior capacity. Add lid swing, scoop access, shelf height, and enough room to remove the whole bag for cleaning.
+
+<figure class="inline-photo">
+  <img src="/winnie/best-pet-food-storage-containers-small-apartments-scene2.jpg" alt="An original pet food bag placed intact inside a sealed storage container" loading="lazy" />
+  <figcaption>The original bag stays inside — it's the food's memory, not clutter.</figcaption>
+</figure>
 
 ## Keep identifying information with the food
 
@@ -138,6 +148,17 @@ Use a dedicated scoop and keep it clean and dry. A magnetic or lid-mounted scoop
 
 Empty the container, wash it according to the manufacturer, and dry it completely before inserting a new bag. Do not pour new food onto residue from the old package.
 
+<figure class="inline-photo-pair">
+  <figure class="inline-photo">
+    <img src="/winnie/best-pet-food-storage-containers-small-apartments-scene3.jpg" alt="A small flip-top pet food bin fitting on a low shelf" loading="lazy" />
+    <figcaption>A small bag needs a small bin, not a bulky rolling combo.</figcaption>
+  </figure>
+  <figure class="inline-photo">
+    <img src="/winnie/best-pet-food-storage-containers-small-apartments-scene4.jpg" alt="A large wheeled storage bin beside a compact budget bin" loading="lazy" />
+    <figcaption>Match the container to the actual bag, not the marketed capacity.</figcaption>
+  </figure>
+</figure>
+
 <h2 id="do-not-buy-if">Do not buy a pet-food container if…</h2>
 
 - The original bag will not fit and there is no manufacturer-supported storage plan.
@@ -147,6 +168,11 @@ Empty the container, wash it according to the manufacturer, and dry it completel
 - The design hides the lot code, best-by date, or food identity.
 
 Build the full station around the food container in [our small-kitchen feeding guide](/pet-care/how-to-set-up-a-pet-feeding-station-in-a-small-kitchen/).
+
+<figure class="inline-photo">
+  <img src="/winnie/best-pet-food-storage-containers-small-apartments-scene5.jpg" alt="A labeled pet food container positioned beside a measuring scoop on a pantry shelf" loading="lazy" />
+  <figcaption>A dedicated scoop, kept clean and off the floor.</figcaption>
+</figure>
 
 ## Frequently asked questions
 

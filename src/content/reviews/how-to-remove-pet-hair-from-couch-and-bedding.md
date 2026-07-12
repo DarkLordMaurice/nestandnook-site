@@ -34,11 +34,21 @@ faqs:
 
 Pet hair becomes difficult when three different surfaces are treated like one job. Couch fields need broad passes, seams need detail work, and washable bedding needs loose hair removed before it enters the machine. The useful method moves from dry, low-aggression removal toward washing—not straight from furry blanket to overloaded washer.
 
+<figure class="inline-photo">
+  <img src="/winnie/how-to-remove-pet-hair-from-couch-and-bedding-scene1.jpg" alt="A fabric roller being used in a back-and-forth motion across a sofa cushion covered in visible pet hair" loading="lazy" />
+  <figcaption>Dry removal first, always — the washer is the last step, not the first.</figcaption>
+</figure>
+
 <p id="quick-answer">Remove loose hair before washing anything: shake removable throws where appropriate, use a reusable roller across broad couch and bedding surfaces, detail seams with a fabric-safe tool, then vacuum remaining hair and debris. Launder only after checking the care label and removing as much hair as possible. Clean the lint filter and dry every item fully before returning it.</p>
 
 <h2 id="measure-first-check">Identify every fabric and removable layer first</h2>
 
 Check upholstery tags, bedding care labels, removable cushion covers, mattress protectors, and machine capacity. Note delicate weaves, waterproof backings, foam inserts, and covers that cannot be machine dried. The method should follow the most restrictive material in the stack, not the fastest setting on the washer.
+
+<figure class="inline-photo">
+  <img src="/winnie/how-to-remove-pet-hair-from-couch-and-bedding-scene2.jpg" alt="A small rubber detail tool cleaning a couch seam after the broad roller pass" loading="lazy" />
+  <figcaption>Seams and piping get the detail tool, after the broad pass.</figcaption>
+</figure>
 
 ## 1. Remove pets and loose objects from the work zone
 
@@ -64,9 +74,25 @@ Fit the upholstery head or motorized pet brush and use controlled passes. Lift r
 
 Do not overload the machine. Separate heavily hairy items from delicate clothing when practical, use the labeled wash temperature and cycle, and preserve water-resistant or waterproof backings exactly as directed. Clean the washer or filter system according to the appliance manual.
 
+<figure class="inline-photo-pair">
+  <figure class="inline-photo">
+    <img src="/winnie/how-to-remove-pet-hair-from-couch-and-bedding-scene3.jpg" alt="Pet-hairy bedding being shaken out over a hamper before laundering" loading="lazy" />
+    <figcaption>Shake loose hair out before the load ever goes in.</figcaption>
+  </figure>
+  <figure class="inline-photo">
+    <img src="/winnie/how-to-remove-pet-hair-from-couch-and-bedding-scene4.jpg" alt="A washing machine lint trap being cleaned after a load of pet-hair-covered bedding" loading="lazy" />
+    <figcaption>The lint trap gets cleaned every time, not occasionally.</figcaption>
+  </figure>
+</figure>
+
 ## 7. Dry fully and reset the room
 
 Clean the lint screen before and after the load, use the approved drying method, and return covers only when fully dry. Vacuum or wipe the floor beneath the work zone before rebuilding the couch or bed.
+
+<figure class="inline-photo">
+  <img src="/winnie/how-to-remove-pet-hair-from-couch-and-bedding-scene5.jpg" alt="Clean, hair-free bedding folded beside a laundry basket, contrasted with a hairy unwashed pile" loading="lazy" />
+  <figcaption>The finished sequence, side by side with where it started.</figcaption>
+</figure>
 
 <h2 id="do-not-buy-if">Do not use a pet-hair method if…</h2>
 

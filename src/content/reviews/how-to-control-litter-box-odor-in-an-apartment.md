@@ -34,6 +34,11 @@ faqs:
 
 Apartment odor control is not a single charcoal filter, deodorizer, or covered box. It is a chain: waste leaves the pan promptly, the litter stays dry, the surrounding mat and floor get cleaned, the disposal container leaves the apartment on schedule, and ordinary airflow reaches the area. When one link fails, fragrance usually hides the problem for less time than the product label suggests.
 
+<figure class="inline-photo">
+  <img src="/winnie/how-to-control-litter-box-odor-in-an-apartment-scene1.jpg" alt="A litter scoop, a sealed waste pail, and a small trash bag station arranged beside a clean litter box" loading="lazy" />
+  <figcaption>Odor control is a chain — every link has to hold, not just the fragrance.</figcaption>
+</figure>
+
 <p id="quick-answer">Control litter-box odor by removing waste at least daily, keeping the litter dry, washing the box and mat on a regular schedule, sealing waste before disposal, and maintaining ordinary room airflow. A hood, cabinet, or automatic box may help contain some mess, but none is odor-proof and none replaces cleaning. Strong fragrance should not be the first fix.</p>
 
 <h2 id="measure-first-check">Measure the odor routine, not only the box</h2>
@@ -49,6 +54,11 @@ Before adding a cabinet, pail, or mat, map:
 - whether the box count and dimensions match the cats using them.
 
 A disposal pail beside the box is not a solution if it remains full for a week.
+
+<figure class="inline-photo">
+  <img src="/winnie/how-to-control-litter-box-odor-in-an-apartment-scene2.jpg" alt="A sealed waste disposal pail with its lid closed, positioned near a litter zone" loading="lazy" />
+  <figcaption>A pail that stays sealed and gets emptied — not one that just sits there.</figcaption>
+</figure>
 
 ## 1. Remove waste every day
 
@@ -83,6 +93,17 @@ Use a bag or closed waste container designed for the routine, but empty it often
 
 Ordinary room ventilation helps moisture and smell disperse. Do not block HVAC returns, place the box directly beneath a forceful vent, or shut it in an unventilated closet. Litter-box furniture should have ventilation and enough opening area for the cat. Compare cabinet access and airflow in [our furniture guide](/pet-care/best-litter-box-furniture-for-small-spaces/).
 
+<figure class="inline-photo-pair">
+  <figure class="inline-photo">
+    <img src="/winnie/how-to-control-litter-box-odor-in-an-apartment-scene3.jpg" alt="Dry, freshly changed litter being leveled in an otherwise clean box" loading="lazy" />
+    <figcaption>Dry litter, on the manufacturer's actual replacement schedule.</figcaption>
+  </figure>
+  <figure class="inline-photo">
+    <img src="/winnie/how-to-control-litter-box-odor-in-an-apartment-scene4.jpg" alt="A window cracked open near a litter zone, showing an airflow-based odor control approach" loading="lazy" />
+    <figcaption>Ordinary airflow does more than another deodorizer.</figcaption>
+  </figure>
+</figure>
+
 ## 6. Clean the tracking zone
 
 Odor can remain on litter scattered beneath the mat, beside the baseboard, or under a cabinet. Choose a washable mat that can be lifted easily. Vacuum or sweep tracked litter, then clean the underlying floor according to the flooring manufacturer's instructions.
@@ -110,6 +131,11 @@ A sudden change in box use, repeated visits, straining, or unusual elimination i
 - Strong fragrance is being used to cover damp litter or poor airflow.
 - An automatic box would replace the only familiar box during transition.
 - The cat's litter habits changed suddenly and veterinary guidance has not been sought.
+
+<figure class="inline-photo">
+  <img src="/winnie/how-to-control-litter-box-odor-in-an-apartment-scene5.jpg" alt="A litter box being lifted for a full washing routine, cleaning supplies nearby" loading="lazy" />
+  <figcaption>The full wash, on a real schedule — not just daily scooping.</figcaption>
+</figure>
 
 ## The apartment odor audit
 

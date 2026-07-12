@@ -34,6 +34,11 @@ faqs:
 
 The empty corner is not automatically the right litter-box location. A box can physically fit beneath a shelf, behind a door, or beside the washing machine and still fail because the cat cannot approach calmly, escape easily, or use it when a door is closed. In a small apartment, placement is a balance between **cat access, human cleaning access, airflow, and traffic**.
 
+<figure class="inline-photo">
+  <img src="/winnie/where-to-put-a-litter-box-in-a-small-apartment-scene1.jpg" alt="A quiet apartment hallway nook being evaluated as a litter box location, tape measure in frame" loading="lazy" />
+  <figcaption>Location is a balance of access, airflow, and traffic — not just an empty corner.</figcaption>
+</figure>
+
 <p id="quick-answer">Put the litter box in a quiet, consistently accessible area with a clear entrance and exit, routine airflow, and enough room to scoop without moving furniture. Keep it away from food and water when possible, and avoid noisy appliances, doors that may close, and tight dead ends. A bathroom or hallway nook can work when the cat can reach it at all times.</p>
 
 <h2 id="measure-first-check">Map the complete litter zone before choosing a corner</h2>
@@ -50,6 +55,11 @@ Measure more than the box. Include:
 - the route for carrying waste out without crossing food-prep areas.
 
 Then test the location at the noisiest time of day. A quiet laundry nook is not quiet when the spin cycle begins.
+
+<figure class="inline-photo">
+  <img src="/winnie/where-to-put-a-litter-box-in-a-small-apartment-scene2.jpg" alt="Two potential litter box locations side by side: one near a noisy appliance, one in a calm corner" loading="lazy" />
+  <figcaption>The same corner can pass or fail depending on what's next to it.</figcaption>
+</figure>
 
 ## 1. List every location the cat can reach all day
 
@@ -86,6 +96,17 @@ The best hidden location is a bad choice if it makes scooping awkward. You shoul
 
 For furniture options, compare the real cabinet access in [our litter-box furniture guide](/pet-care/best-litter-box-furniture-for-small-spaces/). For open, covered, top-entry, and automatic formats, start with [our small-apartment litter-box comparison](/pet-care/best-litter-boxes-for-small-apartments/).
 
+<figure class="inline-photo-pair">
+  <figure class="inline-photo">
+    <img src="/winnie/where-to-put-a-litter-box-in-a-small-apartment-scene3.jpg" alt="Clear floor space around a litter box entry, showing an unobstructed exit path" loading="lazy" />
+    <figcaption>An unobstructed exit path, not just an available surface.</figcaption>
+  </figure>
+  <figure class="inline-photo">
+    <img src="/winnie/where-to-put-a-litter-box-in-a-small-apartment-scene4.jpg" alt="A litter box placed at a deliberate distance from a visible feeding and water zone in the same room" loading="lazy" />
+    <figcaption>Deliberate distance from feeding, even in a one-room layout.</figcaption>
+  </figure>
+</figure>
+
 ## 7. Distribute multiple boxes instead of lining them up
 
 When a household needs more than one box, separate locations are usually more useful than two pans touching side by side. In a small apartment, that may mean one bathroom zone and one quiet hall or living-area zone. Do not sacrifice access or cat-sized dimensions merely to force every box into one cabinet.
@@ -106,6 +127,11 @@ Set up the new location with the same familiar box and litter when possible. Kee
 ## When placement is not the whole explanation
 
 A poor location can make a box harder to use, but a sudden change in litter habits should not be diagnosed as a décor or organization problem. Contact a veterinarian when a cat suddenly avoids the box, strains, visits unusually often, or changes elimination patterns.
+
+<figure class="inline-photo">
+  <img src="/winnie/where-to-put-a-litter-box-in-a-small-apartment-scene5.jpg" alt="Airflow and window light reaching a litter box's quiet apartment corner placement" loading="lazy" />
+  <figcaption>Ordinary airflow, not a sealed closet — the difference shows up fast.</figcaption>
+</figure>
 
 ## A five-minute apartment placement test
 

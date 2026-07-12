@@ -177,11 +177,21 @@ faqs:
 
 A useful apartment starter kit cannot pretend cats and dogs share the same bathroom, climbing, containment, or activity needs. This build therefore starts with a small shared household base, then branches into a cat module and a dog module. The under-$150 title is a publication gate, not a timeless promise: each complete lane must be re-priced immediately before implementation.
 
+<figure class="inline-photo">
+  <img src="/winnie/apartment-pet-starter-kit-under-150-scene1.jpg" alt="A modular apartment pet starter kit laid out on a small table: a compact fountain, a sealed food storage bin, and a fabric hair-removal roller" loading="lazy" />
+  <figcaption>The shared base: three household basics before either species module gets added.</figcaption>
+</figure>
+
 <p id="quick-answer">Build the kit in modules. The shared base is a reusable furniture hair remover, compact water fountain, and small food-storage container. The cat lane adds a high-sided open litter box and compact cat tree. The dog lane adds a quiet puzzle board and appropriately measured pressure gate. Publish the under-$150 claim only after verifying each complete lane's current subtotal.</p>
 
 <h2 id="measure-first-check">Choose the species lane, then measure every operating zone</h2>
 
 Do not total a cart before confirming fit. Measure the feeding and fountain mat, food bag and storage shelf, main furniture surface, cat litter area and tree base, or dog puzzle radius and gate opening. Include cords, doors, cleaning access, replacement filters, and any safety-restraint requirements.
+
+<figure class="inline-photo">
+  <img src="/winnie/apartment-pet-starter-kit-under-150-scene2.jpg" alt="A small labeled cat-specific module and a separate dog-specific module, side by side, showing a clearly divided starter kit" loading="lazy" />
+  <figcaption>Two separate modules, not one universal bundle — measure each lane on its own.</figcaption>
+</figure>
 
 ## Shared base: reusable furniture hair remover
 
@@ -207,6 +217,17 @@ The Amazon Basics multi-level tree uses a square base for scratching and elevate
 
 The Outward Hound Hide N' Slide stores flat and creates less impact noise than a hard rolling dispenser. Use it under supervision with a measured portion of appropriate food, then wash and dry it.
 
+<figure class="inline-photo-pair">
+  <figure class="inline-photo">
+    <img src="/winnie/apartment-pet-starter-kit-under-150-scene3.jpg" alt="A compact pet water fountain and a small food storage bin fitting together on one narrow shelf" loading="lazy" />
+    <figcaption>The feeding module fitting into a single narrow shelf.</figcaption>
+  </figure>
+  <figure class="inline-photo">
+    <img src="/winnie/apartment-pet-starter-kit-under-150-scene4.jpg" alt="An apartment corner set up as a complete but modest pet starter zone, no clutter spilling into the rest of the room" loading="lazy" />
+    <figcaption>A complete but modest starter zone — contained, not sprawling.</figcaption>
+  </figure>
+</figure>
+
 ## Dog module: measured pressure gate
 
 The Carlson Extra Wide gate suits an appropriate doorway or bottom-of-stairs boundary after width, height, bar spacing, wall contact, and pet behavior are checked. It is not for the top of stairs.
@@ -214,6 +235,11 @@ The Carlson Extra Wide gate suits an appropriate doorway or bottom-of-stairs bou
 ## Implementation-day price gate
 
 Claude must verify two separate live totals: shared base plus cat module, and shared base plus dog module. Use current direct listings, exclude tax and shipping only if the page states that methodology, preserve evidence in the handoff, and hold or retitle the page if either lane fails.
+
+<figure class="inline-photo">
+  <img src="/winnie/apartment-pet-starter-kit-under-150-scene5.jpg" alt="A cluttered pile of mismatched pet items beside the same items organized into one small labeled starter kit" loading="lazy" />
+  <figcaption>The whole point of a starter kit: organized modules, not a mismatched pile.</figcaption>
+</figure>
 
 <h2 id="do-not-buy-if">Do not publish or buy this starter kit if…</h2>
 

@@ -36,11 +36,21 @@ faqs:
 
 Keeping a dog busy in an apartment is not the same as keeping a dog in constant motion. Good indoor rotation alternates sniffing, problem solving, short interaction, food work, and rest without turning the floor into a collision course or the downstairs ceiling into a percussion instrument.
 
+<figure class="inline-photo">
+  <img src="/winnie/how-to-keep-a-dog-busy-in-an-apartment-scene1.jpg" alt="A quiet apartment activity setup with a sniffing mat, flat puzzle, and toy basket on a rug" loading="lazy" />
+  <figcaption>A rotation, not a marathon — sniff, solve, rest, repeat.</figcaption>
+</figure>
+
 <p id="quick-answer">Keep a dog busy in an apartment with a quiet rotation: a sniffing search, a flat food puzzle, a correctly sized stuffable toy, a few minutes of cue practice, and deliberate rest. Use part of the normal food plan where appropriate, supervise toys, protect shared floors with a mat, inspect every item, and remove damaged pieces immediately.</p>
 
 <h2 id="measure-first-check">Measure noise, movement, and safe working space</h2>
 
 Clear a play zone away from stairs, cords, glass, food prep, and tight furniture. Measure how far a wobble or rolling toy travels, what it sounds like on the floor, and where the dog can turn without collision. Check toy size against manufacturer guidance and the dog's mouth and chewing style.
+
+<figure class="inline-photo">
+  <img src="/winnie/how-to-keep-a-dog-busy-in-an-apartment-scene2.jpg" alt="A clear play zone measured away from cords, glass, and tight furniture in an apartment" loading="lazy" />
+  <figcaption>Clear the collision course before the toys come out.</figcaption>
+</figure>
 
 ## 1. Begin with a sniffing search
 
@@ -62,6 +72,17 @@ Keep a small active set and store the rest in one closed bin. Rotation changes n
 
 Place hard toys on a rug or dense mat, avoid throwing against shared walls, and schedule active indoor games at reasonable hours. Choose quieter formats for early morning or late evening.
 
+<figure class="inline-photo-pair">
+  <figure class="inline-photo">
+    <img src="/winnie/how-to-keep-a-dog-busy-in-an-apartment-scene3.jpg" alt="A dog toy rotation bin with a few items out and the rest stored closed" loading="lazy" />
+    <figcaption>Rotation beats accumulation — novelty without the clutter.</figcaption>
+  </figure>
+  <figure class="inline-photo">
+    <img src="/winnie/how-to-keep-a-dog-busy-in-an-apartment-scene4.jpg" alt="A hard dog toy placed on a dense rug to control impact noise on the floor" loading="lazy" />
+    <figcaption>A rug under hard toys, every time, for the neighbors' sake.</figcaption>
+  </figure>
+</figure>
+
 ## 6. Count food used in activities
 
 Use part of the dog's normal meal when suitable, or follow professional guidance for the individual dog. Do not let several small enrichment sessions become an invisible second dinner.
@@ -73,6 +94,11 @@ Open cavities, clean grooves, follow dishwasher labeling, and let everything dry
 ## 8. Build in rest
 
 A calm bed, mat, or crate used appropriately gives the dog an off-switch between activities. Constant stimulation can become clutter and noise rather than useful occupation.
+
+<figure class="inline-photo">
+  <img src="/winnie/how-to-keep-a-dog-busy-in-an-apartment-scene5.jpg" alt="A calm dog bed set up as a rest zone between apartment activity sessions" loading="lazy" />
+  <figcaption>Built-in rest is the off-switch the routine needs.</figcaption>
+</figure>
 
 <h2 id="do-not-buy-if">Do not use an apartment activity if…</h2>
 

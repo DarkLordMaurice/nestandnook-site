@@ -113,6 +113,11 @@ faqs:
 
 Litter-box furniture is easy to buy for the room and difficult to buy for the cat. The finish, tabletop, and cabinet style are the visible part, but the hidden measurements decide whether it works: interior floor area, entry height, ventilation, door swing, top clearance, and the space required to remove the pan without scraping it across the room.
 
+<figure class="inline-photo">
+  <img src="/winnie/best-litter-box-furniture-for-small-spaces-scene1.jpg" alt="An end-table-style litter box cabinet in a small apartment living room, doors open showing the litter box inside" loading="lazy" />
+  <figcaption>The interior measurements decide whether furniture actually works, not the finish.</figcaption>
+</figure>
+
 <p id="quick-answer">The <strong>PAWLAND Decorative Cat House</strong> is the best compact cabinet-style choice when its listed interior fits both the pan and cat. The <strong>unipaws top-opening enclosure</strong> is easier to clean and accepts larger pans, but needs a much wider wall. Furniture should never shrink the usable litter area, block airflow, or make daily scooping harder just to hide the box.</p>
 
 <h2 id="measure-first-check">Measure the inside, then measure the way it opens</h2>
@@ -127,6 +132,11 @@ Check these dimensions before comparing finishes:
 6. **Furniture footprint:** include the cat's approach and a mat outside the entrance.
 
 The cabinet is not space-saving if it has to be pulled three feet into the room every day.
+
+<figure class="inline-photo">
+  <img src="/winnie/best-litter-box-furniture-for-small-spaces-scene2.jpg" alt="Ventilation holes on the side of a litter-box cabinet enclosure" loading="lazy" />
+  <figcaption>Ventilation openings, not a sealed decorative shell.</figcaption>
+</figure>
 
 ## Pick furniture by access, not by color
 
@@ -145,6 +155,17 @@ A round shell can visually fit an open corner better than a rectangular cabinet.
 ### Woven or rattan-style enclosure
 
 Woven sides can provide more passive airflow and a softer furniture look. The trade-off is more surface texture to inspect and wipe, especially near the entry and litter mat.
+
+<figure class="inline-photo-pair">
+  <figure class="inline-photo">
+    <img src="/winnie/best-litter-box-furniture-for-small-spaces-scene3.jpg" alt="A hinged top-opening litter cabinet lid, propped open for scooping access" loading="lazy" />
+    <figcaption>A hinged top makes daily scooping realistic, not just possible.</figcaption>
+  </figure>
+  <figure class="inline-photo">
+    <img src="/winnie/best-litter-box-furniture-for-small-spaces-scene4.jpg" alt="The door swing clearance needed in front of a litter-box cabinet during cleaning" loading="lazy" />
+    <figcaption>Door swing clearance is part of the footprint too.</figcaption>
+  </figure>
+</figure>
 
 <h2 id="do-not-buy-if">Do not buy litter-box furniture if…</h2>
 
@@ -171,6 +192,11 @@ Do not place heavy, fragile, or easily knocked items on top where opening the ca
 ## Transition without turning the cabinet into a test
 
 Set up the enclosure with the familiar litter pan and keep the established location available during the transition. Leave doors or the top open at first if the product allows it. The goal is to let the cat investigate without losing access to the known bathroom. If the cat consistently rejects the enclosure, the furniture is not the right format.
+
+<figure class="inline-photo">
+  <img src="/winnie/best-litter-box-furniture-for-small-spaces-scene5.jpg" alt="An exposed plastic litter box beside a furniture-style enclosed cabinet version in the same room" loading="lazy" />
+  <figcaption>Furniture earns its space only when it still behaves like a bathroom.</figcaption>
+</figure>
 
 ## Frequently asked questions
 
