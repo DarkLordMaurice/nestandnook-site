@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import WinnieNote from '../../components/WinnieNote.astro';
+import { SITE } from '../../config';
+import { TOOLS } from '../../data/tools';
+import '../../styles/tools.css';
+
+const tool = TOOLS.find((item) => item.slug === 'desk-fit-reality-check')!;
+const canonical = `${SITE.url}${tool.href}`;
+const jsonLd = {
+  '@context': 'https://schema.org', '@graph': [
+    { '@type': 'WebApplication', '@id': `${canonical}#tool`, name: tool.title, description: tool.description, url: canonical, applicationCategory: 'UtilitiesApplication', operatingSystem: 'Any', isAccessibleForFree: true, publisher: { '@id': `${SITE.url}/#organization` } },
+    { '@type': 'BreadcrumbList', '@id': `${canonical}#breadcrumb`, itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.url}/` },
+      { '@type': 'ListItem', position: 2, name: 'Tools', item: `${SITE.url}/tools/` },
+      { '@type': 'ListItem', position: 3, name: tool.title, item: canonical },
+    ] },
+  ],
+};
+---
+<BaseLayout title={`${tool.title} — ${SITE.brand}`} description={tool.description} showDisclosure={false} jsonLd={jsonLd}>
+  <article class="tool-page">
+    <div class="article-hero-band"><div class="article-hero-text"><span class="washi washi-teal">{tool.eyebrow}</span><h1>{tool.title}</h1></div></div>
+    <p id="quick-answer" class="lede tool-lede">Enter the desk height and underside clearance, the chair's seat-height range, and a few measurements taken while sitting naturally. The result checks whether the chair can meet the work surface, whether your legs clear underneath, and whether a footrest can close the remaining gap.</p>
+    <div class="tool-privacy-note" role="note"><strong>Private by default:</strong> this calculator runs locally in your browser. Nest & Nook does not save or transmit the measurements you enter.</div>
+    <WinnieNote photo="/winnie/headshot-v4-2.jpg"><p>A chair, desk, and footrest can each be perfectly respectable on their own and still refuse to cooperate. Let the measurements meet before the boxes do.</p></WinnieNote>
+
+    <div class="tool-layout">
+      <section class="tool-panel tool-form-panel" aria-labelledby="calculator-heading">
+        <h2 id="calculator-heading">Enter your measurements</h2><div id="tool-errors" class="tool-errors" role="alert" aria-live="assertive"></div>
+        <form id="desk-fit-form" class="tool-form" novalidate>
+          <fieldset><legend>1. Unit and desk</legend><div class="tool-field-grid two">
+            <div class="tool-field"><label for="unit">Measurement unit</label><select id="unit" name="unit"><option value="in">Inches</option><option value="cm">Centimeters</option></select></div>
+            <div class="tool-field"><label for="deskHeight">Desk work-surface height</label><input id="deskHeight" name="deskHeight" type="number" min="0" step="0.1" inputmode="decimal" required /><small>Measure the surface where the keyboard or hands actually rest.</small></div>
+            <div class="tool-field"><label for="deskClearance">Height to the lowest obstruction underneath</label><input id="deskClearance" name="deskClearance" type="number" min="0" step="0.1" inputmode="decimal" required /><small>Stop at a drawer, apron, crossbar, cable tray, or control box.</small></div>
+            <div class="tool-field"><label for="keyboardThickness">Keyboard, tray, or desk-pad thickness</label><input id="keyboardThickness" name="keyboardThickness" type="number" min="0" step="0.1" inputmode="decimal" value="0" required /></div>
+          </div></fieldset>
+          <fieldset><legend>2. Chair and footrest</legend><div class="tool-field-grid two">
+            <div class="tool-field"><label for="chairMin">Chair minimum seat height</label><input id="chairMin" name="chairMin" type="number" min="0" step="0.1" inputmode="decimal" required /></div>
+            <div class="tool-field"><label for="chairMax">Chair maximum seat height</label><input id="chairMax" name="chairMax" type="number" min="0" step="0.1" inputmode="decimal" required /></div>
+            <div class="tool-field"><label for="footrestMax">Maximum usable footrest height</label><input id="footrestMax" name="footrestMax" type="number" min="0" step="0.1" inputmode="decimal" value="0" required /><small>Enter 0 if no footrest is available.</small></div>
+          </div></fieldset>
+          <fieldset id="measure-first-check"><legend>3. Your seated measurements</legend><div class="tool-field-grid two">
+            <div class="tool-field"><label for="elbowAboveSeat">Seat surface to relaxed elbow</label><input id="elbowAboveSeat" name="elbowAboveSeat" type="number" min="0" step="0.1" inputmode="decimal" required /><small>Sit naturally with shoulders relaxed and elbows near a right angle.</small></div>
+            <div class="tool-field"><label for="lowerLegHeight">Floor to the crease behind the knee</label><input id="lowerLegHeight" name="lowerLegHeight" type="number" min="0" step="0.1" inputmode="decimal" required /><small>Wear the shoes normally used at the desk.</small></div>
+            <div class="tool-field"><label for="thighClearance">Seat surface to the top of thigh or knee</label><input id="thighClearance" name="thighClearance" type="number" min="0" step="0.1" inputmode="decimal" required /><small>Use the highest point that must pass under the desk.</small></div>
+          </div></fieldset>
+          <div class="tool-actions no-print"><button class="tool-button" type="submit">Check the desk fit</button><button class="tool-button ghost" type="reset">Clear</button></div>
+        </form>
+      </section>
+
+      <section id="desk-fit-result" class="tool-panel tool-result" aria-labelledby="result-heading" aria-live="polite" tabindex="-1" hidden>
+        <span id="result-status" class="tool-result-status">Result</span><h2 id="result-heading">Your desk-fit result</h2><p id="result-summary"></p>
+        <div class="tool-metrics">
+          <div class="tool-metric"><span>Target seat height</span><strong id="metric-target">—</strong></div>
+          <div class="tool-metric"><span>Chair setting used</span><strong id="metric-seat">—</strong></div>
+          <div class="tool-metric"><span>Legroom margin</span><strong id="metric-legroom">—</strong></div>
+          <div class="tool-metric"><span>Foot support gap</span><strong id="metric-footrest">—</strong></div>
+        </div>
+        <div class="tool-result-section"><h3>Winnie noticed</h3><ul id="result-reasons"></ul></div>
+        <div class="tool-result-section"><h3>Fix first</h3><p id="result-fix-first"></p></div>
+        <div class="tool-result-section"><h3>Measure before buying</h3><ul id="result-measure"></ul></div>
+        <div class="tool-result-section" id="do-not-buy-this-if"><h3>Avoid</h3><ul id="result-avoid"></ul></div>
+        <p class="tool-disclaimer">This is a measurement-based shopping and layout estimate, not medical or clinical ergonomic advice. Comfort can also depend on posture, mobility, chair compression, task type, and how long the setup is used. Recheck the exact product dimensions and seek qualified guidance for pain or accessibility needs.</p>
+        <div class="tool-actions no-print"><button id="print-result" class="tool-button secondary" type="button">Print checklist</button><button id="copy-result" class="tool-button ghost" type="button">Copy result</button></div>
+      </section>
+    </div>
+    <section class="tool-related"><h2>Read next</h2><ul>{tool.relatedGuides.map((guide) => <li><a href={guide.href}>{guide.label}</a></li>)}</ul></section>
+  </article>
+
+  <script>
+    import { evaluateDeskFit, validateDeskFitInput } from '../../lib/tools/desk-fit.mjs';
+    const form = document.querySelector('#desk-fit-form'); const result = document.querySelector('#desk-fit-result'); const errorsBox = document.querySelector('#tool-errors');
+    const value = (name) => Number(new FormData(form).get(name));
+    const text = (id, content) => { const el = document.querySelector(id); if (el) el.textContent = content; };
+    const list = (id, items) => { const el = document.querySelector(id); if (!el) return; el.innerHTML = ''; items.forEach((item) => { const li = document.createElement('li'); li.textContent = item; el.appendChild(li); }); };
+    const inputFromForm = () => { const data = new FormData(form); return { unit: data.get('unit'), deskHeight: value('deskHeight'), deskClearance: value('deskClearance'), keyboardThickness: value('keyboardThickness'), chairMin: value('chairMin'), chairMax: value('chairMax'), footrestMax: value('footrestMax'), elbowAboveSeat: value('elbowAboveSeat'), lowerLegHeight: value('lowerLegHeight'), thighClearance: value('thighClearance') }; };
+    const fixFirstCopy = {
+      ready: 'Set the chair near the estimated height, then test one ordinary work session before treating the setup as settled.',
+      'adjust-chair': 'Choose a chair with a seat-height range that reaches the calculated target without sacrificing foot support.',
+      'add-footrest': 'Choose the footrest before the chair arrives and confirm its usable height range bridges the measured gap.',
+      'desk-too-low': 'Do not solve this by lowering the chair until the elbows are stranded below the work surface. Remove the obstruction, raise the desk safely, or choose a desk with more underside clearance.',
+      recheck: 'Repeat the tightest measurement with the chair loaded and include every drawer, rail, tray, and pad. A half-inch or 1.25-centimeter call is too close for confident shopping.',
+    };
+    form?.addEventListener('submit', (event) => {
+      event.preventDefault(); const input = inputFromForm(); const errors = validateDeskFitInput(input);
+      if (errors.length) { errorsBox.innerHTML = '<strong>Check these measurements:</strong>'; const ul = document.createElement('ul'); errors.forEach((error) => { const li = document.createElement('li'); li.textContent = error; ul.appendChild(li); }); errorsBox.appendChild(ul); result.hidden = true; errorsBox.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+      errorsBox.innerHTML = ''; const output = evaluateDeskFit(input); const unit = input.unit;
+      text('#result-status', output.label); text('#result-summary', `The estimated chair setting is ${output.recommendedSeatHeight} ${unit}, with ${output.legroomMargin} ${unit} of planned legroom margin and a ${output.footSupportGap} ${unit} foot-support gap.`);
+      text('#metric-target', `${output.targetSeatHeight} ${unit}`); text('#metric-seat', `${output.recommendedSeatHeight} ${unit}`); text('#metric-legroom', `${output.legroomMargin} ${unit}`); text('#metric-footrest', `${output.footSupportGap} ${unit}`);
+      text('#result-fix-first', fixFirstCopy[output.classification]); list('#result-reasons', output.reasons); list('#result-measure', output.measureBeforeBuying); list('#result-avoid', output.avoid); result.hidden = false; result.focus();
+    });
+    form?.addEventListener('reset', () => { errorsBox.innerHTML = ''; result.hidden = true; });
+    document.querySelector('#print-result')?.addEventListener('click', () => window.print());
+    document.querySelector('#copy-result')?.addEventListener('click', async () => { const copy = [document.querySelector('#result-status')?.textContent, document.querySelector('#result-summary')?.textContent, `Target seat height: ${document.querySelector('#metric-target')?.textContent}`, `Chair setting: ${document.querySelector('#metric-seat')?.textContent}`].filter(Boolean).join('\n'); try { await navigator.clipboard.writeText(copy); text('#copy-result', 'Copied'); setTimeout(() => text('#copy-result', 'Copy result'), 1600); } catch { text('#copy-result', 'Copy unavailable'); } });
+  </script>
+</BaseLayout>
