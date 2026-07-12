@@ -76,4 +76,9 @@ A no-pantry kitchen needs addresses, not containers. If you can't say where snac
 
 See the [Kitchen hub](/kitchen/) for the full range of small-kitchen storage picks, and [How to Organize a Small Pantry](/kitchen/how-to-organize-a-small-pantry/) if you do have a small pantry and want to get more out of it.
 
+<figure class="inline-photo">
+  <img src="/winnie/how-to-organize-a-small-kitchen-with-no-pantry-scene5.jpg" alt="Distributed pantry storage across a cabinet, a rolling cart, and door-mounted bins in a kitchen with no dedicated pantry room" loading="lazy" />
+  <figcaption>The whole distributed system, working together.</figcaption>
+</figure>
+
 > **Winnie's take:** People ask me what to buy first for a no-pantry kitchen and I always say the same unglamorous thing: bins, not brackets. A rack you mount is a bigger commitment than a bin you can just move to a different shelf when your first guess turns out wrong — and your first guess at zoning almost always turns out at least a little wrong.

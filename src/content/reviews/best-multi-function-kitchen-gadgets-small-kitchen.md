@@ -80,17 +80,38 @@ faqs:
 
 The math on a small kitchen isn't really about buying smaller appliances — it's about owning fewer of them. A pressure cooker, air fryer, slow cooker, and steamer are each a reasonable single-purpose appliance on their own, but four separate boxes is a real storage problem in a kitchen with one or two cabinets to spare. Multi-function gadgets solve that by consolidating jobs, not by shrinking them.
 
+<figure class="inline-photo">
+  <img src="/winnie/best-multi-function-kitchen-gadgets-small-kitchen-scene1.jpg" alt="A single multi-function cooker on a small kitchen counter, replacing what would otherwise be several separate appliances" loading="lazy" />
+  <figcaption>Fewer appliances, not smaller ones — that's the actual math.</figcaption>
+</figure>
+
 <p id="quick-answer">The <strong>Instant Pot Duo Crisp 11-in-1</strong> is the best overall pick — it replaces the most single-purpose appliances (pressure cooker, air fryer, steamer, slow cooker) in one unit. Tighter on counter space specifically? The <strong>Ninja MC1101 Foodi PossibleCooker Pro</strong> has a smaller footprint. No real oven at all? The <strong>Instant Pot Omni Plus</strong> is sized to actually replace one.</p>
 
 <h2 id="measure-first-check">Count your current appliances before consolidating</h2>
 
 Walk through what's actually taking up cabinet or counter space right now — a pressure cooker, air fryer, slow cooker, toaster oven, hand mixer — and note which of those you genuinely use versus which are dead weight. The right multi-function pick replaces appliances you actually use regularly; buying an 11-in-1 unit to replace one air fryer you used twice isn't really solving a space problem, it's adding a bigger box for the same amount of actual use. Also measure your available counter and cabinet depth first — these units, especially the 19QT oven, are genuinely large single objects even though they replace several smaller ones.
 
+<figure class="inline-photo">
+  <img src="/winnie/best-multi-function-kitchen-gadgets-small-kitchen-scene2.jpg" alt="Interchangeable lids for a multi-cooker resting beside the base unit" loading="lazy" />
+  <figcaption>One base, two lids — not zero to store, but far fewer than four appliances.</figcaption>
+</figure>
+
 <h2 id="do-not-buy-if">Skip a multi-function appliance if&#x2026;</h2>
 
 - You only use one cooking function regularly (just air frying, say) — a dedicated single-purpose appliance in that category is usually smaller and cheaper than a multi-function unit you're using for one job.
 - You don't have a clear counter or cabinet spot for a single larger appliance — these consolidate several small appliances into one bigger one, which only helps if you have room for that one bigger object.
 - You cook for a crowd regularly — most of these are sized for 1–4 servings; check capacity carefully before assuming "multi-function" also means "large-batch."
+
+<figure class="inline-photo-pair">
+  <figure class="inline-photo">
+    <img src="/winnie/best-multi-function-kitchen-gadgets-small-kitchen-scene3.jpg" alt="A compact multicooker's control panel showing multiple cooking modes" loading="lazy" />
+    <figcaption>One control panel replacing four separate dials.</figcaption>
+  </figure>
+  <figure class="inline-photo">
+    <img src="/winnie/best-multi-function-kitchen-gadgets-small-kitchen-scene4.jpg" alt="A small kitchen cabinet shelf with just one multi-function appliance instead of several single-use ones" loading="lazy" />
+    <figcaption>One shelf spot, not four.</figcaption>
+  </figure>
+</figure>
 
 ## How to choose
 
@@ -107,6 +128,11 @@ Walk through what's actually taking up cabinet or counter space right now — a 
 | Ninja MC1101 PossibleCooker Pro | Compact multicooker | Slow cooker, Dutch oven, sauté pan, stockpot | Medium |
 | Instant Pot Omni Plus 19QT | No real oven | Oven, toaster, air fryer | Large |
 | MOOKA 5-in-1 Immersion Set | Budget / prep tools | Blender, chopper, whisk, frother | Drawer-storable |
+
+<figure class="inline-photo">
+  <img src="/winnie/best-multi-function-kitchen-gadgets-small-kitchen-scene5.jpg" alt="Several separate single-use appliances beside one consolidated multi-function unit, side by side" loading="lazy" />
+  <figcaption>The comparison that actually decides it: four boxes versus one.</figcaption>
+</figure>
 
 ## Frequently asked questions
 

@@ -139,11 +139,21 @@ A starter kitchen does not need twelve knives, three skillets, a stockpot large 
 
 This five-piece small kitchen starter kit is built around a **target** subtotal of $100 or less before tax and shipping. Prices change, so the live total must be checked at implementation and again before purchase.
 
+<figure class="inline-photo">
+  <img src="/winnie/small-kitchen-starter-kit-under-100-scene1.jpg" alt="Five essential starter kitchen tools laid out together on a compact counter: knife, cutting board, pan, baking sheet, and bench scraper" loading="lazy" />
+  <figcaption>Five jobs covered, not a matched set of extras.</figcaption>
+</figure>
+
 <p id="quick-answer">The strongest small-kitchen starter kit begins with five repeat-use tools: the <strong>Mercer Millennia chef's knife</strong>, a stable <strong>Lipper bamboo cutting board</strong>, a compact <strong>Carote frying pan</strong>, a nesting <strong>GoodCook baking-sheet set</strong>, and an <strong>OXO bench scraper</strong>. Together they cover basic prep, stovetop meals, oven cooking, and board cleanup without filling the cabinet with a boxed set.</p>
 
 <h2 id="measure-first-check">Measure the counter, burner, oven, and storage slot first</h2>
 
 Before buying the kit, measure the clear prep strip, the diameter and type of the most useful burner, the interior oven cavity, and the cabinet or drawer where each item will live. Confirm the frying pan works with the actual cooktop. Confirm the largest baking sheet fits inside the oven with room for airflow. Confirm the cutting board leaves a safe knife-working zone without blocking the sink or stove controls.
+
+<figure class="inline-photo">
+  <img src="/winnie/small-kitchen-starter-kit-under-100-scene2.jpg" alt="A chef's knife resting in a safe storage sheath beside a cutting board" loading="lazy" />
+  <figcaption>Safe storage decided before the knife even arrives.</figcaption>
+</figure>
 
 ## What this kit assumes
 
@@ -180,6 +190,17 @@ Nesting baking sheets support roasted vegetables, sheet-pan meals, baking, and r
 
 The bench scraper moves chopped ingredients, clears scraps, and resets the board. In a tiny kitchen, a tool that prevents another bowl from appearing is doing real spatial work.
 
+<figure class="inline-photo-pair">
+  <figure class="inline-photo">
+    <img src="/winnie/small-kitchen-starter-kit-under-100-scene3.jpg" alt="A frying pan and baking sheet stacked compactly in a small cabinet" loading="lazy" />
+    <figcaption>One pan, one sheet stack — not a whole cabinet claimed.</figcaption>
+  </figure>
+  <figure class="inline-photo">
+    <img src="/winnie/small-kitchen-starter-kit-under-100-scene4.jpg" alt="A starter kit's five tools being used together during a simple one-pan meal" loading="lazy" />
+    <figcaption>The five tools, actually working together on dinner.</figcaption>
+  </figure>
+</figure>
+
 <h2 id="do-not-buy-if">Do not buy this exact starter kit if…</h2>
 
 - You already own a sharp chef's knife, stable board, or reliable pan; replace only the missing jobs.
@@ -205,6 +226,11 @@ If the budget cannot cover all five, remove the bench scraper first and use the 
 Piece count is not capability. A twenty-piece set may count lids, tiny utensils, and repeated pan sizes as separate value while requiring an entire cabinet. This kit starts with jobs rather than pieces: cut, prep, pan-cook, oven-cook, transfer, and clean the board.
 
 The goal is not to stay minimalist forever. It is to delay category expansion until the cook can name the missing function.
+
+<figure class="inline-photo">
+  <img src="/winnie/small-kitchen-starter-kit-under-100-scene5.jpg" alt="An overstuffed kitchen drawer beside a lean five-tool starter kit, side by side" loading="lazy" />
+  <figcaption>Piece count isn't capability — five jobs beats twenty pieces.</figcaption>
+</figure>
 
 ## Frequently asked questions
 

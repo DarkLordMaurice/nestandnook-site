@@ -46,11 +46,21 @@ faqs:
 
 A small kitchen becomes workable when the main bottleneck is named correctly. Cabinet space, no-pantry storage, counter prep, appliance footprint, cooking sequence, bowl storage, and pantry rotation are different problems. This pillar now routes to every specialist guide already live instead of promising future pages that already exist.
 
+<figure class="inline-photo">
+  <img src="/winnie/small-kitchen-setup-guide-scene1.jpg" alt="A compact kitchen with distinct cabinet, counter, appliance, and pantry zones clearly organized" loading="lazy" />
+  <figcaption>Name the bottleneck first — the fix follows from that.</figcaption>
+</figure>
+
 <p id="quick-answer">Fix a small kitchen by bottleneck: <strong>cabinet access first, then pantry or no-pantry storage, then counter prep, appliances, cooking workflow, and pantry rotation</strong>. Do not buy a “space-saving” product until you know which zone it is supposed to improve and where it will live afterward.</p>
 
 <h2 id="measure-first-check">Name and measure the bottleneck</h2>
 
 Walk through one normal meal and note where the process stops: reaching a pan, finding food, clearing a board, placing an appliance, or landing a hot dish. Measure only the zone tied to that failure—cabinet depth, shelf height, sink width, counter footprint, appliance clearance, or pantry shelf depth.
+
+<figure class="inline-photo">
+  <img src="/winnie/small-kitchen-setup-guide-scene2.jpg" alt="A small kitchen's single clear prep zone, tools put away except what's in use" loading="lazy" />
+  <figcaption>One clear zone tells you more than a whole-kitchen inventory.</figcaption>
+</figure>
 
 <h2 id="do-not-buy-if">Do not buy another kitchen organizer or gadget if…</h2>
 
@@ -71,6 +81,17 @@ For falling stacks, unused vertical space, pan lids, and deep lower cabinets, us
 
 A kitchen with no pantry needs zones across cabinets, doors, and available gaps: [How to Organize a Small Kitchen With No Pantry](/kitchen/how-to-organize-a-small-kitchen-with-no-pantry/). A kitchen with a small pantry needs visibility and rotation: [How to Organize a Small Pantry](/kitchen/how-to-organize-a-small-pantry/). For dry-goods container decisions, use [Best Stackable Pantry Containers](/kitchen/best-stackable-pantry-containers-small-kitchen/).
 
+<figure class="inline-photo-pair">
+  <figure class="inline-photo">
+    <img src="/winnie/small-kitchen-setup-guide-scene3.jpg" alt="A labeled pantry shelf next to an organized appliance cabinet" loading="lazy" />
+    <figcaption>Labeled and organized — the router pages handle the depth.</figcaption>
+  </figure>
+  <figure class="inline-photo">
+    <img src="/winnie/small-kitchen-setup-guide-scene4.jpg" alt="A small kitchen counter kept clear except for one active task in progress" loading="lazy" />
+    <figcaption>One task, one clear counter — the actual goal.</figcaption>
+  </figure>
+</figure>
+
 ## 4. Reclaim the prep surface
 
 Use [How to Prep Food With Minimal Counter Space](/kitchen/how-to-prep-food-with-minimal-counter-space/) for a one-board workflow and compact helpers. If bowl storage is the specific issue, use [Best Nesting Mixing Bowls for Small Kitchens](/kitchen/best-nesting-mixing-bowls-small-kitchen/).
@@ -82,6 +103,11 @@ Use [Best Compact Air Fryers for Small Kitchens](/kitchen/best-compact-air-fryer
 ## 6. Fix the cooking sequence
 
 Use [How to Cook Full Meals in a Tiny Kitchen](/kitchen/how-to-cook-full-meals-in-a-tiny-kitchen/) for prep, cooking, landing, and cleanup zones. Workflow can solve a cramped counter before another product is needed.
+
+<figure class="inline-photo">
+  <img src="/winnie/small-kitchen-setup-guide-scene5.jpg" alt="A cluttered, bottlenecked kitchen corner beside the same corner after a full reorganization" loading="lazy" />
+  <figcaption>Same corner, named bottleneck, real fix.</figcaption>
+</figure>
 
 ## Recommended reading path
 

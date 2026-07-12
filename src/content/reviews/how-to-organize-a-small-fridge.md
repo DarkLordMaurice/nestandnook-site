@@ -36,11 +36,21 @@ faqs:
 
 A small refrigerator is easy to fill and hard to read. The problem is not simply capacity. It is that a yogurt cup can hide behind a takeout container, raw ingredients can end up above ready-to-eat food, and produce drawers can become sealed archives. Good small-fridge organization makes food safer, visible, and easier to use before it spoils.
 
+<figure class="inline-photo">
+  <img src="/winnie/how-to-organize-a-small-fridge-scene1.jpg" alt="A compact refrigerator interior organized into clear zones: dairy, produce, leftovers, and raw ingredients" loading="lazy" />
+  <figcaption>Zones, not just shelves — visibility is the whole point.</figcaption>
+</figure>
+
 <p id="quick-answer">Organize a small fridge in this order: confirm it stays at or below 40°F, keep ready-to-eat food and leftovers visible, contain raw meat on the lowest practical shelf, use drawers for produce, and reserve the door for condiments and other temperature-tolerant items. Add one small "use first" zone, avoid overfilling, and reset the fridge before grocery shopping.</p>
 
 <h2 id="measure-first-check">Check temperature, shelf clearance, and air circulation first</h2>
 
 Use an appliance thermometer to confirm the refrigerator stays at or below 40°F. Then measure shelf width, depth, and the gaps between shelves before buying bins. Leave space around vents and between tightly packed items so cold air can circulate. An organizer that fits physically but blocks airflow or hides half the shelf is not improving the fridge.
+
+<figure class="inline-photo">
+  <img src="/winnie/how-to-organize-a-small-fridge-scene2.jpg" alt="A refrigerator thermometer showing a safe temperature reading" loading="lazy" />
+  <figcaption>Cold enough comes before organized — check it first.</figcaption>
+</figure>
 
 ## 1. Start with food safety, not matching containers
 
@@ -89,6 +99,17 @@ A shallow washable tray is useful here because it contains leaks and can be remo
 If the fridge has two drawers, divide produce in a way you can remember—commonly fruits in one and vegetables in the other. Keep delicate greens visible near the top of the drawer instead of buried beneath heavy produce.
 
 Do not wash every item before storage unless the food benefits from it and can be dried thoroughly. Excess moisture can shorten the life of some produce. The practical goal is to know what is in each drawer and check it weekly.
+
+<figure class="inline-photo-pair">
+  <figure class="inline-photo">
+    <img src="/winnie/how-to-organize-a-small-fridge-scene3.jpg" alt="A raw-meat container placed on the lowest shelf, sealed to prevent drips" loading="lazy" />
+    <figcaption>Lowest shelf, sealed — so it can't betray anything below it.</figcaption>
+  </figure>
+  <figure class="inline-photo">
+    <img src="/winnie/how-to-organize-a-small-fridge-scene4.jpg" alt="Labeled leftover containers placed at eye level for use-first visibility" loading="lazy" />
+    <figcaption>Eye level, labeled — so leftovers stop disappearing.</figcaption>
+  </figure>
+</figure>
 
 ## 6. Keep eggs and dairy inside, not in the warmest door spots
 
@@ -143,6 +164,11 @@ A five-minute reset prevents duplicates and waste:
 7. Build the shopping list from what is actually missing.
 
 The reset is more valuable than a full reorganization every few months because it keeps the system alive.
+
+<figure class="inline-photo">
+  <img src="/winnie/how-to-organize-a-small-fridge-scene5.jpg" alt="A cluttered, disorganized fridge shelf beside the same shelf organized into zones, side by side" loading="lazy" />
+  <figcaption>Same shelf, same fridge — the difference is the system.</figcaption>
+</figure>
 
 <h2 id="do-not-buy-if">Do not buy refrigerator organizers if…</h2>
 

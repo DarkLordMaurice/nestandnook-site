@@ -57,6 +57,11 @@ Empty the pantry and sort everything by how often you actually use it, not by co
   </figure>
 </div>
 
+<figure class="inline-photo">
+  <img src="/winnie/how-to-organize-a-small-pantry-scene5.jpg" alt="A small pantry shelf organized into zones with older cans rotated to the front for use-first visibility" loading="lazy" />
+  <figcaption>Older cans up front — rotation is the habit that sticks.</figcaption>
+</figure>
+
 <h2 id="do-not-buy-if">Skip a pantry organizer if&#x2026;</h2>
 
 - You haven't thrown out expired food or grouped duplicates yet — organizing before that just organizes the clutter.

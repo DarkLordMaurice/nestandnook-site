@@ -59,6 +59,11 @@ Reliable tiny-kitchen formulas worth keeping in rotation: a grain bowl dinner, a
   </figure>
 </div>
 
+<figure class="inline-photo">
+  <img src="/winnie/how-to-cook-full-meals-in-a-tiny-kitchen-scene5.jpg" alt="A one-pan meal being plated directly from its cooking vessel on a compact stovetop, minimal extra dishes in sight" loading="lazy" />
+  <figcaption>Plated straight from the pan — the format doing its job.</figcaption>
+</figure>
+
 <h2 id="do-not-buy-if">Skip a new cooking tool if&#x2026;</h2>
 
 - Your real issue is workflow, not equipment — another gadget won't fix a sequencing problem.

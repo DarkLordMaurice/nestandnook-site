@@ -142,6 +142,11 @@ Check two things before ordering: the tool's fully expanded size (does it actual
 - The collapsed size still doesn't fit where you planned to store it — measure the folded dimensions, not just the marketing photo.
 - You're buying it purely for the "collapsible" label on something you'd rarely use anyway — a fold-flat salad spinner still only earns its space if you eat salad.
 
+<figure class="inline-photo">
+  <img src="/winnie/best-collapsible-kitchen-tools-small-space-scene4.jpg" alt="A collapsible dish-drying rack expanded on a counter beside the same rack folded flat for storage" loading="lazy" />
+  <figcaption>Expanded and folded, side by side — the whole pitch in one shot.</figcaption>
+</figure>
+
 ## How to choose
 
 - **Real capacity, not token capacity:** a colander that collapses beautifully but only holds a cup of pasta isn't actually solving your problem.
@@ -171,6 +176,11 @@ Check two things before ordering: the tool's fully expanded size (does it actual
 | Prep Solutions Salad Spinner | Best for salad people | Washing/drying greens | Compact, not foldable |
 | PrepWorks Funnel Set | Best small add-on | Pouring/decanting | Nests into itself |
 | Sur La Table Colander & Steamer | Best multi-use | Draining + steaming | Collapses to a disc |
+
+<figure class="inline-photo">
+  <img src="/winnie/best-collapsible-kitchen-tools-small-space-scene5.jpg" alt="A collapsible prep bowl or funnel set nested flat inside a shallow drawer" loading="lazy" />
+  <figcaption>Nested flat in a shallow drawer — barely any footprint.</figcaption>
+</figure>
 
 ## Frequently asked questions
 
