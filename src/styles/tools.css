@@ -1,0 +1,44 @@
+.tool-page { max-width: 1000px; margin: 0 auto; }
+.tool-lede { max-width: 760px; margin: 1.5rem auto; text-align: center; }
+.tool-privacy-note { max-width: 760px; margin: 0 auto 1.5rem; padding: .85rem 1rem; background: rgba(47,143,138,.1); border: 1px solid rgba(47,143,138,.28); border-radius: var(--radius-sm); color: var(--ink-soft); }
+.tool-layout { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(300px, .88fr); gap: 1.5rem; align-items: start; margin-top: 2rem; }
+.tool-panel { background: var(--paper); border: 1px solid var(--border); border-top: 4px solid var(--gold); border-radius: var(--radius); padding: 1.4rem; box-shadow: var(--shadow-card); }
+.tool-panel h2 { margin-top: 0; }
+.tool-form fieldset { border: 0; border-top: 1px solid var(--border); margin: 1.4rem 0 0; padding: 1.25rem 0 0; }
+.tool-form legend { font-family: var(--font-display); font-weight: 700; color: var(--jewel-teal); padding-right: .6rem; }
+.tool-field-grid { display: grid; gap: 1rem; }
+.tool-field-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.tool-field { display: flex; flex-direction: column; gap: .35rem; }
+.tool-field label { font-weight: 700; font-size: .9rem; }
+.tool-field small { color: var(--ink-soft); font-size: .77rem; line-height: 1.4; }
+.tool-field input, .tool-field select { width: 100%; border: 1.5px solid var(--border); border-radius: 8px; background: #fff; color: var(--ink); padding: .68rem .75rem; font: inherit; }
+.tool-field input:focus, .tool-field select:focus { outline: 3px solid rgba(47,143,138,.2); border-color: var(--teal-dark); }
+.tool-checkbox { display: flex; gap: .65rem; align-items: flex-start; margin-top: 1rem; font-size: .9rem; }
+.tool-checkbox input { margin-top: .3rem; }
+.tool-actions { display: flex; gap: .7rem; flex-wrap: wrap; margin-top: 1.35rem; }
+.tool-button { appearance: none; border: 2px solid var(--terracotta-dark); border-radius: 999px; background: var(--terracotta); color: #fff; padding: .65rem 1.1rem; font: 700 .9rem var(--font-body); cursor: pointer; }
+.tool-button:hover { background: var(--terracotta-dark); }
+.tool-button.secondary { background: var(--jewel-teal-light); border-color: var(--jewel-teal); }
+.tool-button.ghost { background: transparent; color: var(--terracotta-dark); }
+.tool-errors:empty { display: none; }
+.tool-errors { padding: .8rem 1rem; border-left: 4px solid var(--bad); background: rgba(168,69,47,.08); border-radius: 6px; }
+.tool-errors ul { margin-bottom: 0; }
+.tool-result-status { display: inline-block; background: var(--jewel-teal); color: var(--cream-on-dark); border-radius: 999px; padding: .28rem .7rem; font-weight: 700; font-size: .78rem; }
+.tool-result h2 { margin-top: 1rem; }
+.tool-metrics { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .65rem; margin: 1.2rem 0; }
+.tool-metric { background: var(--cream); border: 1px solid var(--border); border-radius: 8px; padding: .75rem; }
+.tool-metric span { display: block; font-size: .73rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .04em; }
+.tool-metric strong { display: block; margin-top: .2rem; color: var(--jewel-teal); }
+.tool-result-section { border-top: 1px solid var(--border); padding-top: 1rem; margin-top: 1rem; }
+.tool-result-section h3 { color: var(--terracotta-dark); }
+.tool-disclaimer { margin-top: 1.2rem; font-size: .78rem; color: var(--ink-soft); }
+.tools-intro { max-width: 760px; margin: 1.5rem auto; }
+.tools-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 1.2rem; margin: 2rem 0; }
+.tool-card { display: block; background: var(--paper); border: 1px solid var(--border); border-top: 4px solid var(--gold); border-radius: var(--radius); padding: 1.3rem; text-decoration: none; color: inherit; box-shadow: var(--shadow-card); }
+.tool-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-card-hover); }
+.tool-card h2 { border: 0; padding: 0; margin: .5rem 0; }
+.tool-card-link { font-weight: 700; color: var(--terracotta-dark); }
+.tool-related { margin-top: 2rem; }
+@media (max-width: 760px) { .tool-layout { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .tool-field-grid.two, .tool-metrics { grid-template-columns: 1fr; } .tool-panel { padding: 1rem; } }
+@media print { .tool-form-panel, .tool-privacy-note, .winnie-note, .tool-related, .article-hero-band { display: none !important; } .tool-layout { display: block; } .tool-result { border: 1px solid #000; box-shadow: none; } }

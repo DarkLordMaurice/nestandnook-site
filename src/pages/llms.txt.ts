@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import { SITE, isAmazonAssociatesApproved } from '../config';
 import { HUBS } from '../hubs';
+import { LIVE_TOOLS } from '../data/tools';
 
 export const GET: APIRoute = async () => {
   const reviews = await getCollection('reviews');
@@ -10,8 +11,14 @@ export const GET: APIRoute = async () => {
   const byHub = (hub: string) => reviews.filter((r) => r.data.hub === hub);
   const lines: string[] = [`# ${SITE.brand}`, '', `> ${SITE.tagline}`, ''];
 
-  lines.push(`${SITE.brand} is an independently run content site covering home-office ergonomics, small-space kitchen gear, apartment-friendly pet care, recipes, and practical guides. Product recommendations are research-led and based on public specifications and reported buyer experience, not first-party lab testing. Winnie Hollowell is a disclosed virtual AI host, not a real product tester.`);
+  lines.push(`${SITE.brand} is an independently run content site covering home-office ergonomics, small-space kitchen gear, apartment-friendly pet care, recipes, practical guides, and browser-based planning tools. Product recommendations are research-led and based on public specifications and reported buyer experience, not first-party lab testing. Winnie Hollowell is a disclosed virtual AI host, not a real product tester.`);
   lines.push('');
+
+  if (LIVE_TOOLS.length) {
+    lines.push('## Planning tools', '');
+    for (const tool of LIVE_TOOLS) lines.push(`- [${tool.title}](${SITE.url}${tool.href}): ${tool.description}`);
+    lines.push('');
+  }
   lines.push(isAmazonAssociatesApproved
     ? 'Monetization status: approved Amazon Associates participant; qualifying retailer links may earn commissions.'
     : 'Monetization status: Amazon Associates application pending; current Amazon links are untagged and do not earn commissions.');

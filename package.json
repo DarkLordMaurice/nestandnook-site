@@ -7,7 +7,8 @@
     "dev": "astro dev",
     "audit:readiness": "node scripts/site-readiness-audit.mjs",
     "audit:readiness:strict": "node scripts/site-readiness-audit.mjs --strict",
-    "build": "npm run audit:readiness && astro build && pagefind --site dist --output-subdir pagefind",
+    "test:tools": "node --test tests/tools/*.test.mjs",
+    "build": "npm run audit:readiness && npm run test:tools && astro build && pagefind --site dist --output-subdir pagefind",
     "preview": "astro preview",
     "astro": "astro"
   },

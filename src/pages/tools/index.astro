@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ToolCard from '../../components/tools/ToolCard.astro';
+import { LIVE_TOOLS } from '../../data/tools';
+import { SITE } from '../../config';
+import '../../styles/tools.css';
+---
+<BaseLayout
+  title={`Small-Space Planning Tools — ${SITE.brand}`}
+  description="Free small-space planning tools from Nest & Nook for checking fit, measurements, storage trade-offs, and buying decisions before you order."
+  showDisclosure={false}
+>
+  <section class="hero-banner">
+    <div class="hero-banner-inner two-col">
+      <div>
+        <span class="washi washi-teal">Measure first, buy second</span>
+        <h1>Small-Space Planning Tools</h1>
+        <p class="lede">Calculators and planners that turn a vague “will this fit?” into a measurement checklist and a practical next step.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="tools-intro">
+    <p>These tools run in your browser and do not save your measurements. They are planning aids, not substitutes for manufacturer instructions, installation guidance, or professional safety advice.</p>
+  </div>
+
+  <div class="tools-grid">
+    {LIVE_TOOLS.map((tool) => <ToolCard tool={tool} />)}
+  </div>
+</BaseLayout>

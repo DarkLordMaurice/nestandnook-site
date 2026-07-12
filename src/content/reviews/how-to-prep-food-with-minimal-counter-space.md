@@ -5,6 +5,7 @@ primaryKeyword: "prep food with minimal counter space"
 hub: "kitchen"
 pageType: "how_to"
 publishDate: 2026-07-08
+updatedDate: 2026-07-11
 disclosure: true
 schemaType: "Article"
 image: "/winnie/one-board-prep-station-small-kitchen.jpg"
@@ -41,6 +42,8 @@ A tiny counter can't handle a cooking-show lineup of seventeen little bowls. In 
 <h2 id="measure-first-check">Measure your actual prep zone before buying anything</h2>
 
 Before buying any prep tool, measure your actual usable prep zone. Then check whether the tool saves more space than it uses once the parts, lid, blades, container, cord, or cleanup pieces are all accounted for — a gadget with five parts to wash isn't a space-saver just because it's small on the shelf.
+
+Not sure whether a board, appliance, or prep tool will leave enough working room? Use the [Counter Footprint Simulator](/tools/counter-footprint-simulator/) to compare its operating footprint—including clearance—against the counter and prep area you need to protect.
 
 ## Building a one-board system
 
@@ -82,4 +85,4 @@ See [Best Nesting Mixing Bowls for Small Kitchens](/kitchen/best-nesting-mixing-
   <figcaption>Same tiny counter, one system later — deliberately clear.</figcaption>
 </figure>
 
-> **Winnie's take:** The bench scraper is the single cheapest, least glamorous tool that changed my prep the most — it does the job of a second cutting board and three transfer bowls for about the price of a coffee.
+> **Winnie's take:** The bench scraper is the single cheapest, least glamorous tool in this setup — buyers keep using it for the job of a second cutting board and several transfer bowls, without adding another bulky gadget to the counter.
