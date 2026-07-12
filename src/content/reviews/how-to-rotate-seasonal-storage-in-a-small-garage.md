@@ -8,7 +8,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "Article"
-image: "PENDING"
+image: "/winnie/garage-seasonal-bin-rotation-swap.jpg"
 imageAlt: "Winnie Hollowell swapping labeled seasonal bins between an overhead rack and easy-reach shelf."
 imageCaption: "A twice-yearly swap keeps only what's actually in season within easy reach. This scene is illustrative, not a record of hands-on work."
 products: []

@@ -8,7 +8,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "Article"
-image: "PENDING"
+image: "/winnie/garage-workbench-car-clearance-check.jpg"
 imageAlt: "Winnie Hollowell working at a folded-down wall-mounted workbench with a car parked beside it."
 imageCaption: "A workspace and a parked car can share a one-car garage if the layout is planned around the car's real footprint first. This scene is illustrative, not a record of hands-on work."
 products: []

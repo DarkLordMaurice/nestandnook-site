@@ -12,7 +12,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "ItemList"
-image: "PENDING"
+image: "/winnie/garage-vertical-bike-rack-hanging.jpg"
 imageAlt: "Winnie Hollowell hanging a bike on a vertical wall-mounted rack in a small garage."
 imageCaption: "Vertical bike storage reclaims real floor space that a leaned or floor-parked bike takes up. This scene is illustrative, not a record of hands-on product testing."
 products:

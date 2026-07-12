@@ -58,11 +58,11 @@ export const HUBS: Record<string, {
     blurb: 'Wall and overhead storage, tool organization, seasonal rotation, and compact workspaces for a genuinely small or single-car garage — not a 3-car-garage overhaul.',
     winnieIntro: "Most garage-organization content is written for a garage the size of a small warehouse. This section is for the rest of us: a single-car garage, a shared driveway spot, a storage locker doing the job a garage would — where the one non-negotiable rule is the car still has to fit at the end of it.",
     winniePhoto: '/winnie/headshot-v4-4.jpg',
-    hero: 'PENDING',
+    hero: '/winnie/garage-hero.jpg',
     heroAlt: 'Winnie Hollowell measuring wall space in a small, single-car garage before installing storage.',
     heroAccents: [
-      { src: 'PENDING', alt: 'Winnie using a stud finder along a garage wall.' },
-      { src: 'PENDING', alt: 'Winnie assessing overhead ceiling clearance in a small garage.' },
+      { src: '/winnie/garage-stud-finder.jpg', alt: 'Winnie using a stud finder along a garage wall.' },
+      { src: '/winnie/garage-overhead-clearance.jpg', alt: 'Winnie assessing overhead ceiling clearance in a small garage.' },
     ],
   },
 };

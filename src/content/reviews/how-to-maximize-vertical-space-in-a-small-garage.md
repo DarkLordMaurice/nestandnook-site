@@ -8,7 +8,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "Article"
-image: "PENDING"
+image: "/winnie/garage-maximize-vertical-space.jpg"
 imageAlt: "Winnie Hollowell using a stud finder along a garage wall before mounting storage."
 imageCaption: "Vertical space in a small garage is finite and specific to your actual ceiling and wall layout — measuring first prevents buying the wrong system. This scene is illustrative, not a record of hands-on work."
 products: []

@@ -12,7 +12,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "ItemList"
-image: "PENDING"
+image: "/winnie/garage-fold-away-workbench-unfolding.jpg"
 imageAlt: "Winnie Hollowell unfolding a wall-mounted workbench in a small single-car garage."
 imageCaption: "A fold-away workbench gives real project capacity without permanently claiming floor space the car needs. This scene is illustrative, not a record of hands-on product testing."
 products:

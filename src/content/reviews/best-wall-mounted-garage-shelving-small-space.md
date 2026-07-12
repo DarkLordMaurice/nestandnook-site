@@ -12,7 +12,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "ItemList"
-image: "PENDING"
+image: "/winnie/garage-wall-mounted-shelving.jpg"
 imageAlt: "Winnie Hollowell installing a wall-mounted rail storage system on a narrow garage wall."
 imageCaption: "Wall systems are the single most practical upgrade when floor space has to stay clear for the car. This scene is illustrative, not a record of hands-on product testing."
 products:

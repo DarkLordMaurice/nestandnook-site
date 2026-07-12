@@ -12,7 +12,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "ItemList"
-image: "PENDING"
+image: "/winnie/garage-overhead-storage-racks.jpg"
 imageAlt: "Winnie Hollowell measuring ceiling clearance in a small single-car garage before installing overhead storage."
 imageCaption: "Ceiling drop range and real clearance above the car matter more than square footage here. This scene is illustrative, not a record of hands-on product testing."
 products:

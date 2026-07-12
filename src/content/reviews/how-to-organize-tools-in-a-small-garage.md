@@ -8,7 +8,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "Article"
-image: "PENDING"
+image: "/winnie/garage-sorting-tools-by-frequency.jpg"
 imageAlt: "Winnie Hollowell sorting tools by use frequency before hanging them on a small garage pegboard."
 imageCaption: "Sorting tools by how often they're actually reached for, before mounting anything, is what makes a small pegboard section work. This scene is illustrative, not a record of hands-on work."
 products: []

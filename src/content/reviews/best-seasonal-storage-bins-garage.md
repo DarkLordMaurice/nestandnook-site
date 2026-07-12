@@ -12,7 +12,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "ItemList"
-image: "PENDING"
+image: "/winnie/garage-labeling-seasonal-bins.jpg"
 imageAlt: "Winnie Hollowell labeling a stack of seasonal storage bins on a garage shelf."
 imageCaption: "Stackable, labeled bins are what makes a seasonal rotation system actually work on a shelf or overhead rack. This scene is illustrative, not a record of hands-on product testing."
 products:

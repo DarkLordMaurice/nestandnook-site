@@ -12,7 +12,7 @@ publishDate: 2026-07-11
 updatedDate: 2026-07-11
 disclosure: true
 schemaType: "ItemList"
-image: "PENDING"
+image: "/winnie/garage-pegboard-kit-mounting.jpg"
 imageAlt: "Winnie Hollowell mounting a metal pegboard panel on a small garage wall."
 imageCaption: "A pegboard kit sized to the wall you actually have organizes tools without dedicating a full workshop wall to it. This scene is illustrative, not a record of hands-on product testing."
 products:
