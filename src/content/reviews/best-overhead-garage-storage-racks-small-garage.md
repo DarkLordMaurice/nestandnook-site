@@ -9,6 +9,7 @@ primaryKeyword: "best overhead garage storage rack small garage"
 hub: "garage"
 pageType: "roundup"
 publishDate: 2026-07-11
+updatedDate: 2026-07-11
 disclosure: true
 schemaType: "ItemList"
 image: "PENDING"

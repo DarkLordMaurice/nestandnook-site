@@ -5,6 +5,7 @@ primaryKeyword: "maximize vertical space small garage"
 hub: "garage"
 pageType: "how_to"
 publishDate: 2026-07-11
+updatedDate: 2026-07-11
 disclosure: true
 schemaType: "Article"
 image: "PENDING"
