@@ -113,6 +113,11 @@ Set the chair for the keyboard and measure the distance between the feet and flo
 - The product's height or rocking range would interfere with chair wheels or a desk crossbar.
 - You need maximum lift for a pronounced floor gap; use the existing short-user comparison instead.
 
+<figure class="inline-photo">
+  <img src="/winnie/best-under-desk-footrests-scene4.jpg" alt="A pedal-adjustable footrest platform mid-adjustment beneath a desk" loading="lazy" />
+  <figcaption>Pedal control means changing height without getting up — worth it on a shared desk.</figcaption>
+</figure>
+
 ## How to choose by type
 
 | Type | Best for | Main check | Trade-off |
@@ -150,5 +155,10 @@ Foam is softer; a rigid platform is more defined and generally more durable. Nei
 Adjustability matters most in a shared setup because users can have different floor gaps and preferences.
 
 *Specifications and availability change. Confirm dimensions and mechanism details on the current listing before ordering.*
+
+<figure class="inline-photo">
+  <img src="/winnie/best-under-desk-footrests-scene5.jpg" alt="A dense foam footrest in its reversible flipped position, showing two support shapes" loading="lazy" />
+  <figcaption>Flip it for a second position — one purchase, two support shapes.</figcaption>
+</figure>
 
 > **Winnie's take:** Match the mechanism to the person, not the mood board. The useful question is whether you want a steady platform, a soft landing, or controlled movement—and whether it actually fits beneath the desk.

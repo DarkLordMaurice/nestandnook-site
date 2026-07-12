@@ -119,6 +119,11 @@ A footrest's job is to get your knees to roughly 90° with your feet fully suppo
 - You need more than about 7 inches of lift — even the tallest pick here (the HUANUO, at roughly 6.7") may not fully close that gap; raising your chair and using a footrest for balance may work better than expecting one product to solve it alone.
 - You have a diagnosed circulation or nerve issue in your legs or feet — check with a doctor about the right setup rather than choosing based on general ergonomics advice.
 
+<figure class="inline-photo">
+  <img src="/winnie/best-footrest-for-short-people-scene4.jpg" alt="An adjustable footrest set to a taller height setting under a desk, closing a visible floor gap" loading="lazy" />
+  <figcaption>Maximum height is the spec that matters most for short users.</figcaption>
+</figure>
+
 ## How to choose
 
 - **Height range:** the single most important spec for short users. Look for a top setting of 5–7 inches.
@@ -148,6 +153,11 @@ A footrest's job is to get your knees to roughly 90° with your feet fully suppo
 | StrongTek Rocking | Active sitters | Moderate | Non-slip | Rocks |
 | StrongTek Wooden 3-Height | Sturdy platform | Tall, fixed steps | Hard wood | Minimal |
 | StrongTek 4-Angle Wood | Tilt on a budget | Mostly fixed | Hard wood | 4 angles |
+
+<figure class="inline-photo">
+  <img src="/winnie/best-footrest-for-short-people-scene5.jpg" alt="A footrest's tilt mechanism mid-rock, showing ankle movement support" loading="lazy" />
+  <figcaption>The tilt keeps ankles moving, not locked in one flat position.</figcaption>
+</figure>
 
 ## Frequently asked questions
 

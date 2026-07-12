@@ -100,6 +100,11 @@ Sit at the desk and check three things: whether the feet rest fully while the ch
 
 ## What this planning target covers
 
+<figure class="inline-photo">
+  <img src="/winnie/ergonomic-home-office-setup-under-150-scene4.jpg" alt="Three separate ergonomic fixes — footrest, monitor riser, cable tray — grouped on a desk" loading="lazy" />
+  <figcaption>Three separable problems, three independent fixes — not one bundle you have to buy all at once.</figcaption>
+</figure>
+
 This build focuses on three common, separable problems:
 
 1. **Foot support** — only if the chair-to-floor relationship leaves the feet unsupported.
@@ -132,6 +137,11 @@ It does **not** claim to cover every category in the complete office guide. A ch
 <figure class="inline-photo">
   <img src="/winnie/ergonomic-home-office-setup-under-150-scene3.jpg" alt="A compact home office desk with basic ergonomic accessories in place" loading="lazy" />
   <figcaption>Simple and tidy beats impressive and half-finished on a real budget.</figcaption>
+</figure>
+
+<figure class="inline-photo">
+  <img src="/winnie/ergonomic-home-office-setup-under-150-scene5.jpg" alt="A finished small desk setup with foot support, monitor height, and cables all addressed" loading="lazy" />
+  <figcaption>All three priorities solved, in the order the measurements actually called for.</figcaption>
 </figure>
 
 ## Frequently asked questions

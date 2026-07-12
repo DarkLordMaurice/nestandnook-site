@@ -113,6 +113,11 @@ Desk cable management is not one problem. It is three: the power strip and bulky
 
 ## Why this is a layered problem, not a single-product one
 
+<figure class="inline-photo">
+  <img src="/winnie/desk-cable-management-scene4.jpg" alt="Three separate cable-management products — tray, sleeve, clips — laid out as a system" loading="lazy" />
+  <figcaption>Three zones, three products — buying one and expecting it to cover all three is the usual disappointment.</figcaption>
+</figure>
+
 Think of the setup as three zones: **containment** under the desktop, **routing** between the desk and wall, and **access** at the work surface. Buying only a tray leaves the visible run messy. Buying only a sleeve leaves the power strip on the floor. Buying only clips tidies connectors but does nothing for the bulk underneath.
 
 <h2 id="measure-first-check">Measure the desk edge, power strip, and knee zone first</h2>
@@ -147,6 +152,11 @@ Measure the power strip's length and depth, the desktop thickness, and the drop 
 | Zippered sleeve | Routing | Visible cords to the outlet | Bend radius and route length |
 | Magnetic clips | Access | Daily charging cables | Adhesive location and connector size |
 | Flexible mesh net | Moving containment | Sit-stand desks | Slack at minimum and maximum height |
+
+<figure class="inline-photo">
+  <img src="/winnie/desk-cable-management-scene5.jpg" alt="A finished under-desk cable setup with tray, sleeve, and clips all in place" loading="lazy" />
+  <figcaption>Containment, routing, and access, all handled — the finished layered system.</figcaption>
+</figure>
 
 ## Frequently asked questions
 

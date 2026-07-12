@@ -98,6 +98,11 @@ The best anti fatigue mat for standing desk use is the difference between twenty
 
 A terrain mat's raised zones aren't decorative — they nudge your feet into slightly different positions throughout the day without you consciously deciding to move, which several reviewers describe as the actual mechanism behind less end-of-day fatigue. A flat mat is simpler and usually cheaper, and it's a perfectly reasonable choice if you don't want a textured surface underfoot or you stand in shorter stretches rather than for hours at a time.
 
+<figure class="inline-photo">
+  <img src="/winnie/best-anti-fatigue-mats-standing-desk-scene4.jpg" alt="A textured anti-fatigue mat positioned in front of a standing desk, showing raised terrain zones underfoot" loading="lazy" />
+  <figcaption>The terrain zones underfoot, exactly where the desk sits.</figcaption>
+</figure>
+
 <h2 id="measure-first-check">Measure first: how much floor do you actually use?</h2>
 
 Grab a tape measure and mark where your feet actually land through a normal work session — most people are surprised it's a 2-3 foot zone, not their full desk width. That's the mat size to buy, not the widest option on the page. Standing on carpet rather than hard flooring changes the math too: a thin mat over carpet barely shifts how it feels underfoot, so a terrain design (which works through contour, not just cushioning) matters more there than raw thickness does. If you shift your stance widely or lean side to side through the day, size up — a larger mat like the Kangaroo Original is worth the extra floor space, since a mat too small for your actual movement just means stepping on and off the hard floor anyway.
@@ -129,6 +134,11 @@ Grab a tape measure and mark where your feet actually land through a normal work
 | Sky Solutions (20x39) | Budget | Flat | Standard |
 | Kangaroo Original (46x30) | Larger stance / corner desks | Flat | Large |
 | Sky Solutions Oasis | Multi-room use | Flat | Standard |
+
+<figure class="inline-photo">
+  <img src="/winnie/best-anti-fatigue-mats-standing-desk-scene5.jpg" alt="A flat foam mat beside a textured terrain mat, showing the surface difference" loading="lazy" />
+  <figcaption>Flat versus terrain, side by side — the whole decision in one photo.</figcaption>
+</figure>
 
 ## Frequently asked questions
 

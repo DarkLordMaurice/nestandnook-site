@@ -104,6 +104,11 @@ The single most common regret in desk pad reviews isn't about material quality �
 - You only want a mouse-tracking surface, not a full keyboard-and-wrist zone — a standard mouse pad is cheaper and takes up far less desk real estate.
 - You have a very small or shared desk where any full-size pad would hang off the edge — a compact option like the Gallaway Medium below, or none at all, may suit better.
 
+<figure class="inline-photo">
+  <img src="/winnie/best-desk-pads-scene4.jpg" alt="A leather desk pad anchoring a keyboard and mouse zone on a small desk, non-slip backing visible at the edge" loading="lazy" />
+  <figcaption>Non-slip backing, sized to the actual typing zone.</figcaption>
+</figure>
+
 ## Material: leather-look vs. cork
 
 PU leather (most of the options here) resists water and wipes clean easily, which matters if coffee or crumbs are a regular desk hazard. Cork is more porous and shows wear differently, but has a warmer, more textured look that some people prefer over a uniform leather surface. Neither is objectively better — it's a look-and-feel choice more than a durability one.
@@ -129,6 +134,11 @@ PU leather (most of the options here) resists water and wipes clean easily, whic
 | Gallaway Large | Big / dual-monitor desks | 36" x 17" | Leather |
 | Gallaway Medium | Small / compact desks | 24" x 14" | Leather |
 | Aothia Extra-Large | Extra-wide desks | 48" x 17" | PU leather |
+
+<figure class="inline-photo">
+  <img src="/winnie/best-desk-pads-scene5.jpg" alt="A reversible desk pad flipped to show its cork side versus its leather side" loading="lazy" />
+  <figcaption>Two looks, one pad — flip it instead of buying a second.</figcaption>
+</figure>
 
 ## Frequently asked questions
 

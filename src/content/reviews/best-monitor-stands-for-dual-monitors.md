@@ -135,6 +135,11 @@ Add your two monitor widths together, then add 2-4 inches of margin — that's y
   <figcaption>The base footprint eats desk space the platform itself doesn't advertise.</figcaption>
 </figure>
 
+<figure class="inline-photo">
+  <img src="/winnie/best-monitor-stands-for-dual-monitors-scene4.jpg" alt="Two identical monitors mounted at matching height on a shared dual-monitor stand platform" loading="lazy" />
+  <figcaption>Matching height across both screens — the detail a mismatched setup never gets right.</figcaption>
+</figure>
+
 ## Quick comparison
 
 | Stand | Best for | Width/reach | Style | Adjustability |
@@ -144,6 +149,11 @@ Add your two monitor widths together, then add 2-4 inches of margin — that's y
 | HUANUO Dual Arm | Freeing up desk surface | N/A (arm) | Dual arm | Full independent |
 | AMERIERGO | Adjustable riser under $30 | Adjustable length | Platform | Length + angle |
 | Mind Reader | Mismatched monitors, tight desks | Up to ~51" | Platform | Independent sides |
+
+<figure class="inline-photo">
+  <img src="/winnie/best-monitor-stands-for-dual-monitors-scene5.jpg" alt="A dual monitor arm mount holding two screens above a clear desk surface, arms extended independently" loading="lazy" />
+  <figcaption>The desk surface underneath stays completely clear — the whole case for an arm mount.</figcaption>
+</figure>
 
 ## Frequently asked questions
 

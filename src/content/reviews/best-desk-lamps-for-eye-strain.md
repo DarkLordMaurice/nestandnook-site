@@ -111,6 +111,11 @@ The best desk lamp for eye strain is not simply the brightest lamp. A useful set
 
 Words such as “eye-caring” are marketing descriptions unless the manufacturer provides a checkable standard or model-specific document. TÜV Rheinland is a real third-party organization, but this guide does not treat a broad brand statement as proof for every variant. Check the exact model number, current listing, and linked documentation.
 
+<figure class="inline-photo">
+  <img src="/winnie/best-desk-lamps-for-eye-strain-scene4.jpg" alt="A desk lamp casting diffused, even light across a work surface without glare hitting a nearby monitor" loading="lazy" />
+  <figcaption>Even coverage, no glare on the screen — the actual test.</figcaption>
+</figure>
+
 <h2 id="measure-first-check">Check the room and desk before choosing the lamp</h2>
 
 Note the room's existing ambient light, screen brightness, desk-edge shape, available base area, and the direction that prevents glare. A lamp can be well designed and still be wrong for the desk if the base crowds the keyboard, the clamp does not fit, or the light reflects directly into the display.
@@ -143,6 +148,11 @@ Note the room's existing ambient light, screen brightness, desk-edge shape, avai
 | Airlonv | Surface-space savings | Clamp range and dimming controls | Clamp |
 | BenQ Genie | Smaller premium workspace | Exact model documentation | Base |
 | Lepro Small Clip-On | Very tight desk | Clamp fit and light coverage | Clip |
+
+<figure class="inline-photo">
+  <img src="/winnie/best-desk-lamps-for-eye-strain-scene5.jpg" alt="A desk lamp's dimming control being adjusted to match ambient room light" loading="lazy" />
+  <figcaption>Dimmed to match the room, not maxed out by default.</figcaption>
+</figure>
 
 ## Frequently asked questions
 

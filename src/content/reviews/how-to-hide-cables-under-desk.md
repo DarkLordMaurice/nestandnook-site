@@ -42,6 +42,11 @@ Before buying anything, look under your desk and count what's actually there: ho
 
 ## Problem 1: the power brick with nowhere to go
 
+<figure class="inline-photo">
+  <img src="/winnie/how-to-hide-cables-under-desk-scene4.jpg" alt="A bulky power adapter sitting loose on the floor beneath a desk, dust and dangling cords around it" loading="lazy" />
+  <figcaption>The before shot — a power brick with nowhere to actually live.</figcaption>
+</figure>
+
 Almost every desk has at least one bulky power adapter that doesn't hang neatly from a cable clip and instead just sits wherever gravity puts it — often directly on the floor where it becomes a dust magnet and a thing you kick. A cable tray mounted under the desk gives it (and the general tangle of cords running to it) an actual home, off the floor and out of sight, without needing to be unplugged or moved every time you clean.
 
 ## Problem 2: cable slack
@@ -55,6 +60,11 @@ Almost every desk has at least one bulky power adapter that doesn't hang neatly 
 Even with a tray catching the mess, individual cables usually have several feet of unused slack coiled somewhere — a monitor cable rated for a much longer desk than you actually have, a charging cable with six extra feet doing nothing but tangling. A cable sleeve bundles multiple cords into a single, tidy tube, turning a nest of loose wires into one manageable cable running along its route.
 
 ## Problem 3: routing along the desk itself
+
+<figure class="inline-photo">
+  <img src="/winnie/how-to-hide-cables-under-desk-scene5.jpg" alt="A single cable clipped along a fixed path up a desk leg toward a monitor" loading="lazy" />
+  <figcaption>A fixed path beats "the shortest line your eye can see" every time.</figcaption>
+</figure>
 
 The last piece is getting cables from the tray or sleeve to where they're actually used — up to a monitor, over to a laptop, down to a charging pad — without them crossing your workspace or draping over the desk edge. Adhesive or clamp-on clips route individual cords along the underside of the desk or up a leg, so cables travel along a fixed, invisible path instead of the shortest line your eye can see.
 

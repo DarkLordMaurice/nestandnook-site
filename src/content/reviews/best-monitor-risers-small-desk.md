@@ -127,6 +127,11 @@ The best monitor riser for small desk setups has to solve two problems at once �
 ## Frequently asked questions
 
 <figure class="inline-photo">
+  <img src="/winnie/best-monitor-risers-small-desk-scene4.jpg" alt="A vented metal monitor riser raising a screen to eye level with a keyboard tucked in the clearance underneath" loading="lazy" />
+  <figcaption>The keyboard fits underneath — that's the space actually reclaimed.</figcaption>
+</figure>
+
+<figure class="inline-photo">
   <img src="/winnie/best-monitor-risers-small-desk-scene2.jpg" alt="Overhead comparison of two monitor risers with different footprints" loading="lazy" />
   <figcaption>Footprint is the number that actually matters on a small desk, not the height range.</figcaption>
 </figure>
@@ -140,6 +145,11 @@ Most of the risers here are rated for laptops too, and several are marketed as l
 
 **Do I need a height-adjustable riser or is fixed height fine?**
 If you've already run the eye-level test from our monitor height guide and know your number, a fixed-height riser at the right level is simpler and usually cheaper. If you're not sure yet, or you switch chairs/desks, adjustable is worth the extra cost.
+
+<figure class="inline-photo">
+  <img src="/winnie/best-monitor-risers-small-desk-scene5.jpg" alt="A stackable monitor riser's adjustable levels, showing fine height tuning" loading="lazy" />
+  <figcaption>Stackable levels, fine-tuned — not just one fixed height.</figcaption>
+</figure>
 
 *Prices and availability change constantly, so we don't quote figures here — tap through to see the current price on Amazon.*
 

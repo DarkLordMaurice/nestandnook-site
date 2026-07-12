@@ -48,6 +48,11 @@ The clearest sign is your wrists. If they bend upward to reach the keyboard, or 
 
 ## Fix 1: raise the chair (and deal with your feet separately)
 
+<figure class="inline-photo">
+  <img src="/winnie/chair-too-low-for-desk-fixes-scene4.jpg" alt="A hand adjusting an office chair's height lever while seated at a desk" loading="lazy" />
+  <figcaption>Free, ten seconds, and the fix most people skip because it sounds too simple.</figcaption>
+</figure>
+
 This is the first thing to try, because it's free and takes ten seconds. Raise your seat until your wrists sit flat or angled slightly down at the keyboard. The near-universal side effect: your feet stop reaching the floor, especially if you're on the shorter side to begin with. That's not a reason to leave the chair low — it's a reason to add a footrest, which is a five-minute, inexpensive fix compared to living with wrist strain every day. See the [footrest roundup](/home-office/best-footrest-for-short-people/) for picks ranked by how much actual lift they give.
 
 ## Fix 2: raise the desk instead
@@ -61,6 +66,11 @@ This is the first thing to try, because it's free and takes ten seconds. Raise y
 If your chair is already maxed out and still feels low, the desk is the actual mismatch — a desk riser or a set of desk-leg extenders lifts the whole work surface a couple of inches, which is usually cheaper and less disruptive than replacing the desk outright. This is worth trying before you assume new furniture is the only option.
 
 ## Fix 3: check the desk-to-keyboard relationship, not just desk-to-chair
+
+<figure class="inline-photo">
+  <img src="/winnie/chair-too-low-for-desk-fixes-scene5.jpg" alt="A slim keyboard sitting directly on a thick desk surface, raising the typing plane slightly" loading="lazy" />
+  <figcaption>A half-inch of extra desk thickness adds up over a full workday.</figcaption>
+</figure>
 
 Sometimes the desk height is fine but a keyboard sitting directly on top of a thick desk surface effectively raises the typing plane a half-inch or more, which is enough to matter over a full workday. A slim keyboard or a shallow keyboard tray can close that gap without touching chair or desk height at all.
 

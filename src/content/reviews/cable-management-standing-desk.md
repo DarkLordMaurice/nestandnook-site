@@ -48,6 +48,11 @@ The problem regular cable management advice misses: it assumes a fixed-height de
 
 ## Fix the cables that travel with the desk first
 
+<figure class="inline-photo">
+  <img src="/winnie/cable-management-standing-desk-scene4.jpg" alt="A cable spine running down a standing desk leg, flexing at a mid-height position" loading="lazy" />
+  <figcaption>The spine has to work at every height, not just the one you tested it at.</figcaption>
+</figure>
+
 Anything living on the desktop itself — monitor, laptop dock, speakers — needs its cables managed *with* the desk, not against it. A cable spine (a flexible sleeve or segmented chain that runs down the desk leg) bundles these cables and moves with the desk through its full range, so nothing goes taut at the top of the lift or drags at the bottom.
 
 ## Then handle the cables that stay fixed
@@ -61,6 +66,11 @@ Anything living on the desktop itself — monitor, laptop dock, speakers — nee
 Cables running to a wall outlet or a power strip mounted to a wall or fixed shelf are a different problem entirely — they need enough built-in slack to handle the desk's full height range without being so loose that they pool and tangle at the low end. A cable tray mounted to the desk's fixed frame (not the moving top) can catch this slack in one place rather than letting it drape across the floor.
 
 ## Don't forget the monitor arm, if you have one
+
+<figure class="inline-photo">
+  <img src="/winnie/cable-management-standing-desk-scene5.jpg" alt="Cables seated inside a monitor arm's built-in channel at an articulating joint" loading="lazy" />
+  <figcaption>Seated properly in the channel, not just draped near it — the joint moves too.</figcaption>
+</figure>
 
 A monitor arm adds its own moving joint on top of the desk's motion, and cables routed through the arm's built-in channels (most have them) need to be seated properly or they'll bind and pull with every adjustment, not just every desk-height change. Route through the arm's channel first, then let the remaining slack join the cable spine running down the leg.
 

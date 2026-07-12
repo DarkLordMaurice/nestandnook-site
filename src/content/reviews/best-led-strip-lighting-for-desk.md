@@ -130,6 +130,11 @@ The most common regret in strip-light reviews isn't about color quality — it's
   <figcaption>Length adds up fast once you route it around a whole desk, not just one edge.</figcaption>
 </figure>
 
+<figure class="inline-photo">
+  <img src="/winnie/best-led-strip-lighting-for-desk-scene4.jpg" alt="LED strip lighting wrapped behind a monitor, casting a soft bias-lighting glow against the wall" loading="lazy" />
+  <figcaption>Behind the monitor, against the wall — the classic bias-light placement.</figcaption>
+</figure>
+
 ## Quick comparison
 
 | Strip | Best for | Length | Control |
@@ -139,6 +144,11 @@ The most common regret in strip-light reviews isn't about color quality — it's
 | DAYBETTER 32.8ft (2-pack) | Budget | 32.8ft total | Remote (44-key IR) |
 | Govee RGBWWIC 2 Pro | Warm/cool white range | 6.56ft | App, Matter |
 | DAYBETTER Smart WiFi | Larger desk / wraparound | 50ft | App, Alexa/Google |
+
+<figure class="inline-photo">
+  <img src="/winnie/best-led-strip-lighting-for-desk-scene5.jpg" alt="An LED strip's color-changing segment being adjusted via a small remote or app" loading="lazy" />
+  <figcaption>Dial it in — the control app matters as much as the strip.</figcaption>
+</figure>
 
 ## Frequently asked questions
 
