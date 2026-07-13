@@ -45,6 +45,36 @@ export const TOOLS: ToolDefinition[] = [
       { label: 'Small Home Office Setup Guide', href: '/home-office/small-home-office-setup-guide/' },
     ],
   },
+  {
+    slug: 'apartment-pet-zone-planner',
+    title: 'Apartment Pet Zone Planner',
+    shortTitle: 'Pet Zone Planner',
+    description: 'Place feeding, water, hygiene, sleep, enrichment, and supply zones on a simple apartment map, then check the plan for traffic and separation conflicts.',
+    category: 'Pet Care',
+    status: 'live',
+    href: '/tools/apartment-pet-zone-planner/',
+    eyebrow: 'Pet-friendly layout tool',
+    relatedGuides: [
+      { label: 'Small-Space Pet Care Setup Guide', href: '/pet-care/small-space-pet-care-setup-guide/' },
+      { label: 'How to Set Up a Pet Feeding Station in a Small Kitchen', href: '/pet-care/how-to-set-up-a-pet-feeding-station-in-a-small-kitchen/' },
+      { label: 'Best Pet Food Storage Containers for Small Apartments', href: '/pet-care/best-pet-food-storage-containers-small-apartments/' },
+    ],
+  },
+  {
+    slug: 'fold-away-workbench-fit-planner',
+    title: 'Fold-Away Workbench Fit Planner',
+    shortTitle: 'Workbench Fit Planner',
+    description: 'Compare a fold-away workbench against wall width, parked-car clearance, open working depth, and the passage left when folded.',
+    category: 'Garage',
+    status: 'live',
+    href: '/tools/fold-away-workbench-fit-planner/',
+    eyebrow: 'Map both garage modes before buying',
+    relatedGuides: [
+      { label: 'Best Fold-Away Workbenches for a Small Garage', href: '/garage/best-fold-away-workbenches-small-garage/' },
+      { label: 'How to Set Up a Workspace in a One-Car Garage', href: '/garage/how-to-set-up-a-workspace-in-a-one-car-garage/' },
+      { label: 'How to Maximize Vertical Space in a Small Garage', href: '/garage/how-to-maximize-vertical-space-in-a-small-garage/' },
+    ],
+  },
 ];
 
 export const LIVE_TOOLS = TOOLS.filter((tool) => tool.status === 'live');

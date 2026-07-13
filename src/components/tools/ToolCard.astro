@@ -3,9 +3,12 @@ import type { ToolDefinition } from '../../data/tools';
 interface Props { tool: ToolDefinition; }
 const { tool } = Astro.props;
 ---
-<a class="tool-card" href={tool.href}>
-  <span class="washi washi-teal">{tool.category}</span>
-  <h2>{tool.shortTitle}</h2>
-  <p>{tool.description}</p>
-  <span class="tool-card-link">Open the tool →</span>
+<a class="tool-card" href={tool.href} data-tool-card data-category={tool.category}>
+  <div class={`tool-card-art ${tool.slug}`} aria-hidden="true">
+    {tool.slug === 'counter-footprint-simulator' && <><span class="mini-counter"></span><span class="mini-appliance"></span><span class="mini-prep"></span></>}
+    {tool.slug === 'desk-fit-reality-check' && <><span class="mini-desk"></span><span class="mini-chair"></span><span class="mini-footrest"></span></>}
+    {tool.slug === 'apartment-pet-zone-planner' && <><span class="mini-room pet-kitchen">🍽️</span><span class="mini-room pet-living">🪀</span><span class="mini-room pet-bed">🌙</span><span class="mini-paw">🐾</span></>}
+    {tool.slug === 'fold-away-workbench-fit-planner' && <><span class="mini-garage-wall"></span><span class="mini-workbench"></span><span class="mini-car"></span><span class="mini-tape">measure both modes</span></>}
+  </div>
+  <div class="tool-card-copy"><span class="washi washi-teal">{tool.category}</span><h2>{tool.shortTitle}</h2><p>{tool.description}</p><span class="tool-card-link">Open Winnie's tool <b aria-hidden="true">→</b></span></div>
 </a>
