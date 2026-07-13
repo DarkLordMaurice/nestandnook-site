@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import WinnieNote from '../../components/WinnieNote.astro';
+import ToolScene from '../../components/tools/ToolScene.astro';
 import { SITE } from '../../config';
 import { TOOLS } from '../../data/tools';
 import '../../styles/tools.css';
@@ -21,6 +22,7 @@ const jsonLd = {
 <BaseLayout title={`${tool.title} — ${SITE.brand}`} description={tool.description} showDisclosure={false} jsonLd={jsonLd}>
   <article class="tool-page">
     <div class="article-hero-band"><div class="article-hero-text"><span class="washi washi-teal">{tool.eyebrow}</span><h1>{tool.title}</h1></div></div>
+    <ToolScene slug={tool.slug} />
     <p id="quick-answer" class="lede tool-lede">Enter the desk height and underside clearance, the chair's seat-height range, and a few measurements taken while sitting naturally. The result checks whether the chair can meet the work surface, whether your legs clear underneath, and whether a footrest can close the remaining gap.</p>
     <div class="tool-privacy-note" role="note"><strong>Private by default:</strong> this calculator runs locally in your browser. Nest & Nook does not save or transmit the measurements you enter.</div>
     <WinnieNote photo="/winnie/headshot-v4-2.jpg"><p>A chair, desk, and footrest can each be perfectly respectable on their own and still refuse to cooperate. Let the measurements meet before the boxes do.</p></WinnieNote>
