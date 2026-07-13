@@ -5,7 +5,9 @@ import WinniePendingPhoto from '../../components/WinniePendingPhoto.astro';
 import BestForDecisionTable from '../../components/BestForDecisionTable.astro';
 import HowWeChoose from '../../components/HowWeChoose.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
+import RelatedToolPromo from '../../components/tools/RelatedToolPromo.astro';
 import { SITE, amazonLink } from '../../config.ts';
+import { LIVE_TOOLS } from '../../data/tools';
 import { DEFAULT_AUTHOR } from '../../authors.ts';
 import { HUBS } from '../../hubs.ts';
 import { getCollection } from 'astro:content';
@@ -23,6 +25,10 @@ const { Content } = await entry.render();
 const d = entry.data;
 const authorName = DEFAULT_AUTHOR.name;
 const canonical = `${SITE.url}/${d.hub}/${entry.slug}/`;
+const currentPath = `/${d.hub}/${entry.slug}/`;
+const relatedTool = LIVE_TOOLS.find((tool) =>
+  tool.relatedGuides.some((guide) => guide.href === currentPath)
+);
 const reviewDate = d.updatedDate ?? d.publishDate;
 const heroAlt = d.imageAlt ?? `Winnie Hollowell illustrating ${d.primaryKeyword} in a practical small-space ${d.hub === 'kitchen' ? 'kitchen' : 'home office'} setup.`;
 
@@ -104,6 +110,8 @@ const jsonLd = {
     )}
 
     <BestForDecisionTable products={d.products} />
+
+    {relatedTool && <RelatedToolPromo tool={relatedTool} />}
 
     <Content />
 

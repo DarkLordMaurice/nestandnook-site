@@ -4,27 +4,18 @@ import ToolCard from '../../components/tools/ToolCard.astro';
 import { LIVE_TOOLS } from '../../data/tools';
 import { SITE } from '../../config';
 import '../../styles/tools.css';
+import '../../styles/tools-discovery-addon.css';
+const categories = ['All', ...new Set(LIVE_TOOLS.map((tool) => tool.category))];
 ---
-<BaseLayout
-  title={`Small-Space Planning Tools — ${SITE.brand}`}
-  description="Free small-space planning tools from Nest & Nook for checking fit, measurements, storage trade-offs, and buying decisions before you order."
-  showDisclosure={false}
->
-  <section class="hero-banner">
-    <div class="hero-banner-inner two-col">
-      <div>
-        <span class="washi washi-teal">Measure first, buy second</span>
-        <h1>Small-Space Planning Tools</h1>
-        <p class="lede">Calculators and planners that turn a vague “will this fit?” into a measurement checklist and a practical next step.</p>
-      </div>
-    </div>
-  </section>
-
-  <div class="tools-intro">
-    <p>These tools run in your browser and do not save your measurements. They are planning aids, not substitutes for manufacturer instructions, installation guidance, or professional safety advice.</p>
-  </div>
-
-  <div class="tools-grid">
-    {LIVE_TOOLS.map((tool) => <ToolCard tool={tool} />)}
-  </div>
+<BaseLayout title={`Small-Space Planning Tools — ${SITE.brand}`} description="Free small-space planning tools for checking measurements, layouts, storage trade-offs, and buying decisions before you order." showDisclosure={false}>
+  <section class="hero-banner"><div class="hero-banner-inner two-col"><div><span class="washi washi-teal">Measure first, buy second</span><h1>Winnie’s Workbench</h1><p class="lede">A growing drawer of visual planning tools for settling fit, layout, and routine questions before a box lands on the doorstep.</p></div><aside class="workbench-count"><strong>{LIVE_TOOLS.length}</strong><span>free tools<br />and growing</span></aside></div></section>
+  <div class="tools-intro"><p>Everything here runs in your browser and keeps your entries private. Pick the room or problem you are working on, then print the result as a tape-and-measure checklist.</p></div>
+  <nav class="tool-filters" aria-label="Filter planning tools"><span>Show:</span>{categories.map((category, index) => <button type="button" data-filter={category} aria-pressed={index === 0 ? 'true' : 'false'}>{category}</button>)}</nav>
+  <p id="tool-filter-status" class="sr-only" aria-live="polite">Showing all planning tools.</p>
+  <div class="tools-grid" id="tools-grid">{LIVE_TOOLS.map((tool) => <ToolCard tool={tool} />)}</div>
+  <section class="tool-method"><span class="washi washi-teal">How Winnie’s tools work</span><h2>Visual first. Numbers second. Shopping last.</h2><div><p><strong>Map the real space.</strong> Include obstructions, traffic, clearances, and the everyday routine—not just the product dimensions.</p><p><strong>See the trade-off.</strong> Each tool shows what fits, what becomes tight, and which measurement needs another pass.</p><p><strong>Carry a checklist.</strong> Results turn into practical measurements to verify against the manufacturer’s current specifications.</p></div></section>
+  <script>
+    const buttons = document.querySelectorAll('[data-filter]'); const cards = document.querySelectorAll('[data-tool-card]'); const status = document.querySelector('#tool-filter-status');
+    buttons.forEach((button) => button.addEventListener('click', () => { const category = button.dataset.filter; buttons.forEach((item) => item.setAttribute('aria-pressed', String(item === button))); let visible = 0; cards.forEach((card) => { const show = category === 'All' || card.dataset.category === category; card.hidden = !show; if (show) visible += 1; }); status.textContent = category === 'All' ? `Showing all ${visible} planning tools.` : `Showing ${visible} ${category} planning ${visible === 1 ? 'tool' : 'tools'}.`; }));
+  </script>
 </BaseLayout>

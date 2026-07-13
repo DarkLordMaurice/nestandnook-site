@@ -1,0 +1,11 @@
+import test from 'node:test';import assert from 'node:assert/strict';import{evaluatePetZones,validatePetZoneInput}from'../../src/lib/tools/pet-zone-planner.mjs';
+const base={species:'cat',homeType:'one-bedroom',children:false,multiplePets:false,highTrafficRooms:['entry','living'],zones:{feeding:'kitchen',water:'bedroom',hygiene:'bathroom',sleep:'bedroom',enrichment:'living',storage:'kitchen'}};
+test('ready distributed layout',()=>assert.equal(evaluatePetZones(base).classification,'ready'));
+test('food/hygiene conflict',()=>assert.ok(evaluatePetZones({...base,zones:{...base.zones,hygiene:'kitchen'}}).critical.length));
+test('rethink two critical conflicts',()=>assert.equal(evaluatePetZones({...base,zones:{...base.zones,feeding:'bathroom',water:'bathroom'}}).classification,'rethink'));
+test('high-traffic sleep warning',()=>assert.ok(evaluatePetZones({...base,zones:{...base.zones,sleep:'entry'}}).cautions.some(x=>x.includes('sleep'))));
+test('bathroom storage warning',()=>assert.ok(evaluatePetZones({...base,zones:{...base.zones,storage:'bathroom'}}).cautions.some(x=>x.includes('humidity'))));
+test('overload warning',()=>{const zones=Object.fromEntries(Object.keys(base.zones).map(z=>[z,z==='hygiene'?'bathroom':'living']));assert.ok(evaluatePetZones({...base,zones}).cautions.some(x=>x.includes('5 of the 6')))});
+test('multi-pet guidance',()=>assert.ok(evaluatePetZones({...base,multiplePets:true,zones:{...base.zones,water:'kitchen'}}).cautions.some(x=>x.includes('Multiple pets'))));
+test('species accepted',()=>['cat','dog','both'].forEach(species=>assert.equal(validatePetZoneInput({...base,species}).length,0)));
+test('invalid placement rejected',()=>assert.ok(validatePetZoneInput({...base,zones:{...base.zones,sleep:''},highTrafficRooms:['roof']}).length>=2));

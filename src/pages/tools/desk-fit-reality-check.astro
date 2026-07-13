@@ -28,6 +28,19 @@ const jsonLd = {
     <div class="tool-layout">
       <section class="tool-panel tool-form-panel" aria-labelledby="calculator-heading">
         <h2 id="calculator-heading">Enter your measurements</h2><div id="tool-errors" class="tool-errors" role="alert" aria-live="assertive"></div>
+        <div class="tool-visual desk-visual" aria-label="Live side-view desk, chair, and footrest preview">
+          <div class="visual-heading"><span class="visual-kicker">Winnie's fit sketch</span><strong id="desk-visual-caption">Add measurements to line up the pieces</strong></div>
+          <div class="desk-stage" id="desk-stage">
+            <div class="desk-wallpaper" aria-hidden="true"></div>
+            <div class="desk-top"><span>work surface</span></div><div class="desk-leg left"></div><div class="desk-leg right"></div>
+            <div class="desk-obstruction"><span>lowest obstruction</span></div>
+            <div class="chair-back"></div><div class="chair-seat"><span>seat</span></div><div class="chair-post"></div><div class="chair-base"></div>
+            <div class="person-outline" aria-hidden="true"><span class="person-head"></span><span class="person-body"></span><span class="person-thigh"></span><span class="person-shin"></span></div>
+            <div class="footrest-shape"><span>footrest</span></div><div class="desk-floor"></div>
+            <div class="clearance-arrow"><span>knee room</span></div>
+          </div>
+          <div class="visual-legend"><span><i class="swatch desk"></i>Desk</span><span><i class="swatch chair"></i>Chair</span><span><i class="swatch support"></i>Foot support</span></div>
+        </div>
         <form id="desk-fit-form" class="tool-form" novalidate>
           <fieldset><legend>1. Unit and desk</legend><div class="tool-field-grid two">
             <div class="tool-field"><label for="unit">Measurement unit</label><select id="unit" name="unit"><option value="in">Inches</option><option value="cm">Centimeters</option></select></div>
@@ -70,11 +83,23 @@ const jsonLd = {
 
   <script>
     import { evaluateDeskFit, validateDeskFitInput } from '../../lib/tools/desk-fit.mjs';
-    const form = document.querySelector('#desk-fit-form'); const result = document.querySelector('#desk-fit-result'); const errorsBox = document.querySelector('#tool-errors');
+    const form = document.querySelector('#desk-fit-form'); const result = document.querySelector('#desk-fit-result'); const errorsBox = document.querySelector('#tool-errors'); const layout = document.querySelector('.tool-layout'); const stage = document.querySelector('#desk-stage');
     const value = (name) => Number(new FormData(form).get(name));
     const text = (id, content) => { const el = document.querySelector(id); if (el) el.textContent = content; };
     const list = (id, items) => { const el = document.querySelector(id); if (!el) return; el.innerHTML = ''; items.forEach((item) => { const li = document.createElement('li'); li.textContent = item; el.appendChild(li); }); };
     const inputFromForm = () => { const data = new FormData(form); return { unit: data.get('unit'), deskHeight: value('deskHeight'), deskClearance: value('deskClearance'), keyboardThickness: value('keyboardThickness'), chairMin: value('chairMin'), chairMax: value('chairMax'), footrestMax: value('footrestMax'), elbowAboveSeat: value('elbowAboveSeat'), lowerLegHeight: value('lowerLegHeight'), thighClearance: value('thighClearance') }; };
+    const renderDeskSketch = () => {
+      const input = inputFromForm(); const required = [input.deskHeight, input.deskClearance, input.chairMin, input.chairMax, input.elbowAboveSeat, input.lowerLegHeight, input.thighClearance];
+      if (!required.every((number) => Number.isFinite(number) && number > 0)) return;
+      const target = input.deskHeight - Math.max(0, input.keyboardThickness) - input.elbowAboveSeat;
+      const seat = Math.min(input.chairMax, Math.max(input.chairMin, target));
+      const scale = input.unit === 'cm' ? 2.54 : 1; const normalizedDesk = input.deskHeight / scale;
+      const toPx = (measurement) => Math.max(0, Math.min(205, (measurement / scale) * (205 / Math.max(34, normalizedDesk))));
+      stage?.style.setProperty('--desk-y', `${toPx(input.deskHeight)}px`); stage?.style.setProperty('--obstruction-y', `${toPx(input.deskClearance)}px`); stage?.style.setProperty('--seat-y', `${toPx(seat)}px`); stage?.style.setProperty('--footrest-h', `${toPx(Math.max(0, seat - input.lowerLegHeight))}px`);
+      const legroom = input.deskClearance - seat - input.thighClearance;
+      stage?.classList.toggle('visual-warning', legroom < (input.unit === 'cm' ? 2.5 : 1));
+      text('#desk-visual-caption', `Target seat: ${Math.round(target * 10) / 10} ${input.unit} · ${legroom >= 0 ? `${Math.round(legroom * 10) / 10} ${input.unit} open above your measured knee` : 'underside conflict'}`);
+    };
     const fixFirstCopy = {
       ready: 'Set the chair near the estimated height, then test one ordinary work session before treating the setup as settled.',
       'adjust-chair': 'Choose a chair with a seat-height range that reaches the calculated target without sacrificing foot support.',
@@ -88,9 +113,10 @@ const jsonLd = {
       errorsBox.innerHTML = ''; const output = evaluateDeskFit(input); const unit = input.unit;
       text('#result-status', output.label); text('#result-summary', `The estimated chair setting is ${output.recommendedSeatHeight} ${unit}, with ${output.legroomMargin} ${unit} of planned legroom margin and a ${output.footSupportGap} ${unit} foot-support gap.`);
       text('#metric-target', `${output.targetSeatHeight} ${unit}`); text('#metric-seat', `${output.recommendedSeatHeight} ${unit}`); text('#metric-legroom', `${output.legroomMargin} ${unit}`); text('#metric-footrest', `${output.footSupportGap} ${unit}`);
-      text('#result-fix-first', fixFirstCopy[output.classification]); list('#result-reasons', output.reasons); list('#result-measure', output.measureBeforeBuying); list('#result-avoid', output.avoid); result.hidden = false; result.focus();
+      text('#result-fix-first', fixFirstCopy[output.classification]); list('#result-reasons', output.reasons); list('#result-measure', output.measureBeforeBuying); list('#result-avoid', output.avoid); result.hidden = false; layout?.classList.add('has-result'); result.focus();
     });
-    form?.addEventListener('reset', () => { errorsBox.innerHTML = ''; result.hidden = true; });
+    form?.addEventListener('reset', () => { errorsBox.innerHTML = ''; result.hidden = true; layout?.classList.remove('has-result'); });
+    form?.addEventListener('input', renderDeskSketch);
     document.querySelector('#print-result')?.addEventListener('click', () => window.print());
     document.querySelector('#copy-result')?.addEventListener('click', async () => { const copy = [document.querySelector('#result-status')?.textContent, document.querySelector('#result-summary')?.textContent, `Target seat height: ${document.querySelector('#metric-target')?.textContent}`, `Chair setting: ${document.querySelector('#metric-seat')?.textContent}`].filter(Boolean).join('\n'); try { await navigator.clipboard.writeText(copy); text('#copy-result', 'Copied'); setTimeout(() => text('#copy-result', 'Copy result'), 1600); } catch { text('#copy-result', 'Copy unavailable'); } });
   </script>

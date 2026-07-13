@@ -41,6 +41,17 @@ const jsonLd = {
       <section class="tool-panel tool-form-panel" aria-labelledby="calculator-heading">
         <h2 id="calculator-heading">Enter your measurements</h2>
         <div id="tool-errors" class="tool-errors" role="alert" aria-live="assertive"></div>
+        <div class="tool-visual counter-visual" aria-label="Live top-down counter layout preview">
+          <div class="visual-heading"><span class="visual-kicker">Winnie's counter map</span><strong id="counter-visual-caption">Add measurements to map the landing zones</strong></div>
+          <div class="counter-board" id="counter-board">
+            <div class="counter-wall"><span>backsplash</span></div>
+            <div class="counter-clearance" id="counter-clearance"><span>clearance</span></div>
+            <div class="counter-item" id="counter-item"><span>appliance</span></div>
+            <div class="counter-prep" id="counter-prep"><span>protected prep</span></div>
+            <div class="counter-ruler ruler-x" aria-hidden="true"></div><div class="counter-ruler ruler-y" aria-hidden="true"></div>
+          </div>
+          <div class="visual-legend"><span><i class="swatch item"></i>Item</span><span><i class="swatch clearance"></i>Clearance</span><span><i class="swatch prep"></i>Prep zone</span></div>
+        </div>
         <form id="counter-footprint-form" class="tool-form" novalidate>
           <fieldset><legend>1. Unit and counter</legend><div class="tool-field-grid two">
             <div class="tool-field"><label for="unit">Measurement unit</label><select id="unit" name="unit"><option value="in">Inches</option><option value="cm">Centimeters</option></select></div>
@@ -89,6 +100,7 @@ const jsonLd = {
     const result = document.querySelector('#counter-footprint-result');
     const layout = document.querySelector('.tool-layout');
     const errorsBox = document.querySelector('#tool-errors');
+    const board = document.querySelector('#counter-board');
     const value = (name) => Number(new FormData(form).get(name));
     const text = (id, content) => { const el = document.querySelector(id); if (el) el.textContent = content; };
     const list = (id, items) => { const el = document.querySelector(id); if (!el) return; el.innerHTML = ''; items.forEach((item) => { const li = document.createElement('li'); li.textContent = item; el.appendChild(li); }); };
@@ -97,6 +109,23 @@ const jsonLd = {
       itemWidth: value('itemWidth'), itemDepth: value('itemDepth'), sideClearance: value('sideClearance'), rearClearance: value('rearClearance'),
       prepWidth: value('prepWidth'), prepDepth: value('prepDepth'), storageAvailable: data.get('storageAvailable') === 'on',
     }; };
+    const renderCounterMap = () => {
+      const input = inputFromForm();
+      const values = [input.counterWidth, input.counterDepth, input.itemWidth, input.itemDepth, input.prepWidth, input.prepDepth];
+      if (!values.every((number) => Number.isFinite(number) && number > 0)) return;
+      const effectiveWidth = input.itemWidth + Math.max(0, input.sideClearance) * 2;
+      const effectiveDepth = input.itemDepth + Math.max(0, input.rearClearance);
+      const pct = (part, whole) => Math.max(4, Math.min(110, (part / whole) * 100));
+      board?.style.setProperty('--item-w', `${pct(input.itemWidth, input.counterWidth)}%`);
+      board?.style.setProperty('--item-d', `${pct(input.itemDepth, input.counterDepth)}%`);
+      board?.style.setProperty('--clear-w', `${pct(effectiveWidth, input.counterWidth)}%`);
+      board?.style.setProperty('--clear-d', `${pct(effectiveDepth, input.counterDepth)}%`);
+      board?.style.setProperty('--prep-w', `${pct(input.prepWidth, input.counterWidth)}%`);
+      board?.style.setProperty('--prep-d', `${pct(input.prepDepth, input.counterDepth)}%`);
+      const fit = effectiveWidth <= input.counterWidth && effectiveDepth <= input.counterDepth;
+      board?.classList.toggle('visual-overflow', !fit);
+      text('#counter-visual-caption', `${input.counterWidth} × ${input.counterDepth} ${input.unit} counter · ${fit ? 'footprint stays inside' : 'footprint spills past an edge'}`);
+    };
     const fixFirstCopy = {
       permanent: 'Keep the item only if the measured prep zone remains genuinely usable after a normal meal, not just empty in a staged photo.',
       'permanent-tight': 'Mark the footprint with painter’s tape and cook one normal meal around it before committing permanent counter space.',
@@ -113,6 +142,7 @@ const jsonLd = {
       text('#result-fix-first', fixFirstCopy[output.classification]); list('#result-reasons', output.reasons); list('#result-measure', output.measureBeforeBuying); list('#result-avoid', output.avoid); result.hidden = false; layout?.classList.add('has-result'); result.focus();
     });
     form?.addEventListener('reset', () => { errorsBox.innerHTML = ''; result.hidden = true; layout?.classList.remove('has-result'); });
+    form?.addEventListener('input', renderCounterMap);
     document.querySelector('#print-result')?.addEventListener('click', () => window.print());
     document.querySelector('#copy-result')?.addEventListener('click', async () => { const copy = [document.querySelector('#result-status')?.textContent, document.querySelector('#result-summary')?.textContent, `Operating footprint: ${document.querySelector('#metric-footprint')?.textContent}`, `Counter used: ${document.querySelector('#metric-percent')?.textContent}`].filter(Boolean).join('\n'); try { await navigator.clipboard.writeText(copy); text('#copy-result', 'Copied'); setTimeout(() => text('#copy-result', 'Copy result'), 1600); } catch { text('#copy-result', 'Copy unavailable'); } });
   </script>

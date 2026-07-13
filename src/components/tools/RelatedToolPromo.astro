@@ -1,0 +1,14 @@
+---
+import type { ToolDefinition } from '../../data/tools';
+interface Props { tool: ToolDefinition; }
+const { tool } = Astro.props;
+---
+<aside class="related-tool-promo" aria-label={`Try ${tool.title}`}>
+  <div class="promo-mark" aria-hidden="true">📏</div>
+  <div><span class="promo-kicker">Free planning tool</span><h2>{tool.title}</h2><p>{tool.description}</p></div>
+  <a href={tool.href}>Open the tool <span aria-hidden="true">→</span></a>
+</aside>
+<style>
+  .related-tool-promo{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:1rem;margin:2rem 0;padding:1rem 1.2rem;border:1px solid rgba(91,65,32,.22);border-left:6px solid var(--gold);border-radius:14px;background:linear-gradient(135deg,#fffaf0,#ece2cb);box-shadow:var(--shadow-card)}
+  .promo-mark{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--jewel-teal);font-size:1.45rem}.promo-kicker{color:var(--terracotta-dark);font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em}.related-tool-promo h2{margin:.15rem 0;font-size:1.25rem}.related-tool-promo p{margin:0;color:var(--ink-soft)}.related-tool-promo>a{padding:.65rem .85rem;border-radius:999px;background:var(--jewel-teal);color:white;font-weight:800;text-decoration:none;white-space:nowrap}@media(max-width:650px){.related-tool-promo{grid-template-columns:auto 1fr}.related-tool-promo>a{grid-column:1/-1;text-align:center}}
+</style>

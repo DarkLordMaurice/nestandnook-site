@@ -5,7 +5,7 @@ export type AmazonAssociatesStatus = 'pending' | 'approved' | 'paused';
 
 export const SITE = {
   brand: 'Nest & Nook',
-  tagline: 'Smarter home office & kitchen setups, reviewed and ranked.',
+  tagline: 'Small-space guides, reviews, recipes, and free visual planning tools.',
   url: 'https://nestandnook.org',
   contactEmail: 'hello@nestandnook.org',
   contactEmailVerified: false, // Set true only after routing/mailbox is tested.
