@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import WinnieNote from '../../components/WinnieNote.astro';
-import ToolScene from '../../components/tools/ToolScene.astro';
 import { SITE } from '../../config';
 import { TOOLS } from '../../data/tools';
 import '../../styles/tools.css';
@@ -25,7 +24,6 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [
 <BaseLayout title={`${tool.title} — ${SITE.brand}`} description={tool.description} showDisclosure={false} jsonLd={jsonLd}>
   <article class="tool-page">
     <div class="article-hero-band"><div class="article-hero-text"><span class="washi washi-teal">{tool.eyebrow}</span><h1>{tool.title}</h1></div></div>
-    <ToolScene slug={tool.slug} />
     <p class="lede tool-lede">Choose each pet function, then place it on the apartment map. Winnie’s planner checks separation, traffic, storage, and room overload before the bowls and litter box settle in.</p>
     <div class="tool-privacy-note" role="note"><strong>Private by default:</strong> this planner runs locally in your browser. Nest & Nook does not save or transmit your selections.</div>
     <WinnieNote photo="/winnie/headshot-v4-2.jpg"><p>A tiny home can still have generous pet logic. The trick is giving each routine a proper address instead of asking one crowded corner to do six jobs.</p></WinnieNote>

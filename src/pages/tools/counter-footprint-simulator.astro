@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import WinnieNote from '../../components/WinnieNote.astro';
-import ToolScene from '../../components/tools/ToolScene.astro';
 import { SITE } from '../../config';
 import { TOOLS } from '../../data/tools';
 import '../../styles/tools.css';
@@ -33,8 +32,6 @@ const jsonLd = {
     <div class="article-hero-band">
       <div class="article-hero-text"><span class="washi washi-teal">{tool.eyebrow}</span><h1>{tool.title}</h1></div>
     </div>
-
-    <ToolScene slug={tool.slug} />
 
     <p id="quick-answer" class="lede tool-lede">Enter the usable counter dimensions, the appliance or tool footprint, its required clearance, and the prep zone you refuse to surrender. The result estimates whether the item fits, crowds the work surface, or belongs in storage between uses.</p>
     <div class="tool-privacy-note" role="note"><strong>Private by default:</strong> this calculator runs locally in your browser. Nest & Nook does not save or transmit the measurements you enter.</div>

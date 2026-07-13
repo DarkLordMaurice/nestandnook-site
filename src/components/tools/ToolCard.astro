@@ -2,28 +2,13 @@
 import type { ToolDefinition } from '../../data/tools';
 interface Props { tool: ToolDefinition; }
 const { tool } = Astro.props;
-const artwork = {
-  'counter-footprint-simulator': {
-    src: '/winnie/compact-air-fryer-counter-clearance-check.jpg',
-    alt: 'A compact appliance being measured for safe counter clearance in a small kitchen.',
-  },
-  'desk-fit-reality-check': {
-    src: '/winnie/winnie-office-small-desk-posture.jpg',
-    alt: 'A compact home-office desk setup arranged for seated comfort.',
-  },
-  'apartment-pet-zone-planner': {
-    src: '/winnie/small-space-pet-care-setup-guide-scene1.jpg',
-    alt: 'A compact apartment pet setup with separate daily-care zones.',
-  },
-  'fold-away-workbench-fit-planner': {
-    src: '/winnie/garage-workbench-car-clearance-check.jpg',
-    alt: 'A fold-away garage workbench checked against a parked car.',
-  },
-}[tool.slug];
 ---
 <a class="tool-card" href={tool.href} data-tool-card data-category={tool.category}>
-  <div class={`tool-card-art ${tool.slug}`}>
-    <img src={artwork.src} alt={artwork.alt} width="640" height="480" loading="lazy" />
+  <div class={`tool-card-art ${tool.slug}`} aria-hidden="true">
+    {tool.slug === 'counter-footprint-simulator' && <><span class="mini-counter"></span><span class="mini-appliance"></span><span class="mini-prep"></span></>}
+    {tool.slug === 'desk-fit-reality-check' && <><span class="mini-desk"></span><span class="mini-chair"></span><span class="mini-footrest"></span></>}
+    {tool.slug === 'apartment-pet-zone-planner' && <><span class="mini-room pet-kitchen">🍽️</span><span class="mini-room pet-living">🪀</span><span class="mini-room pet-bed">🌙</span><span class="mini-paw">🐾</span></>}
+    {tool.slug === 'fold-away-workbench-fit-planner' && <><span class="mini-garage-wall"></span><span class="mini-workbench"></span><span class="mini-car"></span><span class="mini-tape">measure both modes</span></>}
   </div>
-  <div class="tool-card-copy"><span class="washi washi-teal">{tool.category}</span><h2>{tool.shortTitle}</h2><p>{tool.description}</p><span class="tool-card-link">Open tool <b aria-hidden="true">→</b></span></div>
+  <div class="tool-card-copy"><span class="washi washi-teal">{tool.category}</span><h2>{tool.shortTitle}</h2><p>{tool.description}</p><span class="tool-card-link">Open Winnie's tool <b aria-hidden="true">→</b></span></div>
 </a>
