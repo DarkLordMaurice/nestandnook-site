@@ -152,6 +152,50 @@ const fullGraph = {
   </footer>
 
   <script>
+    // Event taxonomy (growth blueprint Table 19, 2026-07-13) — vendor-
+    // agnostic on purpose. No analytics beacon is wired into the site yet
+    // (SITE.analyticsActive is false, see config.ts); adding one requires a
+    // real token from Maurice's own Cloudflare/analytics account, which
+    // Claude cannot generate. Rather than block all instrumentation on that,
+    // window.nnTrack is a safe no-op today (it only pushes to
+    // window.dataLayer, a plain array, and does nothing if nothing reads
+    // it) and becomes live the moment a real vendor snippet is added here —
+    // every call site elsewhere in the codebase (the 4 tools, affiliate
+    // links, related-guide links) never needs touching again.
+    // Never pass raw private measurements (room dimensions, pet-zone
+    // layouts, desk/chair numbers) as event properties — classification/
+    // outcome only, per the blueprint's own privacy rule.
+    (window as any).nnTrack = function nnTrack(name: string, properties: Record<string, unknown> = {}) {
+      (window as any).dataLayer = (window as any).dataLayer || [];
+      (window as any).dataLayer.push({ event: name, ...properties });
+    };
+
+    // affiliate_link_clicked — every real outbound Amazon link on the site
+    // already carries rel="sponsored" (ProductCard CTA, recipe ingredient
+    // search links), so this one delegated listener covers all of them
+    // without editing every component that renders a product link.
+    document.addEventListener('click', (e) => {
+      const link = (e.target as HTMLElement).closest('a[rel~="sponsored"]') as HTMLAnchorElement | null;
+      if (!link) return;
+      (window as any).nnTrack?.('affiliate_link_clicked', {
+        page: location.pathname,
+        href: link.href,
+      });
+    });
+
+    // related_guide_clicked — every tool page's "Read next" block uses
+    // class="tool-related"; blog and recipe pages' cross-link blocks both
+    // use <nav class="related"> (confirmed against blog/[...slug].astro and
+    // recipes/[...slug].astro — same class name, different backing fields).
+    document.addEventListener('click', (e) => {
+      const link = (e.target as HTMLElement).closest('.tool-related a, nav.related a') as HTMLAnchorElement | null;
+      if (!link) return;
+      (window as any).nnTrack?.('related_guide_clicked', {
+        page: location.pathname,
+        destination: link.getAttribute('href'),
+      });
+    });
+
     const wrap = document.getElementById('site-search');
     const toggle = document.getElementById('site-search-toggle');
     const panel = document.getElementById('site-search-panel');

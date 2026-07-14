@@ -89,7 +89,9 @@ const jsonLd = {
     const text = (id, content) => { const el = document.querySelector(id); if (el) el.textContent = content; };
     const list = (id, items) => { const el = document.querySelector(id); if (!el) return; el.innerHTML = ''; items.forEach((item) => { const li = document.createElement('li'); li.textContent = item; el.appendChild(li); }); };
     const inputFromForm = () => { const data = new FormData(form); return { unit: data.get('unit'), deskHeight: value('deskHeight'), deskClearance: value('deskClearance'), keyboardThickness: value('keyboardThickness'), chairMin: value('chairMin'), chairMax: value('chairMax'), footrestMax: value('footrestMax'), elbowAboveSeat: value('elbowAboveSeat'), lowerLegHeight: value('lowerLegHeight'), thighClearance: value('thighClearance') }; };
+    let toolStartedFired = false;
     const renderDeskSketch = () => {
+      if (!toolStartedFired) { toolStartedFired = true; window.nnTrack?.('tool_started', { tool_slug: 'desk-fit-reality-check' }); }
       const input = inputFromForm(); const required = [input.deskHeight, input.deskClearance, input.chairMin, input.chairMax, input.elbowAboveSeat, input.lowerLegHeight, input.thighClearance];
       if (!required.every((number) => Number.isFinite(number) && number > 0)) return;
       const target = input.deskHeight - Math.max(0, input.keyboardThickness) - input.elbowAboveSeat;
@@ -115,10 +117,11 @@ const jsonLd = {
       text('#result-status', output.label); text('#result-summary', `The estimated chair setting is ${output.recommendedSeatHeight} ${unit}, with ${output.legroomMargin} ${unit} of planned legroom margin and a ${output.footSupportGap} ${unit} foot-support gap.`);
       text('#metric-target', `${output.targetSeatHeight} ${unit}`); text('#metric-seat', `${output.recommendedSeatHeight} ${unit}`); text('#metric-legroom', `${output.legroomMargin} ${unit}`); text('#metric-footrest', `${output.footSupportGap} ${unit}`);
       text('#result-fix-first', fixFirstCopy[output.classification]); list('#result-reasons', output.reasons); list('#result-measure', output.measureBeforeBuying); list('#result-avoid', output.avoid); result.hidden = false; layout?.classList.add('has-result'); result.focus();
+      window.nnTrack?.('tool_completed', { tool_slug: 'desk-fit-reality-check', classification: output.classification });
     });
     form?.addEventListener('reset', () => { errorsBox.innerHTML = ''; result.hidden = true; layout?.classList.remove('has-result'); });
     form?.addEventListener('input', renderDeskSketch);
-    document.querySelector('#print-result')?.addEventListener('click', () => window.print());
-    document.querySelector('#copy-result')?.addEventListener('click', async () => { const copy = [document.querySelector('#result-status')?.textContent, document.querySelector('#result-summary')?.textContent, `Target seat height: ${document.querySelector('#metric-target')?.textContent}`, `Chair setting: ${document.querySelector('#metric-seat')?.textContent}`].filter(Boolean).join('\n'); try { await navigator.clipboard.writeText(copy); text('#copy-result', 'Copied'); setTimeout(() => text('#copy-result', 'Copy result'), 1600); } catch { text('#copy-result', 'Copy unavailable'); } });
+    document.querySelector('#print-result')?.addEventListener('click', () => { window.print(); window.nnTrack?.('result_saved', { tool_slug: 'desk-fit-reality-check', action: 'print' }); });
+    document.querySelector('#copy-result')?.addEventListener('click', async () => { const copy = [document.querySelector('#result-status')?.textContent, document.querySelector('#result-summary')?.textContent, `Target seat height: ${document.querySelector('#metric-target')?.textContent}`, `Chair setting: ${document.querySelector('#metric-seat')?.textContent}`].filter(Boolean).join('\n'); try { await navigator.clipboard.writeText(copy); text('#copy-result', 'Copied'); window.nnTrack?.('result_saved', { tool_slug: 'desk-fit-reality-check', action: 'copy' }); setTimeout(() => text('#copy-result', 'Copy result'), 1600); } catch { text('#copy-result', 'Copy unavailable'); } });
   </script>
 </BaseLayout>

@@ -112,7 +112,9 @@ const jsonLd = {
       itemWidth: value('itemWidth'), itemDepth: value('itemDepth'), sideClearance: value('sideClearance'), rearClearance: value('rearClearance'),
       prepWidth: value('prepWidth'), prepDepth: value('prepDepth'), storageAvailable: data.get('storageAvailable') === 'on',
     }; };
+    let toolStartedFired = false;
     const renderCounterMap = () => {
+      if (!toolStartedFired) { toolStartedFired = true; window.nnTrack?.('tool_started', { tool_slug: 'counter-footprint-simulator' }); }
       const input = inputFromForm();
       const values = [input.counterWidth, input.counterDepth, input.itemWidth, input.itemDepth, input.prepWidth, input.prepDepth];
       if (!values.every((number) => Number.isFinite(number) && number > 0)) return;
@@ -143,10 +145,11 @@ const jsonLd = {
       text('#result-status', output.label); text('#result-summary', output.classification === 'too-large' ? 'The operating footprint does not fit inside the counter dimensions you entered.' : `The estimated operating footprint is ${output.effectiveItemWidth} × ${output.effectiveItemDepth} ${unitLabel}.`);
       text('#metric-footprint', `${output.effectiveItemWidth} × ${output.effectiveItemDepth} ${unitLabel}`); text('#metric-percent', `${output.footprintPercent}%`); text('#metric-fit', output.physicallyFits ? 'Yes' : 'No'); text('#metric-prep', output.preservesPrepZone ? 'Yes' : 'No');
       text('#result-fix-first', fixFirstCopy[output.classification]); list('#result-reasons', output.reasons); list('#result-measure', output.measureBeforeBuying); list('#result-avoid', output.avoid); result.hidden = false; layout?.classList.add('has-result'); result.focus();
+      window.nnTrack?.('tool_completed', { tool_slug: 'counter-footprint-simulator', classification: output.classification });
     });
     form?.addEventListener('reset', () => { errorsBox.innerHTML = ''; result.hidden = true; layout?.classList.remove('has-result'); });
     form?.addEventListener('input', renderCounterMap);
-    document.querySelector('#print-result')?.addEventListener('click', () => window.print());
-    document.querySelector('#copy-result')?.addEventListener('click', async () => { const copy = [document.querySelector('#result-status')?.textContent, document.querySelector('#result-summary')?.textContent, `Operating footprint: ${document.querySelector('#metric-footprint')?.textContent}`, `Counter used: ${document.querySelector('#metric-percent')?.textContent}`].filter(Boolean).join('\n'); try { await navigator.clipboard.writeText(copy); text('#copy-result', 'Copied'); setTimeout(() => text('#copy-result', 'Copy result'), 1600); } catch { text('#copy-result', 'Copy unavailable'); } });
+    document.querySelector('#print-result')?.addEventListener('click', () => { window.print(); window.nnTrack?.('result_saved', { tool_slug: 'counter-footprint-simulator', action: 'print' }); });
+    document.querySelector('#copy-result')?.addEventListener('click', async () => { const copy = [document.querySelector('#result-status')?.textContent, document.querySelector('#result-summary')?.textContent, `Operating footprint: ${document.querySelector('#metric-footprint')?.textContent}`, `Counter used: ${document.querySelector('#metric-percent')?.textContent}`].filter(Boolean).join('\n'); try { await navigator.clipboard.writeText(copy); text('#copy-result', 'Copied'); window.nnTrack?.('result_saved', { tool_slug: 'counter-footprint-simulator', action: 'copy' }); setTimeout(() => text('#copy-result', 'Copy result'), 1600); } catch { text('#copy-result', 'Copy unavailable'); } });
   </script>
 </BaseLayout>
