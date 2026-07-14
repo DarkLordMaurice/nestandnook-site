@@ -869,7 +869,19 @@ main .wrap { max-width: 1100px; padding-top: 2.25rem; }
   transition: background 0.15s ease;
 }
 .hero-banner .hero-cta:hover { background: var(--terracotta-dark); color: #fff; }
-.hero-photo {
+/* Scoped to the element itself (`img.hero-photo`), not the bare class —
+   `.hero-photo` collides with `.prose figure.inline-photo.hero-photo`, the
+   unrelated wrapper every review/blog article uses around its own hero
+   photo. A bare `.hero-photo` rule here was capping that FIGURE's box at
+   max-height:350px while the actual <img> inside (which carries no class
+   of its own) kept rendering at its real ~524px aspect-ratio height with
+   the figure's overflow:visible letting it spill past the box and float
+   over whatever content followed — the "giant photo overlapping the next
+   section" bug on every article page sitewide (caught 2026-07-13, via
+   screenshot on best-under-desk-footrests and how-to-organize-a-small-fridge).
+   The only real target for this rule is the homepage/hub-collage's plain
+   `<img class="hero-photo">`, which img.hero-photo still matches exactly. */
+img.hero-photo {
   width: 100%;
   height: auto;
   display: block;
