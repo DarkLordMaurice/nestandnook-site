@@ -8,7 +8,7 @@ const scenes = {
   'fold-away-workbench-fit-planner': { src: '/winnie/garage-workbench-car-clearance-check.jpg', alt: 'Winnie checking clearance between a fold-away workbench and a parked car.', caption: 'The open and folded garage both have to work.' },
 }[slug];
 ---
-<figure class="tool-entry-scene">
+<figure class={`tool-entry-scene tool-entry-scene--${slug}`}>
   <img src={scenes.src} alt={scenes.alt} width="960" height="420" loading="eager" />
   <figcaption>{scenes.caption}</figcaption>
 </figure>

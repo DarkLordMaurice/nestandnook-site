@@ -52,7 +52,7 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [
         </form>
       </section>
 
-      <section class="pet-floorplan-wrap" aria-labelledby="floorplan-heading">
+      <section class="pet-floorplan-wrap measurement-workspace" aria-labelledby="floorplan-heading">
         <div class="visual-heading"><span class="visual-kicker">Winnie’s apartment sketch</span><strong id="floorplan-heading">Click rooms to place the selected zone</strong></div>
         <div class="pet-floorplan" aria-label="Interactive apartment floor plan">
           {rooms.map(([value, label]) => <button type="button" class={`pet-room room-${value}`} data-room={value}><strong>{label}</strong><span class="room-zones" data-room-zones={value}></span></button>)}

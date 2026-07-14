@@ -88,3 +88,105 @@
 @media (max-width: 520px) { .tool-entry-scene img { height: 175px; }.tool-field-grid.two, .tool-metrics { grid-template-columns: 1fr; } .tool-panel { padding: 1rem; }.tool-card { grid-template-columns: 1fr; }.tool-card-art { min-height: 150px; border-right: 0; border-bottom: 3px solid var(--gold); }.tool-card-art img { min-height: 150px; } }
 @media (prefers-reduced-motion: reduce) { .counter-item,.counter-clearance,.counter-prep,.desk-stage *,.tool-card { transition: none !important; } }
 @media print { .tool-form-panel, .tool-privacy-note, .winnie-note, .tool-related, .article-hero-band { display: none !important; } .tool-layout { display: block; } .tool-result { border: 1px solid #000; box-shadow: none; } }
+
+/* Shared planning workspace — used by every Nest & Nook tool. */
+.tools-grid { gap: 1.2rem; }
+.tool-card {
+  grid-template-columns: minmax(220px, 36%) minmax(0, 64%);
+  min-height: 224px;
+}
+.tool-card-art,
+.tool-card-art.apartment-pet-zone-planner,
+.tool-card-art.fold-away-workbench-fit-planner {
+  display: block;
+  height: 224px;
+  min-height: 224px;
+  padding: 0;
+  overflow: hidden;
+  background: #173f3a;
+}
+.tool-card-art::after { background: linear-gradient(160deg, rgba(10, 43, 39, 0), rgba(10, 43, 39, .16)); }
+.tool-card-art img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: cover;
+  object-position: center 40%;
+}
+.tool-card-art .mini-room,
+.tool-card-art .mini-paw,
+.tool-card-art .mini-garage-wall,
+.tool-card-art .mini-workbench,
+.tool-card-art .mini-car,
+.tool-card-art .mini-tape { display: none; }
+
+.tool-entry-scene { max-width: 960px; margin-inline: auto; }
+.tool-entry-scene img {
+  height: auto;
+  aspect-ratio: 16 / 7;
+  object-fit: cover;
+  object-position: center 38%;
+}
+
+.tool-entry-scene--counter-footprint-simulator img { object-position: center 56%; }
+.tool-entry-scene--desk-fit-reality-check img { object-position: center 43%; }
+.tool-entry-scene--apartment-pet-zone-planner img { object-position: center 48%; }
+.tool-entry-scene--fold-away-workbench-fit-planner img { object-position: center 46%; }
+
+.measurement-workspace {
+  border: 1px solid rgba(109, 78, 43, .28);
+  border-radius: 18px;
+  padding: 1rem;
+  background: linear-gradient(135deg, #fffdf7, #f3eadb);
+  box-shadow: 0 12px 28px rgba(53, 37, 20, .09);
+}
+.measurement-workspace .visual-heading {
+  margin: 0 0 .85rem;
+  padding: 0 0 .65rem;
+  border-bottom: 1px solid rgba(109, 78, 43, .18);
+}
+.measurement-workspace .visual-kicker { color: #a95422; }
+.measurement-workspace .counter-board,
+.measurement-workspace .desk-stage,
+.measurement-workspace .pet-floorplan,
+.measurement-workspace .garage-map {
+  border: 2px solid #b58949;
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 4px rgba(255, 255, 255, .58);
+  background-color: #f7efdf;
+  background-image: radial-gradient(circle, rgba(39, 76, 70, .28) 1.4px, transparent 1.8px);
+  background-size: 26px 26px;
+}
+.measurement-workspace .counter-board { height: 272px; }
+.measurement-workspace .desk-stage { height: 272px; }
+.measurement-workspace .desk-wallpaper { display: none; }
+.measurement-workspace .desk-floor { height: 22%; background: #c89b6c; }
+.measurement-workspace .counter-item,
+.measurement-workspace .counter-clearance,
+.measurement-workspace .counter-prep,
+.measurement-workspace .desk-surface,
+.measurement-workspace .desk-frame,
+.measurement-workspace .chair-seat,
+.measurement-workspace .chair-back,
+.measurement-workspace .footrest { filter: none; }
+.measurement-workspace .visual-legend { margin: .75rem 0 0; }
+
+@media (max-width: 760px) {
+  .tool-card { grid-template-columns: 1fr; min-height: 0; }
+  .tool-card-art,
+  .tool-card-art.apartment-pet-zone-planner,
+  .tool-card-art.fold-away-workbench-fit-planner {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+    border-right: 0;
+    border-bottom: 3px solid var(--gold);
+  }
+  .tool-card-art img { aspect-ratio: 16 / 9; }
+  .tool-entry-scene img { aspect-ratio: 16 / 9; object-position: center 35%; }
+  .tool-entry-scene--counter-footprint-simulator img { object-position: center 56%; }
+  .tool-entry-scene--desk-fit-reality-check img { object-position: center 43%; }
+  .tool-entry-scene--apartment-pet-zone-planner img { object-position: center 48%; }
+  .tool-entry-scene--fold-away-workbench-fit-planner img { object-position: center 46%; }
+  .measurement-workspace { padding: .75rem; }
+}
