@@ -171,6 +171,40 @@
 .measurement-workspace .footrest { filter: none; }
 .measurement-workspace .visual-legend { margin: .75rem 0 0; }
 
+/* Art Deco diagram frames (added 2026-07-13) — bold jewel-teal/gold/
+   terracotta color-blocked frame with sunrise arches, sunburst corners,
+   and diamond finials, generated to replace the flat "1998 rendering"
+   diagonal-stripe/graph-paper backgrounds. One image per board (same
+   design family, distinct seed) so the 4 tools read as a matched set
+   without being literal copies. Declared after the shared
+   .measurement-workspace rule above (149-159) so it wins on source
+   order at equal specificity — only background-image/position/size are
+   touched, border/box-shadow/background-color stay as the shared rule
+   set them. Center of each image is a plain light panel by design so
+   the JS-driven item/clearance/prep (or equivalent) boxes stay legible
+   on top; nothing about their positioning or --item-w/etc custom
+   properties is affected. */
+.measurement-workspace .counter-board {
+  background-image: url('/tools/counter-board-bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.measurement-workspace .desk-stage {
+  background-image: url('/tools/desk-stage-bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.measurement-workspace .pet-floorplan {
+  background-image: url('/tools/pet-floorplan-bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.measurement-workspace .garage-map {
+  background-image: url('/tools/garage-map-bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
 @media (max-width: 760px) {
   .tool-card { grid-template-columns: 1fr; min-height: 0; }
   .tool-card-art,
