@@ -9,6 +9,7 @@
     "audit:readiness:strict": "node scripts/site-readiness-audit.mjs --strict",
     "test:tools": "node --test tests/tools/*.test.mjs",
     "build": "npm run audit:readiness && npm run test:tools && astro build && pagefind --site dist --output-subdir pagefind",
+    "indexnow": "node scripts/indexnow_ping.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

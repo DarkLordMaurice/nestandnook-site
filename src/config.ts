@@ -5,7 +5,12 @@ export type AmazonAssociatesStatus = 'pending' | 'approved' | 'paused';
 
 export const SITE = {
   brand: 'Nest & Nook',
-  tagline: 'Small-space guides, reviews, recipes, and free visual planning tools.',
+  // Canonical positioning line (growth blueprint Table 6, 2026-07-13) — used
+  // as-is in the footer and as the Organization schema `description` (see
+  // BaseLayout.astro). Lists all 4 live hubs explicitly; update this line
+  // FIRST if a new hub goes live, since footer/schema both read it live
+  // rather than hardcoding their own copy.
+  tagline: 'Practical small-space guides, product research, recipes, and free visual planning tools for home offices, kitchens, apartment pets, and garages.',
   url: 'https://nestandnook.org',
   contactEmail: 'hello@nestandnook.org',
   contactEmailVerified: false, // Set true only after routing/mailbox is tested.
