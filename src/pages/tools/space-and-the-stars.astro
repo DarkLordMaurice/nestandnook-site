@@ -1,0 +1,199 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import WinnieNote from '../../components/WinnieNote.astro';
+import { SITE } from '../../config';
+import { TOOLS } from '../../data/tools';
+import { SIGNS } from '../../lib/tools/space-and-the-stars.mjs';
+import '../../styles/tools.css';
+
+const tool = TOOLS.find((item) => item.slug === 'space-and-the-stars')!;
+const canonical = `${SITE.url}${tool.href}`;
+const jsonLd = {
+  '@context': 'https://schema.org', '@graph': [
+    { '@type': 'WebApplication', '@id': `${canonical}#tool`, name: tool.title, description: tool.description, url: canonical, applicationCategory: 'UtilitiesApplication', operatingSystem: 'Any', isAccessibleForFree: true, publisher: { '@id': `${SITE.url}/#organization` } },
+    { '@type': 'BreadcrumbList', '@id': `${canonical}#breadcrumb`, itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.url}/` },
+      { '@type': 'ListItem', position: 2, name: 'Tools', item: `${SITE.url}/tools/` },
+      { '@type': 'ListItem', position: 3, name: tool.title, item: canonical },
+    ] },
+  ],
+};
+---
+<BaseLayout title={`${tool.title} — ${SITE.brand}`} description={tool.description} showDisclosure={false} jsonLd={jsonLd}>
+  <article class="tool-page">
+    <div class="article-hero-band">
+      <div class="article-hero-text">
+        <span class="washi washi-teal">{tool.eyebrow}</span>
+        <h1>{tool.title}</h1>
+      </div>
+    </div>
+
+    <p id="quick-answer" class="lede tool-lede">Pick your sign. Find out why your home is exactly like you — for better and worse. Then find out where to actually start.</p>
+
+    <div class="tool-privacy-note" role="note"><strong>No data collected:</strong> this tool runs entirely in your browser. Nest & Nook does not save your sign or share your result.</div>
+
+    <WinnieNote photo="/winnie/headshot-v4-2.jpg">
+      <p>Your habits, your attachment to things, your relationship with chaos — it's all right there in your space. Turns out the stars were trying to tell you something about your storage situation the whole time.</p>
+    </WinnieNote>
+
+    <div class="tool-layout">
+      <section class="tool-panel tool-form-panel" aria-labelledby="sign-picker-heading">
+        <h2 id="sign-picker-heading">Pick your sign</h2>
+        <div class="sign-grid" id="sign-grid" role="list">
+          {SIGNS.map((sign) => (
+            <button
+              class="sign-tile"
+              role="listitem"
+              data-sign={sign.id}
+              aria-label={`${sign.name} ${sign.dates}`}
+              type="button"
+            >
+              <span class="sign-glyph" aria-hidden="true">{sign.glyph}</span>
+              <span class="sign-name">{sign.name}</span>
+              <span class="sign-dates">{sign.dates}</span>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section id="sign-result" class="tool-panel tool-result" aria-labelledby="sign-result-heading" aria-live="polite" tabindex="-1" hidden>
+        <div class="sign-result-glyph" id="result-glyph" aria-hidden="true"></div>
+        <span class="sign-result-name" id="result-name"></span>
+        <span class="tool-result-status" id="result-archetype"></span>
+        <h2 id="sign-result-heading" class="sign-result-heading">Your space personality</h2>
+        <p class="sign-result-profile" id="result-profile"></p>
+
+        <div class="tool-metrics">
+          <div class="tool-metric"><span>Your superpower</span><strong id="result-superpower"></strong></div>
+          <div class="tool-metric"><span>Your kryptonite</span><strong id="result-kryptonite"></strong></div>
+        </div>
+
+        <div class="tool-result-section">
+          <h3>Winnie says</h3>
+          <p id="result-winnie"></p>
+        </div>
+
+        <div class="tool-result-section">
+          <a id="result-cta" class="tool-button" href="#"></a>
+        </div>
+
+        <div class="tool-result-section sign-share">
+          <p class="sign-share-prompt">Does this sound like you? Share your sign.</p>
+          <button class="tool-button ghost" id="copy-sign-result" type="button">Copy your result</button>
+        </div>
+
+        <div class="tool-actions no-print">
+          <button class="tool-button secondary" id="pick-another-sign" type="button">Pick a different sign</button>
+        </div>
+      </section>
+    </div>
+
+    <section class="tool-related"><h2>Read next</h2><ul>{tool.relatedGuides.map((guide) => <li><a href={guide.href}>{guide.label}</a></li>)}</ul></section>
+  </article>
+
+  <script>
+    import { SIGNS, getSignById } from '../../lib/tools/space-and-the-stars.mjs';
+
+    const grid = document.querySelector('#sign-grid');
+    const resultPanel = document.querySelector('#sign-result');
+    const layout = document.querySelector('.tool-layout');
+
+    const text = (id, content) => { const el = document.querySelector(id); if (el) el.textContent = content; };
+
+    function showResult(signId) {
+      const sign = getSignById(signId);
+      if (!sign) return;
+
+      text('#result-glyph', sign.glyph);
+      text('#result-name', sign.name);
+      text('#result-archetype', sign.archetype);
+      text('#result-profile', sign.profile);
+      text('#result-superpower', sign.superpower);
+      text('#result-kryptonite', sign.kryptonite);
+      text('#result-winnie', sign.winnieSays);
+
+      const cta = document.querySelector('#result-cta');
+      if (cta) { cta.textContent = sign.ctaLabel; cta.href = sign.ctaHref; }
+
+      resultPanel.hidden = false;
+      layout?.classList.add('has-result');
+      resultPanel.focus();
+
+      // highlight active tile
+      document.querySelectorAll('.sign-tile').forEach((btn) => btn.classList.toggle('active', btn.dataset.sign === signId));
+
+      window.nnTrack?.('tool_completed', { tool_slug: 'space-and-the-stars', sign: signId, archetype: sign.archetype });
+    }
+
+    grid?.addEventListener('click', (e) => {
+      const tile = e.target.closest('.sign-tile');
+      if (!tile) return;
+      const signId = tile.dataset.sign;
+      if (!window._starsStarted) { window._starsStarted = true; window.nnTrack?.('tool_started', { tool_slug: 'space-and-the-stars' }); }
+      showResult(signId);
+    });
+
+    document.querySelector('#pick-another-sign')?.addEventListener('click', () => {
+      resultPanel.hidden = true;
+      layout?.classList.remove('has-result');
+      document.querySelectorAll('.sign-tile').forEach((btn) => btn.classList.remove('active'));
+      grid?.querySelector('.sign-tile')?.focus();
+    });
+
+    document.querySelector('#copy-sign-result')?.addEventListener('click', async () => {
+      const archetype = document.querySelector('#result-archetype')?.textContent ?? '';
+      const name = document.querySelector('#result-name')?.textContent ?? '';
+      const copy = `I'm ${archetype} (${name}) — what does your sign say about your space? ${window.location.href}`;
+      try {
+        await navigator.clipboard.writeText(copy);
+        text('#copy-sign-result', 'Copied!');
+        window.nnTrack?.('result_saved', { tool_slug: 'space-and-the-stars', action: 'copy' });
+        setTimeout(() => text('#copy-sign-result', 'Copy your result'), 1800);
+      } catch {
+        text('#copy-sign-result', 'Copy unavailable');
+      }
+    });
+  </script>
+</BaseLayout>
+
+<style>
+  .sign-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+    margin-block: 1.5rem;
+  }
+
+  @media (max-width: 600px) {
+    .sign-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .sign-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 1rem 0.5rem;
+    border: 2px solid var(--color-border, #e5e7eb);
+    border-radius: 0.75rem;
+    background: var(--color-surface, #fff);
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    font-family: inherit;
+  }
+
+  .sign-tile:hover { border-color: var(--color-accent, #6366f1); background: var(--color-accent-light, #eef2ff); }
+  .sign-tile.active { border-color: var(--color-accent, #6366f1); background: var(--color-accent-light, #eef2ff); }
+
+  .sign-glyph { font-size: 1.75rem; line-height: 1; }
+  .sign-name { font-size: 0.875rem; font-weight: 600; }
+  .sign-dates { font-size: 0.7rem; color: var(--color-text-muted, #6b7280); }
+
+  .sign-result-glyph { font-size: 3rem; line-height: 1; margin-bottom: 0.25rem; }
+  .sign-result-name { font-size: 1.25rem; font-weight: 700; display: block; }
+  .sign-result-heading { margin-block: 0.5rem 1rem; }
+  .sign-result-profile { font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.5rem; }
+
+  .sign-share { text-align: center; }
+  .sign-share-prompt { font-size: 0.9rem; color: var(--color-text-muted, #6b7280); margin-bottom: 0.75rem; }
+</style>

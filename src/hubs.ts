@@ -6,8 +6,8 @@ export const HUBS: Record<string, {
 }> = {
   'home-office': {
     name: 'Home Office & Ergonomics',
-    eyebrow: 'No overpriced fantasy setups',
-    blurb: 'Affordable upgrades that fix a cramped, uncomfortable desk — footrests, stands, cable management, lighting, and full setup builds.',
+    eyebrow: 'Your desk is working against you. Let\'s fix that.',
+    blurb: 'You\'re doing real work at a desk that wasn\'t designed for real work. Here are the upgrades that actually change that — no overpriced fantasy setups, no guessing.',
     winnieIntro: "I've read approximately one million \"is this desk hack real or just aesthetic\" arguments in review sections, and I have Opinions. This corner of the site is the distilled version — no overpriced fantasy setups, just the footrests, stands, and cable wrangling that solve the specific, annoying problem you actually have.",
     winniePhoto: '/winnie/headshot-v4-1.jpg',
     hero: '/winnie/office-hero.jpg',
@@ -19,8 +19,8 @@ export const HUBS: Record<string, {
   },
   'kitchen': {
     name: 'Small-Space Kitchen Gear',
-    eyebrow: 'Every inch, under negotiation',
-    blurb: 'Space-saving tools for tiny kitchens and apartments — cabinet storage, counter prep, multi-function appliances, pantry organization, and complete setup guides.',
+    eyebrow: 'You cook real food. Your kitchen has opinions about that.',
+    blurb: 'You cook real meals in a space that wasn\'t built for it. This is the gear that actually earns cabinet space when you don\'t have any to spare.',
     winnieIntro: "Small kitchens turn people either very efficient or very feral, and I respect both outcomes. This section covers the gadgets that earn their cabinet space when every inch is under negotiation — more clusters landing as we build this hub out.",
     winniePhoto: '/winnie/headshot-v4-2.jpg',
     hero: '/winnie/kitchen-hero.jpg',
@@ -39,8 +39,8 @@ export const HUBS: Record<string, {
   // "PENDING" back to its real path once Maurice delivers that photo.
   'pet-care': {
     name: 'Small-Space Pet Care',
-    eyebrow: 'Cats, dogs, and not much square footage',
-    blurb: 'Litter, cleanup, feeding, enrichment, and renter-friendly setups for apartment cats and dogs — picks organized by what actually fits a small home, not what looks best in a big one.',
+    eyebrow: 'You\'d reorganize everything for them if you could.',
+    blurb: 'Most pet gear is designed for a house with a mudroom. You don\'t have one. This section is the small-space version — everything organized by what actually fits, not what photographs well in a bigger place.',
     winnieIntro: "I don't have a cat or a dog myself — I'm not going to pretend I do — but I read an unreasonable number of apartment pet setups, and the pattern is always the same: most pet gear is designed for a house with a mudroom, and most of us don't have one. This section is the small-space version — litter and odor control, hair and cleanup, feeding and hydration, enrichment, and gear that won't cost you a security deposit.",
     winniePhoto: '/winnie/headshot-v4-3.jpg',
     hero: 'PENDING',
@@ -54,8 +54,8 @@ export const HUBS: Record<string, {
   // Hero + accents use the "PENDING" sentinel like Pet Care above.
   'garage': {
     name: 'Small-Space Garage & Storage',
-    eyebrow: 'The car still has to fit',
-    blurb: 'Wall and overhead storage, tool organization, seasonal rotation, and compact workspaces for a genuinely small or single-car garage — not a 3-car-garage overhaul.',
+    eyebrow: 'The car still has to fit.',
+    blurb: 'Most garage organization advice is written for a garage three times the size of yours. This isn\'t that. Wall storage, tool systems, seasonal rotation, and workspaces built around the one non-negotiable: the car still has to fit at the end of it.',
     winnieIntro: "Most garage-organization content is written for a garage the size of a small warehouse. This section is for the rest of us: a single-car garage, a shared driveway spot, a storage locker doing the job a garage would — where the one non-negotiable rule is the car still has to fit at the end of it.",
     winniePhoto: '/winnie/headshot-v4-4.jpg',
     hero: '/winnie/garage-hero.jpg',
