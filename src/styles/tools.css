@@ -81,6 +81,54 @@
 .chair-seat { position: absolute; left: 22%; width: 92px; height: 12px; bottom: var(--seat-y); border-radius: 9px; border: 3px solid #7d522c; background: var(--gold); transition: bottom .35s ease; }.chair-seat span { left: 30px; top: 12px; }.chair-back { position: absolute; left: 18%; width: 17px; height: 88px; bottom: calc(var(--seat-y) + 2px); border-radius: 12px 12px 3px 12px; background: var(--gold); border: 3px solid #7d522c; transition: bottom .35s ease; }.chair-post { position: absolute; left: calc(22% + 42px); width: 9px; bottom: 25px; height: calc(var(--seat-y) - 25px); background: #7d522c; transition: height .35s ease; }.chair-base { position: absolute; left: 20%; width: 112px; height: 7px; bottom: 20px; background: #7d522c; border-radius: 99px; }
 .person-outline span { position: absolute; display: block; border: 5px solid var(--terracotta-dark); }.person-head { left: 28%; bottom: calc(var(--seat-y) + 96px); width: 34px; height: 34px; border-radius: 50%; background: #d9a278; transition: bottom .35s ease; }.person-body { left: 29%; bottom: calc(var(--seat-y) + 13px); width: 38px; height: 80px; border-width: 0 0 0 7px !important; transform: rotate(-7deg); transition: bottom .35s ease; }.person-thigh { left: 31%; bottom: calc(var(--seat-y) + 18px); width: 78px; border-width: 0 0 7px 0 !important; transition: bottom .35s ease; }.person-shin { left: calc(31% + 71px); bottom: var(--footrest-h); width: 48px; height: calc(var(--seat-y) - var(--footrest-h) + 17px); border-width: 0 0 0 7px !important; transform: rotate(8deg); transform-origin: bottom; transition: height .35s ease, bottom .35s ease; }
 .footrest-shape { position: absolute; left: 42%; width: 70px; height: max(8px,var(--footrest-h)); bottom: 8px; color: white; background: var(--terracotta); border: 3px solid #793e35; transform: skew(-14deg); transition: height .35s ease; }.footrest-shape span { left: 10px; top: -16px; }.clearance-arrow { position: absolute; left: 56%; bottom: var(--seat-y); height: calc(var(--obstruction-y) - var(--seat-y)); border-left: 2px dashed var(--jewel-teal); transition: bottom .35s ease, height .35s ease; }.clearance-arrow::before,.clearance-arrow::after { content: ""; position: absolute; left: -5px; border: 4px solid transparent; }.clearance-arrow::before { top: 0; border-bottom-color: var(--jewel-teal); }.clearance-arrow::after { bottom: 0; border-top-color: var(--jewel-teal); }.clearance-arrow span { position: absolute; left: 6px; top: 40%; font-size: .62rem; white-space: nowrap; color: var(--jewel-teal); }.desk-stage.visual-warning .clearance-arrow { border-color: var(--bad); }.desk-stage.visual-warning .clearance-arrow span { color: var(--bad); }
+/* Art Deco frame — the whole input card, not the diagram (2026-07-14).
+   Maurice: the earlier attempt put the colorful frame on the small
+   live-diagram box; it belongs on the big white "Enter your
+   measurements" card that holds the heading, the diagram, EVERY input
+   field, and the buttons. That's .tool-form-panel on 3 of the 4 tools
+   (counter-footprint-simulator, desk-fit-reality-check, fold-away-
+   workbench-fit-planner — each wraps its whole form in <section
+   class="tool-panel tool-form-panel">) and .pet-planner-controls on the
+   4th (apartment-pet-zone-planner uses its own bespoke two-column
+   layout/class, not .tool-panel at all — checked its .astro file rather
+   than assuming the shared class applied everywhere). A busy photo
+   background behind real text inputs would hurt legibility (this is
+   literally where you type numbers in), so this is a bold two-tone
+   border plus two hand-built vector corner ornaments (deco-corner.svg —
+   nested arches + diamond finial, not a photo) rather than a full
+   background image. Only the input card, not the result card —
+   "where you input the information" was the specific complaint. On
+   .tool-form-panel this overrides .tool-panel::after's subtle dot-
+   texture (same specificity, declared later) with the corner ornament;
+   the result panel still gets the dot texture as before. */
+.tool-form-panel,
+.pet-planner-controls {
+  position: relative;
+  border: 2px solid var(--gold);
+  border-top: 10px solid var(--jewel-teal);
+  box-shadow: 0 4px 0 -1px var(--gold-light) inset, 0 16px 38px rgba(60,44,26,.12), 0 2px 0 rgba(255,255,255,.7) inset;
+}
+.tool-form-panel::before,
+.tool-form-panel::after,
+.pet-planner-controls::before,
+.pet-planner-controls::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  width: 60px;
+  height: 60px;
+  background: url('/tools/deco-corner.svg') no-repeat;
+  background-size: contain;
+  pointer-events: none;
+  z-index: 2;
+}
+.tool-form-panel::before, .pet-planner-controls::before { left: -2px; }
+.tool-form-panel::after, .pet-planner-controls::after { right: -2px; left: auto; transform: scaleX(-1); }
+@media (max-width: 520px) {
+  .tool-form-panel::before, .tool-form-panel::after,
+  .pet-planner-controls::before, .pet-planner-controls::after { width: 40px; height: 40px; }
+}
+
 .tool-related { margin-top: 2rem; }
 @media (max-width: 760px) { .tool-layout, .tool-layout.has-result { grid-template-columns: 1fr; max-width: 640px; } }
 @media (max-width: 760px) { .tools-grid { grid-template-columns: 1fr; } }
@@ -171,39 +219,32 @@
 .measurement-workspace .footrest { filter: none; }
 .measurement-workspace .visual-legend { margin: .75rem 0 0; }
 
-/* Art Deco diagram frames (added 2026-07-13) — bold jewel-teal/gold/
-   terracotta color-blocked frame with sunrise arches, sunburst corners,
-   and diamond finials, generated to replace the flat "1998 rendering"
-   diagonal-stripe/graph-paper backgrounds. One image per board (same
-   design family, distinct seed) so the 4 tools read as a matched set
-   without being literal copies. Declared after the shared
-   .measurement-workspace rule above (149-159) so it wins on source
-   order at equal specificity — only background-image/position/size are
-   touched, border/box-shadow/background-color stay as the shared rule
-   set them. Center of each image is a plain light panel by design so
-   the JS-driven item/clearance/prep (or equivalent) boxes stay legible
-   on top; nothing about their positioning or --item-w/etc custom
-   properties is affected. */
-.measurement-workspace .counter-board {
-  background-image: url('/tools/counter-board-bg.jpg');
-  background-size: cover;
-  background-position: center;
-}
-.measurement-workspace .desk-stage {
-  background-image: url('/tools/desk-stage-bg.jpg');
-  background-size: cover;
-  background-position: center;
-}
-.measurement-workspace .pet-floorplan {
-  background-image: url('/tools/pet-floorplan-bg.jpg');
-  background-size: cover;
-  background-position: center;
-}
-.measurement-workspace .garage-map {
-  background-image: url('/tools/garage-map-bg.jpg');
-  background-size: cover;
-  background-position: center;
-}
+/* Art Deco frame — reverted off the diagrams (2026-07-14). Maurice: the
+   colorful frame belongs on the whole tool card, not the small live
+   preview — see .tool-form-panel below. The 4 background-image rules
+   that used to live here (counter-board-bg.jpg etc) are removed; the
+   diagrams fall back to the shared cream/dot-pattern background set by
+   .measurement-workspace above (149-159). The 4 generated jpgs stay on
+   disk unused for now in case they're wanted elsewhere later. */
+
+/* Fix: chair-back and chair-seat never actually touched. chair-back sat
+   at left:18% (width 17px) and chair-seat at left:22% (width 92px) —
+   only a 1-percentage-point gap, but at typical stage widths (~560px)
+   that's a real ~5px horizontal gap, so the two gold shapes read as two
+   disconnected floating bars instead of one chair, even though they
+   overlap vertically by design. Shifting chair-back left so it lands
+   inside chair-seat's left third makes the back visibly rise out of the
+   seat plank instead of floating next to it. Verified via live
+   getBoundingClientRect() on production before and after. */
+.desk-stage .chair-back { left: 20.5%; }
+
+/* Fix: .measurement-workspace overrode .desk-floor to 22% of stage
+   height (~59px on a 272px stage) — a slab, not a floor line — which
+   buried .footrest-shape (bottom:8px, height ~12px default) entirely
+   behind/under the floor color, making it invisible. Restoring a slim
+   fixed-height floor keeps the "grounded" look without hiding the
+   footrest. */
+.measurement-workspace .desk-floor { height: 14px; }
 
 @media (max-width: 760px) {
   .tool-card { grid-template-columns: 1fr; min-height: 0; }
