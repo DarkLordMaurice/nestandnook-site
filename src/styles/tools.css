@@ -81,52 +81,46 @@
 .chair-seat { position: absolute; left: 22%; width: 92px; height: 12px; bottom: var(--seat-y); border-radius: 9px; border: 3px solid #7d522c; background: var(--gold); transition: bottom .35s ease; }.chair-seat span { left: 30px; top: 12px; }.chair-back { position: absolute; left: 18%; width: 17px; height: 88px; bottom: calc(var(--seat-y) + 2px); border-radius: 12px 12px 3px 12px; background: var(--gold); border: 3px solid #7d522c; transition: bottom .35s ease; }.chair-post { position: absolute; left: calc(22% + 42px); width: 9px; bottom: 25px; height: calc(var(--seat-y) - 25px); background: #7d522c; transition: height .35s ease; }.chair-base { position: absolute; left: 20%; width: 112px; height: 7px; bottom: 20px; background: #7d522c; border-radius: 99px; }
 .person-outline span { position: absolute; display: block; border: 5px solid var(--terracotta-dark); }.person-head { left: 28%; bottom: calc(var(--seat-y) + 96px); width: 34px; height: 34px; border-radius: 50%; background: #d9a278; transition: bottom .35s ease; }.person-body { left: 29%; bottom: calc(var(--seat-y) + 13px); width: 38px; height: 80px; border-width: 0 0 0 7px !important; transform: rotate(-7deg); transition: bottom .35s ease; }.person-thigh { left: 31%; bottom: calc(var(--seat-y) + 18px); width: 78px; border-width: 0 0 7px 0 !important; transition: bottom .35s ease; }.person-shin { left: calc(31% + 71px); bottom: var(--footrest-h); width: 48px; height: calc(var(--seat-y) - var(--footrest-h) + 17px); border-width: 0 0 0 7px !important; transform: rotate(8deg); transform-origin: bottom; transition: height .35s ease, bottom .35s ease; }
 .footrest-shape { position: absolute; left: 42%; width: 70px; height: max(8px,var(--footrest-h)); bottom: 8px; color: white; background: var(--terracotta); border: 3px solid #793e35; transform: skew(-14deg); transition: height .35s ease; }.footrest-shape span { left: 10px; top: -16px; }.clearance-arrow { position: absolute; left: 56%; bottom: var(--seat-y); height: calc(var(--obstruction-y) - var(--seat-y)); border-left: 2px dashed var(--jewel-teal); transition: bottom .35s ease, height .35s ease; }.clearance-arrow::before,.clearance-arrow::after { content: ""; position: absolute; left: -5px; border: 4px solid transparent; }.clearance-arrow::before { top: 0; border-bottom-color: var(--jewel-teal); }.clearance-arrow::after { bottom: 0; border-top-color: var(--jewel-teal); }.clearance-arrow span { position: absolute; left: 6px; top: 40%; font-size: .62rem; white-space: nowrap; color: var(--jewel-teal); }.desk-stage.visual-warning .clearance-arrow { border-color: var(--bad); }.desk-stage.visual-warning .clearance-arrow span { color: var(--bad); }
-/* Art Deco frame — the whole input card, not the diagram (2026-07-14).
-   Maurice: the earlier attempt put the colorful frame on the small
-   live-diagram box; it belongs on the big white "Enter your
-   measurements" card that holds the heading, the diagram, EVERY input
-   field, and the buttons. That's .tool-form-panel on 3 of the 4 tools
-   (counter-footprint-simulator, desk-fit-reality-check, fold-away-
-   workbench-fit-planner — each wraps its whole form in <section
-   class="tool-panel tool-form-panel">) and .pet-planner-controls on the
-   4th (apartment-pet-zone-planner uses its own bespoke two-column
-   layout/class, not .tool-panel at all — checked its .astro file rather
-   than assuming the shared class applied everywhere). A busy photo
-   background behind real text inputs would hurt legibility (this is
-   literally where you type numbers in), so this is a bold two-tone
-   border plus two hand-built vector corner ornaments (deco-corner.svg —
-   nested arches + diamond finial, not a photo) rather than a full
-   background image. Only the input card, not the result card —
-   "where you input the information" was the specific complaint. On
-   .tool-form-panel this overrides .tool-panel::after's subtle dot-
-   texture (same specificity, declared later) with the corner ornament;
-   the result panel still gets the dot texture as before. */
+/* Art Deco frame — full-perimeter border-image, not corner stickers
+   (rebuilt 2026-07-14, 2nd pass). First pass here undershot: it built a
+   new, much smaller ornament (two 60px corner icons + a thin line)
+   instead of moving the actual bold frame already approved for the
+   diagrams. This version uses deco-frame.svg — a 300x300 tile with the
+   same nested-arch/sunburst + diamond-finial medallions at real size in
+   all 4 corners, connected by a solid teal band with gold/terracotta
+   stripe accents and zigzag trim running the FULL edge — as a real CSS
+   border-image, so the card reads as boldly framed on all four sides,
+   not lightly decorated in two corners. border-image-slice:60 samples
+   the 60px band from each edge of the source; the 180x180 center is
+   transparent in the source, so the card's own background still shows
+   through inside the frame. Applies to .tool-form-panel (3 of 4 tools)
+   and .pet-planner-controls (apartment-pet-zone-planner's own bespoke
+   layout class) — only the input card, not the result card.
+   .pet-planner-shell .pet-planner-controls (not bare .pet-planner-
+   controls) is deliberate: apartment-pet-zone-planner.astro's own
+   pet-zone-planner-addon.css import gets inlined by Astro into a
+   page-level <style> tag that lands AFTER this linked tools.css in the
+   DOM, and its own .pet-planner-controls rule (border: 1px solid...;
+   border-top: 4px solid gold) was winning the cascade at equal
+   specificity purely on source position — verified live via
+   getComputedStyle before concluding this, not guessed. Scoping through
+   the ancestor .pet-planner-shell raises specificity to 0,0,2,0 so this
+   wins regardless of where Astro decides to place either stylesheet. */
 .tool-form-panel,
-.pet-planner-controls {
+.pet-planner-shell .pet-planner-controls {
   position: relative;
-  border: 2px solid var(--gold);
-  border-top: 10px solid var(--jewel-teal);
-  box-shadow: 0 4px 0 -1px var(--gold-light) inset, 0 16px 38px rgba(60,44,26,.12), 0 2px 0 rgba(255,255,255,.7) inset;
+  border: 22px solid transparent;
+  border-image-source: url('/tools/deco-frame.svg');
+  border-image-slice: 60;
+  border-image-width: 22px;
+  border-image-repeat: round;
+  box-shadow: 0 16px 38px rgba(60,44,26,.12), 0 2px 0 rgba(255,255,255,.7) inset;
 }
-.tool-form-panel::before,
-.tool-form-panel::after,
-.pet-planner-controls::before,
-.pet-planner-controls::after {
-  content: '';
-  position: absolute;
-  top: -2px;
-  width: 60px;
-  height: 60px;
-  background: url('/tools/deco-corner.svg') no-repeat;
-  background-size: contain;
-  pointer-events: none;
-  z-index: 2;
-}
-.tool-form-panel::before, .pet-planner-controls::before { left: -2px; }
-.tool-form-panel::after, .pet-planner-controls::after { right: -2px; left: auto; transform: scaleX(-1); }
 @media (max-width: 520px) {
-  .tool-form-panel::before, .tool-form-panel::after,
-  .pet-planner-controls::before, .pet-planner-controls::after { width: 40px; height: 40px; }
+  .tool-form-panel, .pet-planner-shell .pet-planner-controls {
+    border-width: 14px;
+    border-image-width: 14px;
+  }
 }
 
 .tool-related { margin-top: 2rem; }

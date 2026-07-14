@@ -1,0 +1,47 @@
+<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <!-- Full-perimeter Art Deco border tile for CSS border-image (2026-07-14
+       rebuild). Corners (60x60 each) carry the same nested-arch/sunburst +
+       diamond-finial motif approved for the diagram frames; the 4 edge
+       bands connecting them carry a solid jewel-teal field with gold/
+       terracotta stripe accents and zigzag trim, at full density, not a
+       thin decorative line. border-image-slice:60 on a 300x300 source
+       samples exactly these regions; the 180x180 center is intentionally
+       empty so the card's own background shows through. -->
+
+  <g id="corner-tl">
+    <circle cx="0" cy="0" r="52" fill="none" stroke="#123a37" stroke-width="13" />
+    <circle cx="0" cy="0" r="36" fill="none" stroke="#c9a227" stroke-width="6" />
+    <circle cx="0" cy="0" r="24" fill="none" stroke="#c1602e" stroke-width="8" />
+    <circle cx="0" cy="0" r="12" fill="none" stroke="#e6c757" stroke-width="4" />
+  </g>
+  <use href="#corner-tl" transform="translate(300,0) scale(-1,1)" />
+  <use href="#corner-tl" transform="translate(0,300) scale(1,-1)" />
+  <use href="#corner-tl" transform="translate(300,300) scale(-1,-1)" />
+
+  <rect x="54" y="54" width="16" height="16" fill="#c9a227" stroke="#123a37" stroke-width="2" transform="rotate(45 62 62)" />
+  <rect x="230" y="54" width="16" height="16" fill="#c9a227" stroke="#123a37" stroke-width="2" transform="rotate(45 238 62)" />
+  <rect x="54" y="230" width="16" height="16" fill="#c9a227" stroke="#123a37" stroke-width="2" transform="rotate(45 62 238)" />
+  <rect x="230" y="230" width="16" height="16" fill="#c9a227" stroke="#123a37" stroke-width="2" transform="rotate(45 238 238)" />
+
+  <g id="edge-h">
+    <rect x="60" y="0" width="180" height="60" fill="#123a37" />
+    <rect x="60" y="0" width="180" height="14" fill="#c9a227" />
+    <rect x="60" y="46" width="180" height="14" fill="#c1602e" />
+    <polygon points="60,60 75,30 90,60" fill="#e6c757" />
+    <polygon points="120,60 135,30 150,60" fill="#e6c757" />
+    <polygon points="180,60 195,30 210,60" fill="#e6c757" />
+  </g>
+  <use href="#edge-h" />
+  <use href="#edge-h" transform="translate(0,300) scale(1,-1)" />
+
+  <g id="edge-v">
+    <rect x="0" y="60" width="60" height="180" fill="#123a37" />
+    <rect x="0" y="60" width="14" height="180" fill="#c9a227" />
+    <rect x="46" y="60" width="14" height="180" fill="#c1602e" />
+    <polygon points="60,60 30,75 60,90" fill="#e6c757" />
+    <polygon points="60,120 30,135 60,150" fill="#e6c757" />
+    <polygon points="60,180 30,195 60,210" fill="#e6c757" />
+  </g>
+  <use href="#edge-v" />
+  <use href="#edge-v" transform="translate(300,0) scale(-1,1)" />
+</svg>
