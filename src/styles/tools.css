@@ -81,21 +81,28 @@
 .chair-seat { position: absolute; left: 22%; width: 92px; height: 12px; bottom: var(--seat-y); border-radius: 9px; border: 3px solid #7d522c; background: var(--gold); transition: bottom .35s ease; }.chair-seat span { left: 30px; top: 12px; }.chair-back { position: absolute; left: 18%; width: 17px; height: 88px; bottom: calc(var(--seat-y) + 2px); border-radius: 12px 12px 3px 12px; background: var(--gold); border: 3px solid #7d522c; transition: bottom .35s ease; }.chair-post { position: absolute; left: calc(22% + 42px); width: 9px; bottom: 25px; height: calc(var(--seat-y) - 25px); background: #7d522c; transition: height .35s ease; }.chair-base { position: absolute; left: 20%; width: 112px; height: 7px; bottom: 20px; background: #7d522c; border-radius: 99px; }
 .person-outline span { position: absolute; display: block; border: 5px solid var(--terracotta-dark); }.person-head { left: 28%; bottom: calc(var(--seat-y) + 96px); width: 34px; height: 34px; border-radius: 50%; background: #d9a278; transition: bottom .35s ease; }.person-body { left: 29%; bottom: calc(var(--seat-y) + 13px); width: 38px; height: 80px; border-width: 0 0 0 7px !important; transform: rotate(-7deg); transition: bottom .35s ease; }.person-thigh { left: 31%; bottom: calc(var(--seat-y) + 18px); width: 78px; border-width: 0 0 7px 0 !important; transition: bottom .35s ease; }.person-shin { left: calc(31% + 71px); bottom: var(--footrest-h); width: 48px; height: calc(var(--seat-y) - var(--footrest-h) + 17px); border-width: 0 0 0 7px !important; transform: rotate(8deg); transform-origin: bottom; transition: height .35s ease, bottom .35s ease; }
 .footrest-shape { position: absolute; left: 42%; width: 70px; height: max(8px,var(--footrest-h)); bottom: 8px; color: white; background: var(--terracotta); border: 3px solid #793e35; transform: skew(-14deg); transition: height .35s ease; }.footrest-shape span { left: 10px; top: -16px; }.clearance-arrow { position: absolute; left: 56%; bottom: var(--seat-y); height: calc(var(--obstruction-y) - var(--seat-y)); border-left: 2px dashed var(--jewel-teal); transition: bottom .35s ease, height .35s ease; }.clearance-arrow::before,.clearance-arrow::after { content: ""; position: absolute; left: -5px; border: 4px solid transparent; }.clearance-arrow::before { top: 0; border-bottom-color: var(--jewel-teal); }.clearance-arrow::after { bottom: 0; border-top-color: var(--jewel-teal); }.clearance-arrow span { position: absolute; left: 6px; top: 40%; font-size: .62rem; white-space: nowrap; color: var(--jewel-teal); }.desk-stage.visual-warning .clearance-arrow { border-color: var(--bad); }.desk-stage.visual-warning .clearance-arrow span { color: var(--bad); }
-/* Art Deco frame — full-perimeter border-image, not corner stickers
-   (rebuilt 2026-07-14, 2nd pass). First pass here undershot: it built a
-   new, much smaller ornament (two 60px corner icons + a thin line)
-   instead of moving the actual bold frame already approved for the
-   diagrams. This version uses deco-frame.svg — a 300x300 tile with the
-   same nested-arch/sunburst + diamond-finial medallions at real size in
-   all 4 corners, connected by a solid teal band with gold/terracotta
-   stripe accents and zigzag trim running the FULL edge — as a real CSS
-   border-image, so the card reads as boldly framed on all four sides,
-   not lightly decorated in two corners. border-image-slice:60 samples
-   the 60px band from each edge of the source; the 180x180 center is
-   transparent in the source, so the card's own background still shows
-   through inside the frame. Applies to .tool-form-panel (3 of 4 tools)
-   and .pet-planner-controls (apartment-pet-zone-planner's own bespoke
-   layout class) — only the input card, not the result card.
+/* Art Deco frame — full-perimeter border-image (rebuilt 2026-07-14, 3rd
+   pass). Passes 1 and 2 both invented new artwork from scratch (small
+   corner stickers, then a hand-coded flat-vector SVG tile) instead of
+   reusing the actual approved asset: public/tools/counter-board-bg.jpg
+   (+ desk-stage-bg.jpg/pet-floorplan-bg.jpg/garage-map-bg.jpg), generated
+   2026-07-13 via the HF Z-Image-Turbo pipeline (same one gen_garage_
+   images.py etc. use) — real jewel-teal ground, painterly gold-leaf
+   stripe, terracotta accent, gold chevron/diamond motif, cream center.
+   Those 4 files are 2-sided strips built for each tool's wide/short
+   diagram box (decorated left/right, flat top/bottom, no corner
+   medallion) so they can't be dropped in directly as a border-image
+   source for a rectangular panel with real corners. Fix: generated one
+   new image, deco-panel-frame.jpg, through the SAME pipeline/technique/
+   palette/motif as the approved originals — a proper 4-sided 1024x1024
+   tile with matching sunburst/diamond corner medallions on all 4 sides
+   and a blank cream center — instead of hand-drawing vector shapes.
+   border-image-slice:150 crops just past where the cream center starts
+   in the source (measured via pixel sampling — cream begins ~x=140 of
+   1024), so the card's own background shows through inside the frame.
+   Applies to .tool-form-panel (3 of 4 tools) and .pet-planner-controls
+   (apartment-pet-zone-planner's own bespoke layout class) — only the
+   input card, not the result card.
    .pet-planner-shell .pet-planner-controls (not bare .pet-planner-
    controls) is deliberate: apartment-pet-zone-planner.astro's own
    pet-zone-planner-addon.css import gets inlined by Astro into a
@@ -109,17 +116,17 @@
 .tool-form-panel,
 .pet-planner-shell .pet-planner-controls {
   position: relative;
-  border: 22px solid transparent;
-  border-image-source: url('/tools/deco-frame.svg');
-  border-image-slice: 60;
-  border-image-width: 22px;
+  border: 26px solid transparent;
+  border-image-source: url('/tools/deco-panel-frame.jpg');
+  border-image-slice: 150;
+  border-image-width: 26px;
   border-image-repeat: round;
   box-shadow: 0 16px 38px rgba(60,44,26,.12), 0 2px 0 rgba(255,255,255,.7) inset;
 }
 @media (max-width: 520px) {
   .tool-form-panel, .pet-planner-shell .pet-planner-controls {
-    border-width: 14px;
-    border-image-width: 14px;
+    border-width: 16px;
+    border-image-width: 16px;
   }
 }
 
