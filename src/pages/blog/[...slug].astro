@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import WinnieByline from '../../components/WinnieByline.astro';
+import WinniePendingPhoto from '../../components/WinniePendingPhoto.astro';
 import { SITE } from '../../config.ts';
 import { getCollection } from 'astro:content';
 
@@ -41,9 +42,13 @@ const jsonLd = {
       </div>
     </div>
 
-    <figure class="inline-photo hero-photo">
-      <img src={d.image} alt="Winnie Hollowell" loading="eager" fetchpriority="high" style={d.imagePosition ? `--img-pos: ${d.imagePosition}` : undefined} />
-    </figure>
+    {d.image === 'PENDING' ? (
+      <WinniePendingPhoto />
+    ) : (
+      <figure class="inline-photo hero-photo">
+        <img src={d.image} alt="Winnie Hollowell" loading="eager" fetchpriority="high" style={d.imagePosition ? `--img-pos: ${d.imagePosition}` : undefined} />
+      </figure>
+    )}
 
     <WinnieByline photo={d.winniePhoto} />
 
