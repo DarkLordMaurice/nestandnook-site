@@ -13,19 +13,10 @@ relatedGuides:
     href: "/blog/"
 ---
 
-<figure class="inline-photo">
-  <img src="/winnie/the-tent-i-almost-didnt-bring-nonwinnie-scene1.jpg" alt="A two-person tent pitched alone in a quiet forest clearing, soft morning light filtering through trees" loading="lazy" />
-</figure>
-
-
 I almost left the tent in the garage. Not because I didn't want to go — because I'd talked myself into a four-day solo camping trip on a Tuesday and spent the following two days convincing myself I'd packed wrong, planned wrong, and generally set myself up to be the cautionary tale someone tells at a dinner party. I grew up assuming a weekend away meant a lake house full of relatives, not a tent with my name on nothing but the receipt. Going alone felt, for about forty-eight hours, like the kind of decision a more competent person would have vetted more thoroughly. Then Friday came, I put the tent in the car anyway, and drove two hours north with a paper map I didn't end up needing and a mug I definitely did.
 
 ## Setting up alone is a different kind of task list
 
-
-<figure class="inline-photo">
-  <img src="/winnie/the-tent-i-almost-didnt-bring-nonwinnie-scene2.jpg" alt="A campfire glowing at dusk with a lantern hanging nearby on a low branch, forest campsite" loading="lazy" />
-</figure>
 
 I organize things for a living, more or less, and I expected a campsite to be the one place that particular brain of mine could switch off. It did not switch off. It just redirected — tent poles became a sequencing problem, the firewood pile became an inventory question, and I caught myself mentally drafting a "next time, bring" list before I'd even finished setting up the first time. I'd bought a piece of camping gear beforehand that the packaging called "expedition-grade," and I want it on the record that a decade of retail buying makes a person deeply allergic to that phrase with no explanation attached. It turned out to be a perfectly fine tent stake. It did not need the adjective.
 
@@ -38,10 +29,6 @@ What surprised me wasn't that the instinct showed up — it's that it turned out
 ## The part where I sat still, finally
 
 
-<figure class="inline-photo">
-  <img src="/winnie/the-tent-i-almost-didnt-bring-nonwinnie-scene3.jpg" alt="A scenic overlook of tree-covered hills and a distant valley from a hiking trail viewpoint" loading="lazy" />
-</figure>
-
 The best hour of the whole trip was the one where I did absolutely nothing on purpose — mug of something warm, a fire that had settled into the good kind of quiet crackle, and enough distance from the drive up that my shoulders had actually dropped from where they usually live, somewhere up around my ears. I brought a book I didn't open. I brought a notebook I barely touched. Both of those are, for me, small acts of rebellion against a brain that treats unstructured time like an error state that needs debugging.
 
 <div class="polaroid inset">
@@ -52,10 +39,6 @@ Somewhere around hour three of doing nothing, I noticed I'd stopped narrating my
 
 ## The hike back had its own kind of logic
 
-
-<figure class="inline-photo">
-  <img src="/winnie/the-tent-i-almost-didnt-bring-nonwinnie-scene4.jpg" alt="An open notebook page with a handwritten packing list and a pen resting across it, campsite table" loading="lazy" />
-</figure>
 
 The second morning, I took the long way to the trailhead instead of the short one, mostly because a ranger at the entrance had mentioned an overlook worth the extra half mile, and I have never once in my life been able to walk away from a recommendation like that unexamined. Ten years at a reference desk will do that to a person — you learn that the good tip almost never comes from the guidebook, it comes from the person standing right in front of you who actually knows the terrain. The overlook was worth it, in the unglamorous way most worthwhile things are: not dramatic, just quiet, with a long view over tree cover that made the two hours of driving to get there feel like a fair trade. I sat on a flat rock longer than I needed to, mug in hand, and didn't write a single word about it, which by this point in the trip had started to feel less like an accident and more like the whole point.
 

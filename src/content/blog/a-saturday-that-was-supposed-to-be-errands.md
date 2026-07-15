@@ -20,10 +20,6 @@ I did not make it past the first block without a detour.
 ## The plant shop was the opening move
 
 
-<figure class="inline-photo">
-  <img src="/winnie/a-saturday-that-was-supposed-to-be-errands-nonwinnie-scene1.jpg" alt="A wall of small potted plants with handwritten care-instruction tags in a plant shop" loading="lazy" />
-</figure>
-
 There's a little plant-and-gift shop between my apartment and the coffee place, and I went in to kill five minutes before opening hours. I stayed to read the care-instruction tags like they were catalog cards — genus, light requirement, watering interval, the same three-fact structure my brain wants to apply to absolutely everything, including houseplants I have no intention of buying. Ten years running a reference desk will do that to a person. You start seeing every object as something that's one taxonomy away from being findable, and a nursery tag is basically a mini call slip if you squint.
 
 I also noticed, on my way out, a little wire rack of enamel pins by the register — mostly cacti and one shaped like a garden trowel — and bought the trowel one before I'd consciously decided to. It's on the blazer now, next to a pin shaped like a stapler I picked up at a hardware store I have no memory of the name of. I don't have a rule about this collection. I've tried to invent one retroactively, something like "only pins related to my actual life," and the stapler pin already broke it, so I've stopped pretending there's a system. Some things don't need one. This is apparently one of the very few.
@@ -41,10 +37,6 @@ Coffee happened next. So did a notebook, because I do not leave the apartment wi
 ## The record store was never on the itinerary
 
 
-<figure class="inline-photo">
-  <img src="/winnie/a-saturday-that-was-supposed-to-be-errands-nonwinnie-scene2.jpg" alt="A crate of vinyl records in a record store, one record partly pulled forward as if being browsed" loading="lazy" />
-</figure>
-
 Here is a fact about me that I will defend in front of a judge: you cannot walk a librarian past a used record store and expect her to keep walking. I went in for ten minutes. I came out forty minutes later having bought a record I did not know existed that morning, after a full internal debate about shelf space that I lost on purpose. In my defense, ten years at a reference desk teaches you that browsing is not the enemy of finding things — it's usually how you find the thing you didn't know to ask for. I'd like that on file as the official justification, filed right next to "I regret nothing."
 
 <div class="polaroid inset">
@@ -57,10 +49,6 @@ The bookstore two doors down was worse, in the specific sense that it was better
   <img src="/winnie/winnie-life-bookstore.jpg" alt="Winnie carrying a stack of books out of a bookstore" width="800" height="1000" />
 </div>
 
-
-<figure class="inline-photo">
-  <img src="/winnie/a-saturday-that-was-supposed-to-be-errands-nonwinnie-scene3.jpg" alt="A bookstore staff-picks table with handwritten recommendation cards propped against book covers" loading="lazy" />
-</figure>
 
 ## The dog was also not on the itinerary
 
@@ -80,10 +68,6 @@ Small detail I almost left out: the barista at the coffee place had my order rea
 
 ## What actually got accomplished
 
-
-<figure class="inline-photo">
-  <img src="/winnie/a-saturday-that-was-supposed-to-be-errands-nonwinnie-scene4.jpg" alt="A blue mailbox on a city sidewalk in late-afternoon light" loading="lazy" />
-</figure>
 
 In fairness to myself: the birthday card got bought and mailed before the day was out, which felt like a genuine win given everything the afternoon had thrown in front of me. I stood at the mailbox for a second longer than strictly necessary, mentally congratulating myself for closing out at least one line item, the way I imagine other people feel finishing a 5K.
 

@@ -22,10 +22,6 @@ I have a whole system for feeding goats at a petting zoo, apparently, developed 
 ## I brought a plan to a place that doesn't take plans
 
 
-<figure class="inline-photo">
-  <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene1.jpg" alt="A goat standing at a wooden petting-zoo fence, reaching toward an open hand extending into frame" loading="lazy" />
-</figure>
-
 I'd read, somewhere, that you're supposed to hold the food flat on your palm so the goat doesn't nip your fingers. Reasonable advice. I followed it precisely, the way I follow most instructions, with a faint sense of professional pride that I was Doing It Correctly. The goat took one look at my careful, flat-palmed offering, decided the paper bag itself was the more interesting menu item, and went for it directly. I spent the next several minutes renegotiating terms with an animal that had already won the negotiation before it started. A decade of retail buying taught me how to read a room and close a deal on my terms. Gerald had not read the same books I had, and it showed.
 
 ## The best part of the day required zero expertise
@@ -34,10 +30,6 @@ What I actually loved about the afternoon wasn't figuring anything out — it wa
 
 ## The otters had their own opinions too
 
-
-<figure class="inline-photo">
-  <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene2.jpg" alt="Two otters standing at full attention in shallow water at a zoo habitat, paws raised expectantly" loading="lazy" />
-</figure>
 
 <div class="polaroid inset float-left">
   <img src="/winnie/winnie-life-zoo-otters.jpg" alt="Winnie crouching at the edge of the otter habitat, hand-feeding two otters standing in the water" width="1122" height="1402" />
@@ -48,10 +40,6 @@ Past the goat pen, the otter habitat ran on a completely different negotiation. 
 ## The capybara did not care about my camera angle
 
 
-<figure class="inline-photo">
-  <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene3.jpg" alt="A close-up of a capybara's face near a low wooden fence at a petting zoo" loading="lazy" />
-</figure>
-
 <div class="polaroid inset">
   <img src="/winnie/winnie-life-zoo-capybara-selfie.jpg" alt="A close-up selfie of Winnie next to a capybara, its nose nearly touching the camera" width="1122" height="1402" />
 </div>
@@ -60,10 +48,6 @@ I tried for one (1) flattering selfie with a capybara. The capybara had other pl
 
 ## And then a toucan landed on my shoulder
 
-
-<figure class="inline-photo">
-  <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene4.jpg" alt="A colorful toucan perched on a wooden branch near a bird aviary" loading="lazy" />
-</figure>
 
 <div class="polaroid inset float-left">
   <img src="/winnie/winnie-life-zoo-toucan.jpg" alt="Winnie reacting with surprise as a toucan perches on her shoulder near the bird aviary" width="1122" height="1402" />

@@ -20,20 +20,12 @@ Somewhere around 2pm, feet fall asleep at your desk for a lot of people — a sp
 ## What's actually going on (and it's not what people assume)
 
 
-<figure class="inline-photo">
-  <img src="/winnie/feet-fall-asleep-at-desk-nonwinnie-scene1.jpg" alt="An adjustable footrest positioned under a desk chair, angled surface visible, home office setting" loading="lazy" />
-</figure>
-
 Most people blame poor circulation like it's a personal failing, which isn't fair and also isn't quite the mechanism. What's usually happening is much more mechanical: when your feet don't reach the floor, or your chair seat is a little too deep for your legs, the back of your knee or the underside of your thigh ends up resting against a hard edge for hours at a time. That pressure point sits directly over nerves and blood vessels that run close to the surface there. Compress them steadily enough, for long enough, and your nervous system starts sending you static instead of a clean signal — that's the pins-and-needles. It's not a circulation problem in the scary sense; it's a "you've been leaning on the same half-inch of skin since 9am" problem, and it resolves the second the pressure does.
 
 This is also why it tends to hit shorter people and anyone in a chair that isn't really sized for them the hardest. If your feet dangle, your legs aren't distributing your weight the way they would if they were planted — more of it settles right along that seat-edge pressure line instead. Longer legs, taller frames, feet flat on the floor: that group mostly skips this problem entirely, which is exactly why it can feel confusing when a friend has zero idea what you're talking about. I've watched this exact confused exchange happen in the comments section of more than one review, two people talking past each other because one of them simply has a body this problem was never going to visit.
 
 ## The fixes people try first (and why they only half-work)
 
-
-<figure class="inline-photo">
-  <img src="/winnie/feet-fall-asleep-at-desk-nonwinnie-scene2.jpg" alt="An empty ergonomic office chair adjusted to the correct height next to a footrest, home office setting" loading="lazy" />
-</figure>
 
 The instinctive fix is to just stand up and shake it out, which works for about four minutes and then you're back at the desk doing the same thing again. The next instinct is usually adjusting the chair height — raise it, lower it, hope for the best — and this is where I see people get stuck, because chair height is a two-variable problem. Raise the seat so your knees clear the edge better, and now your feet are further from the floor than ever. Lower it so your feet reach, and the seat edge digs into the back of your thigh even more directly. You can spend a full afternoon adjusting one dial trying to solve a problem that actually needs a second point of support entirely.
 
@@ -42,18 +34,10 @@ I ran a library reference desk for ten years before any of this, and the number-
 ## A pattern worth naming: the "I thought it was just me" comment
 
 
-<figure class="inline-photo">
-  <img src="/winnie/feet-fall-asleep-at-desk-nonwinnie-scene3.jpg" alt="A close-up of a desk chair's height-adjustment lever next to a footrest on a hardwood floor" loading="lazy" />
-</figure>
-
 One thing that struck me, reading through enough of these reviews back to back, is how many people preface the whole complaint with some version of "I thought it was just me" or "I didn't realize this was a common thing." That phrase shows up constantly, across completely unrelated product categories, and I've developed a real fondness for it as a signal. It usually means a problem has been mechanical and fixable the entire time, but nobody around the person happened to have the right vocabulary for it — which, incidentally, is the exact same energy as a good reference-desk interaction. Most people don't lack the answer because it's hard. They lack it because nobody's handed them the right three sentences yet.
 
 ## What reviewers say actually resolves it
 
-
-<figure class="inline-photo">
-  <img src="/winnie/feet-fall-asleep-at-desk-nonwinnie-scene4.jpg" alt="A home office desk setup with a footrest tucked underneath, warm natural light" loading="lazy" />
-</figure>
 
 The pattern that shows up over and over in real buyer reviews is a lot simpler than a new chair: something under the feet that restores the missing support, so your legs stop needing the seat edge to hold their weight. [The footrest roundup](/home-office/best-footrest-for-short-people/) walks through the models our team's review research points to most often for exactly this complaint — it's a five-minute fix, not a furniture overhaul, which is precisely the kind of ratio I have a lot of respect for after a decade of retail buying spent watching people overspend on the wrong half of a problem.
 
@@ -67,10 +51,6 @@ The pattern that shows up over and over in real buyer reviews is a lot simpler t
 5. **If it's not resolving, check chair depth.** A seat pan that's too deep for your legs (the back of your knee doesn't clear the front edge with your back against the backrest) needs a seat-depth adjustment or a cushion, not just a footrest.
 </div>
 
-
-<figure class="inline-photo">
-  <img src="/winnie/feet-fall-asleep-at-desk-nonwinnie-scene5.jpg" alt="A small angled wedge footrest shown from a side angle, isolated on a home office floor" loading="lazy" />
-</figure>
 
 ## Two questions people ask after this one
 
