@@ -75,8 +75,20 @@ This chocolate chip cookies recipe exists because chocolate chip cookies are the
 
 ## Why softened butter matters more than any other step
 
+<figure class="inline-photo">
+  <img src="/recipes/recipe-chocolate-chip-cookies-scene1.jpg" alt="A baking sheet lined with rounded scoops of chocolate chip cookie dough before baking" loading="lazy" />
+  <figcaption>Rounded scoops, spaced out — they spread more than you'd guess.</figcaption>
+</figure>
+
+
 If there's one variable that decides how these turn out, it's butter temperature. Melted butter makes cookies spread thin and greasy. Cold butter won't cream properly and leaves you with a dense, uneven dough. Butter that's genuinely softened — you can press a finger into it and leave a mark, but it's not shiny or melty — creams into the sugar and traps air, which is what gives these their chew.
 
 ## Reading the bake, not the clock
+
+<figure class="inline-photo">
+  <img src="/recipes/recipe-chocolate-chip-cookies-scene2.jpg" alt="A stack of warm chocolate chip cookies with one broken in half showing a gooey center, glass of milk nearby" loading="lazy" />
+  <figcaption>Underbaked by a minute is usually the right call.</figcaption>
+</figure>
+
 
 Ovens vary enough that "9 to 11 minutes" is a range, not a promise. The real signal is the edges: golden and just set, while the centers still look a touch pale and underdone. Pull them then. They keep cooking on the hot tray for another few minutes after they come out, and that's exactly the window that turns into a soft center instead of a hockey puck.

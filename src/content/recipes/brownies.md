@@ -74,6 +74,12 @@ This brownies recipe exists because the two things people want most from a brown
 
 ## The crackly top is chemistry, not luck
 
+<figure class="inline-photo">
+  <img src="/recipes/recipe-brownies-scene1.jpg" alt="A baking pan filled with glossy brownie batter, a spatula smoothing the top" loading="lazy" />
+  <figcaption>Glossy top is the sign the sugar did its job.</figcaption>
+</figure>
+
+
 Whisking hot melted butter into sugar, vigorously, partially dissolves the sugar crystals before they ever hit the oven. That partially-dissolved sugar is what rises to the surface during baking and forms the thin, shiny, crackly shell that separates a good brownie from a flat, matte one. Skipping or rushing this step is the single most common reason homemade brownies don't get that shell.
 
 ## Fudgy versus cakey comes down to flour and mixing
@@ -81,5 +87,11 @@ Whisking hot melted butter into sugar, vigorously, partially dissolves the sugar
 This recipe is already ratioed toward fudgy — less flour relative to fat and sugar than a cakey brownie recipe would use. But the ratio only gets you halfway there: overmixing the batter once the flour goes in develops gluten structure, which pulls the texture toward cakey no matter how the ratio was set up. Folding gently, and stopping the moment the dry streaks disappear, protects the fudgy texture the ratio was built for.
 
 ## Patience at the end matters as much as technique at the start
+
+<figure class="inline-photo">
+  <img src="/recipes/recipe-brownies-scene2.jpg" alt="A stack of fudgy brownie squares on a plate, one broken in half showing a gooey center" loading="lazy" />
+  <figcaption>Fudgy center, not cakey — that's the whole point of this recipe.</figcaption>
+</figure>
+
 
 Brownies are still setting internally when they come out of the oven — cutting into them warm, however tempting, gives a gummier, messier result than the same batch cut a couple hours later once it's fully cooled. If you can wait, the payoff is a cleaner cut and a noticeably better texture.

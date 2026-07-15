@@ -100,6 +100,12 @@ This lasagna recipe fixes lasagna's reputation as a weekend project — a reputa
 
 ## Ricotta holds more water than it looks like
 
+<figure class="inline-photo">
+  <img src="/recipes/recipe-lasagna-scene1.jpg" alt="Layers of pasta sheets, ricotta, and meat sauce being assembled in a baking dish" loading="lazy" />
+  <figcaption>Even, thin layers hold together better than a few thick ones.</figcaption>
+</figure>
+
+
 Ricotta straight out of the container carries a real amount of whey and moisture, even when it looks thick in the tub. Mixed straight into the cheese layer, that water has nowhere to go but into the noodles around it during baking. A 15-20 minute rest in a strainer, or a firm press with paper towels, pulls out enough of that liquid to make a genuine difference in the final texture.
 
 ## A thin sauce stays thin in the oven
@@ -107,5 +113,11 @@ Ricotta straight out of the container carries a real amount of whey and moisture
 Baking doesn't reduce sauce the way stovetop simmering does — a lasagna sauce that goes into the dish thin comes out of the oven thin, just now distributed through every layer instead of contained in the pot. Simmering the meat sauce uncovered until it visibly mounds on a spoon, not just until it's hot, is doing real structural work, not just building flavor.
 
 ## The rest after baking matters as much as the bake itself
+
+<figure class="inline-photo">
+  <img src="/recipes/recipe-lasagna-scene2.jpg" alt="A baked lasagna with melted golden cheese on top, one slice being lifted out showing the layered interior" loading="lazy" />
+  <figcaption>Resting it 10 minutes is the difference between a slice and a puddle.</figcaption>
+</figure>
+
 
 Lasagna straight out of the oven is still actively releasing steam and moisture from every layer. Cutting into it immediately means all of that comes out in one wave onto the cutting board or plate. A 15-minute rest gives the layers time to firm back up and reabsorb some of that moisture, which is the difference between clean slices and a dish that eats fine but doesn't hold its shape.

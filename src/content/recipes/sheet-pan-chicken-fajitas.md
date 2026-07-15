@@ -88,8 +88,20 @@ These sheet pan chicken fajitas skip the traditional stovetop, stand-over-the-pa
 
 ## Why the single layer actually matters
 
+<figure class="inline-photo">
+  <img src="/recipes/recipe-sheet-pan-chicken-fajitas-scene1.jpg" alt="Chicken strips and sliced bell peppers spread on a sheet pan before roasting" loading="lazy" />
+  <figcaption>Single layer on the pan — crowding steams instead of roasts.</figcaption>
+</figure>
+
+
 The one step that decides whether this tastes like a restaurant fajita platter or a sad chicken-and-pepper stew is spreading everything out in a single layer before it goes in the oven. A crowded pan traps steam, and steam is the enemy of char. If your sheet pan looks even a little packed, split it across two pans instead — it's a five-minute inconvenience for a genuinely different result.
 
 ## Built for small kitchens on purpose
+
+<figure class="inline-photo">
+  <img src="/recipes/recipe-sheet-pan-chicken-fajitas-scene2.jpg" alt="A sheet pan of roasted chicken fajita filling next to a stack of warm tortillas" loading="lazy" />
+  <figcaption>Warm the tortillas separately — a cold tortilla undoes a hot filling.</figcaption>
+</figure>
+
 
 This is exactly the kind of recipe that rewards owning one good sheet pan and not much else — no skillet-juggling, no multiple burners going at once, minimal cleanup since it's one pan lined with foil. If your current sheet pan warps in a hot oven or the fajitas are sliding off the edges, that's worth fixing before anything else on this list.

@@ -83,6 +83,12 @@ This pancakes recipe exists because pancakes are one of the few recipes where th
 
 ## Overmixing is the whole problem
 
+<figure class="inline-photo">
+  <img src="/recipes/recipe-pancakes-scene1.jpg" alt="Pancake batter being poured onto a hot griddle, small bubbles forming on the surface" loading="lazy" />
+  <figcaption>Bubbles across the whole surface mean it's time to flip, not before.</figcaption>
+</figure>
+
+
 Stirring batter develops gluten, the same protein structure that gives bread its chew. Bread wants that. Pancakes don't. The moment you stop seeing streaks of dry flour, stop stirring completely — the batter should still look a little lumpy and thick, not smooth like cake batter. A smooth, thoroughly-mixed batter is the single most common reason pancakes come out flat, tough, or rubbery instead of tender.
 
 ## The resting step actually matters
@@ -90,5 +96,11 @@ Stirring batter develops gluten, the same protein structure that gives bread its
 Letting the mixed batter sit for five minutes before it hits the pan isn't a stalling tactic — it gives the baking powder and baking soda a moment to start working and lets any remaining small lumps of flour finish hydrating without extra stirring. Skipping straight from mixing to cooking is a small thing, but it shows up in the texture.
 
 ## Heat lower than you think
+
+<figure class="inline-photo">
+  <img src="/recipes/recipe-pancakes-scene2.jpg" alt="A tall stack of fluffy pancakes with a pat of butter melting on top and syrup dripping down the sides" loading="lazy" />
+  <figcaption>Stack them hot — they steam-warm each other while you finish the batch.</figcaption>
+</figure>
+
 
 A hot pan seems like it should mean a faster, better pancake, but medium-high heat browns the outside long before the inside has cooked through, leaving a burnt exterior around a gummy center. Medium-low, with patience for the bubbles to actually form and set before flipping, is what gets an evenly cooked pancake all the way through.

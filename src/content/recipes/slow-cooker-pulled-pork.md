@@ -87,6 +87,12 @@ This is the recipe for the day you want a real, crowd-worthy dinner without spen
 
 ## Why low and slow actually matters here
 
+<figure class="inline-photo">
+  <img src="/recipes/recipe-slow-cooker-pulled-pork-scene1.jpg" alt="A pork shoulder coated in dry rub sitting inside a slow-cooker insert before cooking" loading="lazy" />
+  <figcaption>The rub needs real contact time before it goes in, not a quick dust.</figcaption>
+</figure>
+
+
 Pork shoulder is a tough, well-worked cut, full of connective tissue that stays chewy at a quick sear-and-serve temperature. Given eight hours at a low, steady heat, that same connective tissue slowly breaks down into gelatin, which is what makes the shredded meat come out moist instead of dry and stringy. Rushing it on high cuts the time roughly in half but pushes the meat closer to just-cooked-through instead of fall-apart-tender — the shred test at the end is what actually tells you which one you've got, not the clock.
 
 ## The rub does more work than the sauce
@@ -94,5 +100,11 @@ Pork shoulder is a tough, well-worked cut, full of connective tissue that stays 
 Barbecue sauce gets all the credit, but the dry rub applied before cooking is what actually seasons the meat all the way through during those eight hours, rather than just coating the outside afterward. Patting the pork fully dry before applying it matters more than people expect — any surface moisture keeps the spices from sticking, and you end up with seasoning dissolved into the broth instead of clinging to the meat where it belongs.
 
 ## Built for a slow cooker's actual strengths
+
+<figure class="inline-photo">
+  <img src="/recipes/recipe-slow-cooker-pulled-pork-scene2.jpg" alt="Shredded pulled pork piled on a plate with barbecue sauce and a soft bun alongside" loading="lazy" />
+  <figcaption>Shred while it's still warm — it pulls apart clean, not stringy.</figcaption>
+</figure>
+
 
 No stovetop babysitting, no oven taking up counter or cabinet space in the meantime, and a cook time that fits around a full day instead of demanding attention during it. If your slow cooker insert is on the smaller side, a 3-4 lb shoulder is the right size to start with — sizing up past what the insert comfortably holds is the most common reason people report uneven cooking in this category.

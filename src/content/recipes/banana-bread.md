@@ -73,8 +73,20 @@ This version skips the stand mixer entirely — one bowl, a fork for mashing, an
 
 ## The one rule that actually matters
 
+<figure class="inline-photo">
+  <img src="/recipes/recipe-banana-bread-scene1.jpg" alt="A loaf pan filled with banana bread batter ready to go into the oven, banana slices arranged on top" loading="lazy" />
+  <figcaption>Just combined, into the pan — overmixing is the only real way to ruin this.</figcaption>
+</figure>
+
+
 Ripeness. Everything else in this recipe is flexible — swap the sugar type, add nuts, use a different pan — but underripe bananas are the one thing that can't be fixed later. You want bananas that look almost too far gone: deeply speckled with brown, soft to the touch, maybe even a little black on the peel. That's where the natural sugars and moisture actually live.
 
 ## Notes on the flour step
+
+<figure class="inline-photo">
+  <img src="/recipes/recipe-banana-bread-scene2.jpg" alt="A sliced loaf of banana bread on a wooden cutting board, steam rising from a warm slice" loading="lazy" />
+  <figcaption>The smell test and the toothpick test agree on this one.</figcaption>
+</figure>
+
 
 Fold the flour in gently and stop mixing the moment the streaks disappear. Banana bread turns dense and rubbery from the same mistake every time: stirring it like cake batter after the flour goes in. Think "just combined," not "smooth."

@@ -82,6 +82,12 @@ This is the sheet-pan dinner that actually respects that its three components do
 
 ## Why the staggered start actually matters
 
+<figure class="inline-photo">
+  <img src="/recipes/recipe-sheet-pan-salmon-and-vegetables-scene1.jpg" alt="Salmon fillets and vegetables arranged on a sheet pan with lemon slices before roasting" loading="lazy" />
+  <figcaption>Lemon slices under the fillets do double duty as a rack and a flavor base.</figcaption>
+</figure>
+
+
 Potatoes need real time in a hot oven to go from raw to tender — usually 25-30 minutes on their own. Salmon and asparagus need roughly half that. Roast everything together from the start and you're stuck choosing which one to sacrifice. Giving the potatoes their own 15-minute run before anything else joins the pan means all three finish within a couple of minutes of each other, which is the entire difference between "sheet pan dinner" and "sheet pan dinner that actually works."
 
 ## The lemon-garlic butter is doing more than flavor
@@ -89,5 +95,11 @@ Potatoes need real time in a hot oven to go from raw to tender — usually 25-30
 Spooning the butter mixture over the salmon right before it goes back in the oven does two jobs at once: it bastes the fish as it roasts instead of leaving it dry, and the garlic and lemon zest toast slightly in the direct heat rather than just sitting on top raw. It's a thirty-second step that changes the whole dish, and it's the kind of small-effort, large-payoff ratio worth building a habit around.
 
 ## Built for small kitchens on purpose
+
+<figure class="inline-photo">
+  <img src="/recipes/recipe-sheet-pan-salmon-and-vegetables-scene2.jpg" alt="A plated serving of roasted salmon and vegetables drizzled with lemon-garlic butter" loading="lazy" />
+  <figcaption>The butter goes on right at the end, off the heat.</figcaption>
+</figure>
+
 
 One sheet pan, one oven, and a five-minute cleanup — no second burner, no extra pot for the potatoes, no skillet to babysit while the fish is in the oven. If your current sheet pan warps at high heat or has started to actually stick despite being labeled nonstick, that's worth replacing before anything else on this list; a warped pan cooks unevenly no matter how carefully the timing is staged.

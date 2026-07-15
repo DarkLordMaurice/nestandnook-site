@@ -88,6 +88,12 @@ This chicken fajita bowl recipe exists to fix the most common failure of home-co
 
 ## An overcrowded pan steams instead of chars
 
+<figure class="inline-photo">
+  <img src="/recipes/recipe-one-pan-chicken-fajita-bowl-scene1.jpg" alt="Charred chicken and bell peppers in a large skillet, visible sear marks and steam" loading="lazy" />
+  <figcaption>Real char, not just cooked-through — that's where the flavor is.</figcaption>
+</figure>
+
+
 Charring happens when food sits in direct, sustained contact with a very hot pan surface. Pack too much chicken or too many vegetables into the pan at once, and the food releases moisture that has nowhere to go, dropping the pan's surface temperature and effectively steaming everything instead. Cooking in batches, with real breathing room between pieces, is the single biggest fix for gray, soft fajita vegetables.
 
 ## High heat and patience, together
@@ -95,5 +101,11 @@ Charring happens when food sits in direct, sustained contact with a very hot pan
 It's not enough to have an uncrowded pan if the heat isn't high enough to begin with — a medium-heat pan simply can't build char before the chicken or vegetables finish cooking through. Preheating the pan until it's genuinely hot, then letting each batch sit undisturbed for a couple of minutes before stirring, gives the char time to actually develop instead of getting interrupted by constant movement.
 
 ## Lime goes in last
+
+<figure class="inline-photo">
+  <img src="/recipes/recipe-one-pan-chicken-fajita-bowl-scene2.jpg" alt="A chicken fajita bowl with rice, beans, peppers, and toppings arranged in sections, set on a table" loading="lazy" />
+  <figcaption>Sectioned, not mixed — let people build their own bite.</figcaption>
+</figure>
+
 
 Cooking lime juice into the pan for an extended period mutes its brightness, which is exactly the quality it's there to provide. Adding it at the very end — off heat or in the last few seconds of tossing everything together — keeps that acidity sharp enough to cut through the richness of the seared chicken and charred vegetables underneath it.

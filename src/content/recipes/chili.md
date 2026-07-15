@@ -101,6 +101,12 @@ This chili recipe exists because chili has a reputation as one of those recipes 
 
 ## Blooming the spices is not optional
 
+<figure class="inline-photo">
+  <img src="/recipes/recipe-chili-scene1.jpg" alt="A large pot of simmering beef chili, steam rising, a wooden spoon resting on the rim" loading="lazy" />
+  <figcaption>Low and slow is what actually builds the flavor here.</figcaption>
+</figure>
+
+
 Chili powder, cumin, and paprika are all flavor compounds that dissolve into fat far better than they dissolve into water. Stirring them into hot oil and rendered beef fat for a minute before adding tomatoes or broth wakes up flavor that stays muted if the spices go straight into a simmering liquid. It's a 90-second step that's responsible for a surprising amount of the "tastes like it simmered all day" effect people chase.
 
 ## The lid is the reason yours is thin
@@ -108,5 +114,11 @@ Chili powder, cumin, and paprika are all flavor compounds that dissolve into fat
 Liquid only reduces when steam can actually escape. A chili that simmers covered for its entire cook time traps that steam and just recirculates the moisture — which is why so many home versions stay thin no matter how long they're on the stove. The fix is simple: simmer covered for the first stretch to let the flavors meld, then take the lid off for the last 20-30 minutes and let it actually thicken. If it's still not there, a masa harina slurry closes the gap in five minutes without tasting like flour.
 
 ## It's better the next day, and that's useful
+
+<figure class="inline-photo">
+  <img src="/recipes/recipe-chili-scene2.jpg" alt="A bowl of chili topped with shredded cheese, sour cream, and chopped green onion, cornbread on the side" loading="lazy" />
+  <figcaption>Toppings aren't optional — they're half the reason people ask for seconds.</figcaption>
+</figure>
+
 
 Chili is one of the few weeknight dinners that's genuinely improved by sitting overnight — the flavors have more time to combine, and reheating it is faster than the original cook. If your schedule allows it, making a batch a day ahead isn't a compromise, it's arguably the better version of the same recipe.

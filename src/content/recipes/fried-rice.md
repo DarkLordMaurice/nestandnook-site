@@ -77,6 +77,12 @@ This fried rice recipe exists to fix the most common home-kitchen failure in the
 
 ## Why cold rice is non-negotiable
 
+<figure class="inline-photo">
+  <img src="/recipes/recipe-fried-rice-scene1.jpg" alt="A wok of fried rice being tossed with vegetables and egg over high heat, steam and light char visible" loading="lazy" />
+  <figcaption>High heat and constant motion — that's the actual difference from a soggy stir-fry.</figcaption>
+</figure>
+
+
 Freshly cooked rice is coated in surface starch and moisture that hasn't had time to firm up. Put it straight into a hot pan and it steams and clumps instead of separating into distinct, lightly charred grains. Refrigerated rice loses that surface moisture and firms up just enough to fry properly — it's the single biggest variable between restaurant-style fried rice and a soft, sticky home version.
 
 ## Heat is the other half of the equation
@@ -84,5 +90,11 @@ Freshly cooked rice is coated in surface starch and moisture that hasn't had tim
 A pan that isn't hot enough can't create the light char that gives fried rice its flavor — it just warms the rice through instead. Get the pan smoking-hot before the eggs go in, and let the rice sit undisturbed against the surface for short stretches between tosses instead of stirring constantly. That contact time with the hot metal is where the flavor actually comes from.
 
 ## Everything else is fast
+
+<figure class="inline-photo">
+  <img src="/recipes/recipe-fried-rice-scene2.jpg" alt="A bowl of fried rice garnished with sliced green onion, chopsticks resting on the side of the bowl" loading="lazy" />
+  <figcaption>Day-old rice, fresh green onion on top — the contrast is the point.</figcaption>
+</figure>
+
 
 Once the rice and heat are right, fried rice comes together in under 15 minutes — it's a genuinely good use for whatever vegetables or protein are already in the fridge, added in whatever order gets each one properly cooked without overcrowding the pan.

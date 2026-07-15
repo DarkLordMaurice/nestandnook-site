@@ -77,6 +77,12 @@ This chicken and rice recipe exists to fix the most common Instant Pot complaint
 
 ## Rinse the rice, every time
 
+<figure class="inline-photo">
+  <img src="/recipes/recipe-instant-pot-chicken-and-rice-scene1.jpg" alt="Raw chicken thighs and rinsed rice layered inside an Instant Pot insert before cooking" loading="lazy" />
+  <figcaption>Layered, not stirred together — that's what keeps the rice from turning mushy.</figcaption>
+</figure>
+
+
 Rice is coated in surface starch that, left in place, dissolves into the cooking liquid under pressure and turns the whole pot gluey. A quick rinse under cold water until it runs mostly clear washes that starch away before it ever has the chance to cause trouble. It's a step some recipes skip for speed, and it's exactly the step responsible for the difference between fluffy and gummy pressure-cooker rice.
 
 ## Layer instead of stir
@@ -84,5 +90,11 @@ Rice is coated in surface starch that, left in place, dissolves into the cooking
 Once the rinsed rice, broth, and browned chicken are in the pot, resist the urge to stir everything together. Layering keeps the rice in even contact with the liquid at the bottom while the chicken sits on top, cooking in the rising steam rather than getting mixed through the starchy rice. Stirring at this stage is one of the most common ways home cooks accidentally reintroduce the exact gumminess the rinse step just fixed.
 
 ## Timing for the vegetables matters too
+
+<figure class="inline-photo">
+  <img src="/recipes/recipe-instant-pot-chicken-and-rice-scene2.jpg" alt="A bowl of chicken and rice garnished with fresh herbs, steam rising, set on a kitchen counter" loading="lazy" />
+  <figcaption>A natural release finishes the texture the pressure valve can't.</figcaption>
+</figure>
+
 
 Frozen vegetables cooked under full pressure for the entire cycle turn soft and washed-out by the time the pot depressurizes. Stirring them in after cooking, once the lid comes off, lets residual heat warm them through in just a couple of minutes while keeping their color and texture intact.
