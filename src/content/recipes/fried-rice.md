@@ -9,7 +9,7 @@ prepTimeMinutes: 10
 cookTimeMinutes: 12
 servings: 4
 difficulty: "easy"
-image: "PENDING"
+image: "/recipes/recipe-fried-rice.jpg"
 imageAlt: "Fried rice being tossed in a hot wok with peas, carrots, scrambled egg, and scallions, steam rising"
 winnieImage: "/winnie/winnie-kitchen-stir-pot.jpg"
 winnieHeadshot: "/winnie/headshot-v4-1.jpg"

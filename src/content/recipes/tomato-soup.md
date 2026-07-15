@@ -9,7 +9,7 @@ prepTimeMinutes: 10
 cookTimeMinutes: 30
 servings: 4
 difficulty: "easy"
-image: "PENDING"
+image: "/recipes/recipe-tomato-soup.jpg"
 imageAlt: "A bowl of smooth, creamy tomato soup garnished with fresh basil and cracked pepper, next to a grilled cheese sandwich"
 winnieImage: "/winnie/winnie-kitchen-stir-pot.jpg"
 winnieHeadshot: "/winnie/headshot-v4-1.jpg"

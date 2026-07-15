@@ -9,7 +9,7 @@ prepTimeMinutes: 10
 cookTimeMinutes: 15
 servings: 4
 difficulty: "easy"
-image: "PENDING"
+image: "/recipes/recipe-pancakes.jpg"
 imageAlt: "A stack of fluffy buttermilk pancakes topped with butter, syrup, and berries"
 winnieImage: "/winnie/winnie-holding-pancakes.jpg"
 winnieHeadshot: "/winnie/headshot-v4-4.jpg"

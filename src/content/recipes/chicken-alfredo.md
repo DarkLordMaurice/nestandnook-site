@@ -9,7 +9,7 @@ prepTimeMinutes: 15
 cookTimeMinutes: 25
 servings: 4
 difficulty: "easy"
-image: "PENDING"
+image: "/recipes/recipe-chicken-alfredo.jpg"
 imageAlt: "A bowl of fettuccine alfredo topped with sliced grilled chicken and cracked black pepper"
 winnieImage: "/winnie/winnie-holding-chicken-alfredo.jpg"
 winnieHeadshot: "/winnie/headshot-v4-2.jpg"

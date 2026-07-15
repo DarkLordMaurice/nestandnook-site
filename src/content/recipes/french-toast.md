@@ -9,7 +9,7 @@ prepTimeMinutes: 10
 cookTimeMinutes: 15
 servings: 4
 difficulty: "easy"
-image: "PENDING"
+image: "/recipes/recipe-french-toast.jpg"
 imageAlt: "Two slices of golden French toast topped with berries and a dusting of powdered sugar"
 winnieImage: "/winnie/winnie-holding-french-toast.jpg"
 winnieHeadshot: "/winnie/avatar.jpg"

@@ -9,7 +9,7 @@ prepTimeMinutes: 15
 cookTimeMinutes: 480
 servings: 8
 difficulty: "easy"
-image: "PENDING"
+image: "/recipes/recipe-slow-cooker-pulled-pork.jpg"
 imageAlt: "Shredded pulled pork piled on a plate with barbecue sauce, next to a slow cooker insert"
 winnieImage: "/winnie/winnie-kitchen-multi-cooker-check.jpg"
 winnieHeadshot: "/winnie/headshot-v4-3.jpg"

@@ -9,7 +9,7 @@ prepTimeMinutes: 15
 cookTimeMinutes: 15
 servings: 4
 difficulty: "easy"
-image: "PENDING"
+image: "/recipes/recipe-quesadillas.jpg"
 imageAlt: "A chicken quesadilla cut into wedges, cheese pulling between the pieces, served with salsa and sour cream"
 winnieImage: "/winnie/winnie-kitchen-plating.jpg"
 winnieHeadshot: "/winnie/headshot-v4-3.jpg"

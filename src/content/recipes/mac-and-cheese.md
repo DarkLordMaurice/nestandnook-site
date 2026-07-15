@@ -9,7 +9,7 @@ prepTimeMinutes: 15
 cookTimeMinutes: 35
 servings: 6
 difficulty: "easy"
-image: "PENDING"
+image: "/recipes/recipe-mac-and-cheese.jpg"
 imageAlt: "A skillet of baked mac and cheese with a golden, crispy breadcrumb top"
 winnieImage: "/winnie/winnie-holding-mac-and-cheese.jpg"
 winnieHeadshot: "/winnie/headshot-v4-3.jpg"

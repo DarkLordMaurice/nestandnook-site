@@ -9,7 +9,7 @@ prepTimeMinutes: 40
 cookTimeMinutes: 55
 servings: 8
 difficulty: "intermediate"
-image: "PENDING"
+image: "/recipes/recipe-apple-pie.jpg"
 imageAlt: "A golden lattice-topped apple pie with a slice cut out, showing thick, glossy apple filling"
 winnieImage: "/winnie/winnie-kitchen-knead.jpg"
 winnieHeadshot: "/winnie/headshot-v4-1.jpg"

@@ -9,7 +9,7 @@ prepTimeMinutes: 2
 cookTimeMinutes: 18
 servings: 4
 difficulty: "easy"
-image: "PENDING"
+image: "/recipes/recipe-air-fryer-french-fries.jpg"
 imageAlt: "Crispy golden air fryer French fries piled in a basket with a small bowl of ketchup on the side"
 winnieImage: "/winnie/winnie-kitchen-taste.jpg"
 winnieHeadshot: "/winnie/headshot-v4-4.jpg"

@@ -9,7 +9,7 @@ prepTimeMinutes: 15
 cookTimeMinutes: 14
 servings: 4
 difficulty: "easy"
-image: "PENDING"
+image: "/recipes/recipe-air-fryer-chicken-tenders.png"
 imageAlt: "A plate of golden, crispy air fryer chicken tenders with dipping sauces on the side"
 winnieImage: "/winnie/winnie-kitchen-stir.jpg"
 winnieHeadshot: "/winnie/headshot-v4-4.jpg"

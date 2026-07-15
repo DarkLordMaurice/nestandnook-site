@@ -9,7 +9,7 @@ prepTimeMinutes: 15
 cookTimeMinutes: 30
 servings: 16
 difficulty: "easy"
-image: "PENDING"
+image: "/recipes/recipe-brownies.jpg"
 imageAlt: "A stack of fudgy chocolate brownies with a shiny, crackly top, one cut in half showing a dense interior"
 winnieImage: "/winnie/winnie-kitchen-present.jpg"
 winnieHeadshot: "/winnie/headshot-v4-4.jpg"

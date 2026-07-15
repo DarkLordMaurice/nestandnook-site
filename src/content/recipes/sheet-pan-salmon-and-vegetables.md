@@ -9,7 +9,7 @@ prepTimeMinutes: 10
 cookTimeMinutes: 30
 servings: 4
 difficulty: "easy"
-image: "PENDING"
+image: "/recipes/recipe-sheet-pan-salmon-and-vegetables.jpg"
 imageAlt: "Sheet pan of roasted salmon fillets with asparagus and golden potatoes, garnished with lemon and fresh dill"
 winnieImage: "/winnie/winnie-kitchen-chop-colander.jpg"
 winnieHeadshot: "/winnie/headshot-v4-2.jpg"

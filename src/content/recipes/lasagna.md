@@ -9,7 +9,7 @@ prepTimeMinutes: 30
 cookTimeMinutes: 60
 servings: 8
 difficulty: "intermediate"
-image: "PENDING"
+image: "/recipes/recipe-lasagna.jpg"
 imageAlt: "A slice of layered meat lasagna being lifted from the pan, cheese stretching"
 winnieImage: "/winnie/winnie-holding-lasagna.jpg"
 winnieHeadshot: "/winnie/headshot-v4-1.jpg"

@@ -9,7 +9,7 @@ prepTimeMinutes: 20
 cookTimeMinutes: 60
 servings: 6
 difficulty: "easy"
-image: "PENDING"
+image: "/recipes/recipe-meatloaf.jpg"
 imageAlt: "A sliced classic meatloaf with a glossy ketchup glaze on top, served on a platter"
 winnieImage: "/winnie/winnie-holding-meatloaf.jpg"
 winnieHeadshot: "/winnie/avatar.jpg"

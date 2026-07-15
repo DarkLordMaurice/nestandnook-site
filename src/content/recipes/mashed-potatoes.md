@@ -9,7 +9,7 @@ prepTimeMinutes: 15
 cookTimeMinutes: 25
 servings: 6
 difficulty: "easy"
-image: "PENDING"
+image: "/recipes/recipe-mashed-potatoes.jpg"
 imageAlt: "A bowl of creamy mashed potatoes with a well of melted butter in the center, topped with cracked pepper"
 winnieImage: "/winnie/winnie-kitchen-taste.jpg"
 winnieHeadshot: "/winnie/headshot-v4-2.jpg"

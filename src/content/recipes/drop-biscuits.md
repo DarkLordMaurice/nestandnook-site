@@ -9,7 +9,7 @@ prepTimeMinutes: 12
 cookTimeMinutes: 16
 servings: 8
 difficulty: "easy"
-image: "PENDING"
+image: "/recipes/recipe-drop-biscuits.jpg"
 imageAlt: "A batch of golden, craggy drop biscuits on a baking sheet, split open showing flaky layers"
 winnieImage: "/winnie/winnie-kitchen-wipe-counter.jpg"
 winnieHeadshot: "/winnie/headshot-v4-2.jpg"

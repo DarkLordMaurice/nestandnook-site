@@ -9,7 +9,7 @@ prepTimeMinutes: 15
 cookTimeMinutes: 75
 servings: 6
 difficulty: "easy"
-image: "PENDING"
+image: "/recipes/recipe-chili.jpg"
 imageAlt: "A bowl of thick beef chili topped with shredded cheese, sour cream, and sliced green onion"
 winnieImage: "/winnie/winnie-holding-chili.jpg"
 winnieHeadshot: "/winnie/headshot-v4-3.jpg"

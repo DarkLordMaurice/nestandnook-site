@@ -9,7 +9,7 @@ prepTimeMinutes: 15
 cookTimeMinutes: 20
 servings: 4
 difficulty: "easy"
-image: "PENDING"
+image: "/recipes/recipe-waffles.jpg"
 imageAlt: "A stack of crispy golden Belgian waffles with deep pockets, topped with butter and maple syrup"
 winnieImage: "/winnie/winnie-kitchen-measuring.jpg"
 winnieHeadshot: "/winnie/headshot-v4-2.jpg"

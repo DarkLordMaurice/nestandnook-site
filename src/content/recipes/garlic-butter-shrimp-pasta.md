@@ -9,7 +9,7 @@ prepTimeMinutes: 15
 cookTimeMinutes: 20
 servings: 4
 difficulty: "easy"
-image: "PENDING"
+image: "/recipes/recipe-garlic-butter-shrimp-pasta.jpg"
 imageAlt: "A skillet of garlic butter shrimp pasta tossed in a glossy sauce, shrimp pink and curled, fresh parsley scattered on top"
 winnieImage: "/winnie/winnie-kitchen-chop.jpg"
 winnieHeadshot: "/winnie/headshot-v4-4.jpg"

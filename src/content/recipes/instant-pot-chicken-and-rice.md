@@ -9,7 +9,7 @@ prepTimeMinutes: 10
 cookTimeMinutes: 25
 servings: 5
 difficulty: "easy"
-image: "PENDING"
+image: "/recipes/recipe-instant-pot-chicken-and-rice.jpg"
 imageAlt: "A bowl of chicken and rice with vegetables, served straight from the Instant Pot"
 winnieImage: "/winnie/winnie-kitchen-stir.jpg"
 winnieHeadshot: "/winnie/headshot-v4-4.jpg"

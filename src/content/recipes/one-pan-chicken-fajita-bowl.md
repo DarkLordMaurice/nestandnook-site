@@ -9,7 +9,7 @@ prepTimeMinutes: 15
 cookTimeMinutes: 20
 servings: 4
 difficulty: "easy"
-image: "PENDING"
+image: "/recipes/recipe-one-pan-chicken-fajita-bowl.jpg"
 imageAlt: "A chicken fajita bowl with rice, charred peppers and onions, sliced chicken, avocado, and lime"
 winnieImage: "/winnie/winnie-kitchen-chop-side.jpg"
 winnieHeadshot: "/winnie/headshot-v4-3.jpg"

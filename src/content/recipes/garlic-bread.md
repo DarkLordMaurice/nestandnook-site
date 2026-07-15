@@ -9,7 +9,7 @@ prepTimeMinutes: 10
 cookTimeMinutes: 12
 servings: 6
 difficulty: "easy"
-image: "PENDING"
+image: "/recipes/recipe-garlic-bread.jpg"
 imageAlt: "Slices of golden garlic bread with melted butter and herbs, cut from a crusty loaf"
 winnieImage: "/winnie/winnie-kitchen-chop.jpg"
 winnieHeadshot: "/winnie/headshot-v4-3.jpg"
