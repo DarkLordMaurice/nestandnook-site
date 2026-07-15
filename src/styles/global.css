@@ -79,7 +79,15 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+/* overflow-x: hidden here is load-bearing, not decorative — the full-bleed
+   hero/section bands below use the standard 100vw + left:50% + margin:-50vw
+   breakout trick (see "Full-bleed hero banner" further down). 100vw includes
+   the vertical scrollbar's width, which the actual viewport box does not, so
+   on any page tall enough to scroll, those bands render a few pixels wider
+   than the visible viewport and produce a horizontal scrollbar site-wide.
+   Hiding x-overflow at the html level clips that harmless excess without
+   touching the intentional full-bleed backgrounds or any real content width. */
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
   font-family: var(--font-body);
