@@ -78,10 +78,19 @@ This is the better call if you've tried a stepped footrest before and found your
 - You want the fastest possible adjustment — flipping between a couple of fixed steps on a stepped footrest is quicker than turning a dial each time you want a different height.
 - Your feet already reach the floor comfortably with your knees near 90° — neither this nor any footrest is solving a problem you actually have.
 
+<figure class="inline-photo">
+  <img src="/winnie/kensington-solemate-plus-review-scene4.jpg" alt="A footrest with a fine-adjustment dial being turned to set a precise height under a desk" loading="lazy" />
+  <figcaption>Dialing in, not stepping between two settings.</figcaption>
+</figure>
+
 *Prices and availability change constantly, so we don't quote figures here — tap through to see the current price on Amazon.*
 
 > **Winnie's take:** I recommend this one to the "I measured twice and I'm still not sure" crowd. If you already know you need maximum lift, skip the dial and grab the HUANUO. If you're not sure exactly what height you need, the dial takes the guesswork out of it.
 
+<figure class="inline-photo">
+  <img src="/winnie/kensington-solemate-plus-review-scene5.jpg" alt="A footrest's rocking base mid-motion, showing the tilting range" loading="lazy" />
+  <figcaption>The tilt range in motion — the part a spec sheet can't show.</figcaption>
+</figure>
 
 <figure class="inline-photo">
   <img src="/winnie/kensington-solemate-plus-review-scene3.jpg" alt="A footrest positioned under a desk next to an office chair, showing overall fit" loading="lazy" />

@@ -46,6 +46,11 @@ This is the fix people skip most often, because most monitors ship on stands of 
 - You use one monitor for 90%+ of your work — center your setup on that primary screen and treat the second as a reference display, rather than trying to split the difference between both.
 - Your desk is too shallow for both screens angled inward — check your desk depth against the stand's footprint before assuming a stand fixes the whole picture.
 
+<figure class="inline-photo">
+  <img src="/winnie/how-to-position-dual-monitors-scene4.jpg" alt="Two monitors angled slightly inward toward a seated position, inner edges close together at matching height" loading="lazy" />
+  <figcaption>Matching height and a closed gap, solved at the same time.</figcaption>
+</figure>
+
 ## Close the gap between them
 
 Two monitors sitting far apart, or perfectly flat instead of angled slightly inward, force your head to turn rather than just your eyes to shift — a bigger, more tiring movement repeated all day. Push them close enough that the inner edges nearly touch, and angle each screen a few degrees toward your seat, so the gap in the middle disappears from your peripheral vision instead of splitting your attention.
@@ -67,6 +72,11 @@ Both screens should sit far enough away that you're not straining to focus up cl
 ## When a stand solves this and when it doesn't
 
 A dual-monitor stand or arm solves the height-matching and angle problems in one purchase, which is usually faster than trying to shim mismatched stock stands with books. It won't fix distance or which screen is primary — those are placement decisions you make once the stand gives you the freedom to actually move things.
+
+<figure class="inline-photo">
+  <img src="/winnie/how-to-position-dual-monitors-scene5.jpg" alt="A dual-monitor stand's height gauge being matched between both screens" loading="lazy" />
+  <figcaption>The gauge is what turns "close enough" into actually matched.</figcaption>
+</figure>
 
 > **Winnie's take:** I've read a genuinely large number of dual-monitor complaints, and almost none of them are actually about screen size or resolution. They're about one monitor sitting two inches lower than the other for six months because nobody got around to fixing it. Fix the height mismatch first. Everything else is a smaller problem after that.
 

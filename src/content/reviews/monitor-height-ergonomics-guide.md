@@ -62,12 +62,21 @@ Stacked books work in a pinch and cost nothing, but they rarely hold a precise, 
 - Your discomfort is really about distance, not height — see the section below before assuming a riser is the fix.
 - You wear bifocals or progressive lenses and the standard eye-level guidance feels off — test against where your own eyes naturally find the screen rather than following the general rule exactly; you may want the screen slightly lower than "correct" for most people.
 
+<figure class="inline-photo">
+  <img src="/winnie/monitor-height-ergonomics-guide-scene4.jpg" alt="A monitor positioned so the top third of the screen aligns with a seated eye line, measuring tape in frame" loading="lazy" />
+  <figcaption>The ten-second test, made visible.</figcaption>
+</figure>
+
 ## Distance is the second half of the equation
 
 Height alone doesn't finish the job — if the screen sits at the right height but too close or too far away, you'll unconsciously tilt your head to compensate anyway, undoing the fix. Roughly an arm's length is the common starting distance; adjust from there based on your actual eyesight and screen size rather than treating it as a fixed rule.
 
 > **Winnie's take:** I've read enough of these threads to know the single most common mistake is fixing height once and never rechecking it after a chair swap, a new desk, or even just a different pair of shoes that changes your seated height by half an inch. Run the ten-second test again any time something else about your setup changes.
 
+<figure class="inline-photo">
+  <img src="/winnie/monitor-height-ergonomics-guide-scene5.jpg" alt="A monitor riser being adjusted a few inches upward to correct screen height" loading="lazy" />
+  <figcaption>A few inches is usually the entire fix.</figcaption>
+</figure>
 
 <figure class="inline-photo">
   <img src="/winnie/monitor-height-ergonomics-guide-scene3.jpg" alt="Overhead view showing the distance between a monitor screen and a desk chair" loading="lazy" />

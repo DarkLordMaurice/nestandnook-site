@@ -59,6 +59,11 @@ Check each zone before buying:
 - The product requires dimensions, mounting, or electrical conditions the desk cannot support.
 - You are relying on an old budget total instead of checking the current retailer listing.
 
+<figure class="inline-photo">
+  <img src="/winnie/small-home-office-setup-guide-scene4.jpg" alt="A complete small home office with footrest, monitor at eye level, tidy cables, and layered lighting all visible together" loading="lazy" />
+  <figcaption>Five systems agreeing with each other, not five separate purchases.</figcaption>
+</figure>
+
 ## 1. Chair and foot support
 
 Set the chair for the keyboard and desk first. If that leaves the feet unsupported, use the existing [footrest guide](/home-office/best-footrest-for-short-people/) rather than lowering the chair and creating a new arm-height problem. The footrest cluster is complete; use its existing comparison and product pages instead of adding more overlapping articles.
@@ -93,6 +98,10 @@ The [under-$150 setup](/home-office/ergonomic-home-office-setup-under-150/) prio
 
 > **Winnie's take:** A complete setup is not a shopping list. It is five checks. Pass the checks you already pass, fix the one that keeps failing, and stop before the desk turns into a catalog.
 
+<figure class="inline-photo">
+  <img src="/winnie/small-home-office-setup-guide-scene5.jpg" alt="A desk corner showing one fully solved friction point — cables — with the rest of the room still visible in soft focus" loading="lazy" />
+  <figcaption>One problem solved well, in the context of the whole room.</figcaption>
+</figure>
 
 <figure class="inline-photo">
   <img src="/winnie/small-home-office-setup-guide-scene3.jpg" alt="A home office desk lit with layered task and ambient lighting, warm inviting tone" loading="lazy" />
