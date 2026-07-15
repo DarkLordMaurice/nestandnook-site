@@ -11,6 +11,8 @@ servings: 6
 difficulty: "easy"
 image: "/recipes/recipe-meatloaf.jpg"
 imageAlt: "A sliced classic meatloaf with a glossy ketchup glaze on top, served on a platter"
+altImage: "/recipes/recipe-meatloaf-alt.jpg"
+altImageAlt: "A sliced meatloaf with a glossy glaze, showing a moist, tender interior"
 winnieImage: "/winnie/winnie-holding-meatloaf.jpg"
 winnieHeadshot: "/winnie/avatar.jpg"
 winnieNote: "Meatloaf has a reputation problem — everyone's had the dry, dense, sad-brick version at least once. That's a technique failure, not a meatloaf failure. The bread-and-milk trick below is the whole fix, and it's the kind of quietly correct detail I could talk about for way too long."

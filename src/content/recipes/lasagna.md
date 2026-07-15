@@ -11,6 +11,8 @@ servings: 8
 difficulty: "intermediate"
 image: "/recipes/recipe-lasagna.jpg"
 imageAlt: "A slice of layered meat lasagna being lifted from the pan, cheese stretching"
+altImage: "/recipes/recipe-lasagna-alt.jpg"
+altImageAlt: "A slice of meat lasagna lifted from the pan, showing distinct, non-watery layers"
 winnieImage: "/winnie/winnie-holding-lasagna.jpg"
 winnieHeadshot: "/winnie/headshot-v4-1.jpg"
 winnieNote: "Every watery lasagna I have ever encountered traces back to un-drained ricotta or a sauce that was thinner than it should have been. It's not bad luck. It's moisture math, and the math is fixable."

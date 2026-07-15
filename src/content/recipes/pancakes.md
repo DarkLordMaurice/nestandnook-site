@@ -11,6 +11,8 @@ servings: 4
 difficulty: "easy"
 image: "/recipes/recipe-pancakes.jpg"
 imageAlt: "A stack of fluffy buttermilk pancakes topped with butter, syrup, and berries"
+altImage: "/recipes/recipe-pancakes-alt.jpg"
+altImageAlt: "A stack of fluffy buttermilk pancakes with butter melting on top"
 winnieImage: "/winnie/winnie-holding-pancakes.jpg"
 winnieHeadshot: "/winnie/headshot-v4-4.jpg"
 winnieNote: "The number of pancake recipes that bury 'don't overmix' in paragraph four instead of leading with it borders on a public service failure. It's the whole recipe. Everything else is just flour math."

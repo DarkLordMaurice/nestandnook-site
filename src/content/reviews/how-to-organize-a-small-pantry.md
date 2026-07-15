@@ -33,6 +33,10 @@ A small pantry works best when every shelf has a job: daily staples at eye level
 
 A small pantry isn't failing because it lacks acrylic bins. It's failing because the pasta has no address, the backup peanut butter is hiding behind the oatmeal, and three cans of tomatoes are pretending they've never met.
 
+<figure class="inline-photo">
+  <img src="/winnie/small-pantry-organization-problem.jpg" alt="Standing in front of a cramped pantry closet holding up two identical duplicate cans found on different shelves" loading="lazy" />
+</figure>
+
 <h2 id="measure-first-check">Measure shelves, then count your real categories</h2>
 
 Before buying pantry organizers, measure the shelf width, shelf depth, and vertical gap between shelves. Then count the food categories you actually keep — cans, pasta, grains, snacks, baking goods, breakfast, sauces, and backup items. A small pantry usually needs fewer organizers than expected, but each one needs a clear job.
@@ -42,7 +46,13 @@ Before buying pantry organizers, measure the shelf width, shelf depth, and verti
 Empty the pantry and sort everything by how often you actually use it, not by container type. Put daily-use food at eye level, where you'll actually see it before buying a duplicate. Create a can and jar row you can actually see all the way to the back, instead of a deep shelf where the third row disappears. Use bins for loose categories — snacks, packets, small bags — not for everything, since over-binning just relocates the mystery-zone problem. Build a "finish first" zone for opened or nearly-done items so they get used instead of forgotten behind something newer. Date and label only what actually needs it — decanted items, opened bags, anything where the original packaging's date disappeared. Keep backup goods high or low, out of the prime daily-use real estate. And reset the pantry before grocery shopping, so you're buying from an accurate picture instead of a guess.
 
 <div class="inline-photo-pair">
-  </div>
+  <figure class="inline-photo">
+    <img src="/winnie/small-pantry-can-riser-visible-storage.jpg" alt="Arranging cans and jars on a shelf riser so every item sits visible in short rows" loading="lazy" />
+</figure>
+  <figure class="inline-photo">
+    <img src="/winnie/small-pantry-finish-first-tray.jpg" alt="Arranging a shallow finish-first tray with opened crackers, half-used pasta, and a small bag of rice" loading="lazy" />
+</figure>
+</div>
 
 <h2 id="do-not-buy-if">Skip a pantry organizer if&#x2026;</h2>
 
@@ -53,5 +63,9 @@ Empty the pantry and sort everything by how often you actually use it, not by co
 A small pantry should answer three questions in five seconds: what do we have, what needs to be used first, and what should not be bought again?
 
 See [Best Stackable Pantry Containers for Small Kitchens](/kitchen/best-stackable-pantry-containers-small-kitchen/) for containers that actually fit tight shelves, and [How to Organize a Small Kitchen With No Pantry](/kitchen/how-to-organize-a-small-kitchen-with-no-pantry/) if your kitchen doesn't have a dedicated pantry at all.
+
+<figure class="inline-photo">
+  <img src="/winnie/small-pantry-grocery-reset.jpg" alt="Doing a quick pantry reset with a notebook before a grocery shopping trip" loading="lazy" />
+</figure>
 
 > **Winnie's take:** The "finish first" zone is the one habit that's saved me the most money — not the containers, not the labels, just one shallow spot at the front where the almost-empty stuff has to live until it's actually empty.

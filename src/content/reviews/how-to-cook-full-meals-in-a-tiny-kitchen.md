@@ -33,6 +33,10 @@ Cooking a full meal in a tiny kitchen is less about having a bigger counter and 
 
 A tiny kitchen can cook a real dinner. What it can't do is host twelve bowls, three cutting boards, a hot skillet, and your optimism all at once. The trick is choreography: prep first, cook in stages, park hot things safely, and make every tool on the counter explain why it's there.
 
+<figure class="inline-photo">
+  <img src="/winnie/tiny-kitchen-full-meal-problem.jpg" alt="Tiny kitchen counter overwhelmed with a hissing pan, stacked cutting boards, and a bowl about to slide off the edge" loading="lazy" />
+</figure>
+
 <h2 id="measure-first-check">Identify your three working zones first</h2>
 
 Before planning full meals in a tiny kitchen, identify your three working zones: prep space, cooking space, and landing space. You need one clear cutting area, one heat-safe place to set food down, and enough sink access to clean as you go. If you can't point to all three right now, that's the actual problem to solve before buying a single new tool.
@@ -44,7 +48,13 @@ Pick the meal format before the recipe — sheet-pan, skillet, one-pot, or grain
 Reliable tiny-kitchen formulas worth keeping in rotation: a grain bowl dinner, a sheet-pan dinner, a skillet dinner, soup plus something crisp, and taco or wrap night. All five use one main vessel and a short, predictable list of tools.
 
 <div class="inline-photo-pair">
-  </div>
+  <figure class="inline-photo">
+    <img src="/winnie/tiny-kitchen-landing-zone-for-hot-pan.jpg" alt="Setting a hot lidded pan onto a heat-safe trivet with the cutting board already pushed clear" loading="lazy" />
+</figure>
+  <figure class="inline-photo">
+    <img src="/winnie/tiny-kitchen-one-pan-dinner-detail.jpg" alt="Vegetables, protein, and sauce coming together in one lidded sauté pan" loading="lazy" />
+</figure>
+</div>
 
 <h2 id="do-not-buy-if">Skip a new cooking tool if&#x2026;</h2>
 
@@ -55,5 +65,9 @@ Reliable tiny-kitchen formulas worth keeping in rotation: a grain bowl dinner, a
 A full meal in a tiny kitchen needs a script, not a bigger stage. Know what cooks first, where the hot pan lands, what gets washed early, and which tool gets to be the star.
 
 See [Best Compact Air Fryers for Small Kitchens](/kitchen/best-compact-air-fryers-small-kitchen/) and [Best Multi-Function Kitchen Gadgets for Small Kitchens](/kitchen/best-multi-function-kitchen-gadgets-small-kitchen/) for tools that genuinely reduce the number of vessels a full meal needs.
+
+<figure class="inline-photo">
+  <img src="/winnie/tiny-kitchen-full-meal-payoff.jpg" alt="A complete plated meal at the kitchen table with only one pan, one cutting board, and one utensil visible" loading="lazy" />
+</figure>
 
 > **Winnie's take:** The landing zone is the step everyone skips and the one that actually prevents disasters. A hot pan with nowhere planned to go ends up on a cutting board, a towel, or occasionally the floor. Decide where it lands before you turn on the burner, not while you're holding it.

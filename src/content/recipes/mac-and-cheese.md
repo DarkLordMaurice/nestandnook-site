@@ -11,6 +11,8 @@ servings: 6
 difficulty: "easy"
 image: "/recipes/recipe-mac-and-cheese.jpg"
 imageAlt: "A skillet of baked mac and cheese with a golden, crispy breadcrumb top"
+altImage: "/recipes/recipe-mac-and-cheese-alt.jpg"
+altImageAlt: "A close-up of baked mac and cheese with a golden, crispy top"
 winnieImage: "/winnie/winnie-holding-mac-and-cheese.jpg"
 winnieHeadshot: "/winnie/headshot-v4-3.jpg"
 winnieNote: "Every cheese sauce is a small negotiation between 'melts beautifully' and 'actually tastes like something.' Use one cheese for each job instead of asking one cheese to do both, and the negotiation resolves itself."

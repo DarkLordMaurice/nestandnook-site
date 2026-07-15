@@ -37,6 +37,10 @@ No pantry isn't the same thing as no system — it just means your pantry has to
 
 When pantry items don't have a home, they migrate to the counter — coffee, snacks, cereal, pasta, vitamins, and reusable bags all start acting like they pay rent. A no-pantry kitchen also tends to force food, cookware, dishes, and cleaning supplies into the same few cabinets, which works for about three days before the pasta vanishes behind the blender. The real cost isn't just clutter — it's buying another bag of rice because the first one is hiding behind three half-open snack boxes.
 
+<figure class="inline-photo">
+  <img src="/winnie/small-kitchen-no-pantry-problem.jpg" alt="Kitchen counter completely covered in pantry overflow with nowhere left to set anything down" loading="lazy" />
+</figure>
+
 <h2 id="measure-first-check">Measure before you buy a single organizer</h2>
 
 Before buying organizers, measure the spaces that could become pantry zones: cabinet shelf height, door width, the gap beside the fridge, the wall area near the prep zone, and any empty space above cabinets. Then decide which food categories deserve the easiest access — daily-use items get the prime spots, backup goods can live higher, lower, or on a cart. Measure inside cabinet width, depth, and shelf height, pantry-door width, the gap beside your fridge or stove, under-shelf clearance, any renter limits on mounting hardware, and your primary user's actual reach height.
@@ -46,7 +50,17 @@ Before buying organizers, measure the spaces that could become pantry zones: cab
 Pick one cabinet to be the pantry cabinet, then use bins inside it to create pull-out categories instead of one deep, mixed pile. Give spices and small bottles vertical space with a tiered shelf or turntable rather than letting them hide flat. Use the back of a door carefully — lightweight items only, and check the door can handle the added weight. Add a slim rolling cart only if there's a genuine parking gap that won't block a walkway. Make one grab-and-go bin for snacks so they stop colonizing the counter, and move backup goods out of the primary cooking zone entirely so daily staples aren't competing with bulk purchases for the same shelf.
 
 <div class="inline-photo-pair">
-  </div>
+  <figure class="inline-photo">
+    <img src="/winnie/small-kitchen-no-pantry-cabinet-bin-detail.jpg" alt="Clear pull-out bin sliding into an organized lower cabinet with tiered spice shelf" loading="lazy" />
+</figure>
+  <figure class="inline-photo">
+    <img src="/winnie/small-kitchen-over-door-pantry-rack.jpg" alt="Over-door pantry rack holding spice jars and small packets" loading="lazy" />
+</figure>
+</div>
+
+<figure class="inline-photo">
+  <img src="/winnie/small-kitchen-slim-rolling-pantry-cart.jpg" alt="Slim rolling pantry cart fitting into a narrow gap beside the refrigerator" loading="lazy" />
+</figure>
 
 <h2 id="do-not-buy-if">Skip a pantry organizer if&#x2026;</h2>
 

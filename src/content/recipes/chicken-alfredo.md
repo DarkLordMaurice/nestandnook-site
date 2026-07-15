@@ -11,6 +11,8 @@ servings: 4
 difficulty: "easy"
 image: "/recipes/recipe-chicken-alfredo.jpg"
 imageAlt: "A bowl of fettuccine alfredo topped with sliced grilled chicken and cracked black pepper"
+altImage: "/recipes/recipe-chicken-alfredo-alt.jpg"
+altImageAlt: "A close-up of chicken alfredo pasta twirled on a fork, showing the silky sauce"
 winnieImage: "/winnie/winnie-holding-chicken-alfredo.jpg"
 winnieHeadshot: "/winnie/headshot-v4-2.jpg"
 winnieNote: "Broken alfredo sauce is just cheese protein getting scared and seizing up from too much heat too fast. It's not a flavor problem, it's a physics problem, and physics problems have reliable fixes."
