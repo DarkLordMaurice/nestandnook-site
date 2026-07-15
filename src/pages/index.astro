@@ -22,16 +22,16 @@ const recipes = await getCollection('recipes');
 // "See all Home Office guides" link is the actual destination for the rest.
 const officeReviews = reviews.filter((r) => r.data.hub === 'home-office')
   .sort((a, b) => +b.data.publishDate - +a.data.publishDate)
-  .slice(0, 6);
+  .slice(0, 4);
 const kitchenReviews = reviews.filter((r) => r.data.hub === 'kitchen')
   .sort((a, b) => +b.data.publishDate - +a.data.publishDate)
-  .slice(0, 6);
+  .slice(0, 4);
 const petCareReviews = reviews.filter((r) => r.data.hub === 'pet-care')
   .sort((a, b) => +b.data.publishDate - +a.data.publishDate)
-  .slice(0, 6);
+  .slice(0, 4);
 const garageReviews = reviews.filter((r) => r.data.hub === 'garage')
   .sort((a, b) => +b.data.publishDate - +a.data.publishDate)
-  .slice(0, 6);
+  .slice(0, 4);
 const latestRecipes = [...recipes].sort((a, b) => +b.data.publishDate - +a.data.publishDate).slice(0, 6);
 // Off the Clock on the homepage should tease the same life-only content as
 // /blog/ itself — "Desk fixes"/"Kitchen fixes" posts surface via the
@@ -77,7 +77,7 @@ const latestGuides = blogPosts.filter((p) => TIP_CATEGORIES.includes(p.data.cate
       </div>
       <p class="homepage-tools-intro">Put the measurements and room relationships on the page first. Each tool runs locally in the browser and turns the result into a practical next move.</p>
       <div class="tools-grid homepage-tools-grid">
-        {LIVE_TOOLS.map((tool) => <ToolCard tool={tool} />)}
+        {LIVE_TOOLS.slice(0, 4).map((tool) => <ToolCard tool={tool} />)}
       </div>
     </section>
   )}
