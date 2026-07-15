@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import WinnieNote from '../../components/WinnieNote.astro';
+import ToolScene from '../../components/tools/ToolScene.astro';
 import { SITE } from '../../config';
 import { TOOLS } from '../../data/tools';
 import { SIGNS } from '../../lib/tools/space-and-the-stars.mjs';
@@ -27,6 +28,7 @@ const jsonLd = {
         <h1>{tool.title}</h1>
       </div>
     </div>
+    <ToolScene slug={tool.slug} />
 
     <p id="quick-answer" class="lede tool-lede">Pick your sign. Find out why your home is exactly like you — for better and worse. Then find out where to actually start.</p>
 
