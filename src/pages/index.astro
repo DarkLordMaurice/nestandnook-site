@@ -32,17 +32,17 @@ const petCareReviews = reviews.filter((r) => r.data.hub === 'pet-care')
 const garageReviews = reviews.filter((r) => r.data.hub === 'garage')
   .sort((a, b) => +b.data.publishDate - +a.data.publishDate)
   .slice(0, 4);
-const latestRecipes = [...recipes].sort((a, b) => +b.data.publishDate - +a.data.publishDate).slice(0, 6);
+const latestRecipes = [...recipes].sort((a, b) => +b.data.publishDate - +a.data.publishDate).slice(0, 4);
 // Off the Clock on the homepage should tease the same life-only content as
 // /blog/ itself — "Desk fixes"/"Kitchen fixes" posts surface via the
 // /guides/ section instead (see src/pages/guides/index.astro and
 // src/pages/blog/index.astro for the full split rationale, 2026-07-10).
 const LIFE_CATEGORIES = ['Life outside the nook', 'Behind the nook'];
 const latestPosts = blogPosts.filter((p) => LIFE_CATEGORIES.includes(p.data.category))
-  .sort((a, b) => +b.data.publishDate - +a.data.publishDate).slice(0, 6);
+  .sort((a, b) => +b.data.publishDate - +a.data.publishDate).slice(0, 4);
 const TIP_CATEGORIES = ['Desk fixes', 'Kitchen fixes'];
 const latestGuides = blogPosts.filter((p) => TIP_CATEGORIES.includes(p.data.category))
-  .sort((a, b) => +b.data.publishDate - +a.data.publishDate).slice(0, 6);
+  .sort((a, b) => +b.data.publishDate - +a.data.publishDate).slice(0, 4);
 ---
 <BaseLayout
   title={`Small-Space Home Guides & Planning Tools | ${SITE.brand}`}
