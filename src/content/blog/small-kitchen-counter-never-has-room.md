@@ -19,17 +19,41 @@ Here's a complaint that shows up in small-kitchen forums with almost comic regul
 
 ## The actual problem: everything's fighting for the same six square feet
 
+
+<figure class="inline-photo">
+  <img src="/winnie/small-kitchen-counter-never-has-room-nonwinnie-scene1.jpg" alt="A cluttered small kitchen counter crowded with a coffee maker, toaster, and cutting board all competing for space" loading="lazy" />
+  <figcaption>Sequential work, fighting for the same six square feet.</figcaption>
+</figure>
+
 A normal-sized kitchen has room for parallel work — one zone for chopping, another for the stand mixer, another as a landing spot for hot pans. A small kitchen usually has one contiguous stretch of counter doing all three jobs in sequence, which means every task that claims space is quietly stealing it from the next task in line. Pull out the blender to make a smoothie and you've lost your prep surface. Set down a hot air-fryer basket and you've lost your cutting zone until it cools. None of this is about how much stuff you own — it's that a kitchen built for parallel work is being asked to run sequential work with no dedicated hand-off spot, and something has to give every single time.
 
 This is different from a clutter problem, and treating it like one is where most advice goes sideways. Decluttering assumes the issue is too many objects sitting around. The real issue is zero designated "in-between" space — nowhere for a hot pan, a used cutting board, or a mixing bowl to sit for the ninety seconds it takes to move on to the next step. Take away the objects and the counter is still too small to hold two tasks at once; it was never about the objects.
 
 ## The fixes people try first, and why they only half help
 
+
+<figure class="inline-photo">
+  <img src="/winnie/small-kitchen-counter-never-has-room-nonwinnie-scene2.jpg" alt="The same style counter reorganized with a slim vertical organizer freeing up open counter space" loading="lazy" />
+  <figcaption>More storage helps only if it adds a real hand-off zone.</figcaption>
+</figure>
+
 The instinctive move is to buy more counter — a rolling cart, a stick-on shelf, a cutting board that bridges the sink. These genuinely help, but only if they add a real hand-off zone rather than just more flat surface to fill with more stuff, which is what usually happens within a month. The second instinct is to buy fewer appliances, on the theory that less equipment means less competition for space. That's half right: it's not about owning fewer things, it's about whether the things you keep can share a footprint instead of each demanding their own. A stand mixer that lives in a cabinet and comes out for twenty minutes a week is a very different math problem than one that squats on the counter permanently, whether or not you own a second appliance too.
 
 I spent a decade in retail buying before any of this, reading spec sheets the way other people read horoscopes, and the thing that era taught me is that "compact" on a box rarely means what people hope it means. A gadget that folds down small but has five parts to wash isn't actually solving the space problem — it's relocating it from the counter to the sink, which is a lateral move, not a fix. The genuine space-savers are the ones that either nest into almost nothing when they're not in use, or do more than one job so you're not stocking three single-purpose tools for the same six inches of shelf.
 
 ## What actually creates room, according to the people who've solved it
+
+
+<figure class="inline-photo">
+  <img src="/winnie/small-kitchen-counter-never-has-room-nonwinnie-scene3.jpg" alt="A wall-mounted shelf above a kitchen counter holding a cutting board and small appliances" loading="lazy" />
+  <figcaption>A dedicated hand-off spot, not more flat surface to fill.</figcaption>
+</figure>
+
+
+<figure class="inline-photo">
+  <img src="/winnie/small-kitchen-counter-never-has-room-nonwinnie-scene4.jpg" alt="A close-up of a fold-down counter extension attached to a small kitchen wall" loading="lazy" />
+  <figcaption>Fold-down surfaces exist for exactly this ninety-second hand-off.</figcaption>
+</figure>
 
 The pattern that shows up consistently among people who've actually fixed this — not just bought more bins — is sequencing the work instead of laying it all out at once, plus picking tools that nest down to almost nothing between uses. [The counter-space prep guide](/kitchen/how-to-prep-food-with-minimal-counter-space/) walks through the full sequence in detail.
 
@@ -42,6 +66,12 @@ The pattern that shows up consistently among people who've actually fixed this �
 4. **Pick tools that nest to near-zero footprint** — collapsible colanders, stackable bowls, a cutting board that stores vertically — over "compact" tools that still need their own permanent shelf slot.
 5. **Test the "replace or just join" question before buying anything new.** A tool that legitimately replaces two others is a real space win; one that just joins the drawer isn't, no matter how flat it folds.
 </div>
+
+
+<figure class="inline-photo">
+  <img src="/winnie/small-kitchen-counter-never-has-room-nonwinnie-scene5.jpg" alt="An overhead view of a small kitchen counter with a clear defined prep zone" loading="lazy" />
+  <figcaption>One zone, sequenced — the actual fix in one frame.</figcaption>
+</figure>
 
 ## Two questions people ask after this one
 

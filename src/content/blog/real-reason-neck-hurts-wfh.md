@@ -19,9 +19,21 @@ There's a specific complaint that shows up constantly in laptop-stand reviews, a
 
 ## Why a laptop is the actual problem, not your posture
 
+
+<figure class="inline-photo">
+  <img src="/winnie/real-reason-neck-hurts-wfh-nonwinnie-scene1.jpg" alt="A laptop propped on a stand at eye level on a desk, external keyboard and mouse in front" loading="lazy" />
+  <figcaption>Decoupled: screen up top, keyboard down low, each where it should be.</figcaption>
+</figure>
+
 Here's the part most WFH advice skips: a laptop is one rigid unit, screen and keyboard bolted together at a fixed angle. Put the keyboard at a comfortable typing height — forearms roughly level, wrists neutral — and the screen ends up low, well below eye level. Your neck's only option is to tip forward and down to see it. Do that for six or eight hours and you're holding a forward head posture that dramatically increases the load your neck muscles carry — the further your head tips forward, the more effective weight your neck is supporting, not because your head got heavier but because the leverage got worse. That's the ache. It's not bad posture in the moral-failing sense people tend to blame themselves for. It's one rigid object trying to do two jobs — screen and keyboard — that were never meant to share a single height.
 
 ## Why the couch makes it worse, and why a pillow doesn't fix it
+
+
+<figure class="inline-photo">
+  <img src="/winnie/real-reason-neck-hurts-wfh-nonwinnie-scene2.jpg" alt="A laptop sitting low on a couch cushion, screen angled downward, a throw pillow nearby" loading="lazy" />
+  <figcaption>A softer cushion doesn't change where the screen actually sits.</figcaption>
+</figure>
 
 Working from a couch or bed removes the one thing a desk chair at least provides: a stable, consistent surface height. On a couch, the laptop sits on your actual lap, which is lower and less predictable than any desk, so the forward tip gets more severe, not less. The instinctive fixes people try first — a lap pillow, a firmer cushion, "just sitting up straighter" — treat the symptom of an unstable base without touching the actual geometry problem, which is screen height relative to eye level. A firmer cushion can make your lap more comfortable. It does nothing about where the screen sits.
 
@@ -29,9 +41,21 @@ The other common wrong turn is propping the laptop on books or a box to raise th
 
 ## What actually separates the two problems
 
+
+<figure class="inline-photo">
+  <img src="/winnie/real-reason-neck-hurts-wfh-nonwinnie-scene3.jpg" alt="A close-up of a laptop stand's adjustable height mechanism on a wooden desk" loading="lazy" />
+  <figcaption>One mechanism, two problems solved at once.</figcaption>
+</figure>
+
 The fix reviewers describe consistently is decoupling screen height from typing height — raising the laptop screen toward eye level on its own stand, then adding a separate keyboard and mouse at the lower, comfortable typing position. [The laptop stand roundup](/home-office/best-laptop-stand-for-couch-and-bed/) covers the models our team's review research keeps circling back to for exactly this setup, with a particular eye toward ones stable enough for actual typing and open enough underneath that the laptop doesn't overheat mid-afternoon. A stand that only raises the screen and assumes you'll still type on the built-in keyboard is solving half the problem — worth knowing before buying, since it's an easy detail to miss in a product photo.
 
 ## Who this fixes it for, and who it doesn't
+
+
+<figure class="inline-photo">
+  <img src="/winnie/real-reason-neck-hurts-wfh-nonwinnie-scene4.jpg" alt="A cozy couch corner set up as a workspace with a laptop stand and a small side table" loading="lazy" />
+  <figcaption>Couch work specifically is where this mechanism hits hardest.</figcaption>
+</figure>
 
 This pattern shows up hardest in two groups: people working primarily from a couch or bed rather than a desk, and anyone using their laptop screen and keyboard as a single fixed unit for most of the day. If you're already on a desk with a separate monitor at eye level and a proper keyboard, this specific mechanism mostly doesn't apply to you — your neck pain, if you have it, is probably coming from somewhere else in the setup, and the [Home Office & Ergonomics hub](/home-office/) is a better starting point for tracking that down.
 
@@ -44,6 +68,12 @@ This pattern shows up hardest in two groups: people working primarily from a cou
 4. **Check for a stand with ventilation underneath.** Laptops raised on a sealed surface for hours can start throttling from heat, which is a separate annoyance worth avoiding on the first purchase.
 5. **On a couch specifically, prioritize a stand stable enough for actual typing pressure**, not just screen display — some lap-style stands wobble the moment you start typing on the built-in keyboard instead of an external one.
 </div>
+
+
+<figure class="inline-photo">
+  <img src="/winnie/real-reason-neck-hurts-wfh-nonwinnie-scene5.jpg" alt="An empty desk chair positioned in front of a properly elevated laptop screen" loading="lazy" />
+  <figcaption>Eye level, not lap level — that's the entire fix in one frame.</figcaption>
+</figure>
 
 ## Two questions people ask after this one
 
