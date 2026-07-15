@@ -88,7 +88,6 @@ The best anti fatigue mat for standing desk use is the difference between twenty
 
 <figure class="inline-photo">
   <img src="/winnie/best-anti-fatigue-mats-standing-desk-scene1.jpg" alt="A textured anti-fatigue mat with raised ridges on a wood floor in front of a standing desk" loading="lazy" />
-  <figcaption>Terrain over flat foam, most days — the ridges are doing real work.</figcaption>
 </figure>
 
 
@@ -100,7 +99,6 @@ A terrain mat's raised zones aren't decorative — they nudge your feet into sli
 
 <figure class="inline-photo">
   <img src="/winnie/best-anti-fatigue-mats-standing-desk-scene4.jpg" alt="A textured anti-fatigue mat positioned in front of a standing desk, showing raised terrain zones underfoot" loading="lazy" />
-  <figcaption>The terrain zones underfoot, exactly where the desk sits.</figcaption>
 </figure>
 
 <h2 id="measure-first-check">Measure first: how much floor do you actually use?</h2>
@@ -116,14 +114,12 @@ Grab a tape measure and mark where your feet actually land through a normal work
 
 <figure class="inline-photo">
   <img src="/winnie/best-anti-fatigue-mats-standing-desk-scene3.jpg" alt="Cross-section of a thick cushioned anti-fatigue mat showing layered foam construction" loading="lazy" />
-  <figcaption>The layers under the surface are what your knees actually notice.</figcaption>
 </figure>
 
 ## Quick comparison
 
 <figure class="inline-photo">
   <img src="/winnie/best-anti-fatigue-mats-standing-desk-scene2.jpg" alt="Smooth flat foam mat beside a mat with raised terrain nubs and ridges" loading="lazy" />
-  <figcaption>Flat is comfortable standing still. Terrain is comfortable standing for an hour.</figcaption>
 </figure>
 
 
@@ -137,7 +133,6 @@ Grab a tape measure and mark where your feet actually land through a normal work
 
 <figure class="inline-photo">
   <img src="/winnie/best-anti-fatigue-mats-standing-desk-scene5.jpg" alt="A flat foam mat beside a textured terrain mat, showing the surface difference" loading="lazy" />
-  <figcaption>Flat versus terrain, side by side — the whole decision in one photo.</figcaption>
 </figure>
 
 ## Frequently asked questions

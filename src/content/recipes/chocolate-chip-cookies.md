@@ -77,7 +77,6 @@ This chocolate chip cookies recipe exists because chocolate chip cookies are the
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-chocolate-chip-cookies-scene1.jpg" alt="A baking sheet lined with rounded scoops of chocolate chip cookie dough before baking" loading="lazy" />
-  <figcaption>Rounded scoops, spaced out — they spread more than you'd guess.</figcaption>
 </figure>
 
 
@@ -87,7 +86,6 @@ If there's one variable that decides how these turn out, it's butter temperature
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-chocolate-chip-cookies-scene2.jpg" alt="A stack of warm chocolate chip cookies with one broken in half showing a gooey center, glass of milk nearby" loading="lazy" />
-  <figcaption>Underbaked by a minute is usually the right call.</figcaption>
 </figure>
 
 

@@ -24,7 +24,6 @@ A specific kind of buyer's remorse shows up constantly in monitor accessory revi
 
 <figure class="inline-photo">
   <img src="/winnie/monitor-arm-or-stand-nonwinnie-scene1.jpg" alt="A monitor mounted on an articulating desk arm, extended over a clean desk surface" loading="lazy" />
-  <figcaption>An arm solves a motion problem, not just a height one.</figcaption>
 </figure>
 
 Reviewers who end up happy with a stand almost always describe the same starting problem: the screen just needs to be higher, full stop, and the desk itself has plenty of depth to spare. A platform stand solves that in the most direct way possible — no clamping, no cable routing through an arm joint, nothing to adjust once it's set. Reviewers who end up happy with an arm describe a different problem entirely: not enough desk real estate, a desk that gets used for more than one task, or a screen that needs to move throughout the day — angled for a video call, pushed back for handwriting, shared with someone standing beside the desk. An arm is solving a motion problem. A stand is solving a height problem. Buying the wrong one doesn't make either product bad; it just means the actual bottleneck was never diagnosed before checkout.
@@ -32,7 +31,6 @@ Reviewers who end up happy with a stand almost always describe the same starting
 
 <figure class="inline-photo">
   <img src="/winnie/monitor-arm-or-stand-nonwinnie-scene2.jpg" alt="A monitor sitting on a simple raised stand on a desk, cables tucked underneath" loading="lazy" />
-  <figcaption>A stand solves height, full stop — nothing more to configure.</figcaption>
 </figure>
 
 ## Where people get this backwards
@@ -40,13 +38,11 @@ Reviewers who end up happy with a stand almost always describe the same starting
 
 <figure class="inline-photo">
   <img src="/winnie/monitor-arm-or-stand-nonwinnie-scene3.jpg" alt="A close-up of a monitor arm's clamp mechanism attached to the edge of a desk" loading="lazy" />
-  <figcaption>The clamp is the detail that rules a desk in or out before anything else.</figcaption>
 </figure>
 
 
 <figure class="inline-photo">
   <img src="/winnie/monitor-arm-or-stand-nonwinnie-scene4.jpg" alt="A side-by-side desk setup comparing a monitor on an arm versus a monitor on a stand" loading="lazy" />
-  <figcaption>Same problem, two different mechanisms — the bottleneck decides which.</figcaption>
 </figure>
 
 The instinct is to assume the arm is the "upgrade" — it looks more adjustable, more modern, more like something out of a studio setup — so people default to it even when their real problem is just "the screen sits two inches too low." That's an expensive way to solve a height problem: arms cost more, most require desk-edge clamping or a grommet hole that not every desk has, and a cheap arm under a heavy monitor can sag or drift over months, which is one of the more common complaints in that category. The opposite mistake happens too — someone with a genuinely cramped desk buys a wide platform stand because it's the familiar, simple-looking option, then finds out the stand itself is now the thing eating their remaining desk depth.
@@ -54,7 +50,6 @@ The instinct is to assume the arm is the "upgrade" — it looks more adjustable,
 
 <figure class="inline-photo">
   <img src="/winnie/monitor-arm-or-stand-nonwinnie-scene5.jpg" alt="A desk with a monitor arm folded compactly against the wall, freeing up desk space" loading="lazy" />
-  <figcaption>Folded flat against the wall is the whole reason to choose an arm.</figcaption>
 </figure>
 
 <h2 id="measure-first-check">Check your actual desk before choosing either one</h2>

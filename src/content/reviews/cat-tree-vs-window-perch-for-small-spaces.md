@@ -76,7 +76,6 @@ A window perch wins the floor-space argument before the real comparison begins. 
 
 <figure class="inline-photo">
   <img src="/winnie/cat-tree-vs-window-perch-for-small-spaces-scene1.jpg" alt="A compact cat tree in one apartment corner and a suction window perch on clean glass across the room" loading="lazy" />
-  <figcaption>Floor footprint versus window compatibility — the real trade-off.</figcaption>
 </figure>
 
 <p id="quick-answer">Choose a <strong>window perch</strong> when compatible glass or sill space is available, the cat fits the weight and platform limits, and floor area is the main constraint. Choose a <strong>cat tree</strong> when the household needs scratching, multiple levels, or a vertical option independent of the window. Stability, access, and placement outrank the smaller footprint.</p>
@@ -87,7 +86,6 @@ For a tree, tape the base and landing area onto the floor and check restraint re
 
 <figure class="inline-photo">
   <img src="/winnie/cat-tree-vs-window-perch-for-small-spaces-scene2.jpg" alt="A measuring tape checking clear window sill width for a suction-mounted cat perch" loading="lazy" />
-  <figcaption>The window has to say yes before the perch does.</figcaption>
 </figure>
 
 ## Choose a cat tree for multiple functions
@@ -113,12 +111,10 @@ If the cat ignores a tree, it remains a large object. If the cat ignores a perch
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/cat-tree-vs-window-perch-for-small-spaces-scene3.jpg" alt="A cat tree's wide stable base anchored in an apartment corner" loading="lazy" />
-    <figcaption>More functions, more floor — that's the tree's trade.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/cat-tree-vs-window-perch-for-small-spaces-scene4.jpg" alt="A suction-mounted window perch inspected for secure cup contact on clean glass" loading="lazy" />
-    <figcaption>No floor footprint, but the suction cups need real inspection.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 <h2 id="do-not-buy-if">Do not choose either format if…</h2>
@@ -133,7 +129,6 @@ For a broader setup, use [the indoor-cat enrichment guide](/pet-care/how-to-enri
 
 <figure class="inline-photo">
   <img src="/winnie/cat-tree-vs-window-perch-for-small-spaces-scene5.jpg" alt="A cat approaching a window perch along a clear, safe jump route from nearby furniture" loading="lazy" />
-  <figcaption>The approach route matters as much as the perch itself.</figcaption>
 </figure>
 
 ## Frequently asked questions

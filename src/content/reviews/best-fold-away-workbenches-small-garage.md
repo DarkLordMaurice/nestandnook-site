@@ -91,7 +91,6 @@ A workbench and a parked car both want the same floor space in a genuinely small
 
 <figure class="inline-photo">
   <img src="/winnie/best-fold-away-workbenches-small-garage-scene1.jpg" alt="A wall-mounted folding workbench unfolded and in use in a small single-car garage" loading="lazy" />
-  <figcaption>Unfolded for a project, foldable flat again when the car needs the space.</figcaption>
 </figure>
 
 <p id="quick-answer">The best fold-away workbench for a small garage depends on whether you need wall-mounted or fully portable. The <strong>Ultrawall 47.2-inch model</strong> gives the most work surface while folding flat against the wall. For a genuinely tight wall section, the <strong>32x18-inch Ultrawall</strong> is the compact version. If you can't mount into a wall at all, the <strong>Kreg Mobile Project Center</strong> is the best portable, multi-function option.</p>
@@ -102,7 +101,6 @@ For any wall-mounted option, measure the clear, stud-backed wall section availab
 
 <figure class="inline-photo">
   <img src="/winnie/best-fold-away-workbenches-small-garage-scene2.jpg" alt="A tape measure held against a garage wall section, checking clearance for a fold-away workbench" loading="lazy" />
-  <figcaption>Measure both the folded depth and the unfolded reach before buying.</figcaption>
 </figure>
 
 <h2 id="do-not-buy-if">Skip a dedicated workbench if&#x2026;</h2>
@@ -121,12 +119,10 @@ For any wall-mounted option, measure the clear, stud-backed wall section availab
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/best-fold-away-workbenches-small-garage-scene3.jpg" alt="Close detail of a workbench's folding bracket hinge mechanism, showing the fold-flat design" loading="lazy" />
-    <figcaption>The bracket hinge is what gets a full bench down to a few inches of wall clearance.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/best-fold-away-workbenches-small-garage-scene4.jpg" alt="A workbench folded flat against a garage wall with a car parked in front of it" loading="lazy" />
-    <figcaption>Folded flat, with the full parking footprint clear.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 ## Quick comparison
@@ -141,7 +137,6 @@ For any wall-mounted option, measure the clear, stud-backed wall section availab
 
 <figure class="inline-photo">
   <img src="/winnie/best-fold-away-workbenches-small-garage-scene5.jpg" alt="A portable multi-function workbench set up mid-project with tools organized on its built-in shelf" loading="lazy" />
-  <figcaption>A portable option trades wall installation for a storage spot between projects.</figcaption>
 </figure>
 
 ## Frequently asked questions

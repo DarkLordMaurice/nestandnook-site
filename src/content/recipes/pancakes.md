@@ -85,7 +85,6 @@ This pancakes recipe exists because pancakes are one of the few recipes where th
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-pancakes-scene1.jpg" alt="Pancake batter being poured onto a hot griddle, small bubbles forming on the surface" loading="lazy" />
-  <figcaption>Bubbles across the whole surface mean it's time to flip, not before.</figcaption>
 </figure>
 
 
@@ -99,7 +98,6 @@ Letting the mixed batter sit for five minutes before it hits the pan isn't a sta
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-pancakes-scene2.jpg" alt="A tall stack of fluffy pancakes with a pat of butter melting on top and syrup dripping down the sides" loading="lazy" />
-  <figcaption>Stack them hot — they steam-warm each other while you finish the batch.</figcaption>
 </figure>
 
 

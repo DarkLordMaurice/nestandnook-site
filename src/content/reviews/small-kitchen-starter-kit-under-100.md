@@ -141,7 +141,6 @@ This five-piece small kitchen starter kit is built around a **target** subtotal 
 
 <figure class="inline-photo">
   <img src="/winnie/small-kitchen-starter-kit-under-100-scene1.jpg" alt="Five essential starter kitchen tools laid out together on a compact counter: knife, cutting board, pan, baking sheet, and bench scraper" loading="lazy" />
-  <figcaption>Five jobs covered, not a matched set of extras.</figcaption>
 </figure>
 
 <p id="quick-answer">The strongest small-kitchen starter kit begins with five repeat-use tools: the <strong>Mercer Millennia chef's knife</strong>, a stable <strong>Lipper bamboo cutting board</strong>, a compact <strong>Carote frying pan</strong>, a nesting <strong>GoodCook baking-sheet set</strong>, and an <strong>OXO bench scraper</strong>. Together they cover basic prep, stovetop meals, oven cooking, and board cleanup without filling the cabinet with a boxed set.</p>
@@ -152,7 +151,6 @@ Before buying the kit, measure the clear prep strip, the diameter and type of th
 
 <figure class="inline-photo">
   <img src="/winnie/small-kitchen-starter-kit-under-100-scene2.jpg" alt="A chef's knife resting in a safe storage sheath beside a cutting board" loading="lazy" />
-  <figcaption>Safe storage decided before the knife even arrives.</figcaption>
 </figure>
 
 ## What this kit assumes
@@ -193,12 +191,10 @@ The bench scraper moves chopped ingredients, clears scraps, and resets the board
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/small-kitchen-starter-kit-under-100-scene3.jpg" alt="A frying pan and baking sheet stacked compactly in a small cabinet" loading="lazy" />
-    <figcaption>One pan, one sheet stack — not a whole cabinet claimed.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/small-kitchen-starter-kit-under-100-scene4.jpg" alt="A starter kit's five tools being used together during a simple one-pan meal" loading="lazy" />
-    <figcaption>The five tools, actually working together on dinner.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 <h2 id="do-not-buy-if">Do not buy this exact starter kit if…</h2>
@@ -229,7 +225,6 @@ The goal is not to stay minimalist forever. It is to delay category expansion un
 
 <figure class="inline-photo">
   <img src="/winnie/small-kitchen-starter-kit-under-100-scene5.jpg" alt="An overstuffed kitchen drawer beside a lean five-tool starter kit, side by side" loading="lazy" />
-  <figcaption>Piece count isn't capability — five jobs beats twenty pieces.</figcaption>
 </figure>
 
 ## Frequently asked questions

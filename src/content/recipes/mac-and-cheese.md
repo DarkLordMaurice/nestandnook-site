@@ -91,7 +91,6 @@ This mac and cheese recipe exists because baked mac and cheese sounds like it sh
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-mac-and-cheese-scene1.jpg" alt="A saucepan of glossy cheese sauce being whisked, steam rising, a wooden spoon resting nearby" loading="lazy" />
-  <figcaption>Low heat and constant whisking keep the sauce from breaking.</figcaption>
 </figure>
 
 
@@ -105,7 +104,6 @@ Aged, sharp cheeses taste incredible but have less moisture than younger cheeses
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-mac-and-cheese-scene2.jpg" alt="A baking dish of mac and cheese with a golden crisp breadcrumb topping, one scoop removed showing the creamy interior" loading="lazy" />
-  <figcaption>Crisp top, creamy underneath — that contrast is the whole appeal.</figcaption>
 </figure>
 
 

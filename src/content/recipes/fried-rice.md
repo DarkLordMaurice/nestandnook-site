@@ -79,7 +79,6 @@ This fried rice recipe exists to fix the most common home-kitchen failure in the
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-fried-rice-scene1.jpg" alt="A wok of fried rice being tossed with vegetables and egg over high heat, steam and light char visible" loading="lazy" />
-  <figcaption>High heat and constant motion — that's the actual difference from a soggy stir-fry.</figcaption>
 </figure>
 
 
@@ -93,7 +92,6 @@ A pan that isn't hot enough can't create the light char that gives fried rice it
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-fried-rice-scene2.jpg" alt="A bowl of fried rice garnished with sliced green onion, chopsticks resting on the side of the bowl" loading="lazy" />
-  <figcaption>Day-old rice, fresh green onion on top — the contrast is the point.</figcaption>
 </figure>
 
 

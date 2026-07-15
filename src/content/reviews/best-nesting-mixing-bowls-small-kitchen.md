@@ -129,7 +129,6 @@ Nesting mixing bowls only solve a real problem if the stack you end up with is a
 
 <figure class="inline-photo">
   <img src="/winnie/nesting-mixing-bowls-small-kitchen-problem.jpg" alt="Mismatched bulky mixing bowls tumbling off a low open shelf onto the floor" loading="lazy" />
-  <figcaption>The mismatched-bowl problem: nothing nests, everything tumbles.</figcaption>
 </figure>
 
 <p id="quick-answer">The best nesting mixing bowls for small kitchens are lightweight, stack tightly, and include sizes you'll actually use. The <strong>Cuisinart 3-piece stainless set</strong> is the best overall pick for most kitchens. Want lids and a non-slip base too? The <strong>Viking 10-piece set</strong> is the sturdier upgrade. Need microwave-safe storage? Go with the <strong>Pyrex glass set</strong> instead.</p>
@@ -154,17 +153,14 @@ Before buying, measure the cabinet shelf where the stack will actually live, inc
 <div class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/nesting-mixing-bowls-non-slip-base-detail.jpg" alt="Whisking batter vigorously in a bowl that stays put on its non-slip base" loading="lazy" />
-    <figcaption>A non-slip base matters more than it sounds — no chasing the bowl mid-whisk.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/nesting-mixing-bowls-lids-storage-detail.jpg" alt="Storing mixing bowl lids neatly upright in a cabinet beside a nested bowl stack" loading="lazy" />
-    <figcaption>Lids that nest too — the same set doubles as fridge storage.</figcaption>
-  </figure>
+</figure>
 </div>
 
 <figure class="inline-photo">
   <img src="/winnie/nesting-mixing-bowl-material-comparison.jpg" alt="Three nesting bowl material groups laid out side by side: stainless steel, glass, and plastic" loading="lazy" />
-  <figcaption>Stainless, glass, or plastic — the material decision, side by side.</figcaption>
 </figure>
 
 ## Quick comparison
@@ -196,7 +192,6 @@ No. Choose glass or a microwave-safe plastic set if microwave use is a regular p
 
 <figure class="inline-photo">
   <img src="/winnie/nesting-mixing-bowls-prep-storage-payoff.jpg" alt="Placing a lid onto a bowl filled with marinating vegetables before sliding it onto a fridge shelf" loading="lazy" />
-  <figcaption>Mix, cover, store — one set doing the whole job.</figcaption>
 </figure>
 
 *Prices and availability change constantly, so we don't quote figures here — tap through to see the current price on Amazon.*

@@ -38,7 +38,6 @@ At some point in the evening I ended up slow-dancing with a prop skeleton in a t
 
 <figure class="inline-photo">
   <img src="/winnie/the-year-i-lost-an-apple-bobbing-contest-nonwinnie-scene1.jpg" alt="A galvanized metal tub filled with water and floating red apples, set up for a Halloween party game" loading="lazy" />
-  <figcaption>The tub that did not care about a single one of my variables.</figcaption>
 </figure>
 
 I would like to formally retract every assumption I made walking up to that tub. Apple bobbing at eight years old is a game. Apple bobbing as a grown woman, in full face paint, while a small crowd watches and at least one person has their phone out, is a genuine athletic event that I trained for exactly zero minutes and lost decisively. I approached the whole thing the way I approach everything — assess the variables, formulate a plan, execute with confidence — and the apple did not care about a single one of my variables. The apple won. I have never been more entertained by my own defeat, and I've decided that losing a children's game with this much enthusiasm is its own small, worthwhile skill.
@@ -46,7 +45,6 @@ I would like to formally retract every assumption I made walking up to that tub.
 
 <figure class="inline-photo">
   <img src="/winnie/the-year-i-lost-an-apple-bobbing-contest-nonwinnie-scene2.jpg" alt="A close-up of a single red apple bobbing in water, half-submerged, dramatic party lighting" loading="lazy" />
-  <figcaption>The apple won. Decisively.</figcaption>
 </figure>
 
 ## The playlist took more editorial effort than the menu
@@ -54,7 +52,6 @@ I would like to formally retract every assumption I made walking up to that tub.
 
 <figure class="inline-photo">
   <img src="/winnie/the-year-i-lost-an-apple-bobbing-contest-nonwinnie-scene3.jpg" alt="A Halloween party table decorated with lit candles and string lights in purple and orange tones" loading="lazy" />
-  <figcaption>Three acts, fourteen minutes on track order for act two alone.</figcaption>
 </figure>
 
 I will admit, slightly sheepishly, that I spent more deliberate planning time on the soundtrack than on the food, which tells you something about where my priorities land when left unsupervised. I built it in three acts — arrival music, low and moody, for the first hour while people were still finding their footing in costume; a middle stretch that got progressively less serious as the night went on; and then a final act that was, by design, almost entirely for the apple-bobbing tub, on the theory that a genuinely ridiculous physical event deserves a genuinely ridiculous, upbeat soundtrack behind it. I stand by the sequencing. I will not be taking questions about the fourteen minutes I spent deciding on track order for act two.
@@ -67,7 +64,6 @@ I found the apple the next morning, half-drowned at the bottom of a bin I'd forg
 
 <figure class="inline-photo">
   <img src="/winnie/the-year-i-lost-an-apple-bobbing-contest-nonwinnie-scene4.jpg" alt="A single slightly bruised apple sitting alone on a kitchen counter in soft morning light" loading="lazy" />
-  <figcaption>The ending the apple actually earned.</figcaption>
 </figure>
 
 

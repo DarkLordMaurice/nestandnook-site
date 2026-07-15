@@ -74,7 +74,6 @@ This is less a recipe than it is a fix for the two things that actually go wrong
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-air-fryer-frozen-french-fries-scene1.jpg" alt="Frozen french fries spread in a single layer inside an air fryer basket before cooking" loading="lazy" />
-  <figcaption>Straight from the freezer, spread thin — no thawing required.</figcaption>
 </figure>
 
 
@@ -88,7 +87,6 @@ An air fryer is a small, fast convection oven — it crisps by circulating hot a
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-air-fryer-frozen-french-fries-scene2.jpg" alt="A basket of golden crispy french fries next to a small ramekin of ketchup on a wooden table" loading="lazy" />
-  <figcaption>Crispy outside, fluffy inside, zero oil splatter.</figcaption>
 </figure>
 
 

@@ -30,7 +30,6 @@ How to position dual monitors ergonomically is really a question about eliminati
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-position-dual-monitors-scene1.jpg" alt="Two monitors positioned closely together with minimal gap, angled slightly inward" loading="lazy" />
-  <figcaption>Close the gap first — a wide bezel gap is a bigger neck problem than most height mistakes.</figcaption>
 </figure>
 
 
@@ -48,7 +47,6 @@ This is the fix people skip most often, because most monitors ship on stands of 
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-position-dual-monitors-scene4.jpg" alt="Two monitors angled slightly inward toward a seated position, inner edges close together at matching height" loading="lazy" />
-  <figcaption>Matching height and a closed gap, solved at the same time.</figcaption>
 </figure>
 
 ## Close the gap between them
@@ -59,7 +57,6 @@ Two monitors sitting far apart, or perfectly flat instead of angled slightly inw
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-position-dual-monitors-scene2.jpg" alt="A dual monitor setup with one monitor centered ahead and the second angled to the side" loading="lazy" />
-  <figcaption>Pick a primary screen and build the angle around it, not around symmetry.</figcaption>
 </figure>
 
 
@@ -75,7 +72,6 @@ A dual-monitor stand or arm solves the height-matching and angle problems in one
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-position-dual-monitors-scene5.jpg" alt="A dual-monitor stand's height gauge being matched between both screens" loading="lazy" />
-  <figcaption>The gauge is what turns "close enough" into actually matched.</figcaption>
 </figure>
 
 > **Winnie's take:** I've read a genuinely large number of dual-monitor complaints, and almost none of them are actually about screen size or resolution. They're about one monitor sitting two inches lower than the other for six months because nobody got around to fixing it. Fix the height mismatch first. Everything else is a smaller problem after that.
@@ -83,5 +79,4 @@ A dual-monitor stand or arm solves the height-matching and angle problems in one
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-position-dual-monitors-scene3.jpg" alt="Overhead view showing monitor distance and angle relative to a desk chair" loading="lazy" />
-  <figcaption>Distance and angle are the same equation — fixing one without the other doesn't finish the job.</figcaption>
 </figure>

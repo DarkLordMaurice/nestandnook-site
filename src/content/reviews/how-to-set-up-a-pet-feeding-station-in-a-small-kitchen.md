@@ -38,7 +38,6 @@ A small-kitchen feeding station has to do two contradictory things: stay conveni
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-set-up-a-pet-feeding-station-in-a-small-kitchen-scene1.jpg" alt="A compact pet feeding station tucked onto a quiet kitchen edge, away from the main cooking path" loading="lazy" />
-  <figcaption>A washable floor zone, not another obstacle in the cooking path.</figcaption>
 </figure>
 
 <p id="quick-answer">Place the feeding station on a quiet kitchen edge outside the main cooking and walking paths. Use a flat washable mat, stable bowls or a maintainable fountain, and a secured food container that keeps the original bag when possible. Leave enough clearance to lift every item for cleaning, route cords away from water and traffic, and keep the entire zone separate from litter.</p>
@@ -49,7 +48,6 @@ Measure the pet's comfortable standing width, bowl or fountain base, splash radi
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-set-up-a-pet-feeding-station-in-a-small-kitchen-scene2.jpg" alt="A measuring tape laid across a kitchen floor edge to check clearance for a pet feeding station" loading="lazy" />
-  <figcaption>Measure the pet's stance before the bowls ever arrive.</figcaption>
 </figure>
 
 ## 1. Choose a low-traffic edge
@@ -75,12 +73,10 @@ Use a dedicated clean scoop and a small drying location for washed bowls. Keep s
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/how-to-set-up-a-pet-feeding-station-in-a-small-kitchen-scene3.jpg" alt="A flat washable mat positioned beneath a pet food storage container in a small kitchen" loading="lazy" />
-    <figcaption>Food storage stays cool, dry, and out of the splash zone.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/how-to-set-up-a-pet-feeding-station-in-a-small-kitchen-scene4.jpg" alt="A dedicated scoop resting in a small holder beside a feeding station" loading="lazy" />
-    <figcaption>The scoop gets its own home, not a coffee mug.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 ## 6. Protect cords and charging points
@@ -97,7 +93,6 @@ Remove leftover food according to its instructions, clean bowls and utensils wit
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-set-up-a-pet-feeding-station-in-a-small-kitchen-scene5.jpg" alt="A finished small-kitchen pet feeding station with bowls, mat, and food container arranged cleanly" loading="lazy" />
-  <figcaption>The finished zone: functional first, matching bins a distant second.</figcaption>
 </figure>
 
 <h2 id="do-not-buy-if">Do not add a feeding-station organizer if…</h2>

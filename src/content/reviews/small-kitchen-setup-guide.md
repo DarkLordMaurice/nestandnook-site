@@ -48,7 +48,6 @@ A small kitchen becomes workable when the main bottleneck is named correctly. Ca
 
 <figure class="inline-photo">
   <img src="/winnie/small-kitchen-setup-guide-scene1.jpg" alt="A compact kitchen with distinct cabinet, counter, appliance, and pantry zones clearly organized" loading="lazy" />
-  <figcaption>Name the bottleneck first — the fix follows from that.</figcaption>
 </figure>
 
 <p id="quick-answer">Fix a small kitchen by bottleneck: <strong>cabinet access first, then pantry or no-pantry storage, then counter prep, appliances, cooking workflow, and pantry rotation</strong>. Do not buy a “space-saving” product until you know which zone it is supposed to improve and where it will live afterward.</p>
@@ -59,7 +58,6 @@ Walk through one normal meal and note where the process stops: reaching a pan, f
 
 <figure class="inline-photo">
   <img src="/winnie/small-kitchen-setup-guide-scene2.jpg" alt="A small kitchen's single clear prep zone, tools put away except what's in use" loading="lazy" />
-  <figcaption>One clear zone tells you more than a whole-kitchen inventory.</figcaption>
 </figure>
 
 <h2 id="do-not-buy-if">Do not buy another kitchen organizer or gadget if…</h2>
@@ -84,12 +82,10 @@ A kitchen with no pantry needs zones across cabinets, doors, and available gaps:
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/small-kitchen-setup-guide-scene3.jpg" alt="A labeled pantry shelf next to an organized appliance cabinet" loading="lazy" />
-    <figcaption>Labeled and organized — the router pages handle the depth.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/small-kitchen-setup-guide-scene4.jpg" alt="A small kitchen counter kept clear except for one active task in progress" loading="lazy" />
-    <figcaption>One task, one clear counter — the actual goal.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 ## 4. Reclaim the prep surface
@@ -106,7 +102,6 @@ Use [How to Cook Full Meals in a Tiny Kitchen](/kitchen/how-to-cook-full-meals-i
 
 <figure class="inline-photo">
   <img src="/winnie/small-kitchen-setup-guide-scene5.jpg" alt="A cluttered, bottlenecked kitchen corner beside the same corner after a full reorganization" loading="lazy" />
-  <figcaption>Same corner, named bottleneck, real fix.</figcaption>
 </figure>
 
 ## Recommended reading path

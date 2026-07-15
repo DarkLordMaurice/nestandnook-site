@@ -79,7 +79,6 @@ This chicken and rice recipe exists to fix the most common Instant Pot complaint
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-instant-pot-chicken-and-rice-scene1.jpg" alt="Raw chicken thighs and rinsed rice layered inside an Instant Pot insert before cooking" loading="lazy" />
-  <figcaption>Layered, not stirred together — that's what keeps the rice from turning mushy.</figcaption>
 </figure>
 
 
@@ -93,7 +92,6 @@ Once the rinsed rice, broth, and browned chicken are in the pot, resist the urge
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-instant-pot-chicken-and-rice-scene2.jpg" alt="A bowl of chicken and rice garnished with fresh herbs, steam rising, set on a kitchen counter" loading="lazy" />
-  <figcaption>A natural release finishes the texture the pressure valve can't.</figcaption>
 </figure>
 
 

@@ -112,7 +112,6 @@ faqs:
 
 <figure class="inline-photo">
   <img src="/winnie/best-no-drill-pet-gates-for-renters-scene1.jpg" alt="A pressure-mounted pet gate fitted into an apartment doorway without wall drilling" loading="lazy" />
-  <figcaption>No drilling, but not no measuring.</figcaption>
 </figure>
 
 <p id="quick-answer">The <strong>Carlson Extra Wide Walk-Through Gate</strong> is the best overall pressure-mounted doorway option, while the <strong>Carlson Extra Tall</strong> adds height for capable jumpers. The <strong>Regalo Easy Step</strong> is a simpler standard-opening choice. Use the <strong>Richell freestanding gate</strong> only for smaller, calmer pets and low-consequence room boundaries—not stairs.</p>
@@ -123,7 +122,6 @@ Measure wall-to-wall or trim-to-trim at the floor, middle, and gate height. Reco
 
 <figure class="inline-photo">
   <img src="/winnie/best-no-drill-pet-gates-for-renters-scene2.jpg" alt="A measuring tape checking a doorway opening at floor, middle, and gate height for a pressure gate" loading="lazy" />
-  <figcaption>Three heights, not one — baseboards change the math.</figcaption>
 </figure>
 
 ## Pressure-mounted is for the right location
@@ -149,12 +147,10 @@ A wood freestanding gate can divide an open room without wall pressure, but it i
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/best-no-drill-pet-gates-for-renters-scene3.jpg" alt="A wall cup and contact pad installed cleanly on a doorframe to protect the paint" loading="lazy" />
-    <figcaption>Wall protection still needs inspection, drill or no drill.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/best-no-drill-pet-gates-for-renters-scene4.jpg" alt="A low freestanding wood pet gate dividing an open apartment room without touching the walls" loading="lazy" />
-    <figcaption>Freestanding is movable — it isn't equally secure.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 <h2 id="do-not-buy-if">Do not buy a no-drill pet gate if…</h2>
@@ -169,7 +165,6 @@ Use the gate as one layer inside [the rental pet-proofing checklist](/pet-care/h
 
 <figure class="inline-photo">
   <img src="/winnie/best-no-drill-pet-gates-for-renters-scene5.jpg" alt="A walk-through pet gate latch being opened for a human to pass through a doorway" loading="lazy" />
-  <figcaption>The human route stays usable too — that's part of the fit.</figcaption>
 </figure>
 
 ## Frequently asked questions

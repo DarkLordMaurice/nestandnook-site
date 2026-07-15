@@ -89,7 +89,6 @@ This is the recipe for the day you want a real, crowd-worthy dinner without spen
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-slow-cooker-pulled-pork-scene1.jpg" alt="A pork shoulder coated in dry rub sitting inside a slow-cooker insert before cooking" loading="lazy" />
-  <figcaption>The rub needs real contact time before it goes in, not a quick dust.</figcaption>
 </figure>
 
 
@@ -103,7 +102,6 @@ Barbecue sauce gets all the credit, but the dry rub applied before cooking is wh
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-slow-cooker-pulled-pork-scene2.jpg" alt="Shredded pulled pork piled on a plate with barbecue sauce and a soft bun alongside" loading="lazy" />
-  <figcaption>Shred while it's still warm — it pulls apart clean, not stringy.</figcaption>
 </figure>
 
 

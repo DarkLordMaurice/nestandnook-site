@@ -32,7 +32,6 @@ Vertical space is the one real expansion option in a garage where the floor has 
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-maximize-vertical-space-in-a-small-garage-scene1.jpg" alt="A small garage wall showing storage stacked from floor to ceiling in distinct zones" loading="lazy" />
-  <figcaption>Floor-to-ceiling, but organized into distinct zones, not one crowded stack.</figcaption>
 </figure>
 
 <p id="quick-answer">Maximizing vertical space in a small garage starts with measuring, not shopping: find your clear wall studs and ceiling joists, measure the actual usable width and height, then match a wall system or overhead rack to those real numbers. Start with wall storage for daily-access items, add overhead storage for seasonal or infrequent items once wall space is in use.</p>
@@ -43,7 +42,6 @@ Walk the garage with a stud finder rated for both walls and ceiling joists. On t
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-maximize-vertical-space-in-a-small-garage-scene2.jpg" alt="A stud finder held against a garage wall, locating a mounting point before installation" loading="lazy" />
-  <figcaption>Locate real studs and joists before a single measurement goes on a shopping list.</figcaption>
 </figure>
 
 Write both numbers down before looking at a single product listing — see our <a href="/garage/best-wall-mounted-garage-shelving-small-space/">wall shelving roundup</a> and <a href="/garage/best-overhead-garage-storage-racks-small-garage/">overhead rack roundup</a> for how those measurements map to specific product sizes.
@@ -60,7 +58,6 @@ Wall-mounted systems solve the more common problem first — tools, sports equip
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-maximize-vertical-space-in-a-small-garage-scene3.jpg" alt="Floor-level shot looking straight up a garage wall, showing the full vertical storage zone" loading="lazy" />
-  <figcaption>The full vertical zone, from waist height to ceiling, is the real usable space.</figcaption>
 </figure>
 
 ## Step 3: Add overhead storage for what you touch rarely
@@ -74,12 +71,10 @@ Most garage storage roundups default to sizing built for a 2-3 car garage — a 
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/how-to-maximize-vertical-space-in-a-small-garage-scene4.jpg" alt="A cluttered garage floor beside the same garage with items relocated to vertical wall storage" loading="lazy" />
-    <figcaption>Before/after: the same items, moved off the floor and onto the wall.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/how-to-maximize-vertical-space-in-a-small-garage-scene5.jpg" alt="A tape measure held against a garage wall, marking a bracket height before drilling" loading="lazy" />
-    <figcaption>Mark the exact height before drilling — not after.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 ## Step 5: Leave clearance for the door and the car

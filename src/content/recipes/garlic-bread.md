@@ -74,7 +74,6 @@ This garlic bread recipe exists to fix the two most common ways it goes wrong: b
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-garlic-bread-scene1.jpg" alt="A halved baguette spread thickly with garlic-herb butter, ready to go under the broiler" loading="lazy" />
-  <figcaption>Thick and even — thin spots burn before the rest browns.</figcaption>
 </figure>
 
 
@@ -88,7 +87,6 @@ Baking at a moderate temperature melts the butter through the bread evenly, soak
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-garlic-bread-scene2.jpg" alt="Sliced garlic bread with crispy edges and melted centers stacked on a wooden board" loading="lazy" />
-  <figcaption>Crispy edge, soft center — watch the broiler closely, it goes fast.</figcaption>
 </figure>
 
 

@@ -36,7 +36,6 @@ Pet-proofing a rental is less about wrapping the apartment in plastic and more a
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-pet-proof-a-rental-apartment-scene1.jpg" alt="Cord covers, cabinet latches, and secured trash arranged in a reversible rental pet-proofing setup" loading="lazy" />
-  <figcaption>Reversible protection, not a plastic-wrapped apartment.</figcaption>
 </figure>
 
 <p id="quick-answer">Pet-proof a rental apartment by removing access to cords, medications, cleaners, trash, unsafe plants, loose window screens, and unstable furniture before buying barriers. Create clear feeding, litter, sleep, and play zones, then add reversible protection only where needed. Test adhesives on hidden areas, follow installation instructions, and never use a pressure-mounted gate at the top of stairs.</p>
@@ -47,7 +46,6 @@ Crouch to the pet's eye level and trace routes under furniture, behind appliance
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-pet-proof-a-rental-apartment-scene2.jpg" alt="A pet-eye-level view of an apartment room tracing routes under furniture and toward cords" loading="lazy" />
-  <figcaption>Walk it at pet height — the real hazards live down there.</figcaption>
 </figure>
 
 ## 1. Remove ingestible and chemical hazards
@@ -73,12 +71,10 @@ Use lidded, stable containers and keep pet food in a cool, dry, secured location
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/how-to-pet-proof-a-rental-apartment-scene3.jpg" alt="A lidded stable trash container secured against pet access in a rental kitchen" loading="lazy" />
-    <figcaption>Trash gets a lid and a stable base, not a decorative basket.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/how-to-pet-proof-a-rental-apartment-scene4.jpg" alt="A window screen and latch inspected for gaps in a rental apartment" loading="lazy" />
-    <figcaption>An insect screen isn't the same as pet containment.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 ## 6. Build clear pet zones
@@ -99,7 +95,6 @@ New routes appear when a pet grows, becomes more confident, or watches a door op
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-pet-proof-a-rental-apartment-scene5.jpg" alt="A finished rental apartment pet zone with clear feeding, litter, and rest areas" loading="lazy" />
-  <figcaption>Clear zones, not a maze — that's the actual goal.</figcaption>
 </figure>
 
 <h2 id="do-not-buy-if">Do not use a rental pet-proofing product if…</h2>

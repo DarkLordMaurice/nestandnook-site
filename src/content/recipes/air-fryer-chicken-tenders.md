@@ -81,7 +81,6 @@ This air fryer chicken tenders recipe exists to answer the one question that act
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-air-fryer-chicken-tenders-scene1.jpg" alt="Golden-brown breaded chicken tenders arranged in a single layer inside an air fryer basket, mid-cook" loading="lazy" />
-  <figcaption>Single layer, no crowding — that's what actually gets them crispy.</figcaption>
 </figure>
 
 
@@ -95,7 +94,6 @@ Wet chicken straight from the package or a marinade won't hold a dredge well —
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-air-fryer-chicken-tenders-scene2.jpg" alt="A plate of crispy chicken tenders served with a small bowl of dipping sauce and a few fries on the side" loading="lazy" />
-  <figcaption>Done when the outside sounds crisp, not just looks it.</figcaption>
 </figure>
 
 

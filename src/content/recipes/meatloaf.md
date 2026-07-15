@@ -91,7 +91,6 @@ This meatloaf recipe exists because meatloaf gets a bad reputation it mostly doe
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-meatloaf-scene1.jpg" alt="An unbaked meatloaf shaped in a loaf pan, glaze being brushed over the top" loading="lazy" />
-  <figcaption>Glaze goes on before baking, then again halfway through for a real crust.</figcaption>
 </figure>
 
 
@@ -105,7 +104,6 @@ The other failure point is mixing too aggressively, for too long, the way you mi
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-meatloaf-scene2.jpg" alt="A sliced meatloaf on a serving platter with a glossy glazed top, one slice plated alongside mashed potatoes" loading="lazy" />
-  <figcaption>Let it rest before slicing or it falls apart on the plate.</figcaption>
 </figure>
 
 

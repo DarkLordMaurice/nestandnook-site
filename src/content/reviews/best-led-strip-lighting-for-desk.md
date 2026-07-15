@@ -90,7 +90,6 @@ The best led strip lights for desk setups add a soft ambient glow behind a monit
 
 <figure class="inline-photo">
   <img src="/winnie/best-led-strip-lighting-for-desk-scene1.jpg" alt="Soft ambient LED strip lighting glowing behind a monitor in a dim room" loading="lazy" />
-  <figcaption>Bias lighting, not stage lighting — the glow should sit behind the screen, not compete with it.</figcaption>
 </figure>
 
 
@@ -114,7 +113,6 @@ The most common regret in strip-light reviews isn't about color quality — it's
 
 <figure class="inline-photo">
   <img src="/winnie/best-led-strip-lighting-for-desk-scene2.jpg" alt="Close-up of an LED strip's small remote control and connector clip" loading="lazy" />
-  <figcaption>The control is half the product. A fiddly remote ruins a good strip.</figcaption>
 </figure>
 
 
@@ -127,12 +125,10 @@ The most common regret in strip-light reviews isn't about color quality — it's
 
 <figure class="inline-photo">
   <img src="/winnie/best-led-strip-lighting-for-desk-scene3.jpg" alt="An LED strip running along the back edge of a desk and up the wall behind a monitor" loading="lazy" />
-  <figcaption>Length adds up fast once you route it around a whole desk, not just one edge.</figcaption>
 </figure>
 
 <figure class="inline-photo">
   <img src="/winnie/best-led-strip-lighting-for-desk-scene4.jpg" alt="LED strip lighting wrapped behind a monitor, casting a soft bias-lighting glow against the wall" loading="lazy" />
-  <figcaption>Behind the monitor, against the wall — the classic bias-light placement.</figcaption>
 </figure>
 
 ## Quick comparison
@@ -147,7 +143,6 @@ The most common regret in strip-light reviews isn't about color quality — it's
 
 <figure class="inline-photo">
   <img src="/winnie/best-led-strip-lighting-for-desk-scene5.jpg" alt="An LED strip's color-changing segment being adjusted via a small remote or app" loading="lazy" />
-  <figcaption>Dial it in — the control app matters as much as the strip.</figcaption>
 </figure>
 
 ## Frequently asked questions

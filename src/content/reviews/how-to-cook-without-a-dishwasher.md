@@ -38,7 +38,6 @@ Cooking without a dishwasher is manageable. Cooking without a dishwasher **and**
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-cook-without-a-dishwasher-scene1.jpg" alt="A compact kitchen sink with a short stack of dishes being washed in a small round rather than left to pile up" loading="lazy" />
-  <figcaption>Short rounds, not one giant end-of-night event.</figcaption>
 </figure>
 
 <p id="quick-answer">To cook without a dishwasher, choose meals with one main cooking vessel, clear the sink before heat goes on, and wash in two or three short rounds instead of one end-of-night pile. Scrape or soak cookware immediately, move from glasses and utensils toward greasier pans, rinse thoroughly, and air-dry on a compact rack. The rack's capacity should limit the batch—not become permanent counter storage.</p>
@@ -49,7 +48,6 @@ Identify three small zones before dinner: a sink basin that stays available, a p
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-cook-without-a-dishwasher-scene2.jpg" alt="Cookware being scraped clean immediately after cooking, before it can dry on" loading="lazy" />
-  <figcaption>Scrape while it's soft — most "impossible" dishes are just dried-on.</figcaption>
 </figure>
 
 ## 1. Pick a low-dish meal format
@@ -103,12 +101,10 @@ This is not "clean as you go" as a moral philosophy. It is traffic control. Each
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/how-to-cook-without-a-dishwasher-scene3.jpg" alt="A compact dish rack with a fixed, limited capacity for air-drying" loading="lazy" />
-    <figcaption>A rack with a real size limit, not a permanent shelf.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/how-to-cook-without-a-dishwasher-scene4.jpg" alt="A one-pot meal being served straight from its cooking vessel, minimizing dishes created" loading="lazy" />
-    <figcaption>Serve from the pot — one fewer bowl to wash.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 ## 6. Wash from least greasy to most greasy
@@ -145,7 +141,6 @@ That split prevents a mountain without turning dinner into a continuous cleaning
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-cook-without-a-dishwasher-scene5.jpg" alt="An overflowing sink of dishes beside the same sink kept clear through short wash rounds, side by side" loading="lazy" />
-  <figcaption>The difference is the rounds, not a machine.</figcaption>
 </figure>
 
 <h2 id="do-not-buy-if">Do not buy a countertop dishwasher if…</h2>

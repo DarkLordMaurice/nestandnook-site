@@ -36,7 +36,6 @@ Apartment odor control is not a single charcoal filter, deodorizer, or covered b
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-control-litter-box-odor-in-an-apartment-scene1.jpg" alt="A litter scoop, a sealed waste pail, and a small trash bag station arranged beside a clean litter box" loading="lazy" />
-  <figcaption>Odor control is a chain — every link has to hold, not just the fragrance.</figcaption>
 </figure>
 
 <p id="quick-answer">Control litter-box odor by removing waste at least daily, keeping the litter dry, washing the box and mat on a regular schedule, sealing waste before disposal, and maintaining ordinary room airflow. A hood, cabinet, or automatic box may help contain some mess, but none is odor-proof and none replaces cleaning. Strong fragrance should not be the first fix.</p>
@@ -57,7 +56,6 @@ A disposal pail beside the box is not a solution if it remains full for a week.
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-control-litter-box-odor-in-an-apartment-scene2.jpg" alt="A sealed waste disposal pail with its lid closed, positioned near a litter zone" loading="lazy" />
-  <figcaption>A pail that stays sealed and gets emptied — not one that just sits there.</figcaption>
 </figure>
 
 ## 1. Remove waste every day
@@ -96,12 +94,10 @@ Ordinary room ventilation helps moisture and smell disperse. Do not block HVAC r
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/how-to-control-litter-box-odor-in-an-apartment-scene3.jpg" alt="Dry, freshly changed litter being leveled in an otherwise clean box" loading="lazy" />
-    <figcaption>Dry litter, on the manufacturer's actual replacement schedule.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/how-to-control-litter-box-odor-in-an-apartment-scene4.jpg" alt="A window cracked open near a litter zone, showing an airflow-based odor control approach" loading="lazy" />
-    <figcaption>Ordinary airflow does more than another deodorizer.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 ## 6. Clean the tracking zone
@@ -134,7 +130,6 @@ A sudden change in box use, repeated visits, straining, or unusual elimination i
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-control-litter-box-odor-in-an-apartment-scene5.jpg" alt="A litter box being lifted for a full washing routine, cleaning supplies nearby" loading="lazy" />
-  <figcaption>The full wash, on a real schedule — not just daily scooping.</figcaption>
 </figure>
 
 ## The apartment odor audit

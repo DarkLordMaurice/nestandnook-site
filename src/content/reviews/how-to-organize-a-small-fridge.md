@@ -38,7 +38,6 @@ A small refrigerator is easy to fill and hard to read. The problem is not simply
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-organize-a-small-fridge-scene1.jpg" alt="A compact refrigerator interior organized into clear zones: dairy, produce, leftovers, and raw ingredients" loading="lazy" />
-  <figcaption>Zones, not just shelves — visibility is the whole point.</figcaption>
 </figure>
 
 <p id="quick-answer">Organize a small fridge in this order: confirm it stays at or below 40°F, keep ready-to-eat food and leftovers visible, contain raw meat on the lowest practical shelf, use drawers for produce, and reserve the door for condiments and other temperature-tolerant items. Add one small "use first" zone, avoid overfilling, and reset the fridge before grocery shopping.</p>
@@ -49,7 +48,6 @@ Use an appliance thermometer to confirm the refrigerator stays at or below 40°F
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-organize-a-small-fridge-scene2.jpg" alt="A refrigerator thermometer showing a safe temperature reading" loading="lazy" />
-  <figcaption>Cold enough comes before organized — check it first.</figcaption>
 </figure>
 
 ## 1. Start with food safety, not matching containers
@@ -103,12 +101,10 @@ Do not wash every item before storage unless the food benefits from it and can b
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/how-to-organize-a-small-fridge-scene3.jpg" alt="A raw-meat container placed on the lowest shelf, sealed to prevent drips" loading="lazy" />
-    <figcaption>Lowest shelf, sealed — so it can't betray anything below it.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/how-to-organize-a-small-fridge-scene4.jpg" alt="Labeled leftover containers placed at eye level for use-first visibility" loading="lazy" />
-    <figcaption>Eye level, labeled — so leftovers stop disappearing.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 ## 6. Keep eggs and dairy inside, not in the warmest door spots
@@ -167,7 +163,6 @@ The reset is more valuable than a full reorganization every few months because i
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-organize-a-small-fridge-scene5.jpg" alt="A cluttered, disorganized fridge shelf beside the same shelf organized into zones, side by side" loading="lazy" />
-  <figcaption>Same shelf, same fridge — the difference is the system.</figcaption>
 </figure>
 
 <h2 id="do-not-buy-if">Do not buy refrigerator organizers if…</h2>

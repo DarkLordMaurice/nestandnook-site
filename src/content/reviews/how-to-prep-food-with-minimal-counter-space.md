@@ -36,7 +36,6 @@ A tiny counter can't handle a cooking-show lineup of seventeen little bowls. In 
 
 <figure class="inline-photo">
   <img src="/winnie/minimal-counter-space-food-prep-problem.jpg" alt="Overcrowded cutting board with vegetable scraps falling off both edges onto the counter" loading="lazy" />
-  <figcaption>No clear spot for the next ingredient — the claustrophobic-counter problem.</figcaption>
 </figure>
 
 <h2 id="measure-first-check">Measure your actual prep zone before buying anything</h2>
@@ -52,22 +51,18 @@ Build a one-board prep station and treat it as non-negotiable — one cutting bo
 <div class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/bench-scraper-small-kitchen-prep-transfer.jpg" alt="Using a metal bench scraper to transfer chopped vegetables from board directly into a pan" loading="lazy" />
-    <figcaption>Board to pan, no second bowl — the cheapest tool that does the most.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/kitchen-shears-small-counter-prep.jpg" alt="Snipping herbs directly into a pan with kitchen shears, cutting board untouched off to the side" loading="lazy" />
-    <figcaption>Shears skip the board entirely when there's no room for a knife's swing.</figcaption>
-  </figure>
+</figure>
 </div>
 <div class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/handheld-mandoline-small-kitchen-safety.jpg" alt="Using a compact handheld mandoline with a visible hand guard to slice cucumber into a bowl" loading="lazy" />
-    <figcaption>A handheld mandoline earns its space only if it replaces a knife task you do often.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/mini-food-chopper-small-kitchen-prep.jpg" alt="Using a small compact mini food chopper to prep onions and herbs at the kitchen table" loading="lazy" />
-    <figcaption>A mini chopper is for repeat prep — onions and herbs you chop most days.</figcaption>
-  </figure>
+</figure>
 </div>
 
 <h2 id="do-not-buy-if">Skip a new prep tool if&#x2026;</h2>
@@ -82,7 +77,6 @@ See [Best Nesting Mixing Bowls for Small Kitchens](/kitchen/best-nesting-mixing-
 
 <figure class="inline-photo">
   <img src="/winnie/minimal-counter-space-food-prep-payoff.jpg" alt="A genuinely clear counter with a mostly empty cutting board and chopped ingredients contained in one bowl" loading="lazy" />
-  <figcaption>Same tiny counter, one system later — deliberately clear.</figcaption>
 </figure>
 
 > **Winnie's take:** The bench scraper is the single cheapest, least glamorous tool in this setup — buyers keep using it for the job of a second cutting board and several transfer bowls, without adding another bulky gadget to the counter.

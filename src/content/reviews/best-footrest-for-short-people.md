@@ -103,7 +103,6 @@ Let's talk about the drawer that's having a moment — except today it's your fe
 
 <figure class="inline-photo">
   <img src="/winnie/best-footrest-for-short-people-scene1.jpg" alt="An adjustable-height footrest platform under a desk, tilted at a comfortable angle" loading="lazy" />
-  <figcaption>The tilt matters as much as the height once your feet actually land on it.</figcaption>
 </figure>
 
 
@@ -121,7 +120,6 @@ A footrest's job is to get your knees to roughly 90° with your feet fully suppo
 
 <figure class="inline-photo">
   <img src="/winnie/best-footrest-for-short-people-scene4.jpg" alt="An adjustable footrest set to a taller height setting under a desk, closing a visible floor gap" loading="lazy" />
-  <figcaption>Maximum height is the spec that matters most for short users.</figcaption>
 </figure>
 
 ## How to choose
@@ -135,14 +133,12 @@ A footrest's job is to get your knees to roughly 90° with your feet fully suppo
 
 <figure class="inline-photo">
   <img src="/winnie/best-footrest-for-short-people-scene3.jpg" alt="Three footrest styles — tilting platform, foam wedge, rocking — side by side" loading="lazy" />
-  <figcaption>Same problem, three genuinely different fixes.</figcaption>
 </figure>
 
 ## Quick comparison
 
 <figure class="inline-photo">
   <img src="/winnie/best-footrest-for-short-people-scene2.jpg" alt="Close-up of a footrest's stepped height-adjustment mechanism" loading="lazy" />
-  <figcaption>A real range of settings, not just "low" and "regret it."</figcaption>
 </figure>
 
 
@@ -156,7 +152,6 @@ A footrest's job is to get your knees to roughly 90° with your feet fully suppo
 
 <figure class="inline-photo">
   <img src="/winnie/best-footrest-for-short-people-scene5.jpg" alt="A footrest's tilt mechanism mid-rock, showing ankle movement support" loading="lazy" />
-  <figcaption>The tilt keeps ankles moving, not locked in one flat position.</figcaption>
 </figure>
 
 ## Frequently asked questions

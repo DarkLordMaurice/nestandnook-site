@@ -93,7 +93,6 @@ Shrimp cooks fast — really fast — and it keeps cooking a little even after i
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-garlic-butter-shrimp-pasta-process.jpg" alt="Shrimp searing in a skillet, pink and curled, next to a small bowl of minced garlic" loading="lazy" />
-  <figcaption>Sear, remove, set aside — the shrimp isn't done working, just done cooking for now.</figcaption>
 </figure>
 
 ## One pan, real starch, no extra pot
@@ -106,7 +105,6 @@ A broken cream sauce — grainy, oily-looking, separated — is almost always a 
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-garlic-butter-shrimp-pasta-serving.jpg" alt="A plated serving of garlic butter shrimp pasta twirled on a fork, lemon wedge and parsley on the side" loading="lazy" />
-  <figcaption>Straight from the pan to the bowl — this one doesn't wait around.</figcaption>
 </figure>
 
 Serve it the moment it comes off the stove with something crusty on the side to catch the extra sauce, because there will be extra sauce, and pretending you don't want to mop it up is a lie nobody needs to tell in their own kitchen.

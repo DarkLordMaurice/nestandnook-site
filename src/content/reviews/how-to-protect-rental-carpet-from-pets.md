@@ -36,7 +36,6 @@ Rental carpet protection works best as a route-management problem. Mud enters at
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-protect-rental-carpet-from-pets-scene1.jpg" alt="A washable nonslip mat placed at a rental apartment entry to catch outdoor debris before it reaches carpet" loading="lazy" />
-  <figcaption>Catch the mess at the transfer point, not across the whole floor.</figcaption>
 </figure>
 
 <p id="quick-answer">Protect rental carpet by placing washable, nonslip mats at the entry, feeding area, litter zone, and pet bed, then using stable runners only on the highest-traffic path. Remove debris before it grinds into fibers, blot fresh moisture instead of scrubbing, follow carpet and cleaner instructions, lift protective layers to dry, and inspect backing for residue or color transfer.</p>
@@ -47,7 +46,6 @@ Trace the route from exterior door to water, litter, couch, bed, and favorite wi
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-protect-rental-carpet-from-pets-scene2.jpg" alt="A traced stain and wear path from the entry door to a pet's feeding and rest zones on carpet" loading="lazy" />
-  <figcaption>Map the wear path before buying a single mat.</figcaption>
 </figure>
 
 ## 1. Stop outdoor debris at the entry
@@ -73,12 +71,10 @@ Use correctly sized runners on the main travel lane rather than carpeting the ca
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/how-to-protect-rental-carpet-from-pets-scene3.jpg" alt="A stable runner placed along a high-traffic carpet path in a rental apartment" loading="lazy" />
-    <figcaption>Runners belong on the concentrated wear lane, not everywhere.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/how-to-protect-rental-carpet-from-pets-scene4.jpg" alt="A washable pet bed cover being lifted from carpet to catch hair and skin oils" loading="lazy" />
-    <figcaption>The rest spot needs its own washable layer too.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 ## 6. Respond to fresh mess promptly
@@ -95,7 +91,6 @@ Check for moisture, dye transfer, adhesive residue, compressed pile, chewing, an
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-protect-rental-carpet-from-pets-scene5.jpg" alt="A carpet mat lifted to check for trapped moisture and residue underneath" loading="lazy" />
-  <figcaption>Check underneath — a trapped-moisture mat causes a worse problem.</figcaption>
 </figure>
 
 <h2 id="do-not-buy-if">Do not use a carpet protector if…</h2>

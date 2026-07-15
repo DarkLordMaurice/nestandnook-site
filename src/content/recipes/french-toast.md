@@ -87,7 +87,6 @@ This french toast recipe exists because french toast has a short ingredient list
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-french-toast-scene1.jpg" alt="Slices of thick bread soaking in a custard mixture in a shallow dish" loading="lazy" />
-  <figcaption>A real soak, not a quick dip, is what keeps the middle from going dry.</figcaption>
 </figure>
 
 
@@ -101,7 +100,6 @@ A precise soak time doesn't really exist independent of what bread you're using.
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-french-toast-scene2.jpg" alt="A stack of golden French toast slices dusted with powdered sugar, syrup pouring over the top" loading="lazy" />
-  <figcaption>Powdered sugar first, syrup right before the first bite.</figcaption>
 </figure>
 
 

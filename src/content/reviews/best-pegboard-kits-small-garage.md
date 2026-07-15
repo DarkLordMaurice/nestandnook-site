@@ -91,7 +91,6 @@ Pegboard is the one garage-organization category that scales down honestly — a
 
 <figure class="inline-photo">
   <img src="/winnie/best-pegboard-kits-small-garage-scene1.jpg" alt="A pegboard panel mounted on a small garage wall, partially filled with hand tools hung in an organized layout" loading="lazy" />
-  <figcaption>One partially-filled panel section, not a full workshop wall.</figcaption>
 </figure>
 
 <p id="quick-answer">The best pegboard kit for a small garage depends on how much wall you're committing and whether you want accessories bundled in. The <strong>Wall Control 4 ft. Kit</strong> is the best all-around option for a genuinely small garage. For the smallest footprint, the <strong>WallPeg 2-Panel Kit</strong> is a lower-stakes way to start. For accessories bundled in from day one, <strong>Ultrawall's 72-piece kit</strong> includes hooks and bins with the panel.</p>
@@ -102,7 +101,6 @@ Find a clear, stud-backed wall section that doesn't compete with a workbench, do
 
 <figure class="inline-photo">
   <img src="/winnie/best-pegboard-kits-small-garage-scene2.jpg" alt="Close detail of pegboard hooks and tool silhouettes, showing an organized, labeled hanging system" loading="lazy" />
-  <figcaption>Silhouettes and consistent hook spacing keep a small board scannable at a glance.</figcaption>
 </figure>
 
 <h2 id="do-not-buy-if">Skip a pegboard kit if&#x2026;</h2>
@@ -121,12 +119,10 @@ Find a clear, stud-backed wall section that doesn't compete with a workbench, do
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/best-pegboard-kits-small-garage-scene3.jpg" alt="Side-profile shot of a pegboard panel's standoff brackets holding it slightly off the wall" loading="lazy" />
-    <figcaption>Standoff brackets give hooks clearance to actually engage the board.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/best-pegboard-kits-small-garage-scene4.jpg" alt="Close-up of a single pegboard hook holding a hand tool, showing the fit and hanging mechanism" loading="lazy" />
-    <figcaption>Each hook is sized to the tool it holds — not a one-size-fits-all peg.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 ## Quick comparison
@@ -141,7 +137,6 @@ Find a clear, stud-backed wall section that doesn't compete with a workbench, do
 
 <figure class="inline-photo">
   <img src="/winnie/best-pegboard-kits-small-garage-scene5.jpg" alt="A modest 2-to-4-foot pegboard section on an otherwise bare garage wall, showing realistic small-garage scale" loading="lazy" />
-  <figcaption>This is the realistic scale for a small garage — not the full-wall photos on most listings.</figcaption>
 </figure>
 
 ## Frequently asked questions

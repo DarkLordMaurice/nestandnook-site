@@ -84,7 +84,6 @@ An ergonomic home office setup under $150 should be treated as a **priority plan
 
 <figure class="inline-photo">
   <img src="/winnie/ergonomic-home-office-setup-under-150-scene1.jpg" alt="A modest desk setup with a footrest, monitor riser, and cable tray together" loading="lazy" />
-  <figcaption>Three cheap fixes, one coherent setup — that's the whole budget target.</figcaption>
 </figure>
 
 
@@ -102,7 +101,6 @@ Sit at the desk and check three things: whether the feet rest fully while the ch
 
 <figure class="inline-photo">
   <img src="/winnie/ergonomic-home-office-setup-under-150-scene4.jpg" alt="Three separate ergonomic fixes — footrest, monitor riser, cable tray — grouped on a desk" loading="lazy" />
-  <figcaption>Three separable problems, three independent fixes — not one bundle you have to buy all at once.</figcaption>
 </figure>
 
 This build focuses on three common, separable problems:
@@ -117,7 +115,6 @@ It does **not** claim to cover every category in the complete office guide. A ch
 
 <figure class="inline-photo">
   <img src="/winnie/ergonomic-home-office-setup-under-150-scene2.jpg" alt="A flatlay of small ergonomic desk accessories arranged on a wood surface" loading="lazy" />
-  <figcaption>None of these are exciting purchases. That's exactly why they get skipped.</figcaption>
 </figure>
 
 
@@ -136,12 +133,10 @@ It does **not** claim to cover every category in the complete office guide. A ch
 
 <figure class="inline-photo">
   <img src="/winnie/ergonomic-home-office-setup-under-150-scene3.jpg" alt="A compact home office desk with basic ergonomic accessories in place" loading="lazy" />
-  <figcaption>Simple and tidy beats impressive and half-finished on a real budget.</figcaption>
 </figure>
 
 <figure class="inline-photo">
   <img src="/winnie/ergonomic-home-office-setup-under-150-scene5.jpg" alt="A finished small desk setup with foot support, monitor height, and cables all addressed" loading="lazy" />
-  <figcaption>All three priorities solved, in the order the measurements actually called for.</figcaption>
 </figure>
 
 ## Frequently asked questions

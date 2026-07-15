@@ -80,7 +80,6 @@ This waffles recipe exists to fix the most common home-waffle problem: batter th
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-waffles-scene1.jpg" alt="Waffle batter being poured into a hot waffle iron, steam beginning to rise" loading="lazy" />
-  <figcaption>A fully preheated iron is what gets the crisp edge, not batter thickness.</figcaption>
 </figure>
 
 
@@ -94,7 +93,6 @@ A small amount of cornstarch in the dry mix absorbs less moisture than flour alo
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-waffles-scene2.jpg" alt="A crispy golden waffle topped with a pat of butter and a drizzle of syrup, on a plate" loading="lazy" />
-  <figcaption>Serve straight off the iron — waffles lose their crisp fast sitting in a stack.</figcaption>
 </figure>
 
 

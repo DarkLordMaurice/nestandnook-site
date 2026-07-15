@@ -38,7 +38,6 @@ Somewhere between "everything out on the counter" and "everything crammed into t
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-hide-small-kitchen-appliances-on-the-counter-scene1.jpg" alt="A closed tambour-door appliance garage built into a kitchen counter corner" loading="lazy" />
-  <figcaption>Closed, it reads as counter. Open, it's a whole workstation.</figcaption>
 </figure>
 
 <h2 id="measure-first-check">Measure the appliance, the outlet, and the door swing first</h2>
@@ -51,7 +50,6 @@ Not every appliance deserves a hidden home. The one or two you reach for daily �
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-hide-small-kitchen-appliances-on-the-counter-scene2.jpg" alt="A small kitchen counter with one coffee maker left visible and other appliances tucked behind a cabinet door" loading="lazy" />
-  <figcaption>The daily-use appliance stays out. Everything else gets a door.</figcaption>
 </figure>
 
 ## 2. Roll-top and tambour doors for a built-in look
@@ -64,7 +62,6 @@ For a wall cabinet mounted just above the counter, a lift-up (also called a flip
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-hide-small-kitchen-appliances-on-the-counter-scene3.jpg" alt="A wall cabinet with a lift-up front raised, revealing a small food processor stored inside" loading="lazy" />
-  <figcaption>Lift, not swing — the door gets out of the way instead of blocking the counter.</figcaption>
 </figure>
 
 ## 4. A rolling cart, for renters and anyone who can't modify cabinets
@@ -73,7 +70,6 @@ If cutting into cabinetry isn't an option, a narrow rolling cart does a version 
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-hide-small-kitchen-appliances-on-the-counter-scene4.jpg" alt="A narrow rolling cart holding two small kitchen appliances, tucked into a kitchen corner" loading="lazy" />
-  <figcaption>Not hidden — contained. In a rental, that's the realistic version of the same idea.</figcaption>
 </figure>
 
 ## 5. Don't create a worse problem than the one you started with
@@ -82,7 +78,6 @@ An appliance garage that's too small, too far from an outlet, or too fussy to op
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-hide-small-kitchen-appliances-on-the-counter-scene5.jpg" alt="A cluttered open kitchen counter with several appliances beside the same counter after two were moved into a closed appliance garage" loading="lazy" />
-  <figcaption>Same counter, same appliances — just fewer of them asking for attention.</figcaption>
 </figure>
 
 <h2 id="do-not-buy-if">Skip an appliance garage or lift shelf if…</h2>

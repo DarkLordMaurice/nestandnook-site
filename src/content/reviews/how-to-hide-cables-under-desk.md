@@ -30,7 +30,6 @@ How to hide cables under desk furniture is less about finding the one right prod
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-hide-cables-under-desk-scene1.jpg" alt="A bulky power brick tucked into a small under-desk storage tray, cord routed neatly" loading="lazy" />
-  <figcaption>The power brick is always the ugliest piece — give it its own tray.</figcaption>
 </figure>
 
 
@@ -44,7 +43,6 @@ Before buying anything, look under your desk and count what's actually there: ho
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-hide-cables-under-desk-scene4.jpg" alt="A bulky power adapter sitting loose on the floor beneath a desk, dust and dangling cords around it" loading="lazy" />
-  <figcaption>The before shot — a power brick with nowhere to actually live.</figcaption>
 </figure>
 
 Almost every desk has at least one bulky power adapter that doesn't hang neatly from a cable clip and instead just sits wherever gravity puts it — often directly on the floor where it becomes a dust magnet and a thing you kick. A cable tray mounted under the desk gives it (and the general tangle of cords running to it) an actual home, off the floor and out of sight, without needing to be unplugged or moved every time you clean.
@@ -53,7 +51,6 @@ Almost every desk has at least one bulky power adapter that doesn't hang neatly 
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-hide-cables-under-desk-scene2.jpg" alt="Excess cable slack coiled and secured with a velcro tie under a desk" loading="lazy" />
-  <figcaption>Slack left loose is what turns a tidy desk back into a mess by week two.</figcaption>
 </figure>
 
 
@@ -63,7 +60,6 @@ Even with a tray catching the mess, individual cables usually have several feet 
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-hide-cables-under-desk-scene5.jpg" alt="A single cable clipped along a fixed path up a desk leg toward a monitor" loading="lazy" />
-  <figcaption>A fixed path beats "the shortest line your eye can see" every time.</figcaption>
 </figure>
 
 The last piece is getting cables from the tray or sleeve to where they're actually used — up to a monitor, over to a laptop, down to a charging pad — without them crossing your workspace or draping over the desk edge. Adhesive or clamp-on clips route individual cords along the underside of the desk or up a leg, so cables travel along a fixed, invisible path instead of the shortest line your eye can see.
@@ -87,5 +83,4 @@ See the [full cable management roundup](/home-office/desk-cable-management/) for
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-hide-cables-under-desk-scene3.jpg" alt="Cables routed along the underside of a desk surface using adhesive clips" loading="lazy" />
-  <figcaption>Routing along the desk itself is the step most people do last, if at all.</figcaption>
 </figure>

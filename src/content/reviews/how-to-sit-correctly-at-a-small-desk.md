@@ -32,7 +32,6 @@ How to sit correctly at a desk comes down to four angles, and in a small home of
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-sit-correctly-at-a-small-desk-scene1.jpg" alt="A desk chair and desk arranged to show proper elbow, hip, and knee angle alignment" loading="lazy" />
-  <figcaption>Four angles, and they're rarely wrong in the same order twice.</figcaption>
 </figure>
 
 
@@ -56,7 +55,6 @@ Sit the way you normally do and actually look down at your knees, then your feet
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-sit-correctly-at-a-small-desk-scene2.jpg" alt="A desk surface showing commonly reached items within arm's reach" loading="lazy" />
-  <figcaption>Reachability is the angle people forget to check.</figcaption>
 </figure>
 
 
@@ -74,7 +72,6 @@ A full-size office desk gives you room to fix all four angles independently — 
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-sit-correctly-at-a-small-desk-scene4.jpg" alt="A desk setup showing elbows, hips, knees, and wrists all near 90 degrees" loading="lazy" />
-  <figcaption>Four angles, checked at once instead of one at a time.</figcaption>
 </figure>
 
 See the full [ergonomic setup under $150](/home-office/ergonomic-home-office-setup-under-150/) for how the pieces work together as a system rather than one-off purchases.
@@ -83,10 +80,8 @@ See the full [ergonomic setup under $150](/home-office/ergonomic-home-office-set
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-sit-correctly-at-a-small-desk-scene5.jpg" alt="A footrest closing the gap between dangling feet and the floor at a small desk" loading="lazy" />
-  <figcaption>The one angle people forget to check because they can't see it without looking down.</figcaption>
 </figure>
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-sit-correctly-at-a-small-desk-scene3.jpg" alt="A compact small desk in a tight room corner with limited setup space" loading="lazy" />
-  <figcaption>Small desks make every angle harder to fix at once — that's the actual difference.</figcaption>
 </figure>

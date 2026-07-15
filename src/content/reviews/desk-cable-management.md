@@ -101,7 +101,6 @@ Desk cable management is not one problem. It is three: the power strip and bulky
 
 <figure class="inline-photo">
   <img src="/winnie/desk-cable-management-scene1.jpg" alt="A tangle of desk cables partially organized with a tray, sleeve, and clips together" loading="lazy" />
-  <figcaption>One product rarely finishes this. It's a layered fix, not a single purchase.</figcaption>
 </figure>
 
 
@@ -115,7 +114,6 @@ Desk cable management is not one problem. It is three: the power strip and bulky
 
 <figure class="inline-photo">
   <img src="/winnie/desk-cable-management-scene4.jpg" alt="Three separate cable-management products — tray, sleeve, clips — laid out as a system" loading="lazy" />
-  <figcaption>Three zones, three products — buying one and expecting it to cover all three is the usual disappointment.</figcaption>
 </figure>
 
 Think of the setup as three zones: **containment** under the desktop, **routing** between the desk and wall, and **access** at the work surface. Buying only a tray leaves the visible run messy. Buying only a sleeve leaves the power strip on the floor. Buying only clips tidies connectors but does nothing for the bulk underneath.
@@ -134,14 +132,12 @@ Measure the power strip's length and depth, the desktop thickness, and the drop 
 
 <figure class="inline-photo">
   <img src="/winnie/desk-cable-management-scene3.jpg" alt="Cables neatly routed through a cable tray mounted beneath a desk" loading="lazy" />
-  <figcaption>The tray does the heavy lifting once the sleeve and clips handle the rest.</figcaption>
 </figure>
 
 ## Quick comparison
 
 <figure class="inline-photo">
   <img src="/winnie/desk-cable-management-scene2.jpg" alt="An under-desk tray, a cable sleeve, and adhesive clips arranged on a desk" loading="lazy" />
-  <figcaption>Containment, routing, and daily-access cables are three different jobs.</figcaption>
 </figure>
 
 
@@ -155,7 +151,6 @@ Measure the power strip's length and depth, the desktop thickness, and the drop 
 
 <figure class="inline-photo">
   <img src="/winnie/desk-cable-management-scene5.jpg" alt="A finished under-desk cable setup with tray, sleeve, and clips all in place" loading="lazy" />
-  <figcaption>Containment, routing, and access, all handled — the finished layered system.</figcaption>
 </figure>
 
 ## Frequently asked questions

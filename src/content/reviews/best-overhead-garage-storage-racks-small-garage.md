@@ -91,7 +91,6 @@ An overhead rack only solves a small garage's storage problem if it actually fit
 
 <figure class="inline-photo">
   <img src="/winnie/best-overhead-garage-storage-racks-small-garage-scene1.jpg" alt="An overhead storage rack mounted above a small single-car garage ceiling, holding labeled bins" loading="lazy" />
-  <figcaption>A narrow ceiling section can still take an overhead rack — it just needs the right footprint.</figcaption>
 </figure>
 
 <p id="quick-answer">The best overhead garage storage racks for a small garage prioritize footprint and ceiling-drop range over raw size. The <strong>SafeRacks 2x8</strong> is the best pick for a genuinely narrow garage ceiling. For a standard 4x8 footprint on a budget, the <strong>FLEXIMOUNTS Lite Series</strong> covers the basics without the cost of included decking. For households that will actually load it up, the <strong>FLEXIMOUNTS Pro</strong> steps up to 800 lbs.</p>
@@ -102,7 +101,6 @@ Walk your garage ceiling and find an actually clear section — no garage door t
 
 <figure class="inline-photo">
   <img src="/winnie/best-overhead-garage-storage-racks-small-garage-scene2.jpg" alt="Close detail of an overhead storage rack's mounting hardware and ceiling brackets" loading="lazy" />
-  <figcaption>Secure attachment to real joists, not just drywall, is what a rack's weight rating assumes.</figcaption>
 </figure>
 
 <h2 id="do-not-buy-if">Skip an overhead rack if&#x2026;</h2>
@@ -121,12 +119,10 @@ Walk your garage ceiling and find an actually clear section — no garage door t
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/best-overhead-garage-storage-racks-small-garage-scene3.jpg" alt="A garage ceiling before overhead storage, bare rafters and empty ceiling space" loading="lazy" />
-    <figcaption>Before: bare rafters, nothing but dead space overhead.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/best-overhead-garage-storage-racks-small-garage-scene4.jpg" alt="Side-profile shot of the clearance gap between a parked car's roofline and a mounted overhead rack" loading="lazy" />
-    <figcaption>After: organized storage that still clears the car's roofline.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 ## Quick comparison
@@ -141,7 +137,6 @@ Walk your garage ceiling and find an actually clear section — no garage door t
 
 <figure class="inline-photo">
   <img src="/winnie/best-overhead-garage-storage-racks-small-garage-scene5.jpg" alt="A close-up of plastic storage bins being lifted onto an overhead rack shelf" loading="lazy" />
-  <figcaption>Confirm you can comfortably lift a loaded bin to this height before committing to the rack.</figcaption>
 </figure>
 
 ## Frequently asked questions

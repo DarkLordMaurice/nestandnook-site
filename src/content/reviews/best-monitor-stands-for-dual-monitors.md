@@ -96,7 +96,6 @@ Two monitors solve a lot of problems and create exactly one: your desk was proba
 
 <figure class="inline-photo">
   <img src="/winnie/best-monitor-stands-for-dual-monitors-scene1.jpg" alt="Two monitors mounted side by side on a wide dual-monitor stand platform" loading="lazy" />
-  <figcaption>Width has to fit both screens plus the gap between them — measure before you buy.</figcaption>
 </figure>
 
 
@@ -120,7 +119,6 @@ Add your two monitor widths together, then add 2-4 inches of margin — that's y
 
 <figure class="inline-photo">
   <img src="/winnie/best-monitor-stands-for-dual-monitors-scene2.jpg" alt="A flat platform monitor stand beside an articulating monitor arm mount" loading="lazy" />
-  <figcaption>Platform is simpler. Arm is more adjustable. Neither is automatically right.</figcaption>
 </figure>
 
 
@@ -132,12 +130,10 @@ Add your two monitor widths together, then add 2-4 inches of margin — that's y
 
 <figure class="inline-photo">
   <img src="/winnie/best-monitor-stands-for-dual-monitors-scene3.jpg" alt="Close-up of a dual-monitor stand's width and base footprint on a desk" loading="lazy" />
-  <figcaption>The base footprint eats desk space the platform itself doesn't advertise.</figcaption>
 </figure>
 
 <figure class="inline-photo">
   <img src="/winnie/best-monitor-stands-for-dual-monitors-scene4.jpg" alt="Two identical monitors mounted at matching height on a shared dual-monitor stand platform" loading="lazy" />
-  <figcaption>Matching height across both screens — the detail a mismatched setup never gets right.</figcaption>
 </figure>
 
 ## Quick comparison
@@ -152,7 +148,6 @@ Add your two monitor widths together, then add 2-4 inches of margin — that's y
 
 <figure class="inline-photo">
   <img src="/winnie/best-monitor-stands-for-dual-monitors-scene5.jpg" alt="A dual monitor arm mount holding two screens above a clear desk surface, arms extended independently" loading="lazy" />
-  <figcaption>The desk surface underneath stays completely clear — the whole case for an arm mount.</figcaption>
 </figure>
 
 ## Frequently asked questions

@@ -86,7 +86,6 @@ A small desk doesn't have room for a junk drawer's worth of loose pens, sticky n
 
 <figure class="inline-photo">
   <img src="/winnie/best-desk-organizers-for-a-small-desk-scene1.jpg" alt="A compact desk organizer holding pens, sticky notes, and small supplies on an otherwise clear small desk" loading="lazy" />
-  <figcaption>One footprint instead of five separate piles.</figcaption>
 </figure>
 
 <h2 id="measure-first-check">Measure the organizer's actual footprint against your desk's clear surface first</h2>
@@ -99,7 +98,6 @@ It's tempting to pick the organizer with the most compartments or the largest ca
 
 <figure class="inline-photo">
   <img src="/winnie/best-desk-organizers-for-a-small-desk-scene2.jpg" alt="Close-up comparison of a tall vertical desk organizer next to a wide flat one on the same size desk" loading="lazy" />
-  <figcaption>Same capacity, different footprint — this is the actual decision.</figcaption>
 </figure>
 
 <h2 id="do-not-buy-if">Don't buy a desk organizer if&#x2026;</h2>
@@ -113,7 +111,6 @@ It's tempting to pick the organizer with the most compartments or the largest ca
 
 <figure class="inline-photo">
   <img src="/winnie/best-desk-organizers-for-a-small-desk-scene3.jpg" alt="A rotating round desk organizer being spun to reach a compartment on the far side" loading="lazy" />
-  <figcaption>Round and rotating beats reaching across a rectangular tray.</figcaption>
 </figure>
 
 - **Mostly pens and small items, tight corner spot:** the Marbrasse rotating organizer's round base fits corners a rectangular unit can't.
@@ -123,7 +120,6 @@ It's tempting to pick the organizer with the most compartments or the largest ca
 
 <figure class="inline-photo">
   <img src="/winnie/best-desk-organizers-for-a-small-desk-scene4.jpg" alt="A small desk corner with a stacked drawer-and-bin organizer, one bin unit added and a second empty spot beside it" loading="lazy" />
-  <figcaption>Start with one. Add the second only if it earns its spot.</figcaption>
 </figure>
 
 ## Quick comparison
@@ -136,7 +132,6 @@ It's tempting to pick the organizer with the most compartments or the largest ca
 
 <figure class="inline-photo">
   <img src="/winnie/best-desk-organizers-for-a-small-desk-scene5.jpg" alt="A cluttered small desk surface beside the same desk after supplies were consolidated into one compact organizer" loading="lazy" />
-  <figcaption>Same desk, same supplies — just one footprint doing the work of five loose piles.</figcaption>
 </figure>
 
 ## Frequently asked questions

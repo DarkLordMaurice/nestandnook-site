@@ -86,7 +86,6 @@ This chicken quesadillas recipe exists to fix the two most common failures in th
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-chicken-quesadillas-scene1.jpg" alt="A quesadilla folded in a skillet, cheese melting and slightly golden at the edges" loading="lazy" />
-  <figcaption>Golden edges mean the cheese is holding the fold together.</figcaption>
 </figure>
 
 
@@ -100,7 +99,6 @@ Putting a layer of cheese on both sides of the filling — not just underneath i
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-chicken-quesadillas-scene2.jpg" alt="Quesadilla wedges fanned out on a cutting board with a small bowl of salsa alongside" loading="lazy" />
-  <figcaption>Rest a minute before cutting or the filling runs everywhere.</figcaption>
 </figure>
 
 

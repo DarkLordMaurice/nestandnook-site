@@ -75,7 +75,6 @@ This drop biscuits recipe exists for anyone who wants flaky, homemade biscuits w
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-drop-biscuits-scene1.jpg" alt="Spoonfuls of shaggy biscuit dough dropped onto a baking sheet, visible butter flecks in the dough" loading="lazy" />
-  <figcaption>Shaggy, not smooth — overworking the dough is the enemy of a good biscuit.</figcaption>
 </figure>
 
 
@@ -89,7 +88,6 @@ The urge to keep stirring until a drop-biscuit dough looks smooth and uniform is
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-drop-biscuits-scene2.jpg" alt="A basket of golden drop biscuits with a small dish of butter and honey alongside" loading="lazy" />
-  <figcaption>Best eaten within the hour, while the outside is still crackling.</figcaption>
 </figure>
 
 

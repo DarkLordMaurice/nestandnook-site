@@ -88,7 +88,6 @@ This chicken alfredo recipe fixes alfredo sauce's reputation for being temperame
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-chicken-alfredo-scene1.jpg" alt="A skillet of creamy alfredo sauce being tossed with fettuccine noodles, steam rising" loading="lazy" />
-  <figcaption>Tossing in the skillet coats every noodle, not just the top layer.</figcaption>
 </figure>
 
 
@@ -102,7 +101,6 @@ Pre-shredded cheese is convenient, but it's coated in cellulose and other anti-c
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-chicken-alfredo-scene2.jpg" alt="A plated bowl of chicken alfredo pasta garnished with fresh parsley and black pepper on a dinner table" loading="lazy" />
-  <figcaption>Fresh pepper and parsley right before serving, not during cooking.</figcaption>
 </figure>
 
 

@@ -52,7 +52,6 @@ This review focuses on one reason the HUANUO appears near the top of the existin
 
 <figure class="inline-photo">
   <img src="/winnie/huanuo-ergonomic-footrest-review-scene1.jpg" alt="Close-up of a footrest's rocking platform mid-tilt motion, textured surface visible" loading="lazy" />
-  <figcaption>The rocking tilt is the feature that decides this footrest for most people, one way or the other.</figcaption>
 </figure>
 
 
@@ -70,7 +69,6 @@ The platform is designed to move through a controlled tilt rather than remain fi
 
 <figure class="inline-photo">
   <img src="/winnie/huanuo-ergonomic-footrest-review-scene2.jpg" alt="Close-up texture detail of a footrest's ridged surface material" loading="lazy" />
-  <figcaption>Surface texture matters more after month three than it does on day one.</figcaption>
 </figure>
 
 
@@ -85,7 +83,6 @@ The cushioned, textured top provides a softer contact surface than wood or hard 
 
 <figure class="inline-photo">
   <img src="/winnie/huanuo-ergonomic-footrest-review-scene4.jpg" alt="A footrest's rocking platform mid-tilt under a desk, cushioned texture visible" loading="lazy" />
-  <figcaption>The rocking tilt in motion, not just at rest.</figcaption>
 </figure>
 
 ## HUANUO versus Kensington SoleMate Plus
@@ -98,10 +95,8 @@ The HUANUO is the higher-lift choice **within our compared set**. The [Kensingto
 
 <figure class="inline-photo">
   <img src="/winnie/huanuo-ergonomic-footrest-review-scene5.jpg" alt="A footrest's stepped height settings, showing the difference between two notches" loading="lazy" />
-  <figcaption>Stepped settings mean picking the closest notch, not the exact number.</figcaption>
 </figure>
 
 <figure class="inline-photo">
   <img src="/winnie/huanuo-ergonomic-footrest-review-scene3.jpg" alt="Two footrest styles — a wider stepped platform and a dial-adjustable platform — side by side" loading="lazy" />
-  <figcaption>Stepped height versus dial precision is the real decision between these two.</figcaption>
 </figure>

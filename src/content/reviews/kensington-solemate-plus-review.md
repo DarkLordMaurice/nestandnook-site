@@ -44,7 +44,6 @@ If you've read our footrest roundup and are trying to decide between the top two
 
 <figure class="inline-photo">
   <img src="/winnie/kensington-solemate-plus-review-scene1.jpg" alt="Close-up of a footrest's dial adjustment mechanism on the side of the platform" loading="lazy" />
-  <figcaption>A dial gives you a setting in between the steps — small detail, real difference.</figcaption>
 </figure>
 
 
@@ -62,7 +61,6 @@ The trade-off is straightforward: the SoleMate Plus's dial range doesn't reach a
 
 <figure class="inline-photo">
   <img src="/winnie/kensington-solemate-plus-review-scene2.jpg" alt="A footrest platform shown mid-rock, demonstrating its tilting range" loading="lazy" />
-  <figcaption>Stability under a rocking motion is the part spec sheets don't capture.</figcaption>
 </figure>
 
 
@@ -80,7 +78,6 @@ This is the better call if you've tried a stepped footrest before and found your
 
 <figure class="inline-photo">
   <img src="/winnie/kensington-solemate-plus-review-scene4.jpg" alt="A footrest with a fine-adjustment dial being turned to set a precise height under a desk" loading="lazy" />
-  <figcaption>Dialing in, not stepping between two settings.</figcaption>
 </figure>
 
 *Prices and availability change constantly, so we don't quote figures here — tap through to see the current price on Amazon.*
@@ -89,10 +86,8 @@ This is the better call if you've tried a stepped footrest before and found your
 
 <figure class="inline-photo">
   <img src="/winnie/kensington-solemate-plus-review-scene5.jpg" alt="A footrest's rocking base mid-motion, showing the tilting range" loading="lazy" />
-  <figcaption>The tilt range in motion — the part a spec sheet can't show.</figcaption>
 </figure>
 
 <figure class="inline-photo">
   <img src="/winnie/kensington-solemate-plus-review-scene3.jpg" alt="A footrest positioned under a desk next to an office chair, showing overall fit" loading="lazy" />
-  <figcaption>Fit under the actual chair is the test that matters, not the footprint on paper.</figcaption>
 </figure>

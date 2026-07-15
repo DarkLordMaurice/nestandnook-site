@@ -82,7 +82,6 @@ The math on a small kitchen isn't really about buying smaller appliances — it'
 
 <figure class="inline-photo">
   <img src="/winnie/best-multi-function-kitchen-gadgets-small-kitchen-scene1.jpg" alt="A single multi-function cooker on a small kitchen counter, replacing what would otherwise be several separate appliances" loading="lazy" />
-  <figcaption>Fewer appliances, not smaller ones — that's the actual math.</figcaption>
 </figure>
 
 <p id="quick-answer">The <strong>Instant Pot Duo Crisp 11-in-1</strong> is the best overall pick — it replaces the most single-purpose appliances (pressure cooker, air fryer, steamer, slow cooker) in one unit. Tighter on counter space specifically? The <strong>Ninja MC1101 Foodi PossibleCooker Pro</strong> has a smaller footprint. No real oven at all? The <strong>Instant Pot Omni Plus</strong> is sized to actually replace one.</p>
@@ -93,7 +92,6 @@ Walk through what's actually taking up cabinet or counter space right now — a 
 
 <figure class="inline-photo">
   <img src="/winnie/best-multi-function-kitchen-gadgets-small-kitchen-scene2.jpg" alt="Interchangeable lids for a multi-cooker resting beside the base unit" loading="lazy" />
-  <figcaption>One base, two lids — not zero to store, but far fewer than four appliances.</figcaption>
 </figure>
 
 <h2 id="do-not-buy-if">Skip a multi-function appliance if&#x2026;</h2>
@@ -105,12 +103,10 @@ Walk through what's actually taking up cabinet or counter space right now — a 
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/best-multi-function-kitchen-gadgets-small-kitchen-scene3.jpg" alt="A compact multicooker's control panel showing multiple cooking modes" loading="lazy" />
-    <figcaption>One control panel replacing four separate dials.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/best-multi-function-kitchen-gadgets-small-kitchen-scene4.jpg" alt="A small kitchen cabinet shelf with just one multi-function appliance instead of several single-use ones" loading="lazy" />
-    <figcaption>One shelf spot, not four.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 ## How to choose
@@ -131,7 +127,6 @@ Walk through what's actually taking up cabinet or counter space right now — a 
 
 <figure class="inline-photo">
   <img src="/winnie/best-multi-function-kitchen-gadgets-small-kitchen-scene5.jpg" alt="Several separate single-use appliances beside one consolidated multi-function unit, side by side" loading="lazy" />
-  <figcaption>The comparison that actually decides it: four boxes versus one.</figcaption>
 </figure>
 
 ## Frequently asked questions

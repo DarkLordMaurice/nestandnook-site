@@ -38,7 +38,6 @@ A bowl can look clean after a rinse and still carry food residue around the rim,
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-clean-pet-food-and-water-bowls-scene1.jpg" alt="A stainless pet food bowl being washed with soap and hot water in a small kitchen sink" loading="lazy" />
-  <figcaption>Soap and hot water, after every use — FDA's actual standard.</figcaption>
 </figure>
 
 <p id="quick-answer">Wash pet food bowls, scoops, and feeding utensils with soap and hot water after each use, following FDA guidance. Rinse thoroughly and dry completely before refilling. Use the dishwasher only when every component is labeled safe for it. For fountains, unplug and disassemble the reservoir, tray, pump, tubing, and filter housing according to the manufacturer's instructions.</p>
@@ -49,7 +48,6 @@ List bowls, non-slip rings, scoop, fountain tray, reservoir, pump housing, impel
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-clean-pet-food-and-water-bowls-scene2.jpg" alt="A rubber non-slip ring removed from a pet bowl to reveal a hidden seam for cleaning" loading="lazy" />
-  <figcaption>Hidden seams are where residue and moisture actually collect.</figcaption>
 </figure>
 
 ## 1. Remove leftover food promptly
@@ -75,12 +73,10 @@ Air-dry on a clean rack or dry with a clean method appropriate to the material. 
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/how-to-clean-pet-food-and-water-bowls-scene3.jpg" alt="A clean pet bowl air-drying upside down on a rack, separate from other dishes" loading="lazy" />
-    <figcaption>Reassemble only once every cavity is actually dry.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/how-to-clean-pet-food-and-water-bowls-scene4.jpg" alt="A dedicated brush and sponge kept separate from household food-prep tools" loading="lazy" />
-    <figcaption>A dedicated brush keeps the routine clear, not just tidy.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 ## 6. Use the dishwasher only as labeled
@@ -97,7 +93,6 @@ Wash the feeding mat, wipe splash residue, and let the floor dry before resettin
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-clean-pet-food-and-water-bowls-scene5.jpg" alt="A pet water fountain pump and filter housing disassembled on a counter for cleaning" loading="lazy" />
-  <figcaption>The pump doesn't get to skip its turn just because it's electric.</figcaption>
 </figure>
 
 <h2 id="do-not-buy-if">Do not use a bowl-cleaning method if…</h2>

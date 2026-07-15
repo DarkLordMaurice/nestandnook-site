@@ -96,7 +96,6 @@ This is the **starter overview**, not the final word on every small-kitchen cate
 
 <figure class="inline-photo">
   <img src="/winnie/best-space-saving-gadgets-for-small-kitchens-scene1.jpg" alt="An over-the-sink cutting board with a built-in colander, extending a compact kitchen's prep space" loading="lazy" />
-  <figcaption>Identify the bottleneck first — counter, cabinet, drawer, or appliance.</figcaption>
 </figure>
 
 <p id="quick-answer">The best space-saving gadget is the one tied to the actual bottleneck: an <strong>over-sink board</strong> for temporary prep space, a <strong>wall strip</strong> for drawer pressure, a <strong>compact chopper</strong> for repeated small-batch prep, or a <strong>collapsible or nesting system</strong> for cabinet volume. Use the specialist guides before buying deeper into any one category.</p>
@@ -107,7 +106,6 @@ Counter, cabinet, sink, wall, and drawer space are different constraints. Measur
 
 <figure class="inline-photo">
   <img src="/winnie/best-space-saving-gadgets-for-small-kitchens-scene2.jpg" alt="A collapsible silicone colander partially folded down flat for storage" loading="lazy" />
-  <figcaption>Collapse, mount, nest, or bridge — match the mechanism to the zone.</figcaption>
 </figure>
 
 <h2 id="do-not-buy-if">Do not buy a broad space-saving gadget if…</h2>
@@ -120,12 +118,10 @@ Counter, cabinet, sink, wall, and drawer space are different constraints. Measur
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/best-space-saving-gadgets-for-small-kitchens-scene3.jpg" alt="A magnetic knife strip mounted on a small kitchen wall, knives held visibly and safely" loading="lazy" />
-    <figcaption>Drawer pressure solved by moving the problem to the wall.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/best-space-saving-gadgets-for-small-kitchens-scene4.jpg" alt="A small kitchen counter with several space-saving gadgets stored flat in a shallow drawer" loading="lazy" />
-    <figcaption>Flat storage, not a cabinet full of bulky shapes.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 ## Use this page as a router
@@ -148,7 +144,6 @@ Counter, cabinet, sink, wall, and drawer space are different constraints. Measur
 
 <figure class="inline-photo">
   <img src="/winnie/best-space-saving-gadgets-for-small-kitchens-scene5.jpg" alt="A bulky rigid colander beside the same tool collapsed flat, side by side" loading="lazy" />
-  <figcaption>The before-and-after that makes the case for collapsible tools.</figcaption>
 </figure>
 
 ## Frequently asked questions

@@ -114,7 +114,6 @@ A fountain can free a feeding corner from constant bowl refills, or it can turn 
 
 <figure class="inline-photo">
   <img src="/winnie/best-pet-water-fountains-for-small-spaces-scene1.jpg" alt="A compact plug-in pet water fountain on a washable mat in a small kitchen corner" loading="lazy" />
-  <figcaption>The complete routine matters more than reservoir size alone.</figcaption>
 </figure>
 
 <p id="quick-answer">The <strong>Veken 95-ounce fountain</strong> is the straightforward compact pick for most small feeding zones. Choose the <strong>Pioneer Pet Raindrop</strong> for a low-profile stainless body, the <strong>PETLIBRO Dockstream 2</strong> when app monitoring genuinely coordinates care, or the <strong>oneisall wireless fountain</strong> when a safe cord route is impossible. Cleaning access matters more than extra modes.</p>
@@ -125,7 +124,6 @@ Measure the base, wall gap, cord or charging path, and the space needed to lift 
 
 <figure class="inline-photo">
   <img src="/winnie/best-pet-water-fountains-for-small-spaces-scene2.jpg" alt="A fountain's replaceable filter housing being removed for cleaning" loading="lazy" />
-  <figcaption>Filter access decides whether the fountain stays usable long-term.</figcaption>
 </figure>
 
 ## Capacity should match the refill routine
@@ -151,12 +149,10 @@ Wash the reservoir, lid, pump housing, impeller area, tubing, and food-contact s
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/best-pet-water-fountains-for-small-spaces-scene3.jpg" alt="A low-profile stainless steel fountain bowl with visible flowing water" loading="lazy" />
-    <figcaption>Stainless is easy to inspect, but every fountain still has a pump to clean.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/best-pet-water-fountains-for-small-spaces-scene4.jpg" alt="A larger three-liter fountain beside a smaller low-profile model" loading="lazy" />
-    <figcaption>Bigger isn't automatically better — match capacity to the refill routine.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 <h2 id="do-not-buy-if">Do not buy a pet fountain if…</h2>
@@ -171,7 +167,6 @@ A fountain is a maintenance system, not an automatic guarantee of clean water.
 
 <figure class="inline-photo">
   <img src="/winnie/best-pet-water-fountains-for-small-spaces-scene5.jpg" alt="A fountain's cord routed safely along a baseboard, away from a walkway" loading="lazy" />
-  <figcaption>Cord routing is part of whether the fountain belongs in that spot.</figcaption>
 </figure>
 
 ## Frequently asked questions

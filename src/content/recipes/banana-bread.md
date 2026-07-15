@@ -75,7 +75,6 @@ This version skips the stand mixer entirely — one bowl, a fork for mashing, an
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-banana-bread-scene1.jpg" alt="A loaf pan filled with banana bread batter ready to go into the oven, banana slices arranged on top" loading="lazy" />
-  <figcaption>Just combined, into the pan — overmixing is the only real way to ruin this.</figcaption>
 </figure>
 
 
@@ -85,7 +84,6 @@ Ripeness. Everything else in this recipe is flexible — swap the sugar type, ad
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-banana-bread-scene2.jpg" alt="A sliced loaf of banana bread on a wooden cutting board, steam rising from a warm slice" loading="lazy" />
-  <figcaption>The smell test and the toothpick test agree on this one.</figcaption>
 </figure>
 
 

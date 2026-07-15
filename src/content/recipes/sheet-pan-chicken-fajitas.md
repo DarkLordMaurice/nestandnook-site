@@ -90,7 +90,6 @@ These sheet pan chicken fajitas skip the traditional stovetop, stand-over-the-pa
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-sheet-pan-chicken-fajitas-scene1.jpg" alt="Chicken strips and sliced bell peppers spread on a sheet pan before roasting" loading="lazy" />
-  <figcaption>Single layer on the pan — crowding steams instead of roasts.</figcaption>
 </figure>
 
 
@@ -100,7 +99,6 @@ The one step that decides whether this tastes like a restaurant fajita platter o
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-sheet-pan-chicken-fajitas-scene2.jpg" alt="A sheet pan of roasted chicken fajita filling next to a stack of warm tortillas" loading="lazy" />
-  <figcaption>Warm the tortillas separately — a cold tortilla undoes a hot filling.</figcaption>
 </figure>
 
 

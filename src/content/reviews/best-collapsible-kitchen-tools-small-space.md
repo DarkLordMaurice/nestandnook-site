@@ -127,7 +127,6 @@ A collapsible kitchen tool only earns its keep if the fold-flat version does the
 
 <figure class="inline-photo">
   <img src="/winnie/collapsible-kitchen-tools-small-space-problem.jpg" alt="Bulky rigid kitchen tools spilling out of an overcrowded small-kitchen cabinet" loading="lazy" />
-  <figcaption>The bulky-tool problem: rigid colanders, dish racks, and cutting boards eating every inch of cabinet space.</figcaption>
 </figure>
 
 <p id="quick-answer">The best collapsible kitchen tools for small spaces fold or nest down to a fraction of their working size without sacrificing real capacity. The <strong>OXO Good Grips Silicone Collapsible Colander</strong> is the best overall pick for most kitchens. On a tight budget, the <strong>Comfify two-piece strainer set</strong> covers more sizes for less. For sinks a standard colander won't fit, the <strong>KitchenAid over-the-sink colander</strong> bridges the basin instead of sitting in it.</p>
@@ -144,7 +143,6 @@ Check two things before ordering: the tool's fully expanded size (does it actual
 
 <figure class="inline-photo">
   <img src="/winnie/best-collapsible-kitchen-tools-small-space-scene4.jpg" alt="A collapsible dish-drying rack expanded on a counter beside the same rack folded flat for storage" loading="lazy" />
-  <figcaption>Expanded and folded, side by side — the whole pitch in one shot.</figcaption>
 </figure>
 
 ## How to choose
@@ -156,14 +154,12 @@ Check two things before ordering: the tool's fully expanded size (does it actual
 
 <figure class="inline-photo">
   <img src="/winnie/collapsible-kitchen-tools-seam-stability-detail.jpg" alt="Checking the fold seam and base of a collapsible kitchen tool for durability" loading="lazy" />
-  <figcaption>Check the fold seam and base before buying — this is what separates a tool that lasts from one that tears.</figcaption>
 </figure>
 
 ## Quick comparison
 
 <figure class="inline-photo">
   <img src="/winnie/bulky-vs-collapsible-kitchen-tools-comparison.jpg" alt="Side-by-side height comparison of bulky rigid kitchen tools versus their collapsible counterparts" loading="lazy" />
-  <figcaption>Same tools, folded: the height difference between rigid and collapsible versions, stacked side by side.</figcaption>
 </figure>
 
 | Tool | Best for | Job | Collapsed footprint |
@@ -179,7 +175,6 @@ Check two things before ordering: the tool's fully expanded size (does it actual
 
 <figure class="inline-photo">
   <img src="/winnie/best-collapsible-kitchen-tools-small-space-scene5.jpg" alt="A collapsible prep bowl or funnel set nested flat inside a shallow drawer" loading="lazy" />
-  <figcaption>Nested flat in a shallow drawer — barely any footprint.</figcaption>
 </figure>
 
 ## Frequently asked questions

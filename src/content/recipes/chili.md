@@ -103,7 +103,6 @@ This chili recipe exists because chili has a reputation as one of those recipes 
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-chili-scene1.jpg" alt="A large pot of simmering beef chili, steam rising, a wooden spoon resting on the rim" loading="lazy" />
-  <figcaption>Low and slow is what actually builds the flavor here.</figcaption>
 </figure>
 
 
@@ -117,7 +116,6 @@ Liquid only reduces when steam can actually escape. A chili that simmers covered
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-chili-scene2.jpg" alt="A bowl of chili topped with shredded cheese, sour cream, and chopped green onion, cornbread on the side" loading="lazy" />
-  <figcaption>Toppings aren't optional — they're half the reason people ask for seconds.</figcaption>
 </figure>
 
 

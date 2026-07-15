@@ -88,7 +88,6 @@ The best monitor riser for small desk setups has to solve two problems at once â
 
 <figure class="inline-photo">
   <img src="/winnie/best-monitor-risers-small-desk-scene1.jpg" alt="A monitor riser elevating a monitor to eye level, storage space visible underneath" loading="lazy" />
-  <figcaption>Eye level and a little storage back â€” that's the whole pitch.</figcaption>
 </figure>
 
 
@@ -111,7 +110,6 @@ The best monitor riser for small desk setups has to solve two problems at once â
 
 <figure class="inline-photo">
   <img src="/winnie/best-monitor-risers-small-desk-scene3.jpg" alt="Close-up of a monitor on a slim riser platform with a gap and storage space beneath" loading="lazy" />
-  <figcaption>The gap underneath is real usable space, not just clearance.</figcaption>
 </figure>
 
 ## Quick comparison
@@ -128,12 +126,10 @@ The best monitor riser for small desk setups has to solve two problems at once â
 
 <figure class="inline-photo">
   <img src="/winnie/best-monitor-risers-small-desk-scene4.jpg" alt="A vented metal monitor riser raising a screen to eye level with a keyboard tucked in the clearance underneath" loading="lazy" />
-  <figcaption>The keyboard fits underneath â€” that's the space actually reclaimed.</figcaption>
 </figure>
 
 <figure class="inline-photo">
   <img src="/winnie/best-monitor-risers-small-desk-scene2.jpg" alt="Overhead comparison of two monitor risers with different footprints" loading="lazy" />
-  <figcaption>Footprint is the number that actually matters on a small desk, not the height range.</figcaption>
 </figure>
 
 
@@ -148,7 +144,6 @@ If you've already run the eye-level test from our monitor height guide and know 
 
 <figure class="inline-photo">
   <img src="/winnie/best-monitor-risers-small-desk-scene5.jpg" alt="A stackable monitor riser's adjustable levels, showing fine height tuning" loading="lazy" />
-  <figcaption>Stackable levels, fine-tuned â€” not just one fixed height.</figcaption>
 </figure>
 
 *Prices and availability change constantly, so we don't quote figures here â€” tap through to see the current price on Amazon.*

@@ -32,7 +32,6 @@ A genuinely small garage doesn't have room to keep every seasonal item at easy-r
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-rotate-seasonal-storage-in-a-small-garage-scene1.jpg" alt="Labeled seasonal bins being swapped between an overhead rack and an easy-reach shelf" loading="lazy" />
-  <figcaption>The core mechanic: outgoing season up, incoming season down.</figcaption>
 </figure>
 
 <p id="quick-answer">Rotating seasonal storage in a small garage means swapping what's at easy-reach height twice a year — once for the holiday/winter season, once for spring/summer — so only current-season items occupy your best shelf space. Off-season items move to an overhead rack or the back of a deep shelf. Labeled, stackable bins (see our <a href="/garage/best-seasonal-storage-bins-garage/">seasonal storage bins roundup</a>) make the swap fast instead of a guessing game.</p>
@@ -43,7 +42,6 @@ Before buying a matched bin set, sort what you're actually storing into two pile
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-rotate-seasonal-storage-in-a-small-garage-scene2.jpg" alt="Two piles of storage bins being sorted by season on a garage floor before shelving" loading="lazy" />
-  <figcaption>Sort by season first — the bin count and sizing follow from that.</figcaption>
 </figure>
 
 <h2 id="do-not-buy-if">Skip a formal rotation system if&#x2026;</h2>
@@ -63,12 +61,10 @@ At each rotation date, move the season that's ending up to an overhead rack or t
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/how-to-rotate-seasonal-storage-in-a-small-garage-scene3.jpg" alt="A calendar or wall planner marked with two fixed seasonal rotation dates" loading="lazy" />
-    <figcaption>Two fixed dates, not "whenever" — that's what keeps the system alive.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/how-to-rotate-seasonal-storage-in-a-small-garage-scene4.jpg" alt="A bin being lifted down from an overhead rack during a seasonal swap" loading="lazy" />
-    <figcaption>The incoming season comes down; the outgoing season goes up.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 ## Step 4: Label bins by season, not just contents
@@ -81,7 +77,6 @@ Use each twice-yearly swap as a natural checkpoint to reassess whether everythin
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-rotate-seasonal-storage-in-a-small-garage-scene5.jpg" alt="A clearly labeled bin reading the current season, sitting at easy-reach shelf height" loading="lazy" />
-  <figcaption>Season labels, not contents lists — faster to scan mid-swap.</figcaption>
 </figure>
 
 ## Frequently asked questions

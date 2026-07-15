@@ -90,7 +90,6 @@ Working from the couch or bed is either a nice occasional change of scenery or, 
 
 <figure class="inline-photo">
   <img src="/winnie/best-laptop-stand-for-couch-and-bed-scene1.jpg" alt="A laptop stand holding a laptop above a couch cushion" loading="lazy" />
-  <figcaption>Off the lap, into airflow — the whole point in one shot.</figcaption>
 </figure>
 
 
@@ -112,7 +111,6 @@ Most people shopping this category focus on cushion softness, but the two specs 
 
 <figure class="inline-photo">
   <img src="/winnie/best-laptop-stand-for-couch-and-bed-scene4.jpg" alt="A laptop stand extended to full height over a couch cushion, screen raised to a seated eye level" loading="lazy" />
-  <figcaption>Full extension — the screen actually reaches eye level.</figcaption>
 </figure>
 
 ## How to choose
@@ -125,14 +123,12 @@ Most people shopping this category focus on cushion softness, but the two specs 
 
 <figure class="inline-photo">
   <img src="/winnie/best-laptop-stand-for-couch-and-bed-scene3.jpg" alt="A laptop stand positioned over a bed with rumpled blankets, laptop elevated" loading="lazy" />
-  <figcaption>Bed-height is a different problem than couch-height. The stand has to answer both.</figcaption>
 </figure>
 
 ## Quick comparison
 
 <figure class="inline-photo">
   <img src="/winnie/best-laptop-stand-for-couch-and-bed-scene2.jpg" alt="Close-up of a laptop stand's base clamp and adjustable joint" loading="lazy" />
-  <figcaption>The joint is what holds the angle for an entire movie, not just a photo.</figcaption>
 </figure>
 
 
@@ -146,7 +142,6 @@ Most people shopping this category focus on cushion softness, but the two specs 
 
 <figure class="inline-photo">
   <img src="/winnie/best-laptop-stand-for-couch-and-bed-scene5.jpg" alt="A laptop stand's open frame underside, showing airflow clearance beneath the laptop body" loading="lazy" />
-  <figcaption>Open underneath — the actual fix for overheating.</figcaption>
 </figure>
 
 ## Frequently asked questions

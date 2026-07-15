@@ -95,7 +95,6 @@ A cat tree saves apartment space only when it uses vertical room without creatin
 
 <figure class="inline-photo">
   <img src="/winnie/best-cat-trees-for-small-apartments-scene1.jpg" alt="A compact multi-level cat tree fitted into a small apartment corner near a sunny window" loading="lazy" />
-  <figcaption>The corner it fits, and the view it earns.</figcaption>
 </figure>
 
 <p id="quick-answer">The <strong>Amazon Basics multi-level tree</strong> is the straightforward corner pick with a square base and moderate height. The <strong>FEANDREA multi-level tree</strong> combines a hideaway, perches, and scratching in one vertical footprint. Choose the <strong>Mau Cento</strong> when the tree must live visibly in the main room, but only after confirming basket size, stability, and clear jump paths.</p>
@@ -106,7 +105,6 @@ Tape the full base footprint onto the floor, then add the cat's approach, landin
 
 <figure class="inline-photo">
   <img src="/winnie/best-cat-trees-for-small-apartments-scene2.jpg" alt="A measuring tape laid across a cat tree's square base footprint on an apartment floor" loading="lazy" />
-  <figcaption>Tape the base first — the platform sizes come after.</figcaption>
 </figure>
 
 ## Stability outranks maximum height
@@ -132,12 +130,10 @@ Furniture-forward trees can fit a visible room better, but a beautiful narrow ba
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/best-cat-trees-for-small-apartments-scene3.jpg" alt="A wide stable base of a cat tree anchored beside a wall restraint point" loading="lazy" />
-    <figcaption>A wide base or a real restraint — not optimism.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/best-cat-trees-for-small-apartments-scene4.jpg" alt="Two cat tree platform heights compared side by side to show step spacing" loading="lazy" />
-    <figcaption>Step spacing decides who can actually use it.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 <h2 id="do-not-buy-if">Do not buy a cat tree if…</h2>
@@ -152,7 +148,6 @@ For a floor-free alternative, compare the category trade-offs in [cat tree versu
 
 <figure class="inline-photo">
   <img src="/winnie/best-cat-trees-for-small-apartments-scene5.jpg" alt="A cat tree platform being vacuumed with a handheld attachment to remove trapped hair" loading="lazy" />
-  <figcaption>Cleanability is part of the footprint, not an afterthought.</figcaption>
 </figure>
 
 ## Frequently asked questions

@@ -102,7 +102,6 @@ This lasagna recipe fixes lasagna's reputation as a weekend project — a reputa
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-lasagna-scene1.jpg" alt="Layers of pasta sheets, ricotta, and meat sauce being assembled in a baking dish" loading="lazy" />
-  <figcaption>Even, thin layers hold together better than a few thick ones.</figcaption>
 </figure>
 
 
@@ -116,7 +115,6 @@ Baking doesn't reduce sauce the way stovetop simmering does — a lasagna sauce 
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-lasagna-scene2.jpg" alt="A baked lasagna with melted golden cheese on top, one slice being lifted out showing the layered interior" loading="lazy" />
-  <figcaption>Resting it 10 minutes is the difference between a slice and a puddle.</figcaption>
 </figure>
 
 

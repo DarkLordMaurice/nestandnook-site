@@ -36,7 +36,6 @@ Small apartments do not create more pet mess; they remove the distance between t
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-keep-a-small-apartment-clean-with-pets-scene1.jpg" alt="A compact cleaning caddy holding a hair roller, a detail tool, washable cloths, and waste bags near a main mess zone" loading="lazy" />
-  <figcaption>One caddy, near the recurring mess, beats supplies scattered everywhere.</figcaption>
 </figure>
 
 <p id="quick-answer">Keep a small apartment clean with pets by containing each mess at its source: place washable mats at litter and feeding zones, remove waste and fresh spills promptly, clear the main couch with a reusable hair tool, sweep high-traffic paths, and rotate washable bedding. Store one compact cleaning caddy near the recurring mess instead of spreading supplies across the apartment.</p>
@@ -47,7 +46,6 @@ Walk from the litter area, feeding station, pet bed, favorite couch spot, entry 
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-keep-a-small-apartment-clean-with-pets-scene2.jpg" alt="A quick daily wipe-down of a feeding mat and nearby floor area" loading="lazy" />
-  <figcaption>A quick daily wipe, right at the transfer point.</figcaption>
 </figure>
 
 ## 1. Create one contained litter route
@@ -81,12 +79,10 @@ Duplicate sprays, specialty gadgets, and abandoned brushes create cleaning clutt
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/how-to-keep-a-small-apartment-clean-with-pets-scene3.jpg" alt="A small handheld vacuum being used on a high-traffic entry rug" loading="lazy" />
-    <figcaption>The high-traffic lane, not every inch of the apartment.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/how-to-keep-a-small-apartment-clean-with-pets-scene4.jpg" alt="A tidy small apartment living room after a daily pet-cleaning reset, sofa and floor visibly clear" loading="lazy" />
-    <figcaption>Ten minutes, repeated, beats an occasional deep clean.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 <h2 id="do-not-buy-if">Do not add another cleaning product if…</h2>
@@ -101,7 +97,6 @@ The goal is a repeatable ten-minute reset, not a showroom that erases every sign
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-keep-a-small-apartment-clean-with-pets-scene5.jpg" alt="A cluttered pet-mess corner beside the same corner after a quick reset routine" loading="lazy" />
-  <figcaption>The reset, before and after — repeatable, not a showroom stunt.</figcaption>
 </figure>
 
 ## Frequently asked questions

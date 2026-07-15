@@ -90,7 +90,6 @@ This chicken fajita bowl recipe exists to fix the most common failure of home-co
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-one-pan-chicken-fajita-bowl-scene1.jpg" alt="Charred chicken and bell peppers in a large skillet, visible sear marks and steam" loading="lazy" />
-  <figcaption>Real char, not just cooked-through — that's where the flavor is.</figcaption>
 </figure>
 
 
@@ -104,7 +103,6 @@ It's not enough to have an uncrowded pan if the heat isn't high enough to begin 
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-one-pan-chicken-fajita-bowl-scene2.jpg" alt="A chicken fajita bowl with rice, beans, peppers, and toppings arranged in sections, set on a table" loading="lazy" />
-  <figcaption>Sectioned, not mixed — let people build their own bite.</figcaption>
 </figure>
 
 

@@ -32,7 +32,6 @@ A one-car garage that also needs to function as a light workshop has exactly one
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-set-up-a-workspace-in-a-one-car-garage-scene1.jpg" alt="A one-car garage laid out with a wall-mounted workbench and a car parked beside it, both fitting cleanly" loading="lazy" />
-  <figcaption>A workspace and a parked car, sharing the same footprint on purpose.</figcaption>
 </figure>
 
 <p id="quick-answer">Setting up a workspace in a one-car garage starts with mapping the car's actual parked footprint, including open doors and trunk clearance, before placing anything permanent. Use a fold-away or portable workbench (see our <a href="/garage/best-fold-away-workbenches-small-garage/">workbench roundup</a>) that clears completely when not in use, and keep tool storage wall-mounted rather than floor-based.</p>
@@ -43,7 +42,6 @@ Park the car in its normal spot and measure its full footprint, including both d
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-set-up-a-workspace-in-a-one-car-garage-scene2.jpg" alt="Tape marking the outline of a parked car's footprint on a garage floor, including open door clearance" loading="lazy" />
-  <figcaption>Mark the car's real footprint, doors and all, before anything permanent goes up.</figcaption>
 </figure>
 
 <h2 id="do-not-buy-if">Skip a dedicated workspace setup if&#x2026;</h2>
@@ -63,12 +61,10 @@ Mount tool storage — a pegboard section, wall-mounted shelving — directly ab
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/how-to-set-up-a-workspace-in-a-one-car-garage-scene3.jpg" alt="A pegboard tool section mounted directly above a fold-away workbench, keeping the floor clear" loading="lazy" />
-    <figcaption>Vertical tool storage, mounted right where the workbench is.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/how-to-set-up-a-workspace-in-a-one-car-garage-scene4.jpg" alt="A workbench being folded back up against the wall at the end of a project session" loading="lazy" />
-    <figcaption>The fold-up routine at the end of a session is what keeps the system working.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 ## Step 4: Plan a real "project mode" and "car mode" routine
@@ -81,7 +77,6 @@ Don't plan the workspace to the exact inch of clearance the car needs — leave 
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-set-up-a-workspace-in-a-one-car-garage-scene5.jpg" alt="A garage floor with a clearly marked buffer zone around a parked car's outline" loading="lazy" />
-  <figcaption>A real buffer, not the exact minimum — for the day the car parks slightly off-center.</figcaption>
 </figure>
 
 ## Frequently asked questions

@@ -96,7 +96,6 @@ Not every footrest problem is a height problem. Some readers need a defined plat
 
 <figure class="inline-photo">
   <img src="/winnie/best-under-desk-footrests-scene1.jpg" alt="Four footrest types — adjustable platform, foam, rocking, roller — on a wood floor" loading="lazy" />
-  <figcaption>Four different fixes for what's technically the same complaint.</figcaption>
 </figure>
 
 
@@ -115,7 +114,6 @@ Set the chair for the keyboard and measure the distance between the feet and flo
 
 <figure class="inline-photo">
   <img src="/winnie/best-under-desk-footrests-scene4.jpg" alt="A pedal-adjustable footrest platform mid-adjustment beneath a desk" loading="lazy" />
-  <figcaption>Pedal control means changing height without getting up — worth it on a shared desk.</figcaption>
 </figure>
 
 ## How to choose by type
@@ -131,14 +129,12 @@ Set the chair for the keyboard and measure the distance between the feet and flo
 
 <figure class="inline-photo">
   <img src="/winnie/best-under-desk-footrests-scene3.jpg" alt="An under-desk footrest positioned beneath an office chair and desk" loading="lazy" />
-  <figcaption>Fit under the actual chair and desk, not just the tape-measure gap.</figcaption>
 </figure>
 
 ## Frequently asked questions
 
 <figure class="inline-photo">
   <img src="/winnie/best-under-desk-footrests-scene2.jpg" alt="A rocking footrest mid-tilt, showing its curved rocking motion under a desk" loading="lazy" />
-  <figcaption>The rock is a feature for some feet and a distraction for others — try it before committing.</figcaption>
 </figure>
 
 
@@ -158,7 +154,6 @@ Adjustability matters most in a shared setup because users can have different fl
 
 <figure class="inline-photo">
   <img src="/winnie/best-under-desk-footrests-scene5.jpg" alt="A dense foam footrest in its reversible flipped position, showing two support shapes" loading="lazy" />
-  <figcaption>Flip it for a second position — one purchase, two support shapes.</figcaption>
 </figure>
 
 > **Winnie's take:** Match the mechanism to the person, not the mood board. The useful question is whether you want a steady platform, a soft landing, or controlled movement—and whether it actually fits beneath the desk.

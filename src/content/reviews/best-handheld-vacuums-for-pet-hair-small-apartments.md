@@ -112,7 +112,6 @@ A handheld vacuum earns apartment space when it is ready before the hair becomes
 
 <figure class="inline-photo">
   <img src="/winnie/best-handheld-vacuums-for-pet-hair-small-apartments-scene1.jpg" alt="A cordless handheld vacuum with a motorized brush attachment being used on a sofa cushion with visible pet hair" loading="lazy" />
-  <figcaption>Ready before the hair sets into the upholstery — that's the whole point.</figcaption>
 </figure>
 
 <p id="quick-answer">The <strong>BLACK+DECKER Furbuster HHVK515JP07</strong> is the best overall choice when embedded upholstery hair is the main problem because it pairs a motorized pet brush with a larger dirt bowl. The <strong>Shark WANDVAC WV201</strong> is the better fit for very small apartments that prioritize a slim charging dock and frequent light cleanup over deep pet-hair agitation.</p>
@@ -123,7 +122,6 @@ Measure the shelf, wall, or counter where the vacuum will charge, including cord
 
 <figure class="inline-photo">
   <img src="/winnie/best-handheld-vacuums-for-pet-hair-small-apartments-scene2.jpg" alt="An extendable crevice tool attachment reaching into a couch seam" loading="lazy" />
-  <figcaption>The right attachment reaches what the main head can't.</figcaption>
 </figure>
 
 ## Choose the brush before comparing suction language
@@ -145,12 +143,10 @@ Empty the bin before debris blocks airflow, clean or replace filters according t
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/best-handheld-vacuums-for-pet-hair-small-apartments-scene3.jpg" alt="A handheld vacuum's dirt bowl, showing a compact but adequate collection capacity" loading="lazy" />
-    <figcaption>Bin size decides how often the routine gets interrupted.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/best-handheld-vacuums-for-pet-hair-small-apartments-scene4.jpg" alt="A handheld vacuum resting on a charging dock on a small utility shelf" loading="lazy" />
-    <figcaption>A real charging home, not a drawer it has to be dug out of.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 <h2 id="do-not-buy-if">Do not buy a handheld pet vacuum if…</h2>
@@ -165,7 +161,6 @@ For refill-free surface hair without motor noise, start with [the manual furnitu
 
 <figure class="inline-photo">
   <img src="/winnie/best-handheld-vacuums-for-pet-hair-small-apartments-scene5.jpg" alt="A bulkier motorized-brush handheld vacuum beside a slimmer compact model" loading="lazy" />
-  <figcaption>Bulkier with a real pet brush, or slim for quick daily touchups — pick the actual job.</figcaption>
 </figure>
 
 ## Frequently asked questions

@@ -125,7 +125,6 @@ A compact air fryer is only actually compact if the basket size still matches wh
 
 <figure class="inline-photo">
   <img src="/winnie/compact-air-fryer-small-kitchen-problem.jpg" alt="Oversized air fryer with zero clearance crowding a narrow kitchen counter" loading="lazy" />
-  <figcaption>Wrong size, wrong counter: an oversized unit that eats every inch of clearance.</figcaption>
 </figure>
 
 <p id="quick-answer">The best compact air fryer for a small kitchen is usually a 3- to 4-quart basket model with a narrow footprint and simple controls. The <strong>Ninja AF101 (4-quart)</strong> is the best overall pick for most one- or two-person households. Cooking for one specifically? The <strong>Instant Vortex Mini (2-quart)</strong> is sized honestly for a single serving instead of pretending to be bigger than it is.</p>
@@ -137,12 +136,10 @@ Before buying, measure the actual counter spot where the air fryer will sit duri
 <div class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/compact-air-fryer-counter-clearance-check.jpg" alt="Measuring the gap behind a compact air fryer pulled away from the wall to check clearance" loading="lazy" />
-    <figcaption>Check the gap behind it, not just the footprint — airflow needs real clearance.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/compact-air-fryer-cabinet-storage-check.jpg" alt="Sliding a compact air fryer onto a lower cabinet shelf to check it fits for storage" loading="lazy" />
-    <figcaption>If it's not living on the counter permanently, test the storage shelf before you buy.</figcaption>
-  </figure>
+</figure>
 </div>
 
 <h2 id="do-not-buy-if">Skip a compact air fryer if&#x2026;</h2>
@@ -162,7 +159,6 @@ Before buying, measure the actual counter spot where the air fryer will sit duri
 
 <figure class="inline-photo">
   <img src="/winnie/compact-air-fryer-basket-size-comparison.jpg" alt="Small single-serving air fryer basket next to a larger compact basket, each with a matching food portion" loading="lazy" />
-  <figcaption>Basket size versus real portion size — the capacity difference you actually cook, not just the spec sheet number.</figcaption>
 </figure>
 
 | Air fryer | Best for | Capacity | Footprint |
@@ -192,7 +188,6 @@ On a heat-safe counter spot with clear space behind and above it for airflow, ne
 
 <figure class="inline-photo">
   <img src="/winnie/compact-air-fryer-small-meal-payoff.jpg" alt="Plating a simple crispy meal beside a compact unbranded air fryer" loading="lazy" />
-  <figcaption>The actual payoff: a real dinner, not three sad batches.</figcaption>
 </figure>
 
 *Prices and availability change constantly, so we don't quote figures here — tap through to see the current price on Amazon.*

@@ -24,7 +24,6 @@ I have a whole system for feeding goats at a petting zoo, apparently, developed 
 
 <figure class="inline-photo">
   <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene1.jpg" alt="A goat standing at a wooden petting-zoo fence, reaching toward an open hand extending into frame" loading="lazy" />
-  <figcaption>The negotiation Gerald had already won before it started.</figcaption>
 </figure>
 
 I'd read, somewhere, that you're supposed to hold the food flat on your palm so the goat doesn't nip your fingers. Reasonable advice. I followed it precisely, the way I follow most instructions, with a faint sense of professional pride that I was Doing It Correctly. The goat took one look at my careful, flat-palmed offering, decided the paper bag itself was the more interesting menu item, and went for it directly. I spent the next several minutes renegotiating terms with an animal that had already won the negotiation before it started. A decade of retail buying taught me how to read a room and close a deal on my terms. Gerald had not read the same books I had, and it showed.
@@ -38,7 +37,6 @@ What I actually loved about the afternoon wasn't figuring anything out — it wa
 
 <figure class="inline-photo">
   <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene2.jpg" alt="Two otters standing at full attention in shallow water at a zoo habitat, paws raised expectantly" loading="lazy" />
-  <figcaption>Full attention, immediate opinions, zero ambiguity about what happens next.</figcaption>
 </figure>
 
 <div class="polaroid inset float-left">
@@ -52,7 +50,6 @@ Past the goat pen, the otter habitat ran on a completely different negotiation. 
 
 <figure class="inline-photo">
   <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene3.jpg" alt="A close-up of a capybara's face near a low wooden fence at a petting zoo" loading="lazy" />
-  <figcaption>Walked directly into frame nose-first, and won.</figcaption>
 </figure>
 
 <div class="polaroid inset">
@@ -66,7 +63,6 @@ I tried for one (1) flattering selfie with a capybara. The capybara had other pl
 
 <figure class="inline-photo">
   <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene4.jpg" alt="A colorful toucan perched on a wooden branch near a bird aviary" loading="lazy" />
-  <figcaption>No system had a category ready for this.</figcaption>
 </figure>
 
 <div class="polaroid inset float-left">

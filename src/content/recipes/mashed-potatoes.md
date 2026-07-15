@@ -72,7 +72,6 @@ This mashed potatoes recipe exists because the dish has exactly two failure mode
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-mashed-potatoes-scene1.jpg" alt="A pot of just-mashed potatoes with a pat of butter melting on top, a masher resting on the rim" loading="lazy" />
-  <figcaption>Mash while they're still hot, or the butter won't fully melt in.</figcaption>
 </figure>
 
 
@@ -86,7 +85,6 @@ Cold milk and butter shock the hot potato and make it seize up rather than absor
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-mashed-potatoes-scene2.jpg" alt="A bowl of creamy mashed potatoes with a well of melted butter in the center, set on a dinner table" loading="lazy" />
-  <figcaption>The butter well at the table is non-negotiable.</figcaption>
 </figure>
 
 

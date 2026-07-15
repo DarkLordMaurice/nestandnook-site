@@ -17,7 +17,6 @@ I organize drawers for a living, emotionally if not professionally, so when a fr
 
 <figure class="inline-photo">
   <img src="/winnie/i-signed-up-for-wheel-throwing-and-the-clay-won-scene1.jpg" alt="A row of finished ceramic bowls and cups drying on a studio shelf, some glazed, some still raw clay color" loading="lazy" />
-  <figcaption>The shelf I'm aspiring to. Not there yet.</figcaption>
 </figure>
 
 ## Centering is not a metaphor, it just feels like one
@@ -26,7 +25,6 @@ The first fifteen minutes of every class are just centering — pressing a lump 
 
 <figure class="inline-photo">
   <img src="/winnie/i-signed-up-for-wheel-throwing-and-the-clay-won-scene2.jpg" alt="A cup taking shape mid-centering on a spinning pottery wheel, tools laid out on the workbench beside it" loading="lazy" />
-  <figcaption>Fifteen minutes of this before anything resembling a bowl happens.</figcaption>
 </figure>
 
 <div class="polaroid inset">
@@ -44,7 +42,6 @@ Week two produced what my instructor charitably called "a very confident ashtray
 
 <figure class="inline-photo">
   <img src="/winnie/i-signed-up-for-wheel-throwing-and-the-clay-won-scene3.jpg" alt="A cup wall tearing straight down one side mid-throw on the pottery wheel" loading="lazy" />
-  <figcaption>The exact moment week three fell apart. Literally.</figcaption>
 </figure>
 
 ## The wheel doesn't care that I understand the theory
@@ -68,7 +65,6 @@ I know how this usually goes on this site — a slice-of-life post, then a tidy 
 
 <figure class="inline-photo">
   <img src="/winnie/i-signed-up-for-wheel-throwing-and-the-clay-won-scene4.jpg" alt="A ceramics studio glazing station with jars of colored glaze and a few bisque-fired pots waiting their turn" loading="lazy" />
-  <figcaption>Next week's problem: I have to pick a glaze color and commit.</figcaption>
 </figure>
 
 I'll glaze my first real piece next week. It will probably also come out crooked. I'm starting to think that's the whole point of showing up.

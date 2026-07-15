@@ -39,7 +39,6 @@ Your shelves have height but not usable height, pans and lids behave badly toget
 
 <figure class="inline-photo">
   <img src="/winnie/maximize-small-kitchen-cabinet-space-problem.jpg" alt="Pans avalanching out of an overcrowded lower kitchen cabinet mid-reach" loading="lazy" />
-  <figcaption>The stack that fights back: reach for one pan, catch three lids on the way out.</figcaption>
 </figure>
 
 <h2 id="measure-first-check">Measure the cabinet and the object causing the problem</h2>
@@ -53,22 +52,18 @@ Empty one cabinet at a time rather than trying to overhaul the whole kitchen in 
 <div class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/small-kitchen-cabinet-shelf-riser-detail.jpg" alt="Placing a bowl onto a shelf riser stacked above a row of plates inside a cabinet" loading="lazy" />
-    <figcaption>Shelf risers: plates below, bowls above, real clearance instead of a teetering stack.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/small-kitchen-pan-lid-rack-cabinet-detail.jpg" alt="Vertical pan rack and separate lid rack organizing skillets and lids in a lower cabinet" loading="lazy" />
-    <figcaption>Pans upright, lids separate — pull one without disturbing the rest.</figcaption>
-  </figure>
+</figure>
 </div>
 <div class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/small-kitchen-pull-out-cabinet-tray.jpg" alt="Sliding cabinet tray pulled fully out from a deep lower cabinet" loading="lazy" />
-    <figcaption>A pull-out tray brings the back of a deep cabinet into full view.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/small-kitchen-mug-cup-cabinet-space-fix.jpg" alt="Reaching into an organized upper cabinet with a shelf riser and hooks for mugs and cups" loading="lazy" />
-    <figcaption>Mugs off the shelf, onto hooks — one riser gets the space back.</figcaption>
-  </figure>
+</figure>
 </div>
 
 <h2 id="do-not-buy-if">Skip a cabinet organizer if&#x2026;</h2>

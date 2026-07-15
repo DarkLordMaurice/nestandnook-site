@@ -84,7 +84,6 @@ This is the sheet-pan dinner that actually respects that its three components do
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-sheet-pan-salmon-and-vegetables-scene1.jpg" alt="Salmon fillets and vegetables arranged on a sheet pan with lemon slices before roasting" loading="lazy" />
-  <figcaption>Lemon slices under the fillets do double duty as a rack and a flavor base.</figcaption>
 </figure>
 
 
@@ -98,7 +97,6 @@ Spooning the butter mixture over the salmon right before it goes back in the ove
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-sheet-pan-salmon-and-vegetables-scene2.jpg" alt="A plated serving of roasted salmon and vegetables drizzled with lemon-garlic butter" loading="lazy" />
-  <figcaption>The butter goes on right at the end, off the heat.</figcaption>
 </figure>
 
 

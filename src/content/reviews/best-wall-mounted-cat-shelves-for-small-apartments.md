@@ -85,7 +85,6 @@ A cat tree takes up a floor footprint most small apartments can't spare. A windo
 
 <figure class="inline-photo">
   <img src="/winnie/best-wall-mounted-cat-shelves-for-small-apartments-scene1.jpg" alt="A modular wall-mounted cat shelf system installed along an apartment wall, connecting three shelves into a single climbing path" loading="lazy" />
-  <figcaption>Vertical wall space, not floor space — the whole reason this category exists.</figcaption>
 </figure>
 
 <h2 id="measure-first-check">Find your studs and check your cat's real jumping weight first</h2>
@@ -98,7 +97,6 @@ The three products here represent three different approaches to the same idea. A
 
 <figure class="inline-photo">
   <img src="/winnie/best-wall-mounted-cat-shelves-for-small-apartments-scene2.jpg" alt="Close-up of a stud finder being used against a wall before mounting a cat shelf" loading="lazy" />
-  <figcaption>Five minutes with a stud finder prevents the single most common failure in this category.</figcaption>
 </figure>
 
 <h2 id="do-not-buy-if">Don't buy wall-mounted cat shelves if&#x2026;</h2>
@@ -112,7 +110,6 @@ The three products here represent three different approaches to the same idea. A
 
 <figure class="inline-photo">
   <img src="/winnie/best-wall-mounted-cat-shelves-for-small-apartments-scene3.jpg" alt="Two cat wall shelves at different heights, one cat mid-jump between them" loading="lazy" />
-  <figcaption>Staggered heights turn separate shelves into one usable path.</figcaption>
 </figure>
 
 - **Want to expand later:** Feandrea's modular system lets you add pieces without replacing what you already installed.
@@ -122,7 +119,6 @@ The three products here represent three different approaches to the same idea. A
 
 <figure class="inline-photo">
   <img src="/winnie/best-wall-mounted-cat-shelves-for-small-apartments-scene4.jpg" alt="A wall-mounted cat shelf styled to look like a floating decorative shelf, blending into a living room wall" loading="lazy" />
-  <figcaption>Done well, it reads as a shelf first and cat furniture second.</figcaption>
 </figure>
 
 ## Quick comparison
@@ -135,7 +131,6 @@ The three products here represent three different approaches to the same idea. A
 
 <figure class="inline-photo">
   <img src="/winnie/best-wall-mounted-cat-shelves-for-small-apartments-scene5.jpg" alt="A cluttered apartment floor with cat toys beside the same room after adding wall-mounted cat shelves, floor space clear" loading="lazy" />
-  <figcaption>Same apartment, same cat — the floor just isn't doing the work anymore.</figcaption>
 </figure>
 
 ## Frequently asked questions

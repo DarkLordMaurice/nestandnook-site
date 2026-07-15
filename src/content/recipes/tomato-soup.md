@@ -98,7 +98,6 @@ Tomato soup has a reputation problem: most people's mental version of it is eith
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-tomato-soup-scene1.jpg" alt="Tomato paste being stirred into melted butter and onions in a pot, deepening in color" loading="lazy" />
-  <figcaption>Cooking the paste first is what turns flat tomato into something deeper.</figcaption>
 </figure>
 
 
@@ -112,7 +111,6 @@ Acidity is the single biggest variable between tomato soup that tastes bright an
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-tomato-soup-scene2.jpg" alt="A bowl of creamy tomato soup with a grilled cheese sandwich cut in half for dipping" loading="lazy" />
-  <figcaption>The grilled cheese isn't a side — it's the actual pairing this recipe is built around.</figcaption>
 </figure>
 
 

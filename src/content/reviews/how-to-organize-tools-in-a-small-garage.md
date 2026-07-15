@@ -32,7 +32,6 @@ A pegboard section only solves tool clutter if what goes on it is decided delibe
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-organize-tools-in-a-small-garage-scene1.jpg" alt="Hand tools sorted into two piles on a workbench, separating frequently-used tools from rarely-used ones" loading="lazy" />
-  <figcaption>Sort first, into two honest piles — then decide what earns board space.</figcaption>
 </figure>
 
 <p id="quick-answer">Organizing tools in a small garage starts with sorting by use-frequency, not tool type: hang what you reach for weekly at arm height on a pegboard section, and move rarely-used or seasonal tools to labeled bins instead. Size the pegboard to your actual sorted "frequent" pile, not to a full workshop wall — see our <a href="/garage/best-pegboard-kits-small-garage/">pegboard kit roundup</a> for options sized to a partial wall.</p>
@@ -49,7 +48,6 @@ Pull every tool out and sort into two piles: things reached for regularly (weekl
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-organize-tools-in-a-small-garage-scene2.jpg" alt="Tools being hung on a pegboard section, grouped by task rather than randomly placed" loading="lazy" />
-  <figcaption>Grouped by task, not by whatever order they came off the shelf.</figcaption>
 </figure>
 
 ## Step 2: Group by task, not just frequency
@@ -67,12 +65,10 @@ Move the "used a few times a year" pile into labeled bins — on a shelf, in an 
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/how-to-organize-tools-in-a-small-garage-scene3.jpg" alt="Labeled storage bins holding rarely-used specialty tools" loading="lazy" />
-    <figcaption>Rarely-used tools belong in labeled bins, not on the board.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/how-to-organize-tools-in-a-small-garage-scene4.jpg" alt="Overhead shot of a small garage tool zone showing a pegboard section above a workbench with bins below" loading="lazy" />
-    <figcaption>The full system: board above, bins below.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 ## Step 5: Reassess every few months
@@ -81,7 +77,6 @@ Revisit what's actually on the board periodically. Anything that hasn't been tou
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-organize-tools-in-a-small-garage-scene5.jpg" alt="Deliberate gaps left between tool groups on a pegboard, showing room to grow" loading="lazy" />
-  <figcaption>Real gaps between groups — a board with no room to grow fills up fast.</figcaption>
 </figure>
 
 ## Frequently asked questions

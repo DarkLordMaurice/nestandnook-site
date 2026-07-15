@@ -36,7 +36,6 @@ A small home office works when five systems agree with each other: chair and foo
 
 <figure class="inline-photo">
   <img src="/winnie/small-home-office-setup-guide-scene1.jpg" alt="A monitor raised to eye level on a riser stand, footrest visible underneath" loading="lazy" />
-  <figcaption>Foot support and monitor height solved together, not as two separate purchases.</figcaption>
 </figure>
 
 
@@ -61,7 +60,6 @@ Check each zone before buying:
 
 <figure class="inline-photo">
   <img src="/winnie/small-home-office-setup-guide-scene4.jpg" alt="A complete small home office with footrest, monitor at eye level, tidy cables, and layered lighting all visible together" loading="lazy" />
-  <figcaption>Five systems agreeing with each other, not five separate purchases.</figcaption>
 </figure>
 
 ## 1. Chair and foot support
@@ -72,7 +70,6 @@ Set the chair for the keyboard and desk first. If that leaves the feet unsupport
 
 <figure class="inline-photo">
   <img src="/winnie/small-home-office-setup-guide-scene2.jpg" alt="Neatly routed cables along the underside of a desk using a cable tray" loading="lazy" />
-  <figcaption>Cable control is step three for a reason — it's easiest once the furniture is settled.</figcaption>
 </figure>
 
 
@@ -100,10 +97,8 @@ The [under-$150 setup](/home-office/ergonomic-home-office-setup-under-150/) prio
 
 <figure class="inline-photo">
   <img src="/winnie/small-home-office-setup-guide-scene5.jpg" alt="A desk corner showing one fully solved friction point — cables — with the rest of the room still visible in soft focus" loading="lazy" />
-  <figcaption>One problem solved well, in the context of the whole room.</figcaption>
 </figure>
 
 <figure class="inline-photo">
   <img src="/winnie/small-home-office-setup-guide-scene3.jpg" alt="A home office desk lit with layered task and ambient lighting, warm inviting tone" loading="lazy" />
-  <figcaption>Lighting is the layer that makes the whole setup feel finished, not just functional.</figcaption>
 </figure>

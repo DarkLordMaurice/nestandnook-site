@@ -15,7 +15,6 @@ relatedGuides:
 
 <figure class="inline-photo">
   <img src="/winnie/the-week-i-made-banana-bread-for-the-entire-building-nonwinnie-scene1.jpg" alt="Six very ripe, heavily spotted bananas piled on a kitchen counter" loading="lazy" />
-  <figcaption>The bananas that started a week I didn't plan for.</figcaption>
 </figure>
 
 
@@ -30,7 +29,6 @@ I made one loaf first, the reasonable amount, the amount a person with a normal 
 
 <figure class="inline-photo">
   <img src="/winnie/the-week-i-made-banana-bread-for-the-entire-building-nonwinnie-scene2.jpg" alt="Four half-loaves of banana bread wrapped individually in foil, lined up and ready for delivery" loading="lazy" />
-  <figcaption>Route-planned, foil-wrapped, entirely unnecessary and I stand by it.</figcaption>
 </figure>
 
 I don't do anything without a system, including apparently spontaneous acts of neighborliness, so what should have been "hand a neighbor some bread" turned into wrapping four half-loaves in foil, writing a small card for each one, and working out — with actual seriousness — the most efficient route through the building so I wasn't backtracking floors. I want to be honest about how unnecessary that last part was. Nobody needed me to route-plan a four-stop bread delivery. I needed to route-plan a four-stop bread delivery, because handing someone food with zero plan attached felt, to me, borderline reckless.
@@ -38,7 +36,6 @@ I don't do anything without a system, including apparently spontaneous acts of n
 
 <figure class="inline-photo">
   <img src="/winnie/the-week-i-made-banana-bread-for-the-entire-building-nonwinnie-scene3.jpg" alt="A small handwritten note card tucked under kitchen twine on a foil-wrapped loaf of bread" loading="lazy" />
-  <figcaption>The note felt necessary. It was not. I did it anyway.</figcaption>
 </figure>
 
 ## The actual conversations were the part I didn't plan for
@@ -50,7 +47,6 @@ What I did not account for, because I genuinely hadn't thought that far ahead, w
 
 <figure class="inline-photo">
   <img src="/winnie/the-week-i-made-banana-bread-for-the-entire-building-nonwinnie-scene4.jpg" alt="A long apartment hallway with several doors, one door slightly ajar, warm hallway lighting" loading="lazy" />
-  <figcaption>Four doors I'd walked past for a year, finally knocked on.</figcaption>
 </figure>
 
 <div class="polaroid inset">

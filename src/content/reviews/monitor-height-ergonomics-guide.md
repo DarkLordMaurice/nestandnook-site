@@ -30,7 +30,6 @@ Correct monitor height gets treated like a fixed spec — "raise your screen 4 i
 
 <figure class="inline-photo">
   <img src="/winnie/monitor-height-ergonomics-guide-scene1.jpg" alt="A monitor positioned below eye level on a desk, showing a downward viewing angle" loading="lazy" />
-  <figcaption>Too low is the far more common mistake, and it's the one people notice least.</figcaption>
 </figure>
 
 
@@ -48,7 +47,6 @@ Most monitors ship on stands built for an average setup, and most desks are a st
 
 <figure class="inline-photo">
   <img src="/winnie/monitor-height-ergonomics-guide-scene2.jpg" alt="The same monitor raised on a riser stand to eye level, showing a level viewing angle" loading="lazy" />
-  <figcaption>Eye level, not screen-top level — that ten-second test changes the number.</figcaption>
 </figure>
 
 
@@ -64,7 +62,6 @@ Stacked books work in a pinch and cost nothing, but they rarely hold a precise, 
 
 <figure class="inline-photo">
   <img src="/winnie/monitor-height-ergonomics-guide-scene4.jpg" alt="A monitor positioned so the top third of the screen aligns with a seated eye line, measuring tape in frame" loading="lazy" />
-  <figcaption>The ten-second test, made visible.</figcaption>
 </figure>
 
 ## Distance is the second half of the equation
@@ -75,10 +72,8 @@ Height alone doesn't finish the job — if the screen sits at the right height b
 
 <figure class="inline-photo">
   <img src="/winnie/monitor-height-ergonomics-guide-scene5.jpg" alt="A monitor riser being adjusted a few inches upward to correct screen height" loading="lazy" />
-  <figcaption>A few inches is usually the entire fix.</figcaption>
 </figure>
 
 <figure class="inline-photo">
   <img src="/winnie/monitor-height-ergonomics-guide-scene3.jpg" alt="Overhead view showing the distance between a monitor screen and a desk chair" loading="lazy" />
-  <figcaption>Height fixes half the problem. Distance is the other half people skip.</figcaption>
 </figure>

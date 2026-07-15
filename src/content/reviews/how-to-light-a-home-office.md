@@ -30,7 +30,6 @@ Learning how to light a home office properly comes down to one idea: stop relyin
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-light-a-home-office-scene1.jpg" alt="A focused desk lamp casting bright task lighting onto a keyboard and notebook" loading="lazy" />
-  <figcaption>Task lighting is the layer people buy first and rely on entirely — it's only one-third of the fix.</figcaption>
 </figure>
 
 
@@ -44,7 +43,6 @@ Most under-lit home offices have exactly one light doing all the work — an ove
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-light-a-home-office-scene4.jpg" alt="An adjustable-arm desk lamp redirected to shine directly on a keyboard and notebook" loading="lazy" />
-  <figcaption>Aimed at the work surface, not the screen — glare comes from pointing it the wrong way.</figcaption>
 </figure>
 
 Task lighting is the focused, direct light your eyes actually need for reading, writing, or close work — this is what a good [desk lamp](/home-office/best-desk-lamps-for-eye-strain/) is for. Aim it at your desk surface and keyboard, not at your monitor, since light hitting the screen directly just creates glare and washes out contrast rather than helping you see it better. An adjustable-arm lamp lets you redirect light exactly where you're working instead of lighting the whole desk evenly, which matters less than people assume.
@@ -53,7 +51,6 @@ Task lighting is the focused, direct light your eyes actually need for reading, 
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-light-a-home-office-scene2.jpg" alt="Soft ambient overhead lighting filling a home office room with warm, even light" loading="lazy" />
-  <figcaption>Ambient light is what keeps the room from feeling like a single spotlight.</figcaption>
 </figure>
 
 
@@ -63,7 +60,6 @@ Ambient light is the general room-filling light — overhead fixtures, floor lam
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-light-a-home-office-scene5.jpg" alt="A soft accent glow closing the gap between a bright monitor screen and the dark wall directly behind it" loading="lazy" />
-  <figcaption>The gap between screen and wall is the darkest, most-stared-at spot in the room.</figcaption>
 </figure>
 
 Bias lighting is the one people skip and the one that makes the biggest difference for screen-specific eye strain: a soft glow, usually from [LED strip lighting](/home-office/best-led-strip-lighting-for-desk/), placed behind or around your monitor. It closes the gap between your bright screen and whatever's directly behind it, which is often the single darkest part of the room when you're staring at a monitor for hours. This is accent lighting, not a lamp replacement — pair it with real task lighting rather than using it alone.
@@ -89,5 +85,4 @@ A well-lit home office isn't one bright light — it's a desk lamp aimed at your
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-light-a-home-office-scene3.jpg" alt="Soft bias lighting glowing behind a monitor screen in a dim room" loading="lazy" />
-  <figcaption>Bias light behind the screen is the layer almost nobody adds, and the eye strain difference is real.</figcaption>
 </figure>

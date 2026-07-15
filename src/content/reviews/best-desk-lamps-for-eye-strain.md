@@ -101,7 +101,6 @@ The best desk lamp for eye strain is not simply the brightest lamp. A useful set
 
 <figure class="inline-photo">
   <img src="/winnie/best-desk-lamps-for-eye-strain-scene1.jpg" alt="A warm desk lamp casting soft diffused light across an open notebook" loading="lazy" />
-  <figcaption>Diffusion matters more than brightness — a harsh point source is the actual eye-strain culprit.</figcaption>
 </figure>
 
 
@@ -113,7 +112,6 @@ Words such as “eye-caring” are marketing descriptions unless the manufacture
 
 <figure class="inline-photo">
   <img src="/winnie/best-desk-lamps-for-eye-strain-scene4.jpg" alt="A desk lamp casting diffused, even light across a work surface without glare hitting a nearby monitor" loading="lazy" />
-  <figcaption>Even coverage, no glare on the screen — the actual test.</figcaption>
 </figure>
 
 <h2 id="measure-first-check">Check the room and desk before choosing the lamp</h2>
@@ -130,14 +128,12 @@ Note the room's existing ambient light, screen brightness, desk-edge shape, avai
 
 <figure class="inline-photo">
   <img src="/winnie/best-desk-lamps-for-eye-strain-scene3.jpg" alt="Three desk lamp styles — clamp, gooseneck, and panel — arranged together" loading="lazy" />
-  <figcaption>Shape follows desk footprint before it follows style.</figcaption>
 </figure>
 
 ## Quick comparison
 
 <figure class="inline-photo">
   <img src="/winnie/best-desk-lamps-for-eye-strain-scene2.jpg" alt="Close-up of even light diffusion across a desk surface with no harsh shadows" loading="lazy" />
-  <figcaption>No hot spot, no hard shadow edge. That's the test, not the lumen number.</figcaption>
 </figure>
 
 
@@ -151,7 +147,6 @@ Note the room's existing ambient light, screen brightness, desk-edge shape, avai
 
 <figure class="inline-photo">
   <img src="/winnie/best-desk-lamps-for-eye-strain-scene5.jpg" alt="A desk lamp's dimming control being adjusted to match ambient room light" loading="lazy" />
-  <figcaption>Dimmed to match the room, not maxed out by default.</figcaption>
 </figure>
 
 ## Frequently asked questions

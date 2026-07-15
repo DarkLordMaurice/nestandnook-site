@@ -91,7 +91,6 @@ A seasonal rotation system only works if the bins holding "in storage" items are
 
 <figure class="inline-photo">
   <img src="/winnie/best-seasonal-storage-bins-garage-scene1.jpg" alt="Stackable seasonal storage bins on a garage shelf, each labeled with a season or category tag" loading="lazy" />
-  <figcaption>Matched, labeled bins are what makes a rotation system actually work.</figcaption>
 </figure>
 
 <p id="quick-answer">The best seasonal storage bins for a garage depend on what you're storing and your budget. For moisture-sensitive items, <strong>IRIS USA's WeatherPro gasket-sealed bins</strong> are the safer choice. For a quick-to-scan rotation system, <strong>Sterilite's clear Ultra Latch Box</strong> lets you identify contents without opening anything. For bulkier or heavier gear, the <strong>Sterilite Tuff1 line</strong> is built for rougher handling.</p>
@@ -102,7 +101,6 @@ Before buying any bin set, confirm the weight rating of whatever you're storing 
 
 <figure class="inline-photo">
   <img src="/winnie/best-seasonal-storage-bins-garage-scene2.jpg" alt="Close detail of a storage bin's latching lid mechanism, showing a secure stackable closure" loading="lazy" />
-  <figcaption>A secure latch is what keeps a stack from shifting when bins get moved.</figcaption>
 </figure>
 
 <h2 id="do-not-buy-if">Skip a dedicated seasonal bin system if&#x2026;</h2>
@@ -121,12 +119,10 @@ Before buying any bin set, confirm the weight rating of whatever you're storing 
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/best-seasonal-storage-bins-garage-scene3.jpg" alt="A label being applied to the front of a storage bin, showing a clear labeling system" loading="lazy" />
-    <figcaption>Label by season, not just contents — it scans faster during a swap.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/best-seasonal-storage-bins-garage-scene4.jpg" alt="Stacked bins on an overhead or high shelf, positioned above the reach zone for rarely-used seasonal items" loading="lazy" />
-    <figcaption>Off-season bins belong up high, out of the easy-reach zone.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 ## Quick comparison
@@ -141,7 +137,6 @@ Before buying any bin set, confirm the weight rating of whatever you're storing 
 
 <figure class="inline-photo">
   <img src="/winnie/best-seasonal-storage-bins-garage-scene5.jpg" alt="Side-profile comparison of a loosely stacked pile of mismatched boxes with a neat stack of matching labeled bins" loading="lazy" />
-  <figcaption>The difference a matched, labeled set makes over a mismatched pile.</figcaption>
 </figure>
 
 ## Frequently asked questions

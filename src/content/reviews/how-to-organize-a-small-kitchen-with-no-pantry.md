@@ -39,7 +39,6 @@ When pantry items don't have a home, they migrate to the counter — coffee, sna
 
 <figure class="inline-photo">
   <img src="/winnie/small-kitchen-no-pantry-problem.jpg" alt="Kitchen counter completely covered in pantry overflow with nowhere left to set anything down" loading="lazy" />
-  <figcaption>No pantry, no system: dry goods and snacks take over the one counter you actually need.</figcaption>
 </figure>
 
 <h2 id="measure-first-check">Measure before you buy a single organizer</h2>
@@ -53,17 +52,14 @@ Pick one cabinet to be the pantry cabinet, then use bins inside it to create pul
 <div class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/small-kitchen-no-pantry-cabinet-bin-detail.jpg" alt="Clear pull-out bin sliding into an organized lower cabinet with tiered spice shelf" loading="lazy" />
-    <figcaption>The daily-use cabinet: pull-out bins turn one deep shelf into real categories.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/small-kitchen-over-door-pantry-rack.jpg" alt="Over-door pantry rack holding spice jars and small packets" loading="lazy" />
-    <figcaption>The door zone: lightweight-only, but it's free storage most kitchens never use.</figcaption>
-  </figure>
+</figure>
 </div>
 
 <figure class="inline-photo">
   <img src="/winnie/small-kitchen-slim-rolling-pantry-cart.jpg" alt="Slim rolling pantry cart fitting into a narrow gap beside the refrigerator" loading="lazy" />
-  <figcaption>The overflow zone: a slim rolling cart in the gap beside the fridge, walkway still clear.</figcaption>
 </figure>
 
 <h2 id="do-not-buy-if">Skip a pantry organizer if&#x2026;</h2>
@@ -78,7 +74,6 @@ See the [Kitchen hub](/kitchen/) for the full range of small-kitchen storage pic
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-organize-a-small-kitchen-with-no-pantry-scene5.jpg" alt="Distributed pantry storage across a cabinet, a rolling cart, and door-mounted bins in a kitchen with no dedicated pantry room" loading="lazy" />
-  <figcaption>The whole distributed system, working together.</figcaption>
 </figure>
 
 > **Winnie's take:** People ask me what to buy first for a no-pantry kitchen and I always say the same unglamorous thing: bins, not brackets. A rack you mount is a bigger commitment than a bin you can just move to a different shelf when your first guess turns out wrong — and your first guess at zoning almost always turns out at least a little wrong.

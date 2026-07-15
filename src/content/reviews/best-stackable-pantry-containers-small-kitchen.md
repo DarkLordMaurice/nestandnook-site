@@ -77,7 +77,6 @@ A small pantry doesn't need more shelves — it needs the shelves it has to stop
 
 <figure class="inline-photo">
   <img src="/winnie/best-stackable-pantry-containers-small-kitchen-scene1.jpg" alt="Stackable airtight pantry containers of varying sizes filling a small kitchen shelf, each clearly labeled" loading="lazy" />
-  <figcaption>Matched sizes, not one bulk container forced to do every job.</figcaption>
 </figure>
 
 <p id="quick-answer">The <strong>Vtopmart 24-piece set</strong> is the best overall pick for a mixed pantry — four sizes cover everything from spices to pasta. If your real problem is bulky flour and sugar bags specifically, the <strong>PANTRYSTAR 3-pack</strong> is sized exactly for that. Struggling with a deep or corner cabinet instead? A <strong>lazy susan turntable</strong> solves reach, not storage.</p>
@@ -88,7 +87,6 @@ Measure the vertical clearance on the shelf you're organizing — tall container
 
 <figure class="inline-photo">
   <img src="/winnie/best-stackable-pantry-containers-small-kitchen-scene2.jpg" alt="A side-locking silicone-gasket lid being sealed on a pantry container" loading="lazy" />
-  <figcaption>The seal is what actually extends freshness, not the shape.</figcaption>
 </figure>
 
 <h2 id="do-not-buy-if">Skip a pantry container system if&#x2026;</h2>
@@ -100,12 +98,10 @@ Measure the vertical clearance on the shelf you're organizing — tall container
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/best-stackable-pantry-containers-small-kitchen-scene3.jpg" alt="A pop-button one-handed container lid being opened mid-recipe" loading="lazy" />
-    <figcaption>One hand free for the measuring cup, one for the lid.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/best-stackable-pantry-containers-small-kitchen-scene4.jpg" alt="A large container holding a full bag of flour or sugar, ending loose-bag storage" loading="lazy" />
-    <figcaption>The whole bag, not a clip and a prayer.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 ## How to choose
@@ -126,7 +122,6 @@ Measure the vertical clearance on the shelf you're organizing — tall container
 
 <figure class="inline-photo">
   <img src="/winnie/best-stackable-pantry-containers-small-kitchen-scene5.jpg" alt="Loose bags and boxes on a shelf beside the same shelf using matched stackable containers, side by side" loading="lazy" />
-  <figcaption>The before-and-after that actually sells the system.</figcaption>
 </figure>
 
 ## Frequently asked questions

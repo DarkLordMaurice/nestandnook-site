@@ -91,7 +91,6 @@ A bike leaned against a garage wall or parked on the floor takes up real square 
 
 <figure class="inline-photo">
   <img src="/winnie/best-vertical-bike-racks-small-garage-scene1.jpg" alt="Two bicycles hanging vertically from wall-mounted hooks in a small single-car garage, wheels facing out" loading="lazy" />
-  <figcaption>Two bikes, vertical, and the floor stays completely clear.</figcaption>
 </figure>
 
 <p id="quick-answer">The best vertical bike rack for a small garage depends on your wall situation and bike count. The <strong>StoreYourBoard 5-Bike Rail</strong> maximizes wall-mounted capacity. For a genuinely tight garage where handlebars get in the way, <strong>monTEK's swivel mounts</strong> pivot bikes flat against the wall. Renters or households that can't drill should look at the <strong>StoreYourBoard Freestanding Rack</strong> instead.</p>
@@ -102,7 +101,6 @@ Wall-mounted racks need a genuinely clear, stud-backed wall run — measure the 
 
 <figure class="inline-photo">
   <img src="/winnie/best-vertical-bike-racks-small-garage-scene2.jpg" alt="Close detail of a vertical bike rack's hook and wheel cradle, showing how the front wheel is supported" loading="lazy" />
-  <figcaption>The wheel cradle is what actually holds the bike steady, not just the hook.</figcaption>
 </figure>
 
 <h2 id="do-not-buy-if">Skip a vertical bike rack if&#x2026;</h2>
@@ -121,12 +119,10 @@ Wall-mounted racks need a genuinely clear, stud-backed wall run — measure the 
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/best-vertical-bike-racks-small-garage-scene3.jpg" alt="Side-profile shot showing the depth clearance a hanging bike takes up against a garage wall" loading="lazy" />
-    <figcaption>Hanging depth versus floor-parked depth — the real space savings, side by side.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/best-vertical-bike-racks-small-garage-scene4.jpg" alt="A bike being lifted onto a wall-mounted vertical hook, showing the lifting motion and hook engagement" loading="lazy" />
-    <figcaption>The lift-and-hang motion most vertical racks require.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 ## Quick comparison
@@ -141,7 +137,6 @@ Wall-mounted racks need a genuinely clear, stud-backed wall run — measure the 
 
 <figure class="inline-photo">
   <img src="/winnie/best-vertical-bike-racks-small-garage-scene5.jpg" alt="A garage wall with two vertically-hung bikes and a car parked beside them, showing the space they free up" loading="lazy" />
-  <figcaption>Two hung bikes and a parked car, sharing the same small footprint.</figcaption>
 </figure>
 
 ## Frequently asked questions

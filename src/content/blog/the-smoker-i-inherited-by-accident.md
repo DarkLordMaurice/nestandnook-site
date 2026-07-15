@@ -15,7 +15,6 @@ relatedGuides:
 
 <figure class="inline-photo">
   <img src="/winnie/the-smoker-i-inherited-by-accident-nonwinnie-scene4.jpg" alt="A close-up of a small enamel flame-shaped pin fastened to a denim jacket lapel" loading="lazy" />
-  <figcaption>The pin that felt, in hindsight, like foreshadowing.</figcaption>
 </figure>
 
 
@@ -42,7 +41,6 @@ I'll admit, too, that a decade of retail buying gave me a specific, useless-in-t
 
 <figure class="inline-photo">
   <img src="/winnie/the-smoker-i-inherited-by-accident-nonwinnie-scene2.jpg" alt="A spread of barbecue food on a picnic table: pulled pork, burgers, and side dishes in serving bowls" loading="lazy" />
-  <figcaption>Three theories on wood chunk timing, one plate that didn't care about any of them.</figcaption>
 </figure>
 
 Once word got around the yard that I'd inherited the smoker mid-cook, I got no fewer than three unsolicited theories on wood chunk timing, two contradictory opinions about whether the lid should stay shut the entire time or get checked periodically, and one very confident guest who does this "professionally, sort of, for friends" and wanted me to know that immediately. I want it on the record that I did what I always do in exactly this situation, professionally or otherwise: I said thank you to all three, quietly followed the one piece of advice that matched what I'd already been told by the actual owner of the smoker, and let the other two believe I was taking their counsel very seriously. Ten years at a reference desk teaches you this particular skill early — how to receive unsolicited expertise graciously without letting it derail the one piece of guidance you actually know to be correct.
@@ -60,7 +58,6 @@ I'd shown up with a very specific, very small plan for my own Saturday, and the 
 
 <figure class="inline-photo">
   <img src="/winnie/the-smoker-i-inherited-by-accident-nonwinnie-scene3.jpg" alt="String lights strung between trees over a backyard patio at dusk, empty chairs nearby" loading="lazy" />
-  <figcaption>By the time the pork shoulder came off, nobody cared who ran the smoker.</figcaption>
 </figure>
 
 By the time the pork shoulder came off — hours later, considerably more tender than I take credit for — nobody at that table cared who technically ran the smoker. They cared that dinner was excellent and the company was better. I went home smelling like a campfire and thinking about how much of my own stress, on an average day, comes from clinging to a plan a situation has already quietly moved past. I've built an entire professional identity around being the person with a plan — call it "professional organizer of opinions," which is the phrase I use for what I actually do here — and there was something almost funny about that same person spending a whole Saturday evening improvising in front of an open flame with borrowed tongs and no notes. The smoker didn't teach me barbecue. It taught me the plan was never actually the point.
@@ -73,7 +70,6 @@ I've noticed the same lesson trying to resurface all week since, in smaller, les
 
 <figure class="inline-photo">
   <img src="/winnie/the-smoker-i-inherited-by-accident-nonwinnie-scene1.jpg" alt="A backyard smoker with wood chunks loaded and smoke rising, string lights glowing behind it at dusk" loading="lazy" />
-  <figcaption>Hour three of someone else's plan, handed off mid-cook.</figcaption>
 </figure>
 
 

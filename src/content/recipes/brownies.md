@@ -76,7 +76,6 @@ This brownies recipe exists because the two things people want most from a brown
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-brownies-scene1.jpg" alt="A baking pan filled with glossy brownie batter, a spatula smoothing the top" loading="lazy" />
-  <figcaption>Glossy top is the sign the sugar did its job.</figcaption>
 </figure>
 
 
@@ -90,7 +89,6 @@ This recipe is already ratioed toward fudgy — less flour relative to fat and s
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-brownies-scene2.jpg" alt="A stack of fudgy brownie squares on a plate, one broken in half showing a gooey center" loading="lazy" />
-  <figcaption>Fudgy center, not cakey — that's the whole point of this recipe.</figcaption>
 </figure>
 
 

@@ -35,7 +35,6 @@ A tiny kitchen can cook a real dinner. What it can't do is host twelve bowls, th
 
 <figure class="inline-photo">
   <img src="/winnie/tiny-kitchen-full-meal-problem.jpg" alt="Tiny kitchen counter overwhelmed with a hissing pan, stacked cutting boards, and a bowl about to slide off the edge" loading="lazy" />
-  <figcaption>No sequence, no landing zone: everything happening on the counter at once.</figcaption>
 </figure>
 
 <h2 id="measure-first-check">Identify your three working zones first</h2>
@@ -51,17 +50,14 @@ Reliable tiny-kitchen formulas worth keeping in rotation: a grain bowl dinner, a
 <div class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/tiny-kitchen-landing-zone-for-hot-pan.jpg" alt="Setting a hot lidded pan onto a heat-safe trivet with the cutting board already pushed clear" loading="lazy" />
-    <figcaption>The landing zone, decided before the burner goes on — the step everyone skips.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/tiny-kitchen-one-pan-dinner-detail.jpg" alt="Vegetables, protein, and sauce coming together in one lidded sauté pan" loading="lazy" />
-    <figcaption>One vessel doing most of the work — the whole point of the format.</figcaption>
-  </figure>
+</figure>
 </div>
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-cook-full-meals-in-a-tiny-kitchen-scene5.jpg" alt="A one-pan meal being plated directly from its cooking vessel on a compact stovetop, minimal extra dishes in sight" loading="lazy" />
-  <figcaption>Plated straight from the pan — the format doing its job.</figcaption>
 </figure>
 
 <h2 id="do-not-buy-if">Skip a new cooking tool if&#x2026;</h2>
@@ -76,7 +72,6 @@ See [Best Compact Air Fryers for Small Kitchens](/kitchen/best-compact-air-fryer
 
 <figure class="inline-photo">
   <img src="/winnie/tiny-kitchen-full-meal-payoff.jpg" alt="A complete plated meal at the kitchen table with only one pan, one cutting board, and one utensil visible" loading="lazy" />
-  <figcaption>The payoff: a real, complete meal, with the counter already clear.</figcaption>
 </figure>
 
 > **Winnie's take:** The landing zone is the step everyone skips and the one that actually prevents disasters. A hot pan with nowhere planned to go ends up on a cutting board, a towel, or occasionally the floor. Decide where it lands before you turn on the burner, not while you're holding it.

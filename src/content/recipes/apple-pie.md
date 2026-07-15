@@ -85,7 +85,6 @@ This apple pie recipe exists to fix the two failures that show up in almost ever
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-apple-pie-scene1.jpg" alt="Thin apple slices layered inside an unbaked pie crust in a glass pie dish, cinnamon visible on top" loading="lazy" />
-  <figcaption>Thin, even slices bake through together instead of leaving raw spots.</figcaption>
 </figure>
 
 
@@ -99,7 +98,6 @@ Even well-drained apples still carry some moisture, and a raw bottom crust sitti
 
 <figure class="inline-photo">
   <img src="/recipes/recipe-apple-pie-scene2.jpg" alt="A golden-brown baked apple pie with a lattice crust cooling on a wire rack, one slice cut and plated nearby" loading="lazy" />
-  <figcaption>Cooling matters as much as baking — cut too early and it runs.</figcaption>
 </figure>
 
 

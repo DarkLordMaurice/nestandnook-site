@@ -112,7 +112,6 @@ The most protective couch cover is useless when it slides into a heap, cannot fi
 
 <figure class="inline-photo">
   <img src="/winnie/best-couch-covers-for-pets-in-apartments-scene1.jpg" alt="A washable stretch slipcover fitted over an apartment sofa with a cat resting nearby" loading="lazy" />
-  <figcaption>Fit to the actual sofa, not a generic size label.</figcaption>
 </figure>
 
 <p id="quick-answer">Choose the <strong>PrinceDeco stretch slipcover</strong> for broad full-sofa coverage, the <strong>Easy-Going stretch cover</strong> for a softer budget option, the <strong>Orvis Grip-Tight protector</strong> for a defined washable seat zone, or the <strong>Ameritex blanket-style cover</strong> for a foldable waterproof layer. Measure the actual sofa and distinguish water-resistant from waterproof claims.</p>
@@ -123,7 +122,6 @@ Record total width, usable seat width, cushion depth, back height, arm shape, ex
 
 <figure class="inline-photo">
   <img src="/winnie/best-couch-covers-for-pets-in-apartments-scene2.jpg" alt="A measuring tape recording sofa arm height and cushion depth for a couch cover" loading="lazy" />
-  <figcaption>Shape, not seat count — that's what the diagram needs.</figcaption>
 </figure>
 
 ## Full slipcovers maximize hair coverage
@@ -149,12 +147,10 @@ Smooth fabric may release hair more easily, while plush or textured covers can h
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/best-couch-covers-for-pets-in-apartments-scene3.jpg" alt="A quilted grippy seat protector removed for washing, leaving the sofa arms exposed" loading="lazy" />
-    <figcaption>Easier to wash, but the arms and back stay exposed.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/best-couch-covers-for-pets-in-apartments-scene4.jpg" alt="A folded waterproof blanket-style cover beside a couch, ready to move between rooms" loading="lazy" />
-    <figcaption>Foldable and flexible — but rarely a full-sofa fit.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 <h2 id="do-not-buy-if">Do not buy a pet couch cover if…</h2>
@@ -169,7 +165,6 @@ Pair the cover with [a surface-safe pet-hair remover](/pet-care/best-pet-hair-re
 
 <figure class="inline-photo">
   <img src="/winnie/best-couch-covers-for-pets-in-apartments-scene5.jpg" alt="A hair roller being used on a textured couch cover fabric between washes" loading="lazy" />
-  <figcaption>Hair release depends on texture — plan the maintenance, too.</figcaption>
 </figure>
 
 ## Frequently asked questions

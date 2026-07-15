@@ -88,7 +88,6 @@ The best desk pad does three unglamorous jobs at once: protects the desk surface
 
 <figure class="inline-photo">
   <img src="/winnie/best-desk-pads-scene1.jpg" alt="A leather-look desk pad covering a wood desk, keyboard and mouse on top" loading="lazy" />
-  <figcaption>One material choice quiets the whole desk and gives it a visual edge.</figcaption>
 </figure>
 
 
@@ -106,7 +105,6 @@ The single most common regret in desk pad reviews isn't about material quality â
 
 <figure class="inline-photo">
   <img src="/winnie/best-desk-pads-scene4.jpg" alt="A leather desk pad anchoring a keyboard and mouse zone on a small desk, non-slip backing visible at the edge" loading="lazy" />
-  <figcaption>Non-slip backing, sized to the actual typing zone.</figcaption>
 </figure>
 
 ## Material: leather-look vs. cork
@@ -116,14 +114,12 @@ PU leather (most of the options here) resists water and wipes clean easily, whic
 
 <figure class="inline-photo">
   <img src="/winnie/best-desk-pads-scene3.jpg" alt="A large desk pad sized to a full small-desk surface, laptop and mug on top" loading="lazy" />
-  <figcaption>Size the pad to the desk, not to whatever was on the shelf.</figcaption>
 </figure>
 
 ## Quick comparison
 
 <figure class="inline-photo">
   <img src="/winnie/best-desk-pads-scene2.jpg" alt="Split comparison of a leather-look texture and a natural cork texture" loading="lazy" />
-  <figcaption>Leather-look wipes clean. Cork forgives a coffee ring before it sets.</figcaption>
 </figure>
 
 
@@ -137,7 +133,6 @@ PU leather (most of the options here) resists water and wipes clean easily, whic
 
 <figure class="inline-photo">
   <img src="/winnie/best-desk-pads-scene5.jpg" alt="A reversible desk pad flipped to show its cork side versus its leather side" loading="lazy" />
-  <figcaption>Two looks, one pad â€” flip it instead of buying a second.</figcaption>
 </figure>
 
 ## Frequently asked questions

@@ -179,7 +179,6 @@ A useful apartment starter kit cannot pretend cats and dogs share the same bathr
 
 <figure class="inline-photo">
   <img src="/winnie/apartment-pet-starter-kit-under-150-scene1.jpg" alt="A modular apartment pet starter kit laid out on a small table: a compact fountain, a sealed food storage bin, and a fabric hair-removal roller" loading="lazy" />
-  <figcaption>The shared base: three household basics before either species module gets added.</figcaption>
 </figure>
 
 <p id="quick-answer">Build the kit in modules. The shared base is a reusable furniture hair remover, compact water fountain, and small food-storage container. The cat lane adds a high-sided open litter box and compact cat tree. The dog lane adds a quiet puzzle board and appropriately measured pressure gate. Publish the under-$150 claim only after verifying each complete lane's current subtotal.</p>
@@ -190,7 +189,6 @@ Do not total a cart before confirming fit. Measure the feeding and fountain mat,
 
 <figure class="inline-photo">
   <img src="/winnie/apartment-pet-starter-kit-under-150-scene2.jpg" alt="A small labeled cat-specific module and a separate dog-specific module, side by side, showing a clearly divided starter kit" loading="lazy" />
-  <figcaption>Two separate modules, not one universal bundle — measure each lane on its own.</figcaption>
 </figure>
 
 ## Shared base: reusable furniture hair remover
@@ -220,12 +218,10 @@ The Outward Hound Hide N' Slide stores flat and creates less impact noise than a
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/apartment-pet-starter-kit-under-150-scene3.jpg" alt="A compact pet water fountain and a small food storage bin fitting together on one narrow shelf" loading="lazy" />
-    <figcaption>The feeding module fitting into a single narrow shelf.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/apartment-pet-starter-kit-under-150-scene4.jpg" alt="An apartment corner set up as a complete but modest pet starter zone, no clutter spilling into the rest of the room" loading="lazy" />
-    <figcaption>A complete but modest starter zone — contained, not sprawling.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 ## Dog module: measured pressure gate
@@ -238,7 +234,6 @@ Claude must verify two separate live totals: shared base plus cat module, and sh
 
 <figure class="inline-photo">
   <img src="/winnie/apartment-pet-starter-kit-under-150-scene5.jpg" alt="A cluttered pile of mismatched pet items beside the same items organized into one small labeled starter kit" loading="lazy" />
-  <figcaption>The whole point of a starter kit: organized modules, not a mismatched pile.</figcaption>
 </figure>
 
 <h2 id="do-not-buy-if">Do not publish or buy this starter kit if…</h2>

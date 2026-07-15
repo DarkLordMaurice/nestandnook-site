@@ -35,7 +35,6 @@ A small pantry isn't failing because it lacks acrylic bins. It's failing because
 
 <figure class="inline-photo">
   <img src="/winnie/small-pantry-organization-problem.jpg" alt="Standing in front of a cramped pantry closet holding up two identical duplicate cans found on different shelves" loading="lazy" />
-  <figcaption>Caught you: duplicate cans hiding on two different shelves.</figcaption>
 </figure>
 
 <h2 id="measure-first-check">Measure shelves, then count your real categories</h2>
@@ -49,17 +48,14 @@ Empty the pantry and sort everything by how often you actually use it, not by co
 <div class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/small-pantry-can-riser-visible-storage.jpg" alt="Arranging cans and jars on a shelf riser so every item sits visible in short rows" loading="lazy" />
-    <figcaption>A visible can row means the third row never disappears again.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/small-pantry-finish-first-tray.jpg" alt="Arranging a shallow finish-first tray with opened crackers, half-used pasta, and a small bag of rice" loading="lazy" />
-    <figcaption>The "finish first" tray — one shallow spot at the front, nothing hides behind it.</figcaption>
-  </figure>
+</figure>
 </div>
 
 <figure class="inline-photo">
   <img src="/winnie/how-to-organize-a-small-pantry-scene5.jpg" alt="A small pantry shelf organized into zones with older cans rotated to the front for use-first visibility" loading="lazy" />
-  <figcaption>Older cans up front — rotation is the habit that sticks.</figcaption>
 </figure>
 
 <h2 id="do-not-buy-if">Skip a pantry organizer if&#x2026;</h2>
@@ -74,7 +70,6 @@ See [Best Stackable Pantry Containers for Small Kitchens](/kitchen/best-stackabl
 
 <figure class="inline-photo">
   <img src="/winnie/small-pantry-grocery-reset.jpg" alt="Doing a quick pantry reset with a notebook before a grocery shopping trip" loading="lazy" />
-  <figcaption>A two-minute reset before shopping beats buying from a guess.</figcaption>
 </figure>
 
 > **Winnie's take:** The "finish first" zone is the one habit that's saved me the most money — not the containers, not the labels, just one shallow spot at the front where the almost-empty stuff has to live until it's actually empty.

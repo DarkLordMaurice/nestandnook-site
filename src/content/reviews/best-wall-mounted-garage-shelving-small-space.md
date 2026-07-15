@@ -91,7 +91,6 @@ Floor space in a small garage almost always has to stay clear for the car, which
 
 <figure class="inline-photo">
   <img src="/winnie/best-wall-mounted-garage-shelving-small-space-scene1.jpg" alt="A single-car garage wall fitted with modular wall-mounted shelving holding labeled bins and small tools" loading="lazy" />
-  <figcaption>Wall shelving reclaims storage without touching the car's parking footprint.</figcaption>
 </figure>
 
 <p id="quick-answer">The best wall-mounted garage shelving for a small space depends on how much wall you're committing and how much flexibility you want. The <strong>Rubbermaid FastTrack 15-Piece Kit</strong> is the best complete starter kit. For building up incrementally, a single <strong>FastTrack 48-inch rail</strong> lets you add accessories over time. For a continuous surface where hooks go anywhere, <strong>Gladiator's 4' GearWall panels</strong> are the better system.</p>
@@ -102,7 +101,6 @@ Find a genuinely clear, stud-backed wall section — no window, no door swing pa
 
 <figure class="inline-photo">
   <img src="/winnie/best-wall-mounted-garage-shelving-small-space-scene2.jpg" alt="Close detail of a wall-shelving bracket anchored into a stud" loading="lazy" />
-  <figcaption>The bracket is only as strong as the stud it's actually anchored into.</figcaption>
 </figure>
 
 <h2 id="do-not-buy-if">Skip a wall-mounted system if&#x2026;</h2>
@@ -121,12 +119,10 @@ Find a genuinely clear, stud-backed wall section — no window, no door swing pa
 <figure class="inline-photo-pair">
   <figure class="inline-photo">
     <img src="/winnie/best-wall-mounted-garage-shelving-small-space-scene3.jpg" alt="A narrow garage wall section before shelving, bare wall" loading="lazy" />
-    <figcaption>Before: a narrow wall section with nothing on it.</figcaption>
-  </figure>
+</figure>
   <figure class="inline-photo">
     <img src="/winnie/best-wall-mounted-garage-shelving-small-space-scene4.jpg" alt="Over-the-shoulder angle looking at wall shelving from the garage's open floor space" loading="lazy" />
-    <figcaption>After: organized wall shelving that leaves the floor completely clear.</figcaption>
-  </figure>
+</figure>
 </figure>
 
 ## Quick comparison
@@ -141,7 +137,6 @@ Find a genuinely clear, stud-backed wall section — no window, no door swing pa
 
 <figure class="inline-photo">
   <img src="/winnie/best-wall-mounted-garage-shelving-small-space-scene5.jpg" alt="Close-up of adjustable shelf brackets being repositioned to a different height slot on a wall-mounted track" loading="lazy" />
-  <figcaption>Adjustable height slots mean the shelf grows with what you actually store.</figcaption>
 </figure>
 
 ## Frequently asked questions
