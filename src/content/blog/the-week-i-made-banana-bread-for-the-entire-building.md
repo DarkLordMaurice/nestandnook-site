@@ -13,6 +13,12 @@ relatedGuides:
     href: "/blog/"
 ---
 
+<figure class="inline-photo">
+  <img src="/winnie/the-week-i-made-banana-bread-for-the-entire-building-nonwinnie-scene1.jpg" alt="Six very ripe, heavily spotted bananas piled on a kitchen counter" loading="lazy" />
+  <figcaption>The bananas that started a week I didn't plan for.</figcaption>
+</figure>
+
+
 It started with six bananas that came home from a grocery run with real intentions and no actual plan, the way most of my kitchen disasters start. They sat on the counter doing the thing bananas do, going from "fine, eat one" to "these are now a chemistry experiment" in about the time it takes me to reorganize a spice rack, which is to say, not very long. By the time I actually looked at them again, they'd crossed a line I don't love admitting I let happen. Somewhere between "still edible" and "compost," I made a decision that turned into a solid week of my life: I was not throwing these away, and I was not eating six bananas' worth of anything by myself either.
 
 ## One loaf turned into a decision I didn't fully think through
@@ -21,13 +27,31 @@ I made one loaf first, the reasonable amount, the amount a person with a normal 
 
 ## The foil-and-note system nobody asked for
 
+
+<figure class="inline-photo">
+  <img src="/winnie/the-week-i-made-banana-bread-for-the-entire-building-nonwinnie-scene2.jpg" alt="Four half-loaves of banana bread wrapped individually in foil, lined up and ready for delivery" loading="lazy" />
+  <figcaption>Route-planned, foil-wrapped, entirely unnecessary and I stand by it.</figcaption>
+</figure>
+
 I don't do anything without a system, including apparently spontaneous acts of neighborliness, so what should have been "hand a neighbor some bread" turned into wrapping four half-loaves in foil, writing a small card for each one, and working out — with actual seriousness — the most efficient route through the building so I wasn't backtracking floors. I want to be honest about how unnecessary that last part was. Nobody needed me to route-plan a four-stop bread delivery. I needed to route-plan a four-stop bread delivery, because handing someone food with zero plan attached felt, to me, borderline reckless.
+
+
+<figure class="inline-photo">
+  <img src="/winnie/the-week-i-made-banana-bread-for-the-entire-building-nonwinnie-scene3.jpg" alt="A small handwritten note card tucked under kitchen twine on a foil-wrapped loaf of bread" loading="lazy" />
+  <figcaption>The note felt necessary. It was not. I did it anyway.</figcaption>
+</figure>
 
 ## The actual conversations were the part I didn't plan for
 
 What I did not account for, because I genuinely hadn't thought that far ahead, was that four separate doors opening meant four separate small conversations with people I'd spent over a year reducing to "the guy with the dog" and "the woman who always takes the stairs." The dog guy has apparently been meaning to ask someone in the building about a leak under his sink for two months and just assumed nobody would want to be bothered. The stairs woman turned out to run a small stand at the weekend market two towns over and insisted I come by sometime, which I now feel obligated to do, mostly because she seemed like the kind of person who'd remember if I didn't. None of that came from a system. It came from standing in a hallway holding bread.
 
 ## By loaf three, I had a repeat customer
+
+
+<figure class="inline-photo">
+  <img src="/winnie/the-week-i-made-banana-bread-for-the-entire-building-nonwinnie-scene4.jpg" alt="A long apartment hallway with several doors, one door slightly ajar, warm hallway lighting" loading="lazy" />
+  <figcaption>Four doors I'd walked past for a year, finally knocked on.</figcaption>
+</figure>
 
 <div class="polaroid inset">
   <img src="/winnie/winnie-holding-chocolate-chip-cookies.jpg" alt="Winnie holding a plate of fresh-baked chocolate chip cookies in her kitchen" width="1122" height="1402" />

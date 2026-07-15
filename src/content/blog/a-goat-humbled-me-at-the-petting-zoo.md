@@ -21,6 +21,12 @@ I have a whole system for feeding goats at a petting zoo, apparently, developed 
 
 ## I brought a plan to a place that doesn't take plans
 
+
+<figure class="inline-photo">
+  <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene1.jpg" alt="A goat standing at a wooden petting-zoo fence, reaching toward an open hand extending into frame" loading="lazy" />
+  <figcaption>The negotiation Gerald had already won before it started.</figcaption>
+</figure>
+
 I'd read, somewhere, that you're supposed to hold the food flat on your palm so the goat doesn't nip your fingers. Reasonable advice. I followed it precisely, the way I follow most instructions, with a faint sense of professional pride that I was Doing It Correctly. The goat took one look at my careful, flat-palmed offering, decided the paper bag itself was the more interesting menu item, and went for it directly. I spent the next several minutes renegotiating terms with an animal that had already won the negotiation before it started. A decade of retail buying taught me how to read a room and close a deal on my terms. Gerald had not read the same books I had, and it showed.
 
 ## The best part of the day required zero expertise
@@ -28,6 +34,12 @@ I'd read, somewhere, that you're supposed to hold the food flat on your palm so 
 What I actually loved about the afternoon wasn't figuring anything out — it was how little there was to figure out. No system to optimize, no setup to get right, nothing to research ahead of time beyond "bring quarters for the feed dispenser." Just a fence, a bag of pellets, and animals with their own clear, immediate, un-overthinkable opinions about what happens next. I have built an entire career out of the premise that the right amount of research turns a confusing choice into an obvious one. A goat does not care about my career. A goat has already decided, and the decision is usually "the bag, not the palm."
 
 ## The otters had their own opinions too
+
+
+<figure class="inline-photo">
+  <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene2.jpg" alt="Two otters standing at full attention in shallow water at a zoo habitat, paws raised expectantly" loading="lazy" />
+  <figcaption>Full attention, immediate opinions, zero ambiguity about what happens next.</figcaption>
+</figure>
 
 <div class="polaroid inset float-left">
   <img src="/winnie/winnie-life-zoo-otters.jpg" alt="Winnie crouching at the edge of the otter habitat, hand-feeding two otters standing in the water" width="1122" height="1402" />
@@ -37,6 +49,12 @@ Past the goat pen, the otter habitat ran on a completely different negotiation. 
 
 ## The capybara did not care about my camera angle
 
+
+<figure class="inline-photo">
+  <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene3.jpg" alt="A close-up of a capybara's face near a low wooden fence at a petting zoo" loading="lazy" />
+  <figcaption>Walked directly into frame nose-first, and won.</figcaption>
+</figure>
+
 <div class="polaroid inset">
   <img src="/winnie/winnie-life-zoo-capybara-selfie.jpg" alt="A close-up selfie of Winnie next to a capybara, its nose nearly touching the camera" width="1122" height="1402" />
 </div>
@@ -44,6 +62,12 @@ Past the goat pen, the otter habitat ran on a completely different negotiation. 
 I tried for one (1) flattering selfie with a capybara. The capybara had other plans, walked directly into frame nose-first, and won. I'm including the photo anyway because it's a better picture than the one I was trying to take, which is a pattern I'm noticing repeat itself in more places than just this zoo trip — the version I planned for is rarely the version that actually turns out to be worth keeping.
 
 ## And then a toucan landed on my shoulder
+
+
+<figure class="inline-photo">
+  <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene4.jpg" alt="A colorful toucan perched on a wooden branch near a bird aviary" loading="lazy" />
+  <figcaption>No system had a category ready for this.</figcaption>
+</figure>
 
 <div class="polaroid inset float-left">
   <img src="/winnie/winnie-life-zoo-toucan.jpg" alt="Winnie reacting with surprise as a toucan perches on her shoulder near the bird aviary" width="1122" height="1402" />

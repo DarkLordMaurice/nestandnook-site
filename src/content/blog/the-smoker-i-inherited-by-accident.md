@@ -13,6 +13,12 @@ relatedGuides:
     href: "/blog/"
 ---
 
+<figure class="inline-photo">
+  <img src="/winnie/the-smoker-i-inherited-by-accident-nonwinnie-scene4.jpg" alt="A close-up of a small enamel flame-shaped pin fastened to a denim jacket lapel" loading="lazy" />
+  <figcaption>The pin that felt, in hindsight, like foreshadowing.</figcaption>
+</figure>
+
+
 I was supposed to bring a side dish and a folding chair. That was the entire scope of my responsibility at Saturday's backyard barbecue, agreed upon in advance, written nowhere but understood by everyone. Then the friend actually running the smoker got pulled into a work call that would not end, looked at me with the specific desperation of someone who has 20 pounds of pork shoulder on the line, and handed me the tongs. Hosting a backyard bbq, it turns out, has an emergency-substitute clause nobody tells you about until you're the substitute, and apparently I am always, somehow, the substitute.
 
 For the first hour, I was doing exactly what I'd planned: standing around with a copper mug, half-listening to a conversation about someone's kayak trip, entirely unbothered by the smoker doing its quiet, smoky thing in the background. I'd even pinned a little enamel flame — bought on a whim months ago from a shop I can no longer name — to my jacket that morning, which felt, in hindsight, like foreshadowing I should have taken more seriously.
@@ -33,6 +39,12 @@ I'll admit, too, that a decade of retail buying gave me a specific, useless-in-t
 
 ## The part where three separate people tried to help
 
+
+<figure class="inline-photo">
+  <img src="/winnie/the-smoker-i-inherited-by-accident-nonwinnie-scene2.jpg" alt="A spread of barbecue food on a picnic table: pulled pork, burgers, and side dishes in serving bowls" loading="lazy" />
+  <figcaption>Three theories on wood chunk timing, one plate that didn't care about any of them.</figcaption>
+</figure>
+
 Once word got around the yard that I'd inherited the smoker mid-cook, I got no fewer than three unsolicited theories on wood chunk timing, two contradictory opinions about whether the lid should stay shut the entire time or get checked periodically, and one very confident guest who does this "professionally, sort of, for friends" and wanted me to know that immediately. I want it on the record that I did what I always do in exactly this situation, professionally or otherwise: I said thank you to all three, quietly followed the one piece of advice that matched what I'd already been told by the actual owner of the smoker, and let the other two believe I was taking their counsel very seriously. Ten years at a reference desk teaches you this particular skill early — how to receive unsolicited expertise graciously without letting it derail the one piece of guidance you actually know to be correct.
 
 ## Letting go of "my job today" was the actual lesson
@@ -45,6 +57,12 @@ I'd shown up with a very specific, very small plan for my own Saturday, and the 
 
 ## Good smoke, good people, genuinely good times
 
+
+<figure class="inline-photo">
+  <img src="/winnie/the-smoker-i-inherited-by-accident-nonwinnie-scene3.jpg" alt="String lights strung between trees over a backyard patio at dusk, empty chairs nearby" loading="lazy" />
+  <figcaption>By the time the pork shoulder came off, nobody cared who ran the smoker.</figcaption>
+</figure>
+
 By the time the pork shoulder came off — hours later, considerably more tender than I take credit for — nobody at that table cared who technically ran the smoker. They cared that dinner was excellent and the company was better. I went home smelling like a campfire and thinking about how much of my own stress, on an average day, comes from clinging to a plan a situation has already quietly moved past. I've built an entire professional identity around being the person with a plan — call it "professional organizer of opinions," which is the phrase I use for what I actually do here — and there was something almost funny about that same person spending a whole Saturday evening improvising in front of an open flame with borrowed tongs and no notes. The smoker didn't teach me barbecue. It taught me the plan was never actually the point.
 
 I've noticed the same lesson trying to resurface all week since, in smaller, less charred versions. A cluster of pages I'd scheduled to publish got delayed by a broken image link, and my first instinct was the same low-grade panic from the moment I got handed those tongs — not because the fix was hard, but because it wasn't the Tuesday I'd planned for. It got fixed within the hour, same as the pork shoulder got tended within the evening, and nobody downstream ever knew there'd been a wobble. I'm trying to hold onto that as the actual takeaway rather than a nice sentence I wrote about a barbecue: the wobble is rarely the story anyone else remembers. Only the plan you quietly built back around it is.
@@ -52,5 +70,11 @@ I've noticed the same lesson trying to resurface all week since, in smaller, les
 <div class="polaroid inset">
   <img src="/winnie/winnie-life-bbq-apron-back.jpg" alt="Winnie in a leather barbecue apron, glancing back over her shoulder at the smoker with a plate of food behind her" width="1122" height="1402" />
 </div>
+
+<figure class="inline-photo">
+  <img src="/winnie/the-smoker-i-inherited-by-accident-nonwinnie-scene1.jpg" alt="A backyard smoker with wood chunks loaded and smoke rising, string lights glowing behind it at dusk" loading="lazy" />
+  <figcaption>Hour three of someone else's plan, handed off mid-cook.</figcaption>
+</figure>
+
 
 — Winnie
