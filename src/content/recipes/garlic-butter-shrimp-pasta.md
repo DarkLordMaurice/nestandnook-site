@@ -9,10 +9,8 @@ prepTimeMinutes: 15
 cookTimeMinutes: 20
 servings: 4
 difficulty: "easy"
-image: "/recipes/recipe-garlic-butter-shrimp-pasta.jpg"
+image: "PENDING"
 imageAlt: "A skillet of garlic butter shrimp pasta tossed in a glossy sauce, shrimp pink and curled, fresh parsley scattered on top"
-altImage: "/recipes/recipe-garlic-butter-shrimp-pasta-alt.jpg"
-ingredientsImage: "/recipes/recipe-garlic-butter-shrimp-pasta-ingredients.jpg"
 winnieImage: "/winnie/winnie-kitchen-chop.jpg"
 winnieHeadshot: "/winnie/headshot-v4-4.jpg"
 winnieNote: "This is a one-pot pasta, which means the sauce, the pasta, and the shrimp all get to know each other in the same pot instead of three separate ones. Structurally, this is just correct."
@@ -91,10 +89,6 @@ This is the pasta I make when I want something that tastes like it took real eff
 
 Shrimp cooks fast — really fast — and it keeps cooking a little even after it's off direct heat. Searing it first and setting it aside means it's not sitting in a simmering pan for the twelve-plus minutes the pasta needs to cook through. Skip this step and the shrimp you started with as tender and the shrimp you serve as rubbery are two very different textures, cooked from the exact same ingredients.
 
-<figure class="inline-photo">
-  <img src="/recipes/recipe-garlic-butter-shrimp-pasta-process.jpg" alt="Shrimp searing in a skillet, pink and curled, next to a small bowl of minced garlic" loading="lazy" />
-</figure>
-
 ## One pan, real starch, no extra pot
 
 Cooking the pasta directly in the broth mixture instead of a separate pot of water isn't just about fewer dishes — the pasta releases starch straight into the sauce as it cooks, which is what gives this dish its clingy, restaurant-style texture instead of a thin broth that pools at the bottom of the bowl. Stir it a few times while it simmers so it doesn't stick to the pan bottom or clump into a single starchy mass.
@@ -102,9 +96,5 @@ Cooking the pasta directly in the broth mixture instead of a separate pot of wat
 ## Keeping the cream sauce from breaking
 
 A broken cream sauce — grainy, oily-looking, separated — is almost always a heat problem, not an ingredient problem. Once the cream and Parmesan go in, keep the pan at a gentle simmer rather than a boil, and don't leave it on the heat longer than it takes to thicken. If it's ever looking thin, patience fixes it faster than more cheese does.
-
-<figure class="inline-photo">
-  <img src="/recipes/recipe-garlic-butter-shrimp-pasta-serving.jpg" alt="A plated serving of garlic butter shrimp pasta twirled on a fork, lemon wedge and parsley on the side" loading="lazy" />
-</figure>
 
 Serve it the moment it comes off the stove with something crusty on the side to catch the extra sauce, because there will be extra sauce, and pretending you don't want to mop it up is a lie nobody needs to tell in their own kitchen.

@@ -110,19 +110,11 @@ faqs:
 
 The most protective couch cover is useless when it slides into a heap, cannot fit the washer, or leaves the exact sofa arm the cat prefers completely exposed. Apartment fit means matching the cover to the furniture, the pet's mess pattern, the laundry equipment, and the place the cover will dry.
 
-<figure class="inline-photo">
-  <img src="/winnie/best-couch-covers-for-pets-in-apartments-scene1.jpg" alt="A washable stretch slipcover fitted over an apartment sofa with a cat resting nearby" loading="lazy" />
-</figure>
-
 <p id="quick-answer">Choose the <strong>PrinceDeco stretch slipcover</strong> for broad full-sofa coverage, the <strong>Easy-Going stretch cover</strong> for a softer budget option, the <strong>Orvis Grip-Tight protector</strong> for a defined washable seat zone, or the <strong>Ameritex blanket-style cover</strong> for a foldable waterproof layer. Measure the actual sofa and distinguish water-resistant from waterproof claims.</p>
 
 <h2 id="measure-first-check">Measure the couch by shape, not seat count</h2>
 
 Record total width, usable seat width, cushion depth, back height, arm shape, exposed back, and whether the sofa reclines or separates. Compare those numbers with the manufacturer's diagram. Then check washer capacity and the folded storage size for the hours when the cover is off.
-
-<figure class="inline-photo">
-  <img src="/winnie/best-couch-covers-for-pets-in-apartments-scene2.jpg" alt="A measuring tape recording sofa arm height and cushion depth for a couch cover" loading="lazy" />
-</figure>
 
 ## Full slipcovers maximize hair coverage
 
@@ -145,13 +137,7 @@ Heat can damage stretch fibers, grip coatings, or waterproof membranes. Follow w
 Smooth fabric may release hair more easily, while plush or textured covers can hold it. Use a compatible roller or vacuum between washes and include that maintenance in the purchase decision.
 
 <figure class="inline-photo-pair">
-  <figure class="inline-photo">
-    <img src="/winnie/best-couch-covers-for-pets-in-apartments-scene3.jpg" alt="A quilted grippy seat protector removed for washing, leaving the sofa arms exposed" loading="lazy" />
-</figure>
-  <figure class="inline-photo">
-    <img src="/winnie/best-couch-covers-for-pets-in-apartments-scene4.jpg" alt="A folded waterproof blanket-style cover beside a couch, ready to move between rooms" loading="lazy" />
-</figure>
-</figure>
+  </figure>
 
 <h2 id="do-not-buy-if">Do not buy a pet couch cover if…</h2>
 
@@ -162,10 +148,6 @@ Smooth fabric may release hair more easily, while plush or textured covers can h
 - Straps, anchors, backing, or texture are incompatible with the upholstery.
 
 Pair the cover with [a surface-safe pet-hair remover](/pet-care/best-pet-hair-removers-for-furniture/) rather than expecting laundering to handle every visible hair.
-
-<figure class="inline-photo">
-  <img src="/winnie/best-couch-covers-for-pets-in-apartments-scene5.jpg" alt="A hair roller being used on a textured couch cover fabric between washes" loading="lazy" />
-</figure>
 
 ## Frequently asked questions
 

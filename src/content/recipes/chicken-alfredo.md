@@ -9,10 +9,7 @@ prepTimeMinutes: 15
 cookTimeMinutes: 25
 servings: 4
 difficulty: "easy"
-image: "/recipes/recipe-chicken-alfredo.jpg"
-altImage: "/recipes/recipe-chicken-alfredo-alt.jpg"
-ingredientsImage: "/recipes/recipe-chicken-alfredo-ingredients.jpg"
-altImageAlt: "A close-up of chicken alfredo pasta twirled on a fork, showing the silky sauce"
+image: "PENDING"
 imageAlt: "A bowl of fettuccine alfredo topped with sliced grilled chicken and cracked black pepper"
 winnieImage: "/winnie/winnie-holding-chicken-alfredo.jpg"
 winnieHeadshot: "/winnie/headshot-v4-2.jpg"
@@ -86,11 +83,6 @@ This chicken alfredo recipe fixes alfredo sauce's reputation for being temperame
 
 ## Broken sauce is a heat problem, not a recipe problem
 
-<figure class="inline-photo">
-  <img src="/recipes/recipe-chicken-alfredo-scene1.jpg" alt="A skillet of creamy alfredo sauce being tossed with fettuccine noodles, steam rising" loading="lazy" />
-</figure>
-
-
 Cheese is mostly protein and fat held in a delicate balance. Hit that balance with too much heat too quickly and the proteins tighten up and squeeze out the fat, which is what a "broken" or grainy sauce actually is at a molecular level. Pulling the pan completely off the heat before adding cheese, then stirring it in gradually, sidesteps the problem instead of trying to rescue a sauce that's already started to separate.
 
 ## The cheese itself matters more than people expect
@@ -98,10 +90,5 @@ Cheese is mostly protein and fat held in a delicate balance. Hit that balance wi
 Pre-shredded cheese is convenient, but it's coated in cellulose and other anti-caking agents specifically so the shreds don't clump in the bag — which is the same property that keeps it from melting into a smooth sauce on the stove. A block of Parmesan grated fresh right before cooking melts noticeably more evenly, for maybe two extra minutes of effort.
 
 ## Pasta water is the adjustment tool, not an afterthought
-
-<figure class="inline-photo">
-  <img src="/recipes/recipe-chicken-alfredo-scene2.jpg" alt="A plated bowl of chicken alfredo pasta garnished with fresh parsley and black pepper on a dinner table" loading="lazy" />
-</figure>
-
 
 Alfredo sauce thickens fast, both while cooking and while it sits waiting to be served, and going straight to plain water to thin it out mutes the flavor. Reserved pasta water carries starch that loosens the sauce's texture while helping it cling to the noodles — it's worth keeping a cup on the counter through the whole process, not just as an emergency fix.

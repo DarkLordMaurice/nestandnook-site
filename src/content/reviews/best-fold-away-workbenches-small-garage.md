@@ -89,19 +89,11 @@ faqs:
 
 A workbench and a parked car both want the same floor space in a genuinely small garage — which is exactly the problem a fold-away or portable workbench solves. The five options below range from a fully wall-mounted, fold-to-4-inch design to a multi-function portable center that needs no installation at all.
 
-<figure class="inline-photo">
-  <img src="/winnie/best-fold-away-workbenches-small-garage-scene1.jpg" alt="A wall-mounted folding workbench unfolded and in use in a small single-car garage" loading="lazy" />
-</figure>
-
 <p id="quick-answer">The best fold-away workbench for a small garage depends on whether you need wall-mounted or fully portable. The <strong>Ultrawall 47.2-inch model</strong> gives the most work surface while folding flat against the wall. For a genuinely tight wall section, the <strong>32x18-inch Ultrawall</strong> is the compact version. If you can't mount into a wall at all, the <strong>Kreg Mobile Project Center</strong> is the best portable, multi-function option.</p>
 
 <h2 id="measure-first-check">Measure both the folded and unfolded footprint</h2>
 
 For any wall-mounted option, measure the clear, stud-backed wall section available, and separately confirm the unfolded bench won't intrude into your car's parking or door-swing clearance when in use. For portable options, confirm you have a realistic storage spot for the folded unit between projects — a portable workbench that has nowhere to go when folded tends to just sit out permanently, defeating the point.
-
-<figure class="inline-photo">
-  <img src="/winnie/best-fold-away-workbenches-small-garage-scene2.jpg" alt="A tape measure held against a garage wall section, checking clearance for a fold-away workbench" loading="lazy" />
-</figure>
 
 <h2 id="do-not-buy-if">Skip a dedicated workbench if&#x2026;</h2>
 
@@ -117,13 +109,7 @@ For any wall-mounted option, measure the clear, stud-backed wall section availab
 - **Surface material matters**: butcher-block (StoreYourBoard) suits general craft work; powder-coated steel (Ultrawall) suits heavier tool use.
 
 <figure class="inline-photo-pair">
-  <figure class="inline-photo">
-    <img src="/winnie/best-fold-away-workbenches-small-garage-scene3.jpg" alt="Close detail of a workbench's folding bracket hinge mechanism, showing the fold-flat design" loading="lazy" />
-</figure>
-  <figure class="inline-photo">
-    <img src="/winnie/best-fold-away-workbenches-small-garage-scene4.jpg" alt="A workbench folded flat against a garage wall with a car parked in front of it" loading="lazy" />
-</figure>
-</figure>
+  </figure>
 
 ## Quick comparison
 
@@ -134,10 +120,6 @@ For any wall-mounted option, measure the clear, stud-backed wall section availab
 | Kreg KWS1000 | Multi-function/portable | Portable | 350 lbs |
 | Black+Decker Workmate | Budget portable | Portable | 425-550 lbs |
 | Ultrawall 32x18" | Compact wall-mount | Wall (folds flat) | 550 lbs |
-
-<figure class="inline-photo">
-  <img src="/winnie/best-fold-away-workbenches-small-garage-scene5.jpg" alt="A portable multi-function workbench set up mid-project with tools organized on its built-in shelf" loading="lazy" />
-</figure>
 
 ## Frequently asked questions
 

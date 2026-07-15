@@ -9,10 +9,8 @@ prepTimeMinutes: 10
 cookTimeMinutes: 12
 servings: 6
 difficulty: "easy"
-image: "/recipes/recipe-garlic-bread.jpg"
+image: "PENDING"
 imageAlt: "Slices of golden garlic bread with melted butter and herbs, cut from a crusty loaf"
-altImage: "/recipes/recipe-garlic-bread-alt.jpg"
-ingredientsImage: "/recipes/recipe-garlic-bread-ingredients.jpg"
 winnieImage: "/winnie/winnie-kitchen-chop.jpg"
 winnieHeadshot: "/winnie/headshot-v4-3.jpg"
 winnieNote: "Raw garlic straight onto bread and into a hot oven burns before the bread even browns — mellowing it in the butter first is the difference between garlic bread and slightly-scorched bread that tastes like regret."
@@ -72,11 +70,6 @@ This garlic bread recipe exists to fix the two most common ways it goes wrong: b
 
 ## Raw garlic and a hot oven don't mix well
 
-<figure class="inline-photo">
-  <img src="/recipes/recipe-garlic-bread-scene1.jpg" alt="A halved baguette spread thickly with garlic-herb butter, ready to go under the broiler" loading="lazy" />
-</figure>
-
-
 Minced garlic spread raw onto bread and sent straight into a hot oven has almost no protection from the heat — it scorches within minutes, and burnt garlic turns sharply bitter in a way that's hard to mask afterward. Gently warming the garlic in the butter first, over low heat on the stovetop, cooks off that raw edge and mellows the flavor before the bread ever goes in the oven. It's a two-minute step that prevents the single most common complaint about homemade garlic bread.
 
 ## Bake first, broil last
@@ -84,10 +77,5 @@ Minced garlic spread raw onto bread and sent straight into a hot oven has almost
 Baking at a moderate temperature melts the butter through the bread evenly, soaking in rather than just sitting on the surface. Broiling is reserved for the very end, purely for color and a bit of crisp texture at the edges — it works fast and needs to be watched closely, since the line between golden and burnt under a broiler is a matter of seconds, not minutes.
 
 ## Cover every edge
-
-<figure class="inline-photo">
-  <img src="/recipes/recipe-garlic-bread-scene2.jpg" alt="Sliced garlic bread with crispy edges and melted centers stacked on a wooden board" loading="lazy" />
-</figure>
-
 
 Butter that doesn't reach the edges of the bread leaves those spots dry and hard once they hit the oven's heat, while the buttered center stays soft and golden. Spreading all the way to the crust on both halves keeps the texture consistent across the whole slice.

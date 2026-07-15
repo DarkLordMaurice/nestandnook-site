@@ -89,19 +89,11 @@ faqs:
 
 An overhead rack only solves a small garage's storage problem if it actually fits the ceiling space that's really there — most "best overhead garage rack" roundups assume a 3-car garage with an open 4x8 section to spare, which isn't the reality for a lot of single-car and small-lot garages. The five picks below cover that gap: a genuinely narrower option for tight ceilings, budget and heavy-duty tiers within the standard footprint, and a tall-garage 2-tier option for households with vertical room to use.
 
-<figure class="inline-photo">
-  <img src="/winnie/best-overhead-garage-storage-racks-small-garage-scene1.jpg" alt="An overhead storage rack mounted above a small single-car garage ceiling, holding labeled bins" loading="lazy" />
-</figure>
-
 <p id="quick-answer">The best overhead garage storage racks for a small garage prioritize footprint and ceiling-drop range over raw size. The <strong>SafeRacks 2x8</strong> is the best pick for a genuinely narrow garage ceiling. For a standard 4x8 footprint on a budget, the <strong>FLEXIMOUNTS Lite Series</strong> covers the basics without the cost of included decking. For households that will actually load it up, the <strong>FLEXIMOUNTS Pro</strong> steps up to 800 lbs.</p>
 
 <h2 id="measure-first-check">Measure before you buy an overhead rack</h2>
 
 Walk your garage ceiling and find an actually clear section — no garage door track, no opener rail, no light fixture, no HVAC duct running through it. Measure that clear section's real width and depth; that's the footprint you're shopping for, not the size of your garage overall. Then measure from the ceiling down to where your car's roofline sits when parked, since every rack's adjustable drop range has to clear both the car and the garage door's travel path. Finally, confirm your ceiling joists are where you need them — every rack on this list mounts into joists, not drywall alone.
-
-<figure class="inline-photo">
-  <img src="/winnie/best-overhead-garage-storage-racks-small-garage-scene2.jpg" alt="Close detail of an overhead storage rack's mounting hardware and ceiling brackets" loading="lazy" />
-</figure>
 
 <h2 id="do-not-buy-if">Skip an overhead rack if&#x2026;</h2>
 
@@ -117,13 +109,7 @@ Walk your garage ceiling and find an actually clear section — no garage door t
 - **Joist mounting is non-negotiable:** every option here requires it — factor installation into your decision, not just the product price.
 
 <figure class="inline-photo-pair">
-  <figure class="inline-photo">
-    <img src="/winnie/best-overhead-garage-storage-racks-small-garage-scene3.jpg" alt="A garage ceiling before overhead storage, bare rafters and empty ceiling space" loading="lazy" />
-</figure>
-  <figure class="inline-photo">
-    <img src="/winnie/best-overhead-garage-storage-racks-small-garage-scene4.jpg" alt="Side-profile shot of the clearance gap between a parked car's roofline and a mounted overhead rack" loading="lazy" />
-</figure>
-</figure>
+  </figure>
 
 ## Quick comparison
 
@@ -134,10 +120,6 @@ Walk your garage ceiling and find an actually clear section — no garage door t
 | SafeRacks 4x8 + Accessories | Included hooks | 600 lb | 4x8 |
 | FLEXIMOUNTS Pro 4x8 | Heavy-duty | 800 lb | 4x8 |
 | FLEXIMOUNTS 2-Tier 4x8 | Tall-ceiling garages | 1000 lb | 4x8 (2 tiers) |
-
-<figure class="inline-photo">
-  <img src="/winnie/best-overhead-garage-storage-racks-small-garage-scene5.jpg" alt="A close-up of plastic storage bins being lifted onto an overhead rack shelf" loading="lazy" />
-</figure>
 
 ## Frequently asked questions
 

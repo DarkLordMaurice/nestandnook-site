@@ -134,19 +134,11 @@ faqs:
 
 Rental kitchens rarely fail in one dramatic way. They fail in five small, familiar ways: the stove has one useful burner, the oven heats unevenly, the sink becomes a dish queue, the only prep strip is already occupied, and the lease makes permanent installation a bad idea. The best kitchen gadgets for renters and apartments add one useful capability without asking you to remodel somebody else's property.
 
-<figure class="inline-photo">
-  <img src="/winnie/best-kitchen-gadgets-for-renters-and-apartments-scene1.jpg" alt="A portable induction cooktop set up on a rental kitchen counter, flat glass surface clean and ready to use" loading="lazy" />
-</figure>
-
 <p id="quick-answer">For most renters, the <strong>Duxtop 9600LS portable induction cooktop</strong> is the best first upgrade when the stove is weak or short on burners. No dishwasher is the bigger daily problem? The <strong>HAVA R01 countertop dishwasher</strong> adds cleanup capacity without a permanent water line. Every pick here still needs a measured operating space, safe outlet, and storage plan before it earns a place.</p>
 
 <h2 id="measure-first-check">Measure the operating setup—not just the appliance</h2>
 
 A portable appliance can look compact in a product photo and still overwhelm a rental kitchen once the cord, door swing, ventilation space, drain hose, hot-pan landing zone, and storage shelf are included. Measure the appliance's full working footprint, confirm the outlet location and electrical load, and decide where it goes after use. For a countertop dishwasher, map both the water-fill routine and drain path. For induction, test cookware with a magnet before buying.
-
-<figure class="inline-photo">
-  <img src="/winnie/best-kitchen-gadgets-for-renters-and-apartments-scene2.jpg" alt="A countertop dishwasher's built-in water tank being filled, no permanent plumbing hookup visible" loading="lazy" />
-</figure>
 
 ## The renter filter: what makes a gadget apartment-friendly?
 
@@ -182,13 +174,7 @@ The mini rice cooker is the low-complexity choice. It can handle a small grain o
 The compact toaster is more space-efficient than a toaster oven when toast and bagels are the real job. It is a poor purchase when an existing appliance already covers that function.
 
 <figure class="inline-photo-pair">
-  <figure class="inline-photo">
-    <img src="/winnie/best-kitchen-gadgets-for-renters-and-apartments-scene3.jpg" alt="A portable appliance's cord routed safely along a countertop edge, away from a sink or wet zone" loading="lazy" />
-</figure>
-  <figure class="inline-photo">
-    <img src="/winnie/best-kitchen-gadgets-for-renters-and-apartments-scene4.jpg" alt="A compact rental kitchen with two portable appliances stored on a shelf when not in use" loading="lazy" />
-</figure>
-</figure>
+  </figure>
 
 <h2 id="do-not-buy-if">Do not buy renter kitchen gadgets if…</h2>
 
@@ -208,10 +194,6 @@ The compact toaster is more space-efficient than a toaster oven when toast and b
 5. Buy one capacity upgrade, then live with it before adding another.
 
 The apartment trap is buying three small appliances because each one looks manageable. Together, they become an appliance garage the rental never had room for.
-
-<figure class="inline-photo">
-  <img src="/winnie/best-kitchen-gadgets-for-renters-and-apartments-scene5.jpg" alt="A rental kitchen's original stove beside an added portable induction burner, side by side" loading="lazy" />
-</figure>
 
 ## Frequently asked questions
 

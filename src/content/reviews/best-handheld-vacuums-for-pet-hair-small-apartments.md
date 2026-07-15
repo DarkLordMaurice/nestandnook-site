@@ -110,19 +110,11 @@ faqs:
 
 A handheld vacuum earns apartment space when it is ready before the hair becomes part of the upholstery. That means more than suction: the pet brush has to fit the couch, the bin has to empty cleanly, the charger needs a real home, and every attachment needs to stop wandering through separate drawers.
 
-<figure class="inline-photo">
-  <img src="/winnie/best-handheld-vacuums-for-pet-hair-small-apartments-scene1.jpg" alt="A cordless handheld vacuum with a motorized brush attachment being used on a sofa cushion with visible pet hair" loading="lazy" />
-</figure>
-
 <p id="quick-answer">The <strong>BLACK+DECKER Furbuster HHVK515JP07</strong> is the best overall choice when embedded upholstery hair is the main problem because it pairs a motorized pet brush with a larger dirt bowl. The <strong>Shark WANDVAC WV201</strong> is the better fit for very small apartments that prioritize a slim charging dock and frequent light cleanup over deep pet-hair agitation.</p>
 
 <h2 id="measure-first-check">Measure the charging and emptying zone</h2>
 
 Measure the shelf, wall, or counter where the vacuum will charge, including cord reach and attachment storage. Then confirm that the dirt cup can open over a trash bin without hitting a shelf. A compact vacuum that must be unplugged, unpacked, and reassembled for every use is functionally larger than one that stays ready.
-
-<figure class="inline-photo">
-  <img src="/winnie/best-handheld-vacuums-for-pet-hair-small-apartments-scene2.jpg" alt="An extendable crevice tool attachment reaching into a couch seam" loading="lazy" />
-</figure>
 
 ## Choose the brush before comparing suction language
 
@@ -141,13 +133,7 @@ No handheld vacuum is silent. Use short, planned sessions during reasonable hour
 Empty the bin before debris blocks airflow, clean or replace filters according to the manual, remove wrapped hair from powered brushes, and follow the battery charging instructions. Loss of pickup is often a maintenance problem before it is a reason to replace the machine.
 
 <figure class="inline-photo-pair">
-  <figure class="inline-photo">
-    <img src="/winnie/best-handheld-vacuums-for-pet-hair-small-apartments-scene3.jpg" alt="A handheld vacuum's dirt bowl, showing a compact but adequate collection capacity" loading="lazy" />
-</figure>
-  <figure class="inline-photo">
-    <img src="/winnie/best-handheld-vacuums-for-pet-hair-small-apartments-scene4.jpg" alt="A handheld vacuum resting on a charging dock on a small utility shelf" loading="lazy" />
-</figure>
-</figure>
+  </figure>
 
 <h2 id="do-not-buy-if">Do not buy a handheld pet vacuum if…</h2>
 
@@ -158,10 +144,6 @@ Empty the bin before debris blocks airflow, clean or replace filters according t
 - Its attachments will become loose clutter with no assigned storage.
 
 For refill-free surface hair without motor noise, start with [the manual furniture-remover roundup](/pet-care/best-pet-hair-removers-for-furniture/).
-
-<figure class="inline-photo">
-  <img src="/winnie/best-handheld-vacuums-for-pet-hair-small-apartments-scene5.jpg" alt="A bulkier motorized-brush handheld vacuum beside a slimmer compact model" loading="lazy" />
-</figure>
 
 ## Frequently asked questions
 

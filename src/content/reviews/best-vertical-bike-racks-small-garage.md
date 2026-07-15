@@ -89,19 +89,11 @@ faqs:
 
 A bike leaned against a garage wall or parked on the floor takes up real square footage that a genuinely small garage can't spare. The five options below cover both major approaches — wall-mounted rail and swivel systems, and one freestanding rack for renters or wall-committed garages — compared by floor space actually reclaimed.
 
-<figure class="inline-photo">
-  <img src="/winnie/best-vertical-bike-racks-small-garage-scene1.jpg" alt="Two bicycles hanging vertically from wall-mounted hooks in a small single-car garage, wheels facing out" loading="lazy" />
-</figure>
-
 <p id="quick-answer">The best vertical bike rack for a small garage depends on your wall situation and bike count. The <strong>StoreYourBoard 5-Bike Rail</strong> maximizes wall-mounted capacity. For a genuinely tight garage where handlebars get in the way, <strong>monTEK's swivel mounts</strong> pivot bikes flat against the wall. Renters or households that can't drill should look at the <strong>StoreYourBoard Freestanding Rack</strong> instead.</p>
 
 <h2 id="measure-first-check">Measure your wall and floor clearance first</h2>
 
 Wall-mounted racks need a genuinely clear, stud-backed wall run — measure the width needed for however many bikes you're storing, since a 5-bike rail needs meaningfully more wall than a 2-hook budget mount. For any wall-mounted option, also check the swing clearance: a fixed-angle hook can put handlebars into a walkway or a car's door-swing path, which is the specific problem swivel mounts (monTEK, Delta Cycle Pivot) solve. If you're renting or can't mount into studs, the freestanding option is the only one on this list that doesn't require wall installation at all.
-
-<figure class="inline-photo">
-  <img src="/winnie/best-vertical-bike-racks-small-garage-scene2.jpg" alt="Close detail of a vertical bike rack's hook and wheel cradle, showing how the front wheel is supported" loading="lazy" />
-</figure>
 
 <h2 id="do-not-buy-if">Skip a vertical bike rack if&#x2026;</h2>
 
@@ -117,13 +109,7 @@ Wall-mounted racks need a genuinely clear, stud-backed wall run — measure the 
 - **Check per-bike weight ratings, not just total capacity** — a rail's total rating assumes an average bike weight across all positions.
 
 <figure class="inline-photo-pair">
-  <figure class="inline-photo">
-    <img src="/winnie/best-vertical-bike-racks-small-garage-scene3.jpg" alt="Side-profile shot showing the depth clearance a hanging bike takes up against a garage wall" loading="lazy" />
-</figure>
-  <figure class="inline-photo">
-    <img src="/winnie/best-vertical-bike-racks-small-garage-scene4.jpg" alt="A bike being lifted onto a wall-mounted vertical hook, showing the lifting motion and hook engagement" loading="lazy" />
-</figure>
-</figure>
+  </figure>
 
 ## Quick comparison
 
@@ -134,10 +120,6 @@ Wall-mounted racks need a genuinely clear, stud-backed wall run — measure the 
 | Wallmaster, 2-Pack | Budget option | Wall (individual) | 2 bikes, 50 lbs each |
 | Delta Cycle Pivot, 3-Pack | Tight wall clearance | Wall (individual, swivel) | 3 bikes, 100 lbs each |
 | StoreYourBoard Freestanding | Freestanding/renter option | Floor (no mounting) | 5 bikes, 300 lbs total |
-
-<figure class="inline-photo">
-  <img src="/winnie/best-vertical-bike-racks-small-garage-scene5.jpg" alt="A garage wall with two vertically-hung bikes and a car parked beside them, showing the space they free up" loading="lazy" />
-</figure>
 
 ## Frequently asked questions
 

@@ -9,11 +9,8 @@ prepTimeMinutes: 10
 cookTimeMinutes: 15
 servings: 4
 difficulty: "easy"
-image: "/recipes/recipe-french-toast.jpg"
-altImage: "/recipes/recipe-french-toast-alt.jpg"
-altImageAlt: "A stack of custardy French toast topped with syrup and powdered sugar"
+image: "PENDING"
 imageAlt: "Two slices of golden French toast topped with berries and a dusting of powdered sugar"
-ingredientsImage: "/recipes/recipe-french-toast-ingredients.jpg"
 winnieImage: "/winnie/winnie-holding-french-toast.jpg"
 winnieHeadshot: "/winnie/avatar.jpg"
 winnieNote: "French toast made with fresh, soft sandwich bread is a structural engineering problem disguised as a breakfast recipe. Stale, sturdy bread isn't a workaround — it's the actual requirement, and I will not be taking further questions on this."
@@ -85,11 +82,6 @@ This french toast recipe exists because french toast has a short ingredient list
 
 ## Stale bread isn't a compromise, it's the requirement
 
-<figure class="inline-photo">
-  <img src="/recipes/recipe-french-toast-scene1.jpg" alt="Slices of thick bread soaking in a custard mixture in a shallow dish" loading="lazy" />
-</figure>
-
-
 Fresh, soft sandwich bread is built to absorb moisture fast, which is exactly the wrong quality for a slice that's about to sit in an egg-and-milk custard. It soaks up liquid faster than its structure can handle and falls apart into something closer to bread pudding than French toast. Bread that's a day or two old — or dried out on purpose in a low oven for ten minutes — has lost enough moisture to soak up custard at a rate its structure can actually support.
 
 ## Soak time depends on the bread, not the clock
@@ -97,10 +89,5 @@ Fresh, soft sandwich bread is built to absorb moisture fast, which is exactly th
 A precise soak time doesn't really exist independent of what bread you're using. Thick, sturdy, stale bread can handle 30 seconds a side and come out custardy all the way through. Thinner or fresher bread needs closer to 10-15 seconds, or it turns to mush before it ever hits the pan. Judge by feel — the slice should flex slightly and feel saturated, not floppy or falling apart.
 
 ## Medium heat gives the center time to set
-
-<figure class="inline-photo">
-  <img src="/recipes/recipe-french-toast-scene2.jpg" alt="A stack of golden French toast slices dusted with powdered sugar, syrup pouring over the top" loading="lazy" />
-</figure>
-
 
 The instinct to crank the heat for a faster breakfast works against French toast specifically, because the custard-soaked center needs real time in the pan to cook through before the crust goes past golden into burnt. Medium heat and a little patience gets a crust that's crisp and deep brown around a center that's fully set, not raw and eggy.

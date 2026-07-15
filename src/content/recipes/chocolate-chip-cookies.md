@@ -9,11 +9,8 @@ prepTimeMinutes: 15
 cookTimeMinutes: 12
 servings: 24
 difficulty: "easy"
-image: "/recipes/recipe-chocolate-chip-cookies.jpg"
-altImage: "/recipes/recipe-chocolate-chip-cookies-alt.jpg"
-altImageAlt: "A stack of chewy chocolate chip cookies with one broken in half showing a gooey center"
+image: "PENDING"
 imageAlt: "A stack of chocolate chip cookies with one broken in half showing a soft, chewy center"
-ingredientsImage: "/recipes/recipe-chocolate-chip-cookies-ingredients.jpg"
 winnieImage: "/winnie/winnie-kitchen-taste.jpg"
 winnieNote: "No dough-chilling detour, no waiting around for a craving to pass — I appreciate a recipe that respects a schedule. Softened butter, not melted, is the entire secret here, and I will die on that particular hill."
 winnieHeadshot: "/winnie/headshot-v4-1.jpg"
@@ -75,18 +72,8 @@ This chocolate chip cookies recipe exists because chocolate chip cookies are the
 
 ## Why softened butter matters more than any other step
 
-<figure class="inline-photo">
-  <img src="/recipes/recipe-chocolate-chip-cookies-scene1.jpg" alt="A baking sheet lined with rounded scoops of chocolate chip cookie dough before baking" loading="lazy" />
-</figure>
-
-
 If there's one variable that decides how these turn out, it's butter temperature. Melted butter makes cookies spread thin and greasy. Cold butter won't cream properly and leaves you with a dense, uneven dough. Butter that's genuinely softened — you can press a finger into it and leave a mark, but it's not shiny or melty — creams into the sugar and traps air, which is what gives these their chew.
 
 ## Reading the bake, not the clock
-
-<figure class="inline-photo">
-  <img src="/recipes/recipe-chocolate-chip-cookies-scene2.jpg" alt="A stack of warm chocolate chip cookies with one broken in half showing a gooey center, glass of milk nearby" loading="lazy" />
-</figure>
-
 
 Ovens vary enough that "9 to 11 minutes" is a range, not a promise. The real signal is the edges: golden and just set, while the centers still look a touch pale and underdone. Pull them then. They keep cooking on the hot tray for another few minutes after they come out, and that's exactly the window that turns into a soft center instead of a hockey puck.

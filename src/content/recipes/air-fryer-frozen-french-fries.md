@@ -9,10 +9,8 @@ prepTimeMinutes: 2
 cookTimeMinutes: 18
 servings: 4
 difficulty: "easy"
-image: "/recipes/recipe-air-fryer-french-fries.jpg"
+image: "PENDING"
 imageAlt: "Crispy golden air fryer French fries piled in a basket with a small bowl of ketchup on the side"
-altImage: "/recipes/recipe-air-fryer-frozen-french-fries-alt.jpg"
-ingredientsImage: "/recipes/recipe-air-fryer-frozen-french-fries-ingredients.jpg"
 winnieImage: "/winnie/winnie-kitchen-taste.jpg"
 winnieHeadshot: "/winnie/headshot-v4-4.jpg"
 winnieNote: "The single-layer rule is the whole recipe, honestly. Crowd the basket and you've built a very small, very sad steam room instead of an air fryer — spread them out and let the machine actually do the one job it's good at."
@@ -72,11 +70,6 @@ This is less a recipe than it is a fix for the two things that actually go wrong
 
 ## Why frozen (not thawed) is correct here
 
-<figure class="inline-photo">
-  <img src="/recipes/recipe-air-fryer-frozen-french-fries-scene1.jpg" alt="Frozen french fries spread in a single layer inside an air fryer basket before cooking" loading="lazy" />
-</figure>
-
-
 Frozen fries are already par-cooked and coated in a thin layer of oil from the factory — that's what makes them crisp up instead of just heating through. Thawing them first only adds excess surface moisture, which steams instead of crisps in the time it takes the fries to cook. Straight from the freezer to the basket is the right move, not a shortcut.
 
 ## The single-layer rule is non-negotiable
@@ -84,11 +77,6 @@ Frozen fries are already par-cooked and coated in a thin layer of oil from the f
 An air fryer is a small, fast convection oven — it crisps by circulating hot air around every side of what's in the basket. Pile fries two or three deep and the ones in the middle are just sitting in their own trapped steam, which is the single most common reason a batch comes out limp instead of crisp. If a pound doesn't fit in one loose layer, it's genuinely faster to run two quick batches than to force one crowded one and end up reheating soggy fries anyway.
 
 ## Built for small kitchens on purpose
-
-<figure class="inline-photo">
-  <img src="/recipes/recipe-air-fryer-frozen-french-fries-scene2.jpg" alt="A basket of golden crispy french fries next to a small ramekin of ketchup on a wooden table" loading="lazy" />
-</figure>
-
 
 No deep-fryer oil to store, heat, cool, and dispose of, no sheet pan and oven preheat for a side dish, and cleanup is one basket. If your current air fryer basket is small enough that a single pound of fries barely fits in one layer, that's worth sizing up before anything else here — a too-small basket is the fastest way to end up steaming your fries by accident.
 

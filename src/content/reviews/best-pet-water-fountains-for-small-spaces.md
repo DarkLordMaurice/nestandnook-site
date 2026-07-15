@@ -112,19 +112,11 @@ faqs:
 
 A fountain can free a feeding corner from constant bowl refills, or it can turn that corner into a pump, filter, cord, and cleaning-parts warehouse. Small-space value comes from the complete routine: the reservoir fits the sink, the cord stays out of traffic, the pump comes apart, and replacement filters have somewhere to live.
 
-<figure class="inline-photo">
-  <img src="/winnie/best-pet-water-fountains-for-small-spaces-scene1.jpg" alt="A compact plug-in pet water fountain on a washable mat in a small kitchen corner" loading="lazy" />
-</figure>
-
 <p id="quick-answer">The <strong>Veken 95-ounce fountain</strong> is the straightforward compact pick for most small feeding zones. Choose the <strong>Pioneer Pet Raindrop</strong> for a low-profile stainless body, the <strong>PETLIBRO Dockstream 2</strong> when app monitoring genuinely coordinates care, or the <strong>oneisall wireless fountain</strong> when a safe cord route is impossible. Cleaning access matters more than extra modes.</p>
 
 <h2 id="measure-first-check">Measure the wet footprint and the washing route</h2>
 
 Measure the base, wall gap, cord or charging path, and the space needed to lift the reservoir without striking a shelf. Then measure the sink: every basin, pump cover, tray, and filter housing must be washed there. Add a dry spot for cleaned parts and a separate shelf for replacement filters.
-
-<figure class="inline-photo">
-  <img src="/winnie/best-pet-water-fountains-for-small-spaces-scene2.jpg" alt="A fountain's replaceable filter housing being removed for cleaning" loading="lazy" />
-</figure>
 
 ## Capacity should match the refill routine
 
@@ -147,13 +139,7 @@ Keep plug connections away from water, route cords where pets and people cannot 
 Wash the reservoir, lid, pump housing, impeller area, tubing, and food-contact surfaces according to the manufacturer. Replace water and clean sooner when contamination is visible. Use [the bowl-cleaning guide](/pet-care/how-to-clean-pet-food-and-water-bowls/) for the surrounding feeding hardware.
 
 <figure class="inline-photo-pair">
-  <figure class="inline-photo">
-    <img src="/winnie/best-pet-water-fountains-for-small-spaces-scene3.jpg" alt="A low-profile stainless steel fountain bowl with visible flowing water" loading="lazy" />
-</figure>
-  <figure class="inline-photo">
-    <img src="/winnie/best-pet-water-fountains-for-small-spaces-scene4.jpg" alt="A larger three-liter fountain beside a smaller low-profile model" loading="lazy" />
-</figure>
-</figure>
+  </figure>
 
 <h2 id="do-not-buy-if">Do not buy a pet fountain if…</h2>
 
@@ -164,10 +150,6 @@ Wash the reservoir, lid, pump housing, impeller area, tubing, and food-contact s
 - A simple bowl is already checked, cleaned, and refilled reliably.
 
 A fountain is a maintenance system, not an automatic guarantee of clean water.
-
-<figure class="inline-photo">
-  <img src="/winnie/best-pet-water-fountains-for-small-spaces-scene5.jpg" alt="A fountain's cord routed safely along a baseboard, away from a walkway" loading="lazy" />
-</figure>
 
 ## Frequently asked questions
 

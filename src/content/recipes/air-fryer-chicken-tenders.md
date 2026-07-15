@@ -9,10 +9,8 @@ prepTimeMinutes: 15
 cookTimeMinutes: 14
 servings: 4
 difficulty: "easy"
-image: "/recipes/recipe-air-fryer-chicken-tenders.png"
+image: "PENDING"
 imageAlt: "A plate of golden, crispy air fryer chicken tenders with dipping sauces on the side"
-altImage: "/recipes/recipe-air-fryer-chicken-tenders-alt.jpg"
-ingredientsImage: "/recipes/recipe-air-fryer-chicken-tenders-ingredients.jpg"
 winnieImage: "/winnie/winnie-kitchen-stir.jpg"
 winnieHeadshot: "/winnie/headshot-v4-4.jpg"
 winnieNote: "An air fryer is just a very confident countertop convection oven, and I respect anything that gets you a crunchy crust without committing to a pot of hot oil you then have to deal with for the rest of your life."
@@ -79,11 +77,6 @@ This air fryer chicken tenders recipe exists to answer the one question that act
 
 ## Why the crust needs oil even without a fryer full of it
 
-<figure class="inline-photo">
-  <img src="/recipes/recipe-air-fryer-chicken-tenders-scene1.jpg" alt="Golden-brown breaded chicken tenders arranged in a single layer inside an air fryer basket, mid-cook" loading="lazy" />
-</figure>
-
-
 An air fryer works by moving very hot air fast around the food — that's the whole mechanism, and it's why the basket shape matters as much as the temperature. Deep frying browns a crust because it's fully submerged in fat that transfers heat efficiently and helps the coating turn golden and crisp. Air frying has no fat bath to do that job, so a completely dry panko coating just dries out and turns pale and slightly cardboard-like instead of browning. A light spray of oil on the coating gives the hot air something to interact with, which is what actually produces the color and crunch people expect from "fried" chicken.
 
 ## The dry-chicken step people skip, and pay for later
@@ -91,10 +84,5 @@ An air fryer works by moving very hot air fast around the food — that's the wh
 Wet chicken straight from the package or a marinade won't hold a dredge well — the flour clumps, the egg wash slides, and the panko ends up patchy or falling off entirely once it hits the hot air movement inside the basket. Patting the tenderloins fully dry with paper towels before seasoning gives the flour something to actually grip, which is the base layer the egg and panko both depend on. It's a thirty-second step that's easy to skip and the first thing that goes wrong when it is.
 
 ## Why crowding the basket undoes everything else
-
-<figure class="inline-photo">
-  <img src="/recipes/recipe-air-fryer-chicken-tenders-scene2.jpg" alt="A plate of crispy chicken tenders served with a small bowl of dipping sauce and a few fries on the side" loading="lazy" />
-</figure>
-
 
 Even a perfectly breaded, well-oiled tender will come out soft on one side if it's touching its neighbors in the basket. Air needs to circulate around every surface of each piece to crisp it evenly, and pieces stacked or touching trap a small pocket of steam between them that softens the crust exactly where the air can't reach. Cooking in two smaller batches with real space between pieces takes a few extra minutes and reliably produces a better result than one crowded batch that looks done but comes out unevenly textured.

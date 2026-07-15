@@ -127,10 +127,6 @@ faqs:
 
 Nesting mixing bowls only solve a real problem if the stack you end up with is actually smaller than the mismatched bowls it replaced. The eight sets below cover stainless, glass, plastic, and ceramic, so you can pick the material that matches how you actually cook — not just the one that photographs best.
 
-<figure class="inline-photo">
-  <img src="/winnie/nesting-mixing-bowls-small-kitchen-problem.jpg" alt="Mismatched bulky mixing bowls tumbling off a low open shelf onto the floor" loading="lazy" />
-</figure>
-
 <p id="quick-answer">The best nesting mixing bowls for small kitchens are lightweight, stack tightly, and include sizes you'll actually use. The <strong>Cuisinart 3-piece stainless set</strong> is the best overall pick for most kitchens. Want lids and a non-slip base too? The <strong>Viking 10-piece set</strong> is the sturdier upgrade. Need microwave-safe storage? Go with the <strong>Pyrex glass set</strong> instead.</p>
 
 <h2 id="measure-first-check">Measure the shelf, not just the bowls</h2>
@@ -151,17 +147,7 @@ Before buying, measure the cabinet shelf where the stack will actually live, inc
 - **Lids or no lids:** a set with lids does double duty as storage; a set without needs a separate storage plan.
 
 <div class="inline-photo-pair">
-  <figure class="inline-photo">
-    <img src="/winnie/nesting-mixing-bowls-non-slip-base-detail.jpg" alt="Whisking batter vigorously in a bowl that stays put on its non-slip base" loading="lazy" />
-</figure>
-  <figure class="inline-photo">
-    <img src="/winnie/nesting-mixing-bowls-lids-storage-detail.jpg" alt="Storing mixing bowl lids neatly upright in a cabinet beside a nested bowl stack" loading="lazy" />
-</figure>
-</div>
-
-<figure class="inline-photo">
-  <img src="/winnie/nesting-mixing-bowl-material-comparison.jpg" alt="Three nesting bowl material groups laid out side by side: stainless steel, glass, and plastic" loading="lazy" />
-</figure>
+  </div>
 
 ## Quick comparison
 
@@ -189,10 +175,6 @@ Most small kitchens only need three sizes in real regular use: small, medium, an
 
 **Are stainless steel bowls microwave-safe?**
 No. Choose glass or a microwave-safe plastic set if microwave use is a regular part of your routine.
-
-<figure class="inline-photo">
-  <img src="/winnie/nesting-mixing-bowls-prep-storage-payoff.jpg" alt="Placing a lid onto a bowl filled with marinating vegetables before sliding it onto a fridge shelf" loading="lazy" />
-</figure>
 
 *Prices and availability change constantly, so we don't quote figures here — tap through to see the current price on Amazon.*
 

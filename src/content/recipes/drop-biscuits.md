@@ -9,10 +9,8 @@ prepTimeMinutes: 12
 cookTimeMinutes: 16
 servings: 8
 difficulty: "easy"
-image: "/recipes/recipe-drop-biscuits.jpg"
+image: "PENDING"
 imageAlt: "A batch of golden, craggy drop biscuits on a baking sheet, split open showing flaky layers"
-altImage: "/recipes/recipe-drop-biscuits-alt.jpg"
-ingredientsImage: "/recipes/recipe-drop-biscuits-ingredients.jpg"
 winnieImage: "/winnie/winnie-kitchen-wipe-counter.jpg"
 winnieHeadshot: "/winnie/headshot-v4-2.jpg"
 winnieNote: "No rolling pin, no biscuit cutter, no flour explosion across the counter — drop biscuits are what I make when I want the payoff of homemade biscuits without turning my kitchen into a crime scene."
@@ -73,11 +71,6 @@ This drop biscuits recipe exists for anyone who wants flaky, homemade biscuits w
 
 ## Frozen, grated butter does the same job as folding
 
-<figure class="inline-photo">
-  <img src="/recipes/recipe-drop-biscuits-scene1.jpg" alt="Spoonfuls of shaggy biscuit dough dropped onto a baking sheet, visible butter flecks in the dough" loading="lazy" />
-</figure>
-
-
 Traditional biscuit recipes fold cold butter through the dough repeatedly to create thin layers that puff apart in the oven. Grating frozen butter directly into the flour achieves the same distinct, separate butter pieces in about thirty seconds, no folding required. As those shreds melt in the oven's heat, they release steam that pushes the surrounding dough apart into flaky layers — same mechanism, much less effort.
 
 ## Shaggy dough is correct dough
@@ -85,10 +78,5 @@ Traditional biscuit recipes fold cold butter through the dough repeatedly to cre
 The urge to keep stirring until a drop-biscuit dough looks smooth and uniform is exactly the instinct to resist. A smooth dough means the flour's gluten has developed and the butter has worked its way in rather than staying in distinct pieces — both of which lead to a denser, tougher biscuit. Stop stirring the moment everything is just combined, even if it still looks rough and uneven.
 
 ## The craggy shape is the point
-
-<figure class="inline-photo">
-  <img src="/recipes/recipe-drop-biscuits-scene2.jpg" alt="A basket of golden drop biscuits with a small dish of butter and honey alongside" loading="lazy" />
-</figure>
-
 
 Drop biscuits don't get shaped, cut, or smoothed before baking, and that irregular, spooned-out shape is exactly what gives them their crisp, craggy edges — a texture contrast that a perfectly round, cut biscuit doesn't have in the same way. Let the mounds keep their natural shape going into the oven.

@@ -30,19 +30,11 @@ faqs:
 
 A genuinely small garage doesn't have room to keep every seasonal item at easy-reach height year-round — holiday decor and summer gear competing for the same shelf space is a losing proposition. A twice-yearly rotation system solves this by keeping only what's actually in season within arm's reach, with everything else moved up and out of the way until it's needed again.
 
-<figure class="inline-photo">
-  <img src="/winnie/how-to-rotate-seasonal-storage-in-a-small-garage-scene1.jpg" alt="Labeled seasonal bins being swapped between an overhead rack and an easy-reach shelf" loading="lazy" />
-</figure>
-
 <p id="quick-answer">Rotating seasonal storage in a small garage means swapping what's at easy-reach height twice a year — once for the holiday/winter season, once for spring/summer — so only current-season items occupy your best shelf space. Off-season items move to an overhead rack or the back of a deep shelf. Labeled, stackable bins (see our <a href="/garage/best-seasonal-storage-bins-garage/">seasonal storage bins roundup</a>) make the swap fast instead of a guessing game.</p>
 
 <h2 id="measure-first-check">Step 1: Sort by season before you buy any bins</h2>
 
 Before buying a matched bin set, sort what you're actually storing into two piles: winter/holiday-season items and spring/summer-season items. This determines how many bins of each category you need and roughly how much shelf or rack space each pile requires — buying bins first and sorting later usually means mismatched sizes for what you actually own.
-
-<figure class="inline-photo">
-  <img src="/winnie/how-to-rotate-seasonal-storage-in-a-small-garage-scene2.jpg" alt="Two piles of storage bins being sorted by season on a garage floor before shelving" loading="lazy" />
-</figure>
 
 <h2 id="do-not-buy-if">Skip a formal rotation system if&#x2026;</h2>
 
@@ -59,13 +51,7 @@ Pick two dates — one heading into fall/winter, one heading into spring/summer 
 At each rotation date, move the season that's ending up to an overhead rack or the back of a deep shelf, and bring the incoming season's bins down to easy-reach height. This is the core mechanic — only ever one season's worth of bins occupies your best, most accessible space at any time.
 
 <figure class="inline-photo-pair">
-  <figure class="inline-photo">
-    <img src="/winnie/how-to-rotate-seasonal-storage-in-a-small-garage-scene3.jpg" alt="A calendar or wall planner marked with two fixed seasonal rotation dates" loading="lazy" />
-</figure>
-  <figure class="inline-photo">
-    <img src="/winnie/how-to-rotate-seasonal-storage-in-a-small-garage-scene4.jpg" alt="A bin being lifted down from an overhead rack during a seasonal swap" loading="lazy" />
-</figure>
-</figure>
+  </figure>
 
 ## Step 4: Label bins by season, not just contents
 
@@ -74,10 +60,6 @@ Label each bin with the season it belongs to, not just a generic contents descri
 ## Step 5: Reassess what's actually worth storing at each rotation
 
 Use each twice-yearly swap as a natural checkpoint to reassess whether everything in a given season's bins is still worth keeping. Items that haven't been used in a full year, or that no longer fit the household's actual needs, are easier to identify and let go of during a scheduled rotation than at a random moment.
-
-<figure class="inline-photo">
-  <img src="/winnie/how-to-rotate-seasonal-storage-in-a-small-garage-scene5.jpg" alt="A clearly labeled bin reading the current season, sitting at easy-reach shelf height" loading="lazy" />
-</figure>
 
 ## Frequently asked questions
 

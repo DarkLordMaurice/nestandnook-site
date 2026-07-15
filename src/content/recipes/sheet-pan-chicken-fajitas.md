@@ -9,11 +9,8 @@ prepTimeMinutes: 15
 cookTimeMinutes: 25
 servings: 4
 difficulty: "easy"
-image: "/recipes/recipe-sheet-pan-chicken-fajitas.jpg"
-altImage: "/recipes/recipe-sheet-pan-chicken-fajitas-alt.jpg"
-altImageAlt: "A sheet pan of roasted chicken fajita strips with charred peppers and onions"
+image: "PENDING"
 imageAlt: "Sheet-pan chicken fajitas with charred bell peppers and onions, fresh from the oven"
-ingredientsImage: "/recipes/recipe-sheet-pan-chicken-fajitas-ingredients.jpg"
 winnieImage: "/winnie/winnie-kitchen-chop-side.jpg"
 winnieNote: "One pan, minimal juggling, cleanup that doesn't turn into its own production — this is basically feral efficiency mode translated into dinner. If I had a labeled bin for 'meals with one dish to wash,' this would live in it."
 winnieHeadshot: "/winnie/headshot-v4-2.jpg"
@@ -88,18 +85,8 @@ These sheet pan chicken fajitas skip the traditional stovetop, stand-over-the-pa
 
 ## Why the single layer actually matters
 
-<figure class="inline-photo">
-  <img src="/recipes/recipe-sheet-pan-chicken-fajitas-scene1.jpg" alt="Chicken strips and sliced bell peppers spread on a sheet pan before roasting" loading="lazy" />
-</figure>
-
-
 The one step that decides whether this tastes like a restaurant fajita platter or a sad chicken-and-pepper stew is spreading everything out in a single layer before it goes in the oven. A crowded pan traps steam, and steam is the enemy of char. If your sheet pan looks even a little packed, split it across two pans instead — it's a five-minute inconvenience for a genuinely different result.
 
 ## Built for small kitchens on purpose
-
-<figure class="inline-photo">
-  <img src="/recipes/recipe-sheet-pan-chicken-fajitas-scene2.jpg" alt="A sheet pan of roasted chicken fajita filling next to a stack of warm tortillas" loading="lazy" />
-</figure>
-
 
 This is exactly the kind of recipe that rewards owning one good sheet pan and not much else — no skillet-juggling, no multiple burners going at once, minimal cleanup since it's one pan lined with foil. If your current sheet pan warps in a hot oven or the fajitas are sliding off the edges, that's worth fixing before anything else on this list.

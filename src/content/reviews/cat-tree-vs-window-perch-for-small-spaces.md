@@ -74,19 +74,11 @@ faqs:
 
 A window perch wins the floor-space argument before the real comparison begins. The harder question is whether the window works, the cat fits, the mount stays secure, and a safe route exists. A tree uses floor area, but it can combine scratching, climbing, hiding, and resting without relying on glass or sill geometry.
 
-<figure class="inline-photo">
-  <img src="/winnie/cat-tree-vs-window-perch-for-small-spaces-scene1.jpg" alt="A compact cat tree in one apartment corner and a suction window perch on clean glass across the room" loading="lazy" />
-</figure>
-
 <p id="quick-answer">Choose a <strong>window perch</strong> when compatible glass or sill space is available, the cat fits the weight and platform limits, and floor area is the main constraint. Choose a <strong>cat tree</strong> when the household needs scratching, multiple levels, or a vertical option independent of the window. Stability, access, and placement outrank the smaller footprint.</p>
 
 <h2 id="measure-first-check">Test both complete setups on paper</h2>
 
 For a tree, tape the base and landing area onto the floor and check restraint requirements. For a perch, measure clear glass or sill width, frame interference, opening hardware, curtains, sunlight, and the approach jump. Compare platform dimensions and weight guidance with the actual cat.
-
-<figure class="inline-photo">
-  <img src="/winnie/cat-tree-vs-window-perch-for-small-spaces-scene2.jpg" alt="A measuring tape checking clear window sill width for a suction-mounted cat perch" loading="lazy" />
-</figure>
 
 ## Choose a cat tree for multiple functions
 
@@ -109,13 +101,7 @@ A tree can occupy a neglected corner without blocking window operation. A perch 
 If the cat ignores a tree, it remains a large object. If the cat ignores a perch, it can often be removed more easily. A tree may still function as a scratcher; a perch usually has one main job.
 
 <figure class="inline-photo-pair">
-  <figure class="inline-photo">
-    <img src="/winnie/cat-tree-vs-window-perch-for-small-spaces-scene3.jpg" alt="A cat tree's wide stable base anchored in an apartment corner" loading="lazy" />
-</figure>
-  <figure class="inline-photo">
-    <img src="/winnie/cat-tree-vs-window-perch-for-small-spaces-scene4.jpg" alt="A suction-mounted window perch inspected for secure cup contact on clean glass" loading="lazy" />
-</figure>
-</figure>
+  </figure>
 
 <h2 id="do-not-buy-if">Do not choose either format if…</h2>
 
@@ -126,10 +112,6 @@ If the cat ignores a tree, it remains a large object. If the cat ignores a perch
 - A permanent installation is required but cannot be completed appropriately.
 
 For a broader setup, use [the indoor-cat enrichment guide](/pet-care/how-to-enrich-an-indoor-cat-in-a-small-apartment/).
-
-<figure class="inline-photo">
-  <img src="/winnie/cat-tree-vs-window-perch-for-small-spaces-scene5.jpg" alt="A cat approaching a window perch along a clear, safe jump route from nearby furniture" loading="lazy" />
-</figure>
 
 ## Frequently asked questions
 

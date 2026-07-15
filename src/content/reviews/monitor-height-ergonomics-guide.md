@@ -28,11 +28,6 @@ faqs:
 
 Correct monitor height gets treated like a fixed spec — "raise your screen 4 inches" — when it's actually a simple test that gives a different right answer depending on your chair, your desk, and your own proportions. The test matters more than any specific number.
 
-<figure class="inline-photo">
-  <img src="/winnie/monitor-height-ergonomics-guide-scene1.jpg" alt="A monitor positioned below eye level on a desk, showing a downward viewing angle" loading="lazy" />
-</figure>
-
-
 <p id="quick-answer">Correct monitor height isn't a fixed number — run the ten-second test: close your eyes, open them, and look straight ahead without adjusting your head. Wherever your eyes naturally land is where the top third of your screen should be. Most monitors sit too low rather than too high, and the fix is a stand or riser that changes height without touching anything else about your setup.</p>
 
 <h2 id="measure-first-check">The ten-second test</h2>
@@ -45,11 +40,6 @@ Most monitors ship on stands built for an average setup, and most desks are a st
 
 ## What actually fixes it
 
-<figure class="inline-photo">
-  <img src="/winnie/monitor-height-ergonomics-guide-scene2.jpg" alt="The same monitor raised on a riser stand to eye level, showing a level viewing angle" loading="lazy" />
-</figure>
-
-
 A monitor stand or riser is the direct fix — it changes the screen's height without changing anything else about your setup, which is exactly the kind of one-variable fix that's easy to get right. See the [monitor stand roundup](/home-office/best-monitor-stands-for-dual-monitors/) for picks ranked by how much lift and stability they actually provide, since a wobbly riser under a monitor is its own separate annoyance.
 
 Stacked books work in a pinch and cost nothing, but they rarely hold a precise, repeatable height, and they don't leave the space underneath usable for anything else — a real stand often has cable routing or storage built into the base, which a book stack obviously doesn't.
@@ -60,20 +50,9 @@ Stacked books work in a pinch and cost nothing, but they rarely hold a precise, 
 - Your discomfort is really about distance, not height — see the section below before assuming a riser is the fix.
 - You wear bifocals or progressive lenses and the standard eye-level guidance feels off — test against where your own eyes naturally find the screen rather than following the general rule exactly; you may want the screen slightly lower than "correct" for most people.
 
-<figure class="inline-photo">
-  <img src="/winnie/monitor-height-ergonomics-guide-scene4.jpg" alt="A monitor positioned so the top third of the screen aligns with a seated eye line, measuring tape in frame" loading="lazy" />
-</figure>
-
 ## Distance is the second half of the equation
 
 Height alone doesn't finish the job — if the screen sits at the right height but too close or too far away, you'll unconsciously tilt your head to compensate anyway, undoing the fix. Roughly an arm's length is the common starting distance; adjust from there based on your actual eyesight and screen size rather than treating it as a fixed rule.
 
 > **Winnie's take:** I've read enough of these threads to know the single most common mistake is fixing height once and never rechecking it after a chair swap, a new desk, or even just a different pair of shoes that changes your seated height by half an inch. Run the ten-second test again any time something else about your setup changes.
 
-<figure class="inline-photo">
-  <img src="/winnie/monitor-height-ergonomics-guide-scene5.jpg" alt="A monitor riser being adjusted a few inches upward to correct screen height" loading="lazy" />
-</figure>
-
-<figure class="inline-photo">
-  <img src="/winnie/monitor-height-ergonomics-guide-scene3.jpg" alt="Overhead view showing the distance between a monitor screen and a desk chair" loading="lazy" />
-</figure>

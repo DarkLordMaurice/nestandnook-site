@@ -86,11 +86,6 @@ faqs:
 
 The best desk pad does three unglamorous jobs at once: protects the desk surface from scratches and spills, quiets the clack of a mechanical keyboard against bare wood, and gives a cluttered desk one clean visual anchor that makes everything on top of it look more organized than it technically is.
 
-<figure class="inline-photo">
-  <img src="/winnie/best-desk-pads-scene1.jpg" alt="A leather-look desk pad covering a wood desk, keyboard and mouse on top" loading="lazy" />
-</figure>
-
-
 <p id="quick-answer">Our top pick for most desks is the <strong>Aothia Leather Desk Pad Protector</strong> — sized for a standard keyboard-and-mouse zone without overwhelming a smaller desk. Want the option to flip between two looks? The <strong>Aothia Dual-Sided</strong> pad's cork reverse side is the more versatile buy, just in a smaller footprint.</p>
 
 <h2 id="measure-first-check">Measure your desk before you pick a size</h2>
@@ -103,25 +98,12 @@ The single most common regret in desk pad reviews isn't about material quality �
 - You only want a mouse-tracking surface, not a full keyboard-and-wrist zone — a standard mouse pad is cheaper and takes up far less desk real estate.
 - You have a very small or shared desk where any full-size pad would hang off the edge — a compact option like the Gallaway Medium below, or none at all, may suit better.
 
-<figure class="inline-photo">
-  <img src="/winnie/best-desk-pads-scene4.jpg" alt="A leather desk pad anchoring a keyboard and mouse zone on a small desk, non-slip backing visible at the edge" loading="lazy" />
-</figure>
-
 ## Material: leather-look vs. cork
 
 PU leather (most of the options here) resists water and wipes clean easily, which matters if coffee or crumbs are a regular desk hazard. Cork is more porous and shows wear differently, but has a warmer, more textured look that some people prefer over a uniform leather surface. Neither is objectively better — it's a look-and-feel choice more than a durability one.
 
 
-<figure class="inline-photo">
-  <img src="/winnie/best-desk-pads-scene3.jpg" alt="A large desk pad sized to a full small-desk surface, laptop and mug on top" loading="lazy" />
-</figure>
-
 ## Quick comparison
-
-<figure class="inline-photo">
-  <img src="/winnie/best-desk-pads-scene2.jpg" alt="Split comparison of a leather-look texture and a natural cork texture" loading="lazy" />
-</figure>
-
 
 | Desk Pad | Best for | Size | Material |
 |----------|----------|------|----------|
@@ -130,10 +112,6 @@ PU leather (most of the options here) resists water and wipes clean easily, whic
 | Gallaway Large | Big / dual-monitor desks | 36" x 17" | Leather |
 | Gallaway Medium | Small / compact desks | 24" x 14" | Leather |
 | Aothia Extra-Large | Extra-wide desks | 48" x 17" | PU leather |
-
-<figure class="inline-photo">
-  <img src="/winnie/best-desk-pads-scene5.jpg" alt="A reversible desk pad flipped to show its cork side versus its leather side" loading="lazy" />
-</figure>
 
 ## Frequently asked questions
 

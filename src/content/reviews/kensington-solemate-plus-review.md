@@ -42,11 +42,6 @@ faqs:
 
 If you've read our footrest roundup and are trying to decide between the top two picks, this kensington solemate plus review is for the specific case where dial precision matters more to you than raw maximum height.
 
-<figure class="inline-photo">
-  <img src="/winnie/kensington-solemate-plus-review-scene1.jpg" alt="Close-up of a footrest's dial adjustment mechanism on the side of the platform" loading="lazy" />
-</figure>
-
-
 <p id="quick-answer">The Kensington SoleMate Plus is the pick if you need to dial in a precise, in-between footrest height rather than pick the closest of two or three fixed steps — its SmartFit dial adjusts continuously. It tops out lower than the HUANUO's tallest setting, so it's the better fit for precision, not for readers who need maximum possible lift.</p>
 
 <h2 id="measure-first-check">Check whether you need precision or maximum height</h2>
@@ -58,11 +53,6 @@ Most footrests, including our top overall pick, use a small number of fixed heig
 The trade-off is straightforward: the SoleMate Plus's dial range doesn't reach as high as the HUANUO's tallest stepped setting. If you need maximum possible lift because your feet dangle significantly even with your chair lowered, [the HUANUO](/home-office/huanuo-ergonomic-footrest-review/) is the better fit. If your needed height sits somewhere in the middle of the range and precision matters more than ceiling height, the SoleMate Plus is worth the trade.
 
 ## Stability and the rocking platform
-
-<figure class="inline-photo">
-  <img src="/winnie/kensington-solemate-plus-review-scene2.jpg" alt="A footrest platform shown mid-rock, demonstrating its tilting range" loading="lazy" />
-</figure>
-
 
 Like the HUANUO, this platform rocks and tilts rather than staying flat and rigid, which is the detail most footrest reviewers credit for reduced end-of-day fatigue — your ankles get to shift position gradually instead of locking into one spot for hours. Reviewers who've used both describe the SoleMate Plus's base as feeling marginally more planted, likely a byproduct of the dial mechanism's construction underneath the platform.
 
@@ -76,18 +66,7 @@ This is the better call if you've tried a stepped footrest before and found your
 - You want the fastest possible adjustment — flipping between a couple of fixed steps on a stepped footrest is quicker than turning a dial each time you want a different height.
 - Your feet already reach the floor comfortably with your knees near 90° — neither this nor any footrest is solving a problem you actually have.
 
-<figure class="inline-photo">
-  <img src="/winnie/kensington-solemate-plus-review-scene4.jpg" alt="A footrest with a fine-adjustment dial being turned to set a precise height under a desk" loading="lazy" />
-</figure>
-
 *Prices and availability change constantly, so we don't quote figures here — tap through to see the current price on Amazon.*
 
 > **Winnie's take:** I recommend this one to the "I measured twice and I'm still not sure" crowd. If you already know you need maximum lift, skip the dial and grab the HUANUO. If you're not sure exactly what height you need, the dial takes the guesswork out of it.
 
-<figure class="inline-photo">
-  <img src="/winnie/kensington-solemate-plus-review-scene5.jpg" alt="A footrest's rocking base mid-motion, showing the tilting range" loading="lazy" />
-</figure>
-
-<figure class="inline-photo">
-  <img src="/winnie/kensington-solemate-plus-review-scene3.jpg" alt="A footrest positioned under a desk next to an office chair, showing overall fit" loading="lazy" />
-</figure>

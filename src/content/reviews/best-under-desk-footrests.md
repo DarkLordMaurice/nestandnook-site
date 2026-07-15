@@ -94,11 +94,6 @@ faqs:
 
 Not every footrest problem is a height problem. Some readers need a defined platform to close a floor gap; others prefer a softer surface or a controlled rocking motion. The useful comparison is not “which one is best for everyone?” It is “which mechanism fits the measured gap, knee clearance, and way this person sits?”
 
-<figure class="inline-photo">
-  <img src="/winnie/best-under-desk-footrests-scene1.jpg" alt="Four footrest types — adjustable platform, foam, rocking, roller — on a wood floor" loading="lazy" />
-</figure>
-
-
 <p id="quick-answer">For the broadest fit, choose an <strong>adjustable platform footrest</strong> that can match the floor gap without crowding knee space. Choose dense foam for softness, a rocking or roller style for frequent movement, and a fixed platform for a planted feel. Do not add a footrest when the feet are already fully supported and the desk fit is comfortable.</p>
 
 <h2 id="measure-first-check">Measure the gap and observe how you sit</h2>
@@ -112,10 +107,6 @@ Set the chair for the keyboard and measure the distance between the feet and flo
 - The product's height or rocking range would interfere with chair wheels or a desk crossbar.
 - You need maximum lift for a pronounced floor gap; use the existing short-user comparison instead.
 
-<figure class="inline-photo">
-  <img src="/winnie/best-under-desk-footrests-scene4.jpg" alt="A pedal-adjustable footrest platform mid-adjustment beneath a desk" loading="lazy" />
-</figure>
-
 ## How to choose by type
 
 | Type | Best for | Main check | Trade-off |
@@ -127,16 +118,7 @@ Set the chair for the keyboard and measure the distance between the feet and flo
 | Multi-position system | Shared or changing use | Storage for extra pieces | More components |
 
 
-<figure class="inline-photo">
-  <img src="/winnie/best-under-desk-footrests-scene3.jpg" alt="An under-desk footrest positioned beneath an office chair and desk" loading="lazy" />
-</figure>
-
 ## Frequently asked questions
-
-<figure class="inline-photo">
-  <img src="/winnie/best-under-desk-footrests-scene2.jpg" alt="A rocking footrest mid-tilt, showing its curved rocking motion under a desk" loading="lazy" />
-</figure>
-
 
 **Do I need a footrest if my feet already reach the floor?**  
 Usually not. Do not introduce extra height when the current fit is already comfortable.
@@ -151,9 +133,5 @@ Foam is softer; a rigid platform is more defined and generally more durable. Nei
 Adjustability matters most in a shared setup because users can have different floor gaps and preferences.
 
 *Specifications and availability change. Confirm dimensions and mechanism details on the current listing before ordering.*
-
-<figure class="inline-photo">
-  <img src="/winnie/best-under-desk-footrests-scene5.jpg" alt="A dense foam footrest in its reversible flipped position, showing two support shapes" loading="lazy" />
-</figure>
 
 > **Winnie's take:** Match the mechanism to the person, not the mood board. The useful question is whether you want a steady platform, a soft landing, or controlled movement—and whether it actually fits beneath the desk.

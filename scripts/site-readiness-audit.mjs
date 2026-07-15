@@ -140,6 +140,7 @@ for (const file of walk('src/content/recipes', '.md')) {
   if (title && title.length > 70) addFailure(file, `title is ${title.length} characters (max 70)`);
   if (description && description.length > 160) addFailure(file, `description is ${description.length} characters (max 160)`);
   if (!image) addFailure(file, 'missing required image');
+  else if (image === 'PENDING') addWarning(file, 'hero image intentionally pending — non-Winnie generated image taken down 2026-07-15 for lack of verification, real photo not yet in place');
   else if (!exists(`public${image}`)) addFailure(file, `hero image does not exist: public${image}`);
 }
 checked.blog = walk('src/content/blog', '.md').length;

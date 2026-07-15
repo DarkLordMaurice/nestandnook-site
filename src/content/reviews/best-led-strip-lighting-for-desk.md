@@ -88,11 +88,6 @@ faqs:
 
 The best led strip lights for desk setups add a soft ambient glow behind a monitor or along a shelf — the kind of accent lighting that reduces eye strain from staring at a bright screen in an otherwise dark room, without turning the whole office into a light show.
 
-<figure class="inline-photo">
-  <img src="/winnie/best-led-strip-lighting-for-desk-scene1.jpg" alt="Soft ambient LED strip lighting glowing behind a monitor in a dim room" loading="lazy" />
-</figure>
-
-
 <p id="quick-answer">Our top pick for most desks is the <strong>Govee RGBIC LED Strip Lights M1</strong> — sized right for wrapping a single desk or monitor and compatible with essentially every smart-home ecosystem at once. Want specifically behind-monitor bias lighting? The <strong>Govee Neon Rope Lights</strong> diffuse more evenly than a flat strip. Budget is the priority? The <strong>DAYBETTER 32.8ft</strong> two-pack covers more length for meaningfully less money.</p>
 
 ## Accent lighting, not task lighting
@@ -111,25 +106,12 @@ The most common regret in strip-light reviews isn't about color quality — it's
 
 ## Smart control vs. remote control
 
-<figure class="inline-photo">
-  <img src="/winnie/best-led-strip-lighting-for-desk-scene2.jpg" alt="Close-up of an LED strip's small remote control and connector clip" loading="lazy" />
-</figure>
-
-
 App- and voice-controlled strips add scheduling, music sync, and integration with other smart-home devices, at a real cost premium and a dependency on Wi-Fi and an app staying reliable. A simple remote-controlled strip does the core job — pick a color, pick a brightness — for meaningfully less money if that's genuinely all you need.
 
 ## Length: buy for the whole project, not just the first section
 
 The most common regret in strip-light reviews isn't about color quality — it's buying a shorter length and then needing a second purchase to finish a shelf or desk perimeter. If you're wrapping more than a single monitor, size up rather than assuming you can add more later and get a perfect color match.
 
-
-<figure class="inline-photo">
-  <img src="/winnie/best-led-strip-lighting-for-desk-scene3.jpg" alt="An LED strip running along the back edge of a desk and up the wall behind a monitor" loading="lazy" />
-</figure>
-
-<figure class="inline-photo">
-  <img src="/winnie/best-led-strip-lighting-for-desk-scene4.jpg" alt="LED strip lighting wrapped behind a monitor, casting a soft bias-lighting glow against the wall" loading="lazy" />
-</figure>
 
 ## Quick comparison
 
@@ -140,10 +122,6 @@ The most common regret in strip-light reviews isn't about color quality — it's
 | DAYBETTER 32.8ft (2-pack) | Budget | 32.8ft total | Remote (44-key IR) |
 | Govee RGBWWIC 2 Pro | Warm/cool white range | 6.56ft | App, Matter |
 | DAYBETTER Smart WiFi | Larger desk / wraparound | 50ft | App, Alexa/Google |
-
-<figure class="inline-photo">
-  <img src="/winnie/best-led-strip-lighting-for-desk-scene5.jpg" alt="An LED strip's color-changing segment being adjusted via a small remote or app" loading="lazy" />
-</figure>
 
 ## Frequently asked questions
 

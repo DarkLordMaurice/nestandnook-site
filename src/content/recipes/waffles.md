@@ -9,10 +9,8 @@ prepTimeMinutes: 15
 cookTimeMinutes: 20
 servings: 4
 difficulty: "easy"
-image: "/recipes/recipe-waffles.jpg"
+image: "PENDING"
 imageAlt: "A stack of crispy golden Belgian waffles with deep pockets, topped with butter and maple syrup"
-altImage: "/recipes/recipe-waffles-alt.jpg"
-ingredientsImage: "/recipes/recipe-waffles-ingredients.jpg"
 winnieImage: "/winnie/winnie-kitchen-measuring.jpg"
 winnieHeadshot: "/winnie/headshot-v4-2.jpg"
 winnieNote: "Whipping the egg whites separately feels like an extra dish for no reason until you taste the difference — that's the whole trick behind a waffle that's actually crisp instead of just dense pancake batter in a grid pattern."
@@ -78,11 +76,6 @@ This waffles recipe exists to fix the most common home-waffle problem: batter th
 
 ## Whipped egg whites are the real difference-maker
 
-<figure class="inline-photo">
-  <img src="/recipes/recipe-waffles-scene1.jpg" alt="Waffle batter being poured into a hot waffle iron, steam beginning to rise" loading="lazy" />
-</figure>
-
-
 A standard pancake-style batter with whole eggs mixed straight in is dense and holds a lot of moisture, which steams inside the waffle iron rather than crisping. Separating the eggs and whipping the whites to soft peaks before folding them in adds air and structure that a whole-egg batter simply can't replicate — it's the same principle behind a good soufflé, applied to breakfast. It's one extra bowl, and it's the single biggest factor in getting a genuinely crisp exterior.
 
 ## Cornstarch helps, but it's not the whole story
@@ -90,10 +83,5 @@ A standard pancake-style batter with whole eggs mixed straight in is dense and h
 A small amount of cornstarch in the dry mix absorbs less moisture than flour alone, which supports a crisper crust and helps it stay crisp a little longer after cooking. It's a helpful addition, but it's working alongside the whipped egg whites, not instead of them — skip the egg-white step and cornstarch alone won't fully fix soft waffles.
 
 ## What happens after the iron matters too
-
-<figure class="inline-photo">
-  <img src="/recipes/recipe-waffles-scene2.jpg" alt="A crispy golden waffle topped with a pat of butter and a drizzle of syrup, on a plate" loading="lazy" />
-</figure>
-
 
 A crisp waffle straight out of the iron can go soft again in minutes if it's stacked on a plate, where trapped steam softens the bottom layer almost immediately. Holding waffles in a single layer on a wire rack — ideally in a low oven if you're cooking a full batch — keeps them crisp until everyone's ready to eat.

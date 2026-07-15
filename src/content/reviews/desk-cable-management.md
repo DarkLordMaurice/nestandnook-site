@@ -99,11 +99,6 @@ faqs:
 
 Desk cable management is not one problem. It is three: the power strip and bulky connections need a home, the long runs between desk and outlet need a route, and the charging cords used every day need a parking spot. A tray handles containment. A sleeve handles routing. Clips handle access. Most disappointing setups happen when one product is expected to do all three jobs.
 
-<figure class="inline-photo">
-  <img src="/winnie/desk-cable-management-scene1.jpg" alt="A tangle of desk cables partially organized with a tray, sleeve, and clips together" loading="lazy" />
-</figure>
-
-
 <div class="polaroid inset">
   <img src="/winnie/winnie-gear-cable-tangle-before.jpg" alt="Winnie Hollowell beside a compact desk with a tangled power strip and loose cables on the floor." width="1122" height="1402" />
 </div>
@@ -111,10 +106,6 @@ Desk cable management is not one problem. It is three: the power strip and bulky
 <p id="quick-answer">For most small desks, start with a <strong>clamp-on under-desk tray</strong> for the power strip, add a <strong>cable sleeve</strong> for the route to the outlet, and use <strong>desk-edge clips</strong> only for the connectors you reach for every day. That layered system solves containment, routing, and access without asking one organizer to do three different jobs.</p>
 
 ## Why this is a layered problem, not a single-product one
-
-<figure class="inline-photo">
-  <img src="/winnie/desk-cable-management-scene4.jpg" alt="Three separate cable-management products — tray, sleeve, clips — laid out as a system" loading="lazy" />
-</figure>
 
 Think of the setup as three zones: **containment** under the desktop, **routing** between the desk and wall, and **access** at the work surface. Buying only a tray leaves the visible run messy. Buying only a sleeve leaves the power strip on the floor. Buying only clips tidies connectors but does nothing for the bulk underneath.
 
@@ -130,16 +121,7 @@ Measure the power strip's length and depth, the desktop thickness, and the drop 
 - The real problem is an overloaded or unsafe power strip. Organization does not replace electrical safety.
 
 
-<figure class="inline-photo">
-  <img src="/winnie/desk-cable-management-scene3.jpg" alt="Cables neatly routed through a cable tray mounted beneath a desk" loading="lazy" />
-</figure>
-
 ## Quick comparison
-
-<figure class="inline-photo">
-  <img src="/winnie/desk-cable-management-scene2.jpg" alt="An under-desk tray, a cable sleeve, and adhesive clips arranged on a desk" loading="lazy" />
-</figure>
-
 
 | Product type | Solves | Best for | Installation check |
 |---|---|---|---|
@@ -148,10 +130,6 @@ Measure the power strip's length and depth, the desktop thickness, and the drop 
 | Zippered sleeve | Routing | Visible cords to the outlet | Bend radius and route length |
 | Magnetic clips | Access | Daily charging cables | Adhesive location and connector size |
 | Flexible mesh net | Moving containment | Sit-stand desks | Slack at minimum and maximum height |
-
-<figure class="inline-photo">
-  <img src="/winnie/desk-cable-management-scene5.jpg" alt="A finished under-desk cable setup with tray, sleeve, and clips all in place" loading="lazy" />
-</figure>
 
 ## Frequently asked questions
 

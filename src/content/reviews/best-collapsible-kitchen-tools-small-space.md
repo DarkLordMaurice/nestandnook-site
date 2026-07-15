@@ -125,10 +125,6 @@ faqs:
 
 A collapsible kitchen tool only earns its keep if the fold-flat version does the same job as the rigid one it's replacing — nobody wants a colander that saves cabinet space but can't actually hold a full pot of pasta water. The eight picks below cover the specific small-kitchen jobs — draining, steaming, drying, prepping, spinning, pouring — where a fold-flat design genuinely changes how much shelf you get back.
 
-<figure class="inline-photo">
-  <img src="/winnie/collapsible-kitchen-tools-small-space-problem.jpg" alt="Bulky rigid kitchen tools spilling out of an overcrowded small-kitchen cabinet" loading="lazy" />
-</figure>
-
 <p id="quick-answer">The best collapsible kitchen tools for small spaces fold or nest down to a fraction of their working size without sacrificing real capacity. The <strong>OXO Good Grips Silicone Collapsible Colander</strong> is the best overall pick for most kitchens. On a tight budget, the <strong>Comfify two-piece strainer set</strong> covers more sizes for less. For sinks a standard colander won't fit, the <strong>KitchenAid over-the-sink colander</strong> bridges the basin instead of sitting in it.</p>
 
 <h2 id="measure-first-check">Measure before you buy a collapsible tool</h2>
@@ -141,10 +137,6 @@ Check two things before ordering: the tool's fully expanded size (does it actual
 - The collapsed size still doesn't fit where you planned to store it — measure the folded dimensions, not just the marketing photo.
 - You're buying it purely for the "collapsible" label on something you'd rarely use anyway — a fold-flat salad spinner still only earns its space if you eat salad.
 
-<figure class="inline-photo">
-  <img src="/winnie/best-collapsible-kitchen-tools-small-space-scene4.jpg" alt="A collapsible dish-drying rack expanded on a counter beside the same rack folded flat for storage" loading="lazy" />
-</figure>
-
 ## How to choose
 
 - **Real capacity, not token capacity:** a colander that collapses beautifully but only holds a cup of pasta isn't actually solving your problem.
@@ -152,15 +144,7 @@ Check two things before ordering: the tool's fully expanded size (does it actual
 - **What it actually replaces:** the biggest space wins come from replacing genuinely bulky, awkward-shaped items — colanders, dish racks — not small items that were never taking up much room.
 - **How often you'll actually use it:** a collapsible tool for something you use twice a year isn't a space-saver, it's clutter that folds flat.
 
-<figure class="inline-photo">
-  <img src="/winnie/collapsible-kitchen-tools-seam-stability-detail.jpg" alt="Checking the fold seam and base of a collapsible kitchen tool for durability" loading="lazy" />
-</figure>
-
 ## Quick comparison
-
-<figure class="inline-photo">
-  <img src="/winnie/bulky-vs-collapsible-kitchen-tools-comparison.jpg" alt="Side-by-side height comparison of bulky rigid kitchen tools versus their collapsible counterparts" loading="lazy" />
-</figure>
 
 | Tool | Best for | Job | Collapsed footprint |
 |------|----------|-----|---------------------|
@@ -172,10 +156,6 @@ Check two things before ordering: the tool's fully expanded size (does it actual
 | Prep Solutions Salad Spinner | Best for salad people | Washing/drying greens | Compact, not foldable |
 | PrepWorks Funnel Set | Best small add-on | Pouring/decanting | Nests into itself |
 | Sur La Table Colander & Steamer | Best multi-use | Draining + steaming | Collapses to a disc |
-
-<figure class="inline-photo">
-  <img src="/winnie/best-collapsible-kitchen-tools-small-space-scene5.jpg" alt="A collapsible prep bowl or funnel set nested flat inside a shallow drawer" loading="lazy" />
-</figure>
 
 ## Frequently asked questions
 

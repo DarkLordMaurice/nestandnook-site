@@ -110,19 +110,11 @@ faqs:
 
 The best pet-hair remover is not the one with the most dramatic before-and-after photo. It is the one that matches the actual surface: a broad roller for cushion fields, a small rubber edge for seams, a careful scraper for durable carpet, and an adhesive roll for clothing. In a small apartment, the winning kit should fit in one shallow caddy instead of becoming another appliance collection.
 
-<figure class="inline-photo">
-  <img src="/winnie/best-pet-hair-removers-for-furniture-scene1.jpg" alt="A fabric roller pet-hair remover being used across a sofa cushion, visible hair collecting in a chamber" loading="lazy" />
-</figure>
-
 <p id="quick-answer">For most sofas, start with the <strong>ChomChom Roller</strong> for broad cushions and add the <strong>Lilly Brush Mini Pet Hair Detailer</strong> for seams and piping. Use the Uproot tool only after a hidden-area fabric test, and keep an adhesive Evercare roller for clothing rather than whole-furniture cleaning. No single tool is safest or fastest on every upholstery weave.</p>
 
 <h2 id="measure-first-check">Match the tool to the fabric before buying</h2>
 
 Identify the couch material, weave, removable-cushion layout, and the places hair actually collects. Test whether the fabric snags, pills, or shifts under friction. Then measure the storage slot: a reusable roller, detail tool, and small waste pouch should fit together near the couch, or the routine will quietly stop happening.
-
-<figure class="inline-photo">
-  <img src="/winnie/best-pet-hair-removers-for-furniture-scene2.jpg" alt="A small rubber-edged detail tool being used along a couch seam and crevice" loading="lazy" />
-</figure>
 
 ## Build a two-tool system instead of chasing one miracle remover
 
@@ -141,13 +133,7 @@ Empty reusable chambers before they pack solid, pull accumulated hair from rubbe
 Cat hair, dog hair, and undercoat vary, but the couch surface often determines the best mechanism. Smooth woven fabric responds differently from velvet, boucle, microfiber, carpet, or leather. Treat manufacturer material warnings and a hidden-area test as the real selection gate.
 
 <figure class="inline-photo-pair">
-  <figure class="inline-photo">
-    <img src="/winnie/best-pet-hair-removers-for-furniture-scene3.jpg" alt="A pet-hair remover's internal collection chamber, opened for emptying" loading="lazy" />
-</figure>
-  <figure class="inline-photo">
-    <img src="/winnie/best-pet-hair-removers-for-furniture-scene4.jpg" alt="A sofa cushion before and after a hair-removal pass, one side visibly clean" loading="lazy" />
-</figure>
-</figure>
+  </figure>
 
 <h2 id="do-not-buy-if">Do not buy a pet-hair remover if…</h2>
 
@@ -158,10 +144,6 @@ Cat hair, dog hair, and undercoat vary, but the couch surface often determines t
 - It duplicates a remover already sitting unused in the apartment.
 
 For embedded hair plus crumbs and dust, compare the powered options in [our handheld-vacuum guide](/pet-care/best-handheld-vacuums-for-pet-hair-small-apartments/).
-
-<figure class="inline-photo">
-  <img src="/winnie/best-pet-hair-removers-for-furniture-scene5.jpg" alt="A compact pet-hair tool caddy stored in a shallow drawer near the living room" loading="lazy" />
-</figure>
 
 ## Frequently asked questions
 

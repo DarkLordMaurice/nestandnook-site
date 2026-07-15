@@ -9,12 +9,8 @@ prepTimeMinutes: 10
 cookTimeMinutes: 30
 servings: 4
 difficulty: "easy"
-image: "/recipes/recipe-tomato-soup.jpg"
+image: "PENDING"
 imageAlt: "A bowl of smooth, creamy tomato soup garnished with fresh basil and cracked pepper, next to a grilled cheese sandwich"
-altImage: "/recipes/recipe-tomato-soup-alt.jpg"
-altImageAlt: "Ladling fresh tomato soup from the pot into a bowl"
-ingredientsImage: "/recipes/recipe-tomato-soup-ingredients.jpg"
-ingredientsImageAlt: "Ingredients for tomato soup laid out: canned tomatoes, onion, garlic, tomato paste, broth, and cream"
 winnieImage: "/winnie/winnie-kitchen-stir-pot.jpg"
 winnieHeadshot: "/winnie/headshot-v4-1.jpg"
 winnieNote: "Winnie has no patience for anyone apologizing for using canned tomatoes here — canned tomatoes are picked and processed at peak ripeness, which is more than most produce aisles can say in February. She will, however, judge you gently if you skip the pinch of sugar. That's not a preference. That's chemistry."
@@ -96,11 +92,6 @@ Tomato soup has a reputation problem: most people's mental version of it is eith
 
 ## Canned tomatoes are the right call, not a shortcut
 
-<figure class="inline-photo">
-  <img src="/recipes/recipe-tomato-soup-scene1.jpg" alt="Tomato paste being stirred into melted butter and onions in a pot, deepening in color" loading="lazy" />
-</figure>
-
-
 Whole peeled tomatoes, picked and canned at peak ripeness, are frequently a more consistent starting point than whatever's in the produce aisle outside of August — this is standard restaurant practice, not a compromise. The one detail that actually matters is reaching for whole peeled rather than diced: diced tomatoes are treated to hold their shape in the can, which means they resist breaking down fully even after a blender gets to them. Whole tomatoes soften completely, which is the difference between a soup that blends silky and one that stays faintly grainy no matter how long it runs.
 
 ## The pinch of sugar is chemistry, not preference
@@ -108,10 +99,5 @@ Whole peeled tomatoes, picked and canned at peak ripeness, are frequently a more
 Acidity is the single biggest variable between tomato soup that tastes bright and balanced and tomato soup that tastes like it's fighting you. Canned tomatoes vary in acidity from can to can and brand to brand, and blending the soup smooth actually makes any sharpness more noticeable, not less, since there's no texture left to distract from it. A teaspoon of sugar doesn't make the soup sweet — it rounds off that edge. Skipping it because it feels like cheating is the most common reason a homemade version tastes worse than expected.
 
 ## Getting it properly smooth without a blender incident
-
-<figure class="inline-photo">
-  <img src="/recipes/recipe-tomato-soup-scene2.jpg" alt="A bowl of creamy tomato soup with a grilled cheese sandwich cut in half for dipping" loading="lazy" />
-</figure>
-
 
 Hot liquid expands when it's aerated, and a stand blender packed full with hot soup and a sealed lid is a genuinely common way to redecorate a kitchen ceiling. Work in small batches, fill the pitcher no more than halfway, and vent the lid's center cap or hold a towel over a slightly cracked lid instead of sealing it completely. An immersion blender sidesteps the whole issue by working directly in the pot — worth the extra drawer space if tomato soup is going into regular rotation.

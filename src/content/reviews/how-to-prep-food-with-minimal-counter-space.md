@@ -34,10 +34,6 @@ Prepping food with minimal counter space is mostly about sequence. You don't nee
 
 A tiny counter can't handle a cooking-show lineup of seventeen little bowls. In a real small kitchen, prep has to move like a train: chop, clear, transfer, wipe, next.
 
-<figure class="inline-photo">
-  <img src="/winnie/minimal-counter-space-food-prep-problem.jpg" alt="Overcrowded cutting board with vegetable scraps falling off both edges onto the counter" loading="lazy" />
-</figure>
-
 <h2 id="measure-first-check">Measure your actual prep zone before buying anything</h2>
 
 Before buying any prep tool, measure your actual usable prep zone. Then check whether the tool saves more space than it uses once the parts, lid, blades, container, cord, or cleanup pieces are all accounted for — a gadget with five parts to wash isn't a space-saver just because it's small on the shelf.
@@ -49,21 +45,9 @@ Not sure whether a board, appliance, or prep tool will leave enough working room
 Build a one-board prep station and treat it as non-negotiable — one cutting board, one knife, one active ingredient at a time. Prep in cooking order so the first thing chopped is the first thing that needs to cook, not the item that happens to be on top of the pile. Use a bench scraper to move food fast from board to pan without needing a second holding bowl for every ingredient. Reach for kitchen shears when the board is too crowded to fit a knife's swing — snipping herbs or greens directly into the pan skips the board entirely. Choose compact slicing tools carefully, since a handheld mandoline only earns its space if it replaces a knife task you do often. Use a mini chopper only for repeat prep — onions, garlic, herbs you chop most days — not as a novelty for one recipe a year. And stop using a separate bowl for every ingredient; one holding bowl per meal is usually enough.
 
 <div class="inline-photo-pair">
-  <figure class="inline-photo">
-    <img src="/winnie/bench-scraper-small-kitchen-prep-transfer.jpg" alt="Using a metal bench scraper to transfer chopped vegetables from board directly into a pan" loading="lazy" />
-</figure>
-  <figure class="inline-photo">
-    <img src="/winnie/kitchen-shears-small-counter-prep.jpg" alt="Snipping herbs directly into a pan with kitchen shears, cutting board untouched off to the side" loading="lazy" />
-</figure>
-</div>
+  </div>
 <div class="inline-photo-pair">
-  <figure class="inline-photo">
-    <img src="/winnie/handheld-mandoline-small-kitchen-safety.jpg" alt="Using a compact handheld mandoline with a visible hand guard to slice cucumber into a bowl" loading="lazy" />
-</figure>
-  <figure class="inline-photo">
-    <img src="/winnie/mini-food-chopper-small-kitchen-prep.jpg" alt="Using a small compact mini food chopper to prep onions and herbs at the kitchen table" loading="lazy" />
-</figure>
-</div>
+  </div>
 
 <h2 id="do-not-buy-if">Skip a new prep tool if&#x2026;</h2>
 
@@ -74,9 +58,5 @@ Build a one-board prep station and treat it as non-negotiable — one cutting bo
 Your board should reset after every ingredient. If the counter still shows evidence of the last three steps, the next step isn't cooking — it's negotiation.
 
 See [Best Nesting Mixing Bowls for Small Kitchens](/kitchen/best-nesting-mixing-bowls-small-kitchen/) for holding-bowl picks that stack flat between uses, and the [Kitchen hub](/kitchen/) for the full range.
-
-<figure class="inline-photo">
-  <img src="/winnie/minimal-counter-space-food-prep-payoff.jpg" alt="A genuinely clear counter with a mostly empty cutting board and chopped ingredients contained in one bowl" loading="lazy" />
-</figure>
 
 > **Winnie's take:** The bench scraper is the single cheapest, least glamorous tool in this setup — buyers keep using it for the job of a second cutting board and several transfer bowls, without adding another bulky gadget to the counter.

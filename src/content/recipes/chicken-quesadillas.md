@@ -9,10 +9,8 @@ prepTimeMinutes: 15
 cookTimeMinutes: 15
 servings: 4
 difficulty: "easy"
-image: "/recipes/recipe-quesadillas.jpg"
+image: "PENDING"
 imageAlt: "A chicken quesadilla cut into wedges, cheese pulling between the pieces, served with salsa and sour cream"
-altImage: "/recipes/recipe-chicken-quesadillas-alt.jpg"
-ingredientsImage: "/recipes/recipe-chicken-quesadillas-ingredients.jpg"
 winnieImage: "/winnie/winnie-kitchen-plating.jpg"
 winnieHeadshot: "/winnie/headshot-v4-3.jpg"
 winnieNote: "A wet filling is the reason quesadillas fall apart the second you cut them. Pat everything dry, drain everything you can, and the tortilla actually holds together like it's supposed to."
@@ -84,11 +82,6 @@ This chicken quesadillas recipe exists to fix the two most common failures in th
 
 ## Moisture is the enemy, not flavor
 
-<figure class="inline-photo">
-  <img src="/recipes/recipe-chicken-quesadillas-scene1.jpg" alt="A quesadilla folded in a skillet, cheese melting and slightly golden at the edges" loading="lazy" />
-</figure>
-
-
 Vegetables, saucy chicken, and even excess cheese moisture all release liquid as they heat inside a folded tortilla. That liquid has nowhere to go, so it soaks straight into the tortilla from the inside — which is why a quesadilla can look perfectly golden on the outside and still be soggy the moment you cut into it. Patting every component dry before assembly solves this at the source, instead of trying to cook the moisture out after the fact.
 
 ## Cheese is structural, not just flavor
@@ -96,10 +89,5 @@ Vegetables, saucy chicken, and even excess cheese moisture all release liquid as
 Putting a layer of cheese on both sides of the filling — not just underneath it — gives the melted cheese something to bond to on both halves of the fold. That's what holds a quesadilla together when you cut it, rather than letting the filling slide out onto the cutting board.
 
 ## Medium heat, and give it a minute to rest
-
-<figure class="inline-photo">
-  <img src="/recipes/recipe-chicken-quesadillas-scene2.jpg" alt="Quesadilla wedges fanned out on a cutting board with a small bowl of salsa alongside" loading="lazy" />
-</figure>
-
 
 High heat browns the tortilla before the interior cheese has fully melted, leaving a crisp shell around a filling that hasn't quite come together yet. Medium heat gives everything time to catch up evenly. Letting the quesadilla sit for a minute before cutting lets the cheese firm up just enough to hold its shape, instead of pouring out the second the knife goes in.

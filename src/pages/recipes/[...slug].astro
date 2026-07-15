@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import WinnieNote from '../../components/WinnieNote.astro';
 import HowWeChoose from '../../components/HowWeChoose.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
+import WinniePendingPhoto from '../../components/WinniePendingPhoto.astro';
 import { AUTHORS } from '../../authors.ts';
 import { SITE, amazonLink, amazonSearchLink, AMAZON_LINK_REL } from '../../config.ts';
 import { getCollection } from 'astro:content';
@@ -119,9 +120,13 @@ const jsonLd = {
       </div>
     </div>
 
-    <figure class="inline-photo hero-photo">
-      <img src={d.image} alt={d.imageAlt} loading="eager" fetchpriority="high" style={d.imagePosition ? `--img-pos: ${d.imagePosition}` : undefined} />
-    </figure>
+    {d.image === 'PENDING' ? (
+      <WinniePendingPhoto />
+    ) : (
+      <figure class="inline-photo hero-photo">
+        <img src={d.image} alt={d.imageAlt} loading="eager" fetchpriority="high" style={d.imagePosition ? `--img-pos: ${d.imagePosition}` : undefined} />
+      </figure>
+    )}
 
     <div class="recipe-quickmeta no-print">
       <div><span class="label">Prep</span>{fmtMins(d.prepTimeMinutes)}</div>

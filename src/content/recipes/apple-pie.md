@@ -9,10 +9,8 @@ prepTimeMinutes: 40
 cookTimeMinutes: 55
 servings: 8
 difficulty: "intermediate"
-image: "/recipes/recipe-apple-pie.jpg"
+image: "PENDING"
 imageAlt: "A golden lattice-topped apple pie with a slice cut out, showing thick, glossy apple filling"
-altImage: "/recipes/recipe-apple-pie-alt.jpg"
-ingredientsImage: "/recipes/recipe-apple-pie-ingredients.jpg"
 winnieImage: "/winnie/winnie-kitchen-knead.jpg"
 winnieHeadshot: "/winnie/headshot-v4-1.jpg"
 winnieNote: "Apples release an alarming amount of water once you slice and sugar them, and if you skip draining that off, it goes straight into your crust. Ask me how I know. Actually don't, it was a whole thing."
@@ -83,11 +81,6 @@ This apple pie recipe exists to fix the two failures that show up in almost ever
 
 ## Apples release more water than you'd expect
 
-<figure class="inline-photo">
-  <img src="/recipes/recipe-apple-pie-scene1.jpg" alt="Thin apple slices layered inside an unbaked pie crust in a glass pie dish, cinnamon visible on top" loading="lazy" />
-</figure>
-
-
 Slicing and sugaring apples starts a maceration process that pulls a genuinely surprising amount of liquid out of the fruit within thirty to forty-five minutes. Most recipes fold that liquid straight into the pie, which is exactly how you end up with a filling that's more soup than pie once it's baked. Draining that liquid off, reducing it separately into a syrup, then folding it back in keeps every bit of the flavor while removing the raw water that was going to compromise the crust.
 
 ## The bottom crust needs a head start
@@ -95,10 +88,5 @@ Slicing and sugaring apples starts a maceration process that pulls a genuinely s
 Even well-drained apples still carry some moisture, and a raw bottom crust sitting under filling for nearly an hour of baking has a lot of time to soften. A short blind-bake — just until the crust is set but not browned — gives it a partial seal before the wet filling ever touches it. It's a second line of defense on top of the drain-and-reduce step, not a substitute for it.
 
 ## Cooling time is part of the recipe
-
-<figure class="inline-photo">
-  <img src="/recipes/recipe-apple-pie-scene2.jpg" alt="A golden-brown baked apple pie with a lattice crust cooling on a wire rack, one slice cut and plated nearby" loading="lazy" />
-</figure>
-
 
 Apple pie filling is thickened with cornstarch, and cornstarch needs time and a drop in temperature to fully set. A pie cut straight out of the oven, however tempting on a fall afternoon, will always run more than the same pie sliced a few hours later. If the schedule allows it, baking earlier in the day and cutting it that evening gives the cleanest slice.

@@ -99,20 +99,11 @@ faqs:
 
 The best desk lamp for eye strain is not simply the brightest lamp. A useful setup reduces harsh contrast, avoids direct glare, diffuses the light source, and lets the reader adjust the output to the room. Certification claims can add evidence, but only when the claim is tied to the exact model being sold.
 
-<figure class="inline-photo">
-  <img src="/winnie/best-desk-lamps-for-eye-strain-scene1.jpg" alt="A warm desk lamp casting soft diffused light across an open notebook" loading="lazy" />
-</figure>
-
-
 <p id="quick-answer">Choose a desk lamp with <strong>diffused output, useful dimming, adjustable placement, and model-specific documentation</strong>. For a small desk, a clamp lamp can preserve surface area. For a premium base lamp, verify that any flicker-free or low-blue-light certification claim applies to the exact current model rather than assuming the whole product line is identical.</p>
 
 ## Certification versus marketing language
 
 Words such as “eye-caring” are marketing descriptions unless the manufacturer provides a checkable standard or model-specific document. TÜV Rheinland is a real third-party organization, but this guide does not treat a broad brand statement as proof for every variant. Check the exact model number, current listing, and linked documentation.
-
-<figure class="inline-photo">
-  <img src="/winnie/best-desk-lamps-for-eye-strain-scene4.jpg" alt="A desk lamp casting diffused, even light across a work surface without glare hitting a nearby monitor" loading="lazy" />
-</figure>
 
 <h2 id="measure-first-check">Check the room and desk before choosing the lamp</h2>
 
@@ -126,16 +117,7 @@ Note the room's existing ambient light, screen brightness, desk-edge shape, avai
 - Persistent eye discomfort continues regardless of lighting changes; that is a reason to seek appropriate professional advice rather than keep buying lamps.
 
 
-<figure class="inline-photo">
-  <img src="/winnie/best-desk-lamps-for-eye-strain-scene3.jpg" alt="Three desk lamp styles — clamp, gooseneck, and panel — arranged together" loading="lazy" />
-</figure>
-
 ## Quick comparison
-
-<figure class="inline-photo">
-  <img src="/winnie/best-desk-lamps-for-eye-strain-scene2.jpg" alt="Close-up of even light diffusion across a desk surface with no harsh shadows" loading="lazy" />
-</figure>
-
 
 | Lamp | Best for | Evidence to verify | Mount |
 |---|---|---|---|
@@ -144,10 +126,6 @@ Note the room's existing ambient light, screen brightness, desk-edge shape, avai
 | Airlonv | Surface-space savings | Clamp range and dimming controls | Clamp |
 | BenQ Genie | Smaller premium workspace | Exact model documentation | Base |
 | Lepro Small Clip-On | Very tight desk | Clamp fit and light coverage | Clip |
-
-<figure class="inline-photo">
-  <img src="/winnie/best-desk-lamps-for-eye-strain-scene5.jpg" alt="A desk lamp's dimming control being adjusted to match ambient room light" loading="lazy" />
-</figure>
 
 ## Frequently asked questions
 

@@ -9,10 +9,8 @@ prepTimeMinutes: 15
 cookTimeMinutes: 25
 servings: 6
 difficulty: "easy"
-image: "/recipes/recipe-mashed-potatoes.jpg"
+image: "PENDING"
 imageAlt: "A bowl of creamy mashed potatoes with a well of melted butter in the center, topped with cracked pepper"
-altImage: "/recipes/recipe-mashed-potatoes-alt.jpg"
-ingredientsImage: "/recipes/recipe-mashed-potatoes-ingredients.jpg"
 winnieImage: "/winnie/winnie-kitchen-taste.jpg"
 winnieHeadshot: "/winnie/headshot-v4-2.jpg"
 winnieNote: "Overworking the potatoes is the one mistake I can't talk anyone out of once they've bought a food processor and decided it's the fastest tool in the kitchen. It is not. Not for this. A ricer or a hand masher, every time."
@@ -70,11 +68,6 @@ This mashed potatoes recipe exists because the dish has exactly two failure mode
 
 ## The tool matters more than the technique
 
-<figure class="inline-photo">
-  <img src="/recipes/recipe-mashed-potatoes-scene1.jpg" alt="A pot of just-mashed potatoes with a pat of butter melting on top, a masher resting on the rim" loading="lazy" />
-</figure>
-
-
 A ricer or food mill processes each potato piece once, gently, which is why restaurant mashed potatoes are consistently lighter than home versions made in a food processor or stand mixer. Those appliances are fast, but speed is the problem: they beat potato starch until it turns elastic and paste-like, which is the entire mechanism behind gluey mashed potatoes. A hand masher works too, if you don't have a ricer — it just takes a little more effort and won't get quite as silky-smooth.
 
 ## Warm dairy, folded in, not beaten
@@ -82,10 +75,5 @@ A ricer or food mill processes each potato piece once, gently, which is why rest
 Cold milk and butter shock the hot potato and make it seize up rather than absorb smoothly. Warming the dairy first, then folding it in gradually rather than beating it, keeps the texture creamy instead of tight. This is a small step that a lot of recipes skip, and it's a noticeable difference in the final texture.
 
 ## Season the water, not just the bowl
-
-<figure class="inline-photo">
-  <img src="/recipes/recipe-mashed-potatoes-scene2.jpg" alt="A bowl of creamy mashed potatoes with a well of melted butter in the center, set on a dinner table" loading="lazy" />
-</figure>
-
 
 Salting only at the end means the potato itself stays bland under a layer of salty dairy. Salting the cooking water lets the potato absorb seasoning as it cooks, which is the difference between mashed potatoes that taste seasoned all the way through and ones that just taste like butter on top of starch.

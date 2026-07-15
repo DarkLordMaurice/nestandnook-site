@@ -28,11 +28,6 @@ faqs:
 
 "Chair too low for desk" is a search that usually means something slightly different than it sounds — it's rarely that the chair itself is defective, it's that the chair and desk were never actually matched to each other, and one of them has to give.
 
-<figure class="inline-photo">
-  <img src="/winnie/chair-too-low-for-desk-fixes-scene1.jpg" alt="An office chair's pneumatic height lever being adjusted, chair raised relative to a desk" loading="lazy" />
-</figure>
-
-
 <p id="quick-answer">Raise your chair first — it's free and takes ten seconds, and it fixes the wrist and shoulder strain that's the real symptom of this mismatch. If your feet stop reaching the floor as a result, add a footrest rather than lowering the chair back down. If the chair is already maxed out and still feels low, the desk itself needs raising instead, via a riser or leg extenders.</p>
 
 <h2 id="measure-first-check">Check your wrists and shoulders, not just how the chair feels</h2>
@@ -47,26 +42,13 @@ The clearest sign is your wrists. If they bend upward to reach the keyboard, or 
 
 ## Fix 1: raise the chair (and deal with your feet separately)
 
-<figure class="inline-photo">
-  <img src="/winnie/chair-too-low-for-desk-fixes-scene4.jpg" alt="A hand adjusting an office chair's height lever while seated at a desk" loading="lazy" />
-</figure>
-
 This is the first thing to try, because it's free and takes ten seconds. Raise your seat until your wrists sit flat or angled slightly down at the keyboard. The near-universal side effect: your feet stop reaching the floor, especially if you're on the shorter side to begin with. That's not a reason to leave the chair low — it's a reason to add a footrest, which is a five-minute, inexpensive fix compared to living with wrist strain every day. See the [footrest roundup](/home-office/best-footrest-for-short-people/) for picks ranked by how much actual lift they give.
 
 ## Fix 2: raise the desk instead
 
-<figure class="inline-photo">
-  <img src="/winnie/chair-too-low-for-desk-fixes-scene2.jpg" alt="Desk risers placed under each leg of a desk, slightly elevating the surface" loading="lazy" />
-</figure>
-
-
 If your chair is already maxed out and still feels low, the desk is the actual mismatch — a desk riser or a set of desk-leg extenders lifts the whole work surface a couple of inches, which is usually cheaper and less disruptive than replacing the desk outright. This is worth trying before you assume new furniture is the only option.
 
 ## Fix 3: check the desk-to-keyboard relationship, not just desk-to-chair
-
-<figure class="inline-photo">
-  <img src="/winnie/chair-too-low-for-desk-fixes-scene5.jpg" alt="A slim keyboard sitting directly on a thick desk surface, raising the typing plane slightly" loading="lazy" />
-</figure>
 
 Sometimes the desk height is fine but a keyboard sitting directly on top of a thick desk surface effectively raises the typing plane a half-inch or more, which is enough to matter over a full workday. A slim keyboard or a shallow keyboard tray can close that gap without touching chair or desk height at all.
 
@@ -77,6 +59,3 @@ None of these fixes exist in isolation — raising your chair to fix your wrists
 > **Winnie's take:** This is the one desk complaint where I see people quietly suffer the longest, because "just raise your chair" sounds too simple to be the actual fix. It usually is the fix. The footrest is just the follow-up step nobody mentions until their feet start complaining too.
 
 
-<figure class="inline-photo">
-  <img src="/winnie/chair-too-low-for-desk-fixes-scene3.jpg" alt="A keyboard tray mounted under a desk at a lower height than the desk surface" loading="lazy" />
-</figure>

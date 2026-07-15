@@ -9,11 +9,8 @@ prepTimeMinutes: 20
 cookTimeMinutes: 60
 servings: 6
 difficulty: "easy"
-image: "/recipes/recipe-meatloaf.jpg"
-altImage: "/recipes/recipe-meatloaf-alt.jpg"
-altImageAlt: "A sliced meatloaf with a glossy glaze, showing a moist, tender interior"
+image: "PENDING"
 imageAlt: "A sliced classic meatloaf with a glossy ketchup glaze on top, served on a platter"
-ingredientsImage: "/recipes/recipe-meatloaf-ingredients.jpg"
 winnieImage: "/winnie/winnie-holding-meatloaf.jpg"
 winnieHeadshot: "/winnie/avatar.jpg"
 winnieNote: "Meatloaf has a reputation problem — everyone's had the dry, dense, sad-brick version at least once. That's a technique failure, not a meatloaf failure. The bread-and-milk trick below is the whole fix, and it's the kind of quietly correct detail I could talk about for way too long."
@@ -89,11 +86,6 @@ This meatloaf recipe exists because meatloaf gets a bad reputation it mostly doe
 
 ## The panade is the whole trick
 
-<figure class="inline-photo">
-  <img src="/recipes/recipe-meatloaf-scene1.jpg" alt="An unbaked meatloaf shaped in a loaf pan, glaze being brushed over the top" loading="lazy" />
-</figure>
-
-
 A panade — bread torn up and soaked in milk until it turns into a paste — sounds like an unnecessary extra step, but it's the single biggest difference between moist meatloaf and dry meatloaf. As the loaf bakes, that soaked bread holds onto liquid and releases it slowly through the meat, instead of all the moisture cooking straight out the way it does in a panade-free loaf. It takes five minutes and one extra bowl. Skipping it is the most common reason people end up with a dry result and blame the beef.
 
 ## Don't overwork the mix
@@ -101,10 +93,5 @@ A panade — bread torn up and soaked in milk until it turns into a paste — so
 The other failure point is mixing too aggressively, for too long, the way you might with bread dough that needs gluten development. Ground meat is the opposite — the more you work it, the tighter and denser the protein strands get, and that's what turns a tender loaf into a rubbery one. Combine everything with your hands just until you stop seeing streaks of raw egg or dry seasoning, then stop completely. It should still look loosely combined, not smooth.
 
 ## Free-form beats a loaf pan
-
-<figure class="inline-photo">
-  <img src="/recipes/recipe-meatloaf-scene2.jpg" alt="A sliced meatloaf on a serving platter with a glossy glazed top, one slice plated alongside mashed potatoes" loading="lazy" />
-</figure>
-
 
 Shaping the mixture into a loaf directly on a lined sheet pan, rather than packing it into a traditional loaf pan, gives more surface area for the glaze to caramelize and lets rendered fat drain away instead of pooling around the base of the loaf. It also bakes a little faster and more evenly, since heat reaches the sides of the loaf directly instead of through a metal pan wall.

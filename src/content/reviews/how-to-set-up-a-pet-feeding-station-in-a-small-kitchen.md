@@ -36,19 +36,11 @@ faqs:
 
 A small-kitchen feeding station has to do two contradictory things: stay convenient enough to maintain and stay far enough from human cooking that it does not block prep, appliances, or walkways. The best setup is not a matching set of containers. It is one washable floor zone with safe food storage, clean hardware, and no cable crossing the room.
 
-<figure class="inline-photo">
-  <img src="/winnie/how-to-set-up-a-pet-feeding-station-in-a-small-kitchen-scene1.jpg" alt="A compact pet feeding station tucked onto a quiet kitchen edge, away from the main cooking path" loading="lazy" />
-</figure>
-
 <p id="quick-answer">Place the feeding station on a quiet kitchen edge outside the main cooking and walking paths. Use a flat washable mat, stable bowls or a maintainable fountain, and a secured food container that keeps the original bag when possible. Leave enough clearance to lift every item for cleaning, route cords away from water and traffic, and keep the entire zone separate from litter.</p>
 
 <h2 id="measure-first-check">Map the pet's stance and the kitchen's moving parts</h2>
 
 Measure the pet's comfortable standing width, bowl or fountain base, splash radius, mat, and the space needed to bend and lift each item. Open the refrigerator, oven, dishwasher, cabinets, and nearby doors. The station fails if any moving part traps the pet or if a person must step over bowls to cook.
-
-<figure class="inline-photo">
-  <img src="/winnie/how-to-set-up-a-pet-feeding-station-in-a-small-kitchen-scene2.jpg" alt="A measuring tape laid across a kitchen floor edge to check clearance for a pet feeding station" loading="lazy" />
-</figure>
 
 ## 1. Choose a low-traffic edge
 
@@ -71,13 +63,7 @@ Keep dry food in its original bag inside a suitable clean container when possibl
 Use a dedicated clean scoop and a small drying location for washed bowls. Keep sponges or brushes used on pet hardware separate from food-prep tools according to the household's hygiene plan.
 
 <figure class="inline-photo-pair">
-  <figure class="inline-photo">
-    <img src="/winnie/how-to-set-up-a-pet-feeding-station-in-a-small-kitchen-scene3.jpg" alt="A flat washable mat positioned beneath a pet food storage container in a small kitchen" loading="lazy" />
-</figure>
-  <figure class="inline-photo">
-    <img src="/winnie/how-to-set-up-a-pet-feeding-station-in-a-small-kitchen-scene4.jpg" alt="A dedicated scoop resting in a small holder beside a feeding station" loading="lazy" />
-</figure>
-</figure>
+  </figure>
 
 ## 6. Protect cords and charging points
 
@@ -90,10 +76,6 @@ Use the kitchen while someone opens every nearby appliance and the pet approache
 ## 8. Reset the zone after meals
 
 Remove leftover food according to its instructions, clean bowls and utensils with soap and hot water after each use per FDA guidance, wipe the mat, and leave the area dry.
-
-<figure class="inline-photo">
-  <img src="/winnie/how-to-set-up-a-pet-feeding-station-in-a-small-kitchen-scene5.jpg" alt="A finished small-kitchen pet feeding station with bowls, mat, and food container arranged cleanly" loading="lazy" />
-</figure>
 
 <h2 id="do-not-buy-if">Do not add a feeding-station organizer if…</h2>
 

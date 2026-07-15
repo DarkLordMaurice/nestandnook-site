@@ -86,20 +86,11 @@ faqs:
 
 The best anti fatigue mat for standing desk use is the difference between twenty comfortable minutes on your feet and an afternoon your knees and lower back remember the next day. Standing on a hard floor for hours concentrates pressure straight up through your joints in a way sitting simply doesn't — the mat's whole job is breaking up that pressure.
 
-<figure class="inline-photo">
-  <img src="/winnie/best-anti-fatigue-mats-standing-desk-scene1.jpg" alt="A textured anti-fatigue mat with raised ridges on a wood floor in front of a standing desk" loading="lazy" />
-</figure>
-
-
 <p id="quick-answer">Our top pick for most standing-desk users is the <strong>Topo by Ergodriven</strong> — its raised terrain design is the single most-cited reason reviewers say a full day standing feels different than on a flat mat. Tight on floor space? The <strong>Topo Mini</strong> gives the same terrain in a smaller footprint. Prioritizing budget instead? The <strong>Sky Solutions</strong> flat mat covers the core job well without the terrain premium.</p>
 
 ## Terrain vs. flat: the real trade-off
 
 A terrain mat's raised zones aren't decorative — they nudge your feet into slightly different positions throughout the day without you consciously deciding to move, which several reviewers describe as the actual mechanism behind less end-of-day fatigue. A flat mat is simpler and usually cheaper, and it's a perfectly reasonable choice if you don't want a textured surface underfoot or you stand in shorter stretches rather than for hours at a time.
-
-<figure class="inline-photo">
-  <img src="/winnie/best-anti-fatigue-mats-standing-desk-scene4.jpg" alt="A textured anti-fatigue mat positioned in front of a standing desk, showing raised terrain zones underfoot" loading="lazy" />
-</figure>
 
 <h2 id="measure-first-check">Measure first: how much floor do you actually use?</h2>
 
@@ -112,16 +103,7 @@ Grab a tape measure and mark where your feet actually land through a normal work
 - You already stand on thick carpet or a padded rug most of the day — you're closer to already having cushioning than someone on bare hardwood or tile, so the upgrade is smaller than it looks on paper.
 
 
-<figure class="inline-photo">
-  <img src="/winnie/best-anti-fatigue-mats-standing-desk-scene3.jpg" alt="Cross-section of a thick cushioned anti-fatigue mat showing layered foam construction" loading="lazy" />
-</figure>
-
 ## Quick comparison
-
-<figure class="inline-photo">
-  <img src="/winnie/best-anti-fatigue-mats-standing-desk-scene2.jpg" alt="Smooth flat foam mat beside a mat with raised terrain nubs and ridges" loading="lazy" />
-</figure>
-
 
 | Mat | Best for | Design | Size |
 |-----|----------|--------|------|
@@ -130,10 +112,6 @@ Grab a tape measure and mark where your feet actually land through a normal work
 | Sky Solutions (20x39) | Budget | Flat | Standard |
 | Kangaroo Original (46x30) | Larger stance / corner desks | Flat | Large |
 | Sky Solutions Oasis | Multi-room use | Flat | Standard |
-
-<figure class="inline-photo">
-  <img src="/winnie/best-anti-fatigue-mats-standing-desk-scene5.jpg" alt="A flat foam mat beside a textured terrain mat, showing the surface difference" loading="lazy" />
-</figure>
 
 ## Frequently asked questions
 

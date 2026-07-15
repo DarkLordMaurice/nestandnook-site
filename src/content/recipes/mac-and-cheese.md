@@ -9,11 +9,8 @@ prepTimeMinutes: 15
 cookTimeMinutes: 35
 servings: 6
 difficulty: "easy"
-image: "/recipes/recipe-mac-and-cheese.jpg"
-altImage: "/recipes/recipe-mac-and-cheese-alt.jpg"
-altImageAlt: "A close-up of baked mac and cheese with a golden, crispy top"
+image: "PENDING"
 imageAlt: "A skillet of baked mac and cheese with a golden, crispy breadcrumb top"
-ingredientsImage: "/recipes/recipe-mac-and-cheese-ingredients.jpg"
 winnieImage: "/winnie/winnie-holding-mac-and-cheese.jpg"
 winnieHeadshot: "/winnie/headshot-v4-3.jpg"
 winnieNote: "Every cheese sauce is a small negotiation between 'melts beautifully' and 'actually tastes like something.' Use one cheese for each job instead of asking one cheese to do both, and the negotiation resolves itself."
@@ -89,11 +86,6 @@ This mac and cheese recipe exists because baked mac and cheese sounds like it sh
 
 ## The roux needs a real minute or two
 
-<figure class="inline-photo">
-  <img src="/recipes/recipe-mac-and-cheese-scene1.jpg" alt="A saucepan of glossy cheese sauce being whisked, steam rising, a wooden spoon resting nearby" loading="lazy" />
-</figure>
-
-
 A roux — butter and flour cooked together before liquid goes in — is doing double duty: it thickens the sauce, and cooking it past the raw-white stage removes a flour taste that otherwise lingers in the background of the whole dish. Rushing this step by adding milk to a roux that's still pale and raw-smelling is one of the most common reasons homemade mac and cheese tastes slightly off in a way that's hard to pin down.
 
 ## One cheese for melting, one cheese for flavor
@@ -101,10 +93,5 @@ A roux — butter and flour cooked together before liquid goes in — is doing d
 Aged, sharp cheeses taste incredible but have less moisture than younger cheeses, which makes an all-sharp-cheddar sauce more prone to turning grainy or oily as it heats. A blend — something mild or medium that melts smoothly, backed up by a smaller amount of something sharp for actual flavor — gets both qualities into the same pot instead of asking one cheese to do a job it's not built for.
 
 ## The oven finishes cooking the pasta, so start it underdone
-
-<figure class="inline-photo">
-  <img src="/recipes/recipe-mac-and-cheese-scene2.jpg" alt="A baking dish of mac and cheese with a golden crisp breadcrumb topping, one scoop removed showing the creamy interior" loading="lazy" />
-</figure>
-
 
 Pasta that's fully al dente before it goes into the cheese sauce and oven keeps absorbing liquid and heat through the entire bake, which is how a lot of baked mac and cheese ends up mushy by the time it comes out. Pulling the noodles about two minutes before their package-directed al dente point leaves exactly enough bite in reserve to survive the bake intact.

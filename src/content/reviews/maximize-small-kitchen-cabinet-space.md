@@ -37,10 +37,6 @@ A cabinet isn't "organized" just because the door closes. If opening it requires
 
 Your shelves have height but not usable height, pans and lids behave badly together, and deep lower cabinets hide everything in the back where it's functionally gone until a deep clean rediscovers it.
 
-<figure class="inline-photo">
-  <img src="/winnie/maximize-small-kitchen-cabinet-space-problem.jpg" alt="Pans avalanching out of an overcrowded lower kitchen cabinet mid-reach" loading="lazy" />
-</figure>
-
 <h2 id="measure-first-check">Measure the cabinet and the object causing the problem</h2>
 
 Before buying cabinet organizers, measure the inside width, depth, shelf height, and door clearance of the cabinet you want to fix. Then measure the item actually causing the problem — pan diameter, lid height, plate stack height, appliance width, or cutting-board depth. The right organizer fits the cabinet and the object, not just what looks useful in a product photo.
@@ -50,21 +46,9 @@ Before buying cabinet organizers, measure the inside width, depth, shelf height,
 Empty one cabinet at a time rather than trying to overhaul the whole kitchen in an afternoon, and give every cabinet a single main job instead of letting it stay a catch-all. Add shelf risers for dishes so plates and bowls stop competing for the same flat shelf. Stop stacking pans flat if the stack is actively fighting you — a vertical pan rack turns a pile into something you can pull one piece from without disturbing the rest. Give lids their own address with a dedicated rack instead of letting them slide loose behind the pots. Store baking sheets and cutting boards vertically rather than flat, since flat storage is where they get buried. Use pull-out trays only where reaching is the actual problem — a shallow cabinet doesn't need one. And stop letting mugs and cups steal shelf space meant for dishes; a hook rail or riser gets them out of the way.
 
 <div class="inline-photo-pair">
-  <figure class="inline-photo">
-    <img src="/winnie/small-kitchen-cabinet-shelf-riser-detail.jpg" alt="Placing a bowl onto a shelf riser stacked above a row of plates inside a cabinet" loading="lazy" />
-</figure>
-  <figure class="inline-photo">
-    <img src="/winnie/small-kitchen-pan-lid-rack-cabinet-detail.jpg" alt="Vertical pan rack and separate lid rack organizing skillets and lids in a lower cabinet" loading="lazy" />
-</figure>
-</div>
+  </div>
 <div class="inline-photo-pair">
-  <figure class="inline-photo">
-    <img src="/winnie/small-kitchen-pull-out-cabinet-tray.jpg" alt="Sliding cabinet tray pulled fully out from a deep lower cabinet" loading="lazy" />
-</figure>
-  <figure class="inline-photo">
-    <img src="/winnie/small-kitchen-mug-cup-cabinet-space-fix.jpg" alt="Reaching into an organized upper cabinet with a shelf riser and hooks for mugs and cups" loading="lazy" />
-</figure>
-</div>
+  </div>
 
 <h2 id="do-not-buy-if">Skip a cabinet organizer if&#x2026;</h2>
 

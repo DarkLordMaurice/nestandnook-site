@@ -34,19 +34,11 @@ faqs:
 
 Pet-proofing a rental is less about wrapping the apartment in plastic and more about controlling access. The safest plan removes hazards first, then uses reversible barriers and washable protection where daily life still needs a boundary. No product can promise a damage-free lease outcome, and this page does not provide legal or lease advice.
 
-<figure class="inline-photo">
-  <img src="/winnie/how-to-pet-proof-a-rental-apartment-scene1.jpg" alt="Cord covers, cabinet latches, and secured trash arranged in a reversible rental pet-proofing setup" loading="lazy" />
-</figure>
-
 <p id="quick-answer">Pet-proof a rental apartment by removing access to cords, medications, cleaners, trash, unsafe plants, loose window screens, and unstable furniture before buying barriers. Create clear feeding, litter, sleep, and play zones, then add reversible protection only where needed. Test adhesives on hidden areas, follow installation instructions, and never use a pressure-mounted gate at the top of stairs.</p>
 
 <h2 id="measure-first-check">Walk the apartment at pet height</h2>
 
 Crouch to the pet's eye level and trace routes under furniture, behind appliances, toward windows, cords, trash, doors, and shelving. Measure gaps, gate openings, window access, chew reach, jump paths, and the footprint of every protective item. Repeat with doors, recliners, and appliances moving.
-
-<figure class="inline-photo">
-  <img src="/winnie/how-to-pet-proof-a-rental-apartment-scene2.jpg" alt="A pet-eye-level view of an apartment room tracing routes under furniture and toward cords" loading="lazy" />
-</figure>
 
 ## 1. Remove ingestible and chemical hazards
 
@@ -69,13 +61,7 @@ Follow manufacturer anti-tip instructions for shelving, cat trees, televisions, 
 Use lidded, stable containers and keep pet food in a cool, dry, secured location. Preserve original packaging when possible. Do not leave scoops, bags, or treats within reach.
 
 <figure class="inline-photo-pair">
-  <figure class="inline-photo">
-    <img src="/winnie/how-to-pet-proof-a-rental-apartment-scene3.jpg" alt="A lidded stable trash container secured against pet access in a rental kitchen" loading="lazy" />
-</figure>
-  <figure class="inline-photo">
-    <img src="/winnie/how-to-pet-proof-a-rental-apartment-scene4.jpg" alt="A window screen and latch inspected for gaps in a rental apartment" loading="lazy" />
-</figure>
-</figure>
+  </figure>
 
 ## 6. Build clear pet zones
 
@@ -92,10 +78,6 @@ Use correctly fitted couch covers, washable mats, runners, and removable bed cov
 ## 9. Recheck after the pet learns the room
 
 New routes appear when a pet grows, becomes more confident, or watches a door open. Inspect barriers, cords, latches, and wear regularly and revise the layout.
-
-<figure class="inline-photo">
-  <img src="/winnie/how-to-pet-proof-a-rental-apartment-scene5.jpg" alt="A finished rental apartment pet zone with clear feeding, litter, and rest areas" loading="lazy" />
-</figure>
 
 <h2 id="do-not-buy-if">Do not use a rental pet-proofing product if…</h2>
 

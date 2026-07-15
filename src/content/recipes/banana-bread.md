@@ -9,10 +9,7 @@ prepTimeMinutes: 15
 cookTimeMinutes: 60
 servings: 8
 difficulty: "easy"
-image: "/recipes/recipe-banana-bread.jpg"
-altImage: "/recipes/recipe-banana-bread-alt.jpg"
-ingredientsImage: "/recipes/recipe-banana-bread-ingredients.jpg"
-altImageAlt: "A close-up slice of banana bread showing the moist, tender crumb"
+image: "PENDING"
 imageAlt: "A sliced loaf of banana bread on a wooden cutting board, showing the moist interior"
 winnieImage: "/winnie/winnie-kitchen-stir.jpg"
 winnieNote: "A one-bowl recipe with a built-in excuse to use up bananas you were both attached to and slightly worried about — that's efficient in a way I respect. Softened butter, one bowl, no mixer required: structurally, this is just correct."
@@ -73,18 +70,8 @@ This version skips the stand mixer entirely — one bowl, a fork for mashing, an
 
 ## The one rule that actually matters
 
-<figure class="inline-photo">
-  <img src="/recipes/recipe-banana-bread-scene1.jpg" alt="A loaf pan filled with banana bread batter ready to go into the oven, banana slices arranged on top" loading="lazy" />
-</figure>
-
-
 Ripeness. Everything else in this recipe is flexible — swap the sugar type, add nuts, use a different pan — but underripe bananas are the one thing that can't be fixed later. You want bananas that look almost too far gone: deeply speckled with brown, soft to the touch, maybe even a little black on the peel. That's where the natural sugars and moisture actually live.
 
 ## Notes on the flour step
-
-<figure class="inline-photo">
-  <img src="/recipes/recipe-banana-bread-scene2.jpg" alt="A sliced loaf of banana bread on a wooden cutting board, steam rising from a warm slice" loading="lazy" />
-</figure>
-
 
 Fold the flour in gently and stop mixing the moment the streaks disappear. Banana bread turns dense and rubbery from the same mistake every time: stirring it like cake batter after the flour goes in. Think "just combined," not "smooth."

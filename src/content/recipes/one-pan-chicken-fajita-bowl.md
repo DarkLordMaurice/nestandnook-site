@@ -9,10 +9,8 @@ prepTimeMinutes: 15
 cookTimeMinutes: 20
 servings: 4
 difficulty: "easy"
-image: "/recipes/recipe-one-pan-chicken-fajita-bowl.jpg"
+image: "PENDING"
 imageAlt: "A chicken fajita bowl with rice, charred peppers and onions, sliced chicken, avocado, and lime"
-altImage: "/recipes/recipe-one-pan-chicken-fajita-bowl-alt.jpg"
-ingredientsImage: "/recipes/recipe-one-pan-chicken-fajita-bowl-ingredients.jpg"
 winnieImage: "/winnie/winnie-kitchen-chop-side.jpg"
 winnieHeadshot: "/winnie/headshot-v4-3.jpg"
 winnieNote: "A crowded pan is a steaming pan, and a steaming pan is why your fajita vegetables come out gray and limp instead of blistered. Cook in batches. It takes five extra minutes and it's worth it every time."
@@ -88,11 +86,6 @@ This chicken fajita bowl recipe exists to fix the most common failure of home-co
 
 ## An overcrowded pan steams instead of chars
 
-<figure class="inline-photo">
-  <img src="/recipes/recipe-one-pan-chicken-fajita-bowl-scene1.jpg" alt="Charred chicken and bell peppers in a large skillet, visible sear marks and steam" loading="lazy" />
-</figure>
-
-
 Charring happens when food sits in direct, sustained contact with a very hot pan surface. Pack too much chicken or too many vegetables into the pan at once, and the food releases moisture that has nowhere to go, dropping the pan's surface temperature and effectively steaming everything instead. Cooking in batches, with real breathing room between pieces, is the single biggest fix for gray, soft fajita vegetables.
 
 ## High heat and patience, together
@@ -100,10 +93,5 @@ Charring happens when food sits in direct, sustained contact with a very hot pan
 It's not enough to have an uncrowded pan if the heat isn't high enough to begin with — a medium-heat pan simply can't build char before the chicken or vegetables finish cooking through. Preheating the pan until it's genuinely hot, then letting each batch sit undisturbed for a couple of minutes before stirring, gives the char time to actually develop instead of getting interrupted by constant movement.
 
 ## Lime goes in last
-
-<figure class="inline-photo">
-  <img src="/recipes/recipe-one-pan-chicken-fajita-bowl-scene2.jpg" alt="A chicken fajita bowl with rice, beans, peppers, and toppings arranged in sections, set on a table" loading="lazy" />
-</figure>
-
 
 Cooking lime juice into the pan for an extended period mutes its brightness, which is exactly the quality it's there to provide. Adding it at the very end — off heat or in the last few seconds of tossing everything together — keeps that acidity sharp enough to cut through the richness of the seared chicken and charred vegetables underneath it.

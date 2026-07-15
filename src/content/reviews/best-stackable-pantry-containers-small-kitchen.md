@@ -75,19 +75,11 @@ faqs:
 
 A small pantry doesn't need more shelves — it needs the shelves it has to stop wasting space on half-empty bags and boxes that don't stack. Loose bags of flour, opened cereal boxes, and mismatched jars all waste vertical space in ways a matched container system doesn't, which matters more in a single small cabinet than it ever would in a walk-in pantry.
 
-<figure class="inline-photo">
-  <img src="/winnie/best-stackable-pantry-containers-small-kitchen-scene1.jpg" alt="Stackable airtight pantry containers of varying sizes filling a small kitchen shelf, each clearly labeled" loading="lazy" />
-</figure>
-
 <p id="quick-answer">The <strong>Vtopmart 24-piece set</strong> is the best overall pick for a mixed pantry — four sizes cover everything from spices to pasta. If your real problem is bulky flour and sugar bags specifically, the <strong>PANTRYSTAR 3-pack</strong> is sized exactly for that. Struggling with a deep or corner cabinet instead? A <strong>lazy susan turntable</strong> solves reach, not storage.</p>
 
 <h2 id="measure-first-check">Know your shelf height and your actual staples before buying</h2>
 
 Measure the vertical clearance on the shelf you're organizing — tall containers are useless if they don't clear the shelf above, and this is the single most common return reason for pantry organization sets. Then take stock of what you're actually storing: mostly bulk staples like flour, rice, and sugar point toward large-format containers; a wide variety of smaller items (spices, snacks, baking add-ins) points toward a multi-size set instead. Deep or corner cabinets have a different problem entirely — reach, not container size — which a turntable solves and a container set doesn't.
-
-<figure class="inline-photo">
-  <img src="/winnie/best-stackable-pantry-containers-small-kitchen-scene2.jpg" alt="A side-locking silicone-gasket lid being sealed on a pantry container" loading="lazy" />
-</figure>
 
 <h2 id="do-not-buy-if">Skip a pantry container system if&#x2026;</h2>
 
@@ -96,13 +88,7 @@ Measure the vertical clearance on the shelf you're organizing — tall container
 - Your shelf clearance is under about 8 inches — check container height against your actual shelf gap before buying any of these, especially the taller pieces in a mixed set.
 
 <figure class="inline-photo-pair">
-  <figure class="inline-photo">
-    <img src="/winnie/best-stackable-pantry-containers-small-kitchen-scene3.jpg" alt="A pop-button one-handed container lid being opened mid-recipe" loading="lazy" />
-</figure>
-  <figure class="inline-photo">
-    <img src="/winnie/best-stackable-pantry-containers-small-kitchen-scene4.jpg" alt="A large container holding a full bag of flour or sugar, ending loose-bag storage" loading="lazy" />
-</figure>
-</figure>
+  </figure>
 
 ## How to choose
 
@@ -119,10 +105,6 @@ Measure the vertical clearance on the shelf you're organizing — tall container
 | PANTRYSTAR 3-pack | Bulk flour/sugar | 5.2L each | Side-locking lid |
 | Uamector 4-pack | One-handed access | 1.26–3.48qt | Pop-button |
 | P PRETIRENO Lazy Susan | Deep/corner cabinets | 10" rotating | N/A — not a container |
-
-<figure class="inline-photo">
-  <img src="/winnie/best-stackable-pantry-containers-small-kitchen-scene5.jpg" alt="Loose bags and boxes on a shelf beside the same shelf using matched stackable containers, side by side" loading="lazy" />
-</figure>
 
 ## Frequently asked questions
 

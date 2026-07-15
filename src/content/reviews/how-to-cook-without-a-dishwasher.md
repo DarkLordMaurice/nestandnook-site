@@ -36,19 +36,11 @@ faqs:
 
 Cooking without a dishwasher is manageable. Cooking without a dishwasher **and** letting every bowl, pan, utensil, and cutting board wait until bedtime is how a small kitchen turns hostile. The solution is not washing constantly. It is designing the meal so the sink stays usable and the dish load never becomes one giant event.
 
-<figure class="inline-photo">
-  <img src="/winnie/how-to-cook-without-a-dishwasher-scene1.jpg" alt="A compact kitchen sink with a short stack of dishes being washed in a small round rather than left to pile up" loading="lazy" />
-</figure>
-
 <p id="quick-answer">To cook without a dishwasher, choose meals with one main cooking vessel, clear the sink before heat goes on, and wash in two or three short rounds instead of one end-of-night pile. Scrape or soak cookware immediately, move from glasses and utensils toward greasier pans, rinse thoroughly, and air-dry on a compact rack. The rack's capacity should limit the batch—not become permanent counter storage.</p>
 
 <h2 id="measure-first-check">Check the sink, landing zone, and drying footprint first</h2>
 
 Identify three small zones before dinner: a sink basin that stays available, a place for scraped or soaking cookware, and an air-drying area that does not consume the entire prep counter. Measure any rack in its open position and decide where it goes when empty. If the rack is always full of yesterday's dishes, tonight's workflow has already lost its landing zone.
-
-<figure class="inline-photo">
-  <img src="/winnie/how-to-cook-without-a-dishwasher-scene2.jpg" alt="Cookware being scraped clean immediately after cooking, before it can dry on" loading="lazy" />
-</figure>
 
 ## 1. Pick a low-dish meal format
 
@@ -99,13 +91,7 @@ Use natural waiting periods:
 This is not "clean as you go" as a moral philosophy. It is traffic control. Each short round protects the sink for the next cooking step.
 
 <figure class="inline-photo-pair">
-  <figure class="inline-photo">
-    <img src="/winnie/how-to-cook-without-a-dishwasher-scene3.jpg" alt="A compact dish rack with a fixed, limited capacity for air-drying" loading="lazy" />
-</figure>
-  <figure class="inline-photo">
-    <img src="/winnie/how-to-cook-without-a-dishwasher-scene4.jpg" alt="A one-pot meal being served straight from its cooking vessel, minimizing dishes created" loading="lazy" />
-</figure>
-</figure>
+  </figure>
 
 ## 6. Wash from least greasy to most greasy
 
@@ -138,10 +124,6 @@ For many small households, this rhythm works:
 **Round two, after eating:** wash plates, serving pieces, and the main cooking vessel.
 
 That split prevents a mountain without turning dinner into a continuous cleaning shift.
-
-<figure class="inline-photo">
-  <img src="/winnie/how-to-cook-without-a-dishwasher-scene5.jpg" alt="An overflowing sink of dishes beside the same sink kept clear through short wash rounds, side by side" loading="lazy" />
-</figure>
 
 <h2 id="do-not-buy-if">Do not buy a countertop dishwasher if…</h2>
 

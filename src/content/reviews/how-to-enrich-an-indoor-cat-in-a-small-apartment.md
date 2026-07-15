@@ -36,19 +36,11 @@ faqs:
 
 Small-space cat enrichment works best as a route, not a pile. A cat can move from a scratcher to a window view, hide, climb, play briefly, and settle without the apartment holding six towers and a plastic tunnel in every doorway. The system should reflect the cat's preferences and preserve stable, safe household paths.
 
-<figure class="inline-photo">
-  <img src="/winnie/how-to-enrich-an-indoor-cat-in-a-small-apartment-scene1.jpg" alt="A compact enrichment route in a small apartment with a scratcher, window perch, and quiet hideaway" loading="lazy" />
-</figure>
-
 <p id="quick-answer">Enrich an indoor cat in a small apartment by creating a compact route: one stable vertical option, one useful window view, a scratching surface, a quiet hideaway, and short interactive play sessions. Rotate a small set of inspected toys instead of leaving everything out. Match heights, openings, and jump gaps to the cat's size and mobility.</p>
 
 <h2 id="measure-first-check">Map a safe route instead of counting toys</h2>
 
 Draw the cat's current path between sleeping area, window, feeding zone, litter box, and social spaces. Measure platforms, sill depth, jump gaps, door swings, cords, blind loops, and the floor area of every proposed item. Preserve at least one clear human walkway and one easy cat retreat.
-
-<figure class="inline-photo">
-  <img src="/winnie/how-to-enrich-an-indoor-cat-in-a-small-apartment-scene2.jpg" alt="A cat's daily path mapped between window, feeding zone, and resting area in a small apartment" loading="lazy" />
-</figure>
 
 ## 1. Start with observation
 
@@ -71,13 +63,7 @@ Offer a stable vertical or horizontal scratcher near a place the cat already scr
 A cardboard box, covered bed, or open carrier can create retreat without a large footprint. Keep the entrance clear and avoid placing the hide beside loud appliances, high traffic, or a blocked exit.
 
 <figure class="inline-photo-pair">
-  <figure class="inline-photo">
-    <img src="/winnie/how-to-enrich-an-indoor-cat-in-a-small-apartment-scene3.jpg" alt="A stable vertical scratching post placed near a cat's usual transition point" loading="lazy" />
-</figure>
-  <figure class="inline-photo">
-    <img src="/winnie/how-to-enrich-an-indoor-cat-in-a-small-apartment-scene4.jpg" alt="A quiet cardboard hideaway with a clear entrance away from loud appliances" loading="lazy" />
-</figure>
-</figure>
+  </figure>
 
 ## 6. Use short interactive play
 
@@ -90,10 +76,6 @@ Store most toys in one closed bin, bring out a few at a time, and inspect for lo
 ## 8. Preserve resting and bathroom access
 
 Enrichment should never block litter, food, water, sleeping, or escape routes. The apartment remains a home, not an obstacle course.
-
-<figure class="inline-photo">
-  <img src="/winnie/how-to-enrich-an-indoor-cat-in-a-small-apartment-scene5.jpg" alt="A small closed bin storing rotated cat toys, with only a few items left out" loading="lazy" />
-</figure>
 
 <h2 id="do-not-buy-if">Do not add an enrichment item if…</h2>
 

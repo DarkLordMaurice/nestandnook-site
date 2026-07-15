@@ -16,7 +16,13 @@ const { href, image, title, description, totalMinutes, servings, featured = fals
 ---
 <a href={href} class:list={['content-card', 'recipe-tile-card', { featured }]}>
   <div class="card-photo-frame">
-    <img src={image} alt="" width="500" height="340" loading="lazy" />
+    {image === 'PENDING' ? (
+      <div class="card-photo-pending">
+        <span aria-hidden="true">📸</span>
+      </div>
+    ) : (
+      <img src={image} alt="" width="500" height="340" loading="lazy" />
+    )}
   </div>
   <div class="card-body">
     {totalMinutes && (

@@ -30,11 +30,6 @@ faqs:
 
 How to sit correctly at a desk comes down to four angles, and in a small home office you usually only have real control over two of them — the other two get quietly sacrificed to whatever chair and desk you already own. That's the actual problem worth solving, not "sit up straighter," which is advice with no mechanism behind it. Think of this as an ergonomic desk setup checklist in the order that actually works: each fix below assumes the one before it is already correct, so working top to bottom saves you from redoing an earlier step later.
 
-<figure class="inline-photo">
-  <img src="/winnie/how-to-sit-correctly-at-a-small-desk-scene1.jpg" alt="A desk chair and desk arranged to show proper elbow, hip, and knee angle alignment" loading="lazy" />
-</figure>
-
-
 <p id="quick-answer">Fix four angles in order: knees near 90&#xB0; (chair height), feet flat via a footrest if they dangle, eyes level with the top third of your monitor, and elbows close to your sides near 90&#xB0;. On a small desk you rarely control all four independently, so a footrest and a monitor stand — not a bigger desk — are usually the actual fix.</p>
 
 <h2 id="measure-first-check">Check all four angles right now, in order</h2>
@@ -53,11 +48,6 @@ Sit the way you normally do and actually look down at your knees, then your feet
 
 ## The fifth thing people skip: what's actually reachable
 
-<figure class="inline-photo">
-  <img src="/winnie/how-to-sit-correctly-at-a-small-desk-scene2.jpg" alt="A desk surface showing commonly reached items within arm's reach" loading="lazy" />
-</figure>
-
-
 Past the four angles, one more fix belongs on this checklist even though it's not really a body angle: the things you reach for most — mouse, water, whatever reference item lives on your desk — should be reachable without leaning or twisting your torso. It's easy to skip because it feels minor next to a sore neck or dangling feet, but it's also the one that happens dozens of times a day, and that repetition is exactly what turns a small, forgettable strain into a noticeable one by the end of the week.
 
 ## Why small desks make this harder, specifically
@@ -70,18 +60,7 @@ A full-size office desk gives you room to fix all four angles independently — 
 - You just changed one part of your setup (new chair, new desk, new monitor) — recheck the angles first; a single change often only breaks one angle, not all four, so you may not need a full accessory bundle.
 - Your desk genuinely has room to fix all four angles independently already — a small-desk-specific fix (footrest decoupled from chair height, monitor stand decoupled from desk height) matters most when space is the actual constraint, which may not be your situation.
 
-<figure class="inline-photo">
-  <img src="/winnie/how-to-sit-correctly-at-a-small-desk-scene4.jpg" alt="A desk setup showing elbows, hips, knees, and wrists all near 90 degrees" loading="lazy" />
-</figure>
-
 See the full [ergonomic setup under $150](/home-office/ergonomic-home-office-setup-under-150/) for how the pieces work together as a system rather than one-off purchases.
 
 > **Winnie's take:** I've read enough of these reviews to notice a pattern — people fix the angle they can *see* is wrong (usually the monitor) and never check the one they can't see without looking down (their feet). Check all four. It takes ten seconds and one of them is probably the actual culprit.
 
-<figure class="inline-photo">
-  <img src="/winnie/how-to-sit-correctly-at-a-small-desk-scene5.jpg" alt="A footrest closing the gap between dangling feet and the floor at a small desk" loading="lazy" />
-</figure>
-
-<figure class="inline-photo">
-  <img src="/winnie/how-to-sit-correctly-at-a-small-desk-scene3.jpg" alt="A compact small desk in a tight room corner with limited setup space" loading="lazy" />
-</figure>

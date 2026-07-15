@@ -112,19 +112,11 @@ faqs:
 
 Apartment enrichment has an acoustic footprint. A hard dispenser that sounds harmless in a product video can knock against baseboards for twenty minutes, while a flat puzzle or lick mat may stay nearly silent. The right shortlist compares noise, movement radius, storage, cleaning, food use, and supervision—not promises to “cure boredom.”
 
-<figure class="inline-photo">
-  <img src="/winnie/best-indoor-dog-enrichment-toys-for-apartments-scene1.jpg" alt="A flat sliding puzzle board and a silicone lick mat arranged on a rug in a compact apartment" loading="lazy" />
-</figure>
-
 <p id="quick-answer">The <strong>Outward Hound Hide N' Slide</strong> is the best quiet reusable puzzle board, while the <strong>Mighty Paw lick pad</strong> stores flattest and creates almost no impact noise. The <strong>KONG Classic</strong> is the most compact rotation toy when correctly sized. Use the <strong>KONG Wobbler</strong> only with a padded play area and enough room for movement.</p>
 
 <h2 id="measure-first-check">Measure the play radius and the dog's mouth</h2>
 
 For sliding, wobbling, or bouncing toys, tape out the full movement area—not only the stored dimensions. Check floor type, shared walls, downstairs neighbors, and furniture legs. Then follow manufacturer size guidance and confirm the toy cannot lodge too deeply in the dog's mouth or shed reachable pieces.
-
-<figure class="inline-photo">
-  <img src="/winnie/best-indoor-dog-enrichment-toys-for-apartments-scene2.jpg" alt="A play radius taped out on a rug around a wobble-style dog toy" loading="lazy" />
-</figure>
 
 ## Quiet formats are easier to repeat
 
@@ -147,13 +139,7 @@ Follow the manufacturer's supervision instructions, inspect rubber and plastic b
 Open screw-apart toys, scrub grooves, rinse fully, and dry before storage. Dishwasher-safe claims apply only to the labeled pieces and cycles. Sticky residue in a puzzle seam is not enrichment; it is deferred cleaning.
 
 <figure class="inline-photo-pair">
-  <figure class="inline-photo">
-    <img src="/winnie/best-indoor-dog-enrichment-toys-for-apartments-scene3.jpg" alt="A screw-apart dog puzzle toy opened for washing at a kitchen sink" loading="lazy" />
-</figure>
-  <figure class="inline-photo">
-    <img src="/winnie/best-indoor-dog-enrichment-toys-for-apartments-scene4.jpg" alt="A rubber stuffable dog toy resting on a mat beside a measured food portion" loading="lazy" />
-</figure>
-</figure>
+  </figure>
 
 <h2 id="do-not-buy-if">Do not buy an indoor enrichment toy if…</h2>
 
@@ -164,10 +150,6 @@ Open screw-apart toys, scrub grooves, rinse fully, and dry before storage. Dishw
 - The product cannot be opened or washed fully after food use.
 
 Turn the products into a rotation with [the apartment dog-activity guide](/pet-care/how-to-keep-a-dog-busy-in-an-apartment/).
-
-<figure class="inline-photo">
-  <img src="/winnie/best-indoor-dog-enrichment-toys-for-apartments-scene5.jpg" alt="A small rotation bin holding a few inspected dog enrichment toys, most stored out of sight" loading="lazy" />
-</figure>
 
 ## Frequently asked questions
 

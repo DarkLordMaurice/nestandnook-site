@@ -88,11 +88,6 @@ faqs:
 
 Working from the couch or bed is either a nice occasional change of scenery or, if you do it daily, a slow-motion neck and back problem. The issue is almost never the couch — it's that a bare laptop on your lap puts the screen 10-15 inches below eye level and the fans about two inches from a cushion that's blocking every vent. The best laptop stands for bed and couch fix both problems at once: they lift the screen closer to eye level and open up airflow underneath.
 
-<figure class="inline-photo">
-  <img src="/winnie/best-laptop-stand-for-couch-and-bed-scene1.jpg" alt="A laptop stand holding a laptop above a couch cushion" loading="lazy" />
-</figure>
-
-
 <div class="polaroid inset">
   <img src="/winnie/winnie-gear-laptop-couch-before.jpg" alt="Winnie hunched over a bare laptop balanced directly on a couch cushion, no stand" width="1122" height="1402" />
 </div>
@@ -109,10 +104,6 @@ Most people shopping this category focus on cushion softness, but the two specs 
 - Your couch or bed setup is genuinely stationary and you have floor space to spare — a rolling cart like the LINGMI below is more stable and adjustable than any lap desk.
 - You already prop your laptop on a fixed surface at a comfortable eye level — the actual problem these stands solve is height and airflow, and if neither is currently an issue, you don't need one.
 
-<figure class="inline-photo">
-  <img src="/winnie/best-laptop-stand-for-couch-and-bed-scene4.jpg" alt="A laptop stand extended to full height over a couch cushion, screen raised to a seated eye level" loading="lazy" />
-</figure>
-
 ## How to choose
 
 - **Height range:** anything advertised as "ergonomic" should list a real number in inches, not just "adjustable." More lift = less neck strain.
@@ -121,16 +112,7 @@ Most people shopping this category focus on cushion softness, but the two specs 
 - **Portability vs. permanence:** a folding lap desk travels; a rolling cart doesn't, but it's more stable and adjustable if your setup is fixed.
 
 
-<figure class="inline-photo">
-  <img src="/winnie/best-laptop-stand-for-couch-and-bed-scene3.jpg" alt="A laptop stand positioned over a bed with rumpled blankets, laptop elevated" loading="lazy" />
-</figure>
-
 ## Quick comparison
-
-<figure class="inline-photo">
-  <img src="/winnie/best-laptop-stand-for-couch-and-bed-scene2.jpg" alt="Close-up of a laptop stand's base clamp and adjustable joint" loading="lazy" />
-</figure>
-
 
 | Stand | Best for | Height lift | Airflow | Portability |
 |-------|----------|:-----------:|:-------:|:-----------:|
@@ -139,10 +121,6 @@ Most people shopping this category focus on cushion softness, but the two specs 
 | LapGear | Budget + cushion | Fixed | Standoffs only | Foldable |
 | Lululook | Laptop + tablet combo | Low-moderate | Moderate | Foldable |
 | LINGMI | Fixed couch setup | Wide range | Open frame | Rolls, doesn't fold |
-
-<figure class="inline-photo">
-  <img src="/winnie/best-laptop-stand-for-couch-and-bed-scene5.jpg" alt="A laptop stand's open frame underside, showing airflow clearance beneath the laptop body" loading="lazy" />
-</figure>
 
 ## Frequently asked questions
 

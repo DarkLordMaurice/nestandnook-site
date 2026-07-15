@@ -89,19 +89,11 @@ faqs:
 
 A seasonal rotation system only works if the bins holding "in storage" items are actually easy to identify, lift, and stack — a mismatched pile of random containers defeats the purpose just as much as no system at all. The five options below range from budget latching totes to weatherproof, gasket-sealed bins built for genuine garage conditions.
 
-<figure class="inline-photo">
-  <img src="/winnie/best-seasonal-storage-bins-garage-scene1.jpg" alt="Stackable seasonal storage bins on a garage shelf, each labeled with a season or category tag" loading="lazy" />
-</figure>
-
 <p id="quick-answer">The best seasonal storage bins for a garage depend on what you're storing and your budget. For moisture-sensitive items, <strong>IRIS USA's WeatherPro gasket-sealed bins</strong> are the safer choice. For a quick-to-scan rotation system, <strong>Sterilite's clear Ultra Latch Box</strong> lets you identify contents without opening anything. For bulkier or heavier gear, the <strong>Sterilite Tuff1 line</strong> is built for rougher handling.</p>
 
 <h2 id="measure-first-check">Check your shelf or rack's weight rating before stacking</h2>
 
 Before buying any bin set, confirm the weight rating of whatever you're storing them on — a shelf or overhead rack (see our <a href="/garage/best-overhead-garage-storage-racks-small-garage/">overhead rack roundup</a>) has a manufacturer-stated limit that determines how many bins, and how heavy, you can safely stack. Measure the shelf depth or rack opening too — a 21-gallon bin may not fit the same footprint as a 30-quart one, even though both are "medium-sized" as marketed.
-
-<figure class="inline-photo">
-  <img src="/winnie/best-seasonal-storage-bins-garage-scene2.jpg" alt="Close detail of a storage bin's latching lid mechanism, showing a secure stackable closure" loading="lazy" />
-</figure>
 
 <h2 id="do-not-buy-if">Skip a dedicated seasonal bin system if&#x2026;</h2>
 
@@ -117,13 +109,7 @@ Before buying any bin set, confirm the weight rating of whatever you're storing 
 - **Heavier-duty totes (Tuff1) cost more but handle bulkier, rougher-use items** better than a standard lightweight latch tote.
 
 <figure class="inline-photo-pair">
-  <figure class="inline-photo">
-    <img src="/winnie/best-seasonal-storage-bins-garage-scene3.jpg" alt="A label being applied to the front of a storage bin, showing a clear labeling system" loading="lazy" />
-</figure>
-  <figure class="inline-photo">
-    <img src="/winnie/best-seasonal-storage-bins-garage-scene4.jpg" alt="Stacked bins on an overhead or high shelf, positioned above the reach zone for rarely-used seasonal items" loading="lazy" />
-</figure>
-</figure>
+  </figure>
 
 ## Quick comparison
 
@@ -134,10 +120,6 @@ Before buying any bin set, confirm the weight rating of whatever you're storing 
 | Sterilite 20 Gal Latch, 6-Pack | Budget option | Latch (no gasket) | 20 gallon |
 | Sterilite 30 Qt Ultra Latch (Clear) | Visual content ID | Latch (no gasket) | 30 quart |
 | Sterilite 30 Gal Tuff1, 4-Pack | Heavy-duty | Latch (no gasket) | 30 gallon |
-
-<figure class="inline-photo">
-  <img src="/winnie/best-seasonal-storage-bins-garage-scene5.jpg" alt="Side-profile comparison of a loosely stacked pile of mismatched boxes with a neat stack of matching labeled bins" loading="lazy" />
-</figure>
 
 ## Frequently asked questions
 
