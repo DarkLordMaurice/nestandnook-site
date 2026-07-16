@@ -99,7 +99,7 @@ export const TYPES = {
     winnieSays: "Stop buying for a minute. The next step isn't another product — it's figuring out what actually causes the chaos. Usually it's one habit, not ten missing containers. Find the habit first.",
     shareHook: "Tag someone who has bought the exact same type of bin three times",
     ctaLabel: 'Diagnose the real problem first',
-    ctaHref: '/kitchen/how-to-hide-small-kitchen-appliances-on-the-counter/',
+    ctaHref: '/kitchen/how-to-prep-food-with-minimal-counter-space/',
   },
   optimizer: {
     id: 'optimizer',
@@ -110,7 +110,7 @@ export const TYPES = {
     winnieSays: "You're past the 'does this work at all' stage. The question now is what earns its spot versus what's just taking up real estate. Pick one area, make the call, see how it feels.",
     shareHook: "Tag someone who notices the one thing in every room that could be better",
     ctaLabel: 'Find the specific upgrade you\'re missing',
-    ctaHref: '/home-office/best-desk-organizers-for-a-small-desk/',
+    ctaHref: '/home-office/desk-cable-management/',
   },
 };
 

@@ -1,0 +1,235 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import WinnieNote from '../../components/WinnieNote.astro';
+import ToolScene from '../../components/tools/ToolScene.astro';
+import { SITE } from '../../config';
+import { TOOLS } from '../../data/tools';
+import { CONFESSIONS } from '../../lib/tools/roast-my-space.mjs';
+import '../../styles/tools.css';
+
+const tool = TOOLS.find((item) => item.slug === 'roast-my-space')!;
+const canonical = `${SITE.url}${tool.href}`;
+const jsonLd = {
+  '@context': 'https://schema.org', '@graph': [
+    { '@type': 'WebApplication', '@id': `${canonical}#tool`, name: tool.title, description: tool.description, url: canonical, applicationCategory: 'UtilitiesApplication', operatingSystem: 'Any', isAccessibleForFree: true, publisher: { '@id': `${SITE.url}/#organization` } },
+    { '@type': 'BreadcrumbList', '@id': `${canonical}#breadcrumb`, itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.url}/` },
+      { '@type': 'ListItem', position: 2, name: 'Tools', item: `${SITE.url}/tools/` },
+      { '@type': 'ListItem', position: 3, name: tool.title, item: canonical },
+    ] },
+  ],
+};
+---
+<BaseLayout title={`${tool.title} — ${SITE.brand}`} description={tool.description} showDisclosure={false} jsonLd={jsonLd}>
+  <article class="tool-page">
+    <div class="article-hero-band">
+      <div class="article-hero-text">
+        <span class="washi washi-teal">{tool.eyebrow}</span>
+        <h1>{tool.title}</h1>
+      </div>
+    </div>
+    <ToolScene slug={tool.slug} />
+
+    <p id="quick-answer" class="lede tool-lede">Check every confession that's true. No judgment — just an honest, funny read on your space, plus one real thing to actually do about it.</p>
+
+    <div class="tool-privacy-note" role="note"><strong>No data collected:</strong> this tool runs entirely in your browser. Nest & Nook does not save your answers.</div>
+
+    <WinnieNote photo="/winnie/headshot-v4-1.jpg">
+      <p>Every space has at least one corner it's not proud of. Mine has a drawer I'm not going to describe. Check what's true, get roasted a little, and then get one real move to try.</p>
+    </WinnieNote>
+
+    <div class="tool-layout">
+      <section class="tool-panel tool-form-panel" aria-labelledby="roast-heading">
+        <h2 id="roast-heading">Check what's true</h2>
+        <div id="roast-errors" class="tool-errors" role="alert" aria-live="assertive"></div>
+
+        <form id="roast-form" class="tool-form roast-form" novalidate>
+          <div class="quiz-options roast-options">
+            {CONFESSIONS.map((c) => (
+              <label class="quiz-option">
+                <input type="checkbox" name="confession" value={c.id} />
+                <span class="quiz-option-label">{c.label}</span>
+              </label>
+            ))}
+          </div>
+
+          <div class="tool-actions no-print">
+            <button class="tool-button" type="submit">Roast my space</button>
+            <button class="tool-button ghost" type="reset">Start over</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="roast-result" class="tool-panel tool-result" aria-labelledby="roast-result-heading" aria-live="polite" tabindex="-1" hidden>
+        <span class="tool-result-status" id="result-type-name"></span>
+        <h2 id="roast-result-heading">The verdict</h2>
+
+        <p class="quiz-result-mirror" id="result-roast"></p>
+
+        <div class="tool-result-section">
+          <h3>The real talk</h3>
+          <p id="result-realtalk"></p>
+        </div>
+
+        <div class="tool-result-section">
+          <h3>Winnie says</h3>
+          <p id="result-winnie"></p>
+        </div>
+
+        <div class="tool-result-section" id="result-tie-note" hidden>
+          <p class="quiz-tie-note" id="result-tie-text"></p>
+        </div>
+
+        <div class="tool-result-section">
+          <a id="result-cta" class="tool-button" href="#">One real move to try</a>
+        </div>
+
+        <div class="tool-result-section quiz-share">
+          <p class="quiz-share-hook" id="result-share-hook"></p>
+          <div class="tool-share-actions">
+            <button class="tool-button ghost" id="copy-quiz-result" type="button">Copy your roast</button>
+            <button class="tool-button ghost" id="download-quiz-card" type="button">Download shareable card</button>
+          </div>
+          <canvas id="share-canvas" width="1080" height="1080" hidden></canvas>
+        </div>
+
+        <div class="tool-actions no-print">
+          <button class="tool-button secondary" id="retake-quiz" type="button">Roast a different room</button>
+        </div>
+      </section>
+    </div>
+
+    <section class="tool-related"><h2>Read next</h2><ul>{tool.relatedGuides.map((guide) => <li><a href={guide.href}>{guide.label}</a></li>)}</ul></section>
+  </article>
+
+  <script>
+    import { scoreRoast, validateRoastAnswers } from '../../lib/tools/roast-my-space.mjs';
+    import { renderShareCard, downloadCanvas } from '../../lib/tools/share-card.mjs';
+
+    const form = document.querySelector('#roast-form');
+    const resultPanel = document.querySelector('#roast-result');
+    const errorsBox = document.querySelector('#roast-errors');
+    const layout = document.querySelector('.tool-layout');
+
+    const text = (id, content) => { const el = document.querySelector(id); if (el) el.textContent = content; };
+
+    let roastStarted = false;
+    let currentType = null;
+    form?.addEventListener('change', () => {
+      if (!roastStarted) { roastStarted = true; window.nnTrack?.('tool_started', { tool_slug: 'roast-my-space' }); }
+    });
+
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const selectedIds = data.getAll('confession');
+      const errors = validateRoastAnswers(selectedIds);
+
+      if (errors.length) {
+        errorsBox.innerHTML = '';
+        errors.forEach((err) => { const p = document.createElement('p'); p.textContent = err; errorsBox.appendChild(p); });
+        resultPanel.hidden = true;
+        errorsBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      errorsBox.innerHTML = '';
+      const { type, isTie, tiedWith } = scoreRoast(selectedIds);
+      currentType = type;
+
+      text('#result-type-name', type.name);
+      text('#result-roast', type.roastLine);
+      text('#result-realtalk', type.realTalk);
+      text('#result-winnie', type.winnieSays);
+      text('#result-share-hook', type.shareHook);
+
+      const cta = document.querySelector('#result-cta');
+      if (cta) { cta.textContent = type.ctaLabel; cta.href = type.ctaHref; }
+
+      const tieNote = document.querySelector('#result-tie-note');
+      if (isTie && tieNote) {
+        tieNote.hidden = false;
+        text('#result-tie-text', `You also scored high on ${tiedWith.join(' and ')} — honestly, most of us are more than one of these.`);
+      } else if (tieNote) { tieNote.hidden = true; }
+
+      resultPanel.hidden = false;
+      layout?.classList.add('has-result');
+      resultPanel.focus();
+
+      window.nnTrack?.('tool_completed', { tool_slug: 'roast-my-space', type: type.id });
+    });
+
+    form?.addEventListener('reset', () => {
+      errorsBox.innerHTML = '';
+      resultPanel.hidden = true;
+      layout?.classList.remove('has-result');
+      currentType = null;
+    });
+
+    document.querySelector('#retake-quiz')?.addEventListener('click', () => {
+      form?.reset();
+      resultPanel.hidden = true;
+      layout?.classList.remove('has-result');
+      currentType = null;
+      form?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    document.querySelector('#copy-quiz-result')?.addEventListener('click', async () => {
+      const typeName = document.querySelector('#result-type-name')?.textContent ?? '';
+      const copy = `I got roasted: ${typeName}. Get your own roast: ${window.location.href}`;
+      try {
+        await navigator.clipboard.writeText(copy);
+        text('#copy-quiz-result', 'Copied!');
+        window.nnTrack?.('result_saved', { tool_slug: 'roast-my-space', action: 'copy' });
+        setTimeout(() => text('#copy-quiz-result', 'Copy your roast'), 1800);
+      } catch {
+        text('#copy-quiz-result', 'Copy unavailable');
+      }
+    });
+
+    document.querySelector('#download-quiz-card')?.addEventListener('click', () => {
+      if (!currentType) return;
+      const canvas = document.querySelector('#share-canvas');
+      if (!canvas) return;
+      renderShareCard(canvas, {
+        kicker: 'Roast My Space',
+        headline: currentType.name,
+        body: currentType.shareBody,
+        footerLine: 'Get your own roast at nestandnook.org/tools/',
+      });
+      downloadCanvas(canvas, `nest-and-nook-${currentType.id}-roast.png`);
+      window.nnTrack?.('result_saved', { tool_slug: 'roast-my-space', action: 'download_card' });
+    });
+  </script>
+</BaseLayout>
+
+<style>
+  .roast-form { display: flex; flex-direction: column; gap: 2rem; }
+  .roast-options { gap: 0.625rem; }
+
+  .quiz-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--color-border, #e5e7eb);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+  }
+
+  .quiz-option:has(input:checked) {
+    border-color: var(--color-accent, #6366f1);
+    background: var(--color-accent-light, #eef2ff);
+  }
+
+  .quiz-option input[type="checkbox"] { margin-top: 0.125rem; flex-shrink: 0; accent-color: var(--color-accent, #6366f1); }
+  .quiz-option-label { font-size: 0.925rem; line-height: 1.5; }
+
+  .quiz-result-mirror { font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.5rem; font-style: italic; }
+  .quiz-tie-note { font-size: 0.9rem; color: var(--color-text-muted, #6b7280); font-style: italic; }
+
+  .quiz-share { text-align: center; }
+  .quiz-share-hook { font-size: 0.9rem; color: var(--color-text-muted, #6b7280); margin-bottom: 0.75rem; font-style: italic; }
+  .tool-share-actions { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+</style>

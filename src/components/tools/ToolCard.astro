@@ -2,6 +2,12 @@
 import type { ToolDefinition } from '../../data/tools';
 interface Props { tool: ToolDefinition; }
 const { tool } = Astro.props;
+// PENDING support added 2026-07-16 alongside the same fix in ToolScene.astro
+// — this card-thumbnail lookup is a separate, parallel slug-keyed map from
+// ToolScene's, and was missed on the first pass (caught by a real
+// `npm run build` failure on /tools/, not by inspection — see
+// Content-Run-Log.md-style verification discipline). Any new tool slug
+// needs an entry here too, real or PENDING.
 const artwork = {
   'counter-footprint-simulator': {
     src: '/winnie/compact-air-fryer-counter-clearance-check.jpg',
@@ -27,11 +33,30 @@ const artwork = {
     src: '/winnie/winnie-life-sorting-drawer.jpg',
     alt: 'Winnie sorting items into a drawer at home.',
   },
+  'why-doesnt-this-feel-done-yet': { src: 'PENDING', alt: 'Winnie looking thoughtfully around a room.' },
+  'regret-proof-purchase-check': { src: 'PENDING', alt: 'Winnie pausing before adding something to a cart.' },
+  'roast-my-space': { src: 'PENDING', alt: 'Winnie laughing at a cluttered corner of a room.' },
 }[tool.slug];
+const isPending = artwork.src === 'PENDING';
 ---
 <a class="tool-card" href={tool.href} data-tool-card data-category={tool.category}>
   <div class={`tool-card-art ${tool.slug}`}>
-    <img src={artwork.src} alt={artwork.alt} width="640" height="480" loading="lazy" />
+    {isPending ? (
+      <div class="tool-card-art-pending" aria-hidden="true"><span>📸</span></div>
+    ) : (
+      <img src={artwork.src} alt={artwork.alt} width="640" height="480" loading="lazy" />
+    )}
   </div>
   <div class="tool-card-copy"><span class="washi washi-teal">{tool.category}</span><h2>{tool.shortTitle}</h2><p>{tool.description}</p><span class="tool-card-link">Open tool <b aria-hidden="true">→</b></span></div>
 </a>
+<style>
+  .tool-card-art-pending {
+    width: 100%;
+    aspect-ratio: 640 / 480;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-accent-light, #eef2ff), var(--color-border, #e5e7eb));
+    font-size: 2rem;
+  }
+</style>

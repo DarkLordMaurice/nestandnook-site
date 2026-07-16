@@ -15,8 +15,8 @@ products: []
 internalLinks:
   - label: "Ergonomic Home Office Setup Under $150"
     href: "/home-office/ergonomic-home-office-setup-under-150/"
-  - label: "Best Footrests for Short People"
-    href: "/home-office/best-footrest-for-short-people/"
+  - label: "Best Anti-Fatigue Mats for a Standing Desk"
+    href: "/home-office/best-anti-fatigue-mats-standing-desk/"
   - label: "Best Monitor Stands for Dual Monitors"
     href: "/home-office/best-monitor-stands-for-dual-monitors/"
   - label: "Desk Cable Management"
@@ -55,7 +55,7 @@ Check each zone before buying:
 
 ## 1. Chair and foot support
 
-Set the chair for the keyboard and desk first. If that leaves the feet unsupported, use the existing [footrest guide](/home-office/best-footrest-for-short-people/) rather than lowering the chair and creating a new arm-height problem. The footrest cluster is complete; use its existing comparison and product pages instead of adding more overlapping articles.
+Set the chair for the keyboard and desk first. If that leaves the feet unsupported, a stack of books or a low step works fine for most people — this is one of the few desk fixes that genuinely doesn't need a dedicated product. Don't lower the chair to compensate; that just trades one problem for a new arm-height problem.
 
 ## 2. Monitor position
 

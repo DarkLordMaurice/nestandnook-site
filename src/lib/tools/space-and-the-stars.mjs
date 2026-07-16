@@ -16,7 +16,7 @@ export const SIGNS = [
     kryptonite: "You buy the solution before you've fully diagnosed the problem.",
     winnieSays: "Before the next purchase, give yourself one rule: describe the exact problem in one sentence. If you can't, wait 48 hours.",
     ctaLabel: 'Find what actually works',
-    ctaHref: '/kitchen/how-to-hide-small-kitchen-appliances-on-the-counter/',
+    ctaHref: '/kitchen/how-to-prep-food-with-minimal-counter-space/',
     hub: 'kitchen',
   },
   {
@@ -86,7 +86,7 @@ export const SIGNS = [
     kryptonite: "You build for perfect conditions, not Tuesday night after work.",
     winnieSays: "Build the lazy version of your system on purpose. It should work when you're tired, running late, and just want to drop everything.",
     ctaLabel: 'Find a system that survives real life',
-    ctaHref: '/home-office/best-desk-organizers-for-a-small-desk/',
+    ctaHref: '/home-office/desk-cable-management/',
     hub: 'home-office',
   },
   {

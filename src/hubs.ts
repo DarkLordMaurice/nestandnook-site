@@ -8,7 +8,7 @@ export const HUBS: Record<string, {
     name: 'Home Office & Ergonomics',
     eyebrow: 'Your desk is working against you. Let\'s fix that.',
     blurb: 'You\'re doing real work at a desk that wasn\'t designed for real work. Here are the upgrades that actually change that — no overpriced fantasy setups, no guessing.',
-    winnieIntro: "I've read approximately one million \"is this desk hack real or just aesthetic\" arguments in review sections, and I have Opinions. This corner of the site is the distilled version — no overpriced fantasy setups, just the footrests, stands, and cable wrangling that solve the specific, annoying problem you actually have.",
+    winnieIntro: "I've read approximately one million \"is this desk hack real or just aesthetic\" arguments in review sections, and I have Opinions. This corner of the site is the distilled version — no overpriced fantasy setups, just the monitor setups, lighting, and cable wrangling that solve the specific, annoying problem you actually have.",
     winniePhoto: '/winnie/headshot-v4-1.jpg',
     hero: '/winnie/office-hero.jpg',
     heroAlt: "Winnie Hollowell in a warm, compact home office surrounded by practical desk tools and plants.",

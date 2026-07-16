@@ -1,4 +1,12 @@
 ---
+// PENDING support added 2026-07-16 for the 3 new tools shipped same day
+// (why-doesnt-this-feel-done-yet, regret-proof-purchase-check, roast-my-space)
+// — no real photo exists yet for any of them, and per the site's standing
+// PENDING pattern (see WinniePendingPhoto.astro / HeroCollage.astro), a page
+// ships now with a styled placeholder rather than waiting on image
+// generation. Sized to this component's own 960x420 banner footprint, not
+// borrowed from the smaller vertical hero-photo placeholder, to avoid the
+// exact wrong-size-placeholder mistake documented in CLAUDE.md history.
 interface Props { slug: string; }
 const { slug } = Astro.props;
 const scenes = {
@@ -8,9 +16,46 @@ const scenes = {
   'fold-away-workbench-fit-planner': { src: '/winnie/garage-workbench-car-clearance-check.jpg', alt: 'Winnie checking clearance between a fold-away workbench and a parked car.', caption: 'The open and folded garage both have to work.' },
   'space-and-the-stars': { src: '/winnie/winnie-life-campfire-mug.jpg', alt: 'Winnie holding a mug under a night sky, looking up at the stars.', caption: 'Your space has always been written in the stars.' },
   'your-small-space-personality': { src: '/winnie/winnie-life-sorting-drawer.jpg', alt: 'Winnie sorting items into a drawer at home.', caption: 'Six questions in, and you already know which drawer is yours.' },
+  'why-doesnt-this-feel-done-yet': { src: 'PENDING', alt: 'Winnie looking thoughtfully around a room, assessing what feels unfinished.', caption: "It's rarely the whole room. It's usually one thing." },
+  'regret-proof-purchase-check': { src: 'PENDING', alt: 'Winnie pausing before adding something to a cart, hand on chin.', caption: "The best purchase is sometimes the one you didn't make yet." },
+  'roast-my-space': { src: 'PENDING', alt: 'Winnie laughing at a cluttered corner of a room, hands on hips.', caption: "Every space has one spot it's not proud of. Show us yours." },
 }[slug];
+const isPending = scenes.src === 'PENDING';
+const jokes = [
+  "Winnie's camera-shy today — check back soon.",
+  "This scene is still measuring itself for the perfect angle.",
+  "Winnie insists this photo will happen on her schedule, not ours.",
+];
+const joke = jokes[Math.floor(Math.random() * jokes.length)];
 ---
-<figure class={`tool-entry-scene tool-entry-scene--${slug}`}>
-  <img src={scenes.src} alt={scenes.alt} width="960" height="420" loading="eager" />
-  <figcaption>{scenes.caption}</figcaption>
-</figure>
+{isPending ? (
+  <figure class={`tool-entry-scene tool-entry-scene--${slug} tool-entry-scene-pending`}>
+    <div class="tool-scene-pending-inner">
+      <span class="tool-scene-pending-icon" aria-hidden="true">📸</span>
+      <p class="tool-scene-pending-text">{joke}</p>
+    </div>
+    <figcaption>{scenes.caption}</figcaption>
+  </figure>
+) : (
+  <figure class={`tool-entry-scene tool-entry-scene--${slug}`}>
+    <img src={scenes.src} alt={scenes.alt} width="960" height="420" loading="eager" />
+    <figcaption>{scenes.caption}</figcaption>
+  </figure>
+)}
+<style>
+  .tool-entry-scene-pending .tool-scene-pending-inner {
+    width: 100%;
+    aspect-ratio: 960 / 420;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    background: linear-gradient(135deg, var(--color-accent-light, #eef2ff), var(--color-border, #e5e7eb));
+    border-radius: 0.75rem;
+    text-align: center;
+    padding: 1.5rem;
+  }
+  .tool-scene-pending-icon { font-size: 2rem; }
+  .tool-scene-pending-text { font-size: 0.95rem; font-style: italic; color: var(--color-text-muted, #6b7280); max-width: 28rem; }
+</style>
