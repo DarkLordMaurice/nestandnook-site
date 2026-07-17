@@ -8,22 +8,28 @@ const { tool } = Astro.props;
 // `npm run build` failure on /tools/, not by inspection — see
 // Content-Run-Log.md-style verification discipline). Any new tool slug
 // needs an entry here too, real or PENDING.
+// 2026-07-17: these 4 "Technical" tools' images redone -- the originals
+// (Winnie photography, predating the legibility research) depicted the
+// general subject category (an appliance, an office, a pet area, a garage)
+// rather than the tool's actual function of checking whether something
+// fits/works. See Tool-Image-Legibility-Research-2026-07-17.md Part 8/9.
+// Non-Winnie, same HF pipeline as the 5 Know-Yourself-First tools.
 const artwork = {
   'counter-footprint-simulator': {
-    src: '/winnie/compact-air-fryer-counter-clearance-check.jpg',
-    alt: 'A compact appliance being measured for safe counter clearance in a small kitchen.',
+    src: '/winnie/tool-hero-technical-counter-footprint-simulator.jpg',
+    alt: 'A paper template with a dashed-line footprint outline laid on a kitchen counter at the counter edge.',
   },
   'desk-fit-reality-check': {
-    src: '/winnie/winnie-office-small-desk-posture.jpg',
-    alt: 'A compact home-office desk setup arranged for seated comfort.',
+    src: '/winnie/tool-hero-technical-desk-fit-reality-check.jpg',
+    alt: 'An office chair pulled up to a desk with a colored clearance mat visible on the floor underneath.',
   },
   'apartment-pet-zone-planner': {
-    src: '/winnie/small-space-pet-care-setup-guide-scene1.jpg',
-    alt: 'A compact apartment pet setup with separate daily-care zones.',
+    src: '/winnie/tool-hero-technical-apartment-pet-zone-planner.jpg',
+    alt: 'An apartment floor plan with colored zone overlays and a small pet food bowl resting on one corner.',
   },
   'fold-away-workbench-fit-planner': {
-    src: '/winnie/garage-workbench-car-clearance-check.jpg',
-    alt: 'A fold-away garage workbench checked against a parked car.',
+    src: '/winnie/tool-hero-technical-fold-away-workbench-fit-planner.jpg',
+    alt: 'A fold-away workbench in a garage with its floor clearance marked in painter’s tape beside a parked car.',
   },
   // 2026-07-17: these 5 "Know yourself first" tools deliberately do NOT
   // use Winnie -- see Tool-Image-Legibility-Research-2026-07-17.md. Each is

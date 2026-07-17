@@ -9,11 +9,15 @@
 // exact wrong-size-placeholder mistake documented in CLAUDE.md history.
 interface Props { slug: string; }
 const { slug } = Astro.props;
+// 2026-07-17: these 4 "Technical" tools' images redone, matching the note
+// in ToolCard.astro -- non-Winnie now, composed to show the checking/
+// comparing action directly per Tool-Image-Legibility-Research-2026-07-17.md
+// Parts 8/9. Captions unchanged -- none referenced Winnie directly.
 const scenes = {
-  'counter-footprint-simulator': { src: '/winnie/compact-air-fryer-counter-clearance-check.jpg', alt: 'Winnie measuring a compact counter appliance in a small kitchen.', caption: 'A real counter has edges, outlets, and a dinner routine. Start there.' },
-  'desk-fit-reality-check': { src: '/winnie/winnie-office-small-desk-posture.jpg', alt: 'Winnie seated at a compact home-office desk with an ergonomic setup.', caption: 'Desk, chair, leg room, and foot support need to agree.' },
-  'apartment-pet-zone-planner': { src: '/winnie/small-space-pet-care-setup-guide-scene1.jpg', alt: 'A compact apartment pet-care arrangement with daily zones separated.', caption: 'Small homes work better when each pet routine has its own address.' },
-  'fold-away-workbench-fit-planner': { src: '/winnie/garage-workbench-car-clearance-check.jpg', alt: 'Winnie checking clearance between a fold-away workbench and a parked car.', caption: 'The open and folded garage both have to work.' },
+  'counter-footprint-simulator': { src: '/winnie/tool-hero-technical-counter-footprint-simulator.jpg', alt: 'A paper template with a dashed-line footprint outline laid on a kitchen counter at the counter edge.', caption: 'A real counter has edges, outlets, and a dinner routine. Start there.' },
+  'desk-fit-reality-check': { src: '/winnie/tool-hero-technical-desk-fit-reality-check.jpg', alt: 'An office chair pulled up to a desk with a colored clearance mat visible on the floor underneath.', caption: 'Desk, chair, leg room, and foot support need to agree.' },
+  'apartment-pet-zone-planner': { src: '/winnie/tool-hero-technical-apartment-pet-zone-planner.jpg', alt: 'An apartment floor plan with colored zone overlays and a small pet food bowl resting on one corner.', caption: 'Small homes work better when each pet routine has its own address.' },
+  'fold-away-workbench-fit-planner': { src: '/winnie/tool-hero-technical-fold-away-workbench-fit-planner.jpg', alt: 'A fold-away workbench in a garage with its floor clearance marked in painter’s tape beside a parked car.', caption: 'The open and folded garage both have to work.' },
   // 2026-07-17 — see matching note in ToolCard.astro: these 5 tools
   // deliberately do NOT use Winnie. Composed per
   // Tool-Image-Legibility-Research-2026-07-17.md's legibility formula and
