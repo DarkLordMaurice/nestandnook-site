@@ -13,7 +13,7 @@ relatedGuides:
     href: "/blog/"
 ---
 
-If you've read more than one of these notes, you already have a fair read on me: labels, spreadsheets, a fully-formed opinion about drawer dividers that nobody asked for, a tape measure I wear like jewelry and insist is "technically always at work." So it might surprise you that my work from home exercise routine — the one standing appointment I have never once cancelled in two years — has nothing to do with organizing anything. It's a Tuesday night movement class at a studio two blocks from my apartment, and it is, if I'm honest, the whole point of my week.
+If you've read more than one of these notes, you already have a fair read on me: labels, spreadsheets, a fully-formed opinion about drawer dividers that nobody asked for, and a record collection alphabetized by pressing year instead of artist, because that's the actually correct system and I will die on this hill. So it might surprise you that my work from home exercise routine — the one standing appointment I have never once cancelled in two years — has nothing to do with organizing anything. It's a Tuesday night movement class at a studio two blocks from my apartment, and it is, if I'm honest, the whole point of my week.
 
 ## It started as physical therapy and did not stay that way
 

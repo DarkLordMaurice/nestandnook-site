@@ -14,8 +14,12 @@ const scenes = {
   'desk-fit-reality-check': { src: '/winnie/winnie-office-small-desk-posture.jpg', alt: 'Winnie seated at a compact home-office desk with an ergonomic setup.', caption: 'Desk, chair, leg room, and foot support need to agree.' },
   'apartment-pet-zone-planner': { src: '/winnie/small-space-pet-care-setup-guide-scene1.jpg', alt: 'A compact apartment pet-care arrangement with daily zones separated.', caption: 'Small homes work better when each pet routine has its own address.' },
   'fold-away-workbench-fit-planner': { src: '/winnie/garage-workbench-car-clearance-check.jpg', alt: 'Winnie checking clearance between a fold-away workbench and a parked car.', caption: 'The open and folded garage both have to work.' },
-  'space-and-the-stars': { src: '/winnie/winnie-life-campfire-mug.jpg', alt: 'Winnie holding a mug under a night sky, looking up at the stars.', caption: 'Your space has always been written in the stars.' },
-  'your-small-space-personality': { src: '/winnie/winnie-life-sorting-drawer.jpg', alt: 'Winnie sorting items into a drawer at home.', caption: 'Six questions in, and you already know which drawer is yours.' },
+  // space-and-the-stars and your-small-space-personality reverted to PENDING
+  // 2026-07-17 — see matching note in ToolCard.astro: both were silently
+  // wired to reuse existing photos without approval, and both were real
+  // duplicate-image violations.
+  'space-and-the-stars': { src: 'PENDING', alt: 'Winnie looking up at a night sky full of stars.', caption: 'Your space has always been written in the stars.' },
+  'your-small-space-personality': { src: 'PENDING', alt: 'Winnie taking a thoughtful personality quiz at home.', caption: 'Six questions in, and you already know which drawer is yours.' },
   'why-doesnt-this-feel-done-yet': { src: 'PENDING', alt: 'Winnie looking thoughtfully around a room, assessing what feels unfinished.', caption: "It's rarely the whole room. It's usually one thing." },
   'regret-proof-purchase-check': { src: 'PENDING', alt: 'Winnie pausing before adding something to a cart, hand on chin.', caption: "The best purchase is sometimes the one you didn't make yet." },
   'roast-my-space': { src: 'PENDING', alt: 'Winnie laughing at a cluttered corner of a room, hands on hips.', caption: "Every space has one spot it's not proud of. Show us yours." },

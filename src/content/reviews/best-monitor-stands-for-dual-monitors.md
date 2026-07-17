@@ -141,4 +141,4 @@ Not automatically — always check the stand's width/reach against your actual m
 
 *Prices and availability change constantly, so we don't quote figures here — tap through to see the current price on Amazon.*
 
-> **Winnie's take:** The number of one-star reviews that boil down to "didn't measure my monitors first" could fill its own roundup. Grab a tape measure — mine's never far — before you buy anything on this list.
+> **Winnie's take:** The number of one-star reviews that boil down to "didn't measure my monitors first" could fill its own roundup. Grab a tape measure before you buy anything on this list.

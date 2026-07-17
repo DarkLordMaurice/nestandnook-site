@@ -11,7 +11,7 @@ relatedGuides:
     href: "/about/"
 ---
 
-Here's a sentence I say a lot, apparently: every nook wants a job to do. It's my whole small space organizing philosophy, distilled into six words, and I will admit up front that I did not arrive at six words on the first try — the tape measure around my neck has been present for at least four longer, clunkier drafts of this same idea, scrawled on index cards I still haven't thrown out.
+Here's a sentence I say a lot, apparently: every nook wants a job to do. It's my whole small space organizing philosophy, distilled into six words, and I will admit up front that I did not arrive at six words on the first try — there are at least four longer, clunkier drafts of this same idea, scrawled on index cards I still haven't thrown out.
 
 I don't mean that in a productivity-guru, optimize-your-mornings way. I mean it much more literally. That awkward corner of your desk that catches loose cables. The drawer that's supposedly "for office supplies" but is actually a landfill. The shelf above your monitor that exists purely to collect dust and a single dead plant. Every one of those spaces already has a job — it's just doing the wrong one, and it's going to keep doing the wrong one until something with an actual purpose moves in and claims the territory.
 

@@ -19,11 +19,11 @@ const personalityTools = LIVE_TOOLS.filter((tool) => tool.category === 'Lifestyl
   <nav class="tool-filters" aria-label="Filter planning tools"><span>Show:</span>{categories.map((category, index) => <button type="button" data-filter={category} aria-pressed={index === 0 ? 'true' : 'false'}>{category}</button>)}</nav>
   <p id="tool-filter-status" class="sr-only" aria-live="polite">Showing all planning tools.</p>
 
-  <div class="tools-section-header"><h2>Technical tools</h2><p>Measurements, layouts, and fit checks — the tape-measure-and-math ones.</p></div>
-  <div class="tools-grid" id="tools-grid-technical">{technicalTools.map((tool) => <ToolCard tool={tool} />)}</div>
-
   <div class="tools-section-header"><h2>Know yourself first</h2><p>Quizzes and gut-checks for the parts a tape measure can't answer.</p></div>
   <div class="tools-grid" id="tools-grid-personality">{personalityTools.map((tool) => <ToolCard tool={tool} />)}</div>
+
+  <div class="tools-section-header"><h2>Technical tools</h2><p>Measurements, layouts, and fit checks — the tape-measure-and-math ones.</p></div>
+  <div class="tools-grid" id="tools-grid-technical">{technicalTools.map((tool) => <ToolCard tool={tool} />)}</div>
   <section class="tool-method"><span class="washi washi-teal">How Winnie’s tools work</span><h2>Visual first. Numbers second. Shopping last.</h2><div><p><strong>Map the real space.</strong> Include obstructions, traffic, clearances, and the everyday routine—not just the product dimensions.</p><p><strong>See the trade-off.</strong> Each tool shows what fits, what becomes tight, and which measurement needs another pass.</p><p><strong>Carry a checklist.</strong> Results turn into practical measurements to verify against the manufacturer’s current specifications.</p></div></section>
   <script>
     const buttons = document.querySelectorAll('[data-filter]'); const cards = document.querySelectorAll('[data-tool-card]'); const status = document.querySelector('#tool-filter-status');

@@ -25,14 +25,16 @@ const artwork = {
     src: '/winnie/garage-workbench-car-clearance-check.jpg',
     alt: 'A fold-away garage workbench checked against a parked car.',
   },
-  'space-and-the-stars': {
-    src: '/winnie/winnie-life-campfire-mug.jpg',
-    alt: 'Winnie holding a mug under a night sky at a campfire.',
-  },
-  'your-small-space-personality': {
-    src: '/winnie/winnie-life-sorting-drawer.jpg',
-    alt: 'Winnie sorting items into a drawer at home.',
-  },
+  // space-and-the-stars and your-small-space-personality reverted to PENDING
+  // 2026-07-17: both had been silently wired to reuse existing photos
+  // (winnie-life-campfire-mug.jpg, winnie-life-sorting-drawer.jpg) as a
+  // same-day build-crash fix (commit a09d5d2) without ever getting Maurice's
+  // approval, and both images were already in use elsewhere on the site
+  // (a blog post each; sorting-drawer.jpg is also on about.astro) — a real
+  // violation of the no-duplicate-image rule. Queued as N1/N2 in
+  // Winnie-Photo-Queue.md for real, dedicated photos instead.
+  'space-and-the-stars': { src: 'PENDING', alt: 'Winnie looking up at a night sky full of stars.' },
+  'your-small-space-personality': { src: 'PENDING', alt: 'Winnie taking a thoughtful personality quiz at home.' },
   'why-doesnt-this-feel-done-yet': { src: 'PENDING', alt: 'Winnie looking thoughtfully around a room.' },
   'regret-proof-purchase-check': { src: 'PENDING', alt: 'Winnie pausing before adding something to a cart.' },
   'roast-my-space': { src: 'PENDING', alt: 'Winnie laughing at a cluttered corner of a room.' },
