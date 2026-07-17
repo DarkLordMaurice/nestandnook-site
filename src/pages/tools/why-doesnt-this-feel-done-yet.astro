@@ -95,7 +95,7 @@ const jsonLd = {
             <button class="tool-button ghost" id="copy-quiz-result" type="button">Copy your result</button>
             <button class="tool-button ghost" id="download-quiz-card" type="button">Download shareable card</button>
           </div>
-          <canvas id="share-canvas" width="1080" height="1080" hidden></canvas>
+          <canvas id="share-canvas" width="1248" height="832" hidden></canvas>
         </div>
 
         <div class="tool-actions no-print">
@@ -195,15 +195,16 @@ const jsonLd = {
       }
     });
 
-    document.querySelector('#download-quiz-card')?.addEventListener('click', () => {
+    document.querySelector('#download-quiz-card')?.addEventListener('click', async () => {
       if (!currentType) return;
       const canvas = document.querySelector('#share-canvas');
       if (!canvas) return;
-      renderShareCard(canvas, {
+      await renderShareCard(canvas, {
         kicker: 'Space diagnosis',
         headline: currentType.name,
         body: currentType.shareBody,
         footerLine: 'Diagnose your own room at nestandnook.org/tools/',
+        frameSrc: '/winnie/cert-frame-why-doesnt-this-feel-done-yet.jpg',
       });
       downloadCanvas(canvas, `nest-and-nook-${currentType.id}.png`);
       window.nnTrack?.('result_saved', { tool_slug: 'why-doesnt-this-feel-done-yet', action: 'download_card' });

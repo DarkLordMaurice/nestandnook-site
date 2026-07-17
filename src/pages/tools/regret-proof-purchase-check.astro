@@ -95,7 +95,7 @@ const jsonLd = {
             <button class="tool-button ghost" id="copy-quiz-result" type="button">Copy your result</button>
             <button class="tool-button ghost" id="download-quiz-card" type="button">Download shareable card</button>
           </div>
-          <canvas id="share-canvas" width="1080" height="1080" hidden></canvas>
+          <canvas id="share-canvas" width="1248" height="832" hidden></canvas>
         </div>
 
         <div class="tool-actions no-print">
@@ -195,11 +195,14 @@ const jsonLd = {
       }
     });
 
-    document.querySelector('#download-quiz-card')?.addEventListener('click', () => {
+    document.querySelector('#download-quiz-card')?.addEventListener('click', async () => {
       if (!currentType) return;
       const canvas = document.querySelector('#share-canvas');
       if (!canvas) return;
-      renderShareCard(canvas, {
+      // No generated frame yet for this tool — renders the flat-parchment
+      // fallback until one exists (see share-card.mjs). Swap in a frameSrc
+      // here the moment brand-assets generates one.
+      await renderShareCard(canvas, {
         kicker: 'Purchase check',
         headline: currentType.name,
         body: currentType.shareBody,
