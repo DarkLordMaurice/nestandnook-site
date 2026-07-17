@@ -4,7 +4,7 @@ description: "Monitor arm vs stand isn't about which is nicer — it's about whi
 primaryKeyword: "monitor arm vs stand"
 publishDate: 2026-07-11
 category: "Desk fixes"
-image: "/winnie/winnie-gear-desk-relieved.jpg"
+image: "PENDING"
 winniePhoto: "/winnie/headshot-v4-1.jpg"
 relatedGuides:
   - label: "Best Monitor Stands for Dual Monitors"
