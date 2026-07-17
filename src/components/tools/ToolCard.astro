@@ -25,19 +25,20 @@ const artwork = {
     src: '/winnie/garage-workbench-car-clearance-check.jpg',
     alt: 'A fold-away garage workbench checked against a parked car.',
   },
-  // space-and-the-stars and your-small-space-personality reverted to PENDING
-  // 2026-07-17: both had been silently wired to reuse existing photos
-  // (winnie-life-campfire-mug.jpg, winnie-life-sorting-drawer.jpg) as a
-  // same-day build-crash fix (commit a09d5d2) without ever getting Maurice's
-  // approval, and both images were already in use elsewhere on the site
-  // (a blog post each; sorting-drawer.jpg is also on about.astro) — a real
-  // violation of the no-duplicate-image rule. Queued as N1/N2 in
-  // Winnie-Photo-Queue.md for real, dedicated photos instead.
-  'space-and-the-stars': { src: 'PENDING', alt: 'Winnie looking up at a night sky full of stars.' },
-  'your-small-space-personality': { src: 'PENDING', alt: 'Winnie taking a thoughtful personality quiz at home.' },
-  'why-doesnt-this-feel-done-yet': { src: 'PENDING', alt: 'Winnie looking thoughtfully around a room.' },
-  'regret-proof-purchase-check': { src: 'PENDING', alt: 'Winnie pausing before adding something to a cart.' },
-  'roast-my-space': { src: 'PENDING', alt: 'Winnie laughing at a cluttered corner of a room.' },
+  // 2026-07-17: these 5 "Know yourself first" tools deliberately do NOT
+  // use Winnie -- see Tool-Image-Legibility-Research-2026-07-17.md. Each is
+  // a tool-themed, non-Winnie scene generated via the free Z-Image-Turbo
+  // pipeline, composed per the legibility research (one dominant, familiar
+  // real object + at most one reinforcing element, nothing competing) --
+  // round 1 (Winnie-free but gut-feel composed) only worked for the receipt
+  // image; round 2 applied the researched formula to the other 4 and all
+  // passed visual review (image_review_manifest.json, batch
+  // tool-hero-test-round2-2026-07-17).
+  'space-and-the-stars': { src: '/winnie/tool-hero-space-and-the-stars.jpg', alt: 'A zodiac wheel chart resting on a desk beside a small wooden house model and a brass key.' },
+  'your-small-space-personality': { src: '/winnie/tool-hero-your-small-space-personality.jpg', alt: 'A multiple-choice quiz answer sheet with filled-in bubbles and a pencil resting on top.' },
+  'why-doesnt-this-feel-done-yet': { src: '/winnie/tool-hero-why-doesnt-this-feel-done-yet.jpg', alt: 'An empty picture frame leaning against a wall below an empty picture hook.' },
+  'regret-proof-purchase-check': { src: '/winnie/tool-hero-regret-proof-purchase-check.jpg', alt: 'A store receipt with lines circled and struck through in red pen, next to a handwritten shopping list.' },
+  'roast-my-space': { src: '/winnie/tool-hero-roast-my-space.jpg', alt: 'An overflowing drawer stuffed with household items that will not fully close.' },
 }[tool.slug];
 const isPending = artwork.src === 'PENDING';
 ---

@@ -14,15 +14,18 @@ const scenes = {
   'desk-fit-reality-check': { src: '/winnie/winnie-office-small-desk-posture.jpg', alt: 'Winnie seated at a compact home-office desk with an ergonomic setup.', caption: 'Desk, chair, leg room, and foot support need to agree.' },
   'apartment-pet-zone-planner': { src: '/winnie/small-space-pet-care-setup-guide-scene1.jpg', alt: 'A compact apartment pet-care arrangement with daily zones separated.', caption: 'Small homes work better when each pet routine has its own address.' },
   'fold-away-workbench-fit-planner': { src: '/winnie/garage-workbench-car-clearance-check.jpg', alt: 'Winnie checking clearance between a fold-away workbench and a parked car.', caption: 'The open and folded garage both have to work.' },
-  // space-and-the-stars and your-small-space-personality reverted to PENDING
-  // 2026-07-17 — see matching note in ToolCard.astro: both were silently
-  // wired to reuse existing photos without approval, and both were real
-  // duplicate-image violations.
-  'space-and-the-stars': { src: 'PENDING', alt: 'Winnie looking up at a night sky full of stars.', caption: 'Your space has always been written in the stars.' },
-  'your-small-space-personality': { src: 'PENDING', alt: 'Winnie taking a thoughtful personality quiz at home.', caption: 'Six questions in, and you already know which drawer is yours.' },
-  'why-doesnt-this-feel-done-yet': { src: 'PENDING', alt: 'Winnie looking thoughtfully around a room, assessing what feels unfinished.', caption: "It's rarely the whole room. It's usually one thing." },
-  'regret-proof-purchase-check': { src: 'PENDING', alt: 'Winnie pausing before adding something to a cart, hand on chin.', caption: "The best purchase is sometimes the one you didn't make yet." },
-  'roast-my-space': { src: 'PENDING', alt: 'Winnie laughing at a cluttered corner of a room, hands on hips.', caption: "Every space has one spot it's not proud of. Show us yours." },
+  // 2026-07-17 — see matching note in ToolCard.astro: these 5 tools
+  // deliberately do NOT use Winnie. Composed per
+  // Tool-Image-Legibility-Research-2026-07-17.md's legibility formula and
+  // visually reviewed (image_review_manifest.json, batch
+  // tool-hero-test-round2-2026-07-17). Captions unchanged from the PENDING
+  // version -- none of them referenced Winnie directly, so they still read
+  // correctly against the new non-Winnie imagery.
+  'space-and-the-stars': { src: '/winnie/tool-hero-space-and-the-stars.jpg', alt: 'A zodiac wheel chart resting on a desk beside a small wooden house model and a brass key.', caption: 'Your space has always been written in the stars.' },
+  'your-small-space-personality': { src: '/winnie/tool-hero-your-small-space-personality.jpg', alt: 'A multiple-choice quiz answer sheet with filled-in bubbles and a pencil resting on top.', caption: 'Six questions in, and you already know which drawer is yours.' },
+  'why-doesnt-this-feel-done-yet': { src: '/winnie/tool-hero-why-doesnt-this-feel-done-yet.jpg', alt: 'An empty picture frame leaning against a wall below an empty picture hook.', caption: "It's rarely the whole room. It's usually one thing." },
+  'regret-proof-purchase-check': { src: '/winnie/tool-hero-regret-proof-purchase-check.jpg', alt: 'A store receipt with lines circled and struck through in red pen, next to a handwritten shopping list.', caption: "The best purchase is sometimes the one you didn't make yet." },
+  'roast-my-space': { src: '/winnie/tool-hero-roast-my-space.jpg', alt: 'An overflowing drawer stuffed with household items that will not fully close.', caption: "Every space has one spot it's not proud of. Show us yours." },
 }[slug];
 const isPending = scenes.src === 'PENDING';
 const jokes = [
