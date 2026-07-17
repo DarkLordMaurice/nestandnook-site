@@ -43,6 +43,13 @@ const latestPosts = blogPosts.filter((p) => LIFE_CATEGORIES.includes(p.data.cate
 const TIP_CATEGORIES = ['Desk fixes', 'Kitchen fixes'];
 const latestGuides = blogPosts.filter((p) => TIP_CATEGORIES.includes(p.data.category))
   .sort((a, b) => +b.data.publishDate - +a.data.publishDate).slice(0, 4);
+// Homepage shows "Know yourself first" tools only, no Technical tools
+// (Maurice, 2026-07-17) — same category-based split already used in
+// src/pages/tools/index.astro ('Lifestyle' = personality/gut-check tools,
+// everything else = the 4 measurement/Technical tools), reused here rather
+// than redefined so the two pages can't drift out of sync on which tools
+// count as which.
+const personalityTools = LIVE_TOOLS.filter((tool) => tool.category === 'Lifestyle');
 ---
 <BaseLayout
   title={`Small-Space Home Guides & Planning Tools | ${SITE.brand}`}
@@ -66,7 +73,7 @@ const latestGuides = blogPosts.filter((p) => TIP_CATEGORIES.includes(p.data.cate
     <p>Hi, I'm Winnie — resident magpie for anything that makes a small space less annoying, from desk geometry to pet-zone traffic and garage clearances. The recommendations here synthesize specifications, published evidence, and patterns across buyer feedback; they do not pretend a virtual host personally tested the products. Nothing earns a place because a brand slipped the site a check.</p>
   </WinnieNote>
 
-  {LIVE_TOOLS.length > 0 && (
+  {personalityTools.length > 0 && (
     <section class="card-section homepage-tools" aria-labelledby="homepage-tools-title">
       <div class="card-section-head">
         <div>
@@ -75,9 +82,9 @@ const latestGuides = blogPosts.filter((p) => TIP_CATEGORIES.includes(p.data.cate
         </div>
         <a class="card-section-link" href="/tools/">See all tools →</a>
       </div>
-      <p class="homepage-tools-intro">Put the measurements and room relationships on the page first. Each tool runs locally in the browser and turns the result into a practical next move.</p>
+      <p class="homepage-tools-intro">Quizzes and gut-checks for the parts a tape measure can't answer. The measurement-and-fit tools live on the full tools page.</p>
       <div class="tools-grid homepage-tools-grid">
-        {LIVE_TOOLS.slice(0, 4).map((tool) => <ToolCard tool={tool} />)}
+        {personalityTools.slice(0, 4).map((tool) => <ToolCard tool={tool} />)}
       </div>
     </section>
   )}
