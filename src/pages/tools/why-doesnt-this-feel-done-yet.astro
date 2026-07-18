@@ -187,9 +187,20 @@ const jsonLd = {
       await renderShareCard(canvas, {
         kicker: 'Space diagnosis',
         headline: currentType.name,
-        body: currentType.shareBody,
+        glyph: { type: 'magnifier' },
+        badge: 'Room diagnosis',
+        body: currentType.mirror,
+        columns: [
+          { label: 'Your advantage', value: currentType.superpower },
+          { label: "What's tripping you up", value: currentType.kryptonite },
+        ],
+        quote: currentType.winnieSays,
         footerLine: 'Diagnose your own room at nestandnook.org/tools/',
         frameSrc: '/winnie/cert-frame-why-doesnt-this-feel-done-yet.jpg',
+        // Measured off cert-frame-why-doesnt-this-feel-done-yet.jpg's own
+        // blank rectangle — the most generous of the 5, don't shrink it to
+        // match a smaller frame's box.
+        contentBox: { x: 187, y: 166, width: 875, height: 501 },
       });
       showCanvasInTab(tab, canvas);
       window.nnTrack?.('result_saved', { tool_slug: 'why-doesnt-this-feel-done-yet', action: 'view_card' });

@@ -187,9 +187,19 @@ const jsonLd = {
       await renderShareCard(canvas, {
         kicker: 'Purchase check',
         headline: currentType.name,
-        body: currentType.shareBody,
+        glyph: { type: 'dollar' },
+        badge: 'Purchase verdict',
+        body: currentType.mirror,
+        columns: [
+          { label: "What's working", value: currentType.superpower },
+          { label: 'What to watch for', value: currentType.kryptonite },
+        ],
+        quote: currentType.winnieSays,
         footerLine: 'Run your own check at nestandnook.org/tools/',
         frameSrc: '/winnie/cert-frame-regret-proof-purchase-check.jpg',
+        // Measured off cert-frame-regret-proof-purchase-check.jpg's own
+        // blank rectangle.
+        contentBox: { x: 313, y: 241, width: 621, height: 373 },
       });
       showCanvasInTab(tab, canvas);
       window.nnTrack?.('result_saved', { tool_slug: 'regret-proof-purchase-check', action: 'view_card' });

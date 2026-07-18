@@ -187,9 +187,19 @@ const jsonLd = {
       await renderShareCard(canvas, {
         kicker: 'Small-space personality',
         headline: currentType.name,
-        body: currentType.winnieSays,
+        glyph: { type: 'house' },
+        badge: 'Small-space personality type',
+        body: currentType.mirror,
+        columns: [
+          { label: 'Superpower', value: currentType.superpower },
+          { label: 'Kryptonite', value: currentType.kryptonite },
+        ],
+        quote: currentType.winnieSays,
         footerLine: 'Find your type at nestandnook.org/tools/',
         frameSrc: '/winnie/cert-frame-your-small-space-personality.jpg',
+        // Measured off cert-frame-your-small-space-personality.jpg's own
+        // blank rectangle — smaller than the other 4 frames, don't reuse.
+        contentBox: { x: 340, y: 237, width: 566, height: 354 },
       });
       showCanvasInTab(tab, canvas);
       window.nnTrack?.('result_saved', { tool_slug: 'your-small-space-personality', action: 'view_card' });

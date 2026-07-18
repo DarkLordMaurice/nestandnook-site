@@ -179,9 +179,17 @@ const jsonLd = {
       await renderShareCard(canvas, {
         kicker: 'Roast My Space',
         headline: currentType.name,
-        body: currentType.shareBody,
+        glyph: { type: 'flame' },
+        badge: 'The verdict',
+        body: currentType.roastLine,
+        columns: [
+          { label: 'Real talk', value: currentType.realTalk },
+        ],
+        quote: currentType.winnieSays,
         footerLine: 'Get your own roast at nestandnook.org/tools/',
         frameSrc: '/winnie/cert-frame-roast-my-space.jpg',
+        // Measured off cert-frame-roast-my-space.jpg's own blank rectangle.
+        contentBox: { x: 244, y: 166, width: 760, height: 411 },
       });
       showCanvasInTab(tab, canvas);
       window.nnTrack?.('result_saved', { tool_slug: 'roast-my-space', action: 'view_card' });

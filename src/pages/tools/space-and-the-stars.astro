@@ -156,9 +156,21 @@ const jsonLd = {
       await renderShareCard(canvas, {
         kicker: 'Your space sign',
         headline: currentSign.archetype,
-        body: currentSign.winnieSays,
+        glyph: { type: 'text', value: currentSign.glyph },
+        badge: currentSign.name,
+        body: currentSign.profile,
+        columns: [
+          { label: 'Superpower', value: currentSign.superpower },
+          { label: 'Kryptonite', value: currentSign.kryptonite },
+        ],
+        quote: currentSign.winnieSays,
         footerLine: 'Find your sign at nestandnook.org/tools/',
         frameSrc: '/winnie/cert-frame-space-and-the-stars.jpg',
+        // Measured directly off cert-frame-space-and-the-stars.jpg's blank
+        // center rectangle (see scripts/gen_certificate_frames.py output) —
+        // do not reuse another tool's box, the 5 frames are independently
+        // generated and not pixel-identical.
+        contentBox: { x: 188, y: 287, width: 789, height: 313 },
       });
       showCanvasInTab(tab, canvas);
       window.nnTrack?.('result_saved', { tool_slug: 'space-and-the-stars', action: 'view_card' });
