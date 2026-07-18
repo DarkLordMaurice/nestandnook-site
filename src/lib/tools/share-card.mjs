@@ -573,6 +573,9 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
     });
   }
   const totalGaps = Object.values(gaps).reduce((a, b) => a + b, 0);
+  if (typeof window !== 'undefined' && window.__nnDebugCert) {
+    console.log('NN_DEBUG', JSON.stringify({ isRoomyBox, panelH, panelW, topReserve, footerReserve, availableHeight, totalCore, totalGapsNominal, nominalTotalH, totalGaps, bodySize, bodyLines: bodyLines.length, quoteSize, quoteLines: quoteLines.length, colBoxH, headlineSize, headlineCore, eyebrowCore, badgeCore, bodyCore, starCore, columnsCore, winnieLabelCore, quoteCore }));
+  }
 
   const eyebrowH = eyebrowCore + gaps.eyebrow;
   const headlineBlockH = headlineCore + gaps.headline;
