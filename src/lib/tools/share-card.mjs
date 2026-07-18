@@ -347,7 +347,7 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   // mechanism. A reserved footer strip is carved out first and drawn in
   // its own un-clipped pass at a fixed position, so the two can never
   // overlap regardless of how long the content above happens to run.
-  const footerReserve = isRoomyBox ? 22 : 15;
+  const footerReserve = isRoomyBox ? 22 : 19;
   const availableHeight = panelH - footerReserve - topReserve;
 
   // --- Measurement pass ---
@@ -557,8 +557,15 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
     // very short results (e.g. a one-word kryptonite) don't produce
     // absurdly large gaps — the remainder still centers as edge margin via
     // `slack` below, but it's now a small remainder, not the whole budget.
+    // Tight bucket gets a lower cap than roomy: on a 296px panel, scaling
+    // gaps all the way up to 2.4x pushed the quote's last line right up
+    // against the clip edge with almost no breathing room before the fixed
+    // footer strip, so the two visually collided on long results like
+    // Taurus even though nothing was technically clipped. A lower cap
+    // leaves more of the slack as plain top/bottom margin (via `slack`
+    // below) instead of packing it all between sections.
     const room = availableHeight - nominalTotalH;
-    const maxScale = 2.4;
+    const maxScale = isRoomyBox ? 2.4 : 1.3;
     const rawScale = 1 + (room * 0.75) / totalGapsNominal;
     const scale = Math.min(maxScale, rawScale);
     Object.keys(gaps).forEach((k) => {
