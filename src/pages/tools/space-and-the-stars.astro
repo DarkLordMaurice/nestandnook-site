@@ -154,10 +154,15 @@ const jsonLd = {
       if (!canvas) return;
       const tab = openBlankTab();
       await renderShareCard(canvas, {
+        // FIXED 2026-07-18: headline/badge were swapped relative to
+        // Maurice's reference card — the reference shows the SIGN NAME
+        // ("Scorpio") as the big headline, with the archetype name
+        // ("The All-or-Nothing Reorganizer") as the pill badge below it.
+        // This file had it backwards.
         kicker: 'Your space sign',
-        headline: currentSign.archetype,
+        headline: currentSign.name,
         glyph: { type: 'text', value: currentSign.glyph },
-        badge: currentSign.name,
+        badge: currentSign.archetype,
         body: currentSign.profile,
         columns: [
           { label: 'Superpower', value: currentSign.superpower },

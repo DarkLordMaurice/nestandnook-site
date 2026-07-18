@@ -395,9 +395,20 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   // invisible, not just cramped. Every size constant below now has its own
   // tight-bucket value, not just body's line cap.
 
-  const eyebrowCore = kicker ? (isRoomyBox ? 18 : 14) : 0;
+  // FIXED 2026-07-18 (6th pass): every ceiling below was raised substantially.
+  // Maurice's reference card uses large, space-filling text — the panel used
+  // to hide how conservative these ceilings were, since a bunch of dead
+  // panel-colored space around smaller text still looked "finished." With
+  // the panel gone, undersized text reads as literal empty background
+  // showing through, which is exactly the complaint ("the text should be in
+  // the center of this image covering almost its entirety"). fitFontSize
+  // still auto-shrinks per-result (e.g. Taurus's 423-char worst-case body vs.
+  // Gemini's one-line kryptonite), so raising the ceiling only affects
+  // results that have room to be bigger — it doesn't remove the safety floor
+  // that prevents overflow on long content.
+  const eyebrowCore = kicker ? (isRoomyBox ? 20 : 16) : 0;
 
-  const glyphSize = isRoomyBox ? 46 : 34;
+  const glyphSize = isRoomyBox ? 58 : 44;
   // The headline gets a WIDER allowance than the content column (panelW *
   // 0.96 vs. the 0.94 used for body/columns/quote below) — headlines are
   // short (1-3 words) and should almost never need to wrap, so they get
@@ -411,17 +422,22 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   }
   const headlineText = String(headline ?? '');
   const { size: headlineSize, lines: headlineLines } = isRoomyBox
-    ? fitFontSize(ctx, headlineText, '700', headlineMaxWidth, 2, 46, 26)
-    : fitFontSize(ctx, headlineText, '700', headlineMaxWidth, 2, 32, 22);
+    ? fitFontSize(ctx, headlineText, '700', headlineMaxWidth, 2, 64, 28)
+    : fitFontSize(ctx, headlineText, '700', headlineMaxWidth, 2, 48, 24);
   const headlineLineHeight = headlineSize * 1.12;
   const headlineCore = Math.max(headlineLineHeight * headlineLines.length, glyphSize + 6);
 
   let pillW = 0;
-  const pillH = isRoomyBox ? 26 : 21;
+  const pillH = isRoomyBox ? 30 : 25;
   const badgeLabel = badge ? String(badge).toUpperCase() : '';
+  const badgeFontSize = isRoomyBox ? 16 : 14;
   if (badge) {
-    ctx.font = `700 ${isRoomyBox ? 14 : 12}px Georgia, serif`;
-    pillW = ctx.measureText(badgeLabel).width + 30;
+    ctx.font = `700 ${badgeFontSize}px Georgia, serif`;
+    pillW = ctx.measureText(badgeLabel).width + 34;
+    // Badge can now hold a long archetype name (e.g. "The All-or-Nothing
+    // Reorganizer", 30 chars) rather than always a short word — cap its
+    // width so a long badge can't overflow past the content column.
+    pillW = Math.min(pillW, contentWidth);
   }
   const badgeCore = badge ? pillH : 0;
 
@@ -432,8 +448,8 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   let bodyLines = [];
   if (body) {
     const r = isRoomyBox
-      ? fitFontSize(ctx, body, '400', contentWidth, bodyMaxLines, 17, 12)
-      : fitFontSize(ctx, body, '400', contentWidth, bodyMaxLines, 13, 11);
+      ? fitFontSize(ctx, body, '400', contentWidth, bodyMaxLines, 22, 13)
+      : fitFontSize(ctx, body, '400', contentWidth, bodyMaxLines, 17, 12);
     bodySize = r.size;
     bodyLines = r.lines;
   }
@@ -444,14 +460,14 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   const colPadX = 16;
   const hasColumns = Boolean(columns && columns.length);
   const starCore = hasColumns ? (isRoomyBox ? 16 : 12) : 0;
-  const colLineH = isRoomyBox ? 17 : 14;
+  const colLineH = isRoomyBox ? 21 : 17;
   const colsData = [];
   if (hasColumns) {
     const colW = (contentWidth - colGap * (columns.length - 1)) / columns.length;
     columns.forEach((col) => {
       const r = isRoomyBox
-        ? fitFontSize(ctx, col.value ?? '', '400', colW - colPadX * 2, columnMaxLines, 14, 10)
-        : fitFontSize(ctx, col.value ?? '', '400', colW - colPadX * 2, columnMaxLines, 11, 9);
+        ? fitFontSize(ctx, col.value ?? '', '400', colW - colPadX * 2, columnMaxLines, 17, 11)
+        : fitFontSize(ctx, col.value ?? '', '400', colW - colPadX * 2, columnMaxLines, 14, 10);
       colsData.push({ label: col.label, colW, valSize: r.size, valLines: r.lines });
     });
   }
@@ -474,8 +490,8 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   let quoteLines = [];
   if (quote) {
     const r = isRoomyBox
-      ? fitFontSize(ctx, quote, '400', contentWidth, 4, 16, 11)
-      : fitFontSize(ctx, quote, '400', contentWidth, 3, 13, 10);
+      ? fitFontSize(ctx, quote, '400', contentWidth, 4, 19, 12)
+      : fitFontSize(ctx, quote, '400', contentWidth, 3, 16, 11);
     quoteSize = r.size;
     quoteLines = r.lines;
   }
@@ -641,9 +657,9 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
     ctx.roundRect(pillX, cy, pillW, pillH, pillH / 2);
     ctx.fill();
     ctx.fillStyle = PALETTE.creamOnDark;
-    ctx.font = '700 13px Georgia, serif';
+    ctx.font = `700 ${badgeFontSize}px Georgia, serif`;
     ctx.textAlign = 'center';
-    ctx.fillText(badgeLabel, centerX, cy + pillH / 2 + 4.5);
+    ctx.fillText(badgeLabel, centerX, cy + pillH / 2 + badgeFontSize * 0.35);
     cy += badgeBlockH;
   }
 
