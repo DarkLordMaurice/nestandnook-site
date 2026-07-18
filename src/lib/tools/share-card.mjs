@@ -269,10 +269,25 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   }
 
   const box = contentBox || { x: 220, y: 220, width: FRAME_WIDTH - 440, height: FRAME_HEIGHT - 440 };
-  const left = box.x;
-  const right = box.x + box.width;
-  const contentWidth = box.width;
   const centerX = box.x + box.width / 2;
+  // Reference proportions (the Scorpio card Maurice provided) keep text in a
+  // NARROWER, centered column — not stretched edge-to-edge across the full
+  // measured blank rectangle. Stretching to full width was flagged
+  // 2026-07-18 as one of the "proportions are all wrong" problems. 0.72 is a
+  // middle ground: visibly narrower/more centered like the reference, without
+  // being so narrow it forces excess wrapping on the shortest frame
+  // (space-and-the-stars, 313px tall) past what the gap-compression system
+  // below can still fit legibly.
+  const contentWidth = box.width * 0.8;
+  const left = centerX - contentWidth / 2;
+  // Extra top/bottom insets, on top of the already-measured blank rectangle.
+  // The ornamental corner medallions cut diagonally into that rectangle —
+  // a plain rectangular safe-box doesn't account for that, which is what let
+  // text sit under the border artwork on roast-my-space (flagged 2026-07-18,
+  // "text gets clipped by the actual border"). Reserving a proportional
+  // strip top and bottom keeps content clear of those corners without
+  // needing to re-measure each frame's pixels from scratch.
+  const topReserve = Math.max(10, box.height * 0.035);
 
   // Hard clip to the measured safe box. This is the actual fix for the
   // 2026-07-18 overflow bug: everything below is a best-effort layout that
@@ -283,7 +298,7 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   // at a fixed position, so the two can never overlap regardless of how
   // long the content above happens to run.
   const footerReserve = 22;
-  const availableHeight = box.height - footerReserve;
+  const availableHeight = box.height - footerReserve - topReserve;
 
   // --- Measurement pass ---
   // Every section is sized/wrapped FIRST, with nothing drawn yet, so the
@@ -303,11 +318,20 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   const eyebrowCore = kicker ? 16 : 0;
 
   const glyphSize = 40;
+  // The headline gets a WIDER allowance than the narrowed content column
+  // (box.width * 0.9 vs. the 0.72 used for body/columns/quote below).
+  // Narrowing the headline to the same tight column as everything else
+  // pushed 2-word titles like "The All-or-Nothing Reorganizer" onto a
+  // second line — which alone added a full extra line-height, and cascaded
+  // into truncating the body and overlapping the quote with the footer on
+  // the tightest frame. Headlines are short (1-3 words); they should almost
+  // never need to wrap, so they get the box's fuller width instead.
+  const headlineFullWidth = box.width * 0.9;
   let headlineX = left;
-  let headlineMaxWidth = contentWidth;
+  let headlineMaxWidth = headlineFullWidth;
   if (glyph) {
     headlineX = left + glyphSize + 14;
-    headlineMaxWidth = contentWidth - glyphSize - 14;
+    headlineMaxWidth = headlineFullWidth - glyphSize - 14;
   }
   const headlineText = String(headline ?? '');
   const { size: headlineSize, lines: headlineLines } = fitFontSize(ctx, headlineText, '700', headlineMaxWidth, 2, 34, 20);
@@ -326,25 +350,32 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   let bodySize = 0;
   let bodyLines = [];
   if (body) {
-    const r = fitFontSize(ctx, body, '400', contentWidth, 3, 16, 11);
+    const r = fitFontSize(ctx, body, '400', contentWidth, 4, 16, 11);
     bodySize = r.size;
     bodyLines = r.lines;
   }
   const bodyLineHeight = bodySize * 1.35;
   const bodyCore = body ? bodyLineHeight * bodyLines.length : 0;
 
-  const colGap = 12;
-  const colBoxH = 50;
+  const colGap = 16;
+  const colPadX = 16;
   const hasColumns = Boolean(columns && columns.length);
   const starCore = hasColumns ? 14 : 0;
   const colsData = [];
   if (hasColumns) {
     const colW = (contentWidth - colGap * (columns.length - 1)) / columns.length;
     columns.forEach((col) => {
-      const r = fitFontSize(ctx, col.value ?? '', '400', colW - 18, 2, 12, 9);
+      const r = fitFontSize(ctx, col.value ?? '', '400', colW - colPadX * 2, 3, 13, 10);
       colsData.push({ label: col.label, colW, valSize: r.size, valLines: r.lines });
     });
   }
+  // Box height grows with whatever the longest column actually needs (up to
+  // 3 lines) instead of a flat constant — a fixed 2-line-tall box truncated
+  // "What to watch for" copy with an ellipsis once the narrower content
+  // column (2026-07-18, matching the reference's proportions) pushed that
+  // column's text to wrap further than before.
+  const maxValLines = hasColumns ? Math.max(1, ...colsData.map((c) => c.valLines.length)) : 0;
+  const colBoxH = hasColumns ? 22 + maxValLines * 16 + 8 : 0;
   const columnsCore = hasColumns ? colBoxH : 0;
 
   // "Winnie says" heading (own line, matches the reference card's
@@ -406,11 +437,11 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   const slack = Math.max(0, availableHeight - totalContentH);
   // Only ever pushes content DOWN from the box's top edge to center it in
   // extra room — never up, and never past what clip already guards against.
-  const startY = box.y + slack / 2;
+  const startY = box.y + topReserve + slack / 2;
 
   ctx.save();
   ctx.beginPath();
-  ctx.rect(box.x, box.y, box.width, box.height - footerReserve);
+  ctx.rect(box.x, box.y + topReserve, box.width, box.height - footerReserve - topReserve);
   ctx.clip();
 
   let cy = startY;
@@ -451,7 +482,21 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
         ctx.fillStyle = PALETTE.gold;
         ctx.font = `700 ${glyphSize}px Georgia, serif`;
         ctx.textAlign = 'left';
-        ctx.fillText(glyph.value, unitStartX, cy + 38);
+        // U+FE0E (text presentation selector, written as an explicit JS
+        // escape below so there's no ambiguity about which invisible
+        // codepoint actually landed in the file) forces the plain serif
+        // glyph instead of a colored emoji-style icon. Without it, Windows
+        // falls back to Segoe UI Emoji/Symbol for zodiac characters like
+        // "♏" — rendering a small colored badge instead of elegant text,
+        // flagged 2026-07-18 as looking like "a cheap text icon."
+        // Built via String.fromCharCode rather than a literal embedded
+        // character — a literal U+FE0E typed through the editor round-trip
+        // actually landed as U+FE0F (confirmed via a raw byte dump: EF B8 8F,
+        // the UTF-8 encoding of FE0F) — the EMOJI selector, the exact
+        // opposite of what's needed here. fromCharCode(0xFE0E) is
+        // unambiguous regardless of editor/encoding behavior.
+        const textPresentationGlyph = `${glyph.value}${String.fromCharCode(0xfe0e)}`;
+        ctx.fillText(textPresentationGlyph, unitStartX, cy + 38);
       }
     }
     ctx.fillStyle = PALETTE.jewelTeal;
@@ -512,10 +557,10 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
       ctx.fillStyle = PALETTE.gold;
       ctx.font = '700 10px Georgia, serif';
       ctx.textAlign = 'center';
-      ctx.fillText(`✦ ${String(col.label ?? '').toUpperCase()} ✦`, colCenterX, cy + 16);
+      ctx.fillText(`✦ ${String(col.label ?? '').toUpperCase()} ✦`, colCenterX, cy + 19);
       ctx.fillStyle = PALETTE.ink;
       ctx.font = `400 ${col.valSize}px Georgia, serif`;
-      drawWrappedLines(ctx, col.valLines, colCenterX, cy + 30, col.valSize * 1.2, 'center');
+      drawWrappedLines(ctx, col.valLines, colCenterX, cy + 38, col.valSize * 1.2, 'center');
       bx += col.colW + colGap;
     });
     cy += columnsBlockH;
