@@ -191,14 +191,12 @@ const jsonLd = {
       if (!currentType) return;
       const canvas = document.querySelector('#share-canvas');
       if (!canvas) return;
-      // No generated frame yet for this tool — renders the flat-parchment
-      // fallback until one exists (see share-card.mjs). Swap in a frameSrc
-      // here the moment brand-assets generates one.
       await renderShareCard(canvas, {
         kicker: 'Roast My Space',
         headline: currentType.name,
         body: currentType.shareBody,
         footerLine: 'Get your own roast at nestandnook.org/tools/',
+        frameSrc: '/winnie/cert-frame-roast-my-space.jpg',
       });
       downloadCanvas(canvas, `nest-and-nook-${currentType.id}-roast.png`);
       window.nnTrack?.('result_saved', { tool_slug: 'roast-my-space', action: 'download_card' });
