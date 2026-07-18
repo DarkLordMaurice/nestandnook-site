@@ -317,14 +317,30 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   const contentWidth = panelW * 0.94;
   const left = centerX - contentWidth / 2;
 
-  // Roomy vs. tight bucket, decided here (right after panelH is known) so
-  // topReserve/footerReserve below can be bucket-aware too, not just the
-  // font/line-budget constants further down. 320 sits strictly between the
-  // real measured panel heights — space-and-the-stars ≈302px (the
-  // tightest, the only tool in this bucket) and every other tool's
-  // ≈342-483px (see the long comment further down for the full
-  // measurement and the two real bugs this threshold fixed).
-  const isRoomyBox = panelH >= 320;
+  // Roomy vs. tight bucket, decided here (right after panelH/panelW are
+  // known) so topReserve/footerReserve below can be bucket-aware too, not
+  // just the font/line-budget constants further down.
+  //
+  // FIXED 2026-07-18 (3rd bug in this same rebuild, caught live on
+  // your-small-space-personality's "Nester" result — the "Winnie says"
+  // quote was silently missing entirely, not just cramped): this was
+  // height-only (`panelH >= 320`), which correctly isolated
+  // space-and-the-stars (≈302px tall, the shortest) into the tight bucket
+  // — but your-small-space-personality's panel is tall ENOUGH (≈342px) to
+  // read as roomy while also being the NARROWEST panel of all 5 (≈549px
+  // wide, vs. 600-850px for the other 4). A narrow width forces body text
+  // to wrap into more lines at any given font size regardless of how much
+  // vertical room exists, so the "roomy" bucket's bigger font/looser line
+  // caps produced a body block tall enough that, combined with the
+  // headline/badge/columns above it, pushed the quote section entirely
+  // past the clip — invisible, the same failure mode as the 2nd bug above,
+  // just triggered by width instead of height this time. A panel now has
+  // to be both tall AND wide enough to count as roomy; measured real
+  // panelW: space-and-the-stars ≈765px, your-small-space-personality
+  // ≈549px, regret-proof-purchase-check ≈602px, roast-my-space ≈737px,
+  // why-doesnt-this-feel-done-yet ≈849px. 650 sits strictly between the
+  // narrow pair (549, 602) and the wide pair (737, 849).
+  const isRoomyBox = panelH >= 320 && panelW >= 650;
 
   // Extra top clearance inside the panel, clear of the ornamental corner
   // medallions that cut diagonally into the frame's blank rectangle
