@@ -280,19 +280,16 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
 
   const box = contentBox || { x: 220, y: 220, width: FRAME_WIDTH - 440, height: FRAME_HEIGHT - 440 };
 
-  // REBUILT 2026-07-18 (5th pass, after the render-hang fix): Maurice's
-  // repeated, explicit complaint was that text floated over the frame's
-  // busy photographic background with no fade behind it, and read small
-  // and cramped compared to his reference card. Fix: a translucent
-  // parchment PANEL, drawn over the frame art before any text, filling
-  // nearly the entire measured safe rectangle — "the background
-  // embellishments that are in the text box can be more translucent and
-  // you can put the text over that as well, thats how its supposed to be."
-  // No stroke/border: the reference doesn't show a separate bordered "card"
-  // UI element sitting on top of the frame, just parchment the text sits
-  // on directly. Insets are small on purpose — Maurice: "resize the
-  // borders to accommodate the text... make the text space larger by
-  // shrinking everything else if you have to."
+  // REBUILT 2026-07-18 (6th pass): the cream translucent PANEL from the
+  // previous pass is GONE. Maurice, explicit and unambiguous, pointing at
+  // his own reference Scorpio card: "There shouldnt be fucking cream panel
+  // at fucking all... the text should have a transparent fucking background
+  // so it can sit on fucking anything." The reference card has no separate
+  // bordered/filled card UI sitting on top of the frame — text sits directly
+  // on the frame's own cream parchment texture, filling almost the entire
+  // measured blank rectangle. `panelX/Y/W/H` below are now just an invisible
+  // LAYOUT box (still inset slightly off the frame's own decorative corner
+  // medallions so text can't collide with them) — nothing is drawn for it.
   const panelInsetX = Math.max(6, box.width * 0.015);
   const panelTopInset = Math.max(6, box.height * 0.02);
   const panelBottomInset = Math.max(4, box.height * 0.015);
@@ -300,13 +297,6 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   const panelY = box.y + panelTopInset;
   const panelW = box.width - panelInsetX * 2;
   const panelH = box.height - panelTopInset - panelBottomInset;
-
-  ctx.save();
-  ctx.beginPath();
-  ctx.roundRect(panelX, panelY, panelW, panelH, Math.min(14, panelH * 0.05));
-  ctx.fillStyle = 'rgba(250, 244, 232, 0.82)';
-  ctx.fill();
-  ctx.restore();
 
   const centerX = panelX + panelW / 2;
   // Text now runs close to edge-to-edge within the panel (0.94), matching
