@@ -528,6 +528,31 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
     Object.keys(gaps).forEach((k) => {
       gaps[k] = gaps[k] > 0 ? Math.max(minGapEach, gaps[k] * scale) : 0;
     });
+  } else if (nominalTotalH < availableHeight && totalGapsNominal > 0) {
+    // FIXED 2026-07-18 (4th bug — flagged directly by Maurice via a
+    // screenshot with the empty regions circled in red): shorter results
+    // (e.g. Gemini's short "Finishing." kryptonite vs. Taurus's long
+    // worst-case text) leave real leftover room inside the panel, but that
+    // leftover was previously dumped entirely into ONE lump — half above
+    // the eyebrow, half below the quote — via `slack` below. The panel is
+    // sized to the frame's full measured blank rectangle on purpose (so
+    // borders don't need to shrink), which means the leftover room is real
+    // and expected; the bug was concentrating it at the two outer edges
+    // instead of spreading it between sections, which read as two big dead
+    // margins with everything else still cramped together in the middle —
+    // exactly what doesn't match the reference card's evenly-filled look.
+    // Fix: absorb most of the slack into the gaps themselves (proportional
+    // scale-up, mirroring the scale-DOWN branch above), capped at 2.4x so
+    // very short results (e.g. a one-word kryptonite) don't produce
+    // absurdly large gaps — the remainder still centers as edge margin via
+    // `slack` below, but it's now a small remainder, not the whole budget.
+    const room = availableHeight - nominalTotalH;
+    const maxScale = 2.4;
+    const rawScale = 1 + (room * 0.75) / totalGapsNominal;
+    const scale = Math.min(maxScale, rawScale);
+    Object.keys(gaps).forEach((k) => {
+      gaps[k] = gaps[k] > 0 ? gaps[k] * scale : 0;
+    });
   }
   const totalGaps = Object.values(gaps).reduce((a, b) => a + b, 0);
 
