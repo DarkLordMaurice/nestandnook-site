@@ -341,7 +341,7 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   // mechanism. A reserved footer strip is carved out first and drawn in
   // its own un-clipped pass at a fixed position, so the two can never
   // overlap regardless of how long the content above happens to run.
-  const footerReserve = isRoomyBox ? 26 : 16;
+  const footerReserve = isRoomyBox ? 26 : 21;
   const availableHeight = panelH - footerReserve - topReserve;
 
   // --- Measurement pass ---
