@@ -117,53 +117,6 @@ const jsonLd = {
 
     let quizStarted = false;
     let currentType = null;
-    let cardUrl = null;
-
-    // Builds the exact renderShareCard() option set for the currently-shown
-    // result. Shared between the pre-render (fired the moment the result
-    // appears) and the click-time fallback, so there's only one place that
-    // has to match the reference layout's field mapping.
-    function buildCardOptions() {
-      return {
-        kicker: 'Space diagnosis',
-        headline: currentType.name,
-        glyph: { type: 'magnifier' },
-        badge: 'Room diagnosis',
-        body: currentType.mirror,
-        columns: [
-          { label: 'Your advantage', value: currentType.superpower },
-          { label: "What's tripping you up", value: currentType.kryptonite },
-        ],
-        quote: currentType.winnieSays,
-        footerLine: 'Diagnose your own room at nestandnook.org/tools/',
-        frameSrc: '/winnie/cert-frame-why-doesnt-this-feel-done-yet.jpg',
-        contentBox: { x: 187, y: 166, width: 875, height: 501 },
-      };
-    }
-
-    // Renders the card into the (hidden) canvas and caches a fresh blob URL
-    // on `cardUrl`. Fixed 2026-07-18 after Maurice reported a certificate
-    // that "still isn't rendering" in incognito: the old flow opened a blank
-    // tab synchronously, then awaited the async render, then navigated that
-    // tab — and in stricter popup-blocking contexts (incognito especially),
-    // the window handle can go stale during that await gap, silently
-    // dropping the navigation with no error anywhere. Pre-rendering as soon
-    // as the result is shown (well before the user clicks "View your
-    // certificate") means the click handler itself can do a single
-    // synchronous window.open() with a URL that's already sitting there
-    // ready — no async work inside the click at all, so there's no gap for
-    // a popup blocker to exploit.
-    async function prerenderCard() {
-      if (!currentType) return;
-      const canvas = document.querySelector('#share-canvas');
-      if (!canvas) return;
-      await renderShareCard(canvas, buildCardOptions());
-      const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/png'));
-      if (!blob) return;
-      if (cardUrl) URL.revokeObjectURL(cardUrl);
-      cardUrl = URL.createObjectURL(blob);
-    }
-
     form?.addEventListener('change', () => {
       if (!quizStarted) { quizStarted = true; window.nnTrack?.('tool_started', { tool_slug: 'why-doesnt-this-feel-done-yet' }); }
     });
@@ -207,8 +160,6 @@ const jsonLd = {
       resultPanel.hidden = false;
       layout?.classList.add('has-result');
       resultPanel.focus();
-      cardUrl = null;
-      prerenderCard();
 
       window.nnTrack?.('tool_completed', { tool_slug: 'why-doesnt-this-feel-done-yet', type: type.id });
     });
@@ -230,19 +181,28 @@ const jsonLd = {
 
     document.querySelector('#view-quiz-card')?.addEventListener('click', async () => {
       if (!currentType) return;
-      if (cardUrl) {
-        // Fast path: already pre-rendered, so this is a single synchronous
-        // navigation with no async gap for a popup blocker to catch.
-        window.open(cardUrl, '_blank');
-      } else {
-        // Rare fallback (e.g. an extremely fast click before prerender
-        // finished) — best-effort version of the old dance.
-        const tab = openBlankTab();
-        await prerenderCard();
-        if (cardUrl) {
-          showCanvasInTab(tab, document.querySelector('#share-canvas'));
-        }
-      }
+      const canvas = document.querySelector('#share-canvas');
+      if (!canvas) return;
+      const tab = openBlankTab();
+      await renderShareCard(canvas, {
+        kicker: 'Space diagnosis',
+        headline: currentType.name,
+        glyph: { type: 'magnifier' },
+        badge: 'Room diagnosis',
+        body: currentType.mirror,
+        columns: [
+          { label: 'Your advantage', value: currentType.superpower },
+          { label: "What's tripping you up", value: currentType.kryptonite },
+        ],
+        quote: currentType.winnieSays,
+        footerLine: 'Diagnose your own room at nestandnook.org/tools/',
+        frameSrc: '/winnie/cert-frame-why-doesnt-this-feel-done-yet.jpg',
+        // Measured off cert-frame-why-doesnt-this-feel-done-yet.jpg's own
+        // blank rectangle — the most generous of the 5, don't shrink it to
+        // match a smaller frame's box.
+        contentBox: { x: 187, y: 166, width: 875, height: 501 },
+      });
+      showCanvasInTab(tab, canvas);
       window.nnTrack?.('result_saved', { tool_slug: 'why-doesnt-this-feel-done-yet', action: 'view_card' });
     });
   </script>

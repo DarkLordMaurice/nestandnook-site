@@ -117,43 +117,6 @@ const jsonLd = {
 
     let quizStarted = false;
     let currentType = null;
-    let cardUrl = null;
-
-    // See why-doesnt-this-feel-done-yet.astro for the full rationale: this
-    // pre-renders the card the moment the result is shown (instead of at
-    // click time) so "View your certificate" is a single synchronous
-    // window.open() with no async gap — fixes a real bug where a stricter
-    // popup blocker (incognito especially) could silently drop the
-    // navigation during the old open-tab-then-await-render dance.
-    function buildCardOptions() {
-      return {
-        kicker: 'Small-space personality',
-        headline: currentType.name,
-        glyph: { type: 'house' },
-        badge: 'Small-space personality type',
-        body: currentType.mirror,
-        columns: [
-          { label: 'Superpower', value: currentType.superpower },
-          { label: 'Kryptonite', value: currentType.kryptonite },
-        ],
-        quote: currentType.winnieSays,
-        footerLine: 'Find your type at nestandnook.org/tools/',
-        frameSrc: '/winnie/cert-frame-your-small-space-personality.jpg',
-        contentBox: { x: 340, y: 237, width: 566, height: 354 },
-      };
-    }
-
-    async function prerenderCard() {
-      if (!currentType) return;
-      const canvas = document.querySelector('#share-canvas');
-      if (!canvas) return;
-      await renderShareCard(canvas, buildCardOptions());
-      const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/png'));
-      if (!blob) return;
-      if (cardUrl) URL.revokeObjectURL(cardUrl);
-      cardUrl = URL.createObjectURL(blob);
-    }
-
     form?.addEventListener('change', () => {
       if (!quizStarted) { quizStarted = true; window.nnTrack?.('tool_started', { tool_slug: 'your-small-space-personality' }); }
     });
@@ -197,8 +160,6 @@ const jsonLd = {
       resultPanel.hidden = false;
       layout?.classList.add('has-result');
       resultPanel.focus();
-      cardUrl = null;
-      prerenderCard();
 
       window.nnTrack?.('tool_completed', { tool_slug: 'your-small-space-personality', type: type.id });
     });
@@ -220,15 +181,27 @@ const jsonLd = {
 
     document.querySelector('#view-quiz-card')?.addEventListener('click', async () => {
       if (!currentType) return;
-      if (cardUrl) {
-        window.open(cardUrl, '_blank');
-      } else {
-        const tab = openBlankTab();
-        await prerenderCard();
-        if (cardUrl) {
-          showCanvasInTab(tab, document.querySelector('#share-canvas'));
-        }
-      }
+      const canvas = document.querySelector('#share-canvas');
+      if (!canvas) return;
+      const tab = openBlankTab();
+      await renderShareCard(canvas, {
+        kicker: 'Small-space personality',
+        headline: currentType.name,
+        glyph: { type: 'house' },
+        badge: 'Small-space personality type',
+        body: currentType.mirror,
+        columns: [
+          { label: 'Superpower', value: currentType.superpower },
+          { label: 'Kryptonite', value: currentType.kryptonite },
+        ],
+        quote: currentType.winnieSays,
+        footerLine: 'Find your type at nestandnook.org/tools/',
+        frameSrc: '/winnie/cert-frame-your-small-space-personality.jpg',
+        // Measured off cert-frame-your-small-space-personality.jpg's own
+        // blank rectangle — smaller than the other 4 frames, don't reuse.
+        contentBox: { x: 340, y: 237, width: 566, height: 354 },
+      });
+      showCanvasInTab(tab, canvas);
       window.nnTrack?.('result_saved', { tool_slug: 'your-small-space-personality', action: 'view_card' });
     });
   </script>
