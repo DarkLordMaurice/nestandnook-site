@@ -113,16 +113,26 @@ function fitFontSize(ctx, text, weightFamily, maxWidth, maxLines, maxSize, minSi
     const lines = measureWrappedLines(ctx, text, maxWidth);
     if (lines.length <= maxLines) return { size, lines };
   }
+  // Never truncate with an ellipsis (Maurice, 2026-07-18: "never lose
+  // content, shrink everything else instead"). At minSize, return every
+  // wrapped line uncapped rather than slicing to maxLines — the caller's
+  // layout may run long on a worst-case result, but nothing is ever cut.
+  //
+  // FIXED 2026-07-18: the previous version here truncated to maxLines and
+  // appended "…", shrinking the last line one character at a time until it
+  // fit. That loop compared against `last`, a copy of the line captured
+  // ONCE before the loop started — but the loop body only ever shrank
+  // `lines[maxLines - 1]`, never `last` itself. So the while condition
+  // re-tested the exact same (never-shrinking) string on every pass. For
+  // any text whose original last line was too wide to ever fit even at 1
+  // character (true worst-case content — e.g. space-and-the-stars' Taurus
+  // profile, its longest field on the site's shortest content box), this
+  // was a genuine infinite loop that pinned the render thread forever —
+  // the real cause of the "site keeps crashing, can't load tools" report,
+  // confirmed by reproducing the hang live on Taurus specifically and
+  // ruling out every shorter sign.
   ctx.font = `${weightFamily} ${minSize}px Georgia, "Iowan Old Style", serif`;
-  let lines = measureWrappedLines(ctx, text, maxWidth);
-  if (lines.length > maxLines) {
-    lines = lines.slice(0, maxLines);
-    const last = lines[maxLines - 1];
-    while (ctx.measureText(`${last}…`).width > maxWidth && last.length > 1) {
-      lines[maxLines - 1] = lines[maxLines - 1].slice(0, -1);
-    }
-    lines[maxLines - 1] = `${lines[maxLines - 1]}…`;
-  }
+  const lines = measureWrappedLines(ctx, text, maxWidth);
   return { size: minSize, lines };
 }
 
