@@ -357,7 +357,7 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   // mechanism. A reserved footer strip is carved out first and drawn in
   // its own un-clipped pass at a fixed position, so the two can never
   // overlap regardless of how long the content above happens to run.
-  const footerReserve = isRoomyBox ? 26 : 21;
+  const footerReserve = isRoomyBox ? 22 : 21;
   const availableHeight = panelH - footerReserve - topReserve;
 
   // --- Measurement pass ---
@@ -479,17 +479,17 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   // maxLines bumped 2→3: your-small-space-personality's longest quote
   // (203 chars) on its narrower 566px-wide frame needs the extra line at
   // a legible size.
-  const winnieLabelCore = quote ? (isRoomyBox ? 18 : 14) : 0;
+  const winnieLabelCore = quote ? (isRoomyBox ? 16 : 14) : 0;
   let quoteSize = 0;
   let quoteLines = [];
   if (quote) {
     const r = isRoomyBox
-      ? fitFontSize(ctx, quote, '400', contentWidth, 3, 17, 11)
+      ? fitFontSize(ctx, quote, '400', contentWidth, 4, 16, 11)
       : fitFontSize(ctx, quote, '400', contentWidth, 3, 13, 10);
     quoteSize = r.size;
     quoteLines = r.lines;
   }
-  const quoteLineHeight = quoteSize * (isRoomyBox ? 1.35 : 1.25);
+  const quoteLineHeight = quoteSize * (isRoomyBox ? 1.3 : 1.25);
   const quoteCore = quote ? quoteLineHeight * quoteLines.length : 0;
 
   // Gaps are the ONLY thing allowed to compress under pressure — text
