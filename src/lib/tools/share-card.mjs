@@ -23,13 +23,19 @@
  * into the deliberately-left-blank region of the frame rather than over a
  * flat color band.
  *
- * Only one frame currently exists on disk:
- * `/winnie/cert-frame-why-doesnt-this-feel-done-yet.jpg`. The other two
- * tools (regret-proof-purchase-check, roast-my-space) don't have a
- * generated frame yet — calling without `frameSrc` (or if the image fails
- * to load) falls back to a flat cream-parchment background so the card
- * still renders correctly today; swap in a real `frameSrc` for those two
- * the moment their frames are generated, no other code change needed.
+ * All 5 lifestyle/personality tools now have a generated frame on disk
+ * (`/winnie/cert-frame-{tool-slug}.jpg`, see scripts/gen_certificate_frames.py) —
+ * calling without `frameSrc` (or if the image fails to load) still falls
+ * back to a flat cream-parchment background as a safety net.
+ *
+ * 2026-07-18: added `openBlankTab` / `showCanvasInTab` as the standard way
+ * to present the finished card. Maurice was explicit that a forced disk
+ * download on click was the wrong UX — the certificate should open in a
+ * new tab like any other image, with saving left as something the person
+ * does themselves from there (right-click → save, or the browser's own
+ * image-view controls), not something forced on them. `downloadCanvas`
+ * still exists below in case a real "download" button is wanted
+ * deliberately somewhere, but none of the tool pages call it anymore.
  *
  * Pure JS — no imports beyond the native Image/Canvas APIs, no network
  * calls except loading the frame image itself (same-origin, from /winnie/).
@@ -195,5 +201,41 @@ export function downloadCanvas(canvas, filename) {
     a.click();
     a.remove();
     URL.revokeObjectURL(url);
+  }, 'image/png');
+}
+
+/**
+ * Open a blank browser tab RIGHT NOW, synchronously, inside a click handler
+ * — before any `await`. Call this first, then render the canvas, then pass
+ * the returned window to `showCanvasInTab`. Doing it in this order (rather
+ * than opening the tab after the async render finishes) is what keeps the
+ * browser from treating it as an unsolicited popup, since it's still
+ * directly inside the user's click gesture.
+ * @returns {Window|null}
+ */
+export function openBlankTab() {
+  return window.open('', '_blank');
+}
+
+/**
+ * Point an already-open tab (from `openBlankTab`) at the canvas as an
+ * image. No forced download — the tab just shows the image the way any
+ * browser shows an image URL, so the person can view it, right-click to
+ * save it, or close the tab, entirely their choice.
+ * @param {Window|null} win
+ * @param {HTMLCanvasElement} canvas
+ */
+export function showCanvasInTab(win, canvas) {
+  canvas.toBlob((blob) => {
+    if (!blob) return;
+    const url = URL.createObjectURL(blob);
+    if (win && !win.closed) {
+      win.location.href = url;
+    } else {
+      // Popup was blocked when we tried to open it ahead of time — try once
+      // more now. This may also be blocked since it's no longer inside the
+      // original click's gesture window, but it's the best fallback available.
+      window.open(url, '_blank');
+    }
   }, 'image/png');
 }

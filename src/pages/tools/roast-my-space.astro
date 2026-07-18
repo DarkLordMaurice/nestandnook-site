@@ -86,10 +86,7 @@ const jsonLd = {
 
         <div class="tool-result-section quiz-share">
           <p class="quiz-share-hook" id="result-share-hook"></p>
-          <div class="tool-share-actions">
-            <button class="tool-button ghost" id="copy-quiz-result" type="button">Copy your roast</button>
-            <button class="tool-button ghost" id="download-quiz-card" type="button">Download shareable card</button>
-          </div>
+          <button class="tool-button ghost" id="view-quiz-card" type="button">View your certificate</button>
           <canvas id="share-canvas" width="1248" height="832" hidden></canvas>
         </div>
 
@@ -104,7 +101,7 @@ const jsonLd = {
 
   <script>
     import { scoreRoast, validateRoastAnswers } from '../../lib/tools/roast-my-space.mjs';
-    import { renderShareCard, downloadCanvas } from '../../lib/tools/share-card.mjs';
+    import { renderShareCard, openBlankTab, showCanvasInTab } from '../../lib/tools/share-card.mjs';
 
     const form = document.querySelector('#roast-form');
     const resultPanel = document.querySelector('#roast-result');
@@ -174,23 +171,11 @@ const jsonLd = {
       form?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
-    document.querySelector('#copy-quiz-result')?.addEventListener('click', async () => {
-      const typeName = document.querySelector('#result-type-name')?.textContent ?? '';
-      const copy = `I got roasted: ${typeName}. Get your own roast: ${window.location.href}`;
-      try {
-        await navigator.clipboard.writeText(copy);
-        text('#copy-quiz-result', 'Copied!');
-        window.nnTrack?.('result_saved', { tool_slug: 'roast-my-space', action: 'copy' });
-        setTimeout(() => text('#copy-quiz-result', 'Copy your roast'), 1800);
-      } catch {
-        text('#copy-quiz-result', 'Copy unavailable');
-      }
-    });
-
-    document.querySelector('#download-quiz-card')?.addEventListener('click', async () => {
+    document.querySelector('#view-quiz-card')?.addEventListener('click', async () => {
       if (!currentType) return;
       const canvas = document.querySelector('#share-canvas');
       if (!canvas) return;
+      const tab = openBlankTab();
       await renderShareCard(canvas, {
         kicker: 'Roast My Space',
         headline: currentType.name,
@@ -198,8 +183,8 @@ const jsonLd = {
         footerLine: 'Get your own roast at nestandnook.org/tools/',
         frameSrc: '/winnie/cert-frame-roast-my-space.jpg',
       });
-      downloadCanvas(canvas, `nest-and-nook-${currentType.id}-roast.png`);
-      window.nnTrack?.('result_saved', { tool_slug: 'roast-my-space', action: 'download_card' });
+      showCanvasInTab(tab, canvas);
+      window.nnTrack?.('result_saved', { tool_slug: 'roast-my-space', action: 'view_card' });
     });
   </script>
 </BaseLayout>

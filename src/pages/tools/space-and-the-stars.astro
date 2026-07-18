@@ -80,8 +80,9 @@ const jsonLd = {
         </div>
 
         <div class="tool-result-section sign-share">
-          <p class="sign-share-prompt">Does this sound like you? Share your sign.</p>
-          <button class="tool-button ghost" id="copy-sign-result" type="button">Copy your result</button>
+          <p class="sign-share-prompt">Does this sound like you? View your certificate.</p>
+          <button class="tool-button ghost" id="view-sign-card" type="button">View your certificate</button>
+          <canvas id="share-canvas" width="1248" height="832" hidden></canvas>
         </div>
 
         <div class="tool-actions no-print">
@@ -95,6 +96,7 @@ const jsonLd = {
 
   <script>
     import { SIGNS, getSignById } from '../../lib/tools/space-and-the-stars.mjs';
+    import { renderShareCard, openBlankTab, showCanvasInTab } from '../../lib/tools/share-card.mjs';
 
     const grid = document.querySelector('#sign-grid');
     const resultPanel = document.querySelector('#sign-result');
@@ -102,9 +104,12 @@ const jsonLd = {
 
     const text = (id, content) => { const el = document.querySelector(id); if (el) el.textContent = content; };
 
+    let currentSign = null;
+
     function showResult(signId) {
       const sign = getSignById(signId);
       if (!sign) return;
+      currentSign = sign;
 
       text('#result-glyph', sign.glyph);
       text('#result-name', sign.name);
@@ -139,21 +144,24 @@ const jsonLd = {
       resultPanel.hidden = true;
       layout?.classList.remove('has-result');
       document.querySelectorAll('.sign-tile').forEach((btn) => btn.classList.remove('active'));
+      currentSign = null;
       grid?.querySelector('.sign-tile')?.focus();
     });
 
-    document.querySelector('#copy-sign-result')?.addEventListener('click', async () => {
-      const archetype = document.querySelector('#result-archetype')?.textContent ?? '';
-      const name = document.querySelector('#result-name')?.textContent ?? '';
-      const copy = `I'm ${archetype} (${name}) — what does your sign say about your space? ${window.location.href}`;
-      try {
-        await navigator.clipboard.writeText(copy);
-        text('#copy-sign-result', 'Copied!');
-        window.nnTrack?.('result_saved', { tool_slug: 'space-and-the-stars', action: 'copy' });
-        setTimeout(() => text('#copy-sign-result', 'Copy your result'), 1800);
-      } catch {
-        text('#copy-sign-result', 'Copy unavailable');
-      }
+    document.querySelector('#view-sign-card')?.addEventListener('click', async () => {
+      if (!currentSign) return;
+      const canvas = document.querySelector('#share-canvas');
+      if (!canvas) return;
+      const tab = openBlankTab();
+      await renderShareCard(canvas, {
+        kicker: 'Your space sign',
+        headline: currentSign.archetype,
+        body: currentSign.winnieSays,
+        footerLine: 'Find your sign at nestandnook.org/tools/',
+        frameSrc: '/winnie/cert-frame-space-and-the-stars.jpg',
+      });
+      showCanvasInTab(tab, canvas);
+      window.nnTrack?.('result_saved', { tool_slug: 'space-and-the-stars', action: 'view_card' });
     });
   </script>
 </BaseLayout>

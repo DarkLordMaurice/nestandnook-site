@@ -91,7 +91,8 @@ const jsonLd = {
 
         <div class="tool-result-section quiz-share">
           <p class="quiz-share-hook" id="result-share-hook"></p>
-          <button class="tool-button ghost" id="copy-quiz-result" type="button">Copy your result</button>
+          <button class="tool-button ghost" id="view-quiz-card" type="button">View your certificate</button>
+          <canvas id="share-canvas" width="1248" height="832" hidden></canvas>
         </div>
 
         <div class="tool-actions no-print">
@@ -105,6 +106,7 @@ const jsonLd = {
 
   <script>
     import { scoreQuiz, validateQuizAnswers } from '../../lib/tools/your-small-space-personality.mjs';
+    import { renderShareCard, openBlankTab, showCanvasInTab } from '../../lib/tools/share-card.mjs';
 
     const form = document.querySelector('#personality-quiz');
     const resultPanel = document.querySelector('#quiz-result');
@@ -114,6 +116,7 @@ const jsonLd = {
     const text = (id, content) => { const el = document.querySelector(id); if (el) el.textContent = content; };
 
     let quizStarted = false;
+    let currentType = null;
     form?.addEventListener('change', () => {
       if (!quizStarted) { quizStarted = true; window.nnTrack?.('tool_started', { tool_slug: 'your-small-space-personality' }); }
     });
@@ -136,6 +139,7 @@ const jsonLd = {
 
       errorsBox.innerHTML = '';
       const { type, isTie, tiedWith } = scoreQuiz(answers);
+      currentType = type;
 
       text('#result-type-name', type.name);
       text('#result-mirror', type.mirror);
@@ -164,26 +168,31 @@ const jsonLd = {
       errorsBox.innerHTML = '';
       resultPanel.hidden = true;
       layout?.classList.remove('has-result');
+      currentType = null;
     });
 
     document.querySelector('#retake-quiz')?.addEventListener('click', () => {
       form?.reset();
       resultPanel.hidden = true;
       layout?.classList.remove('has-result');
+      currentType = null;
       form?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
-    document.querySelector('#copy-quiz-result')?.addEventListener('click', async () => {
-      const typeName = document.querySelector('#result-type-name')?.textContent ?? '';
-      const copy = `I'm ${typeName} — what kind of small-space person are you? ${window.location.href}`;
-      try {
-        await navigator.clipboard.writeText(copy);
-        text('#copy-quiz-result', 'Copied!');
-        window.nnTrack?.('result_saved', { tool_slug: 'your-small-space-personality', action: 'copy' });
-        setTimeout(() => text('#copy-quiz-result', 'Copy your result'), 1800);
-      } catch {
-        text('#copy-quiz-result', 'Copy unavailable');
-      }
+    document.querySelector('#view-quiz-card')?.addEventListener('click', async () => {
+      if (!currentType) return;
+      const canvas = document.querySelector('#share-canvas');
+      if (!canvas) return;
+      const tab = openBlankTab();
+      await renderShareCard(canvas, {
+        kicker: 'Small-space personality',
+        headline: currentType.name,
+        body: currentType.winnieSays,
+        footerLine: 'Find your type at nestandnook.org/tools/',
+        frameSrc: '/winnie/cert-frame-your-small-space-personality.jpg',
+      });
+      showCanvasInTab(tab, canvas);
+      window.nnTrack?.('result_saved', { tool_slug: 'your-small-space-personality', action: 'view_card' });
     });
   </script>
 </BaseLayout>
