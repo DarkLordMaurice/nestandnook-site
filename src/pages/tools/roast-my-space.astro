@@ -189,7 +189,10 @@ const jsonLd = {
         footerLine: 'Get your own roast at nestandnook.org/tools/',
         frameSrc: '/winnie/cert-frame-roast-my-space.jpg',
         // Measured off cert-frame-roast-my-space.jpg's own blank rectangle.
-        contentBox: { x: 244, y: 166, width: 760, height: 411 },
+        // RE-MEASURED 2026-07-18: re-centered via pixel-sampling the real
+        // frame image, same method as space-and-the-stars — see that file's
+        // comment for the full explanation.
+        contentBox: { x: 232, y: 234, width: 784, height: 364 },
       });
       showCanvasInTab(tab, canvas);
       window.nnTrack?.('result_saved', { tool_slug: 'roast-my-space', action: 'view_card' });

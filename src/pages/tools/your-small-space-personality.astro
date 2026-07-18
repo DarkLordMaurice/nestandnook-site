@@ -199,7 +199,10 @@ const jsonLd = {
         frameSrc: '/winnie/cert-frame-your-small-space-personality.jpg',
         // Measured off cert-frame-your-small-space-personality.jpg's own
         // blank rectangle — smaller than the other 4 frames, don't reuse.
-        contentBox: { x: 340, y: 237, width: 566, height: 354 },
+        // RE-MEASURED 2026-07-18: re-centered via pixel-sampling the real
+        // frame image, same method as space-and-the-stars — see that file's
+        // comment for the full explanation.
+        contentBox: { x: 326, y: 200, width: 596, height: 432 },
       });
       showCanvasInTab(tab, canvas);
       window.nnTrack?.('result_saved', { tool_slug: 'your-small-space-personality', action: 'view_card' });

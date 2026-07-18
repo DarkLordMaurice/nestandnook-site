@@ -175,7 +175,14 @@ const jsonLd = {
         // center rectangle (see scripts/gen_certificate_frames.py output) —
         // do not reuse another tool's box, the 5 frames are independently
         // generated and not pixel-identical.
-        contentBox: { x: 188, y: 287, width: 789, height: 313 },
+        // RE-MEASURED 2026-07-18: the old box (x:188) was ~40px left of the
+        // frame's actual center, leaving a real empty strip on the right
+        // side that no amount of text-sizing could reach — Maurice circled
+        // it directly on a live render. Re-measured via pixel-sampling the
+        // real frame image (many scanlines through the blank rectangle,
+        // taking the dominant/most-reliable edge on each side, centered on
+        // the canvas's true center 624,416) rather than eyeballing again.
+        contentBox: { x: 232, y: 255, width: 784, height: 322 },
       });
       showCanvasInTab(tab, canvas);
       window.nnTrack?.('result_saved', { tool_slug: 'space-and-the-stars', action: 'view_card' });

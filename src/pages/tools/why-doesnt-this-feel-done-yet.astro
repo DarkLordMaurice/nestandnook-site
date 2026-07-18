@@ -200,7 +200,11 @@ const jsonLd = {
         // Measured off cert-frame-why-doesnt-this-feel-done-yet.jpg's own
         // blank rectangle — the most generous of the 5, don't shrink it to
         // match a smaller frame's box.
-        contentBox: { x: 187, y: 166, width: 875, height: 501 },
+        // RE-MEASURED 2026-07-18: re-centered via pixel-sampling the real
+        // frame image, same method as space-and-the-stars — see that file's
+        // comment for the full explanation. This frame was already close to
+        // centered, so the change here is small.
+        contentBox: { x: 168, y: 158, width: 912, height: 516 },
       });
       showCanvasInTab(tab, canvas);
       window.nnTrack?.('result_saved', { tool_slug: 'why-doesnt-this-feel-done-yet', action: 'view_card' });
