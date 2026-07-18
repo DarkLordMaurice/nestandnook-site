@@ -272,6 +272,7 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   const left = box.x;
   const right = box.x + box.width;
   const contentWidth = box.width;
+  const centerX = box.x + box.width / 2;
 
   // Hard clip to the measured safe box. This is the actual fix for the
   // 2026-07-18 overflow bug: everything below is a best-effort layout that
@@ -299,7 +300,7 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   // regress that box — it only gives narrower boxes the room they need.
   ctx.textAlign = 'left';
 
-  const eyebrowH = kicker ? 26 : 0;
+  const eyebrowCore = kicker ? 16 : 0;
 
   const glyphSize = 40;
   let headlineX = left;
@@ -311,7 +312,7 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   const headlineText = String(headline ?? '');
   const { size: headlineSize, lines: headlineLines } = fitFontSize(ctx, headlineText, '700', headlineMaxWidth, 2, 34, 20);
   const headlineLineHeight = headlineSize * 1.12;
-  const headlineBlockH = Math.max(headlineLineHeight * headlineLines.length, glyphSize + 6) + 10;
+  const headlineCore = Math.max(headlineLineHeight * headlineLines.length, glyphSize + 6);
 
   let pillW = 0;
   const pillH = 23;
@@ -320,7 +321,7 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
     ctx.font = '700 13px Georgia, serif';
     pillW = ctx.measureText(badgeLabel).width + 28;
   }
-  const badgeBlockH = badge ? pillH + 10 : 0;
+  const badgeCore = badge ? pillH : 0;
 
   let bodySize = 0;
   let bodyLines = [];
@@ -330,31 +331,78 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
     bodyLines = r.lines;
   }
   const bodyLineHeight = bodySize * 1.35;
-  const bodyBlockH = body ? bodyLineHeight * bodyLines.length + 10 : 0;
+  const bodyCore = body ? bodyLineHeight * bodyLines.length : 0;
 
   const colGap = 12;
   const colBoxH = 50;
+  const hasColumns = Boolean(columns && columns.length);
+  const starCore = hasColumns ? 14 : 0;
   const colsData = [];
-  if (columns && columns.length) {
+  if (hasColumns) {
     const colW = (contentWidth - colGap * (columns.length - 1)) / columns.length;
     columns.forEach((col) => {
       const r = fitFontSize(ctx, col.value ?? '', '400', colW - 18, 2, 12, 9);
       colsData.push({ label: col.label, colW, valSize: r.size, valLines: r.lines });
     });
   }
-  const columnsBlockH = colsData.length ? colBoxH + 10 : 0;
+  const columnsCore = hasColumns ? colBoxH : 0;
 
+  // "Winnie says" heading (own line, matches the reference card's
+  // "✦ Winnie says ✦" label) + the quote text itself below it, plain (no
+  // literal quotation marks — the reference doesn't quote-mark it either).
+  const winnieLabelCore = quote ? 16 : 0;
   let quoteSize = 0;
   let quoteLines = [];
   if (quote) {
-    const r = fitFontSize(ctx, `"${quote}"`, 'italic 400', contentWidth, 2, 14, 10);
+    const r = fitFontSize(ctx, quote, '400', contentWidth, 2, 14, 10);
     quoteSize = r.size;
     quoteLines = r.lines;
   }
   const quoteLineHeight = quoteSize * 1.3;
-  const quoteBlockH = quote ? quoteLineHeight * quoteLines.length + 6 : 0;
+  const quoteCore = quote ? quoteLineHeight * quoteLines.length : 0;
 
-  const totalContentH = eyebrowH + headlineBlockH + badgeBlockH + bodyBlockH + columnsBlockH + quoteBlockH;
+  // Gaps are the ONLY thing allowed to compress under pressure — text
+  // itself already shrinks to its own floor via fitFontSize above. Adding
+  // the star flourish + "Winnie says" label (2026-07-18, second pass) made
+  // the fixed +10 gaps used before no longer fit the tightest frame
+  // (space-and-the-stars, 313px tall) — its quote block was getting almost
+  // entirely clipped. Rather than hand-tune magic numbers per frame, every
+  // gap below scales down together, proportionally, whenever the nominal
+  // total doesn't fit — see the scale-factor block right after this.
+  const gaps = {
+    eyebrow: kicker ? 10 : 0,
+    headline: 10,
+    badge: badge ? 10 : 0,
+    body: body ? 10 : 0,
+    star: hasColumns ? 6 : 0,
+    columns: hasColumns ? 10 : 0,
+    winnieLabel: quote ? 4 : 0,
+  };
+  const totalCore = eyebrowCore + headlineCore + badgeCore + bodyCore + starCore + columnsCore + winnieLabelCore + quoteCore;
+  const totalGapsNominal = Object.values(gaps).reduce((a, b) => a + b, 0);
+  const nominalTotalH = totalCore + totalGapsNominal;
+  if (nominalTotalH > availableHeight) {
+    const excess = nominalTotalH - availableHeight;
+    const minGapEach = 2;
+    const activeGapCount = Object.values(gaps).filter((g) => g > 0).length;
+    const maxReducible = Math.max(0, totalGapsNominal - activeGapCount * minGapEach);
+    const reduction = Math.min(excess, maxReducible);
+    const scale = totalGapsNominal > 0 ? (totalGapsNominal - reduction) / totalGapsNominal : 1;
+    Object.keys(gaps).forEach((k) => {
+      gaps[k] = gaps[k] > 0 ? Math.max(minGapEach, gaps[k] * scale) : 0;
+    });
+  }
+  const totalGaps = Object.values(gaps).reduce((a, b) => a + b, 0);
+
+  const eyebrowH = eyebrowCore + gaps.eyebrow;
+  const headlineBlockH = headlineCore + gaps.headline;
+  const badgeBlockH = badgeCore + gaps.badge;
+  const bodyBlockH = bodyCore + gaps.body;
+  const starH = starCore + gaps.star;
+  const columnsBlockH = columnsCore + gaps.columns;
+  const winnieLabelH = winnieLabelCore + gaps.winnieLabel;
+
+  const totalContentH = totalCore + totalGaps;
   const slack = Math.max(0, availableHeight - totalContentH);
   // Only ever pushes content DOWN from the box's top edge to center it in
   // extra room — never up, and never past what clip already guards against.
@@ -367,72 +415,124 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
 
   let cy = startY;
 
+  // Everything below is center-aligned as a unit, matching the reference
+  // certificate Maurice provided — the first version of this rebuild only
+  // matched the reference's section LIST (eyebrow/headline/badge/body/
+  // columns/quote), not its actual look: that reference is fully centered,
+  // uses a dark-green headline with gold accents (not near-black ink with
+  // terracotta accents), and has a "✦ Winnie says ✦" label line above the
+  // quote plus a small star flourish above the column boxes — none of which
+  // the first pass had. Fixed 2026-07-18 (second correction, same day).
+
   // Eyebrow line
   if (kicker) {
-    ctx.fillStyle = PALETTE.terracotta;
+    ctx.fillStyle = PALETTE.gold;
     ctx.font = '700 17px Georgia, serif';
-    ctx.fillText(String(kicker).toUpperCase(), left, cy + 14);
+    ctx.textAlign = 'center';
+    ctx.fillText(String(kicker).toUpperCase(), centerX, cy + 14);
     cy += eyebrowH;
   }
 
-  // Headline, with an optional glyph to its left
-  if (glyph) {
-    drawGlyphIcon(ctx, glyph.type, left + glyphSize / 2, cy + 22, glyphSize, PALETTE.terracotta);
-    if (glyph.type === 'text' && glyph.value) {
-      ctx.fillStyle = PALETTE.terracotta;
-      ctx.font = `700 ${glyphSize}px Georgia, serif`;
-      ctx.fillText(glyph.value, left, cy + 38);
+  // Headline, with an optional glyph to its left — centered as one unit.
+  // Multi-line headlines only center-align the glyph against the FIRST
+  // line; subsequent lines are centered independently, which is an
+  // acceptable simplification since every result name so far is 1-2 words
+  // and fits on one line at the chosen size.
+  {
+    const firstLineWidth = (() => {
+      ctx.font = `700 ${headlineSize}px Georgia, "Iowan Old Style", serif`;
+      return ctx.measureText(headlineLines[0] || '').width;
+    })();
+    const unitWidth = glyph ? glyphSize + 14 + firstLineWidth : firstLineWidth;
+    const unitStartX = centerX - unitWidth / 2;
+    if (glyph) {
+      drawGlyphIcon(ctx, glyph.type, unitStartX + glyphSize / 2, cy + 22, glyphSize, PALETTE.gold);
+      if (glyph.type === 'text' && glyph.value) {
+        ctx.fillStyle = PALETTE.gold;
+        ctx.font = `700 ${glyphSize}px Georgia, serif`;
+        ctx.textAlign = 'left';
+        ctx.fillText(glyph.value, unitStartX, cy + 38);
+      }
+    }
+    ctx.fillStyle = PALETTE.jewelTeal;
+    ctx.font = `700 ${headlineSize}px Georgia, "Iowan Old Style", serif`;
+    ctx.textAlign = 'left';
+    ctx.fillText(headlineLines[0] || '', glyph ? unitStartX + glyphSize + 14 : unitStartX, cy + headlineSize * 0.78);
+    if (headlineLines.length > 1) {
+      ctx.textAlign = 'center';
+      for (let i = 1; i < headlineLines.length; i += 1) {
+        ctx.fillText(headlineLines[i], centerX, cy + headlineSize * 0.78 + i * headlineLineHeight);
+      }
     }
   }
-  ctx.fillStyle = PALETTE.ink;
-  ctx.font = `700 ${headlineSize}px Georgia, "Iowan Old Style", serif`;
-  drawWrappedLines(ctx, headlineLines, headlineX, cy + headlineSize * 0.78, headlineLineHeight);
   cy += headlineBlockH;
 
-  // Pill subtitle badge
+  // Pill subtitle badge — centered
   if (badge) {
+    const pillX = centerX - pillW / 2;
     ctx.fillStyle = PALETTE.jewelTeal;
     ctx.beginPath();
-    ctx.roundRect(left, cy, pillW, pillH, pillH / 2);
+    ctx.roundRect(pillX, cy, pillW, pillH, pillH / 2);
     ctx.fill();
     ctx.fillStyle = PALETTE.creamOnDark;
     ctx.font = '700 13px Georgia, serif';
-    ctx.fillText(badgeLabel, left + 14, cy + pillH / 2 + 4.5);
+    ctx.textAlign = 'center';
+    ctx.fillText(badgeLabel, centerX, cy + pillH / 2 + 4.5);
     cy += badgeBlockH;
   }
 
-  // Body paragraph
+  // Body paragraph — centered
   if (body) {
     ctx.fillStyle = PALETTE.inkSoft;
     ctx.font = `400 ${bodySize}px Georgia, serif`;
-    drawWrappedLines(ctx, bodyLines, left, cy + bodySize, bodyLineHeight);
+    drawWrappedLines(ctx, bodyLines, centerX, cy + bodySize, bodyLineHeight, 'center');
     cy += bodyBlockH;
   }
 
-  // Two-column (or one-column) boxed callout
+  // Small star flourish above the column callout, matching the reference
   if (colsData.length) {
-    colsData.forEach((col, i) => {
-      const bx = left + i * (col.colW + colGap);
+    ctx.fillStyle = PALETTE.gold;
+    ctx.font = '400 14px Georgia, serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('✦', centerX, cy + 14);
+    cy += starH;
+  }
+
+  // Two-column (or one-column) boxed callout — row centered as a whole,
+  // label/value centered within each box
+  if (colsData.length) {
+    const rowWidth = colsData.reduce((w, c) => w + c.colW, 0) + colGap * (colsData.length - 1);
+    const rowStartX = centerX - rowWidth / 2;
+    let bx = rowStartX;
+    colsData.forEach((col) => {
+      const colCenterX = bx + col.colW / 2;
       ctx.strokeStyle = PALETTE.border;
       ctx.lineWidth = 1.5;
       ctx.strokeRect(bx, cy, col.colW, colBoxH);
-      ctx.fillStyle = PALETTE.terracotta;
+      ctx.fillStyle = PALETTE.gold;
       ctx.font = '700 10px Georgia, serif';
-      ctx.fillText(`✦ ${String(col.label ?? '').toUpperCase()} ✦`, bx + 9, cy + 16);
+      ctx.textAlign = 'center';
+      ctx.fillText(`✦ ${String(col.label ?? '').toUpperCase()} ✦`, colCenterX, cy + 16);
       ctx.fillStyle = PALETTE.ink;
       ctx.font = `400 ${col.valSize}px Georgia, serif`;
-      drawWrappedLines(ctx, col.valLines, bx + 9, cy + 30, col.valSize * 1.2);
+      drawWrappedLines(ctx, col.valLines, colCenterX, cy + 30, col.valSize * 1.2, 'center');
+      bx += col.colW + colGap;
     });
     cy += columnsBlockH;
   }
 
-  // "Winnie says" quote line — up to 2 lines (see measurement-pass comment
-  // above for why this changed from a 1-line cap).
+  // "✦ Winnie says ✦" label + the quote itself below it, both centered,
+  // no literal quotation marks (matches the reference card).
   if (quote) {
-    ctx.fillStyle = PALETTE.sage;
-    ctx.font = `italic 400 ${quoteSize}px Georgia, serif`;
-    drawWrappedLines(ctx, quoteLines, left, cy + quoteSize, quoteLineHeight);
-    cy += quoteBlockH;
+    ctx.fillStyle = PALETTE.gold;
+    ctx.font = '700 12px Georgia, serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('✦ Winnie says ✦', centerX, cy + 13);
+    cy += winnieLabelH;
+    ctx.fillStyle = PALETTE.inkSoft;
+    ctx.font = `400 ${quoteSize}px Georgia, serif`;
+    drawWrappedLines(ctx, quoteLines, centerX, cy + quoteSize, quoteLineHeight, 'center');
+    cy += quoteLineHeight * quoteLines.length + 6;
   }
 
   ctx.restore(); // lift the clip before drawing the footer in its reserved strip
@@ -443,7 +543,8 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   // above it, regardless of how long that result's text happens to be.
   ctx.fillStyle = PALETTE.inkSoft;
   ctx.font = '400 12px Georgia, serif';
-  ctx.fillText(footerLine || 'Try it yourself at nestandnook.org/tools/', left, box.y + box.height - 6);
+  ctx.textAlign = 'center';
+  ctx.fillText(footerLine || 'Try it yourself at nestandnook.org/tools/', centerX, box.y + box.height - 6);
 }
 
 /**
