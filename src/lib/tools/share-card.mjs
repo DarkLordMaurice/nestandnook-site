@@ -316,11 +316,22 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   // there's no longer a reason to additionally shrink away from it.
   const contentWidth = panelW * 0.94;
   const left = centerX - contentWidth / 2;
+
+  // Roomy vs. tight bucket, decided here (right after panelH is known) so
+  // topReserve/footerReserve below can be bucket-aware too, not just the
+  // font/line-budget constants further down. 320 sits strictly between the
+  // real measured panel heights — space-and-the-stars ≈302px (the
+  // tightest, the only tool in this bucket) and every other tool's
+  // ≈342-483px (see the long comment further down for the full
+  // measurement and the two real bugs this threshold fixed).
+  const isRoomyBox = panelH >= 320;
+
   // Extra top clearance inside the panel, clear of the ornamental corner
   // medallions that cut diagonally into the frame's blank rectangle
   // (flagged 2026-07-18 on roast-my-space — "text gets clipped by the
-  // actual border").
-  const topReserve = Math.max(10, panelH * 0.04);
+  // actual border"). Smaller on the tight bucket — every pixel here is a
+  // pixel not available to the column boxes and quote below it.
+  const topReserve = isRoomyBox ? Math.max(10, panelH * 0.04) : Math.max(7, panelH * 0.025);
 
   // Hard clip to the panel. Everything below is a best-effort layout that
   // tries to fit within it, but fitFontSize no longer truncates content
@@ -330,7 +341,7 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   // mechanism. A reserved footer strip is carved out first and drawn in
   // its own un-clipped pass at a fixed position, so the two can never
   // overlap regardless of how long the content above happens to run.
-  const footerReserve = 26;
+  const footerReserve = isRoomyBox ? 26 : 20;
   const availableHeight = panelH - footerReserve - topReserve;
 
   // --- Measurement pass ---
@@ -348,9 +359,39 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   // regress that box — it only gives narrower boxes the room they need.
   ctx.textAlign = 'left';
 
+  // Every size/line-budget constant below is bucket-aware (roomy vs. tight)
+  // rather than a single global value, calibrated against the ACTUAL
+  // longest copy in each tool's dataset (measured directly via a one-off
+  // script against every tool's .mjs data file — not guessed, and not
+  // spot-checked against whichever example happened to get clicked during
+  // testing). Worst case measured 2026-07-18: space-and-the-stars' Taurus
+  // profile, 423 chars — the longest body copy on the site — on its own
+  // 313px-tall frame, the shortest of the 5.
+  //
+  // FIXED 2026-07-18 (same day, twice, both caught via real live
+  // screenshots after shipping the panel — text estimates from a formula
+  // are not a substitute for actually looking at the render):
+  // 1st bug: the roomy/tight threshold was `panelH >= 300`, based on a
+  // guessed panel height. The real computed panel heights are
+  // space-and-the-stars ≈302px (the tightest), your-small-space-
+  // personality ≈342px, regret-proof-purchase-check ≈360px, roast-my-space
+  // ≈397px, why-doesnt-this-feel-done-yet ≈483px — so a >=300 cutoff put
+  // EVERY tool, including the tightest, in the roomier bucket. 320 sits
+  // strictly between the real tightest (302) and next-tightest (342), so
+  // space-and-the-stars is now the only tool in the tighter bucket.
+  // 2nd bug: even after fixing the threshold, only body's line budget was
+  // bucket-aware — glyph size, headline font, and badge height were still
+  // one fixed value for every box. The glyph alone (46px) was forcing the
+  // headline row to at least 52px tall regardless of font size, and a
+  // 4-line body at a near-max font still ran the total content height well
+  // past the tight panel's available space, pushing the column boxes and
+  // the "Winnie says" quote entirely past the bottom of the clip —
+  // invisible, not just cramped. Every size constant below now has its own
+  // tight-bucket value, not just body's line cap.
+
   const eyebrowCore = kicker ? 18 : 0;
 
-  const glyphSize = 46;
+  const glyphSize = isRoomyBox ? 46 : 34;
   // The headline gets a WIDER allowance than the content column (panelW *
   // 0.96 vs. the 0.94 used for body/columns/quote below) — headlines are
   // short (1-3 words) and should almost never need to wrap, so they get
@@ -363,40 +404,30 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
     headlineMaxWidth = headlineFullWidth - glyphSize - 14;
   }
   const headlineText = String(headline ?? '');
-  const { size: headlineSize, lines: headlineLines } = fitFontSize(ctx, headlineText, '700', headlineMaxWidth, 2, 46, 26);
+  const { size: headlineSize, lines: headlineLines } = isRoomyBox
+    ? fitFontSize(ctx, headlineText, '700', headlineMaxWidth, 2, 46, 26)
+    : fitFontSize(ctx, headlineText, '700', headlineMaxWidth, 2, 32, 22);
   const headlineLineHeight = headlineSize * 1.12;
   const headlineCore = Math.max(headlineLineHeight * headlineLines.length, glyphSize + 6);
 
   let pillW = 0;
-  const pillH = 26;
+  const pillH = isRoomyBox ? 26 : 21;
   const badgeLabel = badge ? String(badge).toUpperCase() : '';
   if (badge) {
-    ctx.font = '700 14px Georgia, serif';
+    ctx.font = `700 ${isRoomyBox ? 14 : 12}px Georgia, serif`;
     pillW = ctx.measureText(badgeLabel).width + 30;
   }
   const badgeCore = badge ? pillH : 0;
 
-  // Line budgets for body/columns are panel-height-aware, not a single
-  // global constant, and are now calibrated against the ACTUAL longest
-  // copy in each tool's dataset (measured directly via a one-off script
-  // against every tool's .mjs data file, not guessed or spot-checked
-  // against whichever example happened to get clicked during testing).
-  // Worst case measured 2026-07-18: space-and-the-stars' Taurus profile,
-  // 423 chars — the longest body copy on the site — on its own 313px-tall
-  // frame, the shortest of the 5. 350px is the threshold between the two
-  // budgets; space-and-the-stars' panel (~294px) stays in the tighter
-  // bucket, every other tool's panel (~330px+) gets the roomier one.
-  // fitFontSize no longer truncates (see its own comment above), so these
-  // budgets exist to keep font size and line count reasonable, not to
-  // prevent overflow — overflow can no longer silently eat content.
-  const isRoomyBox = panelH >= 300;
-  const bodyMaxLines = isRoomyBox ? 6 : 5;
+  const bodyMaxLines = isRoomyBox ? 5 : 4;
   const columnMaxLines = isRoomyBox ? 4 : 3;
 
   let bodySize = 0;
   let bodyLines = [];
   if (body) {
-    const r = fitFontSize(ctx, body, '400', contentWidth, bodyMaxLines, 17, 12);
+    const r = isRoomyBox
+      ? fitFontSize(ctx, body, '400', contentWidth, bodyMaxLines, 17, 12)
+      : fitFontSize(ctx, body, '400', contentWidth, bodyMaxLines, 13, 11);
     bodySize = r.size;
     bodyLines = r.lines;
   }
@@ -406,12 +437,15 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   const colGap = 18;
   const colPadX = 16;
   const hasColumns = Boolean(columns && columns.length);
-  const starCore = hasColumns ? 16 : 0;
+  const starCore = hasColumns ? (isRoomyBox ? 16 : 12) : 0;
+  const colLineH = isRoomyBox ? 17 : 14;
   const colsData = [];
   if (hasColumns) {
     const colW = (contentWidth - colGap * (columns.length - 1)) / columns.length;
     columns.forEach((col) => {
-      const r = fitFontSize(ctx, col.value ?? '', '400', colW - colPadX * 2, columnMaxLines, 14, 10);
+      const r = isRoomyBox
+        ? fitFontSize(ctx, col.value ?? '', '400', colW - colPadX * 2, columnMaxLines, 14, 10)
+        : fitFontSize(ctx, col.value ?? '', '400', colW - colPadX * 2, columnMaxLines, 11, 9);
       colsData.push({ label: col.label, colW, valSize: r.size, valLines: r.lines });
     });
   }
@@ -420,7 +454,7 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   // watch for" copy with an ellipsis once the narrower content column
   // pushed that column's text to wrap further than expected.
   const maxValLines = hasColumns ? Math.max(1, ...colsData.map((c) => c.valLines.length)) : 0;
-  const colBoxH = hasColumns ? 24 + maxValLines * 17 + 8 : 0;
+  const colBoxH = hasColumns ? (isRoomyBox ? 24 : 18) + maxValLines * colLineH + 8 : 0;
   const columnsCore = hasColumns ? colBoxH : 0;
 
   // "Winnie says" heading (own line, matches the reference card's
@@ -433,26 +467,38 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   let quoteSize = 0;
   let quoteLines = [];
   if (quote) {
-    const r = fitFontSize(ctx, quote, '400', contentWidth, 3, 17, 11);
+    const r = isRoomyBox
+      ? fitFontSize(ctx, quote, '400', contentWidth, 3, 17, 11)
+      : fitFontSize(ctx, quote, '400', contentWidth, 3, 13, 10);
     quoteSize = r.size;
     quoteLines = r.lines;
   }
-  const quoteLineHeight = quoteSize * 1.35;
+  const quoteLineHeight = quoteSize * (isRoomyBox ? 1.35 : 1.25);
   const quoteCore = quote ? quoteLineHeight * quoteLines.length : 0;
 
   // Gaps are the ONLY thing allowed to compress under pressure — text
   // itself already shrinks to its own floor via fitFontSize above. Every
   // gap below scales down together, proportionally, whenever the nominal
   // total doesn't fit — see the scale-factor block right after this.
-  const gaps = {
-    eyebrow: kicker ? 12 : 0,
-    headline: 13,
-    badge: badge ? 12 : 0,
-    body: body ? 13 : 0,
-    star: hasColumns ? 8 : 0,
-    columns: hasColumns ? 13 : 0,
-    winnieLabel: quote ? 6 : 0,
-  };
+  const gaps = isRoomyBox
+    ? {
+        eyebrow: kicker ? 12 : 0,
+        headline: 13,
+        badge: badge ? 12 : 0,
+        body: body ? 13 : 0,
+        star: hasColumns ? 8 : 0,
+        columns: hasColumns ? 13 : 0,
+        winnieLabel: quote ? 6 : 0,
+      }
+    : {
+        eyebrow: kicker ? 8 : 0,
+        headline: 9,
+        badge: badge ? 8 : 0,
+        body: body ? 9 : 0,
+        star: hasColumns ? 5 : 0,
+        columns: hasColumns ? 9 : 0,
+        winnieLabel: quote ? 4 : 0,
+      };
   const totalCore = eyebrowCore + headlineCore + badgeCore + bodyCore + starCore + columnsCore + winnieLabelCore + quoteCore;
   const totalGapsNominal = Object.values(gaps).reduce((a, b) => a + b, 0);
   const nominalTotalH = totalCore + totalGapsNominal;
