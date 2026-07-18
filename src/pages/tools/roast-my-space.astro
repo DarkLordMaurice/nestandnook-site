@@ -112,6 +112,42 @@ const jsonLd = {
 
     let roastStarted = false;
     let currentType = null;
+    let cardUrl = null;
+
+    // See why-doesnt-this-feel-done-yet.astro for the full rationale: this
+    // pre-renders the card the moment the result is shown (instead of at
+    // click time) so "View your certificate" is a single synchronous
+    // window.open() with no async gap — fixes a real bug where a stricter
+    // popup blocker (incognito especially) could silently drop the
+    // navigation during the old open-tab-then-await-render dance.
+    function buildCardOptions() {
+      return {
+        kicker: 'Roast My Space',
+        headline: currentType.name,
+        glyph: { type: 'flame' },
+        badge: 'The verdict',
+        body: currentType.roastLine,
+        columns: [
+          { label: 'Real talk', value: currentType.realTalk },
+        ],
+        quote: currentType.winnieSays,
+        footerLine: 'Get your own roast at nestandnook.org/tools/',
+        frameSrc: '/winnie/cert-frame-roast-my-space.jpg',
+        contentBox: { x: 244, y: 166, width: 760, height: 411 },
+      };
+    }
+
+    async function prerenderCard() {
+      if (!currentType) return;
+      const canvas = document.querySelector('#share-canvas');
+      if (!canvas) return;
+      await renderShareCard(canvas, buildCardOptions());
+      const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/png'));
+      if (!blob) return;
+      if (cardUrl) URL.revokeObjectURL(cardUrl);
+      cardUrl = URL.createObjectURL(blob);
+    }
+
     form?.addEventListener('change', () => {
       if (!roastStarted) { roastStarted = true; window.nnTrack?.('tool_started', { tool_slug: 'roast-my-space' }); }
     });
@@ -152,6 +188,8 @@ const jsonLd = {
       resultPanel.hidden = false;
       layout?.classList.add('has-result');
       resultPanel.focus();
+      cardUrl = null;
+      prerenderCard();
 
       window.nnTrack?.('tool_completed', { tool_slug: 'roast-my-space', type: type.id });
     });
@@ -173,25 +211,15 @@ const jsonLd = {
 
     document.querySelector('#view-quiz-card')?.addEventListener('click', async () => {
       if (!currentType) return;
-      const canvas = document.querySelector('#share-canvas');
-      if (!canvas) return;
-      const tab = openBlankTab();
-      await renderShareCard(canvas, {
-        kicker: 'Roast My Space',
-        headline: currentType.name,
-        glyph: { type: 'flame' },
-        badge: 'The verdict',
-        body: currentType.roastLine,
-        columns: [
-          { label: 'Real talk', value: currentType.realTalk },
-        ],
-        quote: currentType.winnieSays,
-        footerLine: 'Get your own roast at nestandnook.org/tools/',
-        frameSrc: '/winnie/cert-frame-roast-my-space.jpg',
-        // Measured off cert-frame-roast-my-space.jpg's own blank rectangle.
-        contentBox: { x: 244, y: 166, width: 760, height: 411 },
-      });
-      showCanvasInTab(tab, canvas);
+      if (cardUrl) {
+        window.open(cardUrl, '_blank');
+      } else {
+        const tab = openBlankTab();
+        await prerenderCard();
+        if (cardUrl) {
+          showCanvasInTab(tab, document.querySelector('#share-canvas'));
+        }
+      }
       window.nnTrack?.('result_saved', { tool_slug: 'roast-my-space', action: 'view_card' });
     });
   </script>

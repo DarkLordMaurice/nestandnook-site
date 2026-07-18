@@ -105,6 +105,42 @@ const jsonLd = {
     const text = (id, content) => { const el = document.querySelector(id); if (el) el.textContent = content; };
 
     let currentSign = null;
+    let cardUrl = null;
+
+    // See why-doesnt-this-feel-done-yet.astro for the full rationale: this
+    // pre-renders the card the moment the result is shown (instead of at
+    // click time) so "View your certificate" is a single synchronous
+    // window.open() with no async gap — fixes a real bug where a stricter
+    // popup blocker (incognito especially) could silently drop the
+    // navigation during the old open-tab-then-await-render dance.
+    function buildCardOptions() {
+      return {
+        kicker: 'Your space sign',
+        headline: currentSign.archetype,
+        glyph: { type: 'text', value: currentSign.glyph },
+        badge: currentSign.name,
+        body: currentSign.profile,
+        columns: [
+          { label: 'Superpower', value: currentSign.superpower },
+          { label: 'Kryptonite', value: currentSign.kryptonite },
+        ],
+        quote: currentSign.winnieSays,
+        footerLine: 'Find your sign at nestandnook.org/tools/',
+        frameSrc: '/winnie/cert-frame-space-and-the-stars.jpg',
+        contentBox: { x: 188, y: 287, width: 789, height: 313 },
+      };
+    }
+
+    async function prerenderCard() {
+      if (!currentSign) return;
+      const canvas = document.querySelector('#share-canvas');
+      if (!canvas) return;
+      await renderShareCard(canvas, buildCardOptions());
+      const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/png'));
+      if (!blob) return;
+      if (cardUrl) URL.revokeObjectURL(cardUrl);
+      cardUrl = URL.createObjectURL(blob);
+    }
 
     function showResult(signId) {
       const sign = getSignById(signId);
@@ -125,6 +161,8 @@ const jsonLd = {
       resultPanel.hidden = false;
       layout?.classList.add('has-result');
       resultPanel.focus();
+      cardUrl = null;
+      prerenderCard();
 
       // highlight active tile
       document.querySelectorAll('.sign-tile').forEach((btn) => btn.classList.toggle('active', btn.dataset.sign === signId));
@@ -150,29 +188,15 @@ const jsonLd = {
 
     document.querySelector('#view-sign-card')?.addEventListener('click', async () => {
       if (!currentSign) return;
-      const canvas = document.querySelector('#share-canvas');
-      if (!canvas) return;
-      const tab = openBlankTab();
-      await renderShareCard(canvas, {
-        kicker: 'Your space sign',
-        headline: currentSign.archetype,
-        glyph: { type: 'text', value: currentSign.glyph },
-        badge: currentSign.name,
-        body: currentSign.profile,
-        columns: [
-          { label: 'Superpower', value: currentSign.superpower },
-          { label: 'Kryptonite', value: currentSign.kryptonite },
-        ],
-        quote: currentSign.winnieSays,
-        footerLine: 'Find your sign at nestandnook.org/tools/',
-        frameSrc: '/winnie/cert-frame-space-and-the-stars.jpg',
-        // Measured directly off cert-frame-space-and-the-stars.jpg's blank
-        // center rectangle (see scripts/gen_certificate_frames.py output) —
-        // do not reuse another tool's box, the 5 frames are independently
-        // generated and not pixel-identical.
-        contentBox: { x: 188, y: 287, width: 789, height: 313 },
-      });
-      showCanvasInTab(tab, canvas);
+      if (cardUrl) {
+        window.open(cardUrl, '_blank');
+      } else {
+        const tab = openBlankTab();
+        await prerenderCard();
+        if (cardUrl) {
+          showCanvasInTab(tab, document.querySelector('#share-canvas'));
+        }
+      }
       window.nnTrack?.('result_saved', { tool_slug: 'space-and-the-stars', action: 'view_card' });
     });
   </script>
