@@ -406,9 +406,14 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   // Gemini's one-line kryptonite), so raising the ceiling only affects
   // results that have room to be bigger — it doesn't remove the safety floor
   // that prevents overflow on long content.
-  const eyebrowCore = kicker ? (isRoomyBox ? 20 : 16) : 0;
+  // CORRECTED same pass: the tight bucket (space-and-the-stars only, 302px
+  // panel) overflowed on Taurus (worst-case body) when raised as far as the
+  // roomy bucket — "Winnie says" and the quote got clipped off entirely.
+  // Tight bucket now gets a smaller, safer bump than roomy, not the same
+  // ceiling.
+  const eyebrowCore = kicker ? (isRoomyBox ? 20 : 15) : 0;
 
-  const glyphSize = isRoomyBox ? 58 : 44;
+  const glyphSize = isRoomyBox ? 58 : 38;
   // The headline gets a WIDER allowance than the content column (panelW *
   // 0.96 vs. the 0.94 used for body/columns/quote below) — headlines are
   // short (1-3 words) and should almost never need to wrap, so they get
@@ -423,14 +428,14 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   const headlineText = String(headline ?? '');
   const { size: headlineSize, lines: headlineLines } = isRoomyBox
     ? fitFontSize(ctx, headlineText, '700', headlineMaxWidth, 2, 64, 28)
-    : fitFontSize(ctx, headlineText, '700', headlineMaxWidth, 2, 48, 24);
+    : fitFontSize(ctx, headlineText, '700', headlineMaxWidth, 2, 38, 24);
   const headlineLineHeight = headlineSize * 1.12;
   const headlineCore = Math.max(headlineLineHeight * headlineLines.length, glyphSize + 6);
 
   let pillW = 0;
-  const pillH = isRoomyBox ? 30 : 25;
+  const pillH = isRoomyBox ? 30 : 22;
   const badgeLabel = badge ? String(badge).toUpperCase() : '';
-  const badgeFontSize = isRoomyBox ? 16 : 14;
+  const badgeFontSize = isRoomyBox ? 16 : 13;
   if (badge) {
     ctx.font = `700 ${badgeFontSize}px Georgia, serif`;
     pillW = ctx.measureText(badgeLabel).width + 34;
@@ -449,7 +454,7 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   if (body) {
     const r = isRoomyBox
       ? fitFontSize(ctx, body, '400', contentWidth, bodyMaxLines, 22, 13)
-      : fitFontSize(ctx, body, '400', contentWidth, bodyMaxLines, 17, 12);
+      : fitFontSize(ctx, body, '400', contentWidth, bodyMaxLines, 15, 11);
     bodySize = r.size;
     bodyLines = r.lines;
   }
@@ -459,15 +464,15 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   const colGap = 18;
   const colPadX = 16;
   const hasColumns = Boolean(columns && columns.length);
-  const starCore = hasColumns ? (isRoomyBox ? 16 : 12) : 0;
-  const colLineH = isRoomyBox ? 21 : 17;
+  const starCore = hasColumns ? (isRoomyBox ? 16 : 11) : 0;
+  const colLineH = isRoomyBox ? 21 : 15;
   const colsData = [];
   if (hasColumns) {
     const colW = (contentWidth - colGap * (columns.length - 1)) / columns.length;
     columns.forEach((col) => {
       const r = isRoomyBox
         ? fitFontSize(ctx, col.value ?? '', '400', colW - colPadX * 2, columnMaxLines, 17, 11)
-        : fitFontSize(ctx, col.value ?? '', '400', colW - colPadX * 2, columnMaxLines, 14, 10);
+        : fitFontSize(ctx, col.value ?? '', '400', colW - colPadX * 2, columnMaxLines, 12, 9);
       colsData.push({ label: col.label, colW, valSize: r.size, valLines: r.lines });
     });
   }
@@ -491,7 +496,7 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   if (quote) {
     const r = isRoomyBox
       ? fitFontSize(ctx, quote, '400', contentWidth, 4, 19, 12)
-      : fitFontSize(ctx, quote, '400', contentWidth, 3, 16, 11);
+      : fitFontSize(ctx, quote, '400', contentWidth, 3, 14, 10);
     quoteSize = r.size;
     quoteLines = r.lines;
   }
