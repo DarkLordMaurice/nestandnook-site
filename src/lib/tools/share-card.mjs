@@ -347,10 +347,28 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   }
   const badgeCore = badge ? pillH : 0;
 
+  // Line budgets for body/columns are box-height-aware, not a single global
+  // constant. Bumping maxLines helps a TALL box whose text was truncating,
+  // but on a SHORT box it backfires: fitFontSize picks the largest font that
+  // still satisfies the (now higher) line cap, which can mean a BIGGER font
+  // spread across MORE lines than before — increasing total height exactly
+  // where there was no room to spare. This is what broke space-and-the-stars
+  // (313px, the shortest frame) after maxLines was raised globally to fix
+  // truncation on your-small-space-personality (354px) and
+  // regret-proof-purchase-check (373px) — caught only because Maurice
+  // reported it still looked wrong after the "fix" was pushed, since I'd
+  // re-verified the other 4 tools but not re-checked this one after the
+  // later edits. 350px is the threshold observed between the two failure
+  // cases; boxes at or above it get the roomier budget, shorter ones keep
+  // the original tighter one.
+  const isRoomyBox = box.height >= 350;
+  const bodyMaxLines = isRoomyBox ? 4 : 3;
+  const columnMaxLines = isRoomyBox ? 3 : 2;
+
   let bodySize = 0;
   let bodyLines = [];
   if (body) {
-    const r = fitFontSize(ctx, body, '400', contentWidth, 4, 16, 11);
+    const r = fitFontSize(ctx, body, '400', contentWidth, bodyMaxLines, 16, 11);
     bodySize = r.size;
     bodyLines = r.lines;
   }
@@ -365,7 +383,7 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   if (hasColumns) {
     const colW = (contentWidth - colGap * (columns.length - 1)) / columns.length;
     columns.forEach((col) => {
-      const r = fitFontSize(ctx, col.value ?? '', '400', colW - colPadX * 2, 3, 13, 10);
+      const r = fitFontSize(ctx, col.value ?? '', '400', colW - colPadX * 2, columnMaxLines, 13, 10);
       colsData.push({ label: col.label, colW, valSize: r.size, valLines: r.lines });
     });
   }
