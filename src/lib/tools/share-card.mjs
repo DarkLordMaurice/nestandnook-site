@@ -337,7 +337,7 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   // (flagged 2026-07-18 on roast-my-space — "text gets clipped by the
   // actual border"). Smaller on the tight bucket — every pixel here is a
   // pixel not available to the column boxes and quote below it.
-  const topReserve = isRoomyBox ? Math.max(10, panelH * 0.04) : Math.max(5, panelH * 0.015);
+  const topReserve = isRoomyBox ? Math.max(10, panelH * 0.04) : Math.max(3, panelH * 0.01);
 
   // Hard clip to the panel. Everything below is a best-effort layout that
   // tries to fit within it, but fitFontSize no longer truncates content
@@ -347,7 +347,7 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   // mechanism. A reserved footer strip is carved out first and drawn in
   // its own un-clipped pass at a fixed position, so the two can never
   // overlap regardless of how long the content above happens to run.
-  const footerReserve = isRoomyBox ? 22 : 21;
+  const footerReserve = isRoomyBox ? 22 : 15;
   const availableHeight = panelH - footerReserve - topReserve;
 
   // --- Measurement pass ---
@@ -531,7 +531,7 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   const nominalTotalH = totalCore + totalGapsNominal;
   if (nominalTotalH > availableHeight) {
     const excess = nominalTotalH - availableHeight;
-    const minGapEach = 2;
+    const minGapEach = isRoomyBox ? 2 : 1;
     const activeGapCount = Object.values(gaps).filter((g) => g > 0).length;
     const maxReducible = Math.max(0, totalGapsNominal - activeGapCount * minGapEach);
     const reduction = Math.min(excess, maxReducible);
@@ -729,9 +729,9 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   // This is what actually guarantees it can't collide with the quote line
   // above it, regardless of how long that result's text happens to be.
   ctx.fillStyle = PALETTE.inkSoft;
-  ctx.font = '400 12px Georgia, serif';
+  ctx.font = `400 ${isRoomyBox ? 12 : 10}px Georgia, serif`;
   ctx.textAlign = 'center';
-  ctx.fillText(footerLine || 'Try it yourself at nestandnook.org/tools/', centerX, panelY + panelH - 8);
+  ctx.fillText(footerLine || 'Try it yourself at nestandnook.org/tools/', centerX, panelY + panelH - (isRoomyBox ? 8 : 6));
 }
 
 /**
