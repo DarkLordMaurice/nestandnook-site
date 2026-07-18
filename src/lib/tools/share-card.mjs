@@ -331,7 +331,7 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   // (flagged 2026-07-18 on roast-my-space — "text gets clipped by the
   // actual border"). Smaller on the tight bucket — every pixel here is a
   // pixel not available to the column boxes and quote below it.
-  const topReserve = isRoomyBox ? Math.max(10, panelH * 0.04) : Math.max(7, panelH * 0.025);
+  const topReserve = isRoomyBox ? Math.max(10, panelH * 0.04) : Math.max(5, panelH * 0.015);
 
   // Hard clip to the panel. Everything below is a best-effort layout that
   // tries to fit within it, but fitFontSize no longer truncates content
@@ -341,7 +341,7 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   // mechanism. A reserved footer strip is carved out first and drawn in
   // its own un-clipped pass at a fixed position, so the two can never
   // overlap regardless of how long the content above happens to run.
-  const footerReserve = isRoomyBox ? 26 : 20;
+  const footerReserve = isRoomyBox ? 26 : 16;
   const availableHeight = panelH - footerReserve - topReserve;
 
   // --- Measurement pass ---
@@ -389,7 +389,7 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   // invisible, not just cramped. Every size constant below now has its own
   // tight-bucket value, not just body's line cap.
 
-  const eyebrowCore = kicker ? 18 : 0;
+  const eyebrowCore = kicker ? (isRoomyBox ? 18 : 14) : 0;
 
   const glyphSize = isRoomyBox ? 46 : 34;
   // The headline gets a WIDER allowance than the content column (panelW *
@@ -463,7 +463,7 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   // maxLines bumped 2→3: your-small-space-personality's longest quote
   // (203 chars) on its narrower 566px-wide frame needs the extra line at
   // a legible size.
-  const winnieLabelCore = quote ? 18 : 0;
+  const winnieLabelCore = quote ? (isRoomyBox ? 18 : 14) : 0;
   let quoteSize = 0;
   let quoteLines = [];
   if (quote) {
