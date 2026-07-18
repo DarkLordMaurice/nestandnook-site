@@ -683,9 +683,11 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
     cy += badgeBlockH;
   }
 
-  // Body paragraph — centered
+  // Body paragraph — centered. Uses the darker `ink` tone (not inkSoft) --
+  // on the busy, un-panelled frame art, the softer gray-brown read as too
+  // low-contrast next to the reference's crisp near-black body copy.
   if (body) {
-    ctx.fillStyle = PALETTE.inkSoft;
+    ctx.fillStyle = PALETTE.ink;
     ctx.font = `400 ${bodySize}px Georgia, serif`;
     drawWrappedLines(ctx, bodyLines, centerX, cy + bodySize, bodyLineHeight, 'center');
     cy += bodyBlockH;
@@ -731,7 +733,7 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
     ctx.textAlign = 'center';
     ctx.fillText('✦ Winnie says ✦', centerX, cy + 13);
     cy += winnieLabelH;
-    ctx.fillStyle = PALETTE.inkSoft;
+    ctx.fillStyle = PALETTE.ink;
     ctx.font = `400 ${quoteSize}px Georgia, serif`;
     drawWrappedLines(ctx, quoteLines, centerX, cy + quoteSize, quoteLineHeight, 'center');
     cy += quoteLineHeight * quoteLines.length + 6;
@@ -743,7 +745,7 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   // panel (see footerReserve above), never computed from how far `cy` got.
   // This is what actually guarantees it can't collide with the quote line
   // above it, regardless of how long that result's text happens to be.
-  ctx.fillStyle = PALETTE.inkSoft;
+  ctx.fillStyle = PALETTE.ink;
   ctx.font = `400 ${isRoomyBox ? 12 : 10}px Georgia, serif`;
   ctx.textAlign = 'center';
   ctx.fillText(footerLine || 'Try it yourself at nestandnook.org/tools/', centerX, panelY + panelH - (isRoomyBox ? 8 : 6));

@@ -199,10 +199,13 @@ const jsonLd = {
         frameSrc: '/winnie/cert-frame-regret-proof-purchase-check.jpg',
         // Measured off cert-frame-regret-proof-purchase-check.jpg's own
         // blank rectangle.
-        // RE-MEASURED 2026-07-18: re-centered via pixel-sampling the real
-        // frame image, same method as space-and-the-stars — see that file's
-        // comment for the full explanation.
-        contentBox: { x: 209, y: 243, width: 830, height: 346 },
+        // RE-MEASURED 2026-07-18 (round 2, manual visual check): round 1's
+        // box put the footer line right at the tips of the bottom sunburst
+        // medallion's rays -- not clearly overlapping but uncomfortably
+        // tight (a few px of clearance). Trimmed the bottom edge up for
+        // real breathing room, matching the fix applied to
+        // why-doesnt-this-feel-done-yet's frame (same medallion pattern).
+        contentBox: { x: 209, y: 243, width: 830, height: 315 },
       });
       showCanvasInTab(tab, canvas);
       window.nnTrack?.('result_saved', { tool_slug: 'regret-proof-purchase-check', action: 'view_card' });

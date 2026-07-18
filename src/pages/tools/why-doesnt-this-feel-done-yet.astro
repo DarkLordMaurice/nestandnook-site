@@ -200,11 +200,18 @@ const jsonLd = {
         // Measured off cert-frame-why-doesnt-this-feel-done-yet.jpg's own
         // blank rectangle — the most generous of the 5, don't shrink it to
         // match a smaller frame's box.
-        // RE-MEASURED 2026-07-18: re-centered via pixel-sampling the real
-        // frame image, same method as space-and-the-stars — see that file's
-        // comment for the full explanation. This frame was already close to
-        // centered, so the change here is small.
-        contentBox: { x: 168, y: 158, width: 912, height: 516 },
+        // RE-MEASURED 2026-07-18 (round 2, manual visual grid measurement --
+        // the pixel-diff auto-measurement used in round 1 was fooled by the
+        // frame's own faint background texture and missed a real problem:
+        // the bottom sunburst medallion's gold rays reach up to about y=600
+        // at the horizontal center, but round 1's box bottom was y=674 --
+        // 74px INSIDE the ray zone. Since our quote + footer text is
+        // horizontally centered, it sat right on top of the rays (confirmed
+        // via a zoomed screenshot -- Maurice's "gets cut off by the frame"
+        // report). Corner brackets sit at roughly (165,135) top-left and
+        // (1075,135) top-right, so left/right/top were already accurate.
+        // New box pulls the bottom edge up to clear the rays with margin.
+        contentBox: { x: 180, y: 158, width: 885, height: 415 },
       });
       showCanvasInTab(tab, canvas);
       window.nnTrack?.('result_saved', { tool_slug: 'why-doesnt-this-feel-done-yet', action: 'view_card' });
