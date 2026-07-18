@@ -279,36 +279,59 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   }
 
   const box = contentBox || { x: 220, y: 220, width: FRAME_WIDTH - 440, height: FRAME_HEIGHT - 440 };
-  const centerX = box.x + box.width / 2;
-  // Reference proportions (the Scorpio card Maurice provided) keep text in a
-  // NARROWER, centered column — not stretched edge-to-edge across the full
-  // measured blank rectangle. Stretching to full width was flagged
-  // 2026-07-18 as one of the "proportions are all wrong" problems. 0.72 is a
-  // middle ground: visibly narrower/more centered like the reference, without
-  // being so narrow it forces excess wrapping on the shortest frame
-  // (space-and-the-stars, 313px tall) past what the gap-compression system
-  // below can still fit legibly.
-  const contentWidth = box.width * 0.8;
-  const left = centerX - contentWidth / 2;
-  // Extra top/bottom insets, on top of the already-measured blank rectangle.
-  // The ornamental corner medallions cut diagonally into that rectangle —
-  // a plain rectangular safe-box doesn't account for that, which is what let
-  // text sit under the border artwork on roast-my-space (flagged 2026-07-18,
-  // "text gets clipped by the actual border"). Reserving a proportional
-  // strip top and bottom keeps content clear of those corners without
-  // needing to re-measure each frame's pixels from scratch.
-  const topReserve = Math.max(10, box.height * 0.035);
 
-  // Hard clip to the measured safe box. This is the actual fix for the
-  // 2026-07-18 overflow bug: everything below is a best-effort layout that
-  // tries to fit within the box, but if a particular result's text still
-  // runs long, this clip guarantees it gets cut off cleanly inside the box
-  // rather than bleeding onto the frame's own border artwork. A reserved
-  // footer strip is carved out first and drawn in its own un-clipped pass
-  // at a fixed position, so the two can never overlap regardless of how
-  // long the content above happens to run.
-  const footerReserve = 22;
-  const availableHeight = box.height - footerReserve - topReserve;
+  // REBUILT 2026-07-18 (5th pass, after the render-hang fix): Maurice's
+  // repeated, explicit complaint was that text floated over the frame's
+  // busy photographic background with no fade behind it, and read small
+  // and cramped compared to his reference card. Fix: a translucent
+  // parchment PANEL, drawn over the frame art before any text, filling
+  // nearly the entire measured safe rectangle — "the background
+  // embellishments that are in the text box can be more translucent and
+  // you can put the text over that as well, thats how its supposed to be."
+  // No stroke/border: the reference doesn't show a separate bordered "card"
+  // UI element sitting on top of the frame, just parchment the text sits
+  // on directly. Insets are small on purpose — Maurice: "resize the
+  // borders to accommodate the text... make the text space larger by
+  // shrinking everything else if you have to."
+  const panelInsetX = Math.max(6, box.width * 0.015);
+  const panelTopInset = Math.max(6, box.height * 0.02);
+  const panelBottomInset = Math.max(4, box.height * 0.015);
+  const panelX = box.x + panelInsetX;
+  const panelY = box.y + panelTopInset;
+  const panelW = box.width - panelInsetX * 2;
+  const panelH = box.height - panelTopInset - panelBottomInset;
+
+  ctx.save();
+  ctx.beginPath();
+  ctx.roundRect(panelX, panelY, panelW, panelH, Math.min(14, panelH * 0.05));
+  ctx.fillStyle = 'rgba(250, 244, 232, 0.82)';
+  ctx.fill();
+  ctx.restore();
+
+  const centerX = panelX + panelW / 2;
+  // Text now runs close to edge-to-edge within the panel (0.94), matching
+  // the reference card's proportions, rather than the old narrow 0.8
+  // column floating with dead margin on either side — the panel itself
+  // already guarantees contrast against whatever art sits underneath, so
+  // there's no longer a reason to additionally shrink away from it.
+  const contentWidth = panelW * 0.94;
+  const left = centerX - contentWidth / 2;
+  // Extra top clearance inside the panel, clear of the ornamental corner
+  // medallions that cut diagonally into the frame's blank rectangle
+  // (flagged 2026-07-18 on roast-my-space — "text gets clipped by the
+  // actual border").
+  const topReserve = Math.max(10, panelH * 0.04);
+
+  // Hard clip to the panel. Everything below is a best-effort layout that
+  // tries to fit within it, but fitFontSize no longer truncates content
+  // (see its own comment above) — if a worst-case result still runs a
+  // touch long, this clip is just the last-resort guarantee it can't
+  // bleed onto the frame's own border artwork, not a content-loss
+  // mechanism. A reserved footer strip is carved out first and drawn in
+  // its own un-clipped pass at a fixed position, so the two can never
+  // overlap regardless of how long the content above happens to run.
+  const footerReserve = 26;
+  const availableHeight = panelH - footerReserve - topReserve;
 
   // --- Measurement pass ---
   // Every section is sized/wrapped FIRST, with nothing drawn yet, so the
@@ -325,18 +348,14 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   // regress that box — it only gives narrower boxes the room they need.
   ctx.textAlign = 'left';
 
-  const eyebrowCore = kicker ? 16 : 0;
+  const eyebrowCore = kicker ? 18 : 0;
 
-  const glyphSize = 40;
-  // The headline gets a WIDER allowance than the narrowed content column
-  // (box.width * 0.9 vs. the 0.72 used for body/columns/quote below).
-  // Narrowing the headline to the same tight column as everything else
-  // pushed 2-word titles like "The All-or-Nothing Reorganizer" onto a
-  // second line — which alone added a full extra line-height, and cascaded
-  // into truncating the body and overlapping the quote with the footer on
-  // the tightest frame. Headlines are short (1-3 words); they should almost
-  // never need to wrap, so they get the box's fuller width instead.
-  const headlineFullWidth = box.width * 0.9;
+  const glyphSize = 46;
+  // The headline gets a WIDER allowance than the content column (panelW *
+  // 0.96 vs. the 0.94 used for body/columns/quote below) — headlines are
+  // short (1-3 words) and should almost never need to wrap, so they get
+  // nearly the panel's full width instead.
+  const headlineFullWidth = panelW * 0.96;
   let headlineX = left;
   let headlineMaxWidth = headlineFullWidth;
   if (glyph) {
@@ -344,98 +363,95 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
     headlineMaxWidth = headlineFullWidth - glyphSize - 14;
   }
   const headlineText = String(headline ?? '');
-  const { size: headlineSize, lines: headlineLines } = fitFontSize(ctx, headlineText, '700', headlineMaxWidth, 2, 34, 20);
+  const { size: headlineSize, lines: headlineLines } = fitFontSize(ctx, headlineText, '700', headlineMaxWidth, 2, 46, 26);
   const headlineLineHeight = headlineSize * 1.12;
   const headlineCore = Math.max(headlineLineHeight * headlineLines.length, glyphSize + 6);
 
   let pillW = 0;
-  const pillH = 23;
+  const pillH = 26;
   const badgeLabel = badge ? String(badge).toUpperCase() : '';
   if (badge) {
-    ctx.font = '700 13px Georgia, serif';
-    pillW = ctx.measureText(badgeLabel).width + 28;
+    ctx.font = '700 14px Georgia, serif';
+    pillW = ctx.measureText(badgeLabel).width + 30;
   }
   const badgeCore = badge ? pillH : 0;
 
-  // Line budgets for body/columns are box-height-aware, not a single global
-  // constant. Bumping maxLines helps a TALL box whose text was truncating,
-  // but on a SHORT box it backfires: fitFontSize picks the largest font that
-  // still satisfies the (now higher) line cap, which can mean a BIGGER font
-  // spread across MORE lines than before — increasing total height exactly
-  // where there was no room to spare. This is what broke space-and-the-stars
-  // (313px, the shortest frame) after maxLines was raised globally to fix
-  // truncation on your-small-space-personality (354px) and
-  // regret-proof-purchase-check (373px) — caught only because Maurice
-  // reported it still looked wrong after the "fix" was pushed, since I'd
-  // re-verified the other 4 tools but not re-checked this one after the
-  // later edits. 350px is the threshold observed between the two failure
-  // cases; boxes at or above it get the roomier budget, shorter ones keep
-  // the original tighter one.
-  const isRoomyBox = box.height >= 350;
-  const bodyMaxLines = isRoomyBox ? 4 : 3;
-  const columnMaxLines = isRoomyBox ? 3 : 2;
+  // Line budgets for body/columns are panel-height-aware, not a single
+  // global constant, and are now calibrated against the ACTUAL longest
+  // copy in each tool's dataset (measured directly via a one-off script
+  // against every tool's .mjs data file, not guessed or spot-checked
+  // against whichever example happened to get clicked during testing).
+  // Worst case measured 2026-07-18: space-and-the-stars' Taurus profile,
+  // 423 chars — the longest body copy on the site — on its own 313px-tall
+  // frame, the shortest of the 5. 350px is the threshold between the two
+  // budgets; space-and-the-stars' panel (~294px) stays in the tighter
+  // bucket, every other tool's panel (~330px+) gets the roomier one.
+  // fitFontSize no longer truncates (see its own comment above), so these
+  // budgets exist to keep font size and line count reasonable, not to
+  // prevent overflow — overflow can no longer silently eat content.
+  const isRoomyBox = panelH >= 300;
+  const bodyMaxLines = isRoomyBox ? 6 : 5;
+  const columnMaxLines = isRoomyBox ? 4 : 3;
 
   let bodySize = 0;
   let bodyLines = [];
   if (body) {
-    const r = fitFontSize(ctx, body, '400', contentWidth, bodyMaxLines, 16, 11);
+    const r = fitFontSize(ctx, body, '400', contentWidth, bodyMaxLines, 17, 12);
     bodySize = r.size;
     bodyLines = r.lines;
   }
-  const bodyLineHeight = bodySize * 1.35;
+  const bodyLineHeight = bodySize * 1.4;
   const bodyCore = body ? bodyLineHeight * bodyLines.length : 0;
 
-  const colGap = 16;
+  const colGap = 18;
   const colPadX = 16;
   const hasColumns = Boolean(columns && columns.length);
-  const starCore = hasColumns ? 14 : 0;
+  const starCore = hasColumns ? 16 : 0;
   const colsData = [];
   if (hasColumns) {
     const colW = (contentWidth - colGap * (columns.length - 1)) / columns.length;
     columns.forEach((col) => {
-      const r = fitFontSize(ctx, col.value ?? '', '400', colW - colPadX * 2, columnMaxLines, 13, 10);
+      const r = fitFontSize(ctx, col.value ?? '', '400', colW - colPadX * 2, columnMaxLines, 14, 10);
       colsData.push({ label: col.label, colW, valSize: r.size, valLines: r.lines });
     });
   }
-  // Box height grows with whatever the longest column actually needs (up to
-  // 3 lines) instead of a flat constant — a fixed 2-line-tall box truncated
-  // "What to watch for" copy with an ellipsis once the narrower content
-  // column (2026-07-18, matching the reference's proportions) pushed that
-  // column's text to wrap further than before.
+  // Box height grows with whatever the longest column actually needs
+  // instead of a flat constant — a fixed-height box truncated "What to
+  // watch for" copy with an ellipsis once the narrower content column
+  // pushed that column's text to wrap further than expected.
   const maxValLines = hasColumns ? Math.max(1, ...colsData.map((c) => c.valLines.length)) : 0;
-  const colBoxH = hasColumns ? 22 + maxValLines * 16 + 8 : 0;
+  const colBoxH = hasColumns ? 24 + maxValLines * 17 + 8 : 0;
   const columnsCore = hasColumns ? colBoxH : 0;
 
   // "Winnie says" heading (own line, matches the reference card's
   // "✦ Winnie says ✦" label) + the quote text itself below it, plain (no
   // literal quotation marks — the reference doesn't quote-mark it either).
-  const winnieLabelCore = quote ? 16 : 0;
+  // maxLines bumped 2→3: your-small-space-personality's longest quote
+  // (203 chars) on its narrower 566px-wide frame needs the extra line at
+  // a legible size.
+  const winnieLabelCore = quote ? 18 : 0;
   let quoteSize = 0;
   let quoteLines = [];
   if (quote) {
-    const r = fitFontSize(ctx, quote, '400', contentWidth, 2, 14, 10);
+    const r = fitFontSize(ctx, quote, '400', contentWidth, 3, 17, 11);
     quoteSize = r.size;
     quoteLines = r.lines;
   }
-  const quoteLineHeight = quoteSize * 1.3;
+  const quoteLineHeight = quoteSize * 1.35;
   const quoteCore = quote ? quoteLineHeight * quoteLines.length : 0;
 
   // Gaps are the ONLY thing allowed to compress under pressure — text
-  // itself already shrinks to its own floor via fitFontSize above. Adding
-  // the star flourish + "Winnie says" label (2026-07-18, second pass) made
-  // the fixed +10 gaps used before no longer fit the tightest frame
-  // (space-and-the-stars, 313px tall) — its quote block was getting almost
-  // entirely clipped. Rather than hand-tune magic numbers per frame, every
+  // itself already shrinks to its own floor via fitFontSize above. Every
   // gap below scales down together, proportionally, whenever the nominal
   // total doesn't fit — see the scale-factor block right after this.
   const gaps = {
-    eyebrow: kicker ? 10 : 0,
-    headline: 10,
-    badge: badge ? 10 : 0,
-    body: body ? 10 : 0,
-    star: hasColumns ? 6 : 0,
-    columns: hasColumns ? 10 : 0,
-    winnieLabel: quote ? 4 : 0,
+    eyebrow: kicker ? 12 : 0,
+    headline: 13,
+    badge: badge ? 12 : 0,
+    body: body ? 13 : 0,
+    star: hasColumns ? 8 : 0,
+    columns: hasColumns ? 13 : 0,
+    winnieLabel: quote ? 6 : 0,
   };
   const totalCore = eyebrowCore + headlineCore + badgeCore + bodyCore + starCore + columnsCore + winnieLabelCore + quoteCore;
   const totalGapsNominal = Object.values(gaps).reduce((a, b) => a + b, 0);
@@ -463,13 +479,13 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
 
   const totalContentH = totalCore + totalGaps;
   const slack = Math.max(0, availableHeight - totalContentH);
-  // Only ever pushes content DOWN from the box's top edge to center it in
+  // Only ever pushes content DOWN from the panel's top edge to center it in
   // extra room — never up, and never past what clip already guards against.
-  const startY = box.y + topReserve + slack / 2;
+  const startY = panelY + topReserve + slack / 2;
 
   ctx.save();
   ctx.beginPath();
-  ctx.rect(box.x, box.y + topReserve, box.width, box.height - footerReserve - topReserve);
+  ctx.rect(panelX, panelY + topReserve, panelW, panelH - footerReserve - topReserve);
   ctx.clip();
 
   let cy = startY;
@@ -611,13 +627,13 @@ export async function renderShareCard(canvas, { kicker, headline, glyph, badge, 
   ctx.restore(); // lift the clip before drawing the footer in its reserved strip
 
   // Footer — drawn in the fixed strip reserved at the very bottom of the
-  // box (see footerReserve above), never computed from how far `cy` got.
+  // panel (see footerReserve above), never computed from how far `cy` got.
   // This is what actually guarantees it can't collide with the quote line
   // above it, regardless of how long that result's text happens to be.
   ctx.fillStyle = PALETTE.inkSoft;
   ctx.font = '400 12px Georgia, serif';
   ctx.textAlign = 'center';
-  ctx.fillText(footerLine || 'Try it yourself at nestandnook.org/tools/', centerX, box.y + box.height - 6);
+  ctx.fillText(footerLine || 'Try it yourself at nestandnook.org/tools/', centerX, panelY + panelH - 8);
 }
 
 /**
