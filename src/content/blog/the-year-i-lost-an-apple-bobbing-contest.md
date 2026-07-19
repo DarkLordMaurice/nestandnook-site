@@ -17,8 +17,11 @@ relatedGuides:
 
 I have organized exactly zero Halloween parties in my adult life until this one, and hosting a Halloween party turns out to run on a completely different logic than hosting anything else — the goal isn't efficiency or a smooth-running evening, it's maximum theatrical commitment. I made a list, because I make a list for everything, and about halfway through planning I realized the list itself had become useless: you cannot spreadsheet your way to a good Halloween party. You can only commit, fully, to the bit, and see what happens. Skeletons doing the wine pour. Candles everywhere they could plausibly not burn the house down, and several places they probably shouldn't have been. A soundtrack that made the ice in everyone's glass rattle a little ominously. I went all in on the makeup and did not think through the practical consequences of that decision until much later in the night.
 
-<div class="polaroid inset">
-  <img src="/winnie/winnie-life-halloween-makeup.jpg" alt="Winnie in sugar-skull-inspired Halloween face paint, laughing at a costume party lit with purple and orange light" width="1023" height="1537" />
+<div class="photo-single">
+  <figure class="polaroid">
+    <img src="/winnie/winnie-life-halloween-makeup.jpg" alt="Winnie in sugar-skull-inspired Halloween face paint, laughing at a costume party lit with purple and orange light" width="1023" height="1537" />
+    <figcaption>the makeup, mid-party</figcaption>
+  </figure>
 </div>
 
 ## The makeup was a whole production, and I'd do it again
@@ -27,20 +30,22 @@ The face paint took longer than getting genuinely ready for anything else I've d
 
 ## I made a new best friend and he did not have a pulse
 
-<div class="polaroid inset float-left">
-  <img src="/winnie/winnie-life-halloween-skeleton-dance.jpg" alt="Winnie dancing with a costume prop skeleton at a Halloween party" width="1023" height="1537" />
+<div class="photo-single">
+  <figure class="polaroid">
+    <img src="/winnie/winnie-life-halloween-skeleton-dance.jpg" alt="Winnie dancing with a costume prop skeleton at a Halloween party" width="1023" height="1537" />
+    <figcaption>the better dance partner</figcaption>
+  </figure>
 </div>
 
 At some point in the evening I ended up slow-dancing with a prop skeleton in a top hat, and I want it on the record that he was a considerably better dance partner than several humans I've danced with at actual weddings. No small talk. Impeccable posture, on account of having no choice in the matter. Never once tried to lead us somewhere the music wasn't going. I have no further comment except that the photo exists now and cannot be undone, and that I've apparently reached the age where I find more genuine delight in committing to a bit than in being seen as dignified while doing it.
 
 ## Apple bobbing is a young person's sport
 
-<div class="polaroid inset">
-  <img src="/winnie/the-year-i-lost-an-apple-bobbing-contest-nonwinnie-scene1.jpg" alt="A galvanized metal tub of water with floating apples, a costumed Halloween party guest laughing mid-attempt" width="1024" height="1024" />
-</div>
-
-<div class="polaroid inset float-left">
-  <img src="/winnie/the-year-i-lost-an-apple-bobbing-contest-nonwinnie-scene3.jpg" alt="A close-up of a single red apple bobbing in water, half-submerged, dramatic party lighting" width="1024" height="1024" />
+<div class="photo-single">
+  <figure class="polaroid">
+    <img src="/winnie/the-year-i-lost-an-apple-bobbing-contest-nonwinnie-scene1.jpg" alt="A costumed Halloween party guest in full sugar-skull face paint mid-attempt at a galvanized metal tub of floating apples, a small crowd watching" width="1024" height="1024" />
+    <figcaption>the tub, mid-defeat</figcaption>
+  </figure>
 </div>
 
 I would like to formally retract every assumption I made walking up to that tub. Apple bobbing at eight years old is a game. Apple bobbing as a grown woman, in full face paint, while a small crowd watches and at least one person has their phone out, is a genuine athletic event that I trained for exactly zero minutes and lost decisively. I approached the whole thing the way I approach everything — assess the variables, formulate a plan, execute with confidence — and the apple did not care about a single one of my variables. The apple won. I have never been more entertained by my own defeat, and I've decided that losing a children's game with this much enthusiasm is its own small, worthwhile skill.
@@ -48,8 +53,15 @@ I would like to formally retract every assumption I made walking up to that tub.
 
 ## The playlist took more editorial effort than the menu
 
-<div class="polaroid inset">
-  <img src="/winnie/the-year-i-lost-an-apple-bobbing-contest-nonwinnie-scene2.jpg" alt="A Halloween party table decorated with candles and string lights in purple and orange, costumed guests mingling nearby" width="1024" height="1024" />
+<div class="photo-strip strip-2">
+  <figure class="polaroid">
+    <img src="/winnie/the-year-i-lost-an-apple-bobbing-contest-nonwinnie-scene2.jpg" alt="A Halloween party table decorated with candles and string lights in purple and orange, costumed guests mingling nearby" width="1024" height="1024" />
+    <figcaption>the table, before the tub</figcaption>
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/the-year-i-lost-an-apple-bobbing-contest-nonwinnie-scene3.jpg" alt="A small group of costumed Halloween party guests dancing and mingling near the drinks table" width="1024" height="1024" />
+    <figcaption>act two of the soundtrack, working as intended</figcaption>
+  </figure>
 </div>
 
 I will admit, slightly sheepishly, that I spent more deliberate planning time on the soundtrack than on the food, which tells you something about where my priorities land when left unsupervised. I built it in three acts — arrival music, low and moody, for the first hour while people were still finding their footing in costume; a middle stretch that got progressively less serious as the night went on; and then a final act that was, by design, almost entirely for the apple-bobbing tub, on the theory that a genuinely ridiculous physical event deserves a genuinely ridiculous, upbeat soundtrack behind it. I stand by the sequencing. I will not be taking questions about the fourteen minutes I spent deciding on track order for act two.
@@ -58,8 +70,11 @@ I will admit, slightly sheepishly, that I spent more deliberate planning time on
 
 None of it needed to be useful, and that was sort of the point — a night that exists purely to be a little ridiculous, with no organizing principle beyond "commit to the theme," turned out to be exactly the reset I didn't know I needed. I spend most of my working life insisting that everything needs a reason, a fit, a specific use case. A Tuesday night with a skeleton and a tub of apples had none of those, and it was one of the better nights I've had all year regardless. Not every evening has to teach you something. Some of them just need a skeleton with better posture than you and a tub of apples that will absolutely humble you in front of witnesses, and I've made my peace with that being enough.
 
-<div class="polaroid inset float-left">
-  <img src="/winnie/the-year-i-lost-an-apple-bobbing-contest-nonwinnie-scene4.jpg" alt="A single slightly bruised apple sitting alone on a kitchen counter in soft morning light" width="1024" height="1024" />
+<div class="photo-single">
+  <figure class="polaroid">
+    <img src="/winnie/the-year-i-lost-an-apple-bobbing-contest-nonwinnie-scene4.jpg" alt="A single bruised apple sitting alone on a kitchen counter in soft morning light" width="1024" height="1024" />
+    <figcaption>the epilogue</figcaption>
+  </figure>
 </div>
 
 I found the apple the next morning, half-drowned at the bottom of a bin I'd forgotten to empty, and instead of throwing it out I cut it up for the world's least dignified breakfast. Somehow that felt like the correct, respectful way to close the whole chapter — not a trophy, not a photo caption, just a slightly bruised apple getting the ending it earned after a night of getting bitten at, unsuccessfully, by a woman who should have known better, in full face paint. I'd like to say I've since developed a training regimen for next year. I have not. I fully intend to walk up to that tub with the exact same unearned confidence and lose the exact same way, because apparently that's become its own small tradition too.

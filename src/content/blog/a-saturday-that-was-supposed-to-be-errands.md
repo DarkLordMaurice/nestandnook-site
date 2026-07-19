@@ -19,58 +19,74 @@ I did not make it past the first block without a detour.
 
 ## The plant shop was the opening move
 
-<div class="polaroid inset">
-  <img src="/winnie/a-saturday-that-was-supposed-to-be-errands-nonwinnie-scene1.jpg" alt="A wall of small potted plants with handwritten care-instruction tags in a plant shop" width="1024" height="1024" />
+<div class="photo-single">
+  <figure class="polaroid">
+    <img src="/winnie/a-saturday-that-was-supposed-to-be-errands-nonwinnie-scene1.jpg" alt="A wall of small potted plants with handwritten care-instruction tags in a plant shop" width="1024" height="1024" />
+    <figcaption>the opening detour</figcaption>
+  </figure>
 </div>
 
 There's a little plant-and-gift shop between my apartment and the coffee place, and I went in to kill five minutes before opening hours. I stayed to read the care-instruction tags like they were catalog cards — genus, light requirement, watering interval, the same three-fact structure my brain wants to apply to absolutely everything, including houseplants I have no intention of buying. Ten years running a reference desk will do that to a person. You start seeing every object as something that's one taxonomy away from being findable, and a nursery tag is basically a mini call slip if you squint.
 
 I also noticed, on my way out, a little wire rack of enamel pins by the register — mostly cacti and one shaped like a garden trowel — and bought the trowel one before I'd consciously decided to. It's on the blazer now, next to a pin shaped like a stapler I picked up at a hardware store I have no memory of the name of. I don't have a rule about this collection. I've tried to invent one retroactively, something like "only pins related to my actual life," and the stapler pin already broke it, so I've stopped pretending there's a system. Some things don't need one. This is apparently one of the very few.
 
-<div class="polaroid inset">
-  <img src="/winnie/winnie-life-journaling.jpg" alt="Winnie writing in a notebook at a cafe table with a mug of coffee" width="800" height="1000" />
-</div>
-
 Coffee happened next. So did a notebook, because I do not leave the apartment without one — not out of discipline, out of a genuine fear of losing a good idea to the ether. Twenty minutes turned into forty-five while I sketched out a better way to cross-link this site's cluster pages, which is either commitment or a diagnosable condition. I've stopped litigating which. Somewhere in there I also drew a little diagram of a kitchen drawer that has nothing to do with this site and everything to do with a nagging feeling I've had about my own silverware organization since Tuesday. The paperback I'd stuffed in my bag that morning — yes, I bring one everywhere, yes, I will finish it eventually, no, I will not be taking further questions on this — got read exactly zero pages during coffee. It just came along. Force of habit, same as the notebook.
 
-<div class="polaroid inset float-left">
-  <img src="/winnie/winnie-life-cafe-window.jpg" alt="Winnie reflected in a cafe window holding a coffee mug" width="800" height="1000" />
+<div class="photo-strip strip-2">
+  <figure class="polaroid">
+    <img src="/winnie/winnie-life-journaling.jpg" alt="Winnie writing in a notebook at a cafe table with a mug of coffee" width="800" height="1000" />
+    <figcaption>forty-five minutes, not twenty</figcaption>
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/winnie-life-cafe-window.jpg" alt="Winnie reflected in a cafe window holding a coffee mug" width="800" height="1000" />
+    <figcaption>the reflection, mid-detour</figcaption>
+  </figure>
 </div>
 
 ## The record store was never on the itinerary
 
-
-<div class="polaroid inset float-left">
-  <img src="/winnie/a-saturday-that-was-supposed-to-be-errands-nonwinnie-scene2.jpg" alt="A customer browsing a crate of vinyl records in a record store" width="1024" height="1024" />
+<div class="photo-single">
+  <figure class="polaroid">
+    <img src="/winnie/a-saturday-that-was-supposed-to-be-errands-nonwinnie-scene2.jpg" alt="A customer browsing a crate of vinyl records in a record store" width="1024" height="1024" />
+    <figcaption>ten minutes, allegedly</figcaption>
+  </figure>
 </div>
 
 Here is a fact about me that I will defend in front of a judge: you cannot walk a librarian past a used record store and expect her to keep walking. I went in for ten minutes. I came out forty minutes later having bought a record I did not know existed that morning, after a full internal debate about shelf space that I lost on purpose. In my defense, ten years at a reference desk teaches you that browsing is not the enemy of finding things — it's usually how you find the thing you didn't know to ask for. I'd like that on file as the official justification, filed right next to "I regret nothing."
 
-<div class="polaroid inset">
-  <img src="/winnie/winnie-life-record-store.jpg" alt="Winnie flipping through vinyl records in a record store" width="800" height="1000" />
-</div>
-
-<div class="polaroid inset">
-  <img src="/winnie/a-saturday-that-was-supposed-to-be-errands-nonwinnie-scene3.jpg" alt="A bookstore table with hardcover books displayed spine-out and blank recommendation cards tucked among them" width="1024" height="1024" />
+<div class="photo-strip strip-2">
+  <figure class="polaroid">
+    <img src="/winnie/winnie-life-record-store.jpg" alt="Winnie flipping through vinyl records in a record store" width="800" height="1000" />
+    <figcaption>a debate I lost on purpose</figcaption>
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/a-saturday-that-was-supposed-to-be-errands-nonwinnie-scene3.jpg" alt="A bookstore table with hardcover books displayed spine-out and blank recommendation cards tucked among them" width="1024" height="1024" />
+    <figcaption>the staff-picks table</figcaption>
+  </figure>
 </div>
 
 The bookstore two doors down was worse, in the specific sense that it was better. I left with four books and the distinct feeling of having been personally profiled by whoever built the staff-picks table. I hold a degree in library science. I understand exactly what a well-curated shelf is engineered to do to a person — the eye-level placement, the little handwritten cards, the deliberate gap between "impulse buy" and "browsing." I let it happen to me anyway, willingly, the way you let a magic trick work even after you've spotted the mechanism. A decade in retail buying afterward only sharpened the appreciation. I know exactly what a merchandising decision looks like from the other side of the counter now, and I still fall for the good ones every single time, because a good one isn't a trick — it's just correct, structurally, and I have too much respect for competent work to resent it.
 
-<div class="polaroid inset float-left">
-  <img src="/winnie/winnie-life-bookstore.jpg" alt="Winnie carrying a stack of books out of a bookstore" width="800" height="1000" />
+<div class="photo-single">
+  <figure class="polaroid">
+    <img src="/winnie/winnie-life-bookstore.jpg" alt="Winnie carrying a stack of books out of a bookstore" width="800" height="1000" />
+    <figcaption>four books, zero regrets</figcaption>
+  </figure>
 </div>
-
 
 ## The dog was also not on the itinerary
 
 By the time I was running the actual errands — bags in hand, list mostly forgotten in my coat pocket — there was a very good dog tied up outside a shop, waiting with the patient dignity of a creature who has done this before. For the record: not my dog. I don't have one, whatever this photo implies about a life I have not earned. We had a moment. His person came back out two minutes later, thanked me for keeping him company, and that was the entire story. Some Saturdays that's exactly the amount of story a stranger's dog is entitled to, and I've made peace with not needing every good moment to turn into a longer one.
 
-<div class="polaroid inset">
-  <img src="/winnie/winnie-life-errands.jpg" alt="Winnie walking down the sidewalk carrying shopping bags" width="800" height="1000" />
-</div>
-
-<div class="polaroid inset float-left">
-  <img src="/winnie/winnie-life-dog-walk.jpg" alt="Winnie crouching to pet a dog outside a shop" width="800" height="1000" />
+<div class="photo-strip strip-2">
+  <figure class="polaroid">
+    <img src="/winnie/winnie-life-errands.jpg" alt="Winnie walking down the sidewalk carrying shopping bags" width="800" height="1000" />
+    <figcaption>the actual errands, eventually</figcaption>
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/winnie-life-dog-walk.jpg" alt="Winnie crouching to pet a dog outside a shop" width="800" height="1000" />
+    <figcaption>not my dog</figcaption>
+  </figure>
 </div>
 
 ## The coffee shop remembered my order and I found that oddly moving
@@ -80,14 +96,17 @@ Small detail I almost left out: the barista at the coffee place had my order rea
 ## What actually got accomplished
 
 
-<div class="polaroid inset float-left">
-  <img src="/winnie/a-saturday-that-was-supposed-to-be-errands-nonwinnie-scene4.jpg" alt="A blue mailbox on a city sidewalk in late-afternoon light" width="1024" height="1024" />
-</div>
-
 In fairness to myself: the birthday card got bought and mailed before the day was out, which felt like a genuine win given everything the afternoon had thrown in front of me. I stood at the mailbox for a second longer than strictly necessary, mentally congratulating myself for closing out at least one line item, the way I imagine other people feel finishing a 5K.
 
-<div class="polaroid inset">
-  <img src="/winnie/winnie-life-mailbox.jpg" alt="Winnie dropping a card in a mailbox outside a shop" width="800" height="1000" />
+<div class="photo-strip strip-2">
+  <figure class="polaroid">
+    <img src="/winnie/a-saturday-that-was-supposed-to-be-errands-nonwinnie-scene4.jpg" alt="A blue mailbox on a city sidewalk in late-afternoon light" width="1024" height="1024" />
+    <figcaption>one line item, closed</figcaption>
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/winnie-life-mailbox.jpg" alt="Winnie dropping a card in a mailbox outside a shop" width="800" height="1000" />
+    <figcaption>the small win</figcaption>
+  </figure>
 </div>
 
 The screw is still not purchased. It has been reassigned to Tuesday, which seems fair, since Tuesday is the one who let this problem sit for a week in the first place. I've started referring to this general phenomenon — the one where a two-item task list detonates into a six-hour scavenger hunt through my own curiosity — as feral efficiency mode: technically I am being extremely productive the entire time, just never at the thing I originally sat down to do. It is not a flaw I've fully resolved to fix.

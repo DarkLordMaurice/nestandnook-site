@@ -15,8 +15,11 @@ relatedGuides:
 
 It started with six bananas that came home from a grocery run with real intentions and no actual plan, the way most of my kitchen disasters start. They sat on the counter doing the thing bananas do, going from "fine, eat one" to "these are now a chemistry experiment" in about the time it takes me to reorganize a spice rack, which is to say, not very long. By the time I actually looked at them again, they'd crossed a line I don't love admitting I let happen. Somewhere between "still edible" and "compost," I made a decision that turned into a solid week of my life: I was not throwing these away, and I was not eating six bananas' worth of anything by myself either.
 
-<div class="polaroid inset">
-  <img src="/winnie/the-week-i-made-banana-bread-for-the-entire-building-nonwinnie-scene1.jpg" alt="Six very ripe, heavily spotted bananas piled on a kitchen counter" width="1024" height="1024" />
+<div class="photo-single">
+  <figure class="polaroid">
+    <img src="/winnie/the-week-i-made-banana-bread-for-the-entire-building-nonwinnie-scene1.jpg" alt="Six very ripe, heavily spotted bananas piled on a kitchen counter" width="1024" height="1024" />
+    <figcaption>the six bananas that started it</figcaption>
+  </figure>
 </div>
 
 ## One loaf turned into a decision I didn't fully think through
@@ -25,16 +28,18 @@ I made one loaf first, the reasonable amount, the amount a person with a normal 
 
 ## The foil-and-note system nobody asked for
 
-<div class="polaroid inset">
-  <img src="/winnie/the-week-i-made-banana-bread-for-the-entire-building-nonwinnie-scene2.jpg" alt="Four half-loaves of banana bread wrapped individually and ready for delivery" width="1024" height="1024" />
-</div>
-
-<div class="polaroid inset float-left">
-  <img src="/winnie/the-week-i-made-banana-bread-for-the-entire-building-nonwinnie-scene3.jpg" alt="A foil-wrapped loaf of bread tied with kitchen twine and a small gift tag" width="1024" height="1024" />
-</div>
-
 I don't do anything without a system, including apparently spontaneous acts of neighborliness, so what should have been "hand a neighbor some bread" turned into wrapping four half-loaves in foil, writing a small card for each one, and working out — with actual seriousness — the most efficient route through the building so I wasn't backtracking floors. I want to be honest about how unnecessary that last part was. Nobody needed me to route-plan a four-stop bread delivery. I needed to route-plan a four-stop bread delivery, because handing someone food with zero plan attached felt, to me, borderline reckless.
 
+<div class="photo-strip strip-2">
+  <figure class="polaroid">
+    <img src="/winnie/the-week-i-made-banana-bread-for-the-entire-building-nonwinnie-scene2.jpg" alt="Four half-loaves of banana bread wrapped in foil, ready for delivery" width="1024" height="1024" />
+    <figcaption>four half-loaves, foiled and ready</figcaption>
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/the-week-i-made-banana-bread-for-the-entire-building-nonwinnie-scene3.jpg" alt="A foil-wrapped loaf of banana bread tied with kitchen twine and a small gift tag" width="1024" height="1024" />
+    <figcaption>one loaf, tagged</figcaption>
+  </figure>
+</div>
 
 ## The actual conversations were the part I didn't plan for
 
@@ -42,13 +47,11 @@ What I did not account for, because I genuinely hadn't thought that far ahead, w
 
 ## By loaf three, I had a repeat customer
 
-
-<div class="polaroid inset">
-  <img src="/winnie/winnie-holding-chocolate-chip-cookies.jpg" alt="Winnie holding a plate of fresh-baked chocolate chip cookies in her kitchen" width="1122" height="1402" />
-</div>
-
-<div class="polaroid inset float-left">
-  <img src="/winnie/the-week-i-made-banana-bread-for-the-entire-building-nonwinnie-scene4.jpg" alt="A neighbor in an apartment hallway doorway accepting a foil-wrapped loaf of bread" width="1024" height="1024" />
+<div class="photo-single">
+  <figure class="polaroid">
+    <img src="/winnie/the-week-i-made-banana-bread-for-the-entire-building-nonwinnie-scene4.jpg" alt="A neighbor in an apartment hallway doorway accepting a foil-wrapped loaf of bread" width="1024" height="1024" />
+    <figcaption>the fourth stop on the route</figcaption>
+  </figure>
 </div>
 
 Word travels fast in a building with thin walls and apparently very online residents, because by the third day someone I'd never met knocked on my door to ask, with what I can only describe as complete sincerity, whether "the banana bread lady" did requests. I did not, previously, have a standing offer out. I have one now, apparently, because I said yes before I'd fully processed the question, and the following weekend I was making a batch of chocolate chip cookies for the same building-wide circulation route I'd already worked out for the bread. I don't love how easily I got talked into a recurring commitment I never agreed to in writing, but I also can't say I minded it.

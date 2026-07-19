@@ -1142,6 +1142,51 @@ img.hero-photo {
 .polaroid:not(.tilt-right):not(.tilt-left):not([class*="tape-"]):nth-of-type(5n+4)::before { background: var(--mustard); }
 .polaroid:not(.tilt-right):not(.tilt-left):not([class*="tape-"]):nth-of-type(5n+5)::before { background: var(--gold-light); }
 
+/* ---------- Grouped photo strip (Option C inline-photo layout, 2026-07-19) ----------
+   Replaces per-paragraph floated .polaroid.inset, which forced body copy into
+   narrow wrapped columns and made image-to-paragraph pairing brittle (Maurice:
+   "the layout is really bad across all the pages... the images don't really
+   line up with the copy"). Photos now group 2-3 to a row at real scene
+   breaks and text runs full width everywhere else — no wrapping around an
+   image, ever. Use .photo-strip for 2-3 grouped photos, .photo-single for one
+   photo standing alone (an epilogue beat, a single object shot). Both take
+   plain .polaroid (not .polaroid.inset) children — inset's float/max-width
+   are for the old wrapped pattern and get neutralized below as a safety net
+   in case a post still nests .inset inside a strip. */
+.photo-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin: 1.75rem 0;
+  clear: both;
+}
+.photo-strip.strip-2 { grid-template-columns: repeat(2, 1fr); }
+.photo-strip .polaroid { margin: 0; }
+.photo-strip .polaroid.inset { float: none; max-width: none; width: 100%; margin: 0; }
+.photo-strip figcaption {
+  font-family: var(--font-hand);
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  text-align: center;
+  margin-top: 0.4rem;
+}
+.photo-single {
+  max-width: 420px;
+  margin: 1.75rem auto;
+  clear: both;
+}
+.photo-single .polaroid.inset { float: none; max-width: none; width: 100%; margin: 0; }
+.photo-single figcaption {
+  font-family: var(--font-hand);
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  text-align: center;
+  margin-top: 0.4rem;
+}
+@media (max-width: 640px) {
+  .photo-strip { grid-template-columns: 1fr !important; }
+}
+
 /* ---------- Winnie host note ----------
    Deep jewel-teal card + gold rule — Winnie's asides get a real "framed on
    the wall" treatment instead of blending into the paper cards around them. */
