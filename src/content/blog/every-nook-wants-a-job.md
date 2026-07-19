@@ -23,13 +23,6 @@ The "office supplies" drawer is the same story with worse odds, because it's usu
 
 And the shelf above the monitor — collecting dust and one dead plant since approximately whenever you moved in — has a job available to it that almost nobody assigns: it's prime real estate for something you actually reach for, at exactly the height where you'd otherwise crane your neck to find it. A charging dock. The one reference book you open weekly. Something with a function, at eye level, instead of a decorative object slowly failing to photosynthesize.
 
-<div class="photo-single">
-  <figure class="polaroid">
-    <img src="/winnie/every-nook-wants-a-job-nonwinnie-scene4.jpg" alt="A small shelf mounted above a desk monitor holding a wilted dying plant and a layer of visible dust, unused" width="1024" height="1024" />
-    <figcaption>the shelf, unassigned</figcaption>
-  </figure>
-</div>
-
 <div class="photo-strip strip-2">
   <figure class="polaroid">
     <img src="/winnie/every-nook-wants-a-job-nonwinnie-scene1.jpg" alt="A cluttered office desk drawer full of loose pens, cables, tape, and sticky notes" width="1024" height="1024" />
