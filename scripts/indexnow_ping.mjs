@@ -16,7 +16,13 @@ import { dirname, join } from 'node:path';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SITE_ROOT = join(__dirname, '..');
 const HOST = 'nestandnook.org';
-const INDEXNOW_KEY = 'fba633bc6b7afd67b61198e628c272cd';
+// Regenerated 2026-07-18 -- the prior key (fba633bc6b7afd67b61198e628c272cd)
+// stayed HTTP 403 "UserForbiddedToAccessSite" for 5+ days even with the key
+// file confirmed live, likely a stuck verification cache from the very first
+// submission (made before the key file was actually deployed). Per the plan
+// already logged for this scenario: don't keep debugging the same key past
+// a day or two, generate a fresh one instead.
+const INDEXNOW_KEY = '0bb98d4f6591f3ff4def0bf406ea433f';
 const KEY_LOCATION = `https://${HOST}/${INDEXNOW_KEY}.txt`;
 
 function urlsFromSitemap() {
