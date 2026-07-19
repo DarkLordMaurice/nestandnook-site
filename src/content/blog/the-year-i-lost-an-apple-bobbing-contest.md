@@ -20,7 +20,6 @@ I have organized exactly zero Halloween parties in my adult life until this one,
 <div class="photo-single">
   <figure class="polaroid">
     <img src="/winnie/winnie-life-halloween-makeup.jpg" alt="Winnie in sugar-skull-inspired Halloween face paint, laughing at a costume party lit with purple and orange light" width="1023" height="1537" />
-    <figcaption>the makeup, mid-party</figcaption>
   </figure>
 </div>
 
@@ -33,7 +32,6 @@ The face paint took longer than getting genuinely ready for anything else I've d
 <div class="photo-single">
   <figure class="polaroid">
     <img src="/winnie/winnie-life-halloween-skeleton-dance.jpg" alt="Winnie dancing with a costume prop skeleton at a Halloween party" width="1023" height="1537" />
-    <figcaption>the better dance partner</figcaption>
   </figure>
 </div>
 
@@ -44,7 +42,6 @@ At some point in the evening I ended up slow-dancing with a prop skeleton in a t
 <div class="photo-single">
   <figure class="polaroid">
     <img src="/winnie/the-year-i-lost-an-apple-bobbing-contest-nonwinnie-scene1.jpg" alt="A costumed Halloween party guest in full sugar-skull face paint mid-attempt at a galvanized metal tub of floating apples, a small crowd watching" width="1024" height="1024" />
-    <figcaption>the tub, mid-defeat</figcaption>
   </figure>
 </div>
 
@@ -53,14 +50,15 @@ I would like to formally retract every assumption I made walking up to that tub.
 
 ## The playlist took more editorial effort than the menu
 
-<div class="photo-strip strip-2">
+<div class="photo-strip">
   <figure class="polaroid">
     <img src="/winnie/the-year-i-lost-an-apple-bobbing-contest-nonwinnie-scene2.jpg" alt="A Halloween party table decorated with candles and string lights in purple and orange, costumed guests mingling nearby" width="1024" height="1024" />
-    <figcaption>the table, before the tub</figcaption>
   </figure>
   <figure class="polaroid">
     <img src="/winnie/the-year-i-lost-an-apple-bobbing-contest-nonwinnie-scene3.jpg" alt="A small group of costumed Halloween party guests dancing and mingling near the drinks table" width="1024" height="1024" />
-    <figcaption>act two of the soundtrack, working as intended</figcaption>
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/the-year-i-lost-an-apple-bobbing-contest-nonwinnie-scene5-speaker-setup.jpg" alt="A small bluetooth speaker on a table at a Halloween party, surrounded by lit candles, jack-o-lanterns, and string lights" width="1024" height="1024" />
   </figure>
 </div>
 
@@ -73,7 +71,6 @@ None of it needed to be useful, and that was sort of the point — a night that 
 <div class="photo-single">
   <figure class="polaroid">
     <img src="/winnie/the-year-i-lost-an-apple-bobbing-contest-nonwinnie-scene4.jpg" alt="A single bruised apple sitting alone on a kitchen counter in soft morning light" width="1024" height="1024" />
-    <figcaption>the epilogue</figcaption>
   </figure>
 </div>
 

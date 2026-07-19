@@ -20,15 +20,12 @@ For the first hour, I was doing exactly what I'd planned: standing around with a
 <div class="photo-strip">
   <figure class="polaroid">
     <img src="/winnie/the-smoker-i-inherited-by-accident-nonwinnie-scene1.jpg" alt="A backyard smoker with wood chunks loaded and smoke rising on a stone-paver patio, string lights glowing behind it at dusk" width="1024" height="1024" />
-    <figcaption>the smoker, doing its thing</figcaption>
   </figure>
   <figure class="polaroid">
     <img src="/winnie/the-smoker-i-inherited-by-accident-nonwinnie-scene4.jpg" alt="A denim jacket with a small enamel flame-shaped pin hanging on a wall hook" width="1024" height="1024" />
-    <figcaption>the pin, foreshadowing</figcaption>
   </figure>
   <figure class="polaroid">
     <img src="/winnie/winnie-life-bbq-mingling.jpg" alt="Winnie standing in a candlelit backyard holding a drink, mingling with guests near the smoker" width="1023" height="1537" />
-    <figcaption>hour one, unbothered</figcaption>
   </figure>
 </div>
 
@@ -39,7 +36,6 @@ Here's the thing about being handed someone else's smoker mid-cook: you are not 
 <div class="photo-single">
   <figure class="polaroid">
     <img src="/winnie/winnie-life-bbq-grill-tongs.jpg" alt="Winnie working the grill with tongs, turning burgers and ribs over open flame" width="1122" height="1402" />
-    <figcaption>borrowed tongs, hour three</figcaption>
   </figure>
 </div>
 
@@ -50,7 +46,6 @@ I'll admit, too, that a decade of retail buying gave me a specific, useless-in-t
 <div class="photo-single">
   <figure class="polaroid">
     <img src="/winnie/the-smoker-i-inherited-by-accident-nonwinnie-scene2.jpg" alt="A backyard picnic table spread with barbecue food, guests serving themselves and chatting" width="1024" height="1024" />
-    <figcaption>the spread, unsupervised</figcaption>
   </figure>
 </div>
 
@@ -63,7 +58,6 @@ I'd shown up with a very specific, very small plan for my own Saturday, and the 
 <div class="photo-single">
   <figure class="polaroid">
     <img src="/winnie/winnie-life-bbq-grill-overhead.jpg" alt="An overhead view of Winnie working the grill, burgers and ribs sizzling alongside a small saucepan" width="1122" height="1402" />
-    <figcaption>watching the temperature</figcaption>
   </figure>
 </div>
 
@@ -73,14 +67,15 @@ By the time the pork shoulder came off — hours later, considerably more tender
 
 I've noticed the same lesson trying to resurface all week since, in smaller, less charred versions. A cluster of pages I'd scheduled to publish got delayed by a broken image link, and my first instinct was the same low-grade panic from the moment I got handed those tongs — not because the fix was hard, but because it wasn't the Tuesday I'd planned for. It got fixed within the hour, same as the pork shoulder got tended within the evening, and nobody downstream ever knew there'd been a wobble. I'm trying to hold onto that as the actual takeaway rather than a nice sentence I wrote about a barbecue: the wobble is rarely the story anyone else remembers. Only the plan you quietly built back around it is.
 
-<div class="photo-strip strip-2">
+<div class="photo-strip">
+  <figure class="polaroid">
+    <img src="/winnie/the-smoker-i-inherited-by-accident-nonwinnie-scene5-pork-shoulder-plated.jpg" alt="A tray of sliced, tender smoked pork shoulder with a visible smoke ring, steam rising, on a wooden cutting board" width="1024" height="1024" />
+  </figure>
   <figure class="polaroid">
     <img src="/winnie/the-smoker-i-inherited-by-accident-nonwinnie-scene3.jpg" alt="A stone-paver backyard patio at dusk, string lights glowing, a small group of people relaxing in outdoor lounge chairs" width="1024" height="1024" />
-    <figcaption>the patio, after</figcaption>
   </figure>
   <figure class="polaroid">
     <img src="/winnie/winnie-life-bbq-apron-back.jpg" alt="Winnie in a leather barbecue apron, glancing back over her shoulder at the smoker with a plate of food behind her" width="1122" height="1402" />
-    <figcaption>the substitute, unbothered</figcaption>
   </figure>
 </div>
 

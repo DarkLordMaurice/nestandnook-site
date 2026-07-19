@@ -23,14 +23,15 @@ The "office supplies" drawer is the same story with worse odds, because it's usu
 
 And the shelf above the monitor — collecting dust and one dead plant since approximately whenever you moved in — has a job available to it that almost nobody assigns: it's prime real estate for something you actually reach for, at exactly the height where you'd otherwise crane your neck to find it. A charging dock. The one reference book you open weekly. Something with a function, at eye level, instead of a decorative object slowly failing to photosynthesize.
 
-<div class="photo-strip strip-2">
+<div class="photo-strip">
   <figure class="polaroid">
     <img src="/winnie/every-nook-wants-a-job-nonwinnie-scene1.jpg" alt="A cluttered office desk drawer full of loose pens, cables, tape, and sticky notes" width="1024" height="1024" />
-    <figcaption>the drawer, before</figcaption>
   </figure>
   <figure class="polaroid">
     <img src="/winnie/every-nook-wants-a-job-nonwinnie-scene2.jpg" alt="The same desk drawer neatly sorted into labeled trays and dividers" width="1024" height="1024" />
-    <figcaption>the drawer, after</figcaption>
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/every-nook-wants-a-job-nonwinnie-scene6-cable-corner.jpg" alt="A tidy desk cable-management corner with cables neatly clipped and routed along the back edge of a desk" width="1024" height="1024" />
   </figure>
 </div>
 
@@ -41,7 +42,6 @@ I ran a reference desk for ten years before any of this, which is a job that's s
 <div class="photo-single">
   <figure class="polaroid">
     <img src="/winnie/every-nook-wants-a-job-nonwinnie-scene3.jpg" alt="A stack of well-worn index cards fanned out on a desk next to an open notebook" width="1024" height="1024" />
-    <figcaption>the reference-desk instinct, in physical form</figcaption>
   </figure>
 </div>
 
@@ -54,7 +54,6 @@ In the interest of not preaching from a position of imaginary perfection: I have
 <div class="photo-single">
   <figure class="polaroid">
     <img src="/winnie/every-nook-wants-a-job-nonwinnie-scene5.jpg" alt="A messy galley-kitchen drawer holding baking tools, old takeout menus, a rubber band ball, and one orphaned chopstick" width="1024" height="1024" />
-    <figcaption>the drawer in question</figcaption>
   </figure>
 </div>
 

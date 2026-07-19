@@ -18,7 +18,6 @@ It started with six bananas that came home from a grocery run with real intentio
 <div class="photo-single">
   <figure class="polaroid">
     <img src="/winnie/the-week-i-made-banana-bread-for-the-entire-building-nonwinnie-scene1.jpg" alt="Six very ripe, heavily spotted bananas piled on a kitchen counter" width="1024" height="1024" />
-    <figcaption>the six bananas that started it</figcaption>
   </figure>
 </div>
 
@@ -30,14 +29,15 @@ I made one loaf first, the reasonable amount, the amount a person with a normal 
 
 I don't do anything without a system, including apparently spontaneous acts of neighborliness, so what should have been "hand a neighbor some bread" turned into wrapping four half-loaves in foil, writing a small card for each one, and working out — with actual seriousness — the most efficient route through the building so I wasn't backtracking floors. I want to be honest about how unnecessary that last part was. Nobody needed me to route-plan a four-stop bread delivery. I needed to route-plan a four-stop bread delivery, because handing someone food with zero plan attached felt, to me, borderline reckless.
 
-<div class="photo-strip strip-2">
+<div class="photo-strip">
   <figure class="polaroid">
     <img src="/winnie/the-week-i-made-banana-bread-for-the-entire-building-nonwinnie-scene2.jpg" alt="Four half-loaves of banana bread wrapped in foil, ready for delivery" width="1024" height="1024" />
-    <figcaption>four half-loaves, foiled and ready</figcaption>
   </figure>
   <figure class="polaroid">
     <img src="/winnie/the-week-i-made-banana-bread-for-the-entire-building-nonwinnie-scene3.jpg" alt="A foil-wrapped loaf of banana bread tied with kitchen twine and a small gift tag" width="1024" height="1024" />
-    <figcaption>one loaf, tagged</figcaption>
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/the-week-i-made-banana-bread-for-the-entire-building-nonwinnie-scene5-writing-tag.jpg" alt="A foil-wrapped loaf of banana bread tied with twine, a small handwritten gift tag and pen resting beside it on a kitchen counter" width="1024" height="1024" />
   </figure>
 </div>
 
@@ -50,7 +50,6 @@ What I did not account for, because I genuinely hadn't thought that far ahead, w
 <div class="photo-single">
   <figure class="polaroid">
     <img src="/winnie/the-week-i-made-banana-bread-for-the-entire-building-nonwinnie-scene4.jpg" alt="A neighbor in an apartment hallway doorway accepting a foil-wrapped loaf of bread" width="1024" height="1024" />
-    <figcaption>the fourth stop on the route</figcaption>
   </figure>
 </div>
 

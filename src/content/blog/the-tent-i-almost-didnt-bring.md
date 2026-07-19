@@ -18,7 +18,6 @@ I almost left the tent in the garage. Not because I didn't want to go — becaus
 <div class="photo-single">
   <figure class="polaroid">
     <img src="/winnie/the-tent-i-almost-didnt-bring-nonwinnie-scene1.jpg" alt="A two-person tent pitched alone in a quiet forest clearing, soft morning light" width="1024" height="1024" />
-    <figcaption>the tent, in the end</figcaption>
   </figure>
 </div>
 
@@ -26,14 +25,15 @@ I almost left the tent in the garage. Not because I didn't want to go — becaus
 
 I organize things for a living, more or less, and I expected a campsite to be the one place that particular brain of mine could switch off. It did not switch off. It just redirected — tent poles became a sequencing problem, the firewood pile became an inventory question, and I caught myself mentally drafting a "next time, bring" list before I'd even finished setting up the first time. I'd bought a piece of camping gear beforehand that the packaging called "expedition-grade," and I want it on the record that a decade of retail buying makes a person deeply allergic to that phrase with no explanation attached. It turned out to be a perfectly fine tent stake. It did not need the adjective.
 
-<div class="photo-strip strip-2">
+<div class="photo-strip">
   <figure class="polaroid">
     <img src="/winnie/the-tent-i-almost-didnt-bring-nonwinnie-scene2.jpg" alt="A campfire glowing at dusk with a lantern hanging on a low branch, tent visible in the background" width="1024" height="1024" />
-    <figcaption>the site, laid out with intention</figcaption>
   </figure>
   <figure class="polaroid">
     <img src="/winnie/winnie-life-campfire-tent.jpg" alt="Winnie crouched setting up a tent at a campsite in the woods" width="1122" height="1402" />
-    <figcaption>a sequencing problem</figcaption>
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/the-tent-i-almost-didnt-bring-nonwinnie-scene5-firewood-stack.jpg" alt="A neat stack of split firewood in a rack near a forest campsite path" width="1024" height="1024" />
   </figure>
 </div>
 
@@ -44,14 +44,15 @@ What surprised me wasn't that the instinct showed up — it's that it turned out
 
 The best hour of the whole trip was the one where I did absolutely nothing on purpose — mug of something warm, a fire that had settled into the good kind of quiet crackle, and enough distance from the drive up that my shoulders had actually dropped from where they usually live, somewhere up around my ears. I brought a book I didn't open. I brought a notebook I barely touched. Both of those are, for me, small acts of rebellion against a brain that treats unstructured time like an error state that needs debugging.
 
-<div class="photo-strip strip-2">
+<div class="photo-strip">
   <figure class="polaroid">
     <img src="/winnie/the-tent-i-almost-didnt-bring-nonwinnie-scene4.jpg" alt="An open notebook with a handwritten packing list and a pen resting across it on a campsite table" width="1024" height="1024" />
-    <figcaption>barely touched</figcaption>
   </figure>
   <figure class="polaroid">
     <img src="/winnie/winnie-life-campfire-mug.jpg" alt="Winnie sitting by a campfire at night holding a mug, lanterns glowing in the background" width="1122" height="1402" />
-    <figcaption>the hour of doing nothing</figcaption>
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/the-tent-i-almost-didnt-bring-nonwinnie-scene6-unopened-book.jpg" alt="A closed paperback book resting unopened on a folding camp chair beside a campfire" width="1024" height="1024" />
   </figure>
 </div>
 
@@ -62,7 +63,6 @@ Somewhere around hour three of doing nothing, I noticed I'd stopped narrating my
 <div class="photo-single">
   <figure class="polaroid">
     <img src="/winnie/the-tent-i-almost-didnt-bring-nonwinnie-scene3.jpg" alt="A scenic overlook of tree-covered hills and a distant valley from a hiking trail viewpoint" width="1024" height="1024" />
-    <figcaption>the overlook, worth the extra half mile</figcaption>
   </figure>
 </div>
 

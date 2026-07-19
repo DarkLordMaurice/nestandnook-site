@@ -18,7 +18,6 @@ I have a whole system for feeding goats at a petting zoo, apparently, developed 
 <div class="photo-single">
   <figure class="polaroid">
     <img src="/winnie/winnie-life-petting-zoo-goat.jpg" alt="Winnie feeding a goat over a wooden fence at a petting zoo, camera slung over her shoulder" width="1122" height="1402" />
-    <figcaption>the negotiation, hour one</figcaption>
   </figure>
 </div>
 
@@ -27,7 +26,6 @@ I have a whole system for feeding goats at a petting zoo, apparently, developed 
 <div class="photo-single">
   <figure class="polaroid">
     <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene1.jpg" alt="A goat standing at a wooden petting-zoo fence, reaching toward an open hand" width="1024" height="1024" />
-    <figcaption>the fence, before the ambush</figcaption>
   </figure>
 </div>
 
@@ -40,14 +38,15 @@ What I actually loved about the afternoon wasn't figuring anything out — it wa
 ## The otters had their own opinions too
 
 
-<div class="photo-strip strip-2">
+<div class="photo-strip">
   <figure class="polaroid">
     <img src="/winnie/winnie-life-zoo-otters.jpg" alt="Winnie crouching at the edge of the otter habitat, hand-feeding two otters standing in the water" width="1122" height="1402" />
-    <figcaption>waiting for me to catch up</figcaption>
   </figure>
   <figure class="polaroid">
     <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene2.jpg" alt="Two otters standing at full attention in shallow water at an outdoor zoo habitat pool" width="1024" height="1024" />
-    <figcaption>the otters, at attention</figcaption>
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene5-otter-habitat-wide.jpg" alt="A wide shot of the outdoor zoo otter habitat pool with rock formations, no otters visible" width="1024" height="1024" />
   </figure>
 </div>
 
@@ -56,14 +55,15 @@ Past the goat pen, the otter habitat ran on a completely different negotiation. 
 ## The capybara did not care about my camera angle
 
 
-<div class="photo-strip strip-2">
+<div class="photo-strip">
   <figure class="polaroid">
     <img src="/winnie/winnie-life-zoo-capybara-selfie.jpg" alt="A close-up selfie of Winnie next to a capybara, its nose nearly touching the camera" width="1122" height="1402" />
-    <figcaption>the selfie that lost</figcaption>
   </figure>
   <figure class="polaroid">
     <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene3.jpg" alt="A capybara standing near a stone-ringed pond in an outdoor zoo enclosure" width="1024" height="1024" />
-    <figcaption>the capybara, unbothered</figcaption>
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene6-capybara-grazing.jpg" alt="A capybara grazing on grass near a stone-ringed pond in an outdoor zoo enclosure" width="1024" height="1024" />
   </figure>
 </div>
 
@@ -72,14 +72,15 @@ I tried for one (1) flattering selfie with a capybara. The capybara had other pl
 ## And then a toucan landed on my shoulder
 
 
-<div class="photo-strip strip-2">
+<div class="photo-strip">
   <figure class="polaroid">
     <img src="/winnie/winnie-life-zoo-toucan.jpg" alt="Winnie reacting with surprise as a toucan perches on her shoulder near the bird aviary" width="1122" height="1402" />
-    <figcaption>no system for this one</figcaption>
   </figure>
   <figure class="polaroid">
     <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene4.jpg" alt="A colorful toucan perched on a wooden branch near an outdoor bird aviary" width="1024" height="1024" />
-    <figcaption>the aviary</figcaption>
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene7-aviary-wide.jpg" alt="A wide shot of an outdoor bird aviary enclosure with mesh netting and wooden branch perches" width="1024" height="1024" />
   </figure>
 </div>
 

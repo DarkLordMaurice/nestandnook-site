@@ -20,20 +20,20 @@ I went to watch a parade and ended up rethinking how I organize grief, which is 
 <div class="photo-single">
   <figure class="polaroid">
     <img src="/winnie/winnie-life-dia-de-muertos.jpg" alt="Winnie standing at a Día de Muertos parade with an ofrenda float behind her, marigolds and calavera-costumed participants nearby" width="1122" height="1402" />
-    <figcaption>the crowd she stood in</figcaption>
   </figure>
 </div>
 
 ## The float that stopped me
 
-<div class="photo-strip strip-2">
+<div class="photo-strip">
   <figure class="polaroid">
     <img src="/winnie/what-the-parade-of-skulls-actually-taught-me-nonwinnie-scene1.jpg" alt="A Dia de Muertos parade float covered in marigold flowers with a framed photo, spectators watching nearby" width="1024" height="1024" />
-    <figcaption>the float</figcaption>
   </figure>
   <figure class="polaroid">
     <img src="/winnie/what-the-parade-of-skulls-actually-taught-me-nonwinnie-scene2.jpg" alt="Calavera-costumed parade participants in traditional dress with painted sugar-skull face makeup" width="1024" height="1024" />
-    <figcaption>the calavera dress</figcaption>
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/what-the-parade-of-skulls-actually-taught-me-nonwinnie-scene5-marigolds-closeup.jpg" alt="A close-up of vibrant orange marigold flowers decorating a Dia de Muertos parade float on a city street, papel picado banners overhead" width="1024" height="1024" />
   </figure>
 </div>
 
@@ -51,7 +51,6 @@ Most of what I know about remembrance, culturally, treats it as something privat
 <div class="photo-single">
   <figure class="polaroid">
     <img src="/winnie/what-the-parade-of-skulls-actually-taught-me-nonwinnie-scene3.jpg" alt="A brass band marching mid-parade in Dia de Muertos face paint under bright daytime sun, papel picado banners overhead" width="1024" height="1024" />
-    <figcaption>the band, a few floats back</figcaption>
   </figure>
 </div>
 
@@ -68,7 +67,6 @@ What I will say, carefully, is this: the things worth remembering don't have to 
 <div class="photo-single">
   <figure class="polaroid">
     <img src="/winnie/what-the-parade-of-skulls-actually-taught-me-nonwinnie-scene4.jpg" alt="A street cleanup worker sweeping scattered orange marigold petals off a sidewalk curb after the parade" width="1024" height="1024" />
-    <figcaption>the cleanup, unhurried</figcaption>
   </figure>
 </div>
 

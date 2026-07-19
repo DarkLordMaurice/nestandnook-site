@@ -22,7 +22,6 @@ I did not make it past the first block without a detour.
 <div class="photo-single">
   <figure class="polaroid">
     <img src="/winnie/a-saturday-that-was-supposed-to-be-errands-nonwinnie-scene1.jpg" alt="A wall of small potted plants with handwritten care-instruction tags in a plant shop" width="1024" height="1024" />
-    <figcaption>the opening detour</figcaption>
   </figure>
 </div>
 
@@ -32,14 +31,15 @@ I also noticed, on my way out, a little wire rack of enamel pins by the register
 
 Coffee happened next. So did a notebook, because I do not leave the apartment without one — not out of discipline, out of a genuine fear of losing a good idea to the ether. Twenty minutes turned into forty-five while I sketched out a better way to cross-link this site's cluster pages, which is either commitment or a diagnosable condition. I've stopped litigating which. Somewhere in there I also drew a little diagram of a kitchen drawer that has nothing to do with this site and everything to do with a nagging feeling I've had about my own silverware organization since Tuesday. The paperback I'd stuffed in my bag that morning — yes, I bring one everywhere, yes, I will finish it eventually, no, I will not be taking further questions on this — got read exactly zero pages during coffee. It just came along. Force of habit, same as the notebook.
 
-<div class="photo-strip strip-2">
+<div class="photo-strip">
   <figure class="polaroid">
     <img src="/winnie/winnie-life-journaling.jpg" alt="Winnie writing in a notebook at a cafe table with a mug of coffee" width="800" height="1000" />
-    <figcaption>forty-five minutes, not twenty</figcaption>
   </figure>
   <figure class="polaroid">
     <img src="/winnie/winnie-life-cafe-window.jpg" alt="Winnie reflected in a cafe window holding a coffee mug" width="800" height="1000" />
-    <figcaption>the reflection, mid-detour</figcaption>
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/a-saturday-that-was-supposed-to-be-errands-nonwinnie-scene5-notebook-diagrams.jpg" alt="A close-up of an open notebook page covered in hand-drawn diagrams and notes on a cafe table, a coffee cup at the edge of frame" width="1024" height="1024" />
   </figure>
 </div>
 
@@ -48,20 +48,20 @@ Coffee happened next. So did a notebook, because I do not leave the apartment wi
 <div class="photo-single">
   <figure class="polaroid">
     <img src="/winnie/a-saturday-that-was-supposed-to-be-errands-nonwinnie-scene2.jpg" alt="A customer browsing a crate of vinyl records in a record store" width="1024" height="1024" />
-    <figcaption>ten minutes, allegedly</figcaption>
   </figure>
 </div>
 
 Here is a fact about me that I will defend in front of a judge: you cannot walk a librarian past a used record store and expect her to keep walking. I went in for ten minutes. I came out forty minutes later having bought a record I did not know existed that morning, after a full internal debate about shelf space that I lost on purpose. In my defense, ten years at a reference desk teaches you that browsing is not the enemy of finding things — it's usually how you find the thing you didn't know to ask for. I'd like that on file as the official justification, filed right next to "I regret nothing."
 
-<div class="photo-strip strip-2">
+<div class="photo-strip">
   <figure class="polaroid">
     <img src="/winnie/winnie-life-record-store.jpg" alt="Winnie flipping through vinyl records in a record store" width="800" height="1000" />
-    <figcaption>a debate I lost on purpose</figcaption>
   </figure>
   <figure class="polaroid">
     <img src="/winnie/a-saturday-that-was-supposed-to-be-errands-nonwinnie-scene3.jpg" alt="A bookstore table with hardcover books displayed spine-out and blank recommendation cards tucked among them" width="1024" height="1024" />
-    <figcaption>the staff-picks table</figcaption>
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/a-saturday-that-was-supposed-to-be-errands-nonwinnie-scene6-four-books-stack.jpg" alt="A stack of hardcover books on a wooden bookstore counter with a receipt tucked into the top book" width="1024" height="1024" />
   </figure>
 </div>
 
@@ -70,7 +70,6 @@ The bookstore two doors down was worse, in the specific sense that it was better
 <div class="photo-single">
   <figure class="polaroid">
     <img src="/winnie/winnie-life-bookstore.jpg" alt="Winnie carrying a stack of books out of a bookstore" width="800" height="1000" />
-    <figcaption>four books, zero regrets</figcaption>
   </figure>
 </div>
 
@@ -78,14 +77,15 @@ The bookstore two doors down was worse, in the specific sense that it was better
 
 By the time I was running the actual errands — bags in hand, list mostly forgotten in my coat pocket — there was a very good dog tied up outside a shop, waiting with the patient dignity of a creature who has done this before. For the record: not my dog. I don't have one, whatever this photo implies about a life I have not earned. We had a moment. His person came back out two minutes later, thanked me for keeping him company, and that was the entire story. Some Saturdays that's exactly the amount of story a stranger's dog is entitled to, and I've made peace with not needing every good moment to turn into a longer one.
 
-<div class="photo-strip strip-2">
+<div class="photo-strip">
   <figure class="polaroid">
     <img src="/winnie/winnie-life-errands.jpg" alt="Winnie walking down the sidewalk carrying shopping bags" width="800" height="1000" />
-    <figcaption>the actual errands, eventually</figcaption>
   </figure>
   <figure class="polaroid">
     <img src="/winnie/winnie-life-dog-walk.jpg" alt="Winnie crouching to pet a dog outside a shop" width="800" height="1000" />
-    <figcaption>not my dog</figcaption>
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/a-saturday-that-was-supposed-to-be-errands-nonwinnie-scene7-dog-tied-outside.jpg" alt="A dog on a leash tied to a post outside a storefront on a city sidewalk, sitting patiently" width="1024" height="1024" />
   </figure>
 </div>
 
@@ -98,14 +98,15 @@ Small detail I almost left out: the barista at the coffee place had my order rea
 
 In fairness to myself: the birthday card got bought and mailed before the day was out, which felt like a genuine win given everything the afternoon had thrown in front of me. I stood at the mailbox for a second longer than strictly necessary, mentally congratulating myself for closing out at least one line item, the way I imagine other people feel finishing a 5K.
 
-<div class="photo-strip strip-2">
+<div class="photo-strip">
   <figure class="polaroid">
     <img src="/winnie/a-saturday-that-was-supposed-to-be-errands-nonwinnie-scene4.jpg" alt="A blue mailbox on a city sidewalk in late-afternoon light" width="1024" height="1024" />
-    <figcaption>one line item, closed</figcaption>
   </figure>
   <figure class="polaroid">
     <img src="/winnie/winnie-life-mailbox.jpg" alt="Winnie dropping a card in a mailbox outside a shop" width="800" height="1000" />
-    <figcaption>the small win</figcaption>
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/a-saturday-that-was-supposed-to-be-errands-nonwinnie-scene8-mailbox-closeup.jpg" alt="A close-up of a stamped envelope tucked into the open slot of a blue city mailbox" width="1024" height="1024" />
   </figure>
 </div>
 

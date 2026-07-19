@@ -19,7 +19,6 @@ Every single year I forget how loud fourth of july fireworks actually are up clo
 <div class="photo-single">
   <figure class="polaroid">
     <img src="/winnie/let-freedom-ring-and-also-my-ears-nonwinnie-scene1.jpg" alt="Fireworks bursting over a dark waterfront, silhouettes of a crowd watching from the boardwalk" width="1024" height="1024" />
-    <figcaption>the show, mid-burst</figcaption>
   </figure>
 </div>
 
@@ -30,7 +29,6 @@ I walked down early, the way I always do, mug already in hand before the actual 
 <div class="photo-single">
   <figure class="polaroid">
     <img src="/winnie/let-freedom-ring-and-also-my-ears-nonwinnie-scene2.jpg" alt="A boardwalk strung with string lights at dusk, small groups of people in folding chairs and on blankets watching the sky" width="1024" height="1024" />
-    <figcaption>the boardwalk, filling in</figcaption>
   </figure>
 </div>
 
@@ -48,14 +46,15 @@ The walk home was the usual: sulfur smell drifting over the water, a slow, good-
 
 ## The cup shelf, formally documented
 
-<div class="photo-strip strip-2">
+<div class="photo-strip">
   <figure class="polaroid">
     <img src="/winnie/let-freedom-ring-and-also-my-ears-nonwinnie-scene3.jpg" alt="A small shelf displaying a row of colorful novelty souvenir cups collected over several summers" width="1024" height="1024" />
-    <figcaption>the shelf, undocumented until now</figcaption>
   </figure>
   <figure class="polaroid">
     <img src="/winnie/let-freedom-ring-and-also-my-ears-nonwinnie-scene4.jpg" alt="A close-up of a patriotic paper party cup with a star-spangled straw topper on a picnic table" width="1024" height="1024" />
-    <figcaption>this year's addition</figcaption>
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/let-freedom-ring-and-also-my-ears-nonwinnie-scene5-shadowbox-sketch.jpg" alt="A closed notebook and travel mug resting on a folding bag on a boardwalk bench at dusk, string lights glowing in the background" width="1024" height="1024" />
   </figure>
 </div>
 
