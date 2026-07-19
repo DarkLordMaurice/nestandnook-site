@@ -19,6 +19,9 @@ I did not make it past the first block without a detour.
 
 ## The plant shop was the opening move
 
+<div class="polaroid inset">
+  <img src="/winnie/a-saturday-that-was-supposed-to-be-errands-nonwinnie-scene1.jpg" alt="A wall of small potted plants with handwritten care-instruction tags in a plant shop" width="1024" height="1024" />
+</div>
 
 There's a little plant-and-gift shop between my apartment and the coffee place, and I went in to kill five minutes before opening hours. I stayed to read the care-instruction tags like they were catalog cards — genus, light requirement, watering interval, the same three-fact structure my brain wants to apply to absolutely everything, including houseplants I have no intention of buying. Ten years running a reference desk will do that to a person. You start seeing every object as something that's one taxonomy away from being findable, and a nursery tag is basically a mini call slip if you squint.
 
@@ -37,10 +40,18 @@ Coffee happened next. So did a notebook, because I do not leave the apartment wi
 ## The record store was never on the itinerary
 
 
+<div class="polaroid inset float-left">
+  <img src="/winnie/a-saturday-that-was-supposed-to-be-errands-nonwinnie-scene2.jpg" alt="A customer browsing a crate of vinyl records in a record store" width="1024" height="1024" />
+</div>
+
 Here is a fact about me that I will defend in front of a judge: you cannot walk a librarian past a used record store and expect her to keep walking. I went in for ten minutes. I came out forty minutes later having bought a record I did not know existed that morning, after a full internal debate about shelf space that I lost on purpose. In my defense, ten years at a reference desk teaches you that browsing is not the enemy of finding things — it's usually how you find the thing you didn't know to ask for. I'd like that on file as the official justification, filed right next to "I regret nothing."
 
 <div class="polaroid inset">
   <img src="/winnie/winnie-life-record-store.jpg" alt="Winnie flipping through vinyl records in a record store" width="800" height="1000" />
+</div>
+
+<div class="polaroid inset">
+  <img src="/winnie/a-saturday-that-was-supposed-to-be-errands-nonwinnie-scene3.jpg" alt="A bookstore table with hardcover books displayed spine-out and blank recommendation cards tucked among them" width="1024" height="1024" />
 </div>
 
 The bookstore two doors down was worse, in the specific sense that it was better. I left with four books and the distinct feeling of having been personally profiled by whoever built the staff-picks table. I hold a degree in library science. I understand exactly what a well-curated shelf is engineered to do to a person — the eye-level placement, the little handwritten cards, the deliberate gap between "impulse buy" and "browsing." I let it happen to me anyway, willingly, the way you let a magic trick work even after you've spotted the mechanism. A decade in retail buying afterward only sharpened the appreciation. I know exactly what a merchandising decision looks like from the other side of the counter now, and I still fall for the good ones every single time, because a good one isn't a trick — it's just correct, structurally, and I have too much respect for competent work to resent it.
@@ -68,6 +79,10 @@ Small detail I almost left out: the barista at the coffee place had my order rea
 
 ## What actually got accomplished
 
+
+<div class="polaroid inset float-left">
+  <img src="/winnie/a-saturday-that-was-supposed-to-be-errands-nonwinnie-scene4.jpg" alt="A blue mailbox on a city sidewalk in late-afternoon light" width="1024" height="1024" />
+</div>
 
 In fairness to myself: the birthday card got bought and mailed before the day was out, which felt like a genuine win given everything the afternoon had thrown in front of me. I stood at the mailbox for a second longer than strictly necessary, mentally congratulating myself for closing out at least one line item, the way I imagine other people feel finishing a 5K.
 

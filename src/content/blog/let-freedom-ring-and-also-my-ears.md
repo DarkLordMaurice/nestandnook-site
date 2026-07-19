@@ -16,8 +16,15 @@ relatedGuides:
 
 Every single year I forget how loud fourth of july fireworks actually are up close, and every single year I stand at the front of the crowd anyway, novelty cup in hand, fully unprepared for the finale. This year's cup said "Let Freedom Ring" in block letters, came with a collapsible star-spangled straw topper, and was, I want to be clear, an entirely serious purchase. I have a small, growing shelf of these things at home — one per summer, going back further than I'd like to admit counting — and no, I don't have a system for displaying them yet, which for me is practically a scandal. Feral efficiency mode has apparently taken the week off.
 
+<div class="polaroid inset">
+  <img src="/winnie/let-freedom-ring-and-also-my-ears-nonwinnie-scene1.jpg" alt="Fireworks bursting over a dark waterfront, silhouettes of a crowd watching from the boardwalk" width="1024" height="1024" />
+</div>
+
 ## Getting there is half the ritual
 
+<div class="polaroid inset float-left">
+  <img src="/winnie/let-freedom-ring-and-also-my-ears-nonwinnie-scene2.jpg" alt="A boardwalk strung with string lights at dusk, small groups of people in folding chairs and on blankets watching the sky" width="1024" height="1024" />
+</div>
 
 I walked down early, the way I always do, mug already in hand before the actual cup even entered the picture — a smaller travel one, coffee, for the wait. The boardwalk fills in slowly for a show like this: folding chairs staked out hours in advance by people with a level of planning I genuinely respect, blankets claiming rectangles of grass, a kid two families over already vibrating with the specific anticipation only a nine-year-old can generate for something that hasn't happened yet. I people-watch at these things more than I watch the water, if I'm honest. Ten years at a reference desk teaches you to read a room fast, and a holiday crowd is its own kind of room — who's here for the tradition, who's here because someone dragged them, who brought exactly one (1) blanket for a family of six and is about to learn something about geometry.
 
@@ -35,6 +42,13 @@ The walk home was the usual: sulfur smell drifting over the water, a slow, good-
 
 ## The cup shelf, formally documented
 
+<div class="polaroid inset">
+  <img src="/winnie/let-freedom-ring-and-also-my-ears-nonwinnie-scene3.jpg" alt="A small shelf displaying a row of colorful novelty souvenir cups collected over several summers" width="1024" height="1024" />
+</div>
+
+<div class="polaroid inset float-left">
+  <img src="/winnie/let-freedom-ring-and-also-my-ears-nonwinnie-scene4.jpg" alt="A close-up of a patriotic paper party cup with a star-spangled straw topper on a picnic table" width="1024" height="1024" />
+</div>
 
 Since I brought it up: the shelf currently holds nine of these, one per year going back further than the collection technically started on purpose, which is to say there are at least two retroactive additions I tracked down secondhand because I regretted not keeping the originals. There's no display logic to it yet — no chronological order, no color coordination, nothing a person with my actual professional instincts should be comfortable admitting to in writing. I've started sketching out a small shadow-box idea in the same notebook that stayed shut all through the fireworks, which tells you where my organizing energy actually went once the show ended: not into the moment, but into figuring out how to properly enshrine the souvenir of it. That's probably the most honestly "me" detail in this whole note, more than the earplugs or the front-row seat. Give me one good, slightly ridiculous object and I will find a system for it eventually, even if it takes nine years to get there.
 

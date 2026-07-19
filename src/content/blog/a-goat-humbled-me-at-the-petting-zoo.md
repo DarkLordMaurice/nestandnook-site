@@ -21,6 +21,9 @@ I have a whole system for feeding goats at a petting zoo, apparently, developed 
 
 ## I brought a plan to a place that doesn't take plans
 
+<div class="polaroid inset float-left">
+  <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene1.jpg" alt="A goat standing at a wooden petting-zoo fence, reaching toward an open hand" width="1024" height="1024" />
+</div>
 
 I'd read, somewhere, that you're supposed to hold the food flat on your palm so the goat doesn't nip your fingers. Reasonable advice. I followed it precisely, the way I follow most instructions, with a faint sense of professional pride that I was Doing It Correctly. The goat took one look at my careful, flat-palmed offering, decided the paper bag itself was the more interesting menu item, and went for it directly. I spent the next several minutes renegotiating terms with an animal that had already won the negotiation before it started. A decade of retail buying taught me how to read a room and close a deal on my terms. Gerald had not read the same books I had, and it showed.
 
@@ -35,6 +38,10 @@ What I actually loved about the afternoon wasn't figuring anything out — it wa
   <img src="/winnie/winnie-life-zoo-otters.jpg" alt="Winnie crouching at the edge of the otter habitat, hand-feeding two otters standing in the water" width="1122" height="1402" />
 </div>
 
+<div class="polaroid inset">
+  <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene2.jpg" alt="Two otters standing at full attention in shallow water at an outdoor zoo habitat pool" width="1024" height="1024" />
+</div>
+
 Past the goat pen, the otter habitat ran on a completely different negotiation. No headbutting, no snatched paper bags — just two otters standing at full attention in the shallows, hands (paws?) out, radiating the specific patience of creatures who know exactly how this works and are simply waiting for me to catch up. I did not decide the pace of that interaction. I was informed of it, the same way a reference-desk patron used to inform me, gently but unmistakably, that I was two follow-up questions behind where they already were.
 
 ## The capybara did not care about my camera angle
@@ -44,6 +51,10 @@ Past the goat pen, the otter habitat ran on a completely different negotiation. 
   <img src="/winnie/winnie-life-zoo-capybara-selfie.jpg" alt="A close-up selfie of Winnie next to a capybara, its nose nearly touching the camera" width="1122" height="1402" />
 </div>
 
+<div class="polaroid inset float-left">
+  <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene3.jpg" alt="A capybara standing near a stone-ringed pond in an outdoor zoo enclosure" width="1024" height="1024" />
+</div>
+
 I tried for one (1) flattering selfie with a capybara. The capybara had other plans, walked directly into frame nose-first, and won. I'm including the photo anyway because it's a better picture than the one I was trying to take, which is a pattern I'm noticing repeat itself in more places than just this zoo trip — the version I planned for is rarely the version that actually turns out to be worth keeping.
 
 ## And then a toucan landed on my shoulder
@@ -51,6 +62,10 @@ I tried for one (1) flattering selfie with a capybara. The capybara had other pl
 
 <div class="polaroid inset float-left">
   <img src="/winnie/winnie-life-zoo-toucan.jpg" alt="Winnie reacting with surprise as a toucan perches on her shoulder near the bird aviary" width="1122" height="1402" />
+</div>
+
+<div class="polaroid inset">
+  <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene4.jpg" alt="A colorful toucan perched on a wooden branch near an outdoor bird aviary" width="1024" height="1024" />
 </div>
 
 Nothing about my carefully organized brain had a category ready for "a toucan may, at any moment, choose your shoulder as a landing pad." There is no system for that. There's just the sound you make, which I am told was fairly undignified, and a very good photo to show for it. I've since tried to think of what pin I'd add to the blazer to commemorate it, and have come up empty, which might be the first time in recorded history this collection has failed to have an answer.

@@ -17,6 +17,9 @@ If you've read more than one of these notes, you already have a fair read on me:
 
 ## It started as physical therapy and did not stay that way
 
+<div class="polaroid inset">
+  <img src="/winnie/the-studio-two-blocks-from-my-apartment-nonwinnie-scene1.jpg" alt="An empty dance studio interior with mirrored walls, a ballet barre, and a polished wood floor" width="1024" height="1024" />
+</div>
 
 I signed up originally because my back had filed a formal complaint about how many hours I spend hunched toward a laptop — a very on-brand reason for me to start anything. I remember thinking, at the time, that I'd go twice, decide I'd "handled it," and move on to whatever the next fix was, the way I handle most problems: identify it, solve it, file it, done. What I found instead was a small studio that runs a rotating mix through the week: mat work, some genuinely humbling floor sequences, and on Tuesdays specifically, a dance class I fully expected to hate and did not.
 
@@ -26,6 +29,10 @@ I signed up originally because my back had filed a formal complaint about how ma
 
 ## A backbend does not care about your system
 
+
+<div class="polaroid inset float-left">
+  <img src="/winnie/the-studio-two-blocks-from-my-apartment-nonwinnie-scene3.jpg" alt="A stick of incense burning in a small ceramic holder on a studio floor, thin smoke rising" width="1024" height="1024" />
+</div>
 
 Here is the appeal, for someone who runs the rest of her life like a card catalog: a floor sequence has no interest in being filed. There's no taxonomy to impose on a spine that won't bend the way you're asking it to. You either get your leg where it needs to go, or you don't, and for one hour a week, being right about something simply isn't on the table. That turns out to be a genuine relief, not a failure. I've joked before that I was born on Pi Day and have therefore contained an unresolved number my entire life — a floor sequence is one of the only hours of my week where I stop trying to resolve it and just let the number sit there, irrational, unfiled, fine.
 
@@ -40,6 +47,10 @@ Here is the appeal, for someone who runs the rest of her life like a card catalo
 
 ## Tuesdays are dance night, and I remain a work in progress
 
+<div class="polaroid inset">
+  <img src="/winnie/the-studio-two-blocks-from-my-apartment-nonwinnie-scene2.jpg" alt="A small group of adults mid-dance-class in a mirrored studio, candid, mid-movement" width="1024" height="1024" />
+</div>
+
 The dance portion is led by an instructor who has spent two patient years correcting my sense of timing. Look closely at the photo below and you'll see her hand in the mirror, mid-correction — a more honest picture of what this actually looks like than a solo shot would give you. I am not naturally coordinated. I count steps under my breath like it's an incantation, the same rhythm I used to count Dewey decimals under mine, some habits just relocate rather than disappear. Two years in, I've gotten meaningfully, unglamorously better, and I've decided there's real value in being visibly bad at something once a week, in public, on purpose.
 
 <div class="polaroid inset float-left">
@@ -52,6 +63,9 @@ Two years later I still don't land every turn, and I've started to suspect that'
 
 ## The walk home matters almost as much as the class
 
+<div class="polaroid inset float-left">
+  <img src="/winnie/the-studio-two-blocks-from-my-apartment-nonwinnie-scene4.jpg" alt="A quiet city street corner storefront at night with a lit dance studio sign, mirrored interior visible through the window" width="1024" height="1024" />
+</div>
 
 There's a specific ten minutes after class, walking the two blocks back, that I've come to treat as part of the routine rather than an afterthought — the studio's heat still on my skin, that loose, slightly wrung-out feeling in the shoulders that no amount of sitting correctly at a desk actually produces. I usually stop at the same corner store for a bottle of something cold and stand outside it for a minute before going up, which is not a habit I'd have predicted for myself two years ago. I used to think of a workout as a task to complete and check off, the way I check off everything else. This one resists that framing more than any other part of my week, and I've mostly stopped fighting it.
 

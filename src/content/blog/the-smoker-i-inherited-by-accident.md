@@ -18,6 +18,14 @@ I was supposed to bring a side dish and a folding chair. That was the entire sco
 For the first hour, I was doing exactly what I'd planned: standing around with a copper mug, half-listening to a conversation about someone's kayak trip, entirely unbothered by the smoker doing its quiet, smoky thing in the background. I'd even pinned a little enamel flame — bought on a whim months ago from a shop I can no longer name — to my jacket that morning, which felt, in hindsight, like foreshadowing I should have taken more seriously.
 
 <div class="polaroid inset">
+  <img src="/winnie/the-smoker-i-inherited-by-accident-nonwinnie-scene1.jpg" alt="A backyard smoker with wood chunks loaded and smoke rising, string lights glowing behind it at dusk" width="1024" height="1024" />
+</div>
+
+<div class="polaroid inset float-left">
+  <img src="/winnie/the-smoker-i-inherited-by-accident-nonwinnie-scene4.jpg" alt="A denim jacket with a small enamel flame-shaped pin hanging on a wall hook" width="1024" height="1024" />
+</div>
+
+<div class="polaroid inset">
   <img src="/winnie/winnie-life-bbq-mingling.jpg" alt="Winnie standing in a candlelit backyard holding a drink, mingling with guests near the smoker" width="1023" height="1537" />
 </div>
 
@@ -33,6 +41,9 @@ I'll admit, too, that a decade of retail buying gave me a specific, useless-in-t
 
 ## The part where three separate people tried to help
 
+<div class="polaroid inset">
+  <img src="/winnie/the-smoker-i-inherited-by-accident-nonwinnie-scene2.jpg" alt="A backyard picnic table spread with barbecue food, guests serving themselves and chatting" width="1024" height="1024" />
+</div>
 
 Once word got around the yard that I'd inherited the smoker mid-cook, I got no fewer than three unsolicited theories on wood chunk timing, two contradictory opinions about whether the lid should stay shut the entire time or get checked periodically, and one very confident guest who does this "professionally, sort of, for friends" and wanted me to know that immediately. I want it on the record that I did what I always do in exactly this situation, professionally or otherwise: I said thank you to all three, quietly followed the one piece of advice that matched what I'd already been told by the actual owner of the smoker, and let the other two believe I was taking their counsel very seriously. Ten years at a reference desk teaches you this particular skill early — how to receive unsolicited expertise graciously without letting it derail the one piece of guidance you actually know to be correct.
 
@@ -46,6 +57,9 @@ I'd shown up with a very specific, very small plan for my own Saturday, and the 
 
 ## Good smoke, good people, genuinely good times
 
+<div class="polaroid inset float-left">
+  <img src="/winnie/the-smoker-i-inherited-by-accident-nonwinnie-scene3.jpg" alt="A backyard patio strung with string lights at dusk, a small group of people relaxing in folding chairs" width="1024" height="1024" />
+</div>
 
 By the time the pork shoulder came off — hours later, considerably more tender than I take credit for — nobody at that table cared who technically ran the smoker. They cared that dinner was excellent and the company was better. I went home smelling like a campfire and thinking about how much of my own stress, on an average day, comes from clinging to a plan a situation has already quietly moved past. I've built an entire professional identity around being the person with a plan — call it "professional organizer of opinions," which is the phrase I use for what I actually do here — and there was something almost funny about that same person spending a whole Saturday evening improvising in front of an open flame with borrowed tongs and no notes. The smoker didn't teach me barbecue. It taught me the plan was never actually the point.
 
