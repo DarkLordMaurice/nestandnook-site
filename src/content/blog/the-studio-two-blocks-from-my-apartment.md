@@ -35,29 +35,23 @@ I signed up originally because my back had filed a formal complaint about how ma
 
 Here is the appeal, for someone who runs the rest of her life like a card catalog: a floor sequence has no interest in being filed. There's no taxonomy to impose on a spine that won't bend the way you're asking it to. You either get your leg where it needs to go, or you don't, and for one hour a week, being right about something simply isn't on the table. That turns out to be a genuine relief, not a failure. I've joked before that I was born on Pi Day and have therefore contained an unresolved number my entire life — a floor sequence is one of the only hours of my week where I stop trying to resolve it and just let the number sit there, irrational, unfiled, fine.
 
-<div class="photo-strip">
+<div class="photo-strip strip-2">
   <figure class="polaroid">
     <img src="/winnie/winnie-life-yoga-pose.jpg" alt="Winnie in a seated backbend yoga pose on a mat" width="800" height="1000" />
   </figure>
   <figure class="polaroid">
     <img src="/winnie/winnie-life-yoga-balance.jpg" alt="Winnie in a standing balance yoga pose with one leg extended" width="800" height="1000" />
   </figure>
-  <figure class="polaroid">
-    <img src="/winnie/the-studio-two-blocks-from-my-apartment-nonwinnie-scene5-rolled-mat.jpg" alt="A single yoga mat unrolled on the studio's wood-plank floor, empty and ready, mirrored wall in the background" width="1024" height="1024" />
-  </figure>
 </div>
 
 ## Tuesdays are dance night, and I remain a work in progress
 
-<div class="photo-strip">
+<div class="photo-strip strip-2">
   <figure class="polaroid">
     <img src="/winnie/the-studio-two-blocks-from-my-apartment-nonwinnie-scene2.jpg" alt="A small group of adults mid-dance-class in a mirrored studio, candid, mid-movement" width="1024" height="1024" />
   </figure>
   <figure class="polaroid">
     <img src="/winnie/winnie-life-dance-2.jpg" alt="Winnie mid-turn on a dance studio floor with an instructor's hand visible in the mirror" width="800" height="1000" />
-  </figure>
-  <figure class="polaroid">
-    <img src="/winnie/the-studio-two-blocks-from-my-apartment-nonwinnie-scene6-dance-shoes-feet.jpg" alt="A close-up of a pair of dance shoes resting empty on the studio's wood-plank floor" width="1024" height="1024" />
   </figure>
 </div>
 

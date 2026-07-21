@@ -25,15 +25,12 @@ I went to watch a parade and ended up rethinking how I organize grief, which is 
 
 ## The float that stopped me
 
-<div class="photo-strip">
+<div class="photo-strip strip-2">
   <figure class="polaroid">
     <img src="/winnie/what-the-parade-of-skulls-actually-taught-me-nonwinnie-scene1.jpg" alt="A Dia de Muertos parade float covered in marigold flowers with a framed photo, spectators watching nearby" width="1024" height="1024" />
   </figure>
   <figure class="polaroid">
     <img src="/winnie/what-the-parade-of-skulls-actually-taught-me-nonwinnie-scene2.jpg" alt="Calavera-costumed parade participants in traditional dress with painted sugar-skull face makeup" width="1024" height="1024" />
-  </figure>
-  <figure class="polaroid">
-    <img src="/winnie/what-the-parade-of-skulls-actually-taught-me-nonwinnie-scene5-marigolds-closeup.jpg" alt="A close-up of vibrant orange marigold flowers decorating a Dia de Muertos parade float on a city street, papel picado banners overhead" width="1024" height="1024" />
   </figure>
 </div>
 

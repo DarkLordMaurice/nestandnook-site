@@ -50,15 +50,12 @@ I would like to formally retract every assumption I made walking up to that tub.
 
 ## The playlist took more editorial effort than the menu
 
-<div class="photo-strip">
+<div class="photo-strip strip-2">
   <figure class="polaroid">
     <img src="/winnie/the-year-i-lost-an-apple-bobbing-contest-nonwinnie-scene2.jpg" alt="A Halloween party table decorated with candles and string lights in purple and orange, costumed guests mingling nearby" width="1024" height="1024" />
   </figure>
   <figure class="polaroid">
     <img src="/winnie/the-year-i-lost-an-apple-bobbing-contest-nonwinnie-scene3.jpg" alt="A small group of costumed Halloween party guests dancing and mingling near the drinks table" width="1024" height="1024" />
-  </figure>
-  <figure class="polaroid">
-    <img src="/winnie/the-year-i-lost-an-apple-bobbing-contest-nonwinnie-scene5-speaker-setup.jpg" alt="A small bluetooth speaker on a table at a Halloween party, surrounded by lit candles, jack-o-lanterns, and string lights" width="1024" height="1024" />
   </figure>
 </div>
 

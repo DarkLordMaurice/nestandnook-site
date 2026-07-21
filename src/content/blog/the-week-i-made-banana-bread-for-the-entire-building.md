@@ -29,15 +29,12 @@ I made one loaf first, the reasonable amount, the amount a person with a normal 
 
 I don't do anything without a system, including apparently spontaneous acts of neighborliness, so what should have been "hand a neighbor some bread" turned into wrapping four half-loaves in foil, writing a small card for each one, and working out — with actual seriousness — the most efficient route through the building so I wasn't backtracking floors. I want to be honest about how unnecessary that last part was. Nobody needed me to route-plan a four-stop bread delivery. I needed to route-plan a four-stop bread delivery, because handing someone food with zero plan attached felt, to me, borderline reckless.
 
-<div class="photo-strip">
+<div class="photo-strip strip-2">
   <figure class="polaroid">
     <img src="/winnie/the-week-i-made-banana-bread-for-the-entire-building-nonwinnie-scene2.jpg" alt="Four half-loaves of banana bread wrapped in foil, ready for delivery" width="1024" height="1024" />
   </figure>
   <figure class="polaroid">
     <img src="/winnie/the-week-i-made-banana-bread-for-the-entire-building-nonwinnie-scene3.jpg" alt="A foil-wrapped loaf of banana bread tied with kitchen twine and a small gift tag" width="1024" height="1024" />
-  </figure>
-  <figure class="polaroid">
-    <img src="/winnie/the-week-i-made-banana-bread-for-the-entire-building-nonwinnie-scene5-writing-tag.jpg" alt="A foil-wrapped loaf of banana bread tied with twine, a small handwritten gift tag and pen resting beside it on a kitchen counter" width="1024" height="1024" />
   </figure>
 </div>
 
