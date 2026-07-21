@@ -48,13 +48,13 @@ The walk home was the usual: sulfur smell drifting over the water, a slow, good-
 
 <div class="photo-strip">
   <figure class="polaroid">
-    <img src="/winnie/let-freedom-ring-and-also-my-ears-nonwinnie-scene3.jpg" alt="A small shelf displaying a row of colorful novelty souvenir cups collected over several summers" width="1024" height="1024" />
+    <img src="/winnie/let-freedom-ring-and-also-my-ears-nonwinnie-scene3.jpg" alt="A row of eight visibly different colored novelty cups collected over several summers, no two alike, no color coordination" width="1024" height="1024" />
   </figure>
   <figure class="polaroid">
-    <img src="/winnie/let-freedom-ring-and-also-my-ears-nonwinnie-scene4.jpg" alt="A close-up of a patriotic paper party cup with a star-spangled straw topper on a picnic table" width="1024" height="1024" />
+    <img src="/winnie/let-freedom-ring-and-also-my-ears-nonwinnie-scene4.jpg" alt="A close-up of this year's patriotic star-print party cup with a star-spangled straw topper" width="1024" height="1024" />
   </figure>
   <figure class="polaroid">
-    <img src="/winnie/let-freedom-ring-and-also-my-ears-nonwinnie-scene6-mismatched-cups.jpg" alt="Two mismatched novelty souvenir cups sitting side by side on a home shelf with no coordinated arrangement" width="1024" height="1024" />
+    <img src="/winnie/let-freedom-ring-and-also-my-ears-nonwinnie-scene6-cup-collection-detail.jpg" alt="A close-up of three of the mismatched cups sitting unevenly together, no chronological order" width="1024" height="1024" />
   </figure>
 </div>
 

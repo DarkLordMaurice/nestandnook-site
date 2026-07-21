@@ -17,9 +17,15 @@ relatedGuides:
 
 I have organized exactly zero Halloween parties in my adult life until this one, and hosting a Halloween party turns out to run on a completely different logic than hosting anything else — the goal isn't efficiency or a smooth-running evening, it's maximum theatrical commitment. I made a list, because I make a list for everything, and about halfway through planning I realized the list itself had become useless: you cannot spreadsheet your way to a good Halloween party. You can only commit, fully, to the bit, and see what happens. Skeletons doing the wine pour. Candles everywhere they could plausibly not burn the house down, and several places they probably shouldn't have been. A soundtrack that made the ice in everyone's glass rattle a little ominously. I went all in on the makeup and did not think through the practical consequences of that decision until much later in the night.
 
-<div class="photo-single">
+<div class="photo-strip">
   <figure class="polaroid">
     <img src="/winnie/winnie-life-halloween-makeup.jpg" alt="Winnie in sugar-skull-inspired Halloween face paint, laughing at a costume party lit with purple and orange light" width="1023" height="1537" />
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/the-year-i-lost-an-apple-bobbing-contest-nonwinnie-scene8-skeleton-wine-pour.jpg" alt="A plastic skeleton Halloween party prop posed pouring wine into a glass at a candlelit drinks table" width="1024" height="1024" />
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/the-year-i-lost-an-apple-bobbing-contest-nonwinnie-scene9-facepaint-supplies.jpg" alt="Sugar-skull face-paint supplies laid out on the floor: an open palette, makeup brushes, and a hand mirror" width="1024" height="1024" />
   </figure>
 </div>
 
@@ -38,12 +44,6 @@ The face paint took longer than getting genuinely ready for anything else I've d
 At some point in the evening I ended up slow-dancing with a prop skeleton in a top hat, and I want it on the record that he was a considerably better dance partner than several humans I've danced with at actual weddings. No small talk. Impeccable posture, on account of having no choice in the matter. Never once tried to lead us somewhere the music wasn't going. I have no further comment except that the photo exists now and cannot be undone, and that I've apparently reached the age where I find more genuine delight in committing to a bit than in being seen as dignified while doing it.
 
 ## Apple bobbing is a young person's sport
-
-<div class="photo-single">
-  <figure class="polaroid">
-    <img src="/winnie/the-year-i-lost-an-apple-bobbing-contest-nonwinnie-scene1.jpg" alt="A costumed Halloween party guest in full sugar-skull face paint mid-attempt at a galvanized metal tub of floating apples, a small crowd watching" width="1024" height="1024" />
-  </figure>
-</div>
 
 I would like to formally retract every assumption I made walking up to that tub. Apple bobbing at eight years old is a game. Apple bobbing as a grown woman, in full face paint, while a small crowd watches and at least one person has their phone out, is a genuine athletic event that I trained for exactly zero minutes and lost decisively. I approached the whole thing the way I approach everything — assess the variables, formulate a plan, execute with confidence — and the apple did not care about a single one of my variables. The apple won. I have never been more entertained by my own defeat, and I've decided that losing a children's game with this much enthusiasm is its own small, worthwhile skill.
 
@@ -67,12 +67,6 @@ I will admit, slightly sheepishly, that I spent more deliberate planning time on
 ## What I actually took from the night
 
 None of it needed to be useful, and that was sort of the point — a night that exists purely to be a little ridiculous, with no organizing principle beyond "commit to the theme," turned out to be exactly the reset I didn't know I needed. I spend most of my working life insisting that everything needs a reason, a fit, a specific use case. A Tuesday night with a skeleton and a tub of apples had none of those, and it was one of the better nights I've had all year regardless. Not every evening has to teach you something. Some of them just need a skeleton with better posture than you and a tub of apples that will absolutely humble you in front of witnesses, and I've made my peace with that being enough.
-
-<div class="photo-single">
-  <figure class="polaroid">
-    <img src="/winnie/the-year-i-lost-an-apple-bobbing-contest-nonwinnie-scene4.jpg" alt="A single bruised apple sitting alone on a kitchen counter in soft morning light" width="1024" height="1024" />
-  </figure>
-</div>
 
 I found the apple the next morning, half-drowned at the bottom of a bin I'd forgotten to empty, and instead of throwing it out I cut it up for the world's least dignified breakfast. Somehow that felt like the correct, respectful way to close the whole chapter — not a trophy, not a photo caption, just a slightly bruised apple getting the ending it earned after a night of getting bitten at, unsuccessfully, by a woman who should have known better, in full face paint. I'd like to say I've since developed a training regimen for next year. I have not. I fully intend to walk up to that tub with the exact same unearned confidence and lose the exact same way, because apparently that's become its own small tradition too.
 
