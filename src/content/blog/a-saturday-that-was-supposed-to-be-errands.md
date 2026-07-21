@@ -45,29 +45,29 @@ Coffee happened next. So did a notebook, because I do not leave the apartment wi
 
 ## The record store was never on the itinerary
 
-<div class="photo-single">
-  <figure class="polaroid">
-    <img src="/winnie/a-saturday-that-was-supposed-to-be-errands-nonwinnie-scene2.jpg" alt="A customer browsing a crate of vinyl records in a record store" width="1024" height="1024" />
-  </figure>
-</div>
-
 Here is a fact about me that I will defend in front of a judge: you cannot walk a librarian past a used record store and expect her to keep walking. I went in for ten minutes. I came out forty minutes later having bought a record I did not know existed that morning, after a full internal debate about shelf space that I lost on purpose. In my defense, ten years at a reference desk teaches you that browsing is not the enemy of finding things — it's usually how you find the thing you didn't know to ask for. I'd like that on file as the official justification, filed right next to "I regret nothing."
 
 <div class="photo-strip">
   <figure class="polaroid">
+    <img src="/winnie/a-saturday-that-was-supposed-to-be-errands-nonwinnie-scene2.jpg" alt="A customer browsing a crate of vinyl records in a record store" width="1024" height="1024" />
+  </figure>
+  <figure class="polaroid">
     <img src="/winnie/winnie-life-record-store.jpg" alt="Winnie flipping through vinyl records in a record store" width="800" height="1000" />
   </figure>
+  <figure class="polaroid">
+    <img src="/winnie/a-saturday-that-was-supposed-to-be-errands-nonwinnie-scene9-record-store-counter.jpg" alt="Vinyl records standing in a wooden record store bin with more record bins blurred in the background" width="1024" height="1024" />
+  </figure>
+</div>
+
+The bookstore two doors down was worse, in the specific sense that it was better. I left with four books and the distinct feeling of having been personally profiled by whoever built the staff-picks table. I hold a degree in library science. I understand exactly what a well-curated shelf is engineered to do to a person — the eye-level placement, the little handwritten cards, the deliberate gap between "impulse buy" and "browsing." I let it happen to me anyway, willingly, the way you let a magic trick work even after you've spotted the mechanism. A decade in retail buying afterward only sharpened the appreciation. I know exactly what a merchandising decision looks like from the other side of the counter now, and I still fall for the good ones every single time, because a good one isn't a trick — it's just correct, structurally, and I have too much respect for competent work to resent it.
+
+<div class="photo-strip">
   <figure class="polaroid">
     <img src="/winnie/a-saturday-that-was-supposed-to-be-errands-nonwinnie-scene3.jpg" alt="A bookstore table with hardcover books displayed spine-out and blank recommendation cards tucked among them" width="1024" height="1024" />
   </figure>
   <figure class="polaroid">
     <img src="/winnie/a-saturday-that-was-supposed-to-be-errands-nonwinnie-scene6-four-books-stack.jpg" alt="A stack of hardcover books on a wooden bookstore counter with a paper receipt tucked into the top book" width="1024" height="1024" />
   </figure>
-</div>
-
-The bookstore two doors down was worse, in the specific sense that it was better. I left with four books and the distinct feeling of having been personally profiled by whoever built the staff-picks table. I hold a degree in library science. I understand exactly what a well-curated shelf is engineered to do to a person — the eye-level placement, the little handwritten cards, the deliberate gap between "impulse buy" and "browsing." I let it happen to me anyway, willingly, the way you let a magic trick work even after you've spotted the mechanism. A decade in retail buying afterward only sharpened the appreciation. I know exactly what a merchandising decision looks like from the other side of the counter now, and I still fall for the good ones every single time, because a good one isn't a trick — it's just correct, structurally, and I have too much respect for competent work to resent it.
-
-<div class="photo-single">
   <figure class="polaroid">
     <img src="/winnie/winnie-life-bookstore.jpg" alt="Winnie carrying a stack of books out of a bookstore" width="800" height="1000" />
   </figure>

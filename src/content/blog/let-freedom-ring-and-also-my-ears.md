@@ -16,27 +16,27 @@ relatedGuides:
 
 Every single year I forget how loud fourth of july fireworks actually are up close, and every single year I stand at the front of the crowd anyway, novelty cup in hand, fully unprepared for the finale. This year's cup said "Let Freedom Ring" in block letters, came with a collapsible star-spangled straw topper, and was, I want to be clear, an entirely serious purchase. I have a small, growing shelf of these things at home — one per summer, going back further than I'd like to admit counting — and no, I don't have a system for displaying them yet, which for me is practically a scandal. Feral efficiency mode has apparently taken the week off.
 
-<div class="photo-single">
-  <figure class="polaroid">
-    <img src="/winnie/let-freedom-ring-and-also-my-ears-nonwinnie-scene1.jpg" alt="Fireworks bursting over a dark waterfront, silhouettes of a crowd watching from the boardwalk" width="1024" height="1024" />
-  </figure>
-</div>
-
 ## Getting there is half the ritual
 
 I walked down early, the way I always do, mug already in hand before the actual cup even entered the picture — a smaller travel one, coffee, for the wait. The boardwalk fills in slowly for a show like this: folding chairs staked out hours in advance by people with a level of planning I genuinely respect, blankets claiming rectangles of grass, a kid two families over already vibrating with the specific anticipation only a nine-year-old can generate for something that hasn't happened yet. I people-watch at these things more than I watch the water, if I'm honest. Ten years at a reference desk teaches you to read a room fast, and a holiday crowd is its own kind of room — who's here for the tradition, who's here because someone dragged them, who brought exactly one (1) blanket for a family of six and is about to learn something about geometry.
-
-<div class="photo-single">
-  <figure class="polaroid">
-    <img src="/winnie/let-freedom-ring-and-also-my-ears-nonwinnie-scene2.jpg" alt="A boardwalk strung with string lights at dusk, small groups of people in folding chairs and on blankets watching the sky" width="1024" height="1024" />
-  </figure>
-</div>
 
 ## The show is better from too close than from far away
 
 There's a version of watching fireworks from a safe, quiet distance that I understand the appeal of. It has never once been the version I choose. Standing close enough that the boom arrives a half-second late and lands somewhere in your chest is, apparently, the whole point for me — the string lights along the boardwalk, a flag doing its thing in the breeze, and a sky doing considerably more. I brought my usual bag, which meant my usual notebook came along too, and it stayed shut the entire show. Some things resist being described in real time, and a good fireworks finale is one of them. I tried, for about four seconds, to find the right adjective for the color right before the boom, gave up, and just watched instead. That's rare for me. I generally have an opinion about everything, in real time, on the record. I'll take the four seconds of silence as a compliment to the show.
 
 There's always one firework, somewhere in the middle stretch, that's clearly the pyrotechnics team testing something new — a shape or a color combination that doesn't quite land, followed by a very human little pause before the next one, like someone backstage shrugging and moving on to the next cue. I like that moment more than the finale, honestly. It's the one part of the whole show that isn't polished, and I have a soft spot for the unpolished part of anything. It's usually where the actual person doing the work is most visible.
+
+<div class="photo-strip">
+  <figure class="polaroid">
+    <img src="/winnie/let-freedom-ring-and-also-my-ears-nonwinnie-scene1.jpg" alt="Fireworks bursting over a dark waterfront, silhouettes of a crowd watching from the boardwalk" width="1024" height="1024" />
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/let-freedom-ring-and-also-my-ears-nonwinnie-scene2.jpg" alt="A boardwalk strung with string lights at dusk, small groups of people in folding chairs and on blankets watching the sky" width="1024" height="1024" />
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/let-freedom-ring-and-also-my-ears-nonwinnie-scene5-shadowbox-sketch.jpg" alt="A closed notebook and a travel coffee mug resting on a boardwalk bench at dusk with string lights glowing overhead" width="1024" height="1024" />
+  </figure>
+</div>
 
 ## A short one, and that's fine
 
@@ -54,7 +54,7 @@ The walk home was the usual: sulfur smell drifting over the water, a slow, good-
     <img src="/winnie/let-freedom-ring-and-also-my-ears-nonwinnie-scene4.jpg" alt="A close-up of a patriotic paper party cup with a star-spangled straw topper on a picnic table" width="1024" height="1024" />
   </figure>
   <figure class="polaroid">
-    <img src="/winnie/let-freedom-ring-and-also-my-ears-nonwinnie-scene5-shadowbox-sketch.jpg" alt="A closed notebook and a travel coffee mug resting on a boardwalk bench at dusk with string lights glowing overhead" width="1024" height="1024" />
+    <img src="/winnie/let-freedom-ring-and-also-my-ears-nonwinnie-scene6-mismatched-cups.jpg" alt="Two mismatched novelty souvenir cups sitting side by side on a home shelf with no coordinated arrangement" width="1024" height="1024" />
   </figure>
 </div>
 

@@ -15,21 +15,21 @@ relatedGuides:
 
 I have a whole system for feeding goats at a petting zoo, apparently, developed on the spot and enforced with total confidence for approximately four seconds before a goat named — I assume, based on nothing — Gerald corrected me. A day at the petting zoo does not require a system. It requires an open palm and a willingness to be gently, thoroughly overruled by an animal that outweighs your opinion of how this should go. I want it on the record that I brought a small notebook in my bag that day out of pure habit, the same one that comes with me everywhere, and it never once came out. There was nothing to write down. That alone should have tipped me off to how the day was going to go.
 
-<div class="photo-single">
+## I brought a plan to a place that doesn't take plans
+
+I'd read, somewhere, that you're supposed to hold the food flat on your palm so the goat doesn't nip your fingers. Reasonable advice. I followed it precisely, the way I follow most instructions, with a faint sense of professional pride that I was Doing It Correctly. The goat took one look at my careful, flat-palmed offering, decided the paper bag itself was the more interesting menu item, and went for it directly. I spent the next several minutes renegotiating terms with an animal that had already won the negotiation before it started. A decade of retail buying taught me how to read a room and close a deal on my terms. Gerald had not read the same books I had, and it showed.
+
+<div class="photo-strip">
   <figure class="polaroid">
     <img src="/winnie/winnie-life-petting-zoo-goat.jpg" alt="Winnie feeding a goat over a wooden fence at a petting zoo, camera slung over her shoulder" width="1122" height="1402" />
   </figure>
-</div>
-
-## I brought a plan to a place that doesn't take plans
-
-<div class="photo-single">
   <figure class="polaroid">
     <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene1.jpg" alt="A goat standing at a wooden petting-zoo fence, reaching toward an open hand" width="1024" height="1024" />
   </figure>
+  <figure class="polaroid">
+    <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene8-goat-face-fence.jpg" alt="A goat's face looking directly through the wooden slats of a petting-zoo fence" width="1024" height="1024" />
+  </figure>
 </div>
-
-I'd read, somewhere, that you're supposed to hold the food flat on your palm so the goat doesn't nip your fingers. Reasonable advice. I followed it precisely, the way I follow most instructions, with a faint sense of professional pride that I was Doing It Correctly. The goat took one look at my careful, flat-palmed offering, decided the paper bag itself was the more interesting menu item, and went for it directly. I spent the next several minutes renegotiating terms with an animal that had already won the negotiation before it started. A decade of retail buying taught me how to read a room and close a deal on my terms. Gerald had not read the same books I had, and it showed.
 
 ## The best part of the day required zero expertise
 
