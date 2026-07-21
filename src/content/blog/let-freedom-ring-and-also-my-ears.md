@@ -46,12 +46,15 @@ The walk home was the usual: sulfur smell drifting over the water, a slow, good-
 
 ## The cup shelf, formally documented
 
-<div class="photo-strip strip-2">
+<div class="photo-strip">
   <figure class="polaroid">
     <img src="/winnie/let-freedom-ring-and-also-my-ears-nonwinnie-scene3.jpg" alt="A small shelf displaying a row of colorful novelty souvenir cups collected over several summers" width="1024" height="1024" />
   </figure>
   <figure class="polaroid">
     <img src="/winnie/let-freedom-ring-and-also-my-ears-nonwinnie-scene4.jpg" alt="A close-up of a patriotic paper party cup with a star-spangled straw topper on a picnic table" width="1024" height="1024" />
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/let-freedom-ring-and-also-my-ears-nonwinnie-scene5-shadowbox-sketch.jpg" alt="A closed notebook and a travel coffee mug resting on a boardwalk bench at dusk with string lights glowing overhead" width="1024" height="1024" />
   </figure>
 </div>
 

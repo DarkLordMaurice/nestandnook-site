@@ -67,12 +67,15 @@ By the time the pork shoulder came off — hours later, considerably more tender
 
 I've noticed the same lesson trying to resurface all week since, in smaller, less charred versions. A cluster of pages I'd scheduled to publish got delayed by a broken image link, and my first instinct was the same low-grade panic from the moment I got handed those tongs — not because the fix was hard, but because it wasn't the Tuesday I'd planned for. It got fixed within the hour, same as the pork shoulder got tended within the evening, and nobody downstream ever knew there'd been a wobble. I'm trying to hold onto that as the actual takeaway rather than a nice sentence I wrote about a barbecue: the wobble is rarely the story anyone else remembers. Only the plan you quietly built back around it is.
 
-<div class="photo-strip strip-2">
+<div class="photo-strip">
   <figure class="polaroid">
     <img src="/winnie/the-smoker-i-inherited-by-accident-nonwinnie-scene3.jpg" alt="A stone-paver backyard patio at dusk, string lights glowing, a small group of people relaxing in outdoor lounge chairs" width="1024" height="1024" />
   </figure>
   <figure class="polaroid">
     <img src="/winnie/winnie-life-bbq-apron-back.jpg" alt="Winnie in a leather barbecue apron, glancing back over her shoulder at the smoker with a plate of food behind her" width="1122" height="1402" />
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/the-smoker-i-inherited-by-accident-nonwinnie-scene5-pork-shoulder-plated.jpg" alt="A tray of sliced, tender smoked pork shoulder with a visible smoke ring, steam rising, ready to serve" width="1024" height="1024" />
   </figure>
 </div>
 

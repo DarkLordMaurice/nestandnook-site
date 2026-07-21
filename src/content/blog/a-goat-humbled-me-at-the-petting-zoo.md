@@ -38,12 +38,15 @@ What I actually loved about the afternoon wasn't figuring anything out — it wa
 ## The otters had their own opinions too
 
 
-<div class="photo-strip strip-2">
+<div class="photo-strip">
   <figure class="polaroid">
     <img src="/winnie/winnie-life-zoo-otters.jpg" alt="Winnie crouching at the edge of the otter habitat, hand-feeding two otters standing in the water" width="1122" height="1402" />
   </figure>
   <figure class="polaroid">
     <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene2.jpg" alt="Two otters standing at full attention in shallow water at an outdoor zoo habitat pool" width="1024" height="1024" />
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene5-otter-habitat-wide.jpg" alt="A wide view of the outdoor zoo otter habitat pool with steep jagged boulders and chain-link fencing" width="1024" height="1024" />
   </figure>
 </div>
 
@@ -52,12 +55,15 @@ Past the goat pen, the otter habitat ran on a completely different negotiation. 
 ## The capybara did not care about my camera angle
 
 
-<div class="photo-strip strip-2">
+<div class="photo-strip">
   <figure class="polaroid">
     <img src="/winnie/winnie-life-zoo-capybara-selfie.jpg" alt="A close-up selfie of Winnie next to a capybara, its nose nearly touching the camera" width="1122" height="1402" />
   </figure>
   <figure class="polaroid">
     <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene3.jpg" alt="A capybara standing near a stone-ringed pond in an outdoor zoo enclosure" width="1024" height="1024" />
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene6-capybara-grazing.jpg" alt="A capybara grazing on grass near the stone-ringed pond in the outdoor zoo enclosure" width="1024" height="1024" />
   </figure>
 </div>
 
@@ -66,12 +72,15 @@ I tried for one (1) flattering selfie with a capybara. The capybara had other pl
 ## And then a toucan landed on my shoulder
 
 
-<div class="photo-strip strip-2">
+<div class="photo-strip">
   <figure class="polaroid">
     <img src="/winnie/winnie-life-zoo-toucan.jpg" alt="Winnie reacting with surprise as a toucan perches on her shoulder near the bird aviary" width="1122" height="1402" />
   </figure>
   <figure class="polaroid">
     <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene4.jpg" alt="A colorful toucan perched on a wooden branch near an outdoor bird aviary" width="1024" height="1024" />
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/a-goat-humbled-me-at-the-petting-zoo-nonwinnie-scene7-aviary-wide.jpg" alt="A wide view of the outdoor bird aviary enclosure with mesh netting and wooden branch perches" width="1024" height="1024" />
   </figure>
 </div>
 

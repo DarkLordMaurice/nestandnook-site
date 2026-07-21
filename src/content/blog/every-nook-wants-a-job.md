@@ -23,12 +23,15 @@ The "office supplies" drawer is the same story with worse odds, because it's usu
 
 And the shelf above the monitor — collecting dust and one dead plant since approximately whenever you moved in — has a job available to it that almost nobody assigns: it's prime real estate for something you actually reach for, at exactly the height where you'd otherwise crane your neck to find it. A charging dock. The one reference book you open weekly. Something with a function, at eye level, instead of a decorative object slowly failing to photosynthesize.
 
-<div class="photo-strip strip-2">
+<div class="photo-strip">
   <figure class="polaroid">
     <img src="/winnie/every-nook-wants-a-job-nonwinnie-scene1.jpg" alt="A cluttered office desk drawer full of loose pens, cables, tape, and sticky notes" width="1024" height="1024" />
   </figure>
   <figure class="polaroid">
     <img src="/winnie/every-nook-wants-a-job-nonwinnie-scene2.jpg" alt="The same desk drawer neatly sorted into labeled trays and dividers" width="1024" height="1024" />
+  </figure>
+  <figure class="polaroid">
+    <img src="/winnie/every-nook-wants-a-job-nonwinnie-scene6-cable-corner.jpg" alt="A tidy desk cable-management corner with cables neatly routed through a tray and clip system" width="1024" height="1024" />
   </figure>
 </div>
 
