@@ -1990,9 +1990,7 @@ Desktop Commander, real Windows Python 3.14.5)
 — confirms no regression anywhere else in the package from wiring a new
 CLI subcommand and a new import into `cli.py`.
 
-**Commit:** pending (this entry is written and will be committed together
-with `nookguard/run_report.py`, the `cli.py` change, and
-`nookguard/tests/test_run_report.py` in the same commit).
+**Commit:** `9587eab`, pushed to `origin/main` (`edfdd0b..9587eab`).
 
 **Unresolved risks:**
 - The three documented gaps against the spec's literal example schema
