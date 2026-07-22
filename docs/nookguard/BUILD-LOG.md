@@ -437,3 +437,121 @@ for the blind observer (role `blind_a`), adversarial observer (role
 role-scoped context bundle (no shared context between them, per Appendix
 C/D and section 46's Definition of Done), consuming the review packs this
 commit now produces for real.
+
+
+## Commit 7: Claude review agents — DONE
+
+**Completed:** 2026-07-21
+
+**Research done before writing any code:** dispatched the `claude-code-
+guide` subagent to get the exact, correct headless-invocation mechanics
+before guessing at CLI flags. Finding that changed the design: the `claude`
+CLI's headless `-p`/`--print` mode does NOT feed local image files into
+vision — its Read tool treats a referenced file path as text, not an image
+(open upstream issue, cited in the subagent's sources). True headless
+vision needs either the separate Claude Agent SDK package (confirmed NOT
+installed in this environment — `pip show claude_agent_sdk` fails) or the
+base Anthropic Messages API directly, which IS installed (`anthropic`
+0.76.0, confirmed via direct import, not assumed). Built the runner around
+the Messages API for that reason — it's also a stronger fit for "session
+separation" than the CLI would have been: a single stateless
+`messages.create()` call with no conversation history and no tools attached
+has no mechanism to leak context between two calls, by construction, not by
+convention.
+
+**Changed (`site/nookguard/`):**
+- `agents/{blind_observer_system_prompt.md, adversarial_observer_system_
+  prompt.md, contract_judge_system_prompt.md}` (new) — the real instruction
+  text each role runs under. Blind observer: inventory only, explicitly
+  told it has no basis for a quality judgment since it wasn't told what was
+  expected. Adversarial observer: same inventory task plus the Appendix C
+  failure taxonomy (unexpected_furniture, material_fusion, duplicated_
+  items, malformed_anatomy_or_hands, impossible_physics, branded_or_
+  readable_text, environment_contradiction, repeated_composition), with an
+  explicit instruction not to invent a defect that isn't there just because
+  it was asked to look hard. Contract judge: told explicitly not to invent
+  evidence beyond what the two observation reports contain, not to produce
+  an overall pass/fail, and not to attempt any `extra_justification`-style
+  override field (schema already rejects it via `extra="forbid"` from
+  Commit 2 — the instructions tell the model this up front so it complies
+  on the first try instead of the call failing schema validation).
+- `agent_runner.py` (new) — `run_observer_session(review_pack, *,
+  executor=...)` and `run_judge_session(contract, spec_sha256,
+  blind_observation, adversarial_observation, *, executor=...)`.
+  `ReviewSessionError` is the section 29.5 "Model JSON invalid or session
+  interrupted -> REVIEW_ERROR" trigger — raised on executor failure OR
+  schema-validation failure, never swallowed into a default result.
+  `_extract_json()` tolerates a markdown code-fenced response despite
+  instructions not to fence it (defensive, since models don't always
+  follow formatting instructions exactly). `agent_definition_hash()`
+  hashes each instruction file's real content into `reviewer_agent_hash`/
+  `judge_agent_hash` — a future edit to any of these three files changes
+  that hash, so a change in review behavior is attributable, not invisible.
+  `_default_executor` is the real Messages API call (model
+  `claude-opus-4-8`, no tools, no conversation history).
+- **Structural (not just documented) enforcement of "the observer never
+  sees the contract":** `run_observer_session()`'s function signature has
+  no parameter through which a contract, prompt, or requirement list could
+  be passed — confirmed by a dedicated test that inspects the real
+  signature (`inspect.signature`), not just a docstring claim. Symmetric
+  check on `run_judge_session()` for image/prompt-text params (the judge
+  reasons over the two structured observation reports plus the contract's
+  requirements, never the image itself, per Appendix D).
+- `pyproject.toml` — added `Pillow`, `gradio_client`, `anthropic` as real
+  `dependencies`. These were already load-bearing imports since Commit 3/5
+  (`stub.py`, `validators/image.py`, `dedup.py`, `adapters/huggingface.py`)
+  but had never actually been declared — a real gap, fixed while adding
+  `anthropic` for this commit rather than left for later.
+- `nookguard/tests/test_agent_runner.py` (new, 18 tests) — 100% network-
+  free via the `executor` injection seam both runner functions expose.
+  Notable: `test_run_observer_session_signature_has_no_contract_parameter`
+  and `test_run_judge_session_signature_has_no_image_parameter` (the
+  structural checks described above), `test_run_observer_session_
+  adversarial_b_instruction_mentions_taxonomy` /
+  `..._blind_a_instruction_has_no_taxonomy_mention` (proves the two
+  observer roles are genuinely instructed differently, not just labeled
+  differently), `test_agent_definition_hash_changes_with_content`,
+  `test_real_agent_definition_files_exist_and_hash` (loads the actual
+  shipped `.md` files, not a fixture — catches a typo'd filename
+  immediately rather than only in a fixture-based test).
+
+**Tests run:** `python -m pytest nookguard/tests -q`
+**Result:** 94 passed, 0 failed, 0 warnings (76 from Commits 2-6 + 18 new).
+Fixed a `PydanticDeprecatedSince211` warning in the new tests (instance-
+level `model_fields` access -> class-level) surfaced during this run rather
+than left as noise, same standard as Commit 6.
+
+**Commit:** `b49020b`, pushed to `origin/main` (`2705ba4..b49020b`).
+
+**Unresolved risks:**
+- `_default_executor` (the real `anthropic.Anthropic().messages.create()`
+  call) has NOT been exercised live in this session — no `ANTHROPIC_API_KEY`
+  was configured or used here, same honest caveat as Commit 5's HF adapter.
+  Everything UP TO the API call boundary is real and tested (prompt
+  construction, image encoding, response parsing, schema validation, error
+  classification); the actual network call itself is unverified until this
+  runs for real the first time. Worth a single real smoke-test session
+  (one observer call against one real quarantined candidate) before this
+  is trusted for a real asset.
+- Model choice (`claude-opus-4-8`) is a judgment call for review-quality
+  reasons (this is exactly the kind of careful, adversarial visual
+  judgment task that benefits from the strongest available model) but is
+  not yet configurable per risk tier — Tier 0 decorative assets probably
+  don't need the same model as Tier 3 brand-critical ones. Worth revisiting
+  once real usage/cost data exists; not a blocker now since image
+  publishing itself is still frozen per Maurice's 2026-07-21 instruction.
+- `run_observer_session`/`run_judge_session` are not yet wired into
+  `cli.py` — no `mediactl observe`/`mediactl judge` subcommands exist yet.
+  That wiring is explicitly Commit 8's job, alongside the section 29.5
+  code aggregator and the owner queue, per Appendix A's split between
+  "Claude agents" (Commit 7, this one) and "Semantic aggregation" (Commit
+  8, next).
+
+**Next:** Commit 8 (Semantic aggregation) — `mediactl observe`/`mediactl
+judge` CLI wiring consuming this commit's runner functions for real
+review packs, plus the code aggregator implementing the section 29.5
+policy table (never a model-asserted pass — code computes SEMANTIC_PASS/
+FAIL/NEEDS_OWNER/etc. from the ContractJudgment's per-requirement results
+and both BlindObservations' forbidden-object findings), plus an owner
+queue for the calibration-sample and disagreement cases the risk-tier
+table (43.1) describes.
