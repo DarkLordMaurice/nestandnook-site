@@ -240,6 +240,30 @@ def test_cannot_register_before_generate():
         assert "Illegal transition" in result["error"]
 
 
+def test_register_without_session_id_returns_graceful_error_not_a_crash(tmp_path):
+    """Regression test for a real bug Commit 13's canary-run uncovered:
+    GenerationAttempt.generator_session_id is a required (non-Optional)
+    str field, so omitting --session-id used to raise a raw, unhandled
+    pydantic ValidationError instead of the module's own stated
+    {"ok": false, "error": ...} contract."""
+    store_root = str(tmp_path / "store")
+    contract_path = tmp_path / "contract.json"
+    contract_path.write_text(json.dumps(SAMPLE_CONTRACT))
+    run_id = "test-run-register-no-session"
+
+    spec = run_cli(["spec-lock", "--store-root", store_root, "--run-id", run_id, "--contract", str(contract_path)])
+    prompt = run_cli(["prompt-compile", "--store-root", store_root, "--run-id", run_id,
+                       "--spec", spec["spec_sha256"]])
+    gen = run_cli(["generate", "--store-root", store_root, "--run-id", run_id,
+                    "--spec", spec["spec_sha256"], "--prompt", prompt["prompt_sha256"], "--adapter", "stub"])
+
+    result = run_cli(["register", "--store-root", store_root, "--run-id", run_id,
+                       "--spec", spec["spec_sha256"], "--prompt", prompt["prompt_sha256"],
+                       "--candidate-sha256", gen["candidate_sha256"], "--adapter-version", gen["adapter_version"]])
+    assert not result["ok"]
+    assert "session-id" in result["error"].lower()
+
+
 def test_generate_dispatches_to_huggingface_adapter(monkeypatch, tmp_path):
     """cmd_generate must actually route to the huggingface adapter module
     (not silently fall back to stub) when --adapter huggingface is passed.
@@ -567,3 +591,75 @@ def test_production_verify_rejects_when_not_released(monkeypatch, tmp_path):
                        "--dist-root", str(tmp_path / "dist")])
     assert not result["ok"]
     assert "Illegal transition" in result["error"]
+
+
+# ---- regression-run / canary-run (Commit 13) ----
+
+def test_regression_run_reports_all_ten_fixtures_passing(tmp_path):
+    result = run_cli(["regression-run", "--store-root", str(tmp_path / "store")])
+    assert result["ok"], result
+    assert len(result["results"]) == 10
+    assert all(r["passed"] for r in result["results"])
+
+
+def test_canary_run_completes_full_pipeline_to_prod_verified(monkeypatch, tmp_path):
+    """The canary is a smoke test of the pipeline's own WIRING: every step
+    calls the real run_cli() entry point, chained exactly like a manual
+    invocation would be. Only the Claude review-agent calls are
+    monkeypatched (same pattern as every other pipeline test in this file)
+    -- Playwright/Pillow/file-copy/hashing all run for real."""
+    import nookguard.cli as cli_module
+    from nookguard.schemas import (
+        BlindObservation,
+        ContractJudgment,
+        PageReviewResult,
+        RequirementJudgment,
+        RequirementResult,
+    )
+
+    def fake_observer(review_pack, **kwargs):
+        return BlindObservation(
+            review_id="r1", candidate_sha256=review_pack.candidate_sha256,
+            review_pack_sha256=review_pack.review_pack_sha256, reviewer_agent_hash="h",
+            reviewer_session_id="s", context_bundle_sha256="cb", observer_role=review_pack.observer_role,
+        )
+
+    def fake_judge(contract, spec_sha256, blind_obs, adversarial_obs, **kwargs):
+        return ContractJudgment(
+            candidate_sha256=blind_obs.candidate_sha256, spec_sha256=spec_sha256,
+            judge_session_id="j", judge_agent_hash="h", context_bundle_sha256="cb",
+            requirements=[RequirementJudgment(requirement_id="r1", result=RequirementResult.TRUE,
+                                               evidence_observation_ids=["obs1"])],
+        )
+
+    def fake_page_reviewer(contact_sheet_path, page_url, viewports_captured, **kwargs):
+        return PageReviewResult(
+            page_url=page_url, viewports_reviewed=viewports_captured,
+            review_session_id="prs-canary", reviewer_agent_hash="h", context_bundle_sha256="cb", issues=[],
+        )
+
+    monkeypatch.setattr(cli_module, "run_observer_session", fake_observer)
+    monkeypatch.setattr(cli_module, "run_judge_session", fake_judge)
+    monkeypatch.setattr(cli_module, "run_page_review_session", fake_page_reviewer)
+
+    result = run_cli(["canary-run", "--store-root", str(tmp_path / "store"), "--run-id", "canary-test"])
+    assert result["ok"], result
+    assert result["candidate_sha256"]
+    assert result["release_manifest_sha256"]
+    step_names = [s["command"] for s in result["steps"]]
+    assert step_names == [
+        "spec-lock", "prompt-compile", "generate", "register", "validate", "review-pack-build",
+        "observe", "judge", "integrate", "preview-capture", "preview-review", "release",
+        "production-verify",
+    ]
+    assert all(s["ok"] for s in result["steps"])
+
+
+def test_canary_run_reports_which_step_failed(tmp_path):
+    """No monkeypatching here -- the real run_observer_session will fail
+    (no Anthropic credentials in this environment), and the canary must
+    report exactly where it stopped, not a generic failure."""
+    result = run_cli(["canary-run", "--store-root", str(tmp_path / "store"), "--run-id", "canary-fail-test"])
+    assert not result["ok"]
+    assert "canary failed at" in result["error"]
+    assert len(result["steps"]) >= 1

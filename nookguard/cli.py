@@ -47,6 +47,7 @@ from .preview import PageCaptureReport
 from .preview_aggregator import aggregate_preview
 from .production_verifier import verify_production
 from .prompt_compiler import compile_prompt
+from .regression_corpus import run_regression_corpus
 from .release import ReleaseIntegrityError, publish_candidate
 from .review_pack import OBSERVER_ROLES, build_review_pack
 from .schemas import AssetContract, GenerationAttempt
@@ -210,6 +211,17 @@ def cmd_generate(args: argparse.Namespace) -> dict[str, Any]:
 
 
 def cmd_register(args: argparse.Namespace) -> dict[str, Any]:
+    # GenerationAttempt.generator_session_id is a required (non-Optional)
+    # str field (schemas.py) -- unlike most other commands, --session-id
+    # isn't cosmetic here. A caller that omits it used to hit a raw,
+    # unhandled pydantic ValidationError, violating this module's own
+    # stated contract ("commands never raise on expected/business-logic
+    # failures"). Caught by Commit 13's canary-run, whose register step
+    # was the first caller in this codebase to ever omit --session-id.
+    if not args.session_id:
+        return {"ok": False, "error": "register requires --session-id (GenerationAttempt.generator_session_id "
+                                       "is a required field, not cosmetic)"}
+
     root = Path(args.store_root)
     store, ledger = _store(root), _ledger(root)
     try:
@@ -609,6 +621,159 @@ def cmd_production_verify(args: argparse.Namespace) -> dict[str, Any]:
     return {"ok": True, "asset_id": contract.asset_id, "result": result.state.value, "reason": result.reason}
 
 
+def cmd_regression_run(args: argparse.Namespace) -> dict[str, Any]:
+    """Appendix A's "historical fixtures, expected labels": runs the full
+    Appendix I regression corpus (10 named real-incident fixtures spanning
+    aggregate(), off_the_clock_schema, and production_verifier) and returns
+    a per-fixture pass/fail plus an overall verdict. `ok: false` on any
+    regressed fixture -- via mediactl's own main(), that's a nonzero exit
+    code, so this can gate CI exactly like content-lint already does."""
+    base = Path(args.tmp_root) if args.tmp_root else Path(args.store_root) / "_regression_tmp"
+    base.mkdir(parents=True, exist_ok=True)
+
+    def tmp_dir_factory(name: str) -> Path:
+        d = base / name
+        d.mkdir(parents=True, exist_ok=True)
+        return d
+
+    report = run_regression_corpus(tmp_dir_factory)
+    return {
+        "ok": report.all_passed,
+        "results": [
+            {"fixture_id": r.fixture_id, "description": r.description, "category": r.category,
+             "expected_state": r.expected_state, "actual_state": r.actual_state, "passed": r.passed,
+             "detail": r.detail}
+            for r in report.results
+        ],
+    }
+
+
+_CANARY_ASSET_ID = "canary-known-clean"
+
+
+def _canary_contract_dict() -> dict[str, Any]:
+    return {
+        "asset_id": _CANARY_ASSET_ID, "project_id": "nest-and-nook", "page_id": "canary",
+        "slot_id": "canary", "media_type": "image", "risk_tier": "tier_0_decorative",
+        "page_type_contract_version": "1", "source_excerpt": "canary release payload",
+        "source_excerpt_sha256": "canary", "canonical_reference_bundle_sha256": "canary",
+        "subject": "Winnie", "action": "holding a tape measure", "scene": "office",
+        "planner_session_id": "canary-planner", "plan_evaluator_session_id": "canary-evaluator",
+        "requirements": [
+            {"requirement_id": "r1", "type": "count", "statement": "exactly 1 tape measure visible",
+             "critical": True}
+        ],
+        "forbidden_objects": [],
+    }
+
+
+def cmd_canary_run(args: argparse.Namespace) -> dict[str, Any]:
+    """Appendix A's "canary release": runs the FULL pipeline end-to-end --
+    spec-lock through production-verify -- for a fixed, version-controlled
+    "known clean" payload (the same fixture as the regression corpus's
+    control case). If this stops passing, something broke in the
+    pipeline's own wiring, independent of any real content.
+
+    Every step below calls `run_cli()`, the exact same entry point a
+    manual `mediactl` invocation or a real CI job uses -- a canary pass is
+    genuine evidence the real commands still chain together correctly, not
+    a separate/fake code path built just for this check."""
+    steps: list[dict[str, Any]] = []
+
+    def do(argv: list[str]) -> dict[str, Any]:
+        result = run_cli(argv)
+        steps.append({"command": argv[0], "ok": result.get("ok", False)})
+        return result
+
+    common = ["--store-root", args.store_root, "--run-id", args.run_id or "canary",
+              "--actor-role", "canary", "--project-root", args.project_root]
+
+    store_root = Path(args.store_root)
+    store_root.mkdir(parents=True, exist_ok=True)
+    contract_path = store_root / "_canary_contract.json"
+    contract_path.write_text(json.dumps(_canary_contract_dict()), encoding="utf-8")
+
+    spec = do(["spec-lock", *common, "--contract", str(contract_path)])
+    if not spec["ok"]:
+        return {"ok": False, "error": "canary failed at spec-lock", "steps": steps, "detail": spec}
+
+    prompt = do(["prompt-compile", *common, "--spec", spec["spec_sha256"]])
+    if not prompt["ok"]:
+        return {"ok": False, "error": "canary failed at prompt-compile", "steps": steps, "detail": prompt}
+
+    gen = do(["generate", *common, "--spec", spec["spec_sha256"], "--prompt", prompt["prompt_sha256"],
+              "--adapter", "stub"])
+    if not gen["ok"]:
+        return {"ok": False, "error": "canary failed at generate", "steps": steps, "detail": gen}
+    candidate_sha = gen["candidate_sha256"]
+
+    reg = do(["register", *common, "--spec", spec["spec_sha256"], "--prompt", prompt["prompt_sha256"],
+              "--candidate-sha256", candidate_sha, "--adapter-version", gen["adapter_version"],
+              "--session-id", "canary-generator"])
+    if not reg["ok"]:
+        return {"ok": False, "error": "canary failed at register", "steps": steps, "detail": reg}
+
+    val = do(["validate", *common, "--candidate-sha256", candidate_sha])
+    if not val["ok"] or val.get("result") != "technical_pass":
+        return {"ok": False, "error": "canary failed at validate", "steps": steps, "detail": val}
+
+    pack = do(["review-pack-build", *common, "--candidate-sha256", candidate_sha])
+    if not pack["ok"]:
+        return {"ok": False, "error": "canary failed at review-pack-build", "steps": steps, "detail": pack}
+
+    obs = do(["observe", *common, "--candidate-sha256", candidate_sha])
+    if not obs["ok"]:
+        return {"ok": False, "error": "canary failed at observe", "steps": steps, "detail": obs}
+
+    judge = do(["judge", *common, "--candidate-sha256", candidate_sha])
+    if not judge["ok"] or judge.get("result") != "semantic_pass":
+        return {"ok": False, "error": "canary failed at judge", "steps": steps, "detail": judge}
+
+    integ = do(["integrate", *common, "--candidate-sha256", candidate_sha])
+    if not integ["ok"]:
+        return {"ok": False, "error": "canary failed at integrate", "steps": steps, "detail": integ}
+
+    page_url = args.canary_page_url
+    if not page_url:
+        page_path = store_root / "_canary_page.html"
+        page_path.write_text("<html><body><h1>Canary page</h1></body></html>", encoding="utf-8")
+        page_url = page_path.resolve().as_uri()
+
+    cap = do(["preview-capture", *common, "--candidate-sha256", candidate_sha, "--page-url", page_url])
+    if not cap["ok"]:
+        return {"ok": False, "error": "canary failed at preview-capture", "steps": steps, "detail": cap}
+
+    rev = do(["preview-review", *common, "--candidate-sha256", candidate_sha])
+    if not rev["ok"] or rev.get("result") != "preview_review_pass":
+        return {"ok": False, "error": "canary failed at preview-review", "steps": steps, "detail": rev}
+
+    public_root = store_root / "_canary_public"
+    public_dir = public_root / "winnie"
+    rel = do(["release", *common, "--candidate-sha256", candidate_sha, "--public-dir", str(public_dir),
+              "--public-url-prefix", "/winnie", "--name-hint", "canary"])
+    if not rel["ok"]:
+        return {"ok": False, "error": "canary failed at release", "steps": steps, "detail": rel}
+
+    # Simulate a real `astro build` having copied the released file into
+    # dist/ verbatim, so production-verify's real local-build code path
+    # gets exercised without requiring an actual Astro build in this
+    # smoke-test context.
+    dist_root = store_root / "_canary_dist"
+    released_file = Path(rel["public_path"])
+    relative = released_file.resolve().relative_to(public_root.resolve())
+    dist_target = dist_root / relative
+    dist_target.parent.mkdir(parents=True, exist_ok=True)
+    dist_target.write_bytes(released_file.read_bytes())
+
+    verify = do(["production-verify", *common, "--candidate-sha256", candidate_sha,
+                 "--public-root", str(public_root), "--dist-root", str(dist_root)])
+    if not verify["ok"] or verify.get("result") != "prod_verified":
+        return {"ok": False, "error": "canary failed at production-verify", "steps": steps, "detail": verify}
+
+    return {"ok": True, "steps": steps, "candidate_sha256": candidate_sha,
+            "release_manifest_sha256": rel["release_manifest_sha256"]}
+
+
 def _content_lint_one(file_path: Path) -> dict[str, Any]:
     try:
         report = lint_off_the_clock_file(str(file_path))
@@ -740,6 +905,18 @@ def build_parser() -> argparse.ArgumentParser:
     verify_group.add_argument("--dist-root")
     verify_group.add_argument("--live-url")
     p.set_defaults(func=cmd_production_verify)
+
+    p = sub.add_parser("regression-run"); _common(p)
+    p.add_argument("--tmp-root", default=None,
+                    help="Real writable dir for the two filesystem-backed fixtures. Defaults to a "
+                         "subdirectory under --store-root.")
+    p.set_defaults(func=cmd_regression_run)
+
+    p = sub.add_parser("canary-run"); _common(p)
+    p.add_argument("--canary-page-url", default=None,
+                    help="Real URL for preview-capture to screenshot. Defaults to a minimal local "
+                         "HTML file generated under --store-root.")
+    p.set_defaults(func=cmd_canary_run)
 
     p = sub.add_parser("content-lint")
     group = p.add_mutually_exclusive_group(required=True)
