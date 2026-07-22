@@ -907,3 +907,179 @@ provide.
   part that's genuinely verified end-to-end this commit.
 
 **Next:** Commit 11 (CI isolation) — per Appendix A.
+
+---
+
+## Commit 11: CI isolation — DONE
+
+**Completed:** 2026-07-22
+
+**Research done before writing any code:** dispatched a `claude-code-guide`
+subagent to confirm real Claude Code hook mechanics (which events can
+actually block a tool call, the exact stdin JSON schema per tool, the exact
+block-signaling output), since Appendix G says to enforce H001-H010 "via
+Claude Code project hooks" and a wrong assumption here would mean the
+hooks silently never fire — a worse failure mode than a wrong assumption
+that pytest would catch. The subagent's summary of the deny-JSON shape
+turned out subtly wrong (flat `{"permissionDecision": "deny", ...}`), so
+the real hooks reference (code.claude.com/docs/en/hooks) was fetched and
+read directly to get the correct nested shape
+(`{"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision":
+"deny", "permissionDecisionReason": "..."}}`) and the exact `tool_input`
+field names per tool (Bash: `command`; Write: `file_path`+`content`; Edit:
+`file_path`+`old_string`+`new_string`+`replace_all`) — a concrete example of
+why this project's "research before code, don't trust a paraphrase" habit
+exists.
+
+**Changed:**
+- `nookguard/hooks.py` (new) — pure, unit-testable policy functions
+  implementing 6 of Appendix G's 10 hook rules: `check_write_edit_protected_path`
+  (H001 — denies raw Write/Edit into `nookguard_store/`, which is content-
+  addressed and state-machine-owned by `store.py`; the deny reason names
+  the real `mediactl` subcommand to use instead), `check_bash_generation_endpoint`
+  (H002 — denies a Bash command that looks like it invokes a generation
+  endpoint directly, using paired markers like `gradio_client` + `.predict(`
+  rather than a bare package name, so `pip install gradio_client` is never
+  false-flagged; suppressed entirely when `mediactl` or `pytest` appear in
+  the command), `check_bash_blanket_git_add` (H003 — denies `git add -A`/
+  `--all`/bare `.`, mechanically enforcing the standing main-CLAUDE.md rule
+  instead of leaving it as prose), `check_bash_production_branch` (H004 —
+  denies Bash targeting the `production` branch; the "unless CI release
+  role token" exception from Appendix G is NOT implemented, since no
+  release-role concept exists yet — see Unresolved risks), `check_write_existing_media_overwrite`
+  (H008 — denies a Write that would overwrite an already-existing file
+  under a published media directory like `public/winnie/`), and
+  `check_content_lint_on_edit` (H009 — for a Write or Edit touching a `.md`
+  file, simulates the hypothetical POST-edit content — current on-disk text
+  with the Edit's `old_string`/`new_string` applied, or the Write's
+  `content` directly — and runs the real `off_the_clock_schema.lint_off_the_clock_page`
+  against it, catching a legacy-component or broken-photo-strip regression
+  before it lands rather than after a separate `content-lint` run notices
+  it). `evaluate_pretooluse()` is the single dispatch entry point.
+- `.claude/hooks/pretooluse.py` (new) — thin wrapper implementing the real
+  Claude Code command-hook contract: reads `tool_name`/`tool_input` JSON on
+  stdin, calls `evaluate_pretooluse()`, prints the deny JSON (or stays
+  silent) and always exits 0 (JSON-decision path, not the exit-2 path,
+  since it gives a structured reason string instead of only a stderr line).
+  Deliberately kept free of policy logic — everything meaningful is in
+  `nookguard/hooks.py` where pytest can reach it.
+- `.claude/settings.json` (new) — registers the wrapper for the
+  `Bash|Write|Edit` matcher group, using exec form (`command: "python"`,
+  `args: [...]`) rather than shell form, per the docs' own guidance that
+  exec form avoids Windows quoting issues and works identically across
+  platforms (relevant here since this project runs the hook locally on
+  Windows via Desktop Commander and, once CI exercises it, on a Linux
+  runner too — though CI does not currently invoke live Claude Code hooks,
+  see Unresolved risks).
+- `.github/workflows/nookguard-ci.yml` (new) — real GitHub Actions
+  workflow, triggered on push/PR to `main` touching `nookguard/**`,
+  `pyproject.toml`, `src/content/blog/**`, or the workflow file itself.
+  `permissions: contents: read` only (Appendix A's "permissions" item —
+  least-privilege by default, no write access granted since this workflow
+  only reads the repo and uploads artifacts). Steps: checkout, Python 3.11
+  setup, `pip install -e ".[dev]"`, `playwright install --with-deps
+  chromium` (real Chromium binary, since `test_preview.py` does real
+  browser rendering, not a mock), `pytest nookguard/tests -q --junitxml=...`,
+  `actions/upload-artifact@v4` for the JUnit XML (Appendix A's "artifacts"
+  item, `if: always()` so a failing run still uploads results), and a
+  final `mediactl content-lint --dir src/content/blog` gate step — this
+  closes the "content-lint isn't wired into any real build step yet" gap
+  flagged as an unresolved risk in both Commit 9's and Commit 10's
+  BUILD-LOG entries; `mediactl` already exits nonzero on `{"ok": false}`
+  (see `cli.py`'s `main()`), so no extra plumbing was needed to make a
+  lint failure fail the CI job.
+- `pyproject.toml` — added `playwright>=1.40` to `dependencies`. This was a
+  real, previously-unnoticed gap: Commit 10 added genuine Playwright usage
+  in `nookguard/preview.py`, but nothing ever added `playwright` to the
+  package's own declared dependencies, so a clean environment following
+  only `pip install -e .` (exactly what the new CI workflow does) would
+  have failed to import it. Caught while writing the CI workflow, not by
+  pytest, since this local environment already had `playwright` installed
+  from Commit 10's own verification work — a clean-environment gap pytest
+  running in an already-populated environment can't catch on its own.
+- `nookguard/tests/test_hooks.py` (new, 42 tests) — exhaustive per-rule
+  coverage of every `nookguard/hooks.py` function, including explicit
+  false-positive regression tests (`git add .github/workflows/x.yml` must
+  NOT trigger H003's blanket-staging check; `pip install gradio_client`
+  must NOT trigger H002's generation-endpoint check; editing
+  `nookguard/hooks.py` itself must NOT trigger H001's protected-store
+  check) — these exist because a hook that's too aggressive is its own
+  failure mode, not just one that's too permissive.
+
+**H001-H010 coverage — what's implemented here vs. genuinely out of scope:**
+- H001, H002, H003, H004, H008, H009 — real Python logic in `nookguard/hooks.py`,
+  wired to fire via a genuine `.claude/settings.json` PreToolUse hook.
+- H006 ("Reviewer session attempts Write/Edit/Bash → Deny and invalidate
+  review session") — NOT new hook code. Already structurally impossible:
+  `agent_runner.py`'s `_default_executor()` (Commit 7) calls the Anthropic
+  Messages API with no `tools` parameter attached at all, so a reviewer
+  session has no mechanism through which it could even attempt a tool
+  call. This is enforcement by absence, which is stronger than a hook that
+  has to detect and block an attempt after the fact.
+- H007 ("Prompt compile includes superseded source → Fail compile") — NOT
+  new hook code. Already real code enforcement via `StaleCanonError` in
+  `canon.py`/`prompt_compiler.py` (Commit 4), caught by `cli.py`'s
+  `cmd_prompt_compile`. Not a Claude Code hook rule at all, structurally —
+  it's a compile-time check inside `mediactl` itself.
+- H005 ("Stop with claimed nonterminal job → Block stop, return next
+  required command") and H010 ("Run report contains unsupported completion
+  claim → Fail report validation") — genuinely NOT implemented this
+  commit. The research step surfaced a real, documented limitation: Stop-
+  hook blocking behavior is explicitly undocumented/unconfirmed in the
+  official Claude Code reference (third-party sources claim exit-code-2
+  forces continuation, but Anthropic's own docs don't confirm it), and both
+  rules require inspecting session-transcript state (what was actually
+  claimed, what the real NookGuard state machine says is true) rather than
+  a single tool call's arguments — a materially bigger, higher-risk build
+  than H001-H004/H008/H009's per-call checks. Building something on an
+  undocumented mechanism I can't verify fires correctly, for a project
+  whose whole premise is "don't claim done without evidence," would be the
+  exact failure mode this project exists to prevent. Deferred, not
+  forgotten — flagged here explicitly per Appendix M's own instruction not
+  to silently under-scope a commit.
+
+**Verification done (real, not just pytest):** beyond the unit test suite,
+the actual `.claude/hooks/pretooluse.py` wrapper script was invoked as a
+real subprocess (via Desktop Commander) with realistic stdin JSON for three
+cases — a denied `git add -A`, an allowed `npm run build`, and a denied
+Write into `nookguard_store/` — and its stdout/exit code matched the
+documented contract exactly in all three cases. What remains genuinely
+unverified in this session is narrower than "does the hook work" — it's
+specifically whether Claude Code's own hook runtime, inside this exact
+Cowork/Agent-SDK environment, actually invokes the wrapper per the
+`.claude/settings.json` registration during a live session (the research
+step flagged that hook behavior "may differ" between the CLI and SDK
+usage). That live-firing question needs a human-observed test inside an
+active session, not something provable from inside the session generating
+the code.
+
+**Tests run:** `python -m pytest nookguard/tests -q`
+**Result:** 229 passed, 0 failed, 0 warnings (187 from Commits 2-10 + 42
+new).
+
+**Commit:** `95847b5`, pushed to `origin/main` (`4c056ee..95847b5`).
+
+**Unresolved risks:**
+- H005 and H010 are not implemented — see above. Revisit if Maurice wants
+  them specifically, with a concrete plan for verifying Stop-hook behavior
+  live rather than trusting undocumented third-party claims.
+- H004's "unless CI release role token" exception doesn't exist yet — the
+  hook denies ALL production-branch Bash operations unconditionally. Once
+  Commit 12 (Release integrity) defines a real release-role/token concept,
+  H004 should be revisited to allow the sanctioned exception through.
+- Whether `.claude/settings.json`'s hook registration actually fires
+  inside this Cowork/Agent-SDK session (as opposed to the raw Claude Code
+  CLI the docs are written for) is unconfirmed — see "Verification done"
+  above. The policy logic and the wrapper script are both real and tested;
+  only the live end-to-end firing inside this exact environment is open.
+- The GitHub Actions workflow itself has not run on GitHub's real runners
+  yet — it was written directly against the real, verified hooks/Actions
+  documentation and the workflow's own steps (`pip install -e ".[dev]"`,
+  `playwright install --with-deps chromium`, `pytest --junitxml`,
+  `mediactl content-lint`) were each individually verified to work in this
+  local environment, but the first real CI run (triggered by this commit's
+  own push to `main`) is the actual proof; check the Actions tab on
+  `github.com/DarkLordMaurice/nestandnook-site` to confirm it went green
+  before treating this as fully closed.
+
+**Next:** Commit 12 (Release integrity) — per Appendix A.
