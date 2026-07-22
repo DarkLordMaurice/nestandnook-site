@@ -1621,3 +1621,238 @@ Windows Node v24.16.0)
 
 **Next:** Commit 16 (Access-protected Astro dashboard) — the last item in
 the Commit 14+ backend series, reading from this Worker's D1 + R2 APIs.
+
+---
+
+## Commit 16: Access-protected owner-queue dashboard — DONE
+
+**Completed:** 2026-07-22
+
+**Scope:** the last item in the Commit 14+ backend series (Appendix A row
+14+; Appendix K's "Backend" and "Dashboard" deliverable rows). Closes out
+the series — Commit 17+ (if any) would be a genuinely new phase, not a
+continuation of "build the backend."
+
+**Research before code, per Appendix M's own instruction not to redesign
+around convenience:** read the docx pages for Appendix E ("Owner Decision
+Packet") and Appendix J ("Operational Runbook") in full before writing any
+schema, since SPEC.md only ever named them in a summary sentence and never
+condensed their actual content (confirmed via `grep -rniE
+"owner.?decision.?packet"` across the whole repo returning zero hits
+before this commit). Also ran a targeted subagent search of
+`nookguard/owner_queue.py` (Python, already existed since before this
+commit, wired into `cmd_judge`) to confirm its exact real field names
+before designing the D1 table — the subagent's report: a JSON-file-backed
+`OwnerQueue` class with `enqueue`/`list_pending`/`resolve`, fields
+`asset_id, candidate_sha256, reasons, risk_tier, result_state, status,
+queued_at, resolved_at, resolved_by, decision`, explicitly self-documented
+as "a TRACKING/VISIBILITY mechanism, not a publish gate," with no CLI
+command to list or resolve entries and no Pydantic schema. The new
+`owner_queue` D1 table (below) reproduces every one of those fields under
+the same name, so a future cutover doesn't have to rename anything, and
+adds exactly what Appendix E's own table has that the Python side didn't
+yet: `question`, `requirement_id`, `evidence_json`, `consequences_json`.
+
+**Changed — nookguard-worker (D1 + Worker API):**
+- `nookguard-worker/migrations/0002_owner_queue.sql` (new) — the
+  `owner_queue` table (see file's own comment for the full field-by-field
+  reasoning above), plus two indices (`status`, `candidate_sha256`).
+  Appendix E's "Options" row (the five valid decisions) is explicitly NOT
+  a schema constraint — enforced in application code instead, matching
+  Appendix H's already-established "enforce in Worker transaction, not in
+  schema" pattern. Appendix E's "No persuasion" row is explicitly NOT
+  enforced anywhere — flagged as a genuine, unclosable-by-code gap in
+  "Unresolved risks," not silently ignored.
+- `nookguard-worker/src/enforce.mjs` — added `OWNER_DECISION_OPTIONS`
+  (the five Appendix E values: `approve_exact_hash`, `reject`,
+  `revise_spec`, `regenerate`, `defer`) and
+  `isValidOwnerDecisionOption()`, same pure-function pattern as the
+  existing two rules.
+- `nookguard-worker/src/ownerQueue.mjs` (new) — `enqueueOwnerDecision`,
+  `listOwnerDecisions` (status: pending/resolved/all), `getOwnerDecision`,
+  `resolveOwnerDecision`. Same D1 dependency-injection pattern as
+  `db.mjs`. `enqueueOwnerDecision` checks the same FK-in-application-code
+  invariant as `insertReview` (candidate_sha256 must reference a real
+  `generation_attempts` row). `resolveOwnerDecision` rejects resolving an
+  already-resolved entry a second time (409) — a decision packet is acted
+  on once, matching section 27's "no fix in place" philosophy applied to
+  a new context.
+- `nookguard-worker/src/access.mjs` (new) — real Cloudflare Access JWT
+  verification: RS256 signature check via Web Crypto
+  (`crypto.subtle.importKey`/`.verify`), audience check, expiry check.
+  Deliberately fails OPEN (`{ ok: true, skipped: true }`) when no
+  `audience` is configured — this Worker has no live Access application
+  yet (same standing gap as D1/R2 provisioning), so requiring a JWT
+  unconditionally would make every route permanently unusable rather than
+  reflecting the honestly-open state already documented in Commits 14/15.
+  Becomes mandatory and fails CLOSED (401) once `env.ACCESS_AUD` is a
+  real, non-empty value.
+- `nookguard-worker/src/router.mjs` — added `POST /owner_queue`,
+  `GET /owner_queue?status=`, `POST /owner_queue/:entry_id/resolve` (the
+  one route gated behind `verifyAccessJwt` — the only human-triggered
+  write action in the whole Worker, per Appendix J: "Maurice can see and
+  resolve only the owner queue from the private dashboard"). Also added
+  CORS handling (`OPTIONS` preflight, `access-control-allow-*` headers on
+  every response) for the dashboard's cross-origin local-dev case — see
+  README "Deployment topology" for why this isn't the primary security
+  mechanism for the real deployed system. **A real security fix made
+  during this commit, not left for later:** the resolve handler
+  originally would have trusted a client-supplied `resolved_by` field
+  even when Access was configured and verified — fixed so that when
+  Access verification actually ran (not skipped), the verified JWT's own
+  `email` claim overrides whatever `resolved_by` the client sent,
+  preventing anyone who can reach the route from claiming to be Maurice.
+  Proven by a real test asserting the persisted record's `resolved_by`
+  matches the JWT's email, not the spoofed body value it was sent
+  alongside.
+- `nookguard-worker/src/index.mjs` — now wires `accessAudience:
+  env.ACCESS_AUD` and a real `jwksFetcher` (fetching
+  `https://<ACCESS_TEAM_DOMAIN>/cdn-cgi/access/certs`, only constructed
+  when `env.ACCESS_TEAM_DOMAIN` is set) into `routeRequest`.
+- `nookguard-worker/wrangler.toml` — added the Access config as a
+  **commented-out** `[vars]` block, not placeholder strings. **A second
+  real bug caught and fixed before it shipped:** the first draft set
+  `ACCESS_AUD = "REPLACE_WITH_REAL_..."` as an actual (placeholder)
+  value — but `access.mjs` treats ANY truthy `audience` as "verification
+  required," so a literal placeholder string would have silently 401'd
+  every resolve request forever once deployed, looking configured
+  without being configured, which is worse than the genuinely-open
+  default already documented since Commits 14/15. Caught by re-reading
+  my own comment against my own code's actual `if (!audience)` check
+  before moving on, not by a test (there's no test that deploys this
+  literal file) — worth noting as a real instance of the standing "verify
+  claims against actual behavior" discipline catching a self-authored bug
+  in configuration, not just in code.
+- `nookguard-worker/tests/fakeD1.mjs` — changed from loading a single
+  hardcoded `0001_init.sql` path to loading every `migrations/*.sql` file
+  in sorted filename order, matching how `wrangler d1 migrations apply`
+  itself works. Necessary the moment a second migration file existed.
+- `nookguard-worker/tests/fakeR2.mjs`, `tests/testJwt.mjs` (new) — the
+  latter mints real RS256 JWTs via Web Crypto
+  (`crypto.subtle.generateKey`/`.sign`) against a self-generated test
+  keypair, so `access.test.mjs` exercises genuine cryptographic
+  verification, not a stub. Honestly caveated (file's own comment): this
+  proves the verification algorithm is correct, not that a real
+  Cloudflare-issued token verifies against this code — that needs a live
+  Access application.
+- `nookguard-worker/tests/{access,ownerQueue}.test.mjs` (new),
+  `tests/{enforce,db,router}.test.mjs` (modified) — 29 new tests: 9 for
+  `access.mjs` (skip-when-unconfigured, missing header, valid token,
+  wrong audience, expired token, wrong-key signature failure, unknown
+  kid, malformed token, unsupported alg), 11 for `ownerQueue.mjs`
+  (round trip, missing fields, FK check, duplicate entry_id, status
+  filtering, successful resolve with consequences, invalid decision
+  option, unknown entry_id, double-resolve rejection, missing resolve
+  fields, all five options individually accepted), 2 for
+  `isValidOwnerDecisionOption`, 1 fixed stale assertion in `db.test.mjs`
+  (the "creates all three tables" test needed updating to four once
+  `owner_queue` existed), 6 new router-level HTTP tests covering
+  `/owner_queue` end to end including the Access-configured-vs-not paths
+  and CORS.
+- `nookguard-worker/README.md` — scope/layout/unresolved-risks sections
+  updated to describe Commit 16 alongside 14/15.
+
+**Changed — nookguard-dashboard (new sibling Astro project):**
+- `nookguard-dashboard/` (new package: `package.json`, `astro.config.mjs`,
+  `src/pages/index.astro`, `.env.example`, `README.md`). A deliberately
+  **separate** Astro project from `nestandnook-site`, not a route folded
+  into the public site — see `astro.config.mjs`'s own comment: mixing an
+  internal owner-decision dashboard into the same deploy as fully public
+  marketing content means an Access misconfiguration on one path could
+  expose the other. `astro` is a real `dependency`, not `devDependency`
+  (same environment `omit=dev` fix already applied in `nookguard-worker`
+  and the main site).
+- `src/pages/index.astro` — the entire real UI in one file: a static
+  shell (this is a static-build Astro project, same model as the main
+  site — no SSR) plus a client-side `<script>` that fetches
+  `/owner_queue` from the Worker, renders each pending entry (question,
+  asset/candidate IDs, risk tier, result state, reasons as tags, evidence
+  in a `<details>` block), and posts resolutions through the five
+  Appendix E options plus a consequences summary and permanence field.
+  `WORKER_BASE_URL` defaults to `/api` (same-origin, relative) rather
+  than an absolute cross-origin URL — see README "Deployment topology"
+  for the real reasoning: same-origin means the browser's Access session
+  cookie and Cloudflare's edge-attached `Cf-Access-Jwt-Assertion` header
+  both just work without CORS/cross-site-cookie complexity, which is why
+  the recommended real deployment routes the Worker at a path
+  (`admin.nestandnook.org/api/*`) under the same Access-protected
+  hostname as the dashboard, not as its own separate origin.
+- `.github/workflows/nookguard-dashboard-ci.yml` (new) — path-scoped,
+  least-privilege, `npm install && npm run build` (real `astro build`,
+  the meaningful gate here since this package has no unit-testable logic
+  of its own — everything it calls is already covered by
+  `nookguard-worker-ci.yml`).
+- `README.md` — the honest, still-open manual steps to make "Access-
+  protected" real (Pages project, Access application, route rule), the
+  identity-flow explanation (JWT email → `resolved_by`, matching the
+  security fix above), and unresolved risks.
+
+**A real, checkable "clean run" for the exit criteria (Appendix M: "do not
+claim completion before the phase exit criteria are demonstrated"):**
+```
+npm install --no-audit --no-fund   # 329 packages, ~15s, no errors
+npm run build                       # astro build
+```
+produced real output: `dist/index.html`, 10,678 bytes, confirmed present
+via `Get-ChildItem`/`Get-Content` after the build, not assumed from the
+build log alone.
+
+**Tests run:** `node --test tests/*.test.mjs` (nookguard-worker, Desktop
+Commander, real Windows Node v24.16.0) + `npm run build`
+(nookguard-dashboard, same environment)
+**Result:** 69 passed, 0 failed (40 from Commits 14-15 + 29 new). Dashboard
+build: 1 page built, 0 errors.
+
+**Commit:** `7441005`, pushed to `origin/main` (`308ca2a..7441005`).
+
+**Unresolved risks:**
+- **No live Cloudflare account access in this sandbox** — same standing
+  category as every prior commit in this series. No Pages project, no
+  Access application, no route rule connecting a real deployed dashboard
+  to a real deployed Worker exists. Both packages are tested/built code
+  only, not deployed services.
+- **No end-to-end browser test of the dashboard against a real or
+  Miniflare-emulated Worker.** `astro build` producing real static output
+  is verified; a human clicking through an actual resolve flow in a real
+  browser against a running backend is not, and can't be from this
+  sandbox (no Chrome/Playwright wired to a running `astro preview` +
+  `wrangler dev` pair was attempted).
+- **Appendix E's "No persuasion" row is not mechanically enforced** —
+  there is no reliable code-level test for "is this text persuasive."
+  Documented as a genuine, permanent gap in both the migration file's
+  comment and the README, not silently assumed solved.
+- **`resolved_by` is a trusted client value whenever Access is not yet
+  configured** (i.e., today, on every route, matching Commits 14/15's
+  existing "no authentication" gap) — the dashboard sends an explicit
+  placeholder string (`dashboard-unauthenticated-fallback`) rather than a
+  real name specifically to keep this honest in the persisted record
+  until Access is actually wired up.
+- **No pagination/sorting/search on the dashboard's entries list** — a
+  real gap if the owner queue ever grows past the volumes NookGuard's own
+  paced-publishing constraints imply for the near term.
+- **Neither `nookguard/owner_queue.py` (Python) nor `nookguard/ledger.py`
+  nor the generation adapter's local quarantine writes have been cut
+  over** to call this Worker. All three remain fully local, unchanged —
+  the entire Commit 14+ backend series (D1, R2, this dashboard) is real,
+  tested, and currently unused parallel infrastructure until a future
+  commit wires the Python CLI to call it instead of writing local files.
+  This is the single biggest standing gap across all four commits in this
+  series and is worth stating plainly here, not just per-commit: nothing
+  in the actual daily NookGuard pipeline talks to any of this yet.
+
+**Next:** the Commit 14+ backend/dashboard series (Appendix A row 14+) is
+now complete — D1 (14), R2 (15), and the Access-protected dashboard (16)
+all exist as real, tested code. What remains, not yet scoped as a
+numbered commit: (1) the Python↔Worker cutover named as the single
+biggest gap above, (2) the live Cloudflare provisioning steps documented
+in both packages' READMEs, (3) Appendix M's "complete report" aggregating
+run ID/site commit/release manifest hash/deployment ID/production
+verification/regression result/evidence index into one document (flagged
+as buildable-but-not-built since Commit 13). Per Appendix M's own
+framing, this project's core promise — "a canary asset travels from
+locked contract through fresh Claude reviews, typed page integration,
+staging, release manifest, Cloudflare deployment, and exact public byte
+verification, while every historical critical regression is correctly
+rejected" — was already demonstrated in Commit 13; everything in the
+14-16 series is real but genuinely supplementary operational tooling on
+top of that already-proven core.
