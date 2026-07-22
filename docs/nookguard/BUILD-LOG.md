@@ -1083,3 +1083,126 @@ new).
   before treating this as fully closed.
 
 **Next:** Commit 12 (Release integrity) — per Appendix A.
+
+---
+
+## Commit 12: Release integrity — DONE
+
+**Completed:** 2026-07-22
+
+**Changed:**
+- `nookguard/manifest.py` (new) — `content_hashed_filename(name_hint,
+  candidate_sha256, extension)` (section 27's "no filename reuse... public
+  filename is assigned only at release": the public filename always embeds
+  the real content hash, so two different candidates can never collide on
+  a name, and the same candidate always produces the same name — release
+  is naturally idempotent, never accidentally destructive) and
+  `ReleaseManifestEntry` (Pydantic, `extra="forbid"`, no pass/fail field —
+  same "schema carries facts, code computes verdicts" split used
+  throughout NookGuard). `release_manifest_sha256` is a computed property,
+  not a stored field, so it can never drift out of sync with the entry it
+  describes — Definition of Done's "every complete report includes ...
+  release manifest hash."
+- `nookguard/release.py` (new) — `publish_candidate()`, the only code path
+  that ever writes public media bytes. Copies quarantined candidate bytes
+  to a content-hashed path under a given `public_dir`. Re-releasing the
+  identical candidate is a verified no-op (same hash already there);
+  finding *different* bytes already at the exact content-hashed path
+  raises `ReleaseIntegrityError` — structurally this should be impossible
+  since the filename is hash-derived, so hitting it means real corruption,
+  not a name collision to route around silently.
+- `nookguard/production_verifier.py` (new) — `verify_against_local_build()`
+  (compares a released file's bytes against the equivalent file inside a
+  real `astro build` output directory — genuinely runnable and checkable
+  in this environment today, no network, nothing mocked) and
+  `verify_against_live_url()` (dependency-injected `fetcher`, matching the
+  project's standing pattern for every other network-touching component —
+  real default fetcher via `urllib.request`, unverified live in this
+  session for lack of network access to the real domain, same standing
+  caveat as the HF/Anthropic adapters). `verify_production()` dispatches
+  between the two modes; a fetch failure or a hash mismatch both resolve
+  to `PROD_MISMATCH` — "could not verify" is never silently treated as
+  "verified."
+- `nookguard/store.py` — `releases_dir`, `save_release_manifest()` /
+  `load_release_manifest()`, keyed by `candidate_sha256` like every other
+  per-candidate record in this module.
+- `nookguard/cli.py` — `mediactl release` (`SEMANTIC_PASS`/`OWNER_APPROVED`/
+  `PREVIEW_REVIEW_PASS` → `RELEASED`; publishes real bytes, saves the
+  manifest entry, returns `release_manifest_sha256`) and `mediactl
+  production-verify` (`RELEASED` → `{PROD_VERIFIED, PROD_MISMATCH}`; takes
+  either `--dist-root` + `--public-root` or `--live-url`, mutually
+  exclusive). No `state_machine.py` changes were needed this commit — the
+  `PREVIEW_REVIEW_PASS → RELEASED` and `RELEASED → {PROD_VERIFIED,
+  PROD_MISMATCH}` edges already existed from the Commit 2 synthesis, just
+  unreachable through the CLI until now.
+- `pyproject.toml` — no changes needed; `production_verifier.py`'s live
+  fetcher uses only `urllib.request` (stdlib), no new dependency.
+- New: `nookguard/tests/{test_manifest.py, test_release.py,
+  test_production_verifier.py}` (25 tests, real filesystem I/O — no
+  mocking needed for `publish_candidate()` or `verify_against_local_build()`
+  since both are pure file operations) plus 6 new tests appended to
+  `test_cli.py` (full `release` → `production-verify` pipeline reaching
+  `PROD_VERIFIED` via a real simulated `astro build` output, the exact
+  Appendix I regression fixture — "Repository replacement differs from
+  Cloudflare-served bytes" — reproduced end-to-end and correctly landing
+  on `PROD_MISMATCH`, plus illegal-transition rejection at both new
+  gates).
+
+**A real API design bug caught by the test run itself (not by inspection):**
+the first draft of `verify_against_local_build()`'s 4th parameter was
+named/used as `public_dir` — the exact same name as `release`'s
+`--public-dir` flag (the specific leaf directory a file is written into,
+e.g. `public/winnie/`). But to correctly compute where a released file
+lands under `dist/`, the function actually needs the site's `public/`
+**root** (the parent Astro mirrors wholesale into `dist/`), not the leaf
+subdirectory — passing the same leaf value to both commands (as the first
+draft of the CLI pipeline test did) silently computed the wrong `dist/`
+path and produced a false `PROD_MISMATCH` even though the bytes genuinely
+matched. Caught immediately because the pipeline test asserted
+`prod_verified` and got `prod_mismatch` instead — a concrete example of
+why "run the real pipeline test, not just the unit tests in isolation"
+matters: `test_production_verifier.py`'s own direct unit tests had already
+used the correct root-vs-leaf semantics and would never have caught this,
+since they were written by the same reasoning that created the bug. Fixed
+by renaming the parameter (and the CLI flag) to `--public-root` everywhere
+in `production_verifier.py` and `cli.py`'s `production-verify` subcommand,
+with an explicit `help=` string on the flag itself distinguishing it from
+`release`'s `--public-dir` so a future session doesn't repeat the mistake
+from the CLI's own `--help` output, not just a comment in source.
+
+**Tests run:** `python -m pytest nookguard/tests -q`
+**Result:** 258 passed, 0 failed, 0 warnings (229 from Commits 2-11 + 29
+new).
+
+**Commit:** `14cfea7`, pushed to `origin/main` (`a1374d3..14cfea7`).
+
+**Unresolved risks:**
+- The "complete report" that Definition of Done describes — one document
+  carrying run ID, site commit, release manifest hash, deployment ID,
+  production verification, regression result, and evidence index all
+  together — is NOT assembled anywhere yet. This is a deliberate scope
+  decision, not an oversight: "regression result" can't exist before
+  Commit 13 (Regression corpus + canary) builds regression testing at all,
+  so a capstone report assembling all seven pieces has to wait until that
+  data exists to include. The individual pieces this commit produces
+  (`release_manifest_sha256`, `PROD_VERIFIED`/`PROD_MISMATCH`) are real
+  and available now; only their aggregation into one report is deferred.
+- `--live-url` mode (`verify_against_live_url`) is unverified against the
+  real, live `nestandnook.org` domain in this session — no network access
+  to the real domain here, same standing caveat as the HF/Anthropic
+  adapters in Commits 5 and 7. The local-build mode is the one genuinely
+  exercised end-to-end this commit and is likely the more useful mode day
+  to day anyway (checking a build before it's even deployed).
+- No scheduled task or push script calls `mediactl release` /
+  `production-verify` yet — same open item as Commits 9, 10, and 11's
+  content-lint/preview gates: the mechanism is real and tested, but
+  nothing in the actual daily content pipeline invokes it automatically.
+  Wiring that in is a natural candidate for whenever this pipeline is
+  connected to real site publishing, not necessarily this project's next
+  commit.
+- `site_commit` on `ReleaseManifestEntry` is an optional, caller-supplied
+  field — nothing in this commit automatically populates it with the real
+  current git commit SHA. A future call site (e.g. a real publish script)
+  should pass `git rev-parse HEAD` in, but no such call site exists yet.
+
+**Next:** Commit 13 (Regression corpus + canary) — per Appendix A.
