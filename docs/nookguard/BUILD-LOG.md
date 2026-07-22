@@ -681,3 +681,90 @@ override") rather than actual field access; narrowed to `.override`
 migration for the Off the Clock section's photo-strip layout schema,
 layout tests, and a ban on the legacy raw-media component (hook H009:
 "Page adds legacy raw media component -> Fail content lint").
+
+
+## Commit 9: Off the Clock schema + page validators — DONE
+
+**Completed:** 2026-07-22
+
+**Research done before writing any schema:** dispatched a subagent to read
+all 10 real Off the Clock production files in full
+(`site/src/content/blog/*.md`) and report the EXACT structure — not assumed
+from the main CLAUDE.md's prose description of the 2026-07-18 layout
+retool. Confirmed with zero exceptions across all 10 files: every
+`photo-single` block contains exactly 1 `<figure>`, every `photo-strip`
+block contains exactly 3, and no file contains the retired `polaroid
+inset`/`float-left` markup anywhere. This matters because a wrong
+assumption here would have produced a validator that hard-fails real,
+correct, already-shipped content — the schema this commit encodes is
+exactly what the real site does today, confirmed, not a guess at what the
+doc's prose implied.
+
+**"Content migration" — nothing to migrate, verified rather than assumed:**
+per the main CLAUDE.md, the actual migration off the legacy layout happened
+2026-07-18 (commit `f2018f5`), before this project existed. This commit's
+job was to build the schema/validator that PROVES that migration is real
+and complete, and will catch a regression — not to re-do work that's
+already done. Stating this directly rather than silently skipping "content
+migration" from Appendix A's line item without explanation.
+
+**Changed (`site/nookguard/`):**
+- `off_the_clock_schema.py` (new) — `lint_off_the_clock_page(markdown_body,
+  category)` checks three independent things: (1) category is one of the
+  two real values (`Life outside the nook`, `Behind the nook`); (2) every
+  `photo-single`/`photo-strip` block has the confirmed-correct image count
+  (1 / 3 respectively) — the regression fixture's literal "1, 4, or 5 photo
+  strips instead of approved structure" case; (3) hook H009's legacy-
+  component ban (`polaroid inset`, `polaroid.inset`, `float-left` anywhere
+  in the body). `split_frontmatter()`/`extract_category()` are a minimal,
+  dependency-free YAML-frontmatter field extraction — deliberately not
+  adding a full YAML parser dependency for a single field.
+- `cli.py` — `cmd_content_lint` / `mediactl content-lint`, with `--file`
+  (single page) or `--dir` (batch mode over every `.md` file in a
+  directory, skipping — not failing — files whose category isn't an Off
+  the Clock category, so a mixed directory of Guides/recipes/Off-the-Clock
+  content doesn't false-fail on out-of-scope files). Batch mode exists
+  specifically so this can gate a real content build later (Definition of
+  Done: "An Off the Clock page with the wrong strip count fails the
+  content build") — not part of the asset state machine, since a page
+  isn't a generated-media asset; this is a standalone lint, no store/
+  transition involved.
+- `nookguard/tests/{test_off_the_clock_schema.py,
+  test_off_the_clock_real_content.py}` (new, 25 tests) plus 4 additions to
+  `test_cli.py`. `test_off_the_clock_schema.py` is synthetic-fixture unit
+  coverage of every rule, including direct regression tests for 1/4/5-image
+  strips and a 2-image single. `test_off_the_clock_real_content.py` is the
+  actual "layout test" called for in Appendix A — parametrized over all 10
+  REAL file paths under `site/src/content/blog/`, asserting each one
+  passes content-lint right now, plus a coverage-gap test confirming all 10
+  expected filenames still exist on disk (so a rename or deletion is
+  caught, not silently under-tested). New `test_cli.py` cases cover single-
+  file success/failure, missing-file error handling, and `--dir` batch mode
+  against the real blog directory (asserting exactly 5 Guides posts are
+  skipped and all 10 Off the Clock posts are linted and pass).
+
+**Tests run:** `python -m pytest nookguard/tests -q`
+**Result:** 153 passed, 0 failed, 0 warnings (124 from Commits 2-8 + 29
+new). The 10 parametrized real-file tests passing is the concrete,
+checkable proof that the live site's Off the Clock section is genuinely
+compliant right now, not just that the validator's logic is internally
+consistent against fixtures.
+
+**Commit:** `9ba3a3c`, pushed to `origin/main` (`27dcab1..9ba3a3c`).
+
+**Unresolved risks:**
+- `mediactl content-lint` is not yet wired into any actual build step
+  (`astro build`, a pre-commit hook, or a CI job) — it exists and works,
+  but nothing calls it automatically yet. That wiring is naturally Commit
+  11's job (CI isolation) or could be added to the daily scheduled task's
+  own push step sooner if Maurice wants it enforced before then.
+- This commit only covers the Off the Clock section (10 files, per
+  Appendix A's explicit scope for this commit). Guides posts and recipes
+  have their own documented scaffolds (quick-answer/fix-box/FAQ for
+  Guides; the 5-image-field structure for recipes) that aren't validated
+  by any NookGuard code yet — out of scope here, not forgotten; flagging
+  so a future session doesn't assume page-schema coverage is broader than
+  it is.
+
+**Next:** Commit 10 (Preview QA) — Playwright desktop/mobile rendering,
+page contact sheets, and a page-preview reviewer, per Appendix A.
