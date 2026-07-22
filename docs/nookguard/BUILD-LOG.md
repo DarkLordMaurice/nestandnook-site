@@ -1514,3 +1514,110 @@ real Windows Node v24.16.0 — this package is separate from the Python
 Astro dashboard) — per Appendix K's own ordering, R2 is the more natural
 next step since the dashboard will want to read/display media the Worker
 is tracking.
+
+---
+
+## Commit 15: R2-backed candidate artifact storage — DONE
+
+**Completed:** 2026-07-22
+
+**Scope:** R2 (candidate/artifact byte storage) only, per Commit 14's own
+"Next" note and Appendix K's ordering. The Access-protected dashboard
+(Commit 16) still depends on this existing first and was not started.
+
+**Changed:**
+- `nookguard-worker/src/artifacts.mjs` (new) — `putArtifact`/`getArtifact`/
+  `headArtifact`, each taking an R2-shaped `bucket` as their first argument
+  (same dependency-injection pattern as `db.mjs`). `putArtifact` computes
+  the real SHA-256 of the uploaded bytes via Web Crypto
+  (`crypto.subtle.digest`, a real global in both Node and the Workers
+  runtime — no npm dependency) and rejects with 422 if it doesn't match
+  the hash named in the request path, *before* ever calling `bucket.put()`
+  — an R2 PUT with a wrong or forged hash in its URL is exactly what
+  content-addressed storage exists to prevent, so this has to be a real
+  check, not an assumption. Keys live under a flat `candidates/` prefix,
+  addressed by the full untruncated SHA-256 (mirrors
+  `nookguard/hashing.py`'s `content_addressed_path()`, Commit 2 — full
+  hash for internal/quarantine addressing, vs. `manifest.py`'s
+  `content_hashed_filename()`, Commit 12, which truncates for public
+  release names; both conventions kept consistent with their Python
+  originals rather than inventing a third scheme).
+- `nookguard-worker/src/router.mjs` — added `PUT`/`GET`/`HEAD
+  /artifacts/:sha256`. Also changed `routeRequest`'s signature from
+  `(request, db)` to `(request, env)` where `env = { db, artifacts }` —
+  a real interface change made cleanly now, before anything outside this
+  package depends on the old positional-`db` shape (nothing does yet; the
+  Python side hasn't been wired to call this Worker at all, per Commit
+  14's own "not cut over" note), rather than bolting R2 on as a second
+  positional parameter.
+- `nookguard-worker/src/index.mjs` — updated to build `{ db: env.DB,
+  artifacts: env.ARTIFACTS }` from the real Workers env and pass it to
+  `routeRequest`.
+- `nookguard-worker/wrangler.toml` — added the `[[r2_buckets]]` binding
+  (`ARTIFACTS`), `bucket_name` left as an explicit placeholder for the
+  same reason `database_id` is (see Commit 14's entry — needs Maurice's
+  own Cloudflare account).
+- `nookguard-worker/tests/fakeR2.mjs` (new) — an R2Bucket-shaped in-memory
+  store (`Map`-backed), implementing exactly the three methods
+  `artifacts.mjs` calls (`put`/`get`/`head`) with the same async
+  signatures and return shapes as Cloudflare's real R2 binding. Same
+  honesty pattern as `fakeD1.mjs`: real hashing, real byte storage and
+  retrieval, not R2's real network/durability/consistency behavior.
+- `nookguard-worker/tests/artifacts.test.mjs` (new) — 9 tests against
+  `artifacts.mjs` directly: correct-hash accept, wrong-hash reject with
+  nothing stored, malformed-hash reject (wrong length, non-hex, and
+  uppercase hex all explicitly rejected — Python's `hashlib.hexdigest()`
+  always produces lowercase, so this stays strict rather than silently
+  normalizing a format nothing else in the system produces), empty-body
+  reject, idempotent re-upload of identical bytes, byte-for-byte and
+  content-type round trip via `getArtifact`, 404 on unknown hash, and
+  `headArtifact`'s exists/size/content-type reporting without needing to
+  transfer the bytes.
+- `nookguard-worker/tests/router.test.mjs` — updated every existing call
+  from `routeRequest(request, db)` to `routeRequest(request, env)` (a
+  `makeEnv()` helper now builds `{ db: createMigratedFakeD1(), artifacts:
+  new FakeR2Bucket() }`), and added 4 new HTTP-shaped tests for the
+  `/artifacts/*` routes: a real PUT-then-GET round trip verified against
+  an independently-computed hash (not hardcoded, so the test proves
+  agreement between two separate hash computations, not just internal
+  self-consistency), the 422 wrong-hash rejection over real HTTP, a 404 on
+  an unstored hash, and `HEAD` reporting `content-length` with an empty
+  body and 404ing cleanly when absent.
+- `nookguard-worker/README.md` — scope section updated to describe both
+  Commit 14 and 15 together, layout section covers the three new files,
+  "Unresolved risks" gained the R2-specific gaps (below) plus a new
+  explicit note that this commit deliberately ships no delete/lifecycle
+  route for artifacts (content-addressed bytes are meant to be immutable
+  once written, per section 27 — a real lifecycle policy for
+  never-released quarantine bytes is a genuine future need, not designed
+  here).
+
+**Tests run:** `node --test tests/*.test.mjs` (Desktop Commander, real
+Windows Node v24.16.0)
+**Result:** 40 passed, 0 failed (27 from Commit 14 + 13 new: 9 in
+`artifacts.test.mjs`, 4 in `router.test.mjs`).
+
+**Commit:** `019f812`, pushed to `origin/main` (`04d9b9c..019f812`).
+
+**Unresolved risks:**
+- Same live-Cloudflare-account gap as Commit 14, now covering R2 too:
+  `bucket_name` in `wrangler.toml` is a placeholder, no real bucket has
+  been created, nothing has actually been deployed.
+- Same no-workerd/Miniflare-coverage gap as Commit 14, now covering
+  `artifacts.mjs` too — `tests/fakeR2.mjs` proves the application logic
+  against a real in-memory store with real hashing, not R2's actual
+  network/consistency behavior.
+- No authentication on the new `/artifacts/*` routes either — same open
+  gap as the D1 routes, flagged once in Commit 14's entry and not
+  re-solved here.
+- No object deletion or lifecycle policy for R2 artifacts — see README's
+  "Unresolved risks" for the reasoning (content-addressed bytes are meant
+  to be immutable; a real lifecycle rule for abandoned quarantine bytes is
+  a genuine future need).
+- Neither `nookguard/ledger.py` (D1) nor the Python generation adapter's
+  local quarantine writes (Commit 5's `store.py`, which would be R2's real
+  caller) have been cut over to this Worker. Both remain fully local,
+  unchanged.
+
+**Next:** Commit 16 (Access-protected Astro dashboard) — the last item in
+the Commit 14+ backend series, reading from this Worker's D1 + R2 APIs.
