@@ -1206,3 +1206,133 @@ new).
   should pass `git rev-parse HEAD` in, but no such call site exists yet.
 
 **Next:** Commit 13 (Regression corpus + canary) — per Appendix A.
+
+---
+
+## Commit 13: Regression corpus and canary — DONE
+
+**Completed:** 2026-07-22
+
+**Changed:**
+- `nookguard/regression_corpus.py` (new) — the 10 named fixtures from
+  Appendix I's real-incident table, each reproducing an actual failure
+  mode this pipeline has to catch, dispatched to whichever real subsystem
+  would actually have caught it rather than one fake unified test
+  function. 8 fixtures exercise `aggregate()` directly (banana foil fused
+  to crust → `FAIL_EVIDENCE`; cup collection read as unrequested
+  furniture → `SEMANTIC_FAIL`; a cup left in frame after its owner was
+  removed from the brief → `SEMANTIC_FAIL`; goat enclosure with a clean
+  fence contradicting the reference → `FAIL_REFERENCE`; Halloween apple
+  close-ups surviving after the owner was cut from the brief →
+  `SEMANTIC_FAIL`; a parade-float dresser that the judge's own prose tries
+  to rationalize away as "an altar" → `SEMANTIC_FAIL`, the direct,
+  checkable proof that a forbidden-object finding cannot be overridden by
+  narrative; and a known-clean control that must come back
+  `SEMANTIC_PASS`, proving the corpus isn't just a wall of failures). 1
+  fixture exercises `lint_off_the_clock_page()` directly (wrong
+  photo-strip count → `LAYOUT_FAIL`). 2 fixtures are filesystem-backed and
+  take a real `tmp_path`, exercising `verify_against_local_build()`
+  together with `aggregate()`: a stale-bytes-plus-stray-furniture case
+  that must independently fail on both semantic grounds and production
+  hash grounds at once (`SEMANTIC_FAIL+PROD_MISMATCH`), and a
+  repository-replacement case where the file on disk was swapped after
+  release but the manifest still points at the old hash
+  (`PROD_MISMATCH`). `run_regression_corpus(tmp_dir_factory)` runs all 10
+  and reports a `RegressionRunReport` with a `passed` flag per fixture
+  plus an `all_passed` rollup — a fixture "passing" means the pipeline
+  correctly reproduced the documented real-world failure, not that
+  nothing went wrong.
+- `nookguard/cli.py` — added `cmd_regression_run` (new `regression-run`
+  subcommand, `--tmp-root` optional, defaults to a subdirectory under
+  `--store-root`) and `cmd_canary_run` (new `canary-run` subcommand,
+  `--canary-page-url` optional, defaults to a local `file://` HTML page
+  generated under `--store-root` if not given). `canary-run` is a genuine
+  end-to-end smoke test of the pipeline's own wiring: it drives a fixed,
+  version-controlled "known clean" asset contract through every real
+  stage in order — spec-lock, prompt-compile, generate (stub adapter),
+  register, validate, review-pack-build, observe, judge, integrate,
+  preview-capture, preview-review, release, production-verify — via
+  repeated real `run_cli()` calls, the exact same entry point manual and
+  CI invocations use, not a separate or faked code path. It short-circuits
+  and reports which named step failed the first time anything returns
+  `{"ok": false}`, and on full success returns the candidate SHA-256 and
+  the release manifest SHA-256 as checkable evidence the whole chain
+  actually ran, not just that no exception was thrown.
+- `nookguard/tests/test_regression_corpus.py` (new) — one test per fixture
+  asserting it resolves to its documented expected state (plus, for the
+  parade-dresser fixture, that the failure detail text actually names the
+  forbidden object rather than just failing for an unrelated reason), a
+  test confirming the filesystem-fixture registry has exactly its 2
+  expected entries, a full-corpus test confirming all 10 run and all 10
+  pass, and a categories test cross-checking the corpus's reported
+  categories against Appendix I's own table verbatim — so the corpus is
+  provably tied to the real spec document, not just internally
+  self-consistent.
+- `nookguard/tests/test_cli.py` — 4 new tests: `regression-run` reports
+  all 10 fixtures passing; `canary-run` completes the full pipeline to
+  `prod_verified` with the exact expected 13-step sequence (observer/judge/
+  page-review sessions monkeypatched — no real Anthropic call in this
+  test); `canary-run` correctly reports which step it failed at when run
+  with no monkeypatching (a real, expected Anthropic-credential failure at
+  the `observe` step, used here as a check that failure reporting itself
+  works, not as a live-network integration test); and a direct regression
+  test for the `cmd_register` bug below, confirming it now returns a
+  graceful `{"ok": false, "error": ...}` instead of crashing.
+
+**A real bug caught by the canary itself, not by inspection:** `cmd_register`
+has required `--session-id` since Commit 3 (`GenerationAttempt.
+generator_session_id` is a required, non-Optional Pydantic field) but every
+caller in the codebase up to this commit always supplied it, so the gap was
+never exercised. `canary-run`'s own register step was the first caller ever
+to omit it, and the omission surfaced as a raw, unhandled
+`pydantic_core.ValidationError` traceback instead of a clean CLI error —
+exactly the kind of ungraceful failure this pipeline is supposed to avoid at
+every layer, not just in the generation/review stages. Fixed with an
+explicit early-return guard in `cmd_register` (`"register requires
+--session-id (GenerationAttempt.generator_session_id is a required field,
+not cosmetic)"`), fixed `cmd_canary_run`'s own register step to pass
+`--session-id canary-generator` explicitly, and added
+`test_register_without_session_id_returns_graceful_error_not_a_crash` so
+this can't silently regress.
+
+**Tests run:** `python -m pytest nookguard/tests -q`
+**Result:** 275 passed, 0 failed, 0 warnings (258 from Commits 2-12 + 17
+new).
+
+**Commit:** `918e8a6`, pushed to `origin/main` (`ee4d711..918e8a6`).
+
+**Unresolved risks:**
+- H005/H010 (the two hooks deferred at Commit 11 due to documented
+  Stop-hook unreliability) remain unimplemented — unchanged from Commit
+  11's own note, not something this commit touches.
+- The Definition of Done's "complete report" (run ID, site commit, release
+  manifest hash, deployment ID, production verification, regression
+  result, evidence index, all in one document) is still not assembled
+  anywhere. This commit is what makes it buildable for the first time —
+  "regression result" now genuinely exists via `regression-run` — but
+  assembling the other six already-real pieces into one document is still
+  a separate, not-yet-built step.
+- Nothing in the real daily content pipeline calls `regression-run` or
+  `canary-run` automatically yet — same standing gap as `release` and
+  `production-verify` from Commit 12, and `content-lint`/preview gates
+  from Commits 9-11. All four commands are real, tested, and runnable by
+  hand or from CI, but no scheduled task invokes any of them yet.
+- `canary-run` is deliberately NOT wired into `nookguard-ci.yml` this
+  commit, unlike `content-lint` in Commit 11. Reason: `canary-run`'s
+  `observe`/`judge` steps make real Anthropic API calls, and the CI
+  runner has no credentials configured — adding it as a CI gate would
+  just fail every run at the `observe` step, which isn't a useful signal.
+  `regression-run` has no such dependency (all 10 fixtures run against
+  local aggregator/schema/production-verifier logic only) and would be a
+  safe, free CI addition, but wiring it in wasn't done this commit either
+  — flagged here as the natural next small addition to `nookguard-ci.yml`,
+  not done speculatively alongside a commit whose stated scope was the
+  corpus and canary themselves.
+- H004's "unless CI release role token" exception (flagged as open at
+  Commits 11 and 12) remains unimplemented — could be picked up now that
+  both `release` (Commit 12) and a CI-safe regression check (this commit,
+  once wired into the workflow) exist, but wasn't part of this commit's
+  scope.
+
+**Next:** Commit 14+ (Private backend/dashboard) — per Appendix A, this is
+explicitly the lowest-priority remaining item ("build last").
