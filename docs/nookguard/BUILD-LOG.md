@@ -87,3 +87,64 @@ Commit 1, still deferred to Commit 12.
 
 **Next:** Commit 3 (mediactl CLI) — run/spec/prompt/generate/register/validate
 commands wrapping the schemas/ledger/state-machine built here.
+
+
+## Commit 3: mediactl CLI — DONE
+
+**Completed:** 2026-07-21
+
+**Changed (`site/nookguard/`):**
+- `cli.py` — `mediactl` with subcommands `run-start`, `run-preflight`,
+  `spec-lock`, `prompt-compile`, `generate`, `register`, `validate`. Every
+  command prints one JSON object and returns a matching dict (`run_cli()` is
+  the testable entry point `main()` wraps) — real business failures (bad
+  contract, illegal state transition, missing file, unimplemented adapter)
+  come back as `{"ok": false, "error": ...}` with exit code 1, never a raw
+  traceback.
+- `store.py` — filesystem-backed store for specs/prompts/quarantined
+  candidates/attempts/asset-state, all content-addressed. This is the
+  pre-Commit-14 stand-in for the D1/R2 backend — same contract, swappable
+  storage engine.
+- `prompt_compiler.py` — minimal real compiler (subject/action/scene/
+  requirements -> deterministic text). Commit 4 replaces the body with a
+  canon-aware version; the signature and caller contract stay the same.
+- `adapters/stub.py` — generates a real, tiny, valid PNG so the pipeline has
+  something genuine to push through technical validation. `generate` refuses
+  any adapter name other than `stub` with an explicit "not available until
+  Commit 5" error — it does not pretend to call a real model.
+- `validators/image.py` — real (not stubbed) checks: opens/decodes, min
+  resolution, nonzero file size. Explicitly reports which checks it does NOT
+  yet perform (`checks_not_yet_implemented`: duplicate detection, EXIF scan,
+  blank-image detection, OCR/logo scan) rather than silently passing them —
+  Commit 6 fills these in.
+
+**Tests run:** `python -m pytest nookguard/tests/ -v --cache-clear`
+**Result:** 21 passed, 0 failed (17 from Commit 2 + 4 new CLI integration
+tests). Also smoke-tested the real entry point directly:
+`python -m nookguard.cli run-start --store-root nookguard_store_smoketest`
+produced valid JSON on stdout (artifact dir removed before commit, not
+checked in — this is one-off proof, not a fixture).
+
+New integration coverage: `test_full_pipeline_run_start_through_validate`
+(run→spec→prompt→generate→register→validate exercised for real, through the
+CLI, not mocked), `test_generate_rejects_unimplemented_adapter`,
+`test_spec_lock_rejects_vague_requirement`, `test_cannot_register_before_
+generate` (state machine enforced through the real CLI, not just in
+isolation like Commit 2's tests).
+
+**Commit:** `eefa57d73e02512380fb939316122b14b3d97116`, pushed to `origin/main`.
+
+**Honest note on my own process (second one — see Commit 2's note too):**
+first draft of `cmd_register` checked file existence (prompt/candidate) before
+checking whether the state transition was even legal, so an illegal-transition
+call with a bogus candidate hash returned a confusing "file not found" instead
+of the real "illegal transition" reason. Caught by writing a test for the
+specific failure mode I wanted to guarantee, not by inspection. Reordered so
+the state-machine check always runs first, before any file lookups.
+
+**Unresolved risks:** none new.
+
+**Next:** Commit 4 (canon registry + prompt compiler upgrade) — this is where
+NookGuard starts reading the real Room Bible / Winnie-Image-Generation-Rules
+canon and detecting stale sources, replacing `prompt_compiler.py`'s minimal
+body.
