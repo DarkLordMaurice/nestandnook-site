@@ -41,10 +41,13 @@ from .off_the_clock_schema import (
     lint_off_the_clock_file,
     split_frontmatter,
 )
+from .manifest import ReleaseManifestEntry
 from .owner_queue import OwnerQueue, should_queue_for_owner
 from .preview import PageCaptureReport
 from .preview_aggregator import aggregate_preview
+from .production_verifier import verify_production
 from .prompt_compiler import compile_prompt
+from .release import ReleaseIntegrityError, publish_candidate
 from .review_pack import OBSERVER_ROLES, build_review_pack
 from .schemas import AssetContract, GenerationAttempt
 from .state_machine import AssetState, transition
@@ -520,6 +523,92 @@ def cmd_preview_review(args: argparse.Namespace) -> dict[str, Any]:
     return {"ok": True, "asset_id": contract.asset_id, "result": result.state.value, "reasons": result.reasons}
 
 
+def cmd_release(args: argparse.Namespace) -> dict[str, Any]:
+    """PREVIEW_REVIEW_PASS/OWNER_APPROVED -> RELEASED (Commit 12). Copies
+    the candidate's real bytes to a content-hashed public path (section
+    27's "no filename reuse... public filename is assigned only at
+    release") and records a ReleaseManifestEntry -- the durable fact
+    `production-verify` checks reality against."""
+    root = Path(args.store_root)
+    store, ledger = _store(root), _ledger(root)
+    try:
+        attempt = store.load_attempt(args.candidate_sha256)
+        contract = store.load_spec(attempt.spec_sha256)
+    except FileNotFoundError as e:
+        return {"ok": False, "error": str(e)}
+
+    current = AssetState(store.get_state(contract.asset_id))
+    try:
+        transition(current, AssetState.RELEASED, asset_id=contract.asset_id)
+    except InvalidTransitionError as e:
+        return {"ok": False, "error": str(e)}
+
+    candidate_path = store.candidate_path(args.candidate_sha256)
+    try:
+        public_path, public_url = publish_candidate(
+            candidate_path, args.candidate_sha256, Path(args.public_dir),
+            args.public_url_prefix, args.name_hint,
+        )
+    except ReleaseIntegrityError as e:
+        return {"ok": False, "error": str(e)}
+
+    entry = ReleaseManifestEntry(
+        release_id=str(uuid.uuid4()), run_id=args.run_id or "unspecified", asset_id=contract.asset_id,
+        candidate_sha256=args.candidate_sha256, public_path=str(public_path), public_url=public_url,
+        site_commit=args.site_commit,
+    )
+    store.save_release_manifest(entry)
+    store.set_state(contract.asset_id, AssetState.RELEASED.value)
+
+    ledger.append(run_id=args.run_id, event_type="asset.released", actor_role=args.actor_role,
+                  payload={"candidate_sha256": args.candidate_sha256, "public_url": public_url,
+                           "release_manifest_sha256": entry.release_manifest_sha256},
+                  asset_id=contract.asset_id, actor_session_id=args.session_id)
+    return {"ok": True, "asset_id": contract.asset_id, "public_path": str(public_path),
+            "public_url": public_url, "release_manifest_sha256": entry.release_manifest_sha256}
+
+
+def cmd_production_verify(args: argparse.Namespace) -> dict[str, Any]:
+    """RELEASED -> {PROD_VERIFIED, PROD_MISMATCH} (Commit 12). Checks the
+    real released bytes against either a real `astro build` output
+    (--dist-root) or a live URL (--live-url) -- never trusts the manifest
+    entry alone as proof of what's actually being served."""
+    root = Path(args.store_root)
+    store, ledger = _store(root), _ledger(root)
+    try:
+        attempt = store.load_attempt(args.candidate_sha256)
+        contract = store.load_spec(attempt.spec_sha256)
+    except FileNotFoundError as e:
+        return {"ok": False, "error": str(e)}
+
+    current = AssetState(store.get_state(contract.asset_id))
+    if current != AssetState.RELEASED:
+        return {"ok": False, "error": f"Illegal transition {current.value} -> production-verify "
+                                       "(asset must be in released state, set by mediactl release)"}
+
+    try:
+        entry = store.load_release_manifest(args.candidate_sha256)
+    except FileNotFoundError as e:
+        return {"ok": False, "error": str(e)}
+
+    verify_kwargs: dict[str, Any] = {}
+    if args.dist_root:
+        verify_kwargs["dist_root"] = Path(args.dist_root)
+        verify_kwargs["public_root"] = Path(args.public_root)
+    if args.live_url:
+        verify_kwargs["live_url"] = args.live_url
+
+    result = verify_production(Path(entry.public_path), args.candidate_sha256, **verify_kwargs)
+    transition(current, result.state, asset_id=contract.asset_id)
+    store.set_state(contract.asset_id, result.state.value)
+
+    ledger.append(run_id=args.run_id, event_type="production_verify.completed", actor_role=args.actor_role,
+                  payload={"candidate_sha256": args.candidate_sha256, "result": result.state.value,
+                           "reason": result.reason},
+                  asset_id=contract.asset_id, actor_session_id=args.session_id)
+    return {"ok": True, "asset_id": contract.asset_id, "result": result.state.value, "reason": result.reason}
+
+
 def _content_lint_one(file_path: Path) -> dict[str, Any]:
     try:
         report = lint_off_the_clock_file(str(file_path))
@@ -632,6 +721,25 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("preview-review"); _common(p)
     p.add_argument("--candidate-sha256", required=True)
     p.set_defaults(func=cmd_preview_review)
+
+    p = sub.add_parser("release"); _common(p)
+    p.add_argument("--candidate-sha256", required=True)
+    p.add_argument("--public-dir", required=True)
+    p.add_argument("--public-url-prefix", required=True)
+    p.add_argument("--name-hint", required=True)
+    p.add_argument("--site-commit", default=None)
+    p.set_defaults(func=cmd_release)
+
+    p = sub.add_parser("production-verify"); _common(p)
+    p.add_argument("--candidate-sha256", required=True)
+    p.add_argument("--public-root", default=None,
+                    help="Site's public/ directory (parent of winnie/, cursors/, etc.) -- required "
+                         "with --dist-root, not used with --live-url. NOT the same as release's "
+                         "--public-dir, which is the specific leaf subdirectory a file was written into.")
+    verify_group = p.add_mutually_exclusive_group(required=True)
+    verify_group.add_argument("--dist-root")
+    verify_group.add_argument("--live-url")
+    p.set_defaults(func=cmd_production_verify)
 
     p = sub.add_parser("content-lint")
     group = p.add_mutually_exclusive_group(required=True)

@@ -12,6 +12,7 @@ from pathlib import Path
 
 from .exceptions import HashMismatchError
 from .hashing import sha256_bytes, sha256_canonical_json
+from .manifest import ReleaseManifestEntry
 from .preview import PageCaptureReport
 from .review_pack import ReviewPack
 from .schemas import AssetContract, BlindObservation, ContractJudgment, GenerationAttempt, PageReviewResult
@@ -28,8 +29,10 @@ class Store:
         self.observations_dir = self.root / "observations"
         self.judgments_dir = self.root / "judgments"
         self.preview_dir = self.root / "preview"
+        self.releases_dir = self.root / "releases"
         for d in (self.specs_dir, self.prompts_dir, self.quarantine_dir, self.attempts_dir,
-                  self.review_packs_dir, self.observations_dir, self.judgments_dir, self.preview_dir):
+                  self.review_packs_dir, self.observations_dir, self.judgments_dir, self.preview_dir,
+                  self.releases_dir):
             d.mkdir(parents=True, exist_ok=True)
 
     @property
@@ -204,6 +207,19 @@ class Store:
         if not path.exists():
             raise FileNotFoundError(f"No page review found for {candidate_sha256}")
         return PageReviewResult.model_validate_json(path.read_text(encoding="utf-8"))
+
+    # ---- release manifest entries (Commit 12) ----
+
+    def save_release_manifest(self, entry: ReleaseManifestEntry) -> str:
+        path = self.releases_dir / f"{entry.candidate_sha256}.json"
+        path.write_text(entry.model_dump_json(indent=2), encoding="utf-8")
+        return str(path)
+
+    def load_release_manifest(self, candidate_sha256: str) -> ReleaseManifestEntry:
+        path = self.releases_dir / f"{candidate_sha256}.json"
+        if not path.exists():
+            raise FileNotFoundError(f"No release manifest entry found for {candidate_sha256}")
+        return ReleaseManifestEntry.model_validate_json(path.read_text(encoding="utf-8"))
 
     # ---- asset state tracking (drives state_machine.transition() checks) ----
 

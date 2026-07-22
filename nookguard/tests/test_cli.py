@@ -440,3 +440,130 @@ def test_preview_review_rejects_when_not_previewed(monkeypatch, tmp_path):
                        "--candidate-sha256", candidate_sha])
     assert not result["ok"]
     assert "Illegal transition" in result["error"]
+
+
+# ---- release / production-verify (Commit 12) ----
+
+def _drive_to_preview_review_pass(monkeypatch, store_root: str, run_id: str, contract_path: Path,
+                                   tmp_path: Path) -> str:
+    """Shared setup: extends _drive_to_semantic_pass through integrate ->
+    preview-capture -> preview-review, landing at PREVIEW_REVIEW_PASS --
+    the real starting state `mediactl release` requires."""
+    import nookguard.cli as cli_module
+    from nookguard.schemas import PageReviewResult
+
+    def fake_page_reviewer(contact_sheet_path, page_url, viewports_captured, **kwargs):
+        return PageReviewResult(
+            page_url=page_url, viewports_reviewed=viewports_captured,
+            review_session_id="prs-release", reviewer_agent_hash="h", context_bundle_sha256="cb", issues=[],
+        )
+
+    monkeypatch.setattr(cli_module, "run_page_review_session", fake_page_reviewer)
+
+    candidate_sha = _drive_to_semantic_pass(monkeypatch, store_root, run_id, contract_path)
+    run_cli(["integrate", "--store-root", store_root, "--run-id", run_id, "--candidate-sha256", candidate_sha])
+
+    page_url = _write_html("<html><body><h1>Real rendered page</h1></body></html>", tmp_path)
+    run_cli(["preview-capture", "--store-root", store_root, "--run-id", run_id,
+             "--candidate-sha256", candidate_sha, "--page-url", page_url])
+    reviewed = run_cli(["preview-review", "--store-root", store_root, "--run-id", run_id,
+                         "--candidate-sha256", candidate_sha])
+    assert reviewed["result"] == "preview_review_pass", reviewed
+    return candidate_sha
+
+
+def test_full_pipeline_release_and_local_build_production_verify_pass(monkeypatch, tmp_path):
+    """Extends the pipeline from PREVIEW_REVIEW_PASS through release (real
+    file copy to a content-hashed public path) and production-verify in
+    real local-build mode (comparing against a real, populated dist/ dir)
+    all the way to PROD_VERIFIED."""
+    store_root = str(tmp_path / "store")
+    contract_path = tmp_path / "contract.json"
+    contract_path.write_text(json.dumps(SAMPLE_CONTRACT))
+    run_id = "test-run-release-pass"
+
+    candidate_sha = _drive_to_preview_review_pass(monkeypatch, store_root, run_id, contract_path, tmp_path)
+
+    public_root = tmp_path / "site-public"  # the site's real public/ directory
+    public_dir = public_root / "winnie"  # the specific leaf dir this release goes into
+    released = run_cli(["release", "--store-root", store_root, "--run-id", run_id,
+                         "--candidate-sha256", candidate_sha, "--public-dir", str(public_dir),
+                         "--public-url-prefix", "/winnie", "--name-hint", "test-asset-hero"])
+    assert released["ok"], released
+    assert Path(released["public_path"]).exists()
+    assert released["public_url"].startswith("/winnie/test-asset-hero-")
+    assert released["release_manifest_sha256"]
+
+    # Simulate a real `astro build` having copied public/ into dist/ verbatim
+    # -- dist/ mirrors public_root's subdirectory structure, including winnie/.
+    released_bytes = Path(released["public_path"]).read_bytes()
+    dist_root = tmp_path / "dist"
+    dist_target = dist_root / "winnie" / Path(released["public_path"]).name
+    dist_target.parent.mkdir(parents=True)
+    dist_target.write_bytes(released_bytes)
+
+    verified = run_cli(["production-verify", "--store-root", store_root, "--run-id", run_id,
+                         "--candidate-sha256", candidate_sha, "--public-root", str(public_root),
+                         "--dist-root", str(dist_root)])
+    assert verified["ok"], verified
+    assert verified["result"] == "prod_verified"
+
+
+def test_release_then_stale_dist_bytes_yields_prod_mismatch(monkeypatch, tmp_path):
+    """The exact regression fixture from SPEC.md Appendix I: 'Repository
+    replacement differs from Cloudflare-served bytes -> FAIL'."""
+    store_root = str(tmp_path / "store")
+    contract_path = tmp_path / "contract.json"
+    contract_path.write_text(json.dumps(SAMPLE_CONTRACT))
+    run_id = "test-run-release-mismatch"
+
+    candidate_sha = _drive_to_preview_review_pass(monkeypatch, store_root, run_id, contract_path, tmp_path)
+
+    public_root = tmp_path / "site-public"
+    public_dir = public_root / "winnie"
+    released = run_cli(["release", "--store-root", store_root, "--run-id", run_id,
+                         "--candidate-sha256", candidate_sha, "--public-dir", str(public_dir),
+                         "--public-url-prefix", "/winnie", "--name-hint", "test-asset-hero"])
+    assert released["ok"], released
+
+    dist_root = tmp_path / "dist"
+    dist_target = dist_root / "winnie" / Path(released["public_path"]).name
+    dist_target.parent.mkdir(parents=True)
+    dist_target.write_bytes(b"stale bytes from an old build")  # deliberately wrong
+
+    verified = run_cli(["production-verify", "--store-root", store_root, "--run-id", run_id,
+                         "--candidate-sha256", candidate_sha, "--public-root", str(public_root),
+                         "--dist-root", str(dist_root)])
+    assert verified["ok"], verified
+    assert verified["result"] == "prod_mismatch"
+    assert "hash to" in verified["reason"]
+
+
+def test_release_rejects_when_not_preview_review_pass():
+    with tempfile.TemporaryDirectory() as d:
+        store_root = str(Path(d) / "store")
+        contract_path = Path(d) / "contract.json"
+        contract_path.write_text(json.dumps(SAMPLE_CONTRACT))
+        run_id = "test-run-release-reject"
+        run_cli(["spec-lock", "--store-root", store_root, "--run-id", run_id, "--contract", str(contract_path)])
+        # Asset is only at SPEC_LOCKED.
+        result = run_cli(["release", "--store-root", store_root, "--run-id", run_id,
+                           "--candidate-sha256", "deadbeef", "--public-dir", str(Path(d) / "pub"),
+                           "--public-url-prefix", "/winnie", "--name-hint", "x"])
+        assert not result["ok"]
+        assert "error" in result
+
+
+def test_production_verify_rejects_when_not_released(monkeypatch, tmp_path):
+    store_root = str(tmp_path / "store")
+    contract_path = tmp_path / "contract.json"
+    contract_path.write_text(json.dumps(SAMPLE_CONTRACT))
+    run_id = "test-run-verify-reject"
+
+    candidate_sha = _drive_to_preview_review_pass(monkeypatch, store_root, run_id, contract_path, tmp_path)
+    # Never released -- asset is at PREVIEW_REVIEW_PASS, not RELEASED.
+    result = run_cli(["production-verify", "--store-root", store_root, "--run-id", run_id,
+                       "--candidate-sha256", candidate_sha, "--public-root", str(tmp_path / "pub"),
+                       "--dist-root", str(tmp_path / "dist")])
+    assert not result["ok"]
+    assert "Illegal transition" in result["error"]
