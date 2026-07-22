@@ -231,3 +231,94 @@ with the documented `HF_TOKEN` explicit-sourcing gotcha from the main project
 CLAUDE.md applied from the start, quarantine/immutable-path handling already
 built in `store.py`, and `AVAILABLE_ADAPTERS` extended so `cmd_generate` stops
 rejecting a real adapter name.
+
+
+## Commit 5: Generation adapter — DONE
+
+**Completed:** 2026-07-21
+
+**Changed (`site/nookguard/`):**
+- `adapters/huggingface.py` (new) — real Z-Image-Turbo wrapper. Deliberately
+  mirrors the exact, already-proven `gradio_client.predict()` call signature
+  from the main project's production scripts (verified by reading
+  `scripts/gen_offtheclock_backlog_images.py` directly, not guessed from
+  memory) rather than inventing a new API shape: same model
+  (`Tongyi-MAI/Z-Image-Turbo`), same kwargs (`resolution`, `seed`, `steps`,
+  `shift`, `random_seed`, `gallery_images`, `api_name="/generate"`), same
+  gallery-item parsing. `generate()` never writes to disk — returns JPEG
+  bytes, leaving content-addressed placement to `store.quarantine_candidate`.
+  Section 27 rules implemented as real code, not comments: bounded retry
+  (`max_retries`, default 3, with a bounded backoff tuple — never an
+  unbounded loop), `AdapterGenerationBlockedError` on exhaustion (never a
+  bare exception escaping to the caller), and `_classify_error()` which
+  refuses to report "rate_limited" unless a token was actually resolved —
+  this is a direct, mechanical fix for the exact 2026-07-11 incident in the
+  main project CLAUDE.md where a missing `HF_TOKEN` got misreported to
+  Maurice as "quota exhausted" when the real PRO account had capacity left.
+  `_resolve_hf_token()` re-implements that same incident's fix as code: check
+  `os.environ` first, then fall back to reading the real persistent Windows
+  User env var via `[System.Environment]::GetEnvironmentVariable('HF_TOKEN',
+  'User')` if the process-level copy is empty, so this adapter can't
+  silently run unauthenticated just because a launching shell forgot to
+  source it.
+- `adapters/__init__.py` — `AVAILABLE_ADAPTERS` now `{"stub", "huggingface"}`.
+- `cli.py` — `cmd_generate` now dispatches on `args.adapter` instead of
+  hardcoding the stub module; huggingface-path failures come back as
+  structured `{"ok": false, "generation_blocked_reason": ..., "attempts":
+  ...}` rather than a raised exception reaching the CLI boundary.
+- `nookguard/tests/test_adapters_huggingface.py` (new, 11 tests) — 100%
+  network-free via the `client`/`client_factory` injection seams `generate()`
+  exposes for exactly this purpose. Notable:
+  `test_generate_never_sleeps_more_than_backoff_table_length` (proves the
+  retry loop is genuinely bounded), `test_classify_error_does_not_claim_
+  rate_limited_without_token` (direct regression test for the 2026-07-11
+  incident — a quota-shaped error message must still classify as `no_token`
+  when unauthenticated, never `rate_limited`).
+- `nookguard/tests/test_cli.py` — added
+  `test_generate_dispatches_to_huggingface_adapter` (patches
+  `huggingface.generate` directly, proves `cmd_generate` really routes to it
+  and returns a `.jpg` artifact with the right adapter version — not just
+  that the stub path still works). Fixed
+  `test_generate_rejects_unimplemented_adapter`, which pre-Commit-5 used
+  `"huggingface"` as its example of a not-yet-available adapter — now uses
+  `"openai"`, since huggingface is real now. Also caught the same missing
+  `--run-id`/`--session-id` bug already documented in Commit 3's own honest
+  note (the ledger's `Event` schema requires both; a test that omits them
+  gets a `pydantic.ValidationError` that looks like an unrelated failure) —
+  fixed on the new test before it ever reached BUILD-LOG as a false problem.
+
+**Tests run:** `python -m pytest nookguard/tests -v`
+**Result:** 54 passed, 0 failed (42 from Commits 2-4 + 12 new: 11 adapter unit
+tests + 1 CLI integration test). Also independently confirmed
+`gradio_client` (2.5.0) and `Pillow` (12.2.0) are actually installed on the
+real Windows Python this project uses, before writing code that imports them
+— not assumed.
+
+**Commit:** `36401e5`, pushed to `origin/main` (`d03b157..36401e5`).
+
+**Unresolved risks:**
+- This adapter has NOT been exercised against the real Hugging Face API in
+  this session — only against injected fakes. That's intentional (no network
+  access from the sandbox, and a real call costs ZeroGPU quota minutes for a
+  no-op smoke test) but it means the real `gradio_client.Client(...).predict(
+  ...)` call path itself is unverified end-to-end by this session, only by
+  the fact that it's a byte-for-byte copy of an already-proven production
+  call. Worth a single real smoke-test generation the first time this
+  adapter is actually used for a real asset, rather than trusting the copy
+  blindly forever.
+- No live HF_TOKEN was read or used this session (Desktop Commander shell was
+  never asked to source it) — `_resolve_hf_token()`'s Windows-fallback branch
+  is covered by unit tests with a mocked environ, not by an actual
+  `subprocess.run` against the real persistent env var. Low risk (it's a
+  direct copy of the main project's already-working PowerShell one-liner) but
+  flagging per the "checkable artifact, not prose" standard.
+- Per Maurice's 2026-07-21 instruction, image publishing stays frozen — this
+  adapter existing does not restart the daily scheduled tasks. That only
+  happens once Commits 6-8 (validators + review agents + aggregation) exist
+  and a real release path is wired up.
+
+**Next:** Commit 6 (Technical validators) — fill in the
+`checks_not_yet_implemented` gaps `validators/image.py` already declares
+(duplicate detection, EXIF/privacy scan, blank-image detection, OCR/logo
+scan), plus the review-pack generator that Commit 7's blind observers will
+consume.
