@@ -1856,3 +1856,178 @@ verification, while every historical critical regression is correctly
 rejected" — was already demonstrated in Commit 13; everything in the
 14-16 series is real but genuinely supplementary operational tooling on
 top of that already-proven core.
+
+---
+
+## Commit 17: Completion and Evidence Protocol (run-report) — DONE
+
+**Completed:** 2026-07-22
+
+**Why this commit, not something else:** Appendix A's build-order table
+has no row after "14+ Backend" — confirmed directly against the source
+docx this commit (not just the condensed SPEC.md) via a targeted page-
+image read of Appendix A (p.47) and Appendix M (p.53). Appendix M turned
+out to be titled "Final Instruction to Claude," not the 16-reference list
+SPEC.md's condensation guessed — that reference list actually lives in
+Appendix L. With no further pre-specified commit, the one concretely
+unbuilt deliverable already named in this project's own spec is Section
+24, "Completion and Evidence Protocol" (p.26), quoted in full:
+
+> "Claude's final message is not the record of truth. NookGuard generates
+> run-report.json, run-report.md, and a compact owner summary from ledger
+> events."
+>
+> "Claude may say 'complete' only when terminal_status is PROD_VERIFIED.
+> Otherwise it must say exactly what remains and link the blocker
+> receipt."
+
+with a worked example schema (`run_id, terminal_status, repository_commit,
+release_manifest_sha256, production_deployment_id, assets{approved,
+rejected, needs_owner, production_verified}, regression_suite{passed,
+failed}, evidence_index`). This is the same gap the Commit 16 "Next"
+section already flagged as buildable-but-not-built since Commit 13, now
+actually built.
+
+**Research before code:** three research subagent passes before writing
+anything — (1) confirmed Appendix A has no rows after "14+," and located
+the real Section 24 text (the condensed SPEC.md only had a single
+paraphrased bullet, not the full passage or example schema) by reading
+the source docx's actual page images directly; (2) mapped the existing
+`nookguard/` Python package (24 source files, `mediactl` CLI with 20
+subcommands, pytest convention, 25 test files) to avoid rebuilding
+anything that already exists — confirmed no `run_report`/`evidence_index`/
+`terminal_status` concept existed anywhere yet; (3) pulled exact,
+verbatim signatures for `state_machine.AssetState` (25 states, real
+`TRANSITIONS` graph), every `ledger.append(event_type=...)` literal used
+across all 17 call sites in `cli.py`, `manifest.ReleaseManifestEntry`'s
+real fields, and `regression_corpus.RegressionRunReport`'s real shape —
+specifically to avoid guessing field/state names wrong in a report meant
+to be the project's own definition of "actually done."
+
+**Changed files:**
+- `nookguard/run_report.py` (new) — the whole feature. `build_run_report()`
+  reads a run's real ledger events (`ledger.for_run(run_id)`) plus each
+  touched asset's real current state (`store.get_state(asset_id)`) —
+  never a session's own narrative — and buckets every asset into
+  `approved` / `rejected` / `needs_owner` / `production_verified` /
+  `in_progress`, using `state_machine.py`'s own real terminal/non-terminal
+  state partition (the 9 no-outgoing-transition "regenerate only" states
+  are `rejected`; `PROD_VERIFIED` is the one success terminal; everything
+  else buckets off `TRANSITIONS`'s own shape, not a new hand-picked
+  taxonomy). `terminal_status` is `PROD_VERIFIED` only when `blocking` is
+  empty — computed, never asserted: blocking accumulates one message per
+  real reason (no assets recorded, an asset with no state at all in the
+  store, any `needs_owner`, any still-mid-pipeline asset, any asset
+  `approved` but not yet `production_verified`, or a failing regression
+  corpus run). `render_markdown()` and `render_owner_summary()` produce
+  the other two named artifacts. `write_run_report()` writes all three
+  files (`run-report.json`, `run-report.md`, `owner-summary.txt`) plus
+  the evidence index JSON.
+  **Three honest, documented gaps against the spec's literal example
+  schema** (all in the module's own docstring, not hidden): (1)
+  `release_manifest_sha256` is shown as one top-level field in the spec's
+  example, but `ReleaseManifestEntry` computes that hash per released
+  asset and no single aggregate manifest file exists anywhere in this
+  pipeline — this module derives one instead (canonical-JSON SHA-256 of
+  the sorted list of every `asset.released` event's own
+  `release_manifest_sha256` for the run), documented as a DERIVED value,
+  not a pre-existing file's hash. (2) `production_deployment_id` has no
+  source anywhere in this Python package (no Cloudflare Pages API call
+  exists on this side) — accepted only as an optional caller-supplied
+  override via `--production-deployment-id`, defaults to `None`, and
+  deliberately never gates `terminal_status` (withholding completion for
+  a field this side genuinely cannot produce would be its own kind of
+  dishonesty). (3) the spec's example shows `evidence_index` as an
+  `r2://...` URL; the Python pipeline is not wired to `nookguard-worker`/
+  R2 yet (Commit 16's single biggest standing gap) — this module writes a
+  REAL local evidence index JSON (every ledger event for the run, each
+  with its own `payload_sha256`) and points `evidence_index` at that real
+  local path, not a fabricated `r2://` URL.
+- `nookguard/cli.py` — added `cmd_run_report` and the `run-report`
+  subparser (`--out-dir`, `--production-deployment-id`), following the
+  exact existing `cmd_*` convention (`(args) -> dict[str, Any]`,
+  `_ledger(root)`/`_store(root)` access). `ok` mirrors the boxed
+  completion rule: `true` only when `terminal_status == "PROD_VERIFIED"`,
+  with the full result dict (including `blocking`) always returned
+  regardless, matching how `cmd_run_preflight` already returns its full
+  `checks` dict on both success and failure.
+- `nookguard/tests/test_run_report.py` (new) — 10 tests. Nine are
+  unit-level against `build_run_report`/`write_run_report`/
+  `render_markdown`/`render_owner_summary` directly, with a stubbed
+  `regression_runner` for speed/determinism: empty run → `INCOMPLETE`
+  with the right message; a hand-built mix of `PROD_VERIFIED` /
+  `OWNER_REJECTED` / `NEEDS_OWNER` / `RELEASED` assets buckets correctly
+  and blocks for the right reasons; a passing-assets-but-failing-
+  regression case still blocks; an asset referenced in the ledger with no
+  recorded store state is surfaced in `unknown_state_assets` and blocks,
+  rather than silently vanishing from the counts; the derived
+  `release_manifest_sha256` is a real 64-char hex digest that is NOT a
+  literal passthrough of the per-asset hash; no releases yields `None`;
+  the evidence index is a real file on disk whose contents match the
+  real ledger events; markdown/owner-summary rendering reflect blocking
+  state correctly. The tenth test is a real end-to-end integration run:
+  drives the actual `mediactl` CLI through every real step (`spec-lock`
+  through `production-verify`, `observe`/`judge`/`preview-review`
+  monkeypatched at `nookguard.cli`'s own imported names — same
+  established pattern as `test_cli.py`'s `_drive_to_preview_review_pass`,
+  since this sandbox has no live Anthropic credentials for those three
+  real Claude-review-agent calls — everything else runs for real,
+  including the actual `production-verify` local-build byte comparison),
+  then runs the real, unmocked `mediactl run-report` command — including
+  the real regression corpus, no stub — and confirms `terminal_status ==
+  "PROD_VERIFIED"`, `blocking == []`, and all four output files genuinely
+  exist on disk. First attempt at this test used the real (unmocked)
+  `observe` command directly and failed with a real, informative error
+  ("Could not resolve authentication method") — the fix was switching to
+  the established monkeypatch pattern already used elsewhere in this
+  codebase's own test suite for exactly this sandbox limitation, not
+  inventing a new one.
+
+**Tests run:** `python -m pytest nookguard/tests/test_run_report.py -v`
+then the full suite `python -m pytest nookguard/tests/ -q` (both via
+Desktop Commander, real Windows Python 3.14.5)
+**Result:** 10/10 new tests passed; full suite 285/285 passed, 0 failures
+— confirms no regression anywhere else in the package from wiring a new
+CLI subcommand and a new import into `cli.py`.
+
+**Commit:** pending (this entry is written and will be committed together
+with `nookguard/run_report.py`, the `cli.py` change, and
+`nookguard/tests/test_run_report.py` in the same commit).
+
+**Unresolved risks:**
+- The three documented gaps against the spec's literal example schema
+  (derived vs. literal `release_manifest_sha256`, no automatic
+  `production_deployment_id`, local vs. `r2://` `evidence_index`) are
+  real and permanent until the Python↔Worker cutover named in Commit 16
+  happens — they are not bugs to fix later, they are honest reflections
+  of what this side of the pipeline can actually produce today.
+- `regression_runner` defaults to running the REAL Appendix I corpus
+  fresh on every `run-report` call — correct per the "don't trust a
+  narrated prior result" principle, but means `run-report` is not free;
+  it re-executes all 10 fixtures every time it's called. Not currently a
+  problem (the corpus runs in a couple seconds per the existing
+  `test_regression_corpus.py` suite), but worth knowing if the corpus
+  ever grows substantially.
+- No scheduled task or CI step calls `mediactl run-report` yet — it
+  exists and is tested, but nothing in the actual daily pipeline
+  generates a completion report today. Wiring it into whatever eventually
+  drives NookGuard end-to-end in production (still not built — see every
+  prior commit's "Python side still not cut over to D1/R2" note) is a
+  future step, not this one.
+- `assets["in_progress"]` and `unknown_state_assets` are both non-spec
+  additions beyond the 7 named fields in Section 24's example — a
+  deliberate choice for honesty (nothing about a run's real state should
+  be able to silently disappear from the report just because the spec's
+  own example didn't anticipate it), documented here in case a future
+  reader wonders why the schema has more than 7 top-level report fields.
+
+**Next:** no further commit is pre-specified anywhere in Appendix A or
+elsewhere in the spec. The standing, named gaps across the whole Commit
+14-17 series remain: the Python↔Worker cutover (D1/R2/Access dashboard
+sit as real, tested, currently-unused parallel infrastructure), the live
+Cloudflare provisioning steps documented in both `nookguard-worker/` and
+`nookguard-dashboard/`'s READMEs, and now also wiring `mediactl
+run-report` into whatever process is meant to call it in a real run.
+Absent further direction, this project's spec-driven build sequence is
+complete — everything named in Appendix A plus Section 24 exists as real,
+tested code.

@@ -50,6 +50,7 @@ from .prompt_compiler import compile_prompt
 from .regression_corpus import run_regression_corpus
 from .release import ReleaseIntegrityError, publish_candidate
 from .review_pack import OBSERVER_ROLES, build_review_pack
+from .run_report import write_run_report
 from .schemas import AssetContract, GenerationAttempt
 from .state_machine import AssetState, transition
 from .store import Store
@@ -774,6 +775,28 @@ def cmd_canary_run(args: argparse.Namespace) -> dict[str, Any]:
             "release_manifest_sha256": rel["release_manifest_sha256"]}
 
 
+def cmd_run_report(args: argparse.Namespace) -> dict[str, Any]:
+    """Section 24, "Completion and Evidence Protocol": "Claude's final
+    message is not the record of truth. NookGuard generates run-report.json,
+    run-report.md, and a compact owner summary from ledger events." Builds
+    all three from this run's real ledger events + each touched asset's
+    real current store state, plus a freshly-executed regression corpus run
+    (see run_report.default_regression_runner -- nothing about "still
+    passing" is trusted from a prior narrated result). `ok` mirrors the
+    boxed rule on the same page: only true when terminal_status is
+    PROD_VERIFIED -- otherwise `blocking` says exactly what remains, same
+    contract this command's own JSON already gives a caller either way."""
+    root = Path(args.store_root)
+    store, ledger = _store(root), _ledger(root)
+    out_dir = Path(args.out_dir) if args.out_dir else root / "reports" / args.run_id
+    result = write_run_report(
+        store, ledger, args.run_id, out_dir,
+        project_root=Path(args.project_root),
+        production_deployment_id=args.production_deployment_id,
+    )
+    return {"ok": result["terminal_status"] == "PROD_VERIFIED", **result}
+
+
 def _content_lint_one(file_path: Path) -> dict[str, Any]:
     try:
         report = lint_off_the_clock_file(str(file_path))
@@ -917,6 +940,16 @@ def build_parser() -> argparse.ArgumentParser:
                     help="Real URL for preview-capture to screenshot. Defaults to a minimal local "
                          "HTML file generated under --store-root.")
     p.set_defaults(func=cmd_canary_run)
+
+    p = sub.add_parser("run-report"); _common(p)
+    p.add_argument("--out-dir", default=None,
+                    help="Where to write run-report.json/.md + owner-summary.txt. Defaults to "
+                         "<store-root>/reports/<run-id>/.")
+    p.add_argument("--production-deployment-id", default=None,
+                    help="Optional caller-supplied Cloudflare Pages deployment ID -- this side has "
+                         "no way to derive it automatically (no live Cloudflare API call exists "
+                         "here yet). Never gates terminal_status.")
+    p.set_defaults(func=cmd_run_report)
 
     p = sub.add_parser("content-lint")
     group = p.add_mutually_exclusive_group(required=True)
