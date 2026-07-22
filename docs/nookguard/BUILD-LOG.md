@@ -555,3 +555,129 @@ FAIL/NEEDS_OWNER/etc. from the ContractJudgment's per-requirement results
 and both BlindObservations' forbidden-object findings), plus an owner
 queue for the calibration-sample and disagreement cases the risk-tier
 table (43.1) describes.
+
+
+## Commit 8: Semantic aggregation — DONE
+
+**Completed:** 2026-07-21
+
+**Changed (`site/nookguard/`):**
+- `aggregator.py` (new) — `aggregate(contract, judgment, blind_observation,
+  adversarial_observation) -> AggregationResult`, the ONLY place a release
+  decision is computed, implementing every row of section 29.5's policy
+  table as real, ordered code (critical-false -> FAIL; missing critical
+  judgment -> FAIL, same as false, never silently skipped; forbidden object
+  >= 0.6 confidence -> FAIL; material/relationship requirement judged true
+  with no cited evidence -> FAIL_EVIDENCE; identity/continuity constraints
+  present but no satisfying requirement -> FAIL_REFERENCE; count
+  disagreement between the two independent observers -> NEEDS_OWNER;
+  critical uncertain -> NEEDS_OWNER on Tier 2/3, FAIL on Tier 0/1 rather
+  than ever auto-passing; noncritical score below 60% -> FAIL; otherwise
+  SEMANTIC_PASS). A dedicated test
+  (`test_aggregation_result_never_asserts_pass_from_free_text`) inspects
+  the function's own source to confirm it never reads an
+  `extra_justification`/override-style field — structurally impossible
+  anyway since Commit 2's schemas already reject such a field, but proven
+  here rather than just assumed.
+  **Documented, deliberate scope decision:** the policy table's "exact-
+  count observers disagree -> third adjudicator; if still disputed,
+  NEEDS_OWNER" describes a third agent role this commit does not build
+  (that would be new session-type scope, not aggregation logic) — a real
+  count disagreement routes straight to NEEDS_OWNER, which has the same
+  practical effect (a human sees it) without fabricating a call to an
+  adjudicator that doesn't exist.
+- `owner_queue.py` (new) — `should_queue_for_owner()` encodes the 43.1
+  risk-tier calibration table as real code: NEEDS_OWNER always queues;
+  Tier 3 always queues even on a pass ("always final approval"); Tier 2
+  always queues ("mandatory during launch"); Tier 1 queues on disagreement
+  or within its first 20 assets per adapter; Tier 0 queues on disagreement
+  or a deterministic every-10th-asset sample within its first 50 (the
+  doc's "random 10%" is intentionally NOT implemented as real randomness —
+  that would make the function non-deterministic and untestable; the
+  bounded, deterministic approximation is documented as a real, stated
+  trade-off, not silently substituted). `OwnerQueue` persists to JSON,
+  same pattern as `DedupRegistry`/`Ledger`. **Explicit non-gate:** the
+  module docstring states plainly that this is a tracking/visibility
+  mechanism only — nothing in the CLI checks queue status before allowing
+  a release, matching Maurice's 2026-07-21 instruction and the standing
+  deferred-gating note in SPEC.md. When that changes, the gate belongs in
+  a future release command, not here.
+- `state_machine.py` — added `AssetState.REVIEW_ERROR` as a legal target
+  from `OBSERVING`, not just `JUDGING`. Found this gap while wiring
+  `cmd_observe`: an observer session can fail (bad JSON, interrupted call)
+  exactly like a judge session can, and section 29.5 defines REVIEW_ERROR
+  as covering "session interrupted" generally — there was no principled
+  reason it should only be reachable from the judge step. Added per the
+  module's own stated policy ("if a future commit needs a state this
+  doesn't have, add it here with a BUILD-LOG note explaining why").
+- `store.py` — `save_observation`/`load_observation` (keyed by
+  `{candidate_sha256}_{role}`), `save_judgment`/`load_judgment`, and
+  `bump_adapter_asset_count()` (a simple persistent per-adapter-version
+  counter backing the "first N assets per adapter" calibration rule).
+- `cli.py` — `cmd_observe` (state must be `OBSERVING`; runs both observer
+  roles for real via `agent_runner.run_observer_session`, using
+  `review_pack.build_review_pack()` reconstructed on the fly rather than
+  re-loaded from Commit 6's stored pack — the pack is a pure function of
+  `(candidate_sha256, image_path, role)`, so no extra index/lookup was
+  needed; any single role failure routes the WHOLE asset to REVIEW_ERROR,
+  not a partial state) and `cmd_judge` (state must be `JUDGING`; runs
+  `run_judge_session`, saves the judgment, calls `aggregate()`, transitions
+  to the computed result state, bumps the adapter counter, and enqueues to
+  the owner queue when `should_queue_for_owner()` says so). New `observe`/
+  `judge` subcommands.
+- `nookguard/tests/{test_aggregator.py, test_owner_queue.py}` (new, 27
+  tests) plus additions to `test_state_machine.py` (1) and `test_cli.py`
+  (2, including a full `spec-lock` through `judge` pipeline test with
+  `run_observer_session`/`run_judge_session` monkeypatched on `nookguard.
+  cli`'s own imported names — `from .agent_runner import X` binds a local
+  reference in `cli.py`, so patching `agent_runner.X` directly would NOT
+  have affected `cli.py`'s calls; patched the right target on the first
+  attempt by reasoning through the import binding rather than guessing).
+
+**Honest note on my own process:** hit the exact same missing `--run-id`/
+`--session-id` bug documented in Commits 3 and 5 a THIRD time, in both new
+`test_cli.py` tests this commit — every `run_cli()` call in a test needs
+`--run-id` or the ledger's `Event` schema rejects `None`. This is clearly a
+recurring authoring mistake on my part, not a one-off; caught immediately
+by actually running the suite, same as the prior two times, but worth
+naming directly: three strikes on the identical mistake across three
+different commits is a pattern, and future test-writing in this project
+should default to including `--run-id` from the first draft rather than
+discovering the omission via a failing test each time.
+
+**Tests run:** `python -m pytest nookguard/tests -q`
+**Result:** 124 passed, 0 failed, 0 warnings (94 from Commits 2-7 + 30
+new). Also fixed an overly strict assertion in
+`test_aggregation_result_never_asserts_pass_from_free_text` on first run —
+it banned the bare substring "override" in `aggregate()`'s source, which
+false-flagged the function's own explanatory comments (e.g. "no narrative
+override") rather than actual field access; narrowed to `.override`
+(attribute-style access) and `override_reason` instead.
+
+**Commit:** `44e8893`, pushed to `origin/main` (`94efaa8..44e8893`).
+
+**Unresolved risks:**
+- The "third count adjudicator" gap noted above — a real, cited, deliberate
+  scope decision, not an oversight, but flagging again here so a future
+  session doesn't assume it exists.
+- Tier 0's "random 10%" calibration sampling is approximated as a
+  deterministic every-10th-asset rule for testability, not true randomness
+  — stated as a real trade-off in the module docstring, not hidden.
+- `should_queue_for_owner`'s `is_disagreement` parameter is not yet wired
+  from `cmd_judge` to reflect the aggregator's own count-disagreement
+  finding (it currently always passes the default `False` for that flag,
+  relying on NEEDS_OWNER's own always-queue rule to catch the disagreement
+  case in practice, since `aggregate()` already routes disagreements to
+  NEEDS_OWNER before `should_queue_for_owner` is ever called with a
+  different state). Functionally correct today, but the parameter exists
+  for a case (a Tier 0/1 pass that still had a *minor*, non-blocking
+  disagreement) this commit doesn't yet produce — worth wiring for real if
+  that scenario becomes reachable.
+- Owner-queue gating remains explicitly deferred per Maurice's 2026-07-21
+  instruction — repeating this once more since it's easy for a future
+  session to see a populated queue and assume it's blocking something.
+
+**Next:** Commit 9 (Off the Clock schema + page validators) — content
+migration for the Off the Clock section's photo-strip layout schema,
+layout tests, and a ban on the legacy raw-media component (hook H009:
+"Page adds legacy raw media component -> Fail content lint").
