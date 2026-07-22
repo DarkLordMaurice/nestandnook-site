@@ -1,6 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { reviewerSessionDiffersFromGenerator, requiredStagesPresentAndPolicyPass } from '../src/enforce.mjs';
+import {
+  reviewerSessionDiffersFromGenerator, requiredStagesPresentAndPolicyPass,
+  isValidOwnerDecisionOption, OWNER_DECISION_OPTIONS,
+} from '../src/enforce.mjs';
 
 test('reviewerSessionDiffersFromGenerator: rejects a reviewer session identical to the generator session', () => {
   const result = reviewerSessionDiffersFromGenerator('session-abc', 'session-abc');
@@ -54,4 +57,19 @@ test('requiredStagesPresentAndPolicyPass: rejects needs_owner as a bare pass (it
     ['observe_a', 'observe_b', 'judge'], ['observe_a', 'observe_b', 'judge'], 'needs_owner',
   );
   assert.equal(result.ok, false);
+});
+
+test('isValidOwnerDecisionOption: accepts exactly the five Appendix E options', () => {
+  assert.equal(OWNER_DECISION_OPTIONS.length, 5);
+  for (const option of OWNER_DECISION_OPTIONS) {
+    assert.equal(isValidOwnerDecisionOption(option), true, `'${option}' should be valid`);
+  }
+});
+
+test('isValidOwnerDecisionOption: rejects anything outside the closed set, including near-misses', () => {
+  assert.equal(isValidOwnerDecisionOption('approved'), false, 'the Python owner_queue.py legacy value is not one of the five Appendix E options');
+  assert.equal(isValidOwnerDecisionOption('approve'), false);
+  assert.equal(isValidOwnerDecisionOption(''), false);
+  assert.equal(isValidOwnerDecisionOption(undefined), false);
+  assert.equal(isValidOwnerDecisionOption('APPROVE_EXACT_HASH'), false, 'case-sensitive, matching the rest of this codebase\'s lowercase-enum convention');
 });

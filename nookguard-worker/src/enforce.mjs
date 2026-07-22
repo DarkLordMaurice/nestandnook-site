@@ -64,3 +64,23 @@ export function requiredStagesPresentAndPolicyPass(reviewStages, requiredStages,
 // greppable cross-reference so a future edit to either side is easy to
 // find, not because this file imports it.
 export const PYTHON_ASSET_STATES_REFERENCE = 'nookguard/state_machine.py:AssetState';
+
+// Appendix E's "Options" row, verbatim: "Approve exact hash, reject,
+// revise-spec, regenerate, or defer." nookguard/owner_queue.py (Python)
+// only implements two of these ('approved'/'rejected') today -- this is
+// the full five-value set Appendix E actually specifies, machine-readable
+// keys chosen for the human-readable phrases in its table.
+export const OWNER_DECISION_OPTIONS = Object.freeze([
+  'approve_exact_hash', 'reject', 'revise_spec', 'regenerate', 'defer',
+]);
+
+/**
+ * Appendix E's "Options" row is a closed set -- a resolution has to be one
+ * of the five listed values, not free text. Kept as its own pure function
+ * (rather than inlined validation in ownerQueue.mjs) for the same reason
+ * every other rule in this file is: trivially unit-testable on its own,
+ * with the actual data-layer code only responsible for calling it.
+ */
+export function isValidOwnerDecisionOption(decision) {
+  return OWNER_DECISION_OPTIONS.includes(decision);
+}

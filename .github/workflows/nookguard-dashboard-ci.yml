@@ -1,0 +1,49 @@
+name: NookGuard Dashboard CI
+
+# Runs a real `astro build` of the owner-queue dashboard on every push/PR
+# that touches it -- this package has no unit-testable logic of its own
+# (all the real logic it calls lives in nookguard-worker, covered by
+# nookguard-worker-ci.yml); a clean build producing real static output is
+# the meaningful gate here, matching the main site's own `npm run build`
+# treating `astro build` as the real check.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "nookguard-dashboard/**"
+      - ".github/workflows/nookguard-dashboard-ci.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "nookguard-dashboard/**"
+      - ".github/workflows/nookguard-dashboard-ci.yml"
+
+# Least-privilege by default -- same rationale as nookguard-ci.yml and
+# nookguard-worker-ci.yml (Appendix A: "GitHub workflows, artifacts,
+# permissions, hooks").
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: astro build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: nookguard-dashboard
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Build (astro build)
+        run: npm run build

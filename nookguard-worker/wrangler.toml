@@ -1,18 +1,20 @@
 # NookGuard Commit 14: Worker config for the D1-backed ledger backend.
 # NookGuard Commit 15: added the R2 artifact bucket binding below.
+# NookGuard Commit 16: added the (currently commented-out) Access
+# verification vars at the bottom of this file.
 #
 # This file is real Cloudflare Workers configuration -- the binding names
 # (DB, ARTIFACTS), the migrations_dir, and the entrypoint path are all
 # exactly what a real `wrangler d1 migrations apply` / `wrangler deploy`
 # would use. What is NOT real yet: `database_id` and `bucket_name` below
-# are placeholders. Provisioning an actual D1 database and R2 bucket
-# requires Maurice's own Cloudflare account (same standing gap as
-# Cloudflare Pages' production branch source, flagged since Commit 1's
+# are placeholders, and the `[vars]` block at the bottom is entirely
+# commented out. Provisioning an actual D1 database, R2 bucket, and Access
+# application requires Maurice's own Cloudflare account (same standing gap
+# as Cloudflare Pages' production branch source, flagged since Commit 1's
 # BUILD-LOG entry, and the same "needs a live account" category as
-# `--live-url` production verification in Commit 12). Until a real
-# database_id/bucket_name are filled in here and `wrangler d1 migrations
-# apply nookguard-db` / the bucket's own creation are run for real, this
-# Worker exists as tested code only, not as a deployed service.
+# `--live-url` production verification in Commit 12). Until real values
+# are filled in, this Worker exists as tested code only, not as a deployed
+# service.
 
 name = "nookguard-ledger"
 main = "src/index.mjs"
@@ -27,3 +29,20 @@ migrations_dir = "migrations"
 [[r2_buckets]]
 binding = "ARTIFACTS"
 bucket_name = "REPLACE_WITH_REAL_R2_BUCKET_NAME"
+
+# Deliberately commented out, not set to placeholder strings. src/index.mjs
+# reads env.ACCESS_AUD / env.ACCESS_TEAM_DOMAIN and passes them straight
+# into src/access.mjs's `audience`/`jwksFetcher` -- and access.mjs treats
+# ANY truthy `audience` value as "verification is required," including a
+# placeholder string that no real JWT will ever match. A wrangler.toml
+# shipped with `ACCESS_AUD = "REPLACE_ME"` would silently 401 every
+# owner_queue resolve request forever, which is worse than the current
+# genuinely-open state (already flagged as an unresolved risk since
+# Commits 14/15) -- it would look configured without being configured.
+# Uncomment both lines below with their real values only once a real
+# Access application has actually been created (Zero Trust > Access >
+# Applications) -- do not fill in placeholder text here.
+#
+# [vars]
+# ACCESS_AUD = "<the real Access application's AUD tag>"
+# ACCESS_TEAM_DOMAIN = "<your-team>.cloudflareaccess.com"

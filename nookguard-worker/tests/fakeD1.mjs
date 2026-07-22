@@ -23,12 +23,23 @@
 // live or emulated Cloudflare account, which this sandbox does not have.
 
 import { DatabaseSync } from 'node:sqlite';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const MIGRATION_PATH = path.join(__dirname, '..', 'migrations', '0001_init.sql');
+const MIGRATIONS_DIR = path.join(__dirname, '..', 'migrations');
+
+/** Every *.sql file in migrations/, in filename order -- the same order
+ * `wrangler d1 migrations apply` would run them in against a real
+ * database. Sorted lexically, which is why migration files are numbered
+ * with zero-padded prefixes (0001_, 0002_, ...). */
+function allMigrationFilesInOrder() {
+  return readdirSync(MIGRATIONS_DIR)
+    .filter((f) => f.endsWith('.sql'))
+    .sort()
+    .map((f) => path.join(MIGRATIONS_DIR, f));
+}
 
 class FakeD1PreparedStatement {
   constructor(db, sql) {
@@ -87,10 +98,12 @@ export class FakeD1Database {
   }
 }
 
-/** Creates a fresh in-memory FakeD1Database with 0001_init.sql already applied. */
+/** Creates a fresh in-memory FakeD1Database with every migrations/*.sql
+ * file already applied, in order. */
 export function createMigratedFakeD1() {
   const db = new FakeD1Database();
-  const migrationSql = readFileSync(MIGRATION_PATH, 'utf-8');
-  db._sqlite.exec(migrationSql);
+  for (const migrationPath of allMigrationFilesInOrder()) {
+    db._sqlite.exec(readFileSync(migrationPath, 'utf-8'));
+  }
   return db;
 }

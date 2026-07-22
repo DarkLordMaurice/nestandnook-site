@@ -2,16 +2,21 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createMigratedFakeD1 } from './fakeD1.mjs';
 import { FakeR2Bucket } from './fakeR2.mjs';
+import { generateTestKeypair, signTestJwt, fakeJwksFetcher } from './testJwt.mjs';
 import { routeRequest } from '../src/router.mjs';
 
 // Real Request/Response objects (global in Node 22+) round-tripped through
 // routeRequest -- this is the same object shape Cloudflare passes into
-// `fetch(request, env)` in production; only the `env = { db, artifacts }`
-// bindings (here, the fakeD1/fakeR2 instances) differ from a real
-// deployment.
+// `fetch(request, env)` in production; only the `env = { db, artifacts,
+// accessAudience, jwksFetcher }` bindings (here, the fakeD1/fakeR2
+// instances and, where a test needs it, real self-signed JWTs) differ from
+// a real deployment. `accessAudience`/`jwksFetcher` are left undefined by
+// makeEnv() by default, matching production's un-provisioned default (see
+// src/access.mjs) -- tests that specifically exercise Access verification
+// pass their own env with those two fields set.
 
-function makeEnv() {
-  return { db: createMigratedFakeD1(), artifacts: new FakeR2Bucket() };
+function makeEnv(overrides = {}) {
+  return { db: createMigratedFakeD1(), artifacts: new FakeR2Bucket(), ...overrides };
 }
 
 function postJson(url, body) {
@@ -206,4 +211,129 @@ test('HEAD /artifacts/:sha256 reports existence and size without a body, and 404
 
   const headMiss = await routeRequest(new Request(`https://worker.example/artifacts/${'e'.repeat(64)}`, { method: 'HEAD' }), env);
   assert.equal(headMiss.status, 404);
+});
+
+// ---- CORS ----
+
+test('OPTIONS preflight returns 204 with CORS headers, on any path', async () => {
+  const env = makeEnv();
+  const response = await routeRequest(new Request('https://worker.example/owner_queue', { method: 'OPTIONS' }), env);
+  assert.equal(response.status, 204);
+  assert.equal(response.headers.get('access-control-allow-origin'), '*');
+});
+
+test('a normal JSON response also carries CORS headers, not just the OPTIONS preflight', async () => {
+  const env = makeEnv();
+  const response = await routeRequest(new Request('https://worker.example/does-not-exist'), env);
+  assert.equal(response.headers.get('access-control-allow-origin'), '*');
+});
+
+// ---- Commit 16: /owner_queue routes (D1-backed) ----
+
+function sampleOwnerQueueEntry(overrides = {}) {
+  return {
+    entry_id: 'oq-router-1',
+    asset_id: 'asset-1',
+    candidate_sha256: 'cand-router-1',
+    question: 'Approve hero image for hub landing page, exact hash cand-router-1?',
+    reasons: ['reviewer_disagreement'],
+    risk_tier: 'tier_2',
+    result_state: 'needs_owner',
+    evidence: { candidate: 'cand-router-1.jpg' },
+    queued_at: '2026-07-22T00:05:00Z',
+    ...overrides,
+  };
+}
+
+test('POST /owner_queue then GET /owner_queue lists it as pending, over real HTTP', async () => {
+  const env = makeEnv();
+  await routeRequest(postJson('https://worker.example/generation_attempts', sampleAttempt()), env);
+
+  const postResponse = await routeRequest(postJson('https://worker.example/owner_queue', sampleOwnerQueueEntry()), env);
+  assert.equal(postResponse.status, 201);
+
+  const listResponse = await routeRequest(new Request('https://worker.example/owner_queue'), env);
+  assert.equal(listResponse.status, 200);
+  const body = await listResponse.json();
+  assert.equal(body.entries.length, 1);
+  assert.equal(body.entries[0].status, 'pending');
+});
+
+test('POST /owner_queue/:entry_id/resolve succeeds over real HTTP when Access is not configured (the un-provisioned default)', async () => {
+  const env = makeEnv();
+  await routeRequest(postJson('https://worker.example/generation_attempts', sampleAttempt()), env);
+  await routeRequest(postJson('https://worker.example/owner_queue', sampleOwnerQueueEntry()), env);
+
+  const resolveResponse = await routeRequest(
+    postJson('https://worker.example/owner_queue/oq-router-1/resolve', {
+      decision: 'approve_exact_hash', resolved_by: 'maurice', resolved_at: '2026-07-22T01:00:00Z',
+    }),
+    env,
+  );
+  assert.equal(resolveResponse.status, 200);
+
+  const listResponse = await routeRequest(new Request('https://worker.example/owner_queue?status=resolved'), env);
+  const body = await listResponse.json();
+  assert.equal(body.entries.length, 1);
+  assert.equal(body.entries[0].decision, 'approve_exact_hash');
+});
+
+test('POST /owner_queue/:entry_id/resolve is rejected with 401 when Access IS configured and no token is sent', async () => {
+  const { publicJwk } = await generateTestKeypair();
+  const env = makeEnv({ accessAudience: 'router-test-aud', jwksFetcher: fakeJwksFetcher(publicJwk) });
+  await routeRequest(postJson('https://worker.example/generation_attempts', sampleAttempt()), env);
+  await routeRequest(postJson('https://worker.example/owner_queue', sampleOwnerQueueEntry()), env);
+
+  const resolveResponse = await routeRequest(
+    postJson('https://worker.example/owner_queue/oq-router-1/resolve', {
+      decision: 'approve_exact_hash', resolved_by: 'maurice', resolved_at: '2026-07-22T01:00:00Z',
+    }),
+    env,
+  );
+  assert.equal(resolveResponse.status, 401);
+
+  // And the entry must still be pending -- a rejected Access check must
+  // block the write, not just report an error after the fact.
+  const listResponse = await routeRequest(new Request('https://worker.example/owner_queue'), env);
+  const body = await listResponse.json();
+  assert.equal(body.entries.length, 1);
+});
+
+test('POST /owner_queue/:entry_id/resolve succeeds when Access IS configured and a valid, matching-audience token is sent, and the JWT email overrides any client-claimed resolved_by', async () => {
+  const { publicJwk, privateKey, kid } = await generateTestKeypair();
+  const env = makeEnv({ accessAudience: 'router-test-aud', jwksFetcher: fakeJwksFetcher(publicJwk) });
+  await routeRequest(postJson('https://worker.example/generation_attempts', sampleAttempt()), env);
+  await routeRequest(postJson('https://worker.example/owner_queue', sampleOwnerQueueEntry()), env);
+
+  const token = await signTestJwt(privateKey, kid, {
+    aud: 'router-test-aud', email: 'maurice@example.com', exp: Math.floor(Date.now() / 1000) + 3600,
+  });
+  const resolveRequest = new Request('https://worker.example/owner_queue/oq-router-1/resolve', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json', 'Cf-Access-Jwt-Assertion': token },
+    // A client-supplied resolved_by claiming to be someone else -- the
+    // Worker must ignore this and use the verified JWT's email instead
+    // (see router.mjs's comment on the resolve handler for why).
+    body: JSON.stringify({ decision: 'reject', resolved_by: 'someone-spoofing-maurice', resolved_at: '2026-07-22T01:00:00Z' }),
+  });
+  const resolveResponse = await routeRequest(resolveRequest, env);
+  assert.equal(resolveResponse.status, 200);
+
+  const listResponse = await routeRequest(new Request('https://worker.example/owner_queue?status=resolved'), env);
+  const body = await listResponse.json();
+  assert.equal(body.entries[0].resolved_by, 'maurice@example.com', 'resolved_by must come from the verified JWT, not the request body');
+});
+
+test('POST /owner_queue/:entry_id/resolve with an invalid decision option returns 400, not a database error', async () => {
+  const env = makeEnv();
+  await routeRequest(postJson('https://worker.example/generation_attempts', sampleAttempt()), env);
+  await routeRequest(postJson('https://worker.example/owner_queue', sampleOwnerQueueEntry()), env);
+
+  const resolveResponse = await routeRequest(
+    postJson('https://worker.example/owner_queue/oq-router-1/resolve', {
+      decision: 'not_a_real_option', resolved_by: 'maurice', resolved_at: '2026-07-22T01:00:00Z',
+    }),
+    env,
+  );
+  assert.equal(resolveResponse.status, 400);
 });

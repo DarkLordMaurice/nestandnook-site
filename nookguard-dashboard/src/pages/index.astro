@@ -1,0 +1,248 @@
+---
+// NookGuard Commit 16: the owner-queue dashboard. Appendix J's operational
+// runbook: "Maurice can see and resolve only the owner queue from the
+// private dashboard." This is a static Astro page -- there is no
+// server-side rendering here (the main nestandnook-site project is a
+// static build, and this sibling project follows the same model) -- all
+// real data comes from the nookguard-worker API at runtime, via the
+// client-side script at the bottom of this file. Astro itself only
+// renders the static shell below at build time.
+//
+// WORKER_BASE_URL defaults to '/api' -- same-origin, relative. This is the
+// RECOMMENDED deployment topology (see README.md "Deployment topology"):
+// route this dashboard's domain's /api/* to the Worker via a single
+// Cloudflare route rule, under ONE Access application covering the whole
+// hostname, so the browser's Access session cookie and the
+// Cf-Access-Jwt-Assertion header Cloudflare attaches at the edge both
+// just work without any CORS or cross-origin credential complexity. Set
+// PUBLIC_NOOKGUARD_WORKER_URL to an absolute URL only for local dev
+// against a `wrangler dev` instance on a different port.
+const WORKER_BASE_URL = import.meta.env.PUBLIC_NOOKGUARD_WORKER_URL || '/api';
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>NookGuard — Owner Queue</title>
+  <style>
+    :root { color-scheme: light; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 4rem;
+      background: #faf8f5; color: #2a2622;
+    }
+    h1 { font-size: 1.5rem; margin-bottom: 0.25rem; }
+    .subtitle { color: #6b6459; margin-top: 0; margin-bottom: 1.5rem; }
+    .filter-bar { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .filter-bar button {
+      border: 1px solid #d8d2c6; background: #fff; padding: 0.4rem 0.9rem;
+      border-radius: 999px; cursor: pointer; font-size: 0.85rem;
+    }
+    .filter-bar button[aria-pressed="true"] { background: #2a2622; color: #fff; border-color: #2a2622; }
+    #status-line { color: #6b6459; font-size: 0.9rem; margin-bottom: 1rem; min-height: 1.2em; }
+    .entry {
+      background: #fff; border: 1px solid #e6e0d4; border-radius: 10px;
+      padding: 1.25rem 1.5rem; margin-bottom: 1rem;
+    }
+    .entry .question { font-weight: 600; font-size: 1.05rem; margin: 0 0 0.5rem; }
+    .entry .meta { font-size: 0.8rem; color: #6b6459; margin-bottom: 0.75rem; }
+    .entry .meta code { background: #f1ece1; padding: 0.1rem 0.35rem; border-radius: 4px; }
+    .entry .reasons span {
+      display: inline-block; background: #fdeee0; color: #8a4b12; font-size: 0.75rem;
+      padding: 0.15rem 0.55rem; border-radius: 999px; margin: 0 0.35rem 0.35rem 0;
+    }
+    .entry details { margin: 0.5rem 0; font-size: 0.85rem; }
+    .entry details pre {
+      background: #f6f3ec; padding: 0.75rem; border-radius: 6px; overflow-x: auto; font-size: 0.78rem;
+    }
+    .resolve-form { border-top: 1px solid #eee6d8; margin-top: 0.75rem; padding-top: 0.75rem; }
+    .resolve-form .row { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.6rem; }
+    .resolve-form select, .resolve-form input[type="text"] {
+      padding: 0.4rem 0.5rem; border: 1px solid #d8d2c6; border-radius: 6px; font-size: 0.85rem;
+    }
+    .resolve-form input[type="text"] { flex: 1; min-width: 200px; }
+    .resolve-form button {
+      background: #2a2622; color: #fff; border: none; padding: 0.5rem 1.1rem;
+      border-radius: 6px; cursor: pointer; font-size: 0.85rem;
+    }
+    .resolve-form button:disabled { opacity: 0.5; cursor: not-allowed; }
+    .resolved-badge {
+      display: inline-block; font-size: 0.78rem; padding: 0.2rem 0.6rem; border-radius: 999px;
+      background: #e6f4ea; color: #276a3e;
+    }
+    .empty-state { color: #6b6459; padding: 2rem 0; text-align: center; }
+    .error-banner {
+      background: #fdeaea; color: #8a1f1f; padding: 0.75rem 1rem; border-radius: 8px; margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Owner Queue</h1>
+  <p class="subtitle">
+    Appendix E owner-decision packets — Nest &amp; Nook / NookGuard. Only pending, needs-owner
+    assets appear here by default.
+  </p>
+
+  <div class="filter-bar" role="tablist" aria-label="Queue filter">
+    <button type="button" data-status="pending" aria-pressed="true">Pending</button>
+    <button type="button" data-status="resolved" aria-pressed="false">Resolved</button>
+    <button type="button" data-status="all" aria-pressed="false">All</button>
+  </div>
+
+  <div id="status-line"></div>
+  <div id="entries"></div>
+
+  <script define:vars={{ WORKER_BASE_URL }}>
+    const OPTIONS = [
+      { value: 'approve_exact_hash', label: 'Approve exact hash' },
+      { value: 'reject', label: 'Reject' },
+      { value: 'revise_spec', label: 'Revise spec' },
+      { value: 'regenerate', label: 'Regenerate' },
+      { value: 'defer', label: 'Defer' },
+    ];
+
+    const entriesEl = document.getElementById('entries');
+    const statusLineEl = document.getElementById('status-line');
+    const filterButtons = Array.from(document.querySelectorAll('.filter-bar button'));
+    let currentStatus = 'pending';
+
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, (c) => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+      }[c]));
+    }
+
+    function renderEntry(entry) {
+      const div = document.createElement('div');
+      div.className = 'entry';
+
+      const reasonsHtml = (entry.reasons || [])
+        .map((r) => `<span>${escapeHtml(r)}</span>`).join('');
+
+      const isPending = entry.status === 'pending';
+
+      div.innerHTML = `
+        <p class="question">${escapeHtml(entry.question)}</p>
+        <div class="meta">
+          asset <code>${escapeHtml(entry.asset_id)}</code> ·
+          candidate <code>${escapeHtml(entry.candidate_sha256)}</code> ·
+          tier <code>${escapeHtml(entry.risk_tier)}</code> ·
+          state <code>${escapeHtml(entry.result_state)}</code> ·
+          queued ${escapeHtml(entry.queued_at)}
+        </div>
+        <div class="reasons">${reasonsHtml}</div>
+        <details>
+          <summary>Evidence</summary>
+          <pre>${escapeHtml(JSON.stringify(entry.evidence, null, 2))}</pre>
+        </details>
+        ${isPending ? '' : `
+          <p><span class="resolved-badge">resolved: ${escapeHtml(entry.decision)}</span>
+          by ${escapeHtml(entry.resolved_by || 'unknown')} at ${escapeHtml(entry.resolved_at || '')}</p>
+          ${entry.consequences ? `<details><summary>Consequences</summary><pre>${escapeHtml(JSON.stringify(entry.consequences, null, 2))}</pre></details>` : ''}
+        `}
+      `;
+
+      if (isPending) {
+        const form = document.createElement('div');
+        form.className = 'resolve-form';
+        form.innerHTML = `
+          <div class="row">
+            <select class="decision-select">
+              ${OPTIONS.map((o) => `<option value="${o.value}">${o.label}</option>`).join('')}
+            </select>
+            <input type="text" class="consequences-input" placeholder="What changes on site (consequences summary)" />
+            <select class="permanence-select">
+              <option value="permanent">Permanent</option>
+              <option value="temporary">Temporary</option>
+            </select>
+          </div>
+          <div class="row">
+            <button type="button" class="resolve-btn">Resolve</button>
+            <span class="resolve-status" style="font-size:0.8rem;color:#6b6459;"></span>
+          </div>
+        `;
+        const btn = form.querySelector('.resolve-btn');
+        const statusSpan = form.querySelector('.resolve-status');
+        btn.addEventListener('click', async () => {
+          btn.disabled = true;
+          statusSpan.textContent = 'Resolving…';
+          const decision = form.querySelector('.decision-select').value;
+          const consequencesSummary = form.querySelector('.consequences-input').value;
+          const overridePermanence = form.querySelector('.permanence-select').value;
+          try {
+            const response = await fetch(`${WORKER_BASE_URL}/owner_queue/${encodeURIComponent(entry.entry_id)}/resolve`, {
+              method: 'POST',
+              credentials: 'include',
+              headers: { 'content-type': 'application/json' },
+              body: JSON.stringify({
+                decision,
+                // resolved_by is intentionally NOT sent as a trusted
+                // value here -- if Access is configured on the Worker, it
+                // ignores this and uses the verified JWT's email instead
+                // (see nookguard-worker/src/router.mjs). If Access is not
+                // yet configured, the Worker falls back to whatever is
+                // sent here, which is why this still has a real value.
+                resolved_by: 'dashboard-unauthenticated-fallback',
+                resolved_at: new Date().toISOString(),
+                consequences: { site_change: consequencesSummary, override_permanence: overridePermanence },
+              }),
+            });
+            const body = await response.json();
+            if (!response.ok || !body.ok) {
+              statusSpan.textContent = `Failed: ${body.error || response.statusText}`;
+              btn.disabled = false;
+              return;
+            }
+            statusSpan.textContent = 'Resolved.';
+            await loadEntries(currentStatus);
+          } catch (err) {
+            statusSpan.textContent = `Network error: ${err.message}`;
+            btn.disabled = false;
+          }
+        });
+        div.appendChild(form);
+      }
+
+      return div;
+    }
+
+    async function loadEntries(status) {
+      currentStatus = status;
+      statusLineEl.textContent = 'Loading…';
+      entriesEl.innerHTML = '';
+      try {
+        const response = await fetch(`${WORKER_BASE_URL}/owner_queue?status=${encodeURIComponent(status)}`, {
+          credentials: 'include',
+        });
+        const body = await response.json();
+        if (!response.ok || !body.ok) {
+          statusLineEl.innerHTML = `<div class="error-banner">Could not load the owner queue: ${escapeHtml(body.error || response.statusText)}</div>`;
+          return;
+        }
+        statusLineEl.textContent = `${body.entries.length} entr${body.entries.length === 1 ? 'y' : 'ies'} (${status}).`;
+        if (body.entries.length === 0) {
+          entriesEl.innerHTML = '<p class="empty-state">Nothing here.</p>';
+          return;
+        }
+        for (const entry of body.entries) {
+          entriesEl.appendChild(renderEntry(entry));
+        }
+      } catch (err) {
+        statusLineEl.innerHTML = `<div class="error-banner">Could not reach the NookGuard Worker at ${escapeHtml(WORKER_BASE_URL)}: ${escapeHtml(err.message)}</div>`;
+      }
+    }
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+        loadEntries(btn.dataset.status);
+      });
+    });
+
+    loadEntries('pending');
+  </script>
+</body>
+</html>

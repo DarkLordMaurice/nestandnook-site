@@ -34,12 +34,12 @@ function sampleReview(overrides = {}) {
   };
 }
 
-test('migration runs cleanly against real SQLite and creates all three tables', () => {
+test('all migrations (0001 + 0002) run cleanly against real SQLite and create all four tables', () => {
   const db = createMigratedFakeD1();
   const tables = db._sqlite.prepare(
     "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name",
   ).all().map((r) => r.name);
-  assert.deepEqual(tables, ['events', 'generation_attempts', 'reviews']);
+  assert.deepEqual(tables, ['events', 'generation_attempts', 'owner_queue', 'reviews']);
 });
 
 test('insertEvent + listEventsByRunId: real round trip through real SQLite', async () => {
