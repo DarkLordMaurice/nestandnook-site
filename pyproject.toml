@@ -5,6 +5,9 @@ description = "Claude-only media reliability control plane for Nest & Nook"
 requires-python = ">=3.10"
 dependencies = [
     "pydantic>=2.6",
+    "Pillow>=10.0",
+    "gradio_client>=1.0",
+    "anthropic>=0.60",
 ]
 
 [project.optional-dependencies]
