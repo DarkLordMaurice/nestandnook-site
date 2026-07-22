@@ -279,3 +279,164 @@ def test_generate_dispatches_to_huggingface_adapter(monkeypatch, tmp_path):
         assert gen["ok"], gen
         assert gen["adapter_version"] == hf_adapter.ADAPTER_VERSION
         assert gen["artifact_uri"].endswith(".jpg")
+
+
+# ---- integrate / preview-capture / preview-review (Commit 10) ----
+
+def _write_html(html: str, tmp_path: Path) -> str:
+    p = tmp_path / "page.html"
+    p.write_text(html, encoding="utf-8")
+    return p.as_uri()
+
+
+def _drive_to_semantic_pass(monkeypatch, store_root: str, run_id: str, contract_path: Path) -> str:
+    """Shared setup: reaches SEMANTIC_PASS through the real CLI with the
+    Claude review-agent calls monkeypatched, same pattern as
+    test_full_pipeline_through_observe_judge_to_semantic_pass above. Returns
+    the candidate_sha256, left at SEMANTIC_PASS (not yet integrated)."""
+    import nookguard.cli as cli_module
+    from nookguard.schemas import BlindObservation, ContractJudgment, RequirementJudgment, RequirementResult
+
+    def fake_observer(review_pack, **kwargs):
+        return BlindObservation(
+            review_id="r1", candidate_sha256=review_pack.candidate_sha256,
+            review_pack_sha256=review_pack.review_pack_sha256, reviewer_agent_hash="h",
+            reviewer_session_id="s", context_bundle_sha256="cb", observer_role=review_pack.observer_role,
+        )
+
+    def fake_judge(contract, spec_sha256, blind_obs, adversarial_obs, **kwargs):
+        return ContractJudgment(
+            candidate_sha256=blind_obs.candidate_sha256, spec_sha256=spec_sha256,
+            judge_session_id="j", judge_agent_hash="h", context_bundle_sha256="cb",
+            requirements=[RequirementJudgment(requirement_id="r1", result=RequirementResult.TRUE,
+                                               evidence_observation_ids=["obs1"])],
+        )
+
+    monkeypatch.setattr(cli_module, "run_observer_session", fake_observer)
+    monkeypatch.setattr(cli_module, "run_judge_session", fake_judge)
+
+    spec = run_cli(["spec-lock", "--store-root", store_root, "--run-id", run_id,
+                     "--contract", str(contract_path)])
+    prompt = run_cli(["prompt-compile", "--store-root", store_root, "--run-id", run_id,
+                       "--spec", spec["spec_sha256"]])
+    gen = run_cli(["generate", "--store-root", store_root, "--run-id", run_id,
+                    "--spec", spec["spec_sha256"], "--prompt", prompt["prompt_sha256"], "--adapter", "stub"])
+    candidate_sha = gen["candidate_sha256"]
+    run_cli(["register", "--store-root", store_root, "--run-id", run_id, "--spec", spec["spec_sha256"],
+             "--prompt", prompt["prompt_sha256"], "--candidate-sha256", candidate_sha,
+             "--adapter-version", gen["adapter_version"], "--session-id", "gen-session"])
+    run_cli(["validate", "--store-root", store_root, "--run-id", run_id, "--candidate-sha256", candidate_sha])
+    run_cli(["review-pack-build", "--store-root", store_root, "--run-id", run_id,
+             "--candidate-sha256", candidate_sha])
+    run_cli(["observe", "--store-root", store_root, "--run-id", run_id, "--candidate-sha256", candidate_sha])
+    judge = run_cli(["judge", "--store-root", store_root, "--run-id", run_id, "--candidate-sha256", candidate_sha])
+    assert judge["result"] == "semantic_pass", judge
+    return candidate_sha
+
+
+def test_full_pipeline_through_preview_review_to_pass(monkeypatch, tmp_path):
+    """Extends the pipeline from SEMANTIC_PASS through integrate ->
+    preview-capture (real Playwright screenshot of a real local page) ->
+    preview-review (page-reviewer session monkeypatched, same pattern as the
+    observer/judge tests) all the way to PREVIEW_REVIEW_PASS."""
+    import nookguard.cli as cli_module
+    from nookguard.schemas import PageReviewResult
+
+    def fake_page_reviewer(contact_sheet_path, page_url, viewports_captured, **kwargs):
+        return PageReviewResult(
+            page_url=page_url, viewports_reviewed=viewports_captured,
+            review_session_id="prs1", reviewer_agent_hash="h", context_bundle_sha256="cb",
+            issues=[], overall_summary_for_humans="Clean render, no defects found.",
+        )
+
+    monkeypatch.setattr(cli_module, "run_page_review_session", fake_page_reviewer)
+
+    store_root = str(tmp_path / "store")
+    contract_path = tmp_path / "contract.json"
+    contract_path.write_text(json.dumps(SAMPLE_CONTRACT))
+    run_id = "test-run-preview-pass"
+
+    candidate_sha = _drive_to_semantic_pass(monkeypatch, store_root, run_id, contract_path)
+
+    integrated = run_cli(["integrate", "--store-root", store_root, "--run-id", run_id,
+                           "--candidate-sha256", candidate_sha, "--page-url", "https://nestandnook.org/x/"])
+    assert integrated["ok"], integrated
+
+    page_url = _write_html("<html><body><h1>Real rendered page</h1></body></html>", tmp_path)
+    captured = run_cli(["preview-capture", "--store-root", store_root, "--run-id", run_id,
+                         "--candidate-sha256", candidate_sha, "--page-url", page_url])
+    assert captured["ok"], captured
+    assert set(captured["viewports"]) == {"desktop", "mobile"}
+    assert Path(captured["contact_sheet_path"]).exists()
+
+    reviewed = run_cli(["preview-review", "--store-root", store_root, "--run-id", run_id,
+                         "--candidate-sha256", candidate_sha])
+    assert reviewed["ok"], reviewed
+    assert reviewed["result"] == "preview_review_pass"
+
+
+def test_preview_capture_broken_image_flows_to_preview_review_fail(monkeypatch, tmp_path):
+    """A real broken <img> on the captured page, with a page-reviewer session
+    that reports zero issues of its own, must still fail -- the deterministic
+    PageCaptureReport facts are never overridable by reviewer prose."""
+    import nookguard.cli as cli_module
+    from nookguard.schemas import PageReviewResult
+
+    def fake_page_reviewer(contact_sheet_path, page_url, viewports_captured, **kwargs):
+        return PageReviewResult(
+            page_url=page_url, viewports_reviewed=viewports_captured,
+            review_session_id="prs2", reviewer_agent_hash="h", context_bundle_sha256="cb", issues=[],
+        )
+
+    monkeypatch.setattr(cli_module, "run_page_review_session", fake_page_reviewer)
+
+    store_root = str(tmp_path / "store")
+    contract_path = tmp_path / "contract.json"
+    contract_path.write_text(json.dumps(SAMPLE_CONTRACT))
+    run_id = "test-run-preview-fail"
+
+    candidate_sha = _drive_to_semantic_pass(monkeypatch, store_root, run_id, contract_path)
+    run_cli(["integrate", "--store-root", store_root, "--run-id", run_id,
+             "--candidate-sha256", candidate_sha])
+
+    page_url = _write_html(
+        '<html><body><img src="totally-missing.png" width="40" height="40"></body></html>', tmp_path,
+    )
+    captured = run_cli(["preview-capture", "--store-root", store_root, "--run-id", run_id,
+                         "--candidate-sha256", candidate_sha, "--page-url", page_url])
+    assert captured["ok"], captured
+
+    reviewed = run_cli(["preview-review", "--store-root", store_root, "--run-id", run_id,
+                         "--candidate-sha256", candidate_sha])
+    assert reviewed["ok"], reviewed
+    assert reviewed["result"] == "preview_review_fail"
+    assert any("broken image" in r.lower() for r in reviewed["reasons"])
+
+
+def test_preview_capture_rejects_when_not_integrated():
+    with tempfile.TemporaryDirectory() as d:
+        store_root = str(Path(d) / "store")
+        contract_path = Path(d) / "contract.json"
+        contract_path.write_text(json.dumps(SAMPLE_CONTRACT))
+        run_id = "test-run-preview-reject"
+        spec = run_cli(["spec-lock", "--store-root", store_root, "--run-id", run_id,
+                         "--contract", str(contract_path)])
+        # Asset is only at SPEC_LOCKED -- nowhere near INTEGRATED.
+        result = run_cli(["preview-capture", "--store-root", store_root, "--run-id", run_id,
+                           "--candidate-sha256", "deadbeef", "--page-url", "https://example.com/"])
+        assert not result["ok"]
+        assert "error" in result
+
+
+def test_preview_review_rejects_when_not_previewed(monkeypatch, tmp_path):
+    store_root = str(tmp_path / "store")
+    contract_path = tmp_path / "contract.json"
+    contract_path.write_text(json.dumps(SAMPLE_CONTRACT))
+    run_id = "test-run-preview-review-reject"
+
+    candidate_sha = _drive_to_semantic_pass(monkeypatch, store_root, run_id, contract_path)
+    # Never integrated or captured -- asset is at SEMANTIC_PASS, not PREVIEWED.
+    result = run_cli(["preview-review", "--store-root", store_root, "--run-id", run_id,
+                       "--candidate-sha256", candidate_sha])
+    assert not result["ok"]
+    assert "Illegal transition" in result["error"]

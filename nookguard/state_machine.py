@@ -85,7 +85,12 @@ TRANSITIONS: dict[AssetState, set[AssetState]] = {
     AssetState.OWNER_APPROVED: {AssetState.INTEGRATED},
     AssetState.SEMANTIC_PASS: {AssetState.INTEGRATED},
     AssetState.INTEGRATED: {AssetState.PREVIEWED},
-    AssetState.PREVIEWED: {AssetState.PREVIEW_REVIEW_PASS, AssetState.PREVIEW_REVIEW_FAIL},
+    # REVIEW_ERROR here too, same rationale as OBSERVING's edge above (added
+    # Commit 10): the page-reviewer session can fail the identical way any
+    # other agent session can -- invalid JSON, an interrupted call -- and
+    # section 29.5's "session interrupted -> REVIEW_ERROR" isn't role-scoped.
+    AssetState.PREVIEWED: {AssetState.PREVIEW_REVIEW_PASS, AssetState.PREVIEW_REVIEW_FAIL,
+                            AssetState.REVIEW_ERROR},
     AssetState.PREVIEW_REVIEW_PASS: {AssetState.RELEASED},
     AssetState.RELEASED: {AssetState.PROD_VERIFIED, AssetState.PROD_MISMATCH},
 }

@@ -18,7 +18,12 @@ from typing import Any
 
 from .adapters import AVAILABLE_ADAPTERS
 from .aggregator import aggregate
-from .agent_runner import ReviewSessionError, run_judge_session, run_observer_session
+from .agent_runner import (
+    ReviewSessionError,
+    run_judge_session,
+    run_observer_session,
+    run_page_review_session,
+)
 from .canon import CanonRegistry
 from .dedup import DedupRegistry
 from .exceptions import (
@@ -37,6 +42,8 @@ from .off_the_clock_schema import (
     split_frontmatter,
 )
 from .owner_queue import OwnerQueue, should_queue_for_owner
+from .preview import PageCaptureReport
+from .preview_aggregator import aggregate_preview
 from .prompt_compiler import compile_prompt
 from .review_pack import OBSERVER_ROLES, build_review_pack
 from .schemas import AssetContract, GenerationAttempt
@@ -390,6 +397,129 @@ def cmd_judge(args: argparse.Namespace) -> dict[str, Any]:
             "reasons": result.reasons, "queued_for_owner": queued}
 
 
+def cmd_integrate(args: argparse.Namespace) -> dict[str, Any]:
+    """SEMANTIC_PASS/OWNER_APPROVED -> INTEGRATED (Commit 10). NookGuard does
+    not write into a page's markdown itself (H006: generator/reviewer never
+    writes files directly) -- wiring an approved candidate into a real page's
+    frontmatter/body stays the existing, separate site workflow. This command
+    only records that integration happened, so preview-capture has a real,
+    confirmed page URL to screenshot rather than being told to trust a guess."""
+    root = Path(args.store_root)
+    store, ledger = _store(root), _ledger(root)
+    try:
+        attempt = store.load_attempt(args.candidate_sha256)
+        contract = store.load_spec(attempt.spec_sha256)
+    except FileNotFoundError as e:
+        return {"ok": False, "error": str(e)}
+
+    current = AssetState(store.get_state(contract.asset_id))
+    try:
+        transition(current, AssetState.INTEGRATED, asset_id=contract.asset_id)
+    except InvalidTransitionError as e:
+        return {"ok": False, "error": str(e)}
+    store.set_state(contract.asset_id, AssetState.INTEGRATED.value)
+
+    ledger.append(run_id=args.run_id, event_type="asset.integrated", actor_role=args.actor_role,
+                  payload={"candidate_sha256": args.candidate_sha256, "page_url": args.page_url},
+                  asset_id=contract.asset_id, actor_session_id=args.session_id)
+    return {"ok": True, "asset_id": contract.asset_id, "page_url": args.page_url}
+
+
+def cmd_preview_capture(args: argparse.Namespace) -> dict[str, Any]:
+    """INTEGRATED -> PREVIEWED. Real Playwright screenshots of every
+    viewport in preview.VIEWPORTS, combined into one contact sheet image.
+    Broken-image/console-error/failed-request facts are captured here and
+    persisted for preview-review's aggregation step -- they are deterministic
+    and code-owned, never re-derived from the reviewer's prose."""
+    root = Path(args.store_root)
+    store, ledger = _store(root), _ledger(root)
+    try:
+        attempt = store.load_attempt(args.candidate_sha256)
+        contract = store.load_spec(attempt.spec_sha256)
+    except FileNotFoundError as e:
+        return {"ok": False, "error": str(e)}
+
+    current = AssetState(store.get_state(contract.asset_id))
+    try:
+        transition(current, AssetState.PREVIEWED, asset_id=contract.asset_id)
+    except InvalidTransitionError as e:
+        return {"ok": False, "error": str(e)}
+
+    from .contact_sheet import build_contact_sheet
+    from .preview import capture_all_viewports
+
+    output_dir = store.preview_dir / args.candidate_sha256
+    reports_by_viewport = capture_all_viewports(args.page_url, output_dir, args.candidate_sha256)
+    ordered_reports = list(reports_by_viewport.values())
+    contact_sheet_path = build_contact_sheet(
+        [r.screenshot_path for r in ordered_reports],
+        output_dir / "contact_sheet.png",
+        labels=[r.viewport_name for r in ordered_reports],
+    )
+
+    store.save_preview_capture(args.candidate_sha256, args.page_url, contact_sheet_path, ordered_reports)
+    store.set_state(contract.asset_id, AssetState.PREVIEWED.value)
+
+    ledger.append(run_id=args.run_id, event_type="preview.captured", actor_role=args.actor_role,
+                  payload={"candidate_sha256": args.candidate_sha256, "page_url": args.page_url,
+                           "viewports": list(reports_by_viewport.keys()),
+                           "any_broken_images": any(r.broken_images for r in ordered_reports),
+                           "any_console_errors": any(r.console_errors for r in ordered_reports),
+                           "any_failed_requests": any(r.failed_requests for r in ordered_reports)},
+                  asset_id=contract.asset_id, actor_session_id=args.session_id)
+    return {"ok": True, "asset_id": contract.asset_id, "page_url": args.page_url,
+            "viewports": list(reports_by_viewport.keys()), "contact_sheet_path": contact_sheet_path}
+
+
+def cmd_preview_review(args: argparse.Namespace) -> dict[str, Any]:
+    """PREVIEWED -> {PREVIEW_REVIEW_PASS, PREVIEW_REVIEW_FAIL, REVIEW_ERROR}.
+    Runs the page-reviewer session against the contact sheet built by
+    preview-capture, then hands both that result and the real capture
+    reports to preview_aggregator.aggregate_preview -- code, not the model,
+    decides the outcome."""
+    root = Path(args.store_root)
+    store, ledger = _store(root), _ledger(root)
+    try:
+        attempt = store.load_attempt(args.candidate_sha256)
+        contract = store.load_spec(attempt.spec_sha256)
+    except FileNotFoundError as e:
+        return {"ok": False, "error": str(e)}
+
+    current = AssetState(store.get_state(contract.asset_id))
+    if current != AssetState.PREVIEWED:
+        return {"ok": False, "error": f"Illegal transition {current.value} -> preview-review "
+                                       "(asset must be in previewed state, set by mediactl preview-capture)"}
+
+    try:
+        capture = store.load_preview_capture(args.candidate_sha256)
+    except FileNotFoundError as e:
+        return {"ok": False, "error": str(e)}
+
+    capture_reports = [PageCaptureReport(**r) for r in capture["reports"]]
+    viewports_captured = [r.viewport_name for r in capture_reports]
+
+    try:
+        review = run_page_review_session(capture["contact_sheet_path"], capture["page_url"], viewports_captured)
+    except ReviewSessionError as e:
+        transition(current, AssetState.REVIEW_ERROR, asset_id=contract.asset_id)
+        store.set_state(contract.asset_id, AssetState.REVIEW_ERROR.value)
+        ledger.append(run_id=args.run_id, event_type="preview_review.error", actor_role=args.actor_role,
+                      payload={"candidate_sha256": args.candidate_sha256, "reason": e.reason},
+                      asset_id=contract.asset_id)
+        return {"ok": False, "error": str(e), "role": e.role}
+    store.save_page_review(args.candidate_sha256, review)
+
+    result = aggregate_preview(capture_reports, review)
+    transition(current, result.state, asset_id=contract.asset_id)
+    store.set_state(contract.asset_id, result.state.value)
+
+    ledger.append(run_id=args.run_id, event_type="preview_review.completed", actor_role=args.actor_role,
+                  payload={"candidate_sha256": args.candidate_sha256, "result": result.state.value,
+                           "reasons": result.reasons},
+                  asset_id=contract.asset_id, actor_session_id=args.session_id)
+    return {"ok": True, "asset_id": contract.asset_id, "result": result.state.value, "reasons": result.reasons}
+
+
 def _content_lint_one(file_path: Path) -> dict[str, Any]:
     try:
         report = lint_off_the_clock_file(str(file_path))
@@ -488,6 +618,20 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("judge"); _common(p)
     p.add_argument("--candidate-sha256", required=True)
     p.set_defaults(func=cmd_judge)
+
+    p = sub.add_parser("integrate"); _common(p)
+    p.add_argument("--candidate-sha256", required=True)
+    p.add_argument("--page-url", default=None)
+    p.set_defaults(func=cmd_integrate)
+
+    p = sub.add_parser("preview-capture"); _common(p)
+    p.add_argument("--candidate-sha256", required=True)
+    p.add_argument("--page-url", required=True)
+    p.set_defaults(func=cmd_preview_capture)
+
+    p = sub.add_parser("preview-review"); _common(p)
+    p.add_argument("--candidate-sha256", required=True)
+    p.set_defaults(func=cmd_preview_review)
 
     p = sub.add_parser("content-lint")
     group = p.add_mutually_exclusive_group(required=True)

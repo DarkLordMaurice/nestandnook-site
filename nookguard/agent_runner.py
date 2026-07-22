@@ -33,7 +33,7 @@ from pydantic import ValidationError
 
 from .hashing import sha256_bytes, sha256_canonical_json
 from .review_pack import ReviewPack
-from .schemas import AssetContract, BlindObservation, ContractJudgment
+from .schemas import AssetContract, BlindObservation, ContractJudgment, PageReviewResult
 
 AGENTS_DIR = Path(__file__).resolve().parent / "agents"
 MODEL = "claude-opus-4-8"
@@ -192,3 +192,46 @@ def run_judge_session(
         return ContractJudgment.model_validate(parsed)
     except ValidationError as e:
         raise ReviewSessionError("judge", f"response failed schema validation: {e}", raw_response=raw)
+
+
+def run_page_review_session(
+    contact_sheet_path: str,
+    page_url: str,
+    viewports_captured: list[str],
+    *,
+    executor: SessionExecutor = _default_executor,
+    agents_dir: Path = AGENTS_DIR,
+) -> PageReviewResult:
+    """Commit 10's page reviewer. Sees a contact sheet image (rendered
+    output only) and the page URL -- never the page's markdown source,
+    frontmatter, or any content-schema expectations (e.g. it is never told
+    the 'approved' photo-strip count from off_the_clock_schema.py). It finds
+    defects by looking, the same way a human reviewer would glance at a
+    screenshot, not by cross-checking against a spec."""
+    system_prompt = _load_system_prompt("page_reviewer_system_prompt.md", agents_dir)
+    instruction = (
+        f"Review this contact sheet for page {page_url}. Viewports shown: "
+        f"{', '.join(viewports_captured)}."
+    )
+    user_content = [_image_to_content_block(contact_sheet_path), {"type": "text", "text": instruction}]
+
+    session_id = str(uuid.uuid4())
+    raw = ""
+    try:
+        raw = executor(system_prompt, user_content)
+        parsed = _extract_json(raw)
+    except Exception as e:
+        raise ReviewSessionError("page_reviewer", f"session failed or returned invalid JSON: {e}",
+                                  raw_response=raw)
+
+    parsed["page_url"] = page_url
+    parsed.setdefault("viewports_reviewed", viewports_captured)
+    parsed["review_session_id"] = session_id
+    parsed.setdefault("reviewer_agent_hash",
+                       agent_definition_hash("page_reviewer_system_prompt.md", agents_dir))
+    parsed.setdefault("context_bundle_sha256", sha256_bytes(contact_sheet_path.encode("utf-8")))
+
+    try:
+        return PageReviewResult.model_validate(parsed)
+    except ValidationError as e:
+        raise ReviewSessionError("page_reviewer", f"response failed schema validation: {e}", raw_response=raw)

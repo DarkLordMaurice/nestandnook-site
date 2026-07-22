@@ -7,12 +7,14 @@ know or care which backend is in use."""
 from __future__ import annotations
 
 import json
+from dataclasses import asdict
 from pathlib import Path
 
 from .exceptions import HashMismatchError
 from .hashing import sha256_bytes, sha256_canonical_json
+from .preview import PageCaptureReport
 from .review_pack import ReviewPack
-from .schemas import AssetContract, BlindObservation, ContractJudgment, GenerationAttempt
+from .schemas import AssetContract, BlindObservation, ContractJudgment, GenerationAttempt, PageReviewResult
 
 
 class Store:
@@ -25,8 +27,9 @@ class Store:
         self.review_packs_dir = self.root / "review_packs"
         self.observations_dir = self.root / "observations"
         self.judgments_dir = self.root / "judgments"
+        self.preview_dir = self.root / "preview"
         for d in (self.specs_dir, self.prompts_dir, self.quarantine_dir, self.attempts_dir,
-                  self.review_packs_dir, self.observations_dir, self.judgments_dir):
+                  self.review_packs_dir, self.observations_dir, self.judgments_dir, self.preview_dir):
             d.mkdir(parents=True, exist_ok=True)
 
     @property
@@ -165,6 +168,42 @@ class Store:
         counts[adapter_version] = counts.get(adapter_version, 0) + 1
         path.write_text(json.dumps(counts, indent=2), encoding="utf-8")
         return counts[adapter_version]
+
+    # ---- preview capture + page review (Commit 10) ----
+
+    def save_preview_capture(
+        self, candidate_sha256: str, page_url: str, contact_sheet_path: str,
+        reports: list[PageCaptureReport],
+    ) -> str:
+        """One JSON file per candidate holding every viewport's capture
+        report plus the contact sheet built from them -- read back whole by
+        preview-review, which never re-captures, only re-reads."""
+        path = self.preview_dir / f"{candidate_sha256}.json"
+        payload = {
+            "candidate_sha256": candidate_sha256,
+            "page_url": page_url,
+            "contact_sheet_path": contact_sheet_path,
+            "reports": [asdict(r) for r in reports],
+        }
+        path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+        return str(path)
+
+    def load_preview_capture(self, candidate_sha256: str) -> dict:
+        path = self.preview_dir / f"{candidate_sha256}.json"
+        if not path.exists():
+            raise FileNotFoundError(f"No preview capture found for {candidate_sha256}")
+        return json.loads(path.read_text(encoding="utf-8"))
+
+    def save_page_review(self, candidate_sha256: str, review: PageReviewResult) -> str:
+        path = self.preview_dir / f"{candidate_sha256}_review.json"
+        path.write_text(review.model_dump_json(indent=2), encoding="utf-8")
+        return str(path)
+
+    def load_page_review(self, candidate_sha256: str) -> PageReviewResult:
+        path = self.preview_dir / f"{candidate_sha256}_review.json"
+        if not path.exists():
+            raise FileNotFoundError(f"No page review found for {candidate_sha256}")
+        return PageReviewResult.model_validate_json(path.read_text(encoding="utf-8"))
 
     # ---- asset state tracking (drives state_machine.transition() checks) ----
 

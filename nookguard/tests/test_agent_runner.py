@@ -15,6 +15,7 @@ from nookguard.agent_runner import (
     agent_definition_hash,
     run_judge_session,
     run_observer_session,
+    run_page_review_session,
 )
 from nookguard.review_pack import build_review_pack
 from nookguard.schemas import AssetContract, MediaType, Requirement, RiskTier
@@ -213,3 +214,91 @@ def test_real_agent_definition_files_exist_and_hash():
                       "contract_judge_system_prompt.md"):
         h = agent_definition_hash(filename)
         assert len(h) == 64  # sha256 hex digest length
+
+
+# ---- run_page_review_session (Commit 10) ----
+
+def _fake_contact_sheet_path() -> str:
+    from PIL import Image
+    p = Path(tempfile.mkdtemp()) / "sheet.png"
+    Image.new("RGB", (32, 32), color=(50, 50, 50)).save(p)
+    return str(p)
+
+
+def test_run_page_review_session_parses_valid_response():
+    sheet = _fake_contact_sheet_path()
+    result = run_page_review_session(
+        sheet, "https://example.com/page/", ["desktop", "mobile"],
+        executor=_fixed_response({
+            "issues": [{"category": "broken_image", "severity": "major",
+                        "description": "hero image missing", "viewport": "desktop"}],
+            "overall_summary_for_humans": "One broken hero image on desktop.",
+        }),
+    )
+    assert result.page_url == "https://example.com/page/"
+    assert result.issues[0].category == "broken_image"
+    assert result.viewports_reviewed == ["desktop", "mobile"]
+
+
+def test_run_page_review_session_defaults_viewports_reviewed_when_omitted():
+    sheet = _fake_contact_sheet_path()
+    result = run_page_review_session(sheet, "https://example.com/page/", ["desktop"],
+                                      executor=_fixed_response({}))
+    assert result.viewports_reviewed == ["desktop"]
+
+
+def test_run_page_review_session_raises_on_invalid_json():
+    sheet = _fake_contact_sheet_path()
+    with pytest.raises(ReviewSessionError) as exc_info:
+        run_page_review_session(sheet, "https://example.com/page/", ["desktop"],
+                                 executor=lambda sp, uc: "not json at all")
+    assert exc_info.value.role == "page_reviewer"
+
+
+def test_run_page_review_session_raises_on_schema_validation_failure():
+    sheet = _fake_contact_sheet_path()
+    bad_payload = {"issues": "not-a-list-of-issues"}  # wrong type -> ValidationError
+    with pytest.raises(ReviewSessionError):
+        run_page_review_session(sheet, "https://example.com/page/", ["desktop"],
+                                 executor=_fixed_response(bad_payload))
+
+
+def test_run_page_review_session_signature_has_no_content_schema_parameter():
+    """Structural enforcement, matching the observer/judge tests above --
+    the page reviewer never sees content-schema expectations (e.g. the
+    off_the_clock_schema.py photo-strip count), only the rendered page."""
+    params = set(inspect.signature(run_page_review_session).parameters.keys())
+    assert "category" not in params
+    assert "expected_photo_count" not in params
+    assert "markdown_body" not in params
+
+
+def test_run_page_review_session_result_has_no_overall_pass_field():
+    sheet = _fake_contact_sheet_path()
+    result = run_page_review_session(sheet, "https://example.com/page/", ["desktop"],
+                                      executor=_fixed_response({}))
+    assert "overall_pass" not in type(result).model_fields
+    assert "pass" not in type(result).model_fields
+
+
+def test_run_page_review_session_sends_image_content_block():
+    sheet = _fake_contact_sheet_path()
+    captured = {}
+    run_page_review_session(sheet, "https://example.com/page/", ["desktop"],
+                             executor=_capturing_executor({}, captured))
+    assert captured["user_content"][0]["type"] == "image"
+
+
+def test_run_page_review_session_instruction_mentions_page_url_and_viewports():
+    sheet = _fake_contact_sheet_path()
+    captured = {}
+    run_page_review_session(sheet, "https://example.com/some-page/", ["desktop", "mobile"],
+                             executor=_capturing_executor({}, captured))
+    instruction_text = captured["user_content"][1]["text"]
+    assert "https://example.com/some-page/" in instruction_text
+    assert "desktop" in instruction_text and "mobile" in instruction_text
+
+
+def test_real_page_reviewer_agent_file_exists_and_hashes():
+    h = agent_definition_hash("page_reviewer_system_prompt.md")
+    assert len(h) == 64

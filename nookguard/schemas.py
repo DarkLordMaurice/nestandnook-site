@@ -210,6 +210,38 @@ class ContractJudgment(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
 
+class PageReviewIssue(BaseModel):
+    """One visual/layout defect found on a rendered page contact sheet
+    (Commit 10). Deliberately no severity-implies-verdict field beyond
+    `severity` itself -- the caller's code decides PREVIEW_REVIEW_PASS/FAIL
+    from the list of issues, same 'code decides, model never asserts a
+    verdict' pattern as ContractJudgment."""
+
+    category: str  # broken_image|overlapping_elements|text_overflow|missing_element|
+    #                spacing_inconsistency|wrong_element_count|other
+    severity: str  # critical|major|minor
+    description: str
+    viewport: str = "unspecified"  # desktop|mobile|unspecified
+
+
+class PageReviewResult(BaseModel):
+    """Appendix A's 'page reviewer' output. No overall pass field, same as
+    ContractJudgment -- see docs/nookguard/BUILD-LOG.md's Commit 10 entry
+    for the aggregation function that computes PREVIEW_REVIEW_PASS/FAIL from
+    this in code."""
+
+    page_url: str
+    viewports_reviewed: list[str] = Field(default_factory=list)
+    review_session_id: str
+    reviewer_agent_hash: str
+    context_bundle_sha256: str
+    issues: list[PageReviewIssue] = Field(default_factory=list)
+    overall_summary_for_humans: str = ""
+    created_at: str = Field(default_factory=utcnow_iso)
+
+    model_config = ConfigDict(extra="forbid")
+
+
 class Event(BaseModel):
     """Appendix H events table, mirrored here for the JSON-lines ledger used
     before Commit 14's D1 backend exists."""
