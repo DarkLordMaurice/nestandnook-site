@@ -41,9 +41,6 @@ risks, next phase, checkable commit hash.
 
 ---
 
-## Commit 2: Schemas and ledger — IN PROGRESS
-
-**Started:** 2026-07-21
 ## Commit 2: Schemas and ledger — DONE
 
 **Completed:** 2026-07-21
