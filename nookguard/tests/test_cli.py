@@ -66,9 +66,11 @@ def test_full_pipeline_run_start_through_validate():
 
 
 def test_generate_rejects_unimplemented_adapter():
+    """"huggingface" graduated to a real adapter in Commit 5 — use a name
+    that is genuinely still outside AVAILABLE_ADAPTERS to test rejection."""
     with tempfile.TemporaryDirectory() as d:
         result = run_cli(["generate", "--store-root", str(Path(d) / "store"),
-                           "--spec", "x", "--prompt", "y", "--adapter", "huggingface"])
+                           "--spec", "x", "--prompt", "y", "--adapter", "openai"])
         assert not result["ok"]
         assert "not available yet" in result["error"]
 
@@ -109,3 +111,44 @@ def test_cannot_register_before_generate():
                            "--adapter-version", "stub-0.1.0"])
         assert not result["ok"]
         assert "Illegal transition" in result["error"]
+
+
+def test_generate_dispatches_to_huggingface_adapter(monkeypatch, tmp_path):
+    """cmd_generate must actually route to the huggingface adapter module
+    (not silently fall back to stub) when --adapter huggingface is passed.
+    Network is never touched — the module's own client factory is patched to
+    a fake client, exercising the real generate()/cmd_generate() code path."""
+    from PIL import Image
+
+    from nookguard.adapters import huggingface as hf_adapter
+
+    def fake_generate(prompt_text, **kwargs):
+        img_path = tmp_path / "fake.png"
+        Image.new("RGB", (8, 8), color=(1, 2, 3)).save(img_path)
+        import io
+        from PIL import Image as I
+        buf = io.BytesIO()
+        I.open(img_path).convert("RGB").save(buf, "JPEG", quality=88)
+        return buf.getvalue()
+
+    monkeypatch.setattr(hf_adapter, "generate", fake_generate)
+
+    with tempfile.TemporaryDirectory() as d:
+        store_root = str(Path(d) / "store")
+        contract_path = Path(d) / "contract.json"
+        contract_path.write_text(json.dumps(SAMPLE_CONTRACT))
+
+        run_id = "test-run-hf"
+        spec = run_cli(["spec-lock", "--store-root", store_root, "--run-id", run_id,
+                         "--contract", str(contract_path)])
+        assert spec["ok"], spec
+        prompt = run_cli(["prompt-compile", "--store-root", store_root, "--run-id", run_id,
+                           "--spec", spec["spec_sha256"]])
+        assert prompt["ok"], prompt
+
+        gen = run_cli(["generate", "--store-root", store_root, "--run-id", run_id,
+                        "--spec", spec["spec_sha256"], "--prompt", prompt["prompt_sha256"],
+                        "--adapter", "huggingface"])
+        assert gen["ok"], gen
+        assert gen["adapter_version"] == hf_adapter.ADAPTER_VERSION
+        assert gen["artifact_uri"].endswith(".jpg")

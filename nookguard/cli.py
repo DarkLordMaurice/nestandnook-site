@@ -166,13 +166,25 @@ def cmd_generate(args: argparse.Namespace) -> dict[str, Any]:
     except InvalidTransitionError as e:
         return {"ok": False, "error": str(e)}
 
-    from .adapters import stub as stub_adapter
-    image_bytes = stub_adapter.generate(prompt_text)
-    candidate_sha256 = store.quarantine_candidate(image_bytes, ".png")
+    if args.adapter == "stub":
+        from .adapters import stub as adapter_module
+        image_bytes = adapter_module.generate(prompt_text)
+        ext = ".png"
+    else:  # "huggingface" — the only other member of AVAILABLE_ADAPTERS
+        from .adapters import huggingface as adapter_module
+        from .adapters.huggingface import AdapterGenerationBlockedError
+        try:
+            image_bytes = adapter_module.generate(prompt_text)
+        except AdapterGenerationBlockedError as e:
+            return {"ok": False, "error": str(e), "generation_blocked_reason": e.reason,
+                    "attempts": e.attempts}
+        ext = ".jpg"
+
+    candidate_sha256 = store.quarantine_candidate(image_bytes, ext)
     store.set_state(contract.asset_id, AssetState.GENERATING.value)
 
     return {"ok": True, "asset_id": contract.asset_id, "candidate_sha256": candidate_sha256,
-            "adapter_version": stub_adapter.ADAPTER_VERSION,
+            "adapter_version": adapter_module.ADAPTER_VERSION,
             "artifact_uri": str(store.candidate_path(candidate_sha256))}
 
 
