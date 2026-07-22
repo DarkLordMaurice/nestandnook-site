@@ -64,6 +64,13 @@ def test_full_pipeline_run_start_through_validate():
         assert val["result"] == "technical_pass"
         assert val["report"]["technical_pass"] is True
 
+        pack = run_cli(["review-pack-build", "--store-root", store_root, "--run-id", run_id,
+                         "--candidate-sha256", candidate_sha])
+        assert pack["ok"], pack
+        assert set(pack["review_packs"].keys()) == {"blind_a", "adversarial_b"}
+        assert pack["review_packs"]["blind_a"]["review_pack_sha256"] != \
+            pack["review_packs"]["adversarial_b"]["review_pack_sha256"]
+
 
 def test_generate_rejects_unimplemented_adapter():
     """"huggingface" graduated to a real adapter in Commit 5 — use a name

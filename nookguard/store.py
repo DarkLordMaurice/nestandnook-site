@@ -11,6 +11,7 @@ from pathlib import Path
 
 from .exceptions import HashMismatchError
 from .hashing import sha256_bytes, sha256_canonical_json
+from .review_pack import ReviewPack
 from .schemas import AssetContract, GenerationAttempt
 
 
@@ -21,8 +22,14 @@ class Store:
         self.prompts_dir = self.root / "prompts"
         self.quarantine_dir = self.root / "quarantine"
         self.attempts_dir = self.root / "attempts"
-        for d in (self.specs_dir, self.prompts_dir, self.quarantine_dir, self.attempts_dir):
+        self.review_packs_dir = self.root / "review_packs"
+        for d in (self.specs_dir, self.prompts_dir, self.quarantine_dir, self.attempts_dir,
+                  self.review_packs_dir):
             d.mkdir(parents=True, exist_ok=True)
+
+    @property
+    def dedup_registry_path(self) -> Path:
+        return self.root / "dedup_registry.json"
 
     # ---- specs ----
 
@@ -96,6 +103,20 @@ class Store:
         if not path.exists():
             raise FileNotFoundError(f"No generation attempt registered for {candidate_sha256}")
         return GenerationAttempt.model_validate_json(path.read_text(encoding="utf-8"))
+
+    # ---- review packs (Commit 6, consumed by Commit 7's observer sessions) ----
+
+    def save_review_pack(self, pack: ReviewPack) -> str:
+        path = self.review_packs_dir / f"{pack.review_pack_sha256}.json"
+        if not path.exists():
+            path.write_text(json.dumps(pack.to_dict(), indent=2), encoding="utf-8")
+        return pack.review_pack_sha256
+
+    def load_review_pack(self, review_pack_sha256: str) -> dict:
+        path = self.review_packs_dir / f"{review_pack_sha256}.json"
+        if not path.exists():
+            raise FileNotFoundError(f"No review pack found for {review_pack_sha256}")
+        return json.loads(path.read_text(encoding="utf-8"))
 
     # ---- asset state tracking (drives state_machine.transition() checks) ----
 

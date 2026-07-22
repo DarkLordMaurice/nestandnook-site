@@ -18,6 +18,7 @@ from typing import Any
 
 from .adapters import AVAILABLE_ADAPTERS
 from .canon import CanonRegistry
+from .dedup import DedupRegistry
 from .exceptions import (
     HashMismatchError,
     InvalidTransitionError,
@@ -28,6 +29,7 @@ from .exceptions import (
 from .hashing import sha256_bytes
 from .ledger import Ledger
 from .prompt_compiler import compile_prompt
+from .review_pack import OBSERVER_ROLES, build_review_pack
 from .schemas import AssetContract, GenerationAttempt
 from .state_machine import AssetState, transition
 from .store import Store
@@ -243,15 +245,54 @@ def cmd_validate(args: argparse.Namespace) -> dict[str, Any]:
         return {"ok": False, "error": str(e)}
     store.set_state(contract.asset_id, target.value)
 
-    report = image_validator.validate(store.candidate_path(args.candidate_sha256))
+    dedup_registry = DedupRegistry(store.dedup_registry_path)
+    candidate_path = store.candidate_path(args.candidate_sha256)
+    report = image_validator.validate(
+        candidate_path, dedup_registry=dedup_registry, candidate_sha256=args.candidate_sha256,
+    )
     final = AssetState.TECHNICAL_PASS if report["technical_pass"] else AssetState.TECHNICAL_FAIL
     transition(target, final, asset_id=contract.asset_id)
     store.set_state(contract.asset_id, final.value)
+
+    # Only register into the corpus on a real pass — a failed/blank/duplicate
+    # candidate shouldn't become a future "known good" comparison point.
+    if final == AssetState.TECHNICAL_PASS:
+        dedup_registry.register(args.candidate_sha256, candidate_path)
 
     ledger.append(run_id=args.run_id, event_type="technical_validation.completed",
                   actor_role=args.actor_role, payload={"candidate_sha256": args.candidate_sha256,
                   "result": final.value, "report": report}, asset_id=contract.asset_id)
     return {"ok": True, "asset_id": contract.asset_id, "result": final.value, "report": report}
+
+
+def cmd_review_pack_build(args: argparse.Namespace) -> dict[str, Any]:
+    root = Path(args.store_root)
+    store, ledger = _store(root), _ledger(root)
+    try:
+        attempt = store.load_attempt(args.candidate_sha256)
+        contract = store.load_spec(attempt.spec_sha256)
+    except FileNotFoundError as e:
+        return {"ok": False, "error": str(e)}
+
+    current = store.get_state(contract.asset_id)
+    target = AssetState.OBSERVING
+    try:
+        transition(AssetState(current), target, asset_id=contract.asset_id)
+    except InvalidTransitionError as e:
+        return {"ok": False, "error": str(e)}
+
+    candidate_path = str(store.candidate_path(args.candidate_sha256))
+    packs = {}
+    for role in OBSERVER_ROLES:
+        pack = build_review_pack(args.candidate_sha256, candidate_path, role)
+        review_pack_sha256 = store.save_review_pack(pack)
+        packs[role] = {"review_pack_sha256": review_pack_sha256}
+
+    store.set_state(contract.asset_id, target.value)
+    ledger.append(run_id=args.run_id, event_type="review_pack.built", actor_role=args.actor_role,
+                  payload={"candidate_sha256": args.candidate_sha256, "review_packs": packs},
+                  asset_id=contract.asset_id, actor_session_id=args.session_id)
+    return {"ok": True, "asset_id": contract.asset_id, "review_packs": packs}
 
 
 def _common(p: argparse.ArgumentParser) -> None:
@@ -294,6 +335,10 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("validate"); _common(p)
     p.add_argument("--candidate-sha256", required=True)
     p.set_defaults(func=cmd_validate)
+
+    p = sub.add_parser("review-pack-build"); _common(p)
+    p.add_argument("--candidate-sha256", required=True)
+    p.set_defaults(func=cmd_review_pack_build)
 
     return parser
 
