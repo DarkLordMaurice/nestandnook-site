@@ -1336,3 +1336,181 @@ new).
 
 **Next:** Commit 14+ (Private backend/dashboard) — per Appendix A, this is
 explicitly the lowest-priority remaining item ("build last").
+
+---
+
+## Commit 14: D1-backed ledger Worker — DONE (first of the Commit 14+ series)
+
+**Completed:** 2026-07-22
+
+**Scope decision:** SPEC.md's own commit-order table lists row 14+ as one
+line — "Backend — Worker/D1/R2/Access/dashboard and operations" — but
+Appendix K's deliverables table and Appendix M's own instruction ("commit
+each phase separately with an evidence report") both point the other way:
+Appendix K lists Backend (Worker/D1/R2) and Dashboard (Access-protected
+Astro UI) as two separate deliverable rows, and the master checklist
+(section 47, page 46) lists them as two separate checklist items ("Build
+Worker/D1/R2 backend..." then implicitly the dashboard after). Read the
+full docx appendices this commit (H, J, K, L, M — not previously
+transcribed into SPEC.md) to confirm this before writing any code, per
+Appendix M's own "do not redesign the architecture around convenience"
+instruction — the goal was to find the real intended split, not invent a
+convenient one. This commit is scoped to D1 + the Worker API in front of
+it only. R2 (artifact storage) and the Access-protected dashboard are
+explicitly out of scope, deferred to Commit 15/16 — see
+`nookguard-worker/README.md`'s "Scope of this commit" for the same
+statement in the deliverable itself, not just here.
+
+**Changed:**
+- `nookguard-worker/migrations/0001_init.sql` (new) — the three tables
+  from Appendix H ("Core SQL Sketch for D1"), transcribed column-for-
+  column: `events`, `generation_attempts`, `reviews` (with `reviews`'
+  `FOREIGN KEY(candidate_sha256) REFERENCES generation_attempts
+  (candidate_sha256)`). Added (not in the sketch, which is explicitly a
+  sketch, not a finished migration): three `CREATE INDEX` statements for
+  the queries this Worker actually needs. No column, table, or constraint
+  from the sketch was changed, removed, or renamed.
+- `nookguard-worker/src/enforce.mjs` (new) — the two pure policy functions
+  from Appendix H's "Enforce in Worker transaction" comment:
+  `reviewerSessionDiffersFromGenerator` (a reviewer session can never equal
+  the candidate's own `generator_session_id` — the Worker-level twin of
+  spec section 27's "No generator review") and
+  `requiredStagesPresentAndPolicyPass` (an approval write must name every
+  required review stage and cite an aggregator verdict that is actually a
+  real pass state — `semantic_pass` or `owner_approved` — not re-derive
+  the policy itself; re-implementing `nookguard/aggregator.py`'s full
+  policy table in JS would have been exactly the "redesign around
+  convenience" Appendix M forbids). Mirrors `nookguard/hooks.py`'s
+  established pattern: pure, dependency-free, no I/O.
+- `nookguard-worker/src/db.mjs` (new) — data-access functions for all
+  three tables, each taking a D1-shaped `db` as its first argument (same
+  dependency-injection pattern as every network-touching Python module in
+  this project, e.g. `production_verifier.py`'s `fetcher` parameter).
+  `insertReview` is where both Appendix H invariants actually get
+  enforced: it looks up the referenced `generation_attempts` row before
+  inserting (the foreign key, enforced in application code rather than a
+  SQLite `PRAGMA foreign_keys` trigger — see the migration file's own
+  comment for why), then calls `reviewerSessionDiffersFromGenerator`.
+- `nookguard-worker/src/router.mjs` (new) — the real HTTP routing/
+  validation logic (`routeRequest(request, db) -> Response`), covering
+  `POST`/`GET /events`, `POST /generation_attempts`,
+  `GET /generation_attempts/:sha`, `POST /reviews`, `GET /reviews`.
+- `nookguard-worker/src/index.mjs` (new) — the real Cloudflare Worker
+  entrypoint (`export default { fetch }`), a two-line wrapper around
+  `router.mjs` passing `env.DB` in. Deliberately the only untested file in
+  the package — see "Unresolved risks."
+- `nookguard-worker/wrangler.toml` (new) — real Cloudflare Workers config:
+  Worker name, `main` entrypoint, D1 binding named `DB`, `migrations_dir`.
+  `database_id` is a placeholder (`REPLACE_WITH_REAL_D1_DATABASE_ID`) —
+  provisioning a real D1 database needs Maurice's own Cloudflare account,
+  same standing category of gap as Cloudflare Pages' production branch
+  source (Commit 1) and `--live-url` verification (Commit 12).
+- `nookguard-worker/tests/fakeD1.mjs` (new) — a D1Database-shaped wrapper
+  around Node's built-in `node:sqlite`, used only in tests. Real SQLite,
+  real migration file, real async method shapes (`prepare().bind().run()/
+  .all()/.first()`) matching Cloudflare's actual D1 binding API — what's
+  faked is D1's network transport, not any SQL semantics or any of
+  NookGuard's own logic, which runs completely unmodified against this
+  object.
+- `nookguard-worker/tests/{db,enforce,router}.test.mjs` (new) — 27 tests
+  total: 6 pure policy tests against `enforce.mjs`; 11 data-layer tests
+  against `db.mjs` (round trips, missing-field rejection, duplicate
+  primary key rejection, the missing-foreign-key case, and both Appendix H
+  invariants exercised through real inserts, not just the pure function in
+  isolation); 8 HTTP-shaped tests against `router.mjs` using real global
+  `Request`/`Response` objects (Node 22+), including the same reviewer-
+  equals-generator rejection exercised end to end over HTTP, a malformed-
+  JSON-body case, and an unknown-route case.
+- `nookguard-worker/package.json` (new) — **zero dependencies.** See
+  "A real environment/tooling problem, not a design choice" below for why.
+- `nookguard-worker/README.md` (new) — scope statement (mirrors the top of
+  this entry), layout, how to run the tests, and the same "Unresolved
+  risks" list as below.
+- `.github/workflows/nookguard-worker-ci.yml` (new) — path-scoped to
+  `nookguard-worker/**`, least-privilege (`contents: read`), Node 22 via
+  `actions/setup-node@v4`, runs `npm test` directly with **no install
+  step** — the package has no dependencies to install.
+
+**A real environment/tooling problem, not a design choice — three failed
+attempts before landing on the final approach:** the original plan was
+`wrangler` + `@cloudflare/vitest-pool-workers` (real Miniflare/workerd
+local D1 emulation, the officially recommended way to test Workers+D1
+without a live Cloudflare account). `npm install` for that dependency set
+repeatedly failed to complete within this session's tooling: the sandbox's
+mounted Windows path proved too slow for `wrangler`'s large native-binary
+install (`workerd` is 100+MB) — even `rm -rf node_modules` on the partial
+install timed out — matching this project's own already-documented finding
+that "this session's Cowork sandbox mount showed unreliable file-locking
+on bulk git ops" (Commit 1 BUILD-LOG), which turns out to generalize to
+any bulk npm-style install too, not just git. Switched all further
+Node/npm work to Desktop Commander (the real Windows filesystem), same as
+git already does. Second attempt, a lighter `better-sqlite3` + `vitest`
+pair, hit two separate problems: (1) both packages silently failed to
+install at all — `npm config get omit` returns `dev` in this real
+environment, meaning `devDependencies` are skipped by default, exactly the
+same gotcha the main project `CLAUDE.md` already documents for `pagefind`
+in the site's own build (fixed there by making it a real `dependency`, not
+a `devDependency` — applied the identical fix here); (2) once moved to
+`dependencies`, `better-sqlite3` still failed — it's a native module and
+this machine has no Visual Studio C++ build tools for `node-gyp` to
+compile against. Final approach: Node 24 (confirmed running on this
+machine) ships `node:sqlite` and `node:test` as real built-in modules —
+zero npm install, zero native compilation, and it matches this
+repository's own existing convention for JS tests (`tests/tools/*.test.mjs`
+already uses `node:test` + `node:assert/strict`, not a third-party
+framework — confirmed by reading that file and the site's own
+`package.json` `test:tools` script before choosing this, not assumed).
+
+**Tests run:** `node --test tests/*.test.mjs` (via Desktop Commander,
+real Windows Node v24.16.0 — this package is separate from the Python
+`nookguard/` suite and was not run through `pytest`)
+**Result:** 27 passed, 0 failed.
+
+**Commit:** `e167ccc`, pushed to `origin/main` (`20eaf35..e167ccc`).
+
+**Unresolved risks:**
+- **No live Cloudflare account access in this sandbox.** `wrangler.toml`'s
+  `database_id` is a placeholder; no real D1 database has been
+  provisioned, no `wrangler d1 migrations apply` has been run against a
+  live database, and no `wrangler deploy` has happened. This Worker exists
+  as tested code only, not as a deployed service.
+- **No workerd/Miniflare coverage — `src/index.mjs` itself is untested.**
+  `tests/fakeD1.mjs` proves the schema and all real logic (`db.mjs`,
+  `router.mjs`, `enforce.mjs`) against real SQLite and real
+  `Request`/`Response` objects, which is genuine, non-trivial coverage —
+  but it does not exercise the actual Cloudflare Workers runtime, D1's
+  real network/consistency behavior, or `index.mjs`'s two lines wiring
+  `env.DB` in. This is a real, explicitly named gap, not something the
+  27 passing tests should be read as covering.
+- **`nookguard/ledger.py` has not been cut over.** The Python CLI's
+  ledger writes are still 100% local JSON-lines, completely unchanged
+  since Commit 2. This Worker is a real, tested, currently-unused parallel
+  backend until a future commit wires the CLI to call it over HTTP — the
+  note left in Commit 2's own BUILD-LOG entry ("Commit 14 will swap the
+  storage backend to D1... schema/contract unchanged") describes an
+  eventual cutover that this commit makes possible but does not itself
+  perform.
+- **No authentication on the Worker API.** Every route in `router.mjs` is
+  open — no bearer token, no Cloudflare Access check. Appendix K's
+  "Dashboard: Access-protected Astro UI" describes protecting the
+  *dashboard* (Commit 16); nothing in Appendix H or K describes the same
+  protection for this Worker's own API. Flagged explicitly rather than
+  assumed safe — this needs a real decision before this Worker is ever
+  deployed to a public URL, not silently deferred.
+- R2 (artifact/media byte storage) and the Access-protected dashboard are
+  both explicitly out of scope for this commit — see "Scope decision"
+  above. Both remain real, unbuilt items.
+- `better-sqlite3` and the original `wrangler`/`@cloudflare/vitest-pool-
+  workers` dependency set were abandoned for this sandbox's tooling
+  reasons (see above), not because they're wrong choices for the real
+  deployed system — a future session with a working native-compilation
+  toolchain or more reliable large-package install conditions could
+  reasonably revisit `@cloudflare/vitest-pool-workers` for genuine
+  workerd-level coverage, which would close the "No workerd/Miniflare
+  coverage" gap above. Not done this commit; flagged as a real
+  improvement, not a rejected idea.
+
+**Next:** Commit 15 (R2 artifact storage) or Commit 16 (Access-protected
+Astro dashboard) — per Appendix K's own ordering, R2 is the more natural
+next step since the dashboard will want to read/display media the Worker
+is tracking.
