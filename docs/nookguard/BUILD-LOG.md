@@ -322,3 +322,118 @@ real Windows Python this project uses, before writing code that imports them
 (duplicate detection, EXIF/privacy scan, blank-image detection, OCR/logo
 scan), plus the review-pack generator that Commit 7's blind observers will
 consume.
+
+
+## Commit 6: Technical validators — DONE
+
+**Completed:** 2026-07-21
+
+**Changed (`site/nookguard/`):**
+- `dedup.py` (new) — `DedupRegistry`, a small JSON-file-backed corpus of
+  `{candidate_sha256: {exact_sha256, phash}}`. Exact-duplicate check reuses
+  the same sha256 helper as everywhere else in this project. Near-duplicate
+  uses a real aHash (average hash) implemented directly on PIL — no
+  `imagehash` dependency, since it isn't installed in this environment and
+  aHash is simple enough to write and verify directly (grayscale, downscale
+  to 8x8, threshold each pixel against the image's own mean, pack into a
+  64-bit hex hash; Hamming distance between two hashes measures similarity).
+  Policy, stated explicitly in the module docstring: exact duplicate = hard
+  technical fail (section 27's "no filename reuse" concern — a byte-
+  identical output from a different generation attempt means something is
+  actually wrong); near-duplicate = reported for review, not auto-failed
+  (a consistent brand style can legitimately produce similar shots).
+- `review_pack.py` (new) — `build_review_pack()` builds the exact bundle
+  Commit 7's blind-observer sessions will be handed: candidate reference +
+  role ("blind_a" gets nothing extra; "adversarial_b" gets Appendix C's
+  general failure taxonomy) — and nothing else. Deliberately excludes the
+  contract, requirements, prompt text, and any expected/allowed/forbidden
+  object list, per Appendix C's explicit rule that the observer session
+  never sees the contract. `review_pack_sha256` hashes only what the
+  observer was actually shown, so a review pack can't be silently swapped
+  after the fact any more than a spec or prompt can.
+- `validators/image.py` (expanded) — `_check_exif_privacy` (flags embedded
+  GPS EXIF — a real privacy leak if a candidate with location metadata ever
+  shipped), `_check_blank_or_solid` (per-channel stddev threshold — a
+  genuine generation defect, not a style judgment), and dedup wiring
+  (`dedup_registry`/`candidate_sha256` optional params; when omitted, both
+  duplicate checks report `performed: False` rather than a false-clean
+  result). `NOT_YET_IMPLEMENTED` is down to exactly two items, both left
+  out for a stated reason rather than oversight: `edge_clipping_risk`
+  (subject-clipping is a semantic/subject-detection question, correctly
+  the blind-observer layer's job in Commit 7-8, not a deterministic pixel
+  check) and `ocr_logo_scan` (neither `pytesseract` nor a system
+  `tesseract` binary exists in this environment — checked directly via
+  `shutil.which("tesseract")`, not assumed; reports `performed: False`
+  with the concrete reason rather than silently passing).
+- `store.py` — added `review_packs_dir` + `save_review_pack`/
+  `load_review_pack`, and a `dedup_registry_path` property so `cli.py`
+  doesn't need to know the registry's on-disk layout.
+- `cli.py` — `cmd_validate` now builds a real `DedupRegistry` from the
+  store root, passes it into `image_validator.validate()`, and registers
+  the candidate into the corpus ONLY on a real technical pass (a failed/
+  blank/duplicate candidate shouldn't become a future "known good"
+  comparison point). New `cmd_review_pack_build` + `review-pack-build`
+  subcommand: requires state `TECHNICAL_PASS`, builds both observer roles'
+  packs, transitions the asset to `OBSERVING` (the state machine already
+  had this exact edge from Commit 2 — Commit 6 is the first thing to
+  actually use it).
+- `nookguard/tests/{test_dedup.py, test_review_pack.py,
+  test_validators_image.py}` (new, 22 tests) — `test_dedup.py` initially
+  used solid-color image fixtures for the "different images -> different
+  hash" cases, which failed: aHash thresholds each pixel against the
+  image's OWN mean, so a perfectly uniform image always hashes to the same
+  all-1s pattern regardless of its actual color (a real, documented
+  property of aHash, not a bug in this implementation) — fixed by switching
+  those two fixtures to gradient images, which give aHash real structure to
+  distinguish. `test_validators_image.py` covers the full `NOT_YET_
+  IMPLEMENTED` reduction directly: blank/solid hard-fail, EXIF/GPS report,
+  exact-duplicate hard-fail via an injected registry, near-duplicate
+  reported-not-failed, OCR reported-not-performed. `test_cli.py`'s full
+  pipeline test now runs one step further, through `review-pack-build`,
+  asserting the two observer roles produce genuinely different
+  `review_pack_sha256` values (not the same pack relabeled).
+
+**Honest note on my own process:** first draft of a CLI-level duplicate-
+detection integration test (registering a second, deliberately byte-
+identical stub-generated candidate under a different asset_id) was wrong
+and never got past being drafted — the content-addressed store already
+deduplicates identical bytes to the SAME `candidate_sha256`/quarantine
+file, so a second `register` call for that same candidate hash against a
+different asset would collide on `store.save_attempt`'s existing "one
+output, one record" guard before ever reaching `validate()`. That's
+actually correct, intentional behavior (an earlier layer already catches
+the exact scenario I was trying to construct), but it meant my test's
+premise didn't hold. Caught this by trying to write the test through, not
+by review — dropped that draft and moved exact/near-duplicate coverage to
+direct unit tests against `DedupRegistry`/`validate()` instead, which
+correctly isolate the dedup-registry's OWN corpus-across-runs behavior
+(the case it actually exists for) from the store's separate, already-
+proven same-run content-addressing guarantee.
+
+**Tests run:** `python -m pytest nookguard/tests -q`
+**Result:** 76 passed, 0 failed, 0 warnings (54 from Commits 2-5 + 22 new).
+Fixed a real `DeprecationWarning` from Pillow 12 (`Image.getdata()` ->
+`get_flattened_data()`) surfaced by the new tests rather than leaving it as
+noise.
+
+**Commit:** `84e2e04`, pushed to `origin/main` (`cb1397e..84e2e04`).
+Commit message again lost its parenthetical punctuation to the same
+PowerShell quoting quirk noted in Commit 4 — cosmetic only.
+
+**Unresolved risks:**
+- `ocr_logo_scan` and `edge_clipping_risk` remain unimplemented, for the
+  stated reasons above — flagging again here so a future session doesn't
+  read "42 -> 2 remaining" as "basically done" and skip verifying which two
+  are still open and why.
+- `DedupRegistry`'s corpus file is per-`store_root`, not yet a single
+  project-wide corpus — right now, dedup only catches repeats within one
+  `mediactl` store directory, not across every asset ever generated for
+  the real site. Worth revisiting when Commit 14's real backend exists;
+  until then this is a known, bounded gap, not a silent one.
+
+**Next:** Commit 7 (Claude review agents) — real Claude Agent SDK sessions
+for the blind observer (role `blind_a`), adversarial observer (role
+`adversarial_b`), and contract judge, each with a distinct session ID and
+role-scoped context bundle (no shared context between them, per Appendix
+C/D and section 46's Definition of Done), consuming the review packs this
+commit now produces for real.
