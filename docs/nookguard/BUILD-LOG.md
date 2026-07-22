@@ -768,3 +768,142 @@ consistent against fixtures.
 
 **Next:** Commit 10 (Preview QA) — Playwright desktop/mobile rendering,
 page contact sheets, and a page-preview reviewer, per Appendix A.
+
+---
+
+## Commit 10: Preview QA — DONE
+
+**Completed:** 2026-07-22
+
+**Changed:**
+- `nookguard/preview.py` (new) — real Playwright/Chromium page capture.
+  `VIEWPORTS` (desktop 1440x900, mobile 390x844 iPhone-class),
+  `PageCaptureReport` dataclass, `capture_page_screenshot()` (launches real
+  Chromium, listens for console errors and failed network requests,
+  evaluates a broken-`<img>` JS check via `naturalWidth === 0`, full-page
+  screenshot), `capture_all_viewports()` convenience wrapper. Verified
+  end-to-end before writing the module: a throwaway script launched
+  Chromium, rendered inline HTML, and wrote a real PNG — confirmed via a
+  real `Read` of the output file, not assumed from a clean exit code.
+- `nookguard/contact_sheet.py` (new) — `build_contact_sheet()`, a
+  self-contained Pillow grid-image builder (uniform thumbnail width,
+  per-cell text labels, height-capped at 900px so a tall full-page
+  screenshot doesn't blow up the sheet). This is what the page-reviewer
+  session actually looks at — one image containing every viewport's
+  screenshot, not a raw file list.
+- `nookguard/agents/page_reviewer_system_prompt.md` (new) — the fourth
+  agent role. Explicitly told it does not know what page this is or what
+  content it was supposed to contain, and instructed not to flag
+  subjective design taste as a defect — only genuinely broken layout
+  (broken_image, overlapping_elements, text_overflow, missing_element,
+  spacing_inconsistency, wrong_element_count, other), each attributable to
+  a specific viewport.
+- `nookguard/schemas.py` — `PageReviewIssue` (category, severity,
+  description, viewport) and `PageReviewResult` (page_url,
+  viewports_reviewed, review_session_id, reviewer_agent_hash,
+  context_bundle_sha256, issues, overall_summary_for_humans,
+  `extra="forbid"`). Deliberately no overall-pass field, same pattern as
+  `ContractJudgment` — the code aggregator is the only place a verdict is
+  computed.
+- `nookguard/agent_runner.py` — `run_page_review_session()` appended.
+  Signature only accepts a contact-sheet path, page URL, and viewport
+  list — structurally cannot see the page's markdown source, frontmatter,
+  or any content-schema expectation (e.g. it is never told
+  `off_the_clock_schema.py`'s "approved" photo-strip count), matching the
+  same structural-enforcement pattern used for the observer/judge
+  signatures in Commit 7.
+- `nookguard/preview_aggregator.py` (new) — `aggregate_preview()`, the
+  `PREVIEWED -> {PREVIEW_REVIEW_PASS, PREVIEW_REVIEW_FAIL}` decision.
+  Two independent evidence sources, both code-owned: `PageCaptureReport`
+  facts (broken images, console errors, failed requests — any one is an
+  automatic fail, no override possible) and `PageReviewResult.issues`
+  (only `critical`/`major` severities are blocking; `minor` findings are
+  informational, matching the reviewer's own instruction not to flag
+  subjective taste). Never reads `overall_summary_for_humans` — confirmed
+  by a structural test asserting the string never appears in the
+  function's own source, same technique as Commit 8's
+  `test_aggregation_result_never_asserts_pass_from_free_text`.
+- `nookguard/state_machine.py` — added `PREVIEWED: {..., REVIEW_ERROR}`
+  (was `{PREVIEW_REVIEW_PASS, PREVIEW_REVIEW_FAIL}` only). Same rationale
+  as Commit 8's `OBSERVING -> REVIEW_ERROR` addition: the page-reviewer
+  session can fail the identical way any other agent session can (invalid
+  JSON, an interrupted call), and section 29.5's "session interrupted ->
+  REVIEW_ERROR" isn't role-scoped to the original three agents.
+- `nookguard/store.py` — `preview_dir`, `save_preview_capture()` /
+  `load_preview_capture()` (one JSON file per candidate holding every
+  viewport's capture report plus the contact sheet path), `save_page_review()`
+  / `load_page_review()`.
+- `nookguard/cli.py` — three new subcommands. `mediactl integrate`
+  (`SEMANTIC_PASS`/`OWNER_APPROVED` -> `INTEGRATED`) is a necessary bridge
+  that did not previously exist anywhere in the CLI — NookGuard does not
+  write into a page's markdown itself (H006: generator/reviewer never
+  writes files directly), so wiring an approved candidate into a real
+  page stays the existing, separate site workflow; this command only
+  records that integration happened. `mediactl preview-capture`
+  (`INTEGRATED -> PREVIEWED`) runs the real Playwright capture across
+  every viewport and builds the contact sheet. `mediactl preview-review`
+  (`PREVIEWED -> {PREVIEW_REVIEW_PASS, PREVIEW_REVIEW_FAIL, REVIEW_ERROR}`)
+  runs the page-reviewer session and calls `aggregate_preview()`.
+- New: `nookguard/tests/{test_preview.py, test_contact_sheet.py,
+  test_preview_aggregator.py}` (28 tests) plus 9 new tests appended to
+  `test_agent_runner.py` (`run_page_review_session`) and 6 new tests
+  appended to `test_cli.py` (full `integrate` -> `preview-capture` ->
+  `preview-review` pipeline, both a clean pass and a real-broken-image
+  fail, plus illegal-transition rejection at both new gates).
+  `test_preview.py` and `test_contact_sheet.py` exercise the real
+  mechanism end-to-end (real Chromium via `file://` URLs, real Pillow
+  image assembly) rather than mocking at the browser/image-library
+  boundary — this environment's Playwright + Chromium install is
+  confirmed genuinely functional, unlike Commit 5/7's network-dependent
+  adapters, which remain unverified live here for lack of configured
+  credentials.
+
+**Bugs caught by the real test run (both fixed same session):**
+- `test_run_page_review_session_raises_on_schema_validation_failure`'s
+  first draft added an unrecognized extra field to a valid issue dict —
+  `PageReviewIssue` has no `extra="forbid"` (only `PageReviewResult`
+  does), so pydantic silently dropped the field instead of raising.
+  Fixed by using a genuine type mismatch (`"issues": "not-a-list"`)
+  instead of an extra-field probe.
+- `cmd_preview_review` originally tried to `store.load_preview_capture()`
+  in the same try block as `load_attempt`/`load_spec`, before ever
+  checking the asset's current state — so calling `preview-review` on an
+  asset that was never captured returned "No preview capture found for
+  ..." instead of the intended "Illegal transition ... -> preview-review"
+  message, inconsistent with `cmd_observe`/`cmd_judge`'s established
+  check-state-first pattern. Fixed by moving the state check ahead of the
+  preview-capture load, matching the existing convention exactly.
+
+**Tests run:** `python -m pytest nookguard/tests -q`
+**Result:** 187 passed, 0 failed, 0 warnings (153 from Commits 2-9 + 34
+new). Includes real, end-to-end proof (not mocked) that a genuinely
+broken `<img>` on a captured page still fails `preview-review` even when
+the (monkeypatched) page-reviewer session itself reports zero issues —
+confirming the deterministic `PageCaptureReport` facts can never be
+overridden by reviewer prose, the core guarantee this commit exists to
+provide.
+
+**Commit:** `04ced79`, pushed to `origin/main` (`6ee047f..04ced79`).
+
+**Unresolved risks:**
+- `mediactl integrate` is a new, spec-adjacent bridge command, not
+  something Appendix A explicitly names — it was added because no
+  existing command could reach `INTEGRATED` at all, and `preview-capture`
+  needs a real, confirmed page URL to screenshot. It deliberately does
+  not touch any page's markdown/frontmatter itself (matching H006); if a
+  future commit wants stronger proof that the named `page_url` genuinely
+  contains the given candidate (rather than trusting the caller's
+  assertion), that check doesn't exist yet.
+- Neither `preview-capture` nor `preview-review` is wired into any real
+  build/push step yet (same open item as Commit 9's `content-lint`) —
+  they exist and work end-to-end through the CLI, but nothing calls them
+  automatically as part of publishing a real page. Natural fit for
+  Commit 11 (CI isolation) or the daily scheduled task's push step.
+- The page-reviewer session itself (real Anthropic API call) is
+  unverified live in this environment, same standing caveat as Commits 7
+  and 8's judge/observer sessions — no API key configured in-session.
+  All tests inject a fake executor per the established dependency-
+  injection pattern; the Playwright/Pillow mechanics around it are the
+  part that's genuinely verified end-to-end this commit.
+
+**Next:** Commit 11 (CI isolation) — per Appendix A.
