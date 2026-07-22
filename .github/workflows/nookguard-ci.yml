@@ -1,0 +1,77 @@
+name: NookGuard CI
+
+# Runs the real NookGuard test suite (including real Playwright/Chromium
+# rendering and real Pillow image assembly -- nothing here is mocked at the
+# CI boundary) plus the content-lint gate against the real Off the Clock
+# content directory, on every push/PR that touches the pipeline. This closes
+# the "content-lint isn't wired into any real build step yet" gap flagged as
+# an unresolved risk in Commits 9 and 10's BUILD-LOG entries.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "nookguard/**"
+      - "pyproject.toml"
+      - "src/content/blog/**"
+      - ".github/workflows/nookguard-ci.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "nookguard/**"
+      - "pyproject.toml"
+      - "src/content/blog/**"
+      - ".github/workflows/nookguard-ci.yml"
+
+# Least-privilege by default (Appendix A: "GitHub workflows, artifacts,
+# permissions, hooks"): this workflow only reads the repo and uploads test
+# artifacts, so it never needs write access to contents, packages, or
+# anything else. Widen a specific permission only if a future job genuinely
+# needs it -- never default back to the classic all-write token.
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: pytest + content-lint
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: .
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install NookGuard (with dev/test extras)
+        run: pip install -e ".[dev]"
+
+      - name: Install Playwright's Chromium
+        # nookguard/preview.py (Commit 10) does real browser rendering --
+        # test_preview.py exercises it end to end, so CI needs the actual
+        # browser binary, not just the Python package installed above.
+        run: python -m playwright install --with-deps chromium
+
+      - name: Run NookGuard test suite
+        run: python -m pytest nookguard/tests -q --junitxml=nookguard-test-results.xml
+
+      - name: Upload test results artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nookguard-test-results
+          path: nookguard-test-results.xml
+          retention-days: 30
+
+      - name: Content-lint gate (Off the Clock section)
+        # Hook H009 made real: a page in src/content/blog/ that fails
+        # content-lint (legacy layout component, wrong photo-strip count,
+        # unrecognized category on a page that claims one) fails the build,
+        # not just a local pytest run. mediactl exits nonzero on {"ok": false},
+        # which fails this step naturally -- no extra wiring needed.
+        run: python -m nookguard.cli content-lint --dir src/content/blog
