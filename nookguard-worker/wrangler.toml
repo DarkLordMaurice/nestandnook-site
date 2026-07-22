@@ -1,0 +1,23 @@
+# NookGuard Commit 14: Worker config for the D1-backed ledger backend.
+#
+# This file is real Cloudflare Workers configuration -- the binding name
+# (DB), the migrations_dir, and the entrypoint path are all exactly what a
+# real `wrangler d1 migrations apply` / `wrangler deploy` would use. What
+# is NOT real yet: `database_id` below is a placeholder. Provisioning an
+# actual D1 database requires Maurice's own Cloudflare account (same
+# standing gap as Cloudflare Pages' production branch source, flagged
+# since Commit 1's BUILD-LOG entry, and the same "needs a live account"
+# category as `--live-url` production verification in Commit 12). Until a
+# real database_id is filled in here and `wrangler d1 migrations apply
+# nookguard-db` is run against it once, this Worker exists as tested code
+# only, not as a deployed service.
+
+name = "nookguard-ledger"
+main = "src/index.mjs"
+compatibility_date = "2024-09-23"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "nookguard-db"
+database_id = "REPLACE_WITH_REAL_D1_DATABASE_ID"
+migrations_dir = "migrations"

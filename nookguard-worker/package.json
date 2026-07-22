@@ -1,0 +1,10 @@
+{
+  "name": "nookguard-worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "NookGuard Commit 14: D1-backed ledger Worker (events/generation_attempts/reviews). See ../docs/nookguard/BUILD-LOG.md and ./README.md.",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs"
+  }
+}

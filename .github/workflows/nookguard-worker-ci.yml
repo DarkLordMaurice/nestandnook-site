@@ -1,0 +1,49 @@
+name: NookGuard Worker CI
+
+# Runs the real nookguard-worker test suite (Node's built-in test runner,
+# real node:sqlite, real Request/Response objects -- see
+# nookguard-worker/README.md) on every push/PR that touches the Worker
+# package. No install step: the package has zero npm dependencies by
+# deliberate design (see README.md "Running the tests"), so `npm test`
+# runs directly.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "nookguard-worker/**"
+      - ".github/workflows/nookguard-worker-ci.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "nookguard-worker/**"
+      - ".github/workflows/nookguard-worker-ci.yml"
+
+# Least-privilege by default -- same rationale as nookguard-ci.yml
+# (Appendix A: "GitHub workflows, artifacts, permissions, hooks").
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: node --test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: nookguard-worker
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          # node:sqlite (used by tests/fakeD1.mjs) needs Node >= 22.5;
+          # pin to a version line comfortably past that, matching the
+          # Node version this package was built and tested against
+          # locally (see Commit 14 BUILD-LOG entry).
+          node-version: "22"
+
+      - name: Run nookguard-worker test suite
+        run: npm test
