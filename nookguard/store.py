@@ -12,7 +12,7 @@ from pathlib import Path
 from .exceptions import HashMismatchError
 from .hashing import sha256_bytes, sha256_canonical_json
 from .review_pack import ReviewPack
-from .schemas import AssetContract, GenerationAttempt
+from .schemas import AssetContract, BlindObservation, ContractJudgment, GenerationAttempt
 
 
 class Store:
@@ -23,13 +23,19 @@ class Store:
         self.quarantine_dir = self.root / "quarantine"
         self.attempts_dir = self.root / "attempts"
         self.review_packs_dir = self.root / "review_packs"
+        self.observations_dir = self.root / "observations"
+        self.judgments_dir = self.root / "judgments"
         for d in (self.specs_dir, self.prompts_dir, self.quarantine_dir, self.attempts_dir,
-                  self.review_packs_dir):
+                  self.review_packs_dir, self.observations_dir, self.judgments_dir):
             d.mkdir(parents=True, exist_ok=True)
 
     @property
     def dedup_registry_path(self) -> Path:
         return self.root / "dedup_registry.json"
+
+    @property
+    def owner_queue_path(self) -> Path:
+        return self.root / "owner_queue.json"
 
     # ---- specs ----
 
@@ -117,6 +123,48 @@ class Store:
         if not path.exists():
             raise FileNotFoundError(f"No review pack found for {review_pack_sha256}")
         return json.loads(path.read_text(encoding="utf-8"))
+
+    # ---- observations + judgments (Commit 8) ----
+
+    def save_observation(self, observation: BlindObservation) -> str:
+        """Keyed by candidate_sha256 + role -- one observation per role per
+        candidate, overwritable only by a genuinely new session (same key
+        always means 'the latest observation for this candidate/role')."""
+        key = f"{observation.candidate_sha256}_{observation.observer_role}"
+        path = self.observations_dir / f"{key}.json"
+        path.write_text(observation.model_dump_json(indent=2), encoding="utf-8")
+        return key
+
+    def load_observation(self, candidate_sha256: str, role: str) -> BlindObservation:
+        key = f"{candidate_sha256}_{role}"
+        path = self.observations_dir / f"{key}.json"
+        if not path.exists():
+            raise FileNotFoundError(f"No {role} observation found for {candidate_sha256}")
+        return BlindObservation.model_validate_json(path.read_text(encoding="utf-8"))
+
+    def save_judgment(self, judgment: ContractJudgment) -> str:
+        path = self.judgments_dir / f"{judgment.candidate_sha256}.json"
+        path.write_text(judgment.model_dump_json(indent=2), encoding="utf-8")
+        return judgment.candidate_sha256
+
+    def load_judgment(self, candidate_sha256: str) -> ContractJudgment:
+        path = self.judgments_dir / f"{candidate_sha256}.json"
+        if not path.exists():
+            raise FileNotFoundError(f"No judgment found for {candidate_sha256}")
+        return ContractJudgment.model_validate_json(path.read_text(encoding="utf-8"))
+
+    # ---- per-adapter asset counters (Commit 8 owner-queue calibration) ----
+
+    def bump_adapter_asset_count(self, adapter_version: str) -> int:
+        """Returns the count AFTER incrementing -- 'this is the Nth asset
+        seen for this adapter', 1-indexed, used by owner_queue's
+        should_queue_for_owner() to implement the 'first N assets per
+        adapter' calibration rule (43.1)."""
+        path = self.root / "adapter_counts.json"
+        counts = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+        counts[adapter_version] = counts.get(adapter_version, 0) + 1
+        path.write_text(json.dumps(counts, indent=2), encoding="utf-8")
+        return counts[adapter_version]
 
     # ---- asset state tracking (drives state_machine.transition() checks) ----
 

@@ -17,6 +17,8 @@ from pathlib import Path
 from typing import Any
 
 from .adapters import AVAILABLE_ADAPTERS
+from .aggregator import aggregate
+from .agent_runner import ReviewSessionError, run_judge_session, run_observer_session
 from .canon import CanonRegistry
 from .dedup import DedupRegistry
 from .exceptions import (
@@ -28,6 +30,7 @@ from .exceptions import (
 )
 from .hashing import sha256_bytes
 from .ledger import Ledger
+from .owner_queue import OwnerQueue, should_queue_for_owner
 from .prompt_compiler import compile_prompt
 from .review_pack import OBSERVER_ROLES, build_review_pack
 from .schemas import AssetContract, GenerationAttempt
@@ -295,6 +298,92 @@ def cmd_review_pack_build(args: argparse.Namespace) -> dict[str, Any]:
     return {"ok": True, "asset_id": contract.asset_id, "review_packs": packs}
 
 
+def cmd_observe(args: argparse.Namespace) -> dict[str, Any]:
+    root = Path(args.store_root)
+    store, ledger = _store(root), _ledger(root)
+    try:
+        attempt = store.load_attempt(args.candidate_sha256)
+        contract = store.load_spec(attempt.spec_sha256)
+        candidate_path = str(store.candidate_path(args.candidate_sha256))
+    except FileNotFoundError as e:
+        return {"ok": False, "error": str(e)}
+
+    current = AssetState(store.get_state(contract.asset_id))
+    if current != AssetState.OBSERVING:
+        return {"ok": False, "error": f"Illegal transition {current.value} -> observe "
+                                       "(asset must be in observing state, set by mediactl review-pack-build)"}
+
+    observations: dict[str, Any] = {}
+    for role in OBSERVER_ROLES:
+        pack = build_review_pack(args.candidate_sha256, candidate_path, role)
+        try:
+            obs = run_observer_session(pack)
+        except ReviewSessionError as e:
+            transition(current, AssetState.REVIEW_ERROR, asset_id=contract.asset_id)
+            store.set_state(contract.asset_id, AssetState.REVIEW_ERROR.value)
+            ledger.append(run_id=args.run_id, event_type="observation.error", actor_role=args.actor_role,
+                          payload={"candidate_sha256": args.candidate_sha256, "role": e.role,
+                                   "reason": e.reason}, asset_id=contract.asset_id)
+            return {"ok": False, "error": str(e), "role": e.role}
+        store.save_observation(obs)
+        observations[role] = {"reviewer_session_id": obs.reviewer_session_id}
+
+    transition(current, AssetState.JUDGING, asset_id=contract.asset_id)
+    store.set_state(contract.asset_id, AssetState.JUDGING.value)
+    ledger.append(run_id=args.run_id, event_type="observation.completed", actor_role=args.actor_role,
+                  payload={"candidate_sha256": args.candidate_sha256, "observations": observations},
+                  asset_id=contract.asset_id, actor_session_id=args.session_id)
+    return {"ok": True, "asset_id": contract.asset_id, "observations": observations}
+
+
+def cmd_judge(args: argparse.Namespace) -> dict[str, Any]:
+    root = Path(args.store_root)
+    store, ledger = _store(root), _ledger(root)
+    try:
+        attempt = store.load_attempt(args.candidate_sha256)
+        contract = store.load_spec(attempt.spec_sha256)
+        blind_obs = store.load_observation(args.candidate_sha256, "blind_a")
+        adversarial_obs = store.load_observation(args.candidate_sha256, "adversarial_b")
+    except FileNotFoundError as e:
+        return {"ok": False, "error": str(e)}
+
+    current = AssetState(store.get_state(contract.asset_id))
+    if current != AssetState.JUDGING:
+        return {"ok": False, "error": f"Illegal transition {current.value} -> judge "
+                                       "(asset must be in judging state, set by mediactl observe)"}
+
+    try:
+        judgment = run_judge_session(contract, attempt.spec_sha256, blind_obs, adversarial_obs)
+    except ReviewSessionError as e:
+        transition(current, AssetState.REVIEW_ERROR, asset_id=contract.asset_id)
+        store.set_state(contract.asset_id, AssetState.REVIEW_ERROR.value)
+        ledger.append(run_id=args.run_id, event_type="judgment.error", actor_role=args.actor_role,
+                      payload={"candidate_sha256": args.candidate_sha256, "reason": e.reason},
+                      asset_id=contract.asset_id)
+        return {"ok": False, "error": str(e), "role": e.role}
+    store.save_judgment(judgment)
+
+    result = aggregate(contract, judgment, blind_obs, adversarial_obs)
+    transition(AssetState.JUDGING, result.state, asset_id=contract.asset_id)
+    store.set_state(contract.asset_id, result.state.value)
+
+    asset_count = store.bump_adapter_asset_count(attempt.adapter_version)
+    queued = should_queue_for_owner(contract.risk_tier, result.state,
+                                     assets_seen_for_adapter=asset_count)
+    if queued:
+        OwnerQueue(store.owner_queue_path).enqueue(
+            contract.asset_id, args.candidate_sha256, result.reasons,
+            contract.risk_tier.value, result.state.value,
+        )
+
+    ledger.append(run_id=args.run_id, event_type="judgment.completed", actor_role=args.actor_role,
+                  payload={"candidate_sha256": args.candidate_sha256, "result": result.state.value,
+                           "reasons": result.reasons, "queued_for_owner": queued},
+                  asset_id=contract.asset_id, actor_session_id=args.session_id)
+    return {"ok": True, "asset_id": contract.asset_id, "result": result.state.value,
+            "reasons": result.reasons, "queued_for_owner": queued}
+
+
 def _common(p: argparse.ArgumentParser) -> None:
     p.add_argument("--store-root", default=str(DEFAULT_STORE_ROOT))
     p.add_argument("--run-id", default=None)
@@ -339,6 +428,14 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("review-pack-build"); _common(p)
     p.add_argument("--candidate-sha256", required=True)
     p.set_defaults(func=cmd_review_pack_build)
+
+    p = sub.add_parser("observe"); _common(p)
+    p.add_argument("--candidate-sha256", required=True)
+    p.set_defaults(func=cmd_observe)
+
+    p = sub.add_parser("judge"); _common(p)
+    p.add_argument("--candidate-sha256", required=True)
+    p.set_defaults(func=cmd_judge)
 
     return parser
 

@@ -61,6 +61,18 @@ def test_needs_owner_cannot_auto_pass():
     assert next_states == {AssetState.OWNER_APPROVED, AssetState.OWNER_REJECTED}
 
 
+def test_observing_can_reach_review_error_not_just_judging():
+    """Commit 8: an observer session can fail (bad JSON, interrupted call)
+    exactly like a judge session can -- REVIEW_ERROR must be reachable from
+    OBSERVING, not only from JUDGING."""
+    from nookguard.state_machine import legal_next_states
+
+    assert AssetState.REVIEW_ERROR in legal_next_states(AssetState.OBSERVING)
+    s = transition(AssetState.OBSERVING, AssetState.REVIEW_ERROR)
+    assert s == AssetState.REVIEW_ERROR
+    assert is_regenerate_source(s)
+
+
 def test_prod_mismatch_blocks_done_not_silently_fixed():
     from nookguard.state_machine import legal_next_states
 

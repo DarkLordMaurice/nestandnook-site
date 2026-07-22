@@ -72,6 +72,86 @@ def test_full_pipeline_run_start_through_validate():
             pack["review_packs"]["adversarial_b"]["review_pack_sha256"]
 
 
+def test_full_pipeline_through_observe_judge_to_semantic_pass(monkeypatch):
+    """Extends the same pipeline through observe/judge, with the Claude
+    review-agent calls monkeypatched (nookguard.cli's own imported names,
+    since `from .agent_runner import ...` binds a local reference) so no
+    real API call happens. Proves cmd_observe/cmd_judge/aggregate are wired
+    together correctly end to end through the real CLI, not just unit-level."""
+    import nookguard.cli as cli_module
+    from nookguard.schemas import BlindObservation, ContractJudgment, RequirementJudgment, RequirementResult
+
+    def fake_observer(review_pack, **kwargs):
+        return BlindObservation(
+            review_id="r1", candidate_sha256=review_pack.candidate_sha256,
+            review_pack_sha256=review_pack.review_pack_sha256, reviewer_agent_hash="h",
+            reviewer_session_id="s", context_bundle_sha256="cb", observer_role=review_pack.observer_role,
+        )
+
+    def fake_judge(contract, spec_sha256, blind_obs, adversarial_obs, **kwargs):
+        return ContractJudgment(
+            candidate_sha256=blind_obs.candidate_sha256, spec_sha256=spec_sha256,
+            judge_session_id="j", judge_agent_hash="h", context_bundle_sha256="cb",
+            requirements=[RequirementJudgment(requirement_id="r1", result=RequirementResult.TRUE,
+                                               evidence_observation_ids=["obs1"])],
+        )
+
+    monkeypatch.setattr(cli_module, "run_observer_session", fake_observer)
+    monkeypatch.setattr(cli_module, "run_judge_session", fake_judge)
+
+    with tempfile.TemporaryDirectory() as d:
+        store_root = str(Path(d) / "store")
+        contract_path = Path(d) / "contract.json"
+        contract_path.write_text(json.dumps(SAMPLE_CONTRACT))
+        run_id = "test-run-observe-judge"
+
+        spec = run_cli(["spec-lock", "--store-root", store_root, "--run-id", run_id,
+                         "--contract", str(contract_path)])
+        prompt = run_cli(["prompt-compile", "--store-root", store_root, "--run-id", run_id,
+                           "--spec", spec["spec_sha256"]])
+        gen = run_cli(["generate", "--store-root", store_root, "--run-id", run_id,
+                        "--spec", spec["spec_sha256"], "--prompt", prompt["prompt_sha256"], "--adapter", "stub"])
+        candidate_sha = gen["candidate_sha256"]
+        run_cli(["register", "--store-root", store_root, "--run-id", run_id, "--spec", spec["spec_sha256"],
+                 "--prompt", prompt["prompt_sha256"], "--candidate-sha256", candidate_sha,
+                 "--adapter-version", gen["adapter_version"], "--session-id", "gen-session"])
+        run_cli(["validate", "--store-root", store_root, "--run-id", run_id, "--candidate-sha256", candidate_sha])
+        run_cli(["review-pack-build", "--store-root", store_root, "--run-id", run_id,
+                 "--candidate-sha256", candidate_sha])
+
+        obs = run_cli(["observe", "--store-root", store_root, "--run-id", run_id,
+                        "--candidate-sha256", candidate_sha])
+        assert obs["ok"], obs
+        assert set(obs["observations"].keys()) == {"blind_a", "adversarial_b"}
+
+        judge = run_cli(["judge", "--store-root", store_root, "--run-id", run_id,
+                          "--candidate-sha256", candidate_sha])
+        assert judge["ok"], judge
+        assert judge["result"] == "semantic_pass"
+
+
+def test_observe_rejects_when_not_in_observing_state():
+    with tempfile.TemporaryDirectory() as d:
+        store_root = str(Path(d) / "store")
+        contract_path = Path(d) / "contract.json"
+        contract_path.write_text(json.dumps(SAMPLE_CONTRACT))
+        run_id = "test-run-observe-reject"
+        spec = run_cli(["spec-lock", "--store-root", store_root, "--run-id", run_id,
+                         "--contract", str(contract_path)])
+        prompt = run_cli(["prompt-compile", "--store-root", store_root, "--run-id", run_id,
+                           "--spec", spec["spec_sha256"]])
+        gen = run_cli(["generate", "--store-root", store_root, "--run-id", run_id,
+                        "--spec", spec["spec_sha256"], "--prompt", prompt["prompt_sha256"], "--adapter", "stub"])
+        run_cli(["register", "--store-root", store_root, "--run-id", run_id, "--spec", spec["spec_sha256"],
+                 "--prompt", prompt["prompt_sha256"], "--candidate-sha256", gen["candidate_sha256"],
+                 "--adapter-version", gen["adapter_version"], "--session-id", "gen-session"])
+        # No validate/review-pack-build -- asset is at CANDIDATE_REGISTERED, not OBSERVING.
+        result = run_cli(["observe", "--store-root", store_root, "--run-id", run_id,
+                           "--candidate-sha256", gen["candidate_sha256"]])
+        assert not result["ok"]
+        assert "Illegal transition" in result["error"]
+
+
 def test_generate_rejects_unimplemented_adapter():
     """"huggingface" graduated to a real adapter in Commit 5 — use a name
     that is genuinely still outside AVAILABLE_ADAPTERS to test rejection."""

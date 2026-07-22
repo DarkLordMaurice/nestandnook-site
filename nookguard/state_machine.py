@@ -66,7 +66,13 @@ TRANSITIONS: dict[AssetState, set[AssetState]] = {
     AssetState.CANDIDATE_REGISTERED: {AssetState.TECHNICAL_VALIDATING},
     AssetState.TECHNICAL_VALIDATING: {AssetState.TECHNICAL_FAIL, AssetState.TECHNICAL_PASS},
     AssetState.TECHNICAL_PASS: {AssetState.OBSERVING},
-    AssetState.OBSERVING: {AssetState.JUDGING},
+    # REVIEW_ERROR here too, not just from JUDGING (added Commit 8): an
+    # observer session can fail exactly the same way a judge session can —
+    # invalid JSON, an interrupted call — and section 29.5 defines
+    # REVIEW_ERROR as covering "session interrupted" generally, not just the
+    # judge step specifically. See docs/nookguard/BUILD-LOG.md's Commit 8
+    # entry for the concrete case that surfaced this gap.
+    AssetState.OBSERVING: {AssetState.JUDGING, AssetState.REVIEW_ERROR},
     AssetState.JUDGING: {
         AssetState.SEMANTIC_PASS,
         AssetState.SEMANTIC_FAIL,
