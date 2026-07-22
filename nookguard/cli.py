@@ -17,7 +17,14 @@ from pathlib import Path
 from typing import Any
 
 from .adapters import AVAILABLE_ADAPTERS
-from .exceptions import HashMismatchError, InvalidTransitionError, NookGuardError
+from .canon import CanonRegistry
+from .exceptions import (
+    HashMismatchError,
+    InvalidTransitionError,
+    MissingCanonError,
+    NookGuardError,
+    StaleCanonError,
+)
 from .hashing import sha256_bytes
 from .ledger import Ledger
 from .prompt_compiler import compile_prompt
@@ -27,6 +34,8 @@ from .store import Store
 from .validators import image as image_validator
 
 DEFAULT_STORE_ROOT = Path("nookguard_store")
+# nookguard/cli.py -> nookguard -> site -> project root
+DEFAULT_PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
 def _store(root: Path) -> Store:
@@ -85,6 +94,16 @@ def cmd_spec_lock(args: argparse.Namespace) -> dict[str, Any]:
         return {"ok": False, "error": "vague, non-evidence-checkable requirements",
                 "vague_requirement_ids": vague}
 
+    canon = CanonRegistry(args.project_root)
+    missing = canon.missing_canon_files()
+    if missing:
+        return {"ok": False, "error": f"missing canon file(s): {missing}",
+                "missing_canon_files": missing}
+    # Spec-lock always stamps the REAL current canon bundle hash — never trust
+    # a caller-supplied value here, since the whole point is that this hash
+    # reflects canon as it truly is at lock time (H007's basis).
+    contract.canonical_reference_bundle_sha256 = canon.bundle_sha256()
+
     spec_sha256 = store.save_spec(contract)
     store.set_state(contract.asset_id, AssetState.SPEC_LOCKED.value)
     ledger.append(run_id=args.run_id, event_type="asset.spec_locked", actor_role=args.actor_role,
@@ -107,7 +126,16 @@ def cmd_prompt_compile(args: argparse.Namespace) -> dict[str, Any]:
     except InvalidTransitionError as e:
         return {"ok": False, "error": str(e)}
 
-    prompt_text = compile_prompt(contract)
+    canon = CanonRegistry(args.project_root)
+    try:
+        prompt_text = compile_prompt(contract, project_root=args.project_root, canon_registry=canon)
+    except MissingCanonError as e:
+        return {"ok": False, "error": str(e), "missing_canon_files": e.missing}
+    except StaleCanonError as e:
+        return {"ok": False, "error": str(e), "referenced_bundle_sha256": e.referenced,
+                "current_bundle_sha256": e.current}
+    except ValueError as e:
+        return {"ok": False, "error": f"incompatible prompt modules: {e}"}
     prompt_sha256 = store.save_prompt(prompt_text)
     store.set_state(contract.asset_id, AssetState.PROMPT_COMPILED.value)
     ledger.append(run_id=args.run_id, event_type="prompt.compiled", actor_role=args.actor_role,
@@ -219,6 +247,7 @@ def _common(p: argparse.ArgumentParser) -> None:
     p.add_argument("--run-id", default=None)
     p.add_argument("--actor-role", default="unspecified")
     p.add_argument("--session-id", default=None)
+    p.add_argument("--project-root", default=str(DEFAULT_PROJECT_ROOT))
 
 
 def build_parser() -> argparse.ArgumentParser:

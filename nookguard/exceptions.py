@@ -38,3 +38,27 @@ class NarrativeOverrideError(NookGuardError):
 class ProtectedPathError(NookGuardError):
     """Raised when code attempts to write directly to a protected/public media
     path instead of going through the release workflow (hook H001/H008)."""
+
+
+class MissingCanonError(NookGuardError):
+    """Raised when a file listed in canon.CANON_FILES does not exist on disk.
+    A compiler that silently proceeded without a canon file it believes it is
+    honoring would be worse than one that fails loudly."""
+
+    def __init__(self, missing: list[str]):
+        self.missing = missing
+        super().__init__(f"Missing canon file(s): {', '.join(missing)}")
+
+
+class StaleCanonError(NookGuardError):
+    """H007: 'prompt compile includes superseded source -> fail compile'. The
+    contract's canonical_reference_bundle_sha256 no longer matches the live
+    canon bundle hash — canon changed underneath a locked spec."""
+
+    def __init__(self, referenced: str, current: str):
+        self.referenced = referenced
+        self.current = current
+        super().__init__(
+            f"Stale canon reference: spec locked against {referenced}, "
+            f"current canon bundle is {current}"
+        )
