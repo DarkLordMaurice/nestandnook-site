@@ -152,6 +152,46 @@ def test_observe_rejects_when_not_in_observing_state():
         assert "Illegal transition" in result["error"]
 
 
+def test_content_lint_passes_a_real_off_the_clock_file():
+    from pathlib import Path as _P
+    real_file = (_P(__file__).resolve().parents[2] / "src" / "content" / "blog"
+                 / "the-tent-i-almost-didnt-bring.md")
+    result = run_cli(["content-lint", "--file", str(real_file)])
+    assert result["ok"], result
+
+
+def test_content_lint_fails_bad_synthetic_file(tmp_path):
+    bad_file = tmp_path / "bad.md"
+    bad_file.write_text(
+        '---\ncategory: "Life outside the nook"\n---\n'
+        '<div class="photo-strip">\n  <figure class="polaroid"><img src="x.jpg" /></figure>\n</div>\n',
+        encoding="utf-8",
+    )
+    result = run_cli(["content-lint", "--file", str(bad_file)])
+    assert not result["ok"]
+    assert any("photo-strip" in r for r in result["reasons"])
+
+
+def test_content_lint_reports_error_for_missing_file():
+    result = run_cli(["content-lint", "--file", "/nonexistent/path.md"])
+    assert not result["ok"]
+    assert "error" in result
+
+
+def test_content_lint_dir_batch_mode_against_real_blog_directory():
+    from pathlib import Path as _P
+    blog_dir = _P(__file__).resolve().parents[2] / "src" / "content" / "blog"
+    result = run_cli(["content-lint", "--dir", str(blog_dir)])
+    assert result["ok"], [r for r in result["results"] if not r["ok"]]
+    skipped = [r for r in result["results"] if r.get("skipped")]
+    linted = [r for r in result["results"] if not r.get("skipped")]
+    # 5 Guides posts (Desk fixes/Kitchen fixes) are out of scope and skipped;
+    # 10 Off the Clock posts are actually linted and must all pass.
+    assert len(skipped) == 5
+    assert len(linted) == 10
+    assert all(r["ok"] for r in linted)
+
+
 def test_generate_rejects_unimplemented_adapter():
     """"huggingface" graduated to a real adapter in Commit 5 — use a name
     that is genuinely still outside AVAILABLE_ADAPTERS to test rejection."""

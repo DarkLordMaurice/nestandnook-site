@@ -30,6 +30,12 @@ from .exceptions import (
 )
 from .hashing import sha256_bytes
 from .ledger import Ledger
+from .off_the_clock_schema import (
+    OFF_THE_CLOCK_CATEGORIES,
+    extract_category,
+    lint_off_the_clock_file,
+    split_frontmatter,
+)
 from .owner_queue import OwnerQueue, should_queue_for_owner
 from .prompt_compiler import compile_prompt
 from .review_pack import OBSERVER_ROLES, build_review_pack
@@ -384,6 +390,52 @@ def cmd_judge(args: argparse.Namespace) -> dict[str, Any]:
             "reasons": result.reasons, "queued_for_owner": queued}
 
 
+def _content_lint_one(file_path: Path) -> dict[str, Any]:
+    try:
+        report = lint_off_the_clock_file(str(file_path))
+    except (FileNotFoundError, ValueError) as e:
+        return {"ok": False, "file": str(file_path), "error": str(e)}
+    return {
+        "ok": report.passed,
+        "file": str(file_path),
+        "category_ok": report.category_ok,
+        "blocks": [{"block_type": b.block_type, "image_count": b.image_count,
+                     "expected_count": b.expected_count, "passed": b.passed} for b in report.blocks],
+        "legacy_pattern_findings": report.legacy_pattern_findings,
+        "reasons": report.reasons,
+    }
+
+
+def cmd_content_lint(args: argparse.Namespace) -> dict[str, Any]:
+    """Hook H009: 'Page adds legacy raw media component -> Fail content
+    lint.' Standalone content check -- not part of the asset state machine
+    (a page isn't a generated-media asset), so no store/transition involved,
+    just a pass/fail report over real file(s) on disk. `--dir` batch mode
+    exists so this can gate a real content build (Definition of Done: 'An
+    Off the Clock page with the wrong strip count fails the content
+    build') -- files with no recognized category are skipped (reported, not
+    failed), since a directory of mixed content types (Guides, recipes)
+    shouldn't fail this lint just for not being an Off the Clock page."""
+    if args.dir:
+        results = []
+        for file_path in sorted(Path(args.dir).glob("*.md")):
+            try:
+                frontmatter_text, _ = split_frontmatter(file_path.read_text(encoding="utf-8"))
+            except (FileNotFoundError, ValueError) as e:
+                results.append({"ok": False, "file": str(file_path), "error": str(e)})
+                continue
+            category = extract_category(frontmatter_text)
+            if category not in OFF_THE_CLOCK_CATEGORIES:
+                results.append({"ok": True, "file": str(file_path), "skipped": True,
+                                 "reason": f"category '{category}' not in scope for this lint"})
+                continue
+            results.append(_content_lint_one(file_path))
+        overall_ok = all(r["ok"] for r in results)
+        return {"ok": overall_ok, "files_checked": len(results), "results": results}
+
+    return _content_lint_one(Path(args.file))
+
+
 def _common(p: argparse.ArgumentParser) -> None:
     p.add_argument("--store-root", default=str(DEFAULT_STORE_ROOT))
     p.add_argument("--run-id", default=None)
@@ -436,6 +488,12 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("judge"); _common(p)
     p.add_argument("--candidate-sha256", required=True)
     p.set_defaults(func=cmd_judge)
+
+    p = sub.add_parser("content-lint")
+    group = p.add_mutually_exclusive_group(required=True)
+    group.add_argument("--file")
+    group.add_argument("--dir")
+    p.set_defaults(func=cmd_content_lint)
 
     return parser
 
