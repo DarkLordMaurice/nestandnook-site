@@ -2306,6 +2306,8 @@ Commits 20-22 (live-review regression corpus, public-media containment,
 final live canary) all depend on that real authentication existing;
 none of it is simulated or assumed here.
 
+**Commit:** `1cbe0c5`, pushed to `origin/main` (`0c151b9..1cbe0c5`).
+
 **Next:** Commit 20 — `mediactl regression --mode live-review` calling the
 real (now CLI-based) observer/judge against the real historical regression
 corpus image files, plus the OCR validator gap.
