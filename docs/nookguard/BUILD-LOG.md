@@ -2116,8 +2116,7 @@ review_error) -- the review process itself did not complete..."]` — the
 honest, correct answer, replacing the pre-fix run's incorrect `"ok": true,
 "terminal_status": "PROD_VERIFIED"`.
 
-**Commit:** pending (written together with the code/test changes above in
-the same commit).
+**Commit:** `0786322`, pushed to `origin/main` (`12e21de..0786322`).
 
 **Unresolved risks:** none new beyond what Commit 17 already documented —
 this entry is a correctness fix to already-shipped code, not new scope.
