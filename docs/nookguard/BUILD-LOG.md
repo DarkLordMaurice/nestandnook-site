@@ -2484,9 +2484,7 @@ available alternate backend the moment Maurice runs the one-time elevated
 `validators/ocr.py` does not depend on it; RapidOCR is the real, working,
 zero-elevation backend actually in use.
 
-**Commit:** pending — recorded in a follow-up BUILD-LOG-only commit after
-this entry is pushed, matching the established two-step pattern (Commits
-17-19).
+**Commit:** `5c7d234`, pushed to `origin/main` (`8b3bd6d..5c7d234`).
 
 **Next:** Commit 21 — public-media containment (block any write to a
 public media path that isn't an approved, hash-matched NookGuard release
