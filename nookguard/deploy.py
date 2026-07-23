@@ -22,6 +22,7 @@ active GitHub auto-deploy) if that manual step hasn't happened yet."""
 from __future__ import annotations
 
 import re
+import shutil
 import subprocess
 from pathlib import Path
 from typing import Any, Callable, Optional
@@ -122,12 +123,39 @@ def run_wrangler_deploy(
     deployment ID -- if wrangler's output format doesn't contain a
     recognizable ID, `deployment_id` comes back as None rather than a
     guess; a caller must not treat that as a failure, only as "not
-    captured," since wrangler's exact stdout shape has never been observed
-    live in this environment (no credentials to run it for real)."""
-    args = ["wrangler", "pages", "deploy", dist_dir, "--project-name", project_name,
+    captured."
+
+    Real bug found and fixed 2026-07-22 (Commit 23, once real Cloudflare
+    credentials made an actual end-to-end run possible for the first time):
+    `npm install -g wrangler` on Windows installs `wrangler.cmd`/
+    `wrangler.ps1` wrapper scripts, not a bare `wrangler.exe`. Python's
+    subprocess.run(["wrangler", ...], shell=False) does NOT do PATHEXT
+    resolution the way a real shell (PowerShell/cmd.exe) does, so a literal
+    "wrangler" argument raised FileNotFoundError even with wrangler
+    correctly installed and confirmed working via `wrangler pages project
+    list` run directly in PowerShell. Fixed via shutil.which("wrangler"),
+    which DOES do PATHEXT-aware resolution on Windows (and is a correct
+    no-op passthrough on POSIX). Only applied when subprocess_runner is the
+    real subprocess.run -- injected fake runners in tests still receive the
+    literal "wrangler" token, since its exact identity has no bearing on a
+    test double."""
+    wrangler_exe = "wrangler"
+    if subprocess_runner is subprocess.run:
+        wrangler_exe = shutil.which("wrangler") or "wrangler"
+    args = [wrangler_exe, "pages", "deploy", dist_dir, "--project-name", project_name,
             "--branch", "main" if env_name == "production" else env_name]
     try:
-        result = subprocess_runner(args, capture_output=True, text=True, timeout=timeout_seconds)
+        # encoding="utf-8", errors="replace": real finding from this same
+        # Commit 23 test run -- wrangler emits UTF-8/emoji output (e.g. the
+        # "⛅️ wrangler" banner) that a background subprocess reader thread
+        # tried to decode with Windows' default cp1252 console codec and
+        # crashed on (PytestUnhandledThreadExceptionWarning, non-fatal to
+        # the run itself but a real latent reliability issue). Forcing
+        # utf-8 with a replace fallback avoids depending on this machine's
+        # console locale to correctly read wrangler's own real output.
+        result = subprocess_runner(args, capture_output=True, text=True,
+                                    encoding="utf-8", errors="replace",
+                                    timeout=timeout_seconds)
     except FileNotFoundError as e:
         raise WranglerDeployError("wrangler_not_found", str(e)) from e
     except subprocess.TimeoutExpired as e:

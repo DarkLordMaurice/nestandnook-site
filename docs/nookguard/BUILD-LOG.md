@@ -2926,3 +2926,163 @@ report`, in that order.
 **Changed files:** none — this is a real-environment credential
 configuration, not a code change. This `BUILD-LOG.md` entry is the only
 file touched.
+
+---
+
+## Commit 23: Review sessions run through the live Cowork agent, not a separate CLI login — DONE
+
+**Completed:** 2026-07-22/23
+
+**Why this commit:** Commit 19's `claude_cli_executor` transport required a
+separate, manually-authenticated Claude Code CLI process (`claude
+setup-token`) under this Windows identity — the second of Commit 22's two
+real NOT OPERATIONAL blockers. Maurice rejected this premise directly:
+*"we dont have to do that, we have a scheduled task feature here, what are
+you talking about. We have task scheduled for this project already and i
+didnt have to do any of that"* — correctly pointing out that every other
+piece of automation on this project (including this very session) already
+runs inside an authenticated Cowork agent session with no separate login
+step. The CLI transport was solving a problem that doesn't exist here.
+Confirmed with Maurice via AskUserQuestion before proceeding — chose
+"Yes, rework it (recommended)."
+
+**The fix:** split each of the three review-session functions in
+`agent_runner.py` (observer, judge, page-reviewer) into a `build_*_prompt`
+(pure data assembly: system prompt, instruction, image path — no model
+call) and a `finalize_*` (parse/enrich/validate a raw model response into
+the real Pydantic result type, identical logic to before). The
+pre-existing atomic `run_*_session()` functions are now thin wrappers
+(`build_*_prompt` → `executor` → `finalize_*`) with their signatures and
+behavior fully unchanged — every pre-existing call site (all of
+`test_agent_runner.py`'s original tests, `regression_live.py`) works
+untouched. New CLI commands (`observe-prepare`/`observe-submit`,
+`judge-prepare`/`judge-submit`, `preview-review-prepare`/`preview-review-
+submit`) expose the two halves separately, so a live orchestrating agent
+(this session, or the daily/scheduled equivalent) performs the actual
+model call itself via its own Agent/Task tool between `-prepare` and
+`-submit` — no separate CLI process, no separate login, ever. Every
+safety/isolation property from Commit 7/19 is structurally preserved:
+`build_observer_prompt` has no contract parameter (still cannot leak
+contract data into an observer session), `build_judge_prompt` never
+includes the image, and the OBSERVING→JUDGING transition still requires
+both observer roles recorded (now via two independent, order-independent
+`observe-submit` calls) before advancing — verified by dedicated tests,
+not just asserted.
+
+**Changed files:**
+- `nookguard/agent_runner.py` — added `build_observer_prompt`,
+  `finalize_observation`, `build_judge_prompt`, `finalize_judgment`,
+  `build_page_review_prompt`, `finalize_page_review`; `run_*_session()`
+  rewritten as thin wrappers around them.
+- `nookguard/cli.py` — added `cmd_observe_prepare`, `cmd_observe_submit`,
+  `cmd_judge_prepare`, `cmd_judge_submit`, `cmd_preview_review_prepare`,
+  `cmd_preview_review_submit` and their 6 argparse subparsers. `--role` on
+  `observe-prepare`/`observe-submit` deliberately has no argparse
+  `choices=` — same reasoning as `cmd_regression`'s existing `--mode`
+  (an invalid `--role` must come back as this module's own `{"ok": false,
+  ...}` contract, not a raw `argparse.ArgumentError`/`SystemExit`; caught
+  by `test_observe_prepare_rejects_unknown_role` before it shipped).
+- `nookguard/deploy.py` — two real bugs found and fixed while re-verifying
+  Commit 21's credential-gate tests against the now-real Cloudflare
+  credentials (see below): (1) `run_wrangler_deploy` invoked a bare
+  `"wrangler"` via `subprocess.run(shell=False)`, which does not do
+  Windows PATHEXT resolution the way a real shell does — `npm install -g
+  wrangler` installs `wrangler.cmd`/`wrangler.ps1`, so every real
+  invocation raised `FileNotFoundError` even with wrangler genuinely
+  installed and working (confirmed separately via `wrangler pages project
+  list`, run directly in PowerShell, which correctly listed the real
+  `nestandnook-site` project). Fixed via `shutil.which("wrangler")`,
+  applied only when `subprocess_runner is subprocess.run` (the real
+  default) so injected fake runners in tests are unaffected. (2) the same
+  subprocess call had no explicit `encoding`, so a background reader
+  thread crashed trying to decode wrangler's real UTF-8/emoji stdout (the
+  "⛅️ wrangler" banner) under this machine's default cp1252 console codec
+  (`PytestUnhandledThreadExceptionWarning`, non-fatal but a real latent
+  reliability issue) — fixed via `encoding="utf-8", errors="replace"`.
+- `nookguard/tests/test_agent_runner.py` — ~14 new tests for the
+  `build_*`/`finalize_*` split, including output-matching tests asserting
+  the new split path produces byte-identical results (`model_dump()`,
+  excluding non-deterministic fields) to the old atomic path.
+- `nookguard/tests/test_cli.py` — ~10 new tests for the 6 new commands,
+  including a full pipeline test through spec-lock → observe-prepare/
+  submit (both roles, either order) → judge-prepare/submit reaching
+  `semantic_pass` with zero executor monkeypatching, and a preview-review
+  prepare/submit test reaching `preview_review_pass`.
+  `test_deploy_cli_real_unmocked_refuses_at_credentials_gate` was rewritten
+  as `test_deploy_cli_real_unmocked_reaches_wrangler_with_real_credentials`
+  — its old premise (stops at the credentials gate) is now false, since
+  real credentials are configured (see Post-Commit-22 entry above). The
+  new version proves the credentials gate now passes AND that a real
+  (unmocked) `wrangler pages deploy` subprocess call is reached, while
+  deliberately never touching the real `nestandnook-site` production
+  project: it points `--dist-dir` at a disposable `tmp_path` directory and
+  `--project-name` at a name confirmed (manually, outside pytest, before
+  this test was written) not to exist in the account, so the real,
+  unmocked wrangler call fails safely and verifiably (`reason ==
+  "nonzero_exit"`, real Cloudflare error text `"does not exist"`) instead
+  of either fabricating success or risking a real production deploy as a
+  side effect of running the test suite. This safety design mattered
+  concretely: `site/dist/` is a real, current production build on this
+  machine, and the command's own defaults (`--project-name
+  nestandnook-site`) are the live site — running the old test unmocked
+  with real credentials, unmodified, would have deployed for real.
+- `nookguard/tests/test_deploy.py` —
+  `test_check_cloudflare_credentials_real_unmocked_call_on_this_machine`
+  updated to assert `available is True` (was `False`), matching the
+  Post-Commit-22 real credential configuration.
+
+**Tests run:** `python -m pytest nookguard/tests/ -q` (via Desktop
+Commander, real `.ps1` script file — inline `-Command` with `$env:`
+assignments repeatedly mis-parsed through this channel this session,
+consistent with this project's own documented quoting quirk; a real
+`.ps1` file is the reliable path). **385 passed, 0 failed, 0 warnings**
+(first full run after all fixes above; an intermediate run at 384
+passed/1 failed caught the `wrangler_not_found` bug live, and a second
+intermediate run at 385 passed/1 warning caught the cp1252 decode issue
+live — both real, both fixed, both re-verified, not assumed).
+
+**Real verification performed this session, not simulated:**
+- `wrangler --version` → `4.113.0` (installed via `npm install -g
+  wrangler`, 34 packages, this session).
+- `wrangler pages project list` (real `.ps1`, real persistent env vars
+  sourced explicitly) → real table output listing `nestandnook-site` /
+  `nestandnook-site.pages.dev, nestandnook.org` — proves the stored
+  `CLOUDFLARE_API_TOKEN`/`CLOUDFLARE_ACCOUNT_ID` genuinely work for real
+  Cloudflare Pages API calls, not just "present as env vars."
+  (`wrangler whoami` itself still fails with "Failed to automatically
+  retrieve account IDs" — a narrower diagnostic-only account-listing
+  permission the token doesn't have, matching the intentionally-scoped
+  token from the Post-Commit-22 entry; this does not block real Pages
+  operations, confirmed by the `project list` result.)
+- `wrangler pages deploy _test_dist_probe --project-name
+  nookguard-test-nonexistent-project-xyz --branch main`, run manually
+  before writing the corresponding test, → real exit code 1, real
+  Cloudflare error `"The Pages project ... does not exist"` — confirmed
+  safe (creates/modifies nothing) before relying on this exact behavior
+  inside an automated test.
+
+**Unresolved risks (carried forward):**
+- Task #28 (the actual reason this commit exists): a real end-to-end
+  proof — spawning live Agent/Task subagents against the recovered canary
+  candidate (`nookguard-canary-2026-07-22-pegboard-wall-measure`,
+  candidate `9be476db40b23998c12efea2990ccdc601ba02ba8a15f1f3c9a8e023ffd
+  10fd7`, one `review-retry` remaining) via the new `observe-prepare`/
+  `observe-submit`/`judge-prepare`/`judge-submit` commands — has not been
+  run yet. This commit's tests prove the mechanism works against a
+  synthetic corpus fixture; they do not yet prove it against the real
+  canary. Next step.
+- Requirement 7 (disabling Cloudflare Pages' automatic deploy-on-push)
+  remains unconfirmed — Maurice said "ignore" when asked whether to
+  resolve it before the first real deploy, so `cmd_deploy` still refuses
+  to run past the credentials gate only, not a requirement-7 gate; this is
+  an explicit, informed choice, not an oversight (see feedback memory on
+  explicit requests overriding standing rules).
+- `wrangler whoami`'s own account-listing failure is a real, permanent
+  characteristic of this intentionally narrow-scoped token, not a bug to
+  fix — do not "fix" it by widening the token's permissions without
+  Maurice's say-so; it was scoped this way on purpose per Commit 21
+  requirement 6.
+
+**Next:** Task #28 (real subagent proof against the recovered canary
+candidate), then re-run the canary's remaining `review-retry` end-to-end
+through the full pipeline per Commit 22's own "Next" section.

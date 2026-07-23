@@ -13,6 +13,12 @@ from nookguard.agent_runner import (
     ReviewSessionError,
     _extract_json,
     agent_definition_hash,
+    build_judge_prompt,
+    build_observer_prompt,
+    build_page_review_prompt,
+    finalize_judgment,
+    finalize_observation,
+    finalize_page_review,
     run_judge_session,
     run_observer_session,
     run_page_review_session,
@@ -302,3 +308,131 @@ def test_run_page_review_session_instruction_mentions_page_url_and_viewports():
 def test_real_page_reviewer_agent_file_exists_and_hashes():
     h = agent_definition_hash("page_reviewer_system_prompt.md")
     assert len(h) == 64
+
+
+# ---- Commit 23: build_*/finalize_* split (agent-native reviewer transport) ----
+# The whole point of this split is that a live orchestrating agent's own
+# Task/Agent tool call replaces the executor -- these tests confirm
+# build_*_prompt() returns everything such a call needs, and finalize_*()
+# does the identical parse/enrich/validate work run_*_session() always did,
+# now driven by an externally-obtained raw_response instead of a live
+# executor call.
+
+def test_build_observer_prompt_returns_real_system_prompt_and_image_path():
+    pack = build_review_pack("cand-1", _fake_image_path(), "blind_a")
+    prompt = build_observer_prompt(pack)
+    assert prompt["role"] == "blind_a"
+    assert "blind visual observer" in prompt["system_prompt"].lower()
+    assert prompt["image_path"] == pack.image_path
+    assert "taxonomy" not in prompt["instruction"].lower()
+
+
+def test_build_observer_prompt_adversarial_mentions_taxonomy():
+    pack = build_review_pack("cand-1", _fake_image_path(), "adversarial_b")
+    prompt = build_observer_prompt(pack)
+    assert "taxonomy" in prompt["instruction"].lower()
+    assert "adversarial" in prompt["system_prompt"].lower()
+
+
+def test_finalize_observation_matches_run_observer_session_output():
+    """The whole safety property this split depends on: finalize_observation
+    must produce byte-for-byte the same validated result run_observer_
+    session's inline logic always did, given the same raw response -- just
+    with the session_id pinned for a deterministic comparison."""
+    pack = build_review_pack("cand-1", _fake_image_path(), "blind_a")
+    payload = {"overall_summary_for_humans": "A tape measure on a desk.",
+               "visible_entities": [{"label": "tape measure", "count": 1, "confidence": 0.9}]}
+    raw = json.dumps(payload)
+
+    via_executor = run_observer_session(pack, executor=lambda sp, uc: raw)
+    via_finalize = finalize_observation(pack, raw, session_id=via_executor.reviewer_session_id)
+
+    assert via_finalize.model_dump(exclude={"review_id", "created_at"}) == \
+        via_executor.model_dump(exclude={"review_id", "created_at"})
+
+
+def test_finalize_observation_raises_on_invalid_json():
+    pack = build_review_pack("cand-1", _fake_image_path(), "blind_a")
+    with pytest.raises(ReviewSessionError) as exc_info:
+        finalize_observation(pack, "not json at all")
+    assert exc_info.value.role == "blind_a"
+
+
+def test_finalize_observation_raises_on_schema_validation_failure():
+    pack = build_review_pack("cand-1", _fake_image_path(), "blind_a")
+    bad_payload = {"visible_entities": [{"label": "x", "count": "not-a-number", "confidence": 0.9}]}
+    with pytest.raises(ReviewSessionError):
+        finalize_observation(pack, json.dumps(bad_payload))
+
+
+def test_build_judge_prompt_contains_requirements_and_both_observations():
+    contract = _contract()
+    blind = finalize_observation(build_review_pack("c1", _fake_image_path(), "blind_a"), json.dumps({}))
+    adversarial = finalize_observation(
+        build_review_pack("c1", _fake_image_path(), "adversarial_b"), json.dumps({}))
+    prompt = build_judge_prompt(contract, blind, adversarial)
+    assert prompt["payload"]["requirements"][0]["requirement_id"] == "r1"
+    assert prompt["payload"]["blind_observation"]["observer_role"] == "blind_a"
+    assert prompt["payload"]["adversarial_observation"]["observer_role"] == "adversarial_b"
+    assert "judge" in prompt["system_prompt"].lower() or "contract" in prompt["system_prompt"].lower()
+
+
+def test_finalize_judgment_matches_run_judge_session_output():
+    contract = _contract()
+    blind = finalize_observation(build_review_pack("c1", _fake_image_path(), "blind_a"), json.dumps({}))
+    adversarial = finalize_observation(
+        build_review_pack("c1", _fake_image_path(), "adversarial_b"), json.dumps({}))
+    payload = {
+        "requirements": [{"requirement_id": "r1", "result": "true", "evidence_observation_ids": [],
+                           "confidence": 0.9, "concise_reason": "tape measure seen"}],
+        "forbidden_object_findings": [],
+    }
+    raw = json.dumps(payload)
+
+    via_executor = run_judge_session(contract, "spec-sha-123", blind, adversarial, executor=lambda sp, uc: raw)
+    prompt = build_judge_prompt(contract, blind, adversarial)
+    via_finalize = finalize_judgment(blind, "spec-sha-123", prompt["payload"], raw,
+                                      session_id=via_executor.judge_session_id)
+
+    assert via_finalize.model_dump(exclude={"created_at"}) == via_executor.model_dump(exclude={"created_at"})
+
+
+def test_finalize_judgment_raises_on_invalid_json():
+    contract = _contract()
+    blind = finalize_observation(build_review_pack("c1", _fake_image_path(), "blind_a"), json.dumps({}))
+    adversarial = finalize_observation(
+        build_review_pack("c1", _fake_image_path(), "adversarial_b"), json.dumps({}))
+    prompt = build_judge_prompt(contract, blind, adversarial)
+    with pytest.raises(ReviewSessionError) as exc_info:
+        finalize_judgment(blind, "spec-sha", prompt["payload"], "garbage")
+    assert exc_info.value.role == "judge"
+
+
+def test_build_page_review_prompt_mentions_page_url_and_viewports():
+    sheet = _fake_contact_sheet_path()
+    prompt = build_page_review_prompt(sheet, "https://example.com/some-page/", ["desktop", "mobile"])
+    assert "https://example.com/some-page/" in prompt["instruction"]
+    assert "desktop" in prompt["instruction"] and "mobile" in prompt["instruction"]
+    assert prompt["image_path"] == sheet
+
+
+def test_finalize_page_review_matches_run_page_review_session_output():
+    sheet = _fake_contact_sheet_path()
+    payload = {"issues": [{"category": "broken_image", "severity": "major",
+                            "description": "hero image missing", "viewport": "desktop"}],
+               "overall_summary_for_humans": "One broken hero image on desktop."}
+    raw = json.dumps(payload)
+
+    via_executor = run_page_review_session(sheet, "https://example.com/page/", ["desktop"],
+                                            executor=lambda sp, uc: raw)
+    via_finalize = finalize_page_review("https://example.com/page/", ["desktop"], sheet, raw,
+                                         session_id=via_executor.review_session_id)
+
+    assert via_finalize.model_dump(exclude={"created_at"}) == via_executor.model_dump(exclude={"created_at"})
+
+
+def test_finalize_page_review_raises_on_invalid_json():
+    sheet = _fake_contact_sheet_path()
+    with pytest.raises(ReviewSessionError) as exc_info:
+        finalize_page_review("https://example.com/page/", ["desktop"], sheet, "not json at all")
+    assert exc_info.value.role == "page_reviewer"

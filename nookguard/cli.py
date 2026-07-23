@@ -20,6 +20,12 @@ from .adapters import AVAILABLE_ADAPTERS
 from .aggregator import aggregate
 from .agent_runner import (
     ReviewSessionError,
+    build_judge_prompt,
+    build_observer_prompt,
+    build_page_review_prompt,
+    finalize_judgment,
+    finalize_observation,
+    finalize_page_review,
     run_judge_session,
     run_observer_session,
     run_page_review_session,
@@ -395,6 +401,108 @@ def cmd_observe(args: argparse.Namespace) -> dict[str, Any]:
     return {"ok": True, "asset_id": contract.asset_id, "observations": observations}
 
 
+def cmd_observe_prepare(args: argparse.Namespace) -> dict[str, Any]:
+    """Commit 23: real automation for this project always runs inside a
+    live, already-authenticated Cowork agent session -- so instead of
+    `mediactl observe` shelling out to a separate Claude Code CLI process
+    (its own, separate login `mediactl` could never share with the
+    orchestrating session), the orchestrating agent can now perform the
+    actual model call itself, via its own Task/Agent tool, using exactly
+    the system prompt/instruction/image path this command returns. This
+    command performs and writes NOTHING -- safe to call repeatedly. Same
+    OBSERVING precondition `mediactl observe` has always had."""
+    root = Path(args.store_root)
+    store = _store(root)
+    try:
+        attempt = store.load_attempt(args.candidate_sha256)
+        contract = store.load_spec(attempt.spec_sha256)
+        candidate_path = str(store.candidate_path(args.candidate_sha256))
+    except FileNotFoundError as e:
+        return {"ok": False, "error": str(e)}
+
+    current = AssetState(store.get_state(contract.asset_id))
+    if current != AssetState.OBSERVING:
+        return {"ok": False, "error": f"Illegal state {current.value} for observe-prepare "
+                                       "(asset must be in observing state, set by mediactl review-pack-build)"}
+    if args.role not in OBSERVER_ROLES:
+        return {"ok": False, "error": f"Unknown --role '{args.role}', expected one of {OBSERVER_ROLES}"}
+
+    pack = build_review_pack(args.candidate_sha256, candidate_path, args.role)
+    prompt = build_observer_prompt(pack)
+    return {"ok": True, "asset_id": contract.asset_id, "candidate_sha256": args.candidate_sha256,
+            "role": prompt["role"], "system_prompt": prompt["system_prompt"],
+            "instruction": prompt["instruction"], "image_path": prompt["image_path"],
+            "review_pack_sha256": pack.review_pack_sha256}
+
+
+def cmd_observe_submit(args: argparse.Namespace) -> dict[str, Any]:
+    """Commit 23: takes a raw response the CALLER already obtained (via its
+    own live Task/Agent subagent call using observe-prepare's exact
+    system_prompt/instruction/image_path) and runs it through the identical
+    parse/enrich/schema-validate/save logic `mediactl observe` has always
+    used -- this command trusts the caller for the model's raw text only,
+    never for the parsed/validated result. Transitions OBSERVING -> JUDGING
+    only once BOTH roles have been submitted, mirroring `mediactl observe`'s
+    original all-or-nothing behavior, just spread across two calls (in
+    either order) instead of one loop."""
+    root = Path(args.store_root)
+    store, ledger = _store(root), _ledger(root)
+    try:
+        attempt = store.load_attempt(args.candidate_sha256)
+        contract = store.load_spec(attempt.spec_sha256)
+        candidate_path = str(store.candidate_path(args.candidate_sha256))
+    except FileNotFoundError as e:
+        return {"ok": False, "error": str(e)}
+
+    current = AssetState(store.get_state(contract.asset_id))
+    if current != AssetState.OBSERVING:
+        return {"ok": False, "error": f"Illegal state {current.value} for observe-submit "
+                                       "(asset must be in observing state)"}
+    if args.role not in OBSERVER_ROLES:
+        return {"ok": False, "error": f"Unknown --role '{args.role}', expected one of {OBSERVER_ROLES}"}
+
+    response_text = Path(args.response_file).read_text(encoding="utf-8")
+    pack = build_review_pack(args.candidate_sha256, candidate_path, args.role)
+
+    try:
+        obs = finalize_observation(pack, response_text)
+    except ReviewSessionError as e:
+        transition(current, AssetState.REVIEW_ERROR, asset_id=contract.asset_id)
+        store.set_state(contract.asset_id, AssetState.REVIEW_ERROR.value)
+        ledger.append(run_id=args.run_id, event_type="observation.error", actor_role=args.actor_role,
+                      payload={"candidate_sha256": args.candidate_sha256, "role": e.role,
+                               "reason": e.reason}, asset_id=contract.asset_id)
+        return {"ok": False, "error": str(e), "role": e.role}
+
+    store.save_observation(obs)
+    ledger.append(run_id=args.run_id, event_type="observation.submitted", actor_role=args.actor_role,
+                  payload={"candidate_sha256": args.candidate_sha256, "role": args.role,
+                           "reviewer_session_id": obs.reviewer_session_id},
+                  asset_id=contract.asset_id, actor_session_id=args.session_id)
+
+    other_role = [r for r in OBSERVER_ROLES if r != args.role][0]
+    try:
+        store.load_observation(args.candidate_sha256, other_role)
+    except FileNotFoundError:
+        return {"ok": True, "asset_id": contract.asset_id, "role": args.role,
+                "reviewer_session_id": obs.reviewer_session_id,
+                "waiting_for": other_role, "state": current.value}
+
+    # Both roles now have a saved observation -- complete, exactly like the
+    # old atomic mediactl observe did at the end of its loop.
+    transition(current, AssetState.JUDGING, asset_id=contract.asset_id)
+    store.set_state(contract.asset_id, AssetState.JUDGING.value)
+    observations = {
+        r: {"reviewer_session_id": store.load_observation(args.candidate_sha256, r).reviewer_session_id}
+        for r in OBSERVER_ROLES
+    }
+    ledger.append(run_id=args.run_id, event_type="observation.completed", actor_role=args.actor_role,
+                  payload={"candidate_sha256": args.candidate_sha256, "observations": observations},
+                  asset_id=contract.asset_id, actor_session_id=args.session_id)
+    return {"ok": True, "asset_id": contract.asset_id, "state": AssetState.JUDGING.value,
+            "observations": observations}
+
+
 def cmd_judge(args: argparse.Namespace) -> dict[str, Any]:
     root = Path(args.store_root)
     store, ledger = _store(root), _ledger(root)
@@ -413,6 +521,89 @@ def cmd_judge(args: argparse.Namespace) -> dict[str, Any]:
 
     try:
         judgment = run_judge_session(contract, attempt.spec_sha256, blind_obs, adversarial_obs)
+    except ReviewSessionError as e:
+        transition(current, AssetState.REVIEW_ERROR, asset_id=contract.asset_id)
+        store.set_state(contract.asset_id, AssetState.REVIEW_ERROR.value)
+        ledger.append(run_id=args.run_id, event_type="judgment.error", actor_role=args.actor_role,
+                      payload={"candidate_sha256": args.candidate_sha256, "reason": e.reason},
+                      asset_id=contract.asset_id)
+        return {"ok": False, "error": str(e), "role": e.role}
+    store.save_judgment(judgment)
+
+    result = aggregate(contract, judgment, blind_obs, adversarial_obs)
+    transition(AssetState.JUDGING, result.state, asset_id=contract.asset_id)
+    store.set_state(contract.asset_id, result.state.value)
+
+    asset_count = store.bump_adapter_asset_count(attempt.adapter_version)
+    queued = should_queue_for_owner(contract.risk_tier, result.state,
+                                     assets_seen_for_adapter=asset_count)
+    if queued:
+        OwnerQueue(store.owner_queue_path).enqueue(
+            contract.asset_id, args.candidate_sha256, result.reasons,
+            contract.risk_tier.value, result.state.value,
+        )
+
+    ledger.append(run_id=args.run_id, event_type="judgment.completed", actor_role=args.actor_role,
+                  payload={"candidate_sha256": args.candidate_sha256, "result": result.state.value,
+                           "reasons": result.reasons, "queued_for_owner": queued},
+                  asset_id=contract.asset_id, actor_session_id=args.session_id)
+    return {"ok": True, "asset_id": contract.asset_id, "result": result.state.value,
+            "reasons": result.reasons, "queued_for_owner": queued}
+
+
+def cmd_judge_prepare(args: argparse.Namespace) -> dict[str, Any]:
+    """Commit 23: the judge-side counterpart to observe-prepare. Returns the
+    real system prompt and requirement/observation payload a live
+    orchestrating agent needs to perform the judge session itself (via its
+    own Task/Agent tool) -- writes nothing, safe to call repeatedly. Same
+    JUDGING precondition `mediactl judge` has always had (both observations
+    must already be saved, via observe-submit or the atomic observe)."""
+    root = Path(args.store_root)
+    store = _store(root)
+    try:
+        attempt = store.load_attempt(args.candidate_sha256)
+        contract = store.load_spec(attempt.spec_sha256)
+        blind_obs = store.load_observation(args.candidate_sha256, "blind_a")
+        adversarial_obs = store.load_observation(args.candidate_sha256, "adversarial_b")
+    except FileNotFoundError as e:
+        return {"ok": False, "error": str(e)}
+
+    current = AssetState(store.get_state(contract.asset_id))
+    if current != AssetState.JUDGING:
+        return {"ok": False, "error": f"Illegal state {current.value} for judge-prepare "
+                                       "(asset must be in judging state, set by mediactl observe/observe-submit)"}
+
+    prompt = build_judge_prompt(contract, blind_obs, adversarial_obs)
+    return {"ok": True, "asset_id": contract.asset_id, "candidate_sha256": args.candidate_sha256,
+            "system_prompt": prompt["system_prompt"], "payload_json": json.dumps(prompt["payload"], indent=2)}
+
+
+def cmd_judge_submit(args: argparse.Namespace) -> dict[str, Any]:
+    """Commit 23: takes a raw response the CALLER already obtained (via its
+    own live Task/Agent subagent call using judge-prepare's exact
+    system_prompt/payload_json) and runs it through the identical parse/
+    enrich/schema-validate/save/aggregate/enqueue logic `mediactl judge`
+    has always used."""
+    root = Path(args.store_root)
+    store, ledger = _store(root), _ledger(root)
+    try:
+        attempt = store.load_attempt(args.candidate_sha256)
+        contract = store.load_spec(attempt.spec_sha256)
+        blind_obs = store.load_observation(args.candidate_sha256, "blind_a")
+        adversarial_obs = store.load_observation(args.candidate_sha256, "adversarial_b")
+    except FileNotFoundError as e:
+        return {"ok": False, "error": str(e)}
+
+    current = AssetState(store.get_state(contract.asset_id))
+    if current != AssetState.JUDGING:
+        return {"ok": False, "error": f"Illegal state {current.value} for judge-submit "
+                                       "(asset must be in judging state)"}
+
+    response_text = Path(args.response_file).read_text(encoding="utf-8")
+    prompt = build_judge_prompt(contract, blind_obs, adversarial_obs)
+
+    try:
+        judgment = finalize_judgment(blind_obs, attempt.spec_sha256, prompt["payload"], response_text)
     except ReviewSessionError as e:
         transition(current, AssetState.REVIEW_ERROR, asset_id=contract.asset_id)
         store.set_state(contract.asset_id, AssetState.REVIEW_ERROR.value)
@@ -745,6 +936,89 @@ def cmd_preview_review(args: argparse.Namespace) -> dict[str, Any]:
 
     try:
         review = run_page_review_session(capture["contact_sheet_path"], capture["page_url"], viewports_captured)
+    except ReviewSessionError as e:
+        transition(current, AssetState.REVIEW_ERROR, asset_id=contract.asset_id)
+        store.set_state(contract.asset_id, AssetState.REVIEW_ERROR.value)
+        ledger.append(run_id=args.run_id, event_type="preview_review.error", actor_role=args.actor_role,
+                      payload={"candidate_sha256": args.candidate_sha256, "reason": e.reason},
+                      asset_id=contract.asset_id)
+        return {"ok": False, "error": str(e), "role": e.role}
+    store.save_page_review(args.candidate_sha256, review)
+
+    result = aggregate_preview(capture_reports, review)
+    transition(current, result.state, asset_id=contract.asset_id)
+    store.set_state(contract.asset_id, result.state.value)
+
+    ledger.append(run_id=args.run_id, event_type="preview_review.completed", actor_role=args.actor_role,
+                  payload={"candidate_sha256": args.candidate_sha256, "result": result.state.value,
+                           "reasons": result.reasons},
+                  asset_id=contract.asset_id, actor_session_id=args.session_id)
+    return {"ok": True, "asset_id": contract.asset_id, "result": result.state.value, "reasons": result.reasons}
+
+
+def cmd_preview_review_prepare(args: argparse.Namespace) -> dict[str, Any]:
+    """Commit 23: the preview-reviewer counterpart to observe-prepare.
+    Returns the real system prompt, instruction, and contact-sheet path a
+    live orchestrating agent needs to perform the page-review session
+    itself. Writes nothing, safe to call repeatedly. Same PREVIEWED
+    precondition `mediactl preview-review` has always had."""
+    root = Path(args.store_root)
+    store = _store(root)
+    try:
+        attempt = store.load_attempt(args.candidate_sha256)
+        contract = store.load_spec(attempt.spec_sha256)
+    except FileNotFoundError as e:
+        return {"ok": False, "error": str(e)}
+
+    current = AssetState(store.get_state(contract.asset_id))
+    if current != AssetState.PREVIEWED:
+        return {"ok": False, "error": f"Illegal state {current.value} for preview-review-prepare "
+                                       "(asset must be in previewed state, set by mediactl preview-capture)"}
+
+    try:
+        capture = store.load_preview_capture(args.candidate_sha256)
+    except FileNotFoundError as e:
+        return {"ok": False, "error": str(e)}
+
+    capture_reports = [PageCaptureReport(**r) for r in capture["reports"]]
+    viewports_captured = [r.viewport_name for r in capture_reports]
+    prompt = build_page_review_prompt(capture["contact_sheet_path"], capture["page_url"], viewports_captured)
+    return {"ok": True, "asset_id": contract.asset_id, "system_prompt": prompt["system_prompt"],
+            "instruction": prompt["instruction"], "image_path": prompt["image_path"],
+            "page_url": prompt["page_url"], "viewports_captured": viewports_captured}
+
+
+def cmd_preview_review_submit(args: argparse.Namespace) -> dict[str, Any]:
+    """Commit 23: takes a raw response the CALLER already obtained (via its
+    own live Task/Agent subagent call using preview-review-prepare's exact
+    system_prompt/instruction/image_path) and runs it through the identical
+    parse/enrich/schema-validate/save/aggregate logic `mediactl preview-
+    review` has always used."""
+    root = Path(args.store_root)
+    store, ledger = _store(root), _ledger(root)
+    try:
+        attempt = store.load_attempt(args.candidate_sha256)
+        contract = store.load_spec(attempt.spec_sha256)
+    except FileNotFoundError as e:
+        return {"ok": False, "error": str(e)}
+
+    current = AssetState(store.get_state(contract.asset_id))
+    if current != AssetState.PREVIEWED:
+        return {"ok": False, "error": f"Illegal state {current.value} for preview-review-submit "
+                                       "(asset must be in previewed state)"}
+
+    try:
+        capture = store.load_preview_capture(args.candidate_sha256)
+    except FileNotFoundError as e:
+        return {"ok": False, "error": str(e)}
+
+    capture_reports = [PageCaptureReport(**r) for r in capture["reports"]]
+    viewports_captured = [r.viewport_name for r in capture_reports]
+    response_text = Path(args.response_file).read_text(encoding="utf-8")
+
+    try:
+        review = finalize_page_review(capture["page_url"], viewports_captured,
+                                       capture["contact_sheet_path"], response_text)
     except ReviewSessionError as e:
         transition(current, AssetState.REVIEW_ERROR, asset_id=contract.asset_id)
         store.set_state(contract.asset_id, AssetState.REVIEW_ERROR.value)
@@ -1178,9 +1452,50 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--candidate-sha256", required=True)
     p.set_defaults(func=cmd_observe)
 
+    # Commit 23: agent-native counterparts to observe/judge/preview-review
+    # above -- the recommended path when a live Cowork agent (this one, or
+    # a scheduled task) is orchestrating the run, since it removes the
+    # separate Claude Code CLI login `observe`/`judge`/`preview-review`
+    # need. `--role` is required on the observe- pair since each real call
+    # covers exactly one observer role; the caller makes two calls (either
+    # order) to cover both.
+    p = sub.add_parser("observe-prepare"); _common(p)
+    p.add_argument("--candidate-sha256", required=True)
+    # Deliberately no argparse `choices=` here -- same reasoning as
+    # cmd_regression's own --mode argument above: an invalid --role should
+    # come back as this module's standard {"ok": false, "error": ...}
+    # contract (cmd_observe_prepare/cmd_observe_submit's own graceful
+    # `role not in OBSERVER_ROLES` check), not a raw argparse SystemExit.
+    p.add_argument("--role", required=True)
+    p.set_defaults(func=cmd_observe_prepare)
+
+    p = sub.add_parser("observe-submit"); _common(p)
+    p.add_argument("--candidate-sha256", required=True)
+    # Deliberately no argparse `choices=` here -- same reasoning as
+    # cmd_regression's own --mode argument above: an invalid --role should
+    # come back as this module's standard {"ok": false, "error": ...}
+    # contract (cmd_observe_prepare/cmd_observe_submit's own graceful
+    # `role not in OBSERVER_ROLES` check), not a raw argparse SystemExit.
+    p.add_argument("--role", required=True)
+    p.add_argument("--response-file", required=True,
+                    help="Path to a file containing the raw model response text obtained via the "
+                         "caller's own Task/Agent subagent call using observe-prepare's system_prompt.")
+    p.set_defaults(func=cmd_observe_submit)
+
     p = sub.add_parser("judge"); _common(p)
     p.add_argument("--candidate-sha256", required=True)
     p.set_defaults(func=cmd_judge)
+
+    p = sub.add_parser("judge-prepare"); _common(p)
+    p.add_argument("--candidate-sha256", required=True)
+    p.set_defaults(func=cmd_judge_prepare)
+
+    p = sub.add_parser("judge-submit"); _common(p)
+    p.add_argument("--candidate-sha256", required=True)
+    p.add_argument("--response-file", required=True,
+                    help="Path to a file containing the raw model response text obtained via the "
+                         "caller's own Task/Agent subagent call using judge-prepare's system_prompt.")
+    p.set_defaults(func=cmd_judge_submit)
 
     p = sub.add_parser("review-retry"); _common(p)
     p.add_argument("--candidate-sha256", required=True)
@@ -1223,6 +1538,17 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("preview-review"); _common(p)
     p.add_argument("--candidate-sha256", required=True)
     p.set_defaults(func=cmd_preview_review)
+
+    p = sub.add_parser("preview-review-prepare"); _common(p)
+    p.add_argument("--candidate-sha256", required=True)
+    p.set_defaults(func=cmd_preview_review_prepare)
+
+    p = sub.add_parser("preview-review-submit"); _common(p)
+    p.add_argument("--candidate-sha256", required=True)
+    p.add_argument("--response-file", required=True,
+                    help="Path to a file containing the raw model response text obtained via the "
+                         "caller's own Task/Agent subagent call using preview-review-prepare's system_prompt.")
+    p.set_defaults(func=cmd_preview_review_submit)
 
     p = sub.add_parser("release"); _common(p)
     p.add_argument("--candidate-sha256", required=True)

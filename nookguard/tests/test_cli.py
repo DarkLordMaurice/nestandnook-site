@@ -363,6 +363,236 @@ def _drive_to_semantic_pass(monkeypatch, store_root: str, run_id: str, contract_
     return candidate_sha
 
 
+def _drive_to_observing(store_root: str, run_id: str, contract_path: Path) -> str:
+    """Commit 23: reaches OBSERVING through the real CLI with no review-agent
+    calls at all (nothing to monkeypatch -- spec-lock through review-pack-
+    build never touches an executor). Returns candidate_sha256."""
+    spec = run_cli(["spec-lock", "--store-root", store_root, "--run-id", run_id,
+                     "--contract", str(contract_path)])
+    prompt = run_cli(["prompt-compile", "--store-root", store_root, "--run-id", run_id,
+                       "--spec", spec["spec_sha256"]])
+    gen = run_cli(["generate", "--store-root", store_root, "--run-id", run_id,
+                    "--spec", spec["spec_sha256"], "--prompt", prompt["prompt_sha256"], "--adapter", "stub"])
+    candidate_sha = gen["candidate_sha256"]
+    run_cli(["register", "--store-root", store_root, "--run-id", run_id, "--spec", spec["spec_sha256"],
+             "--prompt", prompt["prompt_sha256"], "--candidate-sha256", candidate_sha,
+             "--adapter-version", gen["adapter_version"], "--session-id", "gen-session"])
+    run_cli(["validate", "--store-root", store_root, "--run-id", run_id, "--candidate-sha256", candidate_sha])
+    run_cli(["review-pack-build", "--store-root", store_root, "--run-id", run_id,
+             "--candidate-sha256", candidate_sha])
+    return candidate_sha
+
+
+def _write_response_file(tmp_path: Path, name: str, payload: dict) -> str:
+    p = tmp_path / name
+    p.write_text(json.dumps(payload), encoding="utf-8")
+    return str(p)
+
+
+# ---- Commit 23: observe-prepare/-submit, judge-prepare/-submit, preview-
+# review-prepare/-submit -- the agent-native path a live orchestrating
+# agent (this Cowork session, or a scheduled task) uses instead of the
+# separate-Claude-Code-CLI-login executor. No monkeypatching of run_*_
+# session is needed for these -- prepare/submit never call an executor at
+# all, so a real --response-file is genuinely exercising the same finalize_
+# * validation logic the atomic commands use. ----
+
+def test_observe_prepare_returns_real_system_prompt_and_image_path(tmp_path):
+    store_root = str(tmp_path / "store")
+    contract_path = tmp_path / "contract.json"
+    contract_path.write_text(json.dumps(SAMPLE_CONTRACT))
+    candidate_sha = _drive_to_observing(store_root, "run-op1", contract_path)
+
+    prepared = run_cli(["observe-prepare", "--store-root", store_root, "--candidate-sha256", candidate_sha,
+                         "--role", "blind_a"])
+    assert prepared["ok"], prepared
+    assert prepared["role"] == "blind_a"
+    assert "blind visual observer" in prepared["system_prompt"].lower()
+    assert Path(prepared["image_path"]).exists()
+
+
+def test_observe_prepare_rejects_unknown_role(tmp_path):
+    store_root = str(tmp_path / "store")
+    contract_path = tmp_path / "contract.json"
+    contract_path.write_text(json.dumps(SAMPLE_CONTRACT))
+    candidate_sha = _drive_to_observing(store_root, "run-op2", contract_path)
+    result = run_cli(["observe-prepare", "--store-root", store_root, "--candidate-sha256", candidate_sha,
+                       "--role", "bogus_role"])
+    assert not result["ok"]
+
+
+def test_observe_submit_waits_for_both_roles_then_transitions_to_judging(tmp_path):
+    store_root = str(tmp_path / "store")
+    contract_path = tmp_path / "contract.json"
+    contract_path.write_text(json.dumps(SAMPLE_CONTRACT))
+    run_id = "run-os1"
+    candidate_sha = _drive_to_observing(store_root, run_id, contract_path)
+
+    response_a = _write_response_file(tmp_path, "blind_a.json", {"overall_summary_for_humans": "sees a desk"})
+    first = run_cli(["observe-submit", "--store-root", store_root, "--run-id", run_id,
+                      "--candidate-sha256", candidate_sha,
+                      "--role", "blind_a", "--response-file", response_a])
+    assert first["ok"], first
+    assert first.get("waiting_for") == "adversarial_b"
+
+    response_b = _write_response_file(tmp_path, "adversarial_b.json", {"overall_summary_for_humans": "sees a desk too"})
+    second = run_cli(["observe-submit", "--store-root", store_root, "--run-id", run_id,
+                       "--candidate-sha256", candidate_sha,
+                       "--role", "adversarial_b", "--response-file", response_b])
+    assert second["ok"], second
+    assert second["state"] == "judging"
+    assert set(second["observations"].keys()) == {"blind_a", "adversarial_b"}
+
+
+def test_observe_submit_either_order_reaches_judging(tmp_path):
+    """Order independence: submitting adversarial_b first, then blind_a,
+    must reach the same JUDGING outcome."""
+    store_root = str(tmp_path / "store")
+    contract_path = tmp_path / "contract.json"
+    contract_path.write_text(json.dumps(SAMPLE_CONTRACT))
+    run_id = "run-os2"
+    candidate_sha = _drive_to_observing(store_root, run_id, contract_path)
+
+    response_b = _write_response_file(tmp_path, "adversarial_b.json", {})
+    run_cli(["observe-submit", "--store-root", store_root, "--run-id", run_id,
+             "--candidate-sha256", candidate_sha,
+             "--role", "adversarial_b", "--response-file", response_b])
+    response_a = _write_response_file(tmp_path, "blind_a.json", {})
+    second = run_cli(["observe-submit", "--store-root", store_root, "--run-id", run_id,
+                       "--candidate-sha256", candidate_sha,
+                       "--role", "blind_a", "--response-file", response_a])
+    assert second["state"] == "judging"
+
+
+def test_observe_submit_invalid_response_transitions_to_review_error(tmp_path):
+    store_root = str(tmp_path / "store")
+    contract_path = tmp_path / "contract.json"
+    contract_path.write_text(json.dumps(SAMPLE_CONTRACT))
+    run_id = "run-os3"
+    candidate_sha = _drive_to_observing(store_root, run_id, contract_path)
+
+    bad_response = tmp_path / "bad.json"
+    bad_response.write_text("not json at all", encoding="utf-8")
+    result = run_cli(["observe-submit", "--store-root", store_root, "--run-id", run_id,
+                       "--candidate-sha256", candidate_sha,
+                       "--role", "blind_a", "--response-file", str(bad_response)])
+    assert not result["ok"]
+    assert result["role"] == "blind_a"
+
+    # State machine reflects the failure for real -- a second submit attempt
+    # (even a valid one) is correctly rejected, matching the atomic
+    # observe command's own all-or-nothing failure behavior.
+    good_response = _write_response_file(tmp_path, "good.json", {})
+    retry = run_cli(["observe-submit", "--store-root", store_root, "--run-id", run_id,
+                      "--candidate-sha256", candidate_sha,
+                      "--role", "adversarial_b", "--response-file", good_response])
+    assert not retry["ok"]
+
+
+def test_judge_prepare_requires_judging_state(tmp_path):
+    store_root = str(tmp_path / "store")
+    contract_path = tmp_path / "contract.json"
+    contract_path.write_text(json.dumps(SAMPLE_CONTRACT))
+    candidate_sha = _drive_to_observing(store_root, "run-jp1", contract_path)
+
+    too_early = run_cli(["judge-prepare", "--store-root", store_root, "--candidate-sha256", candidate_sha])
+    assert not too_early["ok"]
+
+
+def test_full_pipeline_via_prepare_submit_reaches_semantic_pass(tmp_path):
+    """The real, complete agent-native path this commit exists for: observe-
+    prepare/-submit for both roles, then judge-prepare/-submit -- no
+    monkeypatching of run_observer_session/run_judge_session anywhere,
+    since prepare/submit never call an executor. This is the CLI-level
+    proof that the split reaches the exact same SEMANTIC_PASS outcome the
+    atomic observe/judge commands do."""
+    store_root = str(tmp_path / "store")
+    contract_path = tmp_path / "contract.json"
+    contract_path.write_text(json.dumps(SAMPLE_CONTRACT))
+    run_id = "run-full-ps"
+    candidate_sha = _drive_to_observing(store_root, run_id, contract_path)
+
+    for role in ("blind_a", "adversarial_b"):
+        prepared = run_cli(["observe-prepare", "--store-root", store_root, "--candidate-sha256", candidate_sha,
+                             "--role", role])
+        assert prepared["ok"], prepared
+        response_file = _write_response_file(tmp_path, f"{role}.json", {"overall_summary_for_humans": "ok"})
+        submitted = run_cli(["observe-submit", "--store-root", store_root, "--run-id", run_id,
+                              "--candidate-sha256", candidate_sha,
+                              "--role", role, "--response-file", response_file])
+        assert submitted["ok"], submitted
+
+    judge_prepared = run_cli(["judge-prepare", "--store-root", store_root, "--candidate-sha256", candidate_sha])
+    assert judge_prepared["ok"], judge_prepared
+    assert "requirements" in judge_prepared["payload_json"]
+
+    judge_response = _write_response_file(tmp_path, "judge.json", {
+        "requirements": [{"requirement_id": "r1", "result": "true", "evidence_observation_ids": [],
+                           "confidence": 0.9, "concise_reason": "tape measure seen"}],
+        "forbidden_object_findings": [],
+    })
+    judged = run_cli(["judge-submit", "--store-root", store_root, "--run-id", run_id,
+                       "--candidate-sha256", candidate_sha,
+                       "--response-file", judge_response])
+    assert judged["ok"], judged
+    assert judged["result"] == "semantic_pass"
+
+
+def test_judge_submit_invalid_response_transitions_to_review_error(tmp_path):
+    store_root = str(tmp_path / "store")
+    contract_path = tmp_path / "contract.json"
+    contract_path.write_text(json.dumps(SAMPLE_CONTRACT))
+    run_id = "run-js1"
+    candidate_sha = _drive_to_observing(store_root, run_id, contract_path)
+
+    for role in ("blind_a", "adversarial_b"):
+        response_file = _write_response_file(tmp_path, f"{role}.json", {})
+        run_cli(["observe-submit", "--store-root", store_root, "--run-id", run_id,
+                 "--candidate-sha256", candidate_sha,
+                 "--role", role, "--response-file", response_file])
+
+    bad_response = tmp_path / "bad_judge.json"
+    bad_response.write_text("garbage", encoding="utf-8")
+    result = run_cli(["judge-submit", "--store-root", store_root, "--run-id", run_id,
+                       "--candidate-sha256", candidate_sha,
+                       "--response-file", str(bad_response)])
+    assert not result["ok"]
+    assert result["role"] == "judge"
+
+
+def test_preview_review_prepare_and_submit_reaches_preview_review_pass(monkeypatch, tmp_path):
+    """Drives through integrate/preview-capture using the atomic observe/
+    judge (monkeypatched, matching test_full_pipeline_through_preview_
+    review_to_pass's own setup) since those aren't this commit's concern,
+    then exercises the NEW preview-review-prepare/-submit pair for real,
+    with no run_page_review_session monkeypatch at all."""
+    store_root = str(tmp_path / "store")
+    contract_path = tmp_path / "contract.json"
+    contract_path.write_text(json.dumps(SAMPLE_CONTRACT))
+    run_id = "test-run-preview-prepare-submit"
+
+    candidate_sha = _drive_to_semantic_pass(monkeypatch, store_root, run_id, contract_path)
+    run_cli(["integrate", "--store-root", store_root, "--run-id", run_id,
+             "--candidate-sha256", candidate_sha, "--page-url", "https://nestandnook.org/x/"])
+    page_url = _write_html("<html><body><h1>Real rendered page</h1></body></html>", tmp_path)
+    run_cli(["preview-capture", "--store-root", store_root, "--run-id", run_id,
+             "--candidate-sha256", candidate_sha, "--page-url", page_url])
+
+    prepared = run_cli(["preview-review-prepare", "--store-root", store_root, "--candidate-sha256", candidate_sha])
+    assert prepared["ok"], prepared
+    assert Path(prepared["image_path"]).exists()
+    assert page_url == prepared["page_url"] or prepared["page_url"]  # real page_url present
+
+    response_file = _write_response_file(tmp_path, "page_review.json", {
+        "issues": [], "overall_summary_for_humans": "Clean render, no defects found.",
+    })
+    submitted = run_cli(["preview-review-submit", "--store-root", store_root, "--run-id", run_id,
+                          "--candidate-sha256", candidate_sha,
+                          "--response-file", response_file])
+    assert submitted["ok"], submitted
+    assert submitted["result"] == "preview_review_pass"
+
+
 def test_full_pipeline_through_preview_review_to_pass(monkeypatch, tmp_path):
     """Extends the pipeline from SEMANTIC_PASS through integrate ->
     preview-capture (real Playwright screenshot of a real local page) ->
@@ -806,16 +1036,46 @@ def test_deploy_cli_refuses_when_public_media_unapproved(tmp_path):
     assert result["reason"] == "unapproved_public_media"
 
 
-def test_deploy_cli_real_unmocked_refuses_at_credentials_gate():
+def test_deploy_cli_real_unmocked_reaches_wrangler_with_real_credentials(tmp_path):
     """Real, unmocked `mediactl deploy` against the actual site tree (whose
-    media-audit is confirmed clean above) -- honestly stops at the real
-    Cloudflare-credentials gate on this machine, matching the same
-    real-environment-failure discipline as test_canary_run_reports_which_
-    step_failed and test_regression_live_review_mode_runs_real_corpus_
-    unmocked. Must NOT report ok:true -- there is no real deployment
-    evidence available in this environment."""
+    media-audit is confirmed clean above). Updated post-Commit-22 (see
+    BUILD-LOG.md): real Cloudflare credentials are now configured on this
+    machine, so the credentials gate this test used to stop at
+    (cloudflare_credentials_unavailable) now genuinely passes -- see
+    test_check_cloudflare_credentials_real_unmocked_call_on_this_machine in
+    test_deploy.py for that half of the finding.
+
+    This test proves the OTHER half for real: that a passed credentials
+    gate reaches a genuine `wrangler pages deploy` subprocess call using
+    those exact credentials, not a mocked one. It deliberately does NOT let
+    that real call touch the actual `nestandnook-site` production project
+    -- site/dist/ is a real, current production build on this machine, and
+    the default --project-name IS the real live site, so running this
+    unmocked would otherwise trigger a genuine production deployment as a
+    side effect of the test suite. Confirmed safe alternative (manually
+    verified 2026-07-22 outside pytest first, see BUILD-LOG.md Commit 23
+    entry): `wrangler pages deploy <dir> --project-name <name-that-does-
+    not-exist-in-the-account>` fails cleanly with a real Cloudflare error
+    (exit code 1, 'The Pages project ... does not exist') and creates or
+    modifies nothing -- so pointing --project-name at a nonexistent name
+    and --dist-dir at a disposable tmp_path directory gives a real,
+    unmocked, end-to-end proof that credentials+wrangler work, with zero
+    risk to the live site."""
     from nookguard.public_media_guard import DEFAULT_SITE_ROOT
-    result = run_cli(["deploy", "--site-root", str(DEFAULT_SITE_ROOT)])
+    throwaway_dist = tmp_path / "throwaway_dist"
+    throwaway_dist.mkdir()
+    (throwaway_dist / "index.html").write_text("<!doctype html><title>nookguard test probe</title>")
+
+    result = run_cli([
+        "deploy", "--site-root", str(DEFAULT_SITE_ROOT),
+        "--dist-dir", str(throwaway_dist),
+        "--project-name", "nookguard-test-nonexistent-project-xyz",
+    ])
+    # Must NOT stop at the credentials gate anymore -- real credentials are
+    # configured and available.
+    assert result.get("reason") != "cloudflare_credentials_unavailable"
+    # Must NOT report a fabricated success -- there is no real deployment
+    # (the project genuinely doesn't exist in the account).
     assert result["ok"] is False
-    assert result["reason"] == "cloudflare_credentials_unavailable"
-    assert "CLOUDFLARE_API_TOKEN" in result["credential_check"]["missing"]
+    assert result["reason"] == "nonzero_exit"
+    assert "does not exist" in result["error"]

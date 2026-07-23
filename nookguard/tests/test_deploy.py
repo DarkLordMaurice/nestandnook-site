@@ -69,13 +69,19 @@ def test_check_cloudflare_credentials_probe_exception_treated_as_not_set():
 
 
 def test_check_cloudflare_credentials_real_unmocked_call_on_this_machine():
-    """Real, unmocked call -- confirms this machine genuinely lacks both
-    Cloudflare env vars at Process/User/Machine scope, matching the same
-    finding already recorded for Commit 20's Tesseract/HF_TOKEN checks."""
+    """Real, unmocked call. Updated post-Commit-22 (see BUILD-LOG.md
+    'Post-Commit-22: real Cloudflare credentials configured'): Maurice
+    supplied a real, scoped Cloudflare API token and account ID, set as
+    persistent Windows User-level env vars on 2026-07-22 -- the same
+    persistent-scope pattern this project already uses for HF_TOKEN. This
+    now documents the opposite finding from before: both vars are
+    genuinely present. Real end-to-end proof they actually work (not just
+    "present"): `wrangler pages project list`, run for real against these
+    exact credentials, lists the real `nestandnook-site` project --
+    confirmed 2026-07-22, see BUILD-LOG.md Commit 23 entry."""
     result = check_cloudflare_credentials()
-    assert result["available"] is False
-    assert "CLOUDFLARE_API_TOKEN" in result["missing"]
-    assert "CLOUDFLARE_ACCOUNT_ID" in result["missing"]
+    assert result["available"] is True
+    assert result["missing"] == []
 
 
 def test_run_wrangler_deploy_parses_real_shaped_stdout():

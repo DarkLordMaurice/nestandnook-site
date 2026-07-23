@@ -30,7 +30,31 @@ docs/nookguard/BUILD-LOG.md's Commit 18 entry, the real finding that
 started this commit). `_default_executor` remains fully defined and
 importable below -- pass `executor=_default_executor` explicitly at any
 call site to opt back into the direct-API transport; nothing about the
-function signatures changed, only the default value."""
+function signatures changed, only the default value.
+
+Commit 23 restructuring: every real automated run of NookGuard happens
+inside a live, already-authenticated Cowork agent session (this project's
+scheduled tasks are Cowork scheduled tasks, not bare cron scripts) -- so
+`claude_cli_executor`'s whole reason to exist (get a Claude call without a
+live agent session present) was solving a problem this project doesn't
+actually have, at the real cost of a second, separate Claude Code CLI
+login `mediactl` could never share with the orchestrating session. Each of
+`run_observer_session`/`run_judge_session`/`run_page_review_session` below
+is now a thin wrapper around a `build_*_prompt()` + executor call +
+`finalize_*()`, split out so the middle step -- actually getting a Claude
+reply -- can instead be performed by whatever live agent is orchestrating
+the run (via its own Task/Agent tool, no subprocess, no separate auth),
+with the real system prompt/instruction/image path coming from
+`build_*_prompt()` and the raw reply handed back to `finalize_*()` for the
+exact same parsing/enrichment/schema-validation this module has always
+done. See `cli.py`'s new `observe-prepare`/`observe-submit`/`judge-
+prepare`/`judge-submit`/`preview-review-prepare`/`preview-review-submit`
+commands -- this is the primary, recommended path for real automation now.
+The atomic `run_*_session()` functions and both executors
+(`claude_cli_executor`, `_default_executor`) remain fully real, tested,
+and available unchanged -- for a genuinely standalone/headless run with no
+live agent present, `mediactl observe`/`judge`/`preview-review` (the
+original atomic commands) still work exactly as before."""
 
 from __future__ import annotations
 
@@ -124,17 +148,14 @@ def _extract_json(raw_text: str) -> dict[str, Any]:
     return json.loads(text[start:end + 1])
 
 
-def run_observer_session(
-    review_pack: ReviewPack,
-    *,
-    executor: SessionExecutor = claude_cli_executor,
-    agents_dir: Path = AGENTS_DIR,
-) -> BlindObservation:
-    """The ONLY inputs this function's signature allows are a ReviewPack and
-    an executor override -- there is no parameter through which a caller
-    could pass a contract, prompt, or expected-object list even by mistake.
-    That is the actual enforcement of Appendix C's 'the observer session
-    never sees the contract', not just a comment saying so."""
+def build_observer_prompt(review_pack: ReviewPack, *, agents_dir: Path = AGENTS_DIR) -> dict[str, Any]:
+    """Everything needed to actually PERFORM an observer session -- without
+    performing it. Split out of run_observer_session (Commit 23) so a live
+    orchestrating agent's own Task/Agent tool can do the model call itself.
+    The ONLY input is a ReviewPack -- same enforcement of Appendix C's 'the
+    observer session never sees the contract' as before, just relocated:
+    there is still no parameter here through which a contract could leak
+    in, even by mistake."""
     role = review_pack.observer_role
     prompt_file = ("adversarial_observer_system_prompt.md" if role == "adversarial_b"
                    else "blind_observer_system_prompt.md")
@@ -143,15 +164,39 @@ def run_observer_session(
     instruction = "Describe exactly what you observe in this image as structured JSON."
     if role == "adversarial_b":
         instruction += " Actively look for the failure-taxonomy categories described in your instructions."
-    user_content = [_image_to_content_block(review_pack.image_path), {"type": "text", "text": instruction}]
 
-    session_id = str(uuid.uuid4())
-    raw = ""
+    return {
+        "role": role,
+        "prompt_file": prompt_file,
+        "system_prompt": system_prompt,
+        "instruction": instruction,
+        "image_path": review_pack.image_path,
+    }
+
+
+def finalize_observation(
+    review_pack: ReviewPack,
+    raw_response: str,
+    *,
+    agents_dir: Path = AGENTS_DIR,
+    session_id: str | None = None,
+) -> BlindObservation:
+    """The exact parse/enrich/schema-validate logic run_observer_session has
+    always used, taking an already-obtained raw_response instead of calling
+    an executor itself -- so a response obtained via a live agent's own
+    Task/Agent tool call gets the identical real validation a CLI/API
+    executor's response would have gotten. `session_id` is injectable for
+    tests; a real caller lets it default to a fresh uuid4, exactly as
+    before."""
+    role = review_pack.observer_role
+    prompt_file = ("adversarial_observer_system_prompt.md" if role == "adversarial_b"
+                   else "blind_observer_system_prompt.md")
+    session_id = session_id or str(uuid.uuid4())
+
     try:
-        raw = executor(system_prompt, user_content)
-        parsed = _extract_json(raw)
+        parsed = _extract_json(raw_response)
     except Exception as e:
-        raise ReviewSessionError(role, f"session failed or returned invalid JSON: {e}", raw_response=raw)
+        raise ReviewSessionError(role, f"session failed or returned invalid JSON: {e}", raw_response=raw_response)
 
     parsed["candidate_sha256"] = review_pack.candidate_sha256
     parsed["review_pack_sha256"] = review_pack.review_pack_sha256
@@ -164,39 +209,75 @@ def run_observer_session(
     try:
         return BlindObservation.model_validate(parsed)
     except ValidationError as e:
-        raise ReviewSessionError(role, f"response failed schema validation: {e}", raw_response=raw)
+        raise ReviewSessionError(role, f"response failed schema validation: {e}", raw_response=raw_response)
 
 
-def run_judge_session(
-    contract: AssetContract,
-    spec_sha256: str,
-    blind_observation: BlindObservation,
-    adversarial_observation: BlindObservation,
+def run_observer_session(
+    review_pack: ReviewPack,
     *,
     executor: SessionExecutor = claude_cli_executor,
     agents_dir: Path = AGENTS_DIR,
-) -> ContractJudgment:
-    """Sees contract requirements + both observation reports -- never the
-    image itself, and never the compiled prompt text. This is the only
-    function in this module that is allowed to see requirements, matching
-    Appendix D."""
-    system_prompt = _load_system_prompt("contract_judge_system_prompt.md", agents_dir)
+) -> BlindObservation:
+    """Atomic, in-process convenience wrapper (build -> executor -> finalize)
+    -- unchanged behavior and signature from before Commit 23, still fully
+    real and available for a genuinely standalone/headless run with no live
+    agent orchestrating (pass an explicit `executor=` for the CLI or direct-
+    API transport). The recommended path for a real automated run -- one
+    orchestrated by a live Cowork agent -- is `build_observer_prompt()` +
+    the agent's own Task/Agent tool call + `finalize_observation()`, wired
+    together by `cli.py`'s `observe-prepare`/`observe-submit`."""
+    prompt = build_observer_prompt(review_pack, agents_dir=agents_dir)
+    user_content = [_image_to_content_block(prompt["image_path"]), {"type": "text", "text": prompt["instruction"]}]
 
+    raw = ""
+    try:
+        raw = executor(prompt["system_prompt"], user_content)
+    except Exception as e:
+        raise ReviewSessionError(prompt["role"], f"session failed or returned invalid JSON: {e}", raw_response=raw)
+
+    return finalize_observation(review_pack, raw, agents_dir=agents_dir)
+
+
+def build_judge_prompt(
+    contract: AssetContract,
+    blind_observation: BlindObservation,
+    adversarial_observation: BlindObservation,
+    *,
+    agents_dir: Path = AGENTS_DIR,
+) -> dict[str, Any]:
+    """Everything needed to actually PERFORM a judge session -- without
+    performing it (Commit 23, mirrors build_observer_prompt above). Sees
+    contract requirements + both observation reports -- never the image
+    itself, and never the compiled prompt text; same Appendix D boundary as
+    before, just relocated out of the executor-calling function."""
+    system_prompt = _load_system_prompt("contract_judge_system_prompt.md", agents_dir)
     payload = {
         "requirements": [r.model_dump(mode="json") for r in contract.requirements],
         "forbidden_objects": contract.forbidden_objects,
         "blind_observation": blind_observation.model_dump(mode="json"),
         "adversarial_observation": adversarial_observation.model_dump(mode="json"),
     }
-    user_content = [{"type": "text", "text": json.dumps(payload, indent=2)}]
+    return {"system_prompt": system_prompt, "payload": payload}
 
-    session_id = str(uuid.uuid4())
-    raw = ""
+
+def finalize_judgment(
+    blind_observation: BlindObservation,
+    spec_sha256: str,
+    payload: dict[str, Any],
+    raw_response: str,
+    *,
+    agents_dir: Path = AGENTS_DIR,
+    session_id: str | None = None,
+) -> ContractJudgment:
+    """The exact parse/enrich/schema-validate logic run_judge_session has
+    always used. `payload` is the same dict build_judge_prompt() returned
+    (needed again here only to recompute context_bundle_sha256 identically
+    to before) -- a caller always has it already, from the prepare step."""
+    session_id = session_id or str(uuid.uuid4())
     try:
-        raw = executor(system_prompt, user_content)
-        parsed = _extract_json(raw)
+        parsed = _extract_json(raw_response)
     except Exception as e:
-        raise ReviewSessionError("judge", f"session failed or returned invalid JSON: {e}", raw_response=raw)
+        raise ReviewSessionError("judge", f"session failed or returned invalid JSON: {e}", raw_response=raw_response)
 
     parsed["candidate_sha256"] = blind_observation.candidate_sha256
     parsed["judge_session_id"] = session_id
@@ -208,38 +289,74 @@ def run_judge_session(
     try:
         return ContractJudgment.model_validate(parsed)
     except ValidationError as e:
-        raise ReviewSessionError("judge", f"response failed schema validation: {e}", raw_response=raw)
+        raise ReviewSessionError("judge", f"response failed schema validation: {e}", raw_response=raw_response)
 
 
-def run_page_review_session(
+def run_judge_session(
+    contract: AssetContract,
+    spec_sha256: str,
+    blind_observation: BlindObservation,
+    adversarial_observation: BlindObservation,
+    *,
+    executor: SessionExecutor = claude_cli_executor,
+    agents_dir: Path = AGENTS_DIR,
+) -> ContractJudgment:
+    """Atomic, in-process convenience wrapper -- unchanged behavior/signature
+    from before Commit 23. See run_observer_session's docstring for the
+    same note about the recommended live-agent-orchestrated path instead
+    (judge-prepare/judge-submit)."""
+    prompt = build_judge_prompt(contract, blind_observation, adversarial_observation, agents_dir=agents_dir)
+    user_content = [{"type": "text", "text": json.dumps(prompt["payload"], indent=2)}]
+
+    raw = ""
+    try:
+        raw = executor(prompt["system_prompt"], user_content)
+    except Exception as e:
+        raise ReviewSessionError("judge", f"session failed or returned invalid JSON: {e}", raw_response=raw)
+
+    return finalize_judgment(blind_observation, spec_sha256, prompt["payload"], raw, agents_dir=agents_dir)
+
+
+def build_page_review_prompt(
     contact_sheet_path: str,
     page_url: str,
     viewports_captured: list[str],
     *,
-    executor: SessionExecutor = claude_cli_executor,
     agents_dir: Path = AGENTS_DIR,
-) -> PageReviewResult:
-    """Commit 10's page reviewer. Sees a contact sheet image (rendered
-    output only) and the page URL -- never the page's markdown source,
-    frontmatter, or any content-schema expectations (e.g. it is never told
-    the 'approved' photo-strip count from off_the_clock_schema.py). It finds
-    defects by looking, the same way a human reviewer would glance at a
-    screenshot, not by cross-checking against a spec."""
+) -> dict[str, Any]:
+    """Everything needed to actually PERFORM a page-review session --
+    without performing it (Commit 23, mirrors build_observer_prompt).
+    Same boundary as before: a contact sheet image (rendered output only)
+    and the page URL -- never the page's markdown source, frontmatter, or
+    any content-schema expectations."""
     system_prompt = _load_system_prompt("page_reviewer_system_prompt.md", agents_dir)
     instruction = (
         f"Review this contact sheet for page {page_url}. Viewports shown: "
         f"{', '.join(viewports_captured)}."
     )
-    user_content = [_image_to_content_block(contact_sheet_path), {"type": "text", "text": instruction}]
+    return {
+        "system_prompt": system_prompt, "instruction": instruction,
+        "image_path": contact_sheet_path, "page_url": page_url, "viewports_captured": viewports_captured,
+    }
 
-    session_id = str(uuid.uuid4())
-    raw = ""
+
+def finalize_page_review(
+    page_url: str,
+    viewports_captured: list[str],
+    contact_sheet_path: str,
+    raw_response: str,
+    *,
+    agents_dir: Path = AGENTS_DIR,
+    session_id: str | None = None,
+) -> PageReviewResult:
+    """The exact parse/enrich/schema-validate logic run_page_review_session
+    has always used, taking an already-obtained raw_response."""
+    session_id = session_id or str(uuid.uuid4())
     try:
-        raw = executor(system_prompt, user_content)
-        parsed = _extract_json(raw)
+        parsed = _extract_json(raw_response)
     except Exception as e:
         raise ReviewSessionError("page_reviewer", f"session failed or returned invalid JSON: {e}",
-                                  raw_response=raw)
+                                  raw_response=raw_response)
 
     parsed["page_url"] = page_url
     parsed.setdefault("viewports_reviewed", viewports_captured)
@@ -251,4 +368,29 @@ def run_page_review_session(
     try:
         return PageReviewResult.model_validate(parsed)
     except ValidationError as e:
-        raise ReviewSessionError("page_reviewer", f"response failed schema validation: {e}", raw_response=raw)
+        raise ReviewSessionError("page_reviewer", f"response failed schema validation: {e}",
+                                  raw_response=raw_response)
+
+
+def run_page_review_session(
+    contact_sheet_path: str,
+    page_url: str,
+    viewports_captured: list[str],
+    *,
+    executor: SessionExecutor = claude_cli_executor,
+    agents_dir: Path = AGENTS_DIR,
+) -> PageReviewResult:
+    """Atomic, in-process convenience wrapper -- unchanged behavior/signature
+    from before Commit 23. See run_observer_session's docstring for the
+    same note about the recommended live-agent-orchestrated path instead
+    (preview-review-prepare/preview-review-submit)."""
+    prompt = build_page_review_prompt(contact_sheet_path, page_url, viewports_captured, agents_dir=agents_dir)
+    user_content = [_image_to_content_block(prompt["image_path"]), {"type": "text", "text": prompt["instruction"]}]
+
+    raw = ""
+    try:
+        raw = executor(prompt["system_prompt"], user_content)
+    except Exception as e:
+        raise ReviewSessionError("page_reviewer", f"session failed or returned invalid JSON: {e}", raw_response=raw)
+
+    return finalize_page_review(page_url, viewports_captured, contact_sheet_path, raw, agents_dir=agents_dir)
