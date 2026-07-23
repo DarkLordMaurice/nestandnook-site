@@ -49,6 +49,7 @@ from .preview_aggregator import aggregate_preview
 from .production_verifier import verify_production
 from .prompt_compiler import compile_prompt
 from .regression_corpus import run_regression_corpus
+from .regression_live import run_live_review_regression_corpus
 from .release import ReleaseIntegrityError, publish_candidate
 from .review_pack import OBSERVER_ROLES, build_review_pack
 from .run_report import write_run_report
@@ -296,6 +297,7 @@ def cmd_validate(args: argparse.Namespace) -> dict[str, Any]:
     candidate_path = store.candidate_path(args.candidate_sha256)
     report = image_validator.validate(
         candidate_path, dedup_registry=dedup_registry, candidate_sha256=args.candidate_sha256,
+        require_ocr=contract.requires_ocr_scan,
     )
     final = AssetState.TECHNICAL_PASS if report["technical_pass"] else AssetState.TECHNICAL_FAIL
     transition(target, final, asset_id=contract.asset_id)
@@ -306,10 +308,20 @@ def cmd_validate(args: argparse.Namespace) -> dict[str, Any]:
     if final == AssetState.TECHNICAL_PASS:
         dedup_registry.register(args.candidate_sha256, candidate_path)
 
+    # Commit 20, requirement 5: surface VALIDATOR_UNAVAILABLE distinctly at
+    # the top level (both the ledger payload and the returned dict), not
+    # just buried inside report["checks"] -- "block the asset" needs to be
+    # a real, checkable signal a caller can branch on without re-deriving
+    # it from the full technical report.
+    payload = {"candidate_sha256": args.candidate_sha256, "result": final.value, "report": report}
+    response = {"ok": True, "asset_id": contract.asset_id, "result": final.value, "report": report}
+    if report.get("blocking_reason"):
+        payload["blocking_reason"] = report["blocking_reason"]
+        response["blocking_reason"] = report["blocking_reason"]
+
     ledger.append(run_id=args.run_id, event_type="technical_validation.completed",
-                  actor_role=args.actor_role, payload={"candidate_sha256": args.candidate_sha256,
-                  "result": final.value, "report": report}, asset_id=contract.asset_id)
-    return {"ok": True, "asset_id": contract.asset_id, "result": final.value, "report": report}
+                  actor_role=args.actor_role, payload=payload, asset_id=contract.asset_id)
+    return response
 
 
 def cmd_review_pack_build(args: argparse.Namespace) -> dict[str, Any]:
@@ -765,6 +777,56 @@ def cmd_regression_run(args: argparse.Namespace) -> dict[str, Any]:
     }
 
 
+def cmd_regression(args: argparse.Namespace) -> dict[str, Any]:
+    """Commit 20, requirements 1/3/6: `mediactl regression --mode
+    {deterministic,live-review}`. `deterministic` (default) delegates to
+    the exact same `run_regression_corpus()` the pre-existing
+    `regression-run` command (Commit 13, above) already uses -- no
+    duplicated logic, no behavior change for existing callers of
+    `regression-run`, which remains available unchanged. `live-review`
+    calls `run_live_review_regression_corpus()` (regression_live.py): real
+    observer/judge sessions against real image files on disk, never
+    synthetic observations or judgments. Each mode's result is returned
+    under its own `mode` field and its own real `ok`/results -- this
+    command never blends the two or reports one's coverage as the other's;
+    a caller wanting both must call this command twice, once per mode."""
+    if args.mode == "deterministic":
+        base = Path(args.tmp_root) if args.tmp_root else Path(args.store_root) / "_regression_tmp"
+        base.mkdir(parents=True, exist_ok=True)
+
+        def tmp_dir_factory(name: str) -> Path:
+            d = base / name
+            d.mkdir(parents=True, exist_ok=True)
+            return d
+
+        det_report = run_regression_corpus(tmp_dir_factory)
+        return {
+            "ok": det_report.all_passed, "mode": "deterministic",
+            "results": [
+                {"fixture_id": r.fixture_id, "description": r.description, "category": r.category,
+                 "expected_state": r.expected_state, "actual_state": r.actual_state, "passed": r.passed,
+                 "detail": r.detail}
+                for r in det_report.results
+            ],
+        }
+
+    if args.mode == "live-review":
+        live_report = run_live_review_regression_corpus()
+        return {
+            "ok": live_report.all_passed, "mode": "live-review",
+            "review_process_completed_count": live_report.review_process_completed_count,
+            "fixture_count": len(live_report.results),
+            "results": [
+                {"fixture_id": r.fixture_id, "description": r.description, "category": r.category,
+                 "expected_state": r.expected_state, "actual_state": r.actual_state, "passed": r.passed,
+                 "detail": r.detail, "review_process_completed": r.review_process_completed}
+                for r in live_report.results
+            ],
+        }
+
+    return {"ok": False, "error": f"unknown --mode '{args.mode}', expected 'deterministic' or 'live-review'"}
+
+
 _CANARY_ASSET_ID = "canary-known-clean"
 
 
@@ -1064,6 +1126,18 @@ def build_parser() -> argparse.ArgumentParser:
                     help="Real writable dir for the two filesystem-backed fixtures. Defaults to a "
                          "subdirectory under --store-root.")
     p.set_defaults(func=cmd_regression_run)
+
+    p = sub.add_parser("regression"); _common(p)
+    # Deliberately no argparse `choices=` here -- an invalid --mode should
+    # come back as this module's standard {"ok": false, "error": ...}
+    # contract (see cmd_regression's own validation below), not a raw
+    # argparse SystemExit, matching this file's own stated convention that
+    # commands never raise on expected/business-logic failures.
+    p.add_argument("--mode", default="deterministic")
+    p.add_argument("--tmp-root", default=None,
+                    help="Real writable dir for deterministic mode's two filesystem-backed fixtures. "
+                         "Defaults to a subdirectory under --store-root. Ignored in live-review mode.")
+    p.set_defaults(func=cmd_regression)
 
     p = sub.add_parser("canary-run"); _common(p)
     p.add_argument("--canary-page-url", default=None,

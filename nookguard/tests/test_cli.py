@@ -668,3 +668,33 @@ def test_canary_run_reports_which_step_failed(tmp_path):
     assert not result["ok"]
     assert "canary failed at" in result["error"]
     assert len(result["steps"]) >= 1
+
+
+def test_regression_deterministic_mode_matches_existing_regression_run(tmp_path):
+    """Commit 20: `mediactl regression --mode deterministic` must produce
+    the exact same real per-fixture results as the pre-existing
+    `regression-run` command (Commit 13) -- it delegates to the identical
+    run_regression_corpus() call, not a reimplementation."""
+    legacy = run_cli(["regression-run", "--store-root", str(tmp_path / "store1")])
+    new = run_cli(["regression", "--mode", "deterministic", "--store-root", str(tmp_path / "store2")])
+    assert new["mode"] == "deterministic"
+    assert new["ok"] == legacy["ok"]
+    assert [r["fixture_id"] for r in new["results"]] == [r["fixture_id"] for r in legacy["results"]]
+    assert [r["passed"] for r in new["results"]] == [r["passed"] for r in legacy["results"]]
+
+
+def test_regression_live_review_mode_runs_real_corpus_unmocked(tmp_path):
+    """No monkeypatching -- confirms the CLI layer actually reaches
+    regression_live.py's real corpus (same honest real-environment
+    assertion as test_canary_run_reports_which_step_failed and
+    test_regression_live.py's own unmocked test)."""
+    result = run_cli(["regression", "--mode", "live-review", "--store-root", str(tmp_path / "store")])
+    assert result["mode"] == "live-review"
+    assert result["fixture_count"] > 0
+    assert result["review_process_completed_count"] == 0  # real auth wall, honestly reported
+    assert not result["ok"]
+
+
+def test_regression_unknown_mode_rejected(tmp_path):
+    result = run_cli(["regression", "--mode", "bogus-mode", "--store-root", str(tmp_path / "store")])
+    assert not result["ok"]

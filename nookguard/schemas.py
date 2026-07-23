@@ -91,6 +91,13 @@ class AssetContract(BaseModel):
     composition_constraints: list[str] = Field(default_factory=list)
     layout_constraints: dict[str, Any] = Field(default_factory=dict)
     legal_compliance_constraints: list[str] = Field(default_factory=list)
+    # Commit 20, requirement 5: when True, cmd_validate (cli.py) passes
+    # require_ocr=True to validators/image.py's validate(), which blocks
+    # the asset with blocking_reason="VALIDATOR_UNAVAILABLE" if the real
+    # OCR engine (validators/ocr.py) could not run. Defaults False so every
+    # existing contract/test is unaffected — this is additive, not a
+    # behavior change for assets that don't opt in.
+    requires_ocr_scan: bool = False
 
     planner_session_id: str
     plan_evaluator_session_id: str

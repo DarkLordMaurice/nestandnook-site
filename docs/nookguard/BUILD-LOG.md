@@ -2311,3 +2311,184 @@ none of it is simulated or assumed here.
 **Next:** Commit 20 — `mediactl regression --mode live-review` calling the
 real (now CLI-based) observer/judge against the real historical regression
 corpus image files, plus the OCR validator gap.
+
+---
+
+## Commit 20: Real perception regression + missing OCR validator — DONE
+
+**Completed:** 2026-07-23
+
+**Why this commit:** Maurice's explicit next-step instruction after
+Commit 19 — add a real live-review regression mode (never synthetic
+observations/judgments), preserve the existing deterministic mode
+separately, add a real object-count-contradiction fixture, and close the
+`ocr_logo_scan` gap `validators/image.py` had documented as genuinely
+unimplemented since Commit 6 (neither `pytesseract` nor a system
+`tesseract` binary existed in this environment) — with a hard requirement
+that an asset requiring OCR must be BLOCKED, not silently passed, if the
+validator can't actually run.
+
+**Real OCR installation, attempted and documented honestly, not just
+assumed:**
+1. `pip install pytesseract` — succeeded cleanly.
+2. `winget install --id UB-Mannheim.TesseractOCR -e --accept-source-
+   agreements --accept-package-agreements --silent` — the system-Tesseract
+   binary this environment never had. Failed for a real, structural
+   reason: `An unexpected error occurred while executing the command:
+   0x800704c7 : The operation was canceled by the user` — winget's
+   installer requires interactive UAC elevation, which this automation
+   channel cannot supply (no dialog to click "Yes" on). Retried with
+   `--scope user` to sidestep elevation: `No applicable installer found`
+   — this specific package has no non-elevated install path at all.
+3. `pip install rapidocr-onnxruntime` — a pure-Python, ONNX-based OCR
+   engine with no external system-binary dependency — installed cleanly,
+   zero elevation needed.
+4. Real smoke test against a real site image before wiring anything:
+   `RapidOCR()(...office-hero.jpg)` returned real, correct detections in
+   2.29s wall time, including `'MAKE'` (0.79), `'BEAUTIFUL'` (0.84),
+   `'THINGS'` (0.85) — genuinely, unpromptedly reading the real "Make
+   Beautiful Things" wall-sign fixture documented in the project's own
+   room bible (`brand-assets/winnie/Winnies-Home-Room-Bible.md`). This is
+   real, working OCR, not a stub — confirmed before any validator code was
+   written, not assumed after.
+
+**Changed files:**
+- `nookguard/validators/ocr.py` (new) — the real OCR backend.
+  `_get_engine()` lazily constructs and process-wide-caches a real
+  `RapidOCR` instance (model load is real, measurable work — ~2.3s
+  including the smoke test above — so this happens at most once per
+  process). `available()`/`scan()` never raise; a failed import/load or a
+  real per-image OCR failure is reported as `performed: False` with the
+  real exception message, matching this codebase's "classify, don't
+  crash" convention (`adapters/huggingface.py`'s `_resolve_hf_token`,
+  `cli_reviewer.py`'s `resolve_claude_cli_path`). `reset_engine_cache_
+  for_tests()` is a real, documented test-only escape hatch so the
+  process-wide cache can't leak between test cases.
+- `nookguard/validators/image.py` — `_check_ocr_logo_scan()`'s old
+  always-`performed: False` stub is gone; `ocr_logo_scan` in
+  `NOT_YET_IMPLEMENTED` is gone (genuinely implemented now — only
+  `edge_clipping_risk` remains, for its own, still-valid, already-
+  documented reason). `validate()` gained a `require_ocr: bool = False`
+  parameter (the technical validator still never sees the contract
+  itself, same separation-of-concerns rule this file's own docstring
+  states — the caller computes and passes a plain bool). When
+  `require_ocr` is True and the real engine could not run,
+  `technical_pass` is forced False and the result carries a new top-level
+  `"blocking_reason": "VALIDATOR_UNAVAILABLE"` — a required check that
+  couldn't run must never be silently treated as passed.
+- `nookguard/schemas.py` — `AssetContract` gained `requires_ocr_scan:
+  bool = False` (additive, defaults False, every existing contract/test
+  unaffected).
+- `nookguard/cli.py` — `cmd_validate` now passes `require_ocr=contract.
+  requires_ocr_scan` into `image_validator.validate()` and surfaces
+  `blocking_reason` at the top level of both the ledger payload and the
+  returned dict when it fires, not just buried inside the technical
+  report. Added `cmd_regression` (`mediactl regression --mode
+  {deterministic,live-review}`, default `deterministic`) and its
+  subparser — deliberately no argparse `choices=` constraint (an invalid
+  `--mode` returns this module's own `{"ok": false, "error": ...}`
+  contract, not a raw `SystemExit`, matching cli.py's own stated
+  convention). `deterministic` mode delegates to the exact same
+  `run_regression_corpus()` the pre-existing `regression-run` command
+  (Commit 13) already uses — no duplicated logic, `regression-run` itself
+  untouched and still available. `live-review` mode calls the new
+  `run_live_review_regression_corpus()`. Each mode reports its own real
+  results under its own `mode` field; neither is ever blended into or
+  mislabeled as the other.
+- `nookguard/regression_live.py` (new) — the live-review corpus. Every
+  fixture calls the REAL `agent_runner.run_observer_session`/
+  `run_judge_session` (Commit 19's `claude_cli_executor` default
+  transport) against a REAL image file on disk, via a REAL
+  `review_pack.build_review_pack()` — no synthetic observation or
+  judgment is ever injected; a real `ReviewSessionError` is reported as a
+  real `REVIEW_ERROR` with `review_process_completed: False`, never
+  papered over. Four fixtures, with image provenance documented plainly
+  per-fixture (`image_source_note`) rather than asserted as literal
+  historical originals: (1) `known_clean_real_site_photo` — a REAL,
+  copy of the actual currently-live `office-hero.jpg`, a genuine
+  known-clean control; (2) `object_count_contradiction_real_photo` — the
+  new fixture requirement 4 asked for: a purpose-built photo with exactly
+  ONE clearly labeled, verifiable object, paired with a contract requiring
+  "exactly 5" — a real, unambiguous contradiction; (3)
+  `banana_foil_fusion_reproduction` and (4)
+  `unexpected_furniture_reproduction` — purpose-built PIL reproductions of
+  the two historical incident categories, explicitly documented (in this
+  module's own docstring and BUILD-LOG both) as reproductions, not the
+  literal original defective bytes, which no longer exist anywhere in
+  this repository per the project's own regenerate-only architecture
+  (`state_machine.py`'s `_REGENERATE_SOURCES`).
+- `nookguard/gen_regression_images.py` (new) — the real, reproducible
+  generator for all four regression images (`nookguard/regression_images/`,
+  committed as real binary files, not generated at test time). Run
+  directly (`python -m nookguard.gen_regression_images`) if a regression
+  image is ever lost or needs regenerating.
+- `pyproject.toml` — added `rapidocr-onnxruntime>=1.3` (primary OCR
+  backend) and `pytesseract>=0.3` (kept as an optional alternate backend
+  for a future environment where Tesseract-OCR's system binary is
+  actually installed) to real project dependencies.
+- `nookguard/tests/test_validators_ocr.py` (new, 4 tests) — `available()`
+  true against the real installed engine (no mock), `scan()` against a
+  real rendered image with real known text correctly read back, a missing
+  file reported as `performed: False` not a crash, and a simulated
+  load-failure path via a real `builtins.__import__` patch.
+- `nookguard/tests/test_validators_image.py` — replaced the one test whose
+  premise ("OCR deps missing") this commit made genuinely false
+  (`test_validate_reports_ocr_not_performed_when_deps_missing`) with four
+  real tests: OCR now genuinely performs a scan by default; an
+  unavailable engine does NOT block when `require_ocr` was never
+  requested; an unavailable engine DOES block with
+  `VALIDATOR_UNAVAILABLE` when `require_ocr=True` (via a real monkeypatch
+  of `ocr_validator.scan`, since the real engine happens to work on this
+  machine and the failure path needs to be provable regardless); and the
+  inverse (`require_ocr=True` with an available engine does not block).
+- `nookguard/tests/test_regression_live.py` (new, 5 tests) — every
+  `LIVE_FIXTURES` image genuinely exists on disk and is non-empty; a real,
+  fully UNMOCKED run against this actual environment (matching
+  `test_cli.py`'s own `test_canary_run_reports_which_step_failed`
+  pattern) confirms every fixture honestly reaches
+  `review_process_completed: False` / `REVIEW_ERROR` at the real, current
+  auth wall — not a wiring bug indistinguishable from it; a monkeypatched
+  wiring-proof test confirms the corpus genuinely calls the real
+  functions (2 observer calls + 1 judge call per fixture) and aggregates
+  a real verdict; a single fixture's real observer failure doesn't crash
+  the whole run; a missing-images-directory case reports `IMAGE_MISSING`
+  honestly rather than skipping silently.
+- `nookguard/tests/test_cli.py` (+3 tests) — `regression --mode
+  deterministic` produces byte-identical per-fixture results to the
+  pre-existing `regression-run` command; `regression --mode live-review`
+  reaches the real corpus unmocked and honestly reports `ok: false` /
+  `review_process_completed_count: 0`; an unknown `--mode` is rejected via
+  the standard `{"ok": false}` contract, not a `SystemExit`.
+
+**Tests run:** `python -m pytest nookguard/tests/ -q` (Desktop Commander,
+real Windows Python, via a `.ps1` script file — this session's established
+fix for PowerShell quoting failures on inline `-Command` strings).
+**Result:** 323/323 passed, 0 failures (up from 308 — +15: 4
+`test_validators_ocr.py`, net +3 `test_validators_image.py` (4 added, 1
+replaced), 5 `test_regression_live.py`, 3 `test_cli.py`).
+
+**Honest, explicitly-scoped limitations, not closed by this commit:**
+(1) `mediactl regression --mode live-review` cannot currently produce a
+real PASS/FAIL verdict on this machine — every fixture legitimately stops
+at `REVIEW_ERROR` (auth_unavailable), the identical standing gap Commit
+19 documented; this will not change until Maurice runs `claude
+setup-token` and a real `mediactl auth-check` passes. (2) Two of the four
+live-review fixtures use purpose-built reproductions, not the literal
+original historical defective images (which no longer exist anywhere in
+this repository, by design — see `_REGENERATE_SOURCES`); this is
+documented plainly in both `regression_live.py`'s own docstring and this
+entry, not hidden. (3) The system Tesseract-OCR binary remains
+uninstalled on this machine — `pytesseract` is a real, installed,
+available alternate backend the moment Maurice runs the one-time elevated
+`winget install --id UB-Mannheim.TesseractOCR -e` himself, but
+`validators/ocr.py` does not depend on it; RapidOCR is the real, working,
+zero-elevation backend actually in use.
+
+**Commit:** pending — recorded in a follow-up BUILD-LOG-only commit after
+this entry is pushed, matching the established two-step pattern (Commits
+17-19).
+
+**Next:** Commit 21 — public-media containment (block any write to a
+public media path that isn't an approved, hash-matched NookGuard release
+manifest entry) and a controlled Cloudflare release path once Maurice
+supplies restricted credentials.

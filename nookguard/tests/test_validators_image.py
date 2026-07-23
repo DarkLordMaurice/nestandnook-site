@@ -91,12 +91,75 @@ def test_validate_does_not_fail_on_near_duplicate_only():
     assert report["checks"]["exact_hash_duplicate"]["matches"] == []
 
 
-def test_validate_reports_ocr_not_performed_when_deps_missing():
+def test_validate_performs_real_ocr_scan_when_engine_available():
+    """Commit 20: the OCR engine (validators/ocr.py, RapidOCR) is genuinely
+    installed and loadable in this environment (confirmed directly against
+    a real site image during that commit's own research -- see
+    docs/nookguard/BUILD-LOG.md), so a normal validate() call now performs
+    a real scan, not a 'deps missing' stub. `required` defaults to False
+    (this call didn't ask for require_ocr) regardless of whether the scan
+    itself ran."""
     d = Path(tempfile.mkdtemp())
     p = d / "good.png"
     _make_image(p, (10, 20, 30), noisy=True)
     report = validate(p)
+    assert report["checks"]["ocr_logo_scan"]["performed"] is True
+    assert isinstance(report["checks"]["ocr_logo_scan"]["detections"], list)
+    assert report["checks"]["ocr_logo_scan"]["required"] is False
+    assert "blocking_reason" not in report
+
+
+def test_validate_does_not_block_when_ocr_not_required_even_if_unavailable(monkeypatch):
+    """require_ocr defaults to False -- an unavailable OCR engine must not
+    block a candidate that never asked for it."""
+    import nookguard.validators.image as image_module
+
+    monkeypatch.setattr(image_module.ocr_validator, "scan",
+                         lambda path: {"performed": False, "reason": "simulated unavailable", "detections": []})
+    d = Path(tempfile.mkdtemp())
+    p = d / "good.png"
+    _make_image(p, (10, 20, 30), noisy=True)
+    report = validate(p, require_ocr=False)
     assert report["checks"]["ocr_logo_scan"]["performed"] is False
+    assert report["technical_pass"] is True
+    assert "blocking_reason" not in report
+
+
+def test_validate_blocks_with_validator_unavailable_when_required_and_engine_missing(monkeypatch):
+    """Commit 20, requirement 5's actual gate: a contract that DOES require
+    OCR must be blocked, not silently passed, when the real engine can't
+    run -- simulated here via monkeypatch since the real engine happens to
+    be available on this machine (see the sibling test above) and this
+    specific failure mode needs to be provable regardless of what's
+    actually installed."""
+    import nookguard.validators.image as image_module
+
+    monkeypatch.setattr(image_module.ocr_validator, "scan",
+                         lambda path: {"performed": False, "reason": "simulated unavailable", "detections": []})
+    d = Path(tempfile.mkdtemp())
+    p = d / "good.png"
+    _make_image(p, (10, 20, 30), noisy=True)
+    report = validate(p, require_ocr=True)
+    assert report["checks"]["ocr_logo_scan"]["performed"] is False
+    assert report["checks"]["ocr_logo_scan"]["required"] is True
+    assert report["technical_pass"] is False
+    assert report["blocking_reason"] == "VALIDATOR_UNAVAILABLE"
+
+
+def test_validate_passes_ocr_requirement_when_engine_available(monkeypatch):
+    """The inverse of the block case -- require_ocr=True with a genuinely
+    available (here, simulated available) engine must NOT trigger
+    VALIDATOR_UNAVAILABLE."""
+    import nookguard.validators.image as image_module
+
+    monkeypatch.setattr(image_module.ocr_validator, "scan",
+                         lambda path: {"performed": True, "detections": []})
+    d = Path(tempfile.mkdtemp())
+    p = d / "good.png"
+    _make_image(p, (10, 20, 30), noisy=True)
+    report = validate(p, require_ocr=True)
+    assert report["checks"]["ocr_logo_scan"]["performed"] is True
+    assert "blocking_reason" not in report
 
 
 def test_validate_exif_privacy_scan_reports_no_gps_for_plain_image():

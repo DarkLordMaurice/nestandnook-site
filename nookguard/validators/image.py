@@ -14,21 +14,23 @@ from typing import Any, Optional
 from PIL import ExifTags, Image, ImageStat, UnidentifiedImageError
 
 from ..dedup import DedupRegistry
+from . import ocr as ocr_validator
 
-# Both remaining items are deliberately deferred, not missing by oversight:
-# - edge_clipping_risk: "is the subject clipped at the frame edge" requires
-#   knowing where the subject is, which is a semantic/subject-detection
-#   question — that's what the blind-observer layer (Commit 7-8) exists for,
-#   not a pixel-level deterministic check. Forcing a fake heuristic here
-#   (e.g. "content near the border") would produce false confidence.
-# - ocr_logo_scan: genuinely not implemented — neither `pytesseract` nor a
-#   system `tesseract` binary exists in this environment (checked directly,
-#   not assumed: `shutil.which("tesseract")` returned None). `validate()`
-#   reports this as `performed: False` with the concrete reason, never as a
-#   silent pass.
+# edge_clipping_risk is deliberately still deferred, not missing by
+# oversight: "is the subject clipped at the frame edge" requires knowing
+# where the subject is, which is a semantic/subject-detection question —
+# that's what the blind-observer layer (Commit 7-8) exists for, not a
+# pixel-level deterministic check. Forcing a fake heuristic here (e.g.
+# "content near the border") would produce false confidence.
+#
+# ocr_logo_scan is NO LONGER in this list as of Commit 20 — it is genuinely
+# implemented now, backed by validators/ocr.py's real RapidOCR engine (see
+# that module's docstring for why RapidOCR over pytesseract/system
+# Tesseract on this machine). `validate()`'s `require_ocr` parameter
+# controls whether an unavailable OCR engine actually blocks an asset
+# (VALIDATOR_UNAVAILABLE) or is merely reported as skipped.
 NOT_YET_IMPLEMENTED = [
     "edge_clipping_risk",
-    "ocr_logo_scan",
 ]
 
 
@@ -56,17 +58,6 @@ def _check_blank_or_solid(img: Image.Image, stddev_threshold: float = 2.0) -> di
     return {"max_channel_stddev": round(max_stddev, 4), "is_blank_or_solid": max_stddev < stddev_threshold}
 
 
-def _check_ocr_logo_scan() -> dict[str, Any]:
-    try:
-        import pytesseract  # noqa: F401
-    except ImportError:
-        return {"performed": False, "reason": "pytesseract not installed in this environment"}
-    import shutil
-    if shutil.which("tesseract") is None:
-        return {"performed": False, "reason": "tesseract binary not found on PATH"}
-    return {"performed": False, "reason": "dependencies present but scan logic not yet wired"}
-
-
 def validate(
     path: str | Path,
     *,
@@ -75,6 +66,7 @@ def validate(
     dedup_registry: Optional[DedupRegistry] = None,
     candidate_sha256: Optional[str] = None,
     near_duplicate_threshold: int = 5,
+    require_ocr: bool = False,
 ) -> dict[str, Any]:
     """Returns {"technical_pass": bool, "checks": {...}, "checks_not_yet_
     implemented": [...]}. Never raises for a bad image — a corrupt file is a
@@ -84,7 +76,19 @@ def validate(
     near-duplicate checks run for real against the registry's corpus; if
     omitted, both are reported as `performed: False` rather than silently
     treated as clean (a caller that forgets to pass a registry should see
-    that in the report, not get a false-clean result)."""
+    that in the report, not get a false-clean result).
+
+    `require_ocr` (Commit 20, requirement 5): the caller (cli.py's
+    cmd_validate) passes this as True when the asset's own contract sets
+    `requires_ocr_scan`. This function deliberately does NOT accept the
+    contract itself — same "technical validation never sees semantic
+    intent" separation this module's own docstring states — only a plain
+    bool computed by the caller. When True and the real OCR engine could
+    not run (validators/ocr.py's `scan()` returned `performed: False`),
+    this function reports `"blocking_reason": "VALIDATOR_UNAVAILABLE"` at
+    the top level and forces `technical_pass: False` — a required check
+    that could not run must never be silently treated as passed, per this
+    project's own 'no automatic fix in place, no unverified pass' rule."""
     path = Path(path)
     checks: dict[str, Any] = {}
 
@@ -129,7 +133,16 @@ def validate(
         checks["exact_hash_duplicate"] = {"performed": False, "reason": "no dedup_registry provided"}
         checks["perceptual_near_duplicate"] = {"performed": False, "reason": "no dedup_registry provided"}
 
-    checks["ocr_logo_scan"] = _check_ocr_logo_scan()
+    checks["ocr_logo_scan"] = ocr_validator.scan(path)
+    checks["ocr_logo_scan"]["required"] = require_ocr
+
+    # A required OCR scan that could not actually run is a real technical
+    # gap, not a pass — see this function's own docstring. Reported as a
+    # distinct, checkable top-level reason (not buried only inside
+    # checks{}) so callers/tests/the ledger can branch on it directly, the
+    # same pattern cli.py's own auth-check gate (cmd_generate) already
+    # established for a different missing-capability case.
+    validator_unavailable = require_ocr and not checks["ocr_logo_scan"]["performed"]
 
     technical_pass = (
         checks["opens_and_decodes"]
@@ -138,9 +151,13 @@ def validate(
         and not checks["exif_privacy_scan"]["gps_data_present"]
         and not checks["blank_or_solid_image"]["is_blank_or_solid"]
         and not checks["exact_hash_duplicate"].get("matches")
+        and not validator_unavailable
     )
-    return {
+    result = {
         "technical_pass": technical_pass,
         "checks": checks,
         "checks_not_yet_implemented": NOT_YET_IMPLEMENTED,
     }
+    if validator_unavailable:
+        result["blocking_reason"] = "VALIDATOR_UNAVAILABLE"
+    return result
