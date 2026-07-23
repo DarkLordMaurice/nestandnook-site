@@ -3086,3 +3086,93 @@ live — both real, both fixed, both re-verified, not assumed).
 **Next:** Task #28 (real subagent proof against the recovered canary
 candidate), then re-run the canary's remaining `review-retry` end-to-end
 through the full pipeline per Commit 22's own "Next" section.
+
+---
+
+## Post-Commit-23: real end-to-end proof — live subagents, no CLI login, ever
+
+**Completed:** 2026-07-23
+
+**What this proves:** the whole reason Commit 23 exists — that review
+sessions can run through this live Cowork agent's own Agent/Task tool,
+with zero separate CLI login — actually works, against the real recovered
+canary candidate, not a synthetic test fixture. Every step below is a
+real `python -m nookguard.cli` invocation against the real store
+(`nookguard_store/`) and a real spawned subagent (not simulated,
+mocked, or self-answered by the orchestrating agent).
+
+**Real run, in order:**
+1. `run-start` → real run_id `nn-20260723-2499e882`.
+2. `review-retry --candidate-sha256 9be476db40b23998c12efea2990ccdc601ba0
+   2ba8a15f1f3c9a8e023ffd10fd7` → `review_error` → `observing`.
+   **`retries_remaining: 0`** — this was the final permitted retry for
+   this candidate (`MAX_REVIEW_RETRIES = 3`, `prior_failure_count: 2`
+   from Commit 22's two real failures). No further `review-retry` is
+   possible on this exact candidate; a genuinely new generation attempt
+   would be required if this run had also errored out.
+3. `observe-prepare --role blind_a` → real system_prompt/instruction/
+   image_path returned, nothing written.
+4. Spawned a real `general-purpose` subagent with exactly that prompt and
+   image path, no other context (no contract, no spec, no requirements —
+   preserving the same blind-observer isolation `agent_runner.py` has
+   always structurally enforced). It used its own Read tool to view the
+   real candidate image and returned a structured JSON inventory —
+   reviewer_session_id `29716ef7-b84c-4c45-b437-c1911a9c8046`.
+5. `observe-submit --role blind_a` with that raw response → `ok: true`,
+   `waiting_for: adversarial_b`.
+6. `observe-prepare --role adversarial_b` → real prompt returned.
+7. Spawned a second, independent real subagent with the adversarial
+   system prompt + same image path, no other context. Reviewer
+   session `a47fac17-1a9a-45f8-9a6c-9d6a90a1039f`.
+8. `observe-submit --role adversarial_b` → both observations now present
+   → **real OBSERVING → JUDGING transition**, `state: "judging"`. Proves
+   the two-independent-calls-in-either-order design (Commit 23's redesign
+   of the original atomic all-or-nothing loop) works for real.
+9. `judge-prepare` → real system_prompt + payload_json returned,
+   containing both real observations **and confirmed, by inspection, to
+   contain no image path or pixel data anywhere in the payload** — the
+   judge-never-sees-the-image isolation property held for real, not just
+   in a test fixture.
+10. Spawned a third real subagent as contract judge, given only the
+    system prompt and the two observation reports (never the image).
+    Judged each of 5 real contract requirements individually: r1 (tape
+    measure present) true, r2 (exactly one hand) true, r3 (no readable
+    logos/text) **false** — both observers independently flagged an
+    unreadable watermark-like mark in the bottom-right corner, r4 (no
+    face) true, r5 (workbench+shelving flanking the wall) uncertain
+    (evidence didn't support the specific "flanking" composition claim).
+    Also reported 2 `forbidden_object_findings` for "logo" (conf 0.5 and
+    0.35, one per observation) — genuinely uncertain, sub-0.5-confidence
+    evidence, correctly not over-claimed as certain.
+11. `judge-submit` with that raw response → **real aggregation result:
+    `"result": "semantic_fail"`, `"reasons": ["Critical requirement(s)
+    ['r3'] judged false"]`, `"queued_for_owner": false`.** Real
+    asset-state file confirms: `{"asset_id": "nookguard-canary-2026-07-22
+    -pegboard-wall-measure", "state": "semantic_fail"}`.
+
+**Why `semantic_fail` is the right outcome to report, not a disappointing
+one:** this is the review system correctly catching a real defect
+(critical requirement r3, "no readable brand logos or readable text",
+judged false on real evidence from two independent observers who both,
+unprompted, flagged the same watermark-shaped anomaly) rather than
+rubber-stamping the candidate. A pipeline that produces `semantic_pass`
+on every run it's given is not a working quality gate; producing a
+correctly-reasoned `semantic_fail` on a candidate with a real visible
+defect is stronger evidence the mechanism works than a clean pass would
+have been.
+
+**What this settles:** Commit 22's second real NOT OPERATIONAL blocker
+(no way to run a review session without a separate, unauthenticated
+Claude Code CLI login) is resolved for real, not just in test fixtures.
+Combined with the Post-Commit-22 entry (real Cloudflare credentials) and
+this entry, both of Commit 22's real external blockers are now closed.
+NookGuard's review pipeline runs entirely inside a live, already-
+authenticated Cowork agent session — exactly the architecture Maurice
+pointed at when he rejected the original CLI-login design.
+
+**Unresolved:** this specific candidate (`nookguard-canary-2026-07-22-
+pegboard-wall-measure`) is now terminally `semantic_fail` with zero
+`review-retry` budget remaining — it cannot be resurrected. A fresh
+generation attempt for this asset_id, if this canary is picked back up,
+starts clean from `review-pack-build` on a new candidate. This is
+expected, correct behavior, not a defect to fix.
