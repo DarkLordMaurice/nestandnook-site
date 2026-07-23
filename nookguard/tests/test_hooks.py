@@ -17,7 +17,7 @@ from nookguard.hooks import (
     check_bash_production_branch,
     check_content_lint_on_edit,
     check_write_edit_protected_path,
-    check_write_existing_media_overwrite,
+    check_write_to_published_media,
     evaluate_pretooluse,
 )
 
@@ -170,7 +170,10 @@ def test_check_bash_clean_command_allowed():
     assert check_bash("npm run build") is None
 
 
-# ---- H008: existing published media overwrite ----
+# ---- H008: any write to published media (strengthened Commit 21 -- see
+# hooks.py's check_write_to_published_media docstring: this used to only
+# deny an OVERWRITE of an existing file; public-media containment closed
+# the gap where a brand-new file at a published path sailed through) ----
 
 def test_h008_denies_overwrite_of_existing_media_file(tmp_path):
     media_dir = tmp_path / "public" / "winnie"
@@ -178,18 +181,25 @@ def test_h008_denies_overwrite_of_existing_media_file(tmp_path):
     existing = media_dir / "hero.jpg"
     existing.write_bytes(b"fake-jpeg-bytes")
 
-    reason = check_write_existing_media_overwrite({"file_path": str(existing)}, tmp_path)
+    reason = check_write_to_published_media({"file_path": str(existing)}, tmp_path)
     assert reason is not None
     assert "H008" in reason
 
 
-def test_h008_allows_write_of_new_media_file(tmp_path):
+def test_h008_denies_write_of_new_media_file(tmp_path):
+    """Commit 21: a NEW file at a published path is exactly as much a
+    containment bypass as overwriting one -- this is the specific gap this
+    commit closed (see hooks.py's check_write_to_published_media
+    docstring, and requirement 1's 'block all NEW and modified public
+    media')."""
     media_dir = tmp_path / "public" / "winnie"
     media_dir.mkdir(parents=True)
     new_path = media_dir / "brand-new.jpg"  # does not exist yet
 
-    reason = check_write_existing_media_overwrite({"file_path": str(new_path)}, tmp_path)
-    assert reason is None
+    reason = check_write_to_published_media({"file_path": str(new_path)}, tmp_path)
+    assert reason is not None
+    assert "H008" in reason
+    assert "new file" in reason
 
 
 def test_h008_ignores_non_media_extension(tmp_path):
@@ -198,7 +208,7 @@ def test_h008_ignores_non_media_extension(tmp_path):
     existing = media_dir / "notes.txt"
     existing.write_text("hi")
 
-    reason = check_write_existing_media_overwrite({"file_path": str(existing)}, tmp_path)
+    reason = check_write_to_published_media({"file_path": str(existing)}, tmp_path)
     assert reason is None
 
 
@@ -208,7 +218,7 @@ def test_h008_ignores_media_outside_published_dirs(tmp_path):
     existing = other_dir / "hero.jpg"
     existing.write_bytes(b"x")
 
-    reason = check_write_existing_media_overwrite({"file_path": str(existing)}, tmp_path)
+    reason = check_write_to_published_media({"file_path": str(existing)}, tmp_path)
     assert reason is None
 
 

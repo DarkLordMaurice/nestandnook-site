@@ -26,6 +26,8 @@ import re
 from pathlib import Path
 from typing import Any, Optional
 
+from .public_media_guard import is_published_media_path
+
 # ---- H001: Write/Edit to protected path -> deny; return required mediactl
 # command. "Protected path" = NookGuard's own store -- content-addressed and
 # state-machine-owned by store.py. A raw Write/Edit into it bypasses every
@@ -58,13 +60,18 @@ _BLANKET_GIT_ADD_RE = re.compile(r"git\s+add\s+(-A\b|--all\b|\.\s*$|\.\s+&&|\.\s
 # now; see BUILD-LOG's Commit 11 entry).
 _PRODUCTION_BRANCH_RE = re.compile(r"\b(checkout|push(\s+\S+)?|merge|branch\s+-[dD])\s+.*\bproduction\b")
 
-# ---- H008: existing public media path bytes change -> deny overwrite.
-# Scoped to Write (Write always fully replaces file content -- "Creates or
-# overwrites a file" per the real tool schema) targeting an already-existing
-# file under a published media directory.
-_MEDIA_EXTENSIONS = (".jpg", ".jpeg", ".png", ".webp", ".gif", ".svg")
-_PUBLISHED_MEDIA_DIRS = ("public/winnie", "public/cursors", "public/pins",
-                          "public/tools", "public/recipes", "public/products")
+# ---- H008: any Write to a published media path -> deny. Scoped to Write
+# (Write always fully replaces file content -- "Creates or overwrites a
+# file" per the real tool schema). Strengthened in Commit 21 (public-media
+# containment): originally this only blocked overwriting an ALREADY-
+# EXISTING file at a published path -- a brand-new file at a published
+# path (e.g. a freshly content-hashed filename a Claude session wrote
+# directly instead of going through `mediactl release`) sailed straight
+# through, which is exactly the gap Commit 21's real containment work
+# closed. Media-path/extension rules now live in public_media_guard.py
+# (imported above) as the single source of truth, rather than duplicated
+# here -- `mediactl media-audit`'s repository-validation layer and this
+# live Claude-tool hook must never define "published media" differently.
 
 
 def _is_protected_store_path(file_path: str) -> bool:
@@ -136,28 +143,26 @@ def check_bash(command: str) -> Optional[str]:
     return None
 
 
-def _is_published_media_path(file_path: str) -> bool:
-    normalized = file_path.replace("\\", "/").lower()
-    if not normalized.endswith(_MEDIA_EXTENSIONS):
-        return False
-    return any(d in normalized for d in _PUBLISHED_MEDIA_DIRS)
-
-
-def check_write_existing_media_overwrite(tool_input: dict[str, Any], project_root: Path) -> Optional[str]:
+def check_write_to_published_media(tool_input: dict[str, Any], project_root: Path) -> Optional[str]:
+    """H008 (strengthened Commit 21). Denies ANY Write targeting a
+    published media path -- new file or existing overwrite alike. A new
+    file at a published path is exactly as much a containment bypass as
+    overwriting one (requirement 1: 'block all NEW and modified public
+    media'); the pre-Commit-21 version only caught the overwrite case."""
     file_path = tool_input.get("file_path", "")
-    if not _is_published_media_path(file_path):
+    if not is_published_media_path(file_path):
         return None
-    candidate = Path(file_path)
-    if not candidate.is_absolute():
-        candidate = project_root / file_path
-    if candidate.exists():
-        return (
-            f"H008: '{file_path}' is an already-published media file. Direct "
-            "overwrite bypasses the release pipeline. Generate a new "
-            "candidate through the real NookGuard pipeline instead of "
-            "replacing bytes at an existing public path in place."
-        )
-    return None
+    is_new = not (Path(file_path) if Path(file_path).is_absolute()
+                  else project_root / file_path).exists()
+    return (
+        f"H008: '{file_path}' targets a published media path"
+        f"{' (new file)' if is_new else ' (already-published, existing file)'}. "
+        "Direct Write bypasses the release pipeline and public-media "
+        "containment (mediactl media-audit would flag this). Generate a "
+        "real candidate through the NookGuard pipeline (mediactl generate "
+        "-> ... -> mediactl release) instead of writing bytes directly to "
+        "a published path."
+    )
 
 
 def check_content_lint_on_edit(tool_name: str, tool_input: dict[str, Any], project_root: Path) -> Optional[str]:
@@ -228,7 +233,7 @@ def evaluate_pretooluse(tool_name: str, tool_input: dict[str, Any], project_root
         if reason:
             return reason
         if tool_name == "Write":
-            reason = check_write_existing_media_overwrite(tool_input, project_root)
+            reason = check_write_to_published_media(tool_input, project_root)
             if reason:
                 return reason
         reason = check_content_lint_on_edit(tool_name, tool_input, project_root)

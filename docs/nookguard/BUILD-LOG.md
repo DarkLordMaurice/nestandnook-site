@@ -2490,3 +2490,220 @@ zero-elevation backend actually in use.
 public media path that isn't an approved, hash-matched NookGuard release
 manifest entry) and a controlled Cloudflare release path once Maurice
 supplies restricted credentials.
+
+---
+
+## Commit 21: Public-media containment + controlled Cloudflare release — DONE
+
+**Completed:** 2026-07-22
+
+**Why this commit:** Maurice's explicit next-step instruction after
+Commit 20 — no new or modified public media may exist unless its exact
+hash is approved and present in a NookGuard release manifest; enforce
+this locally, in repository validation, and in the production deployment
+command; ensure no old generation script can write directly to a public
+media path; keep both legacy scheduled tasks disabled; audit every code
+path capable of writing to public media or invoking deployment; and
+configure preview/production deployment through NookGuard + Wrangler once
+restricted Cloudflare credentials are available.
+
+**Critical path-convention bug caught and fixed before any code shipped,
+not after:** while wiring the three new CLI commands into `cli.py`, a
+real `Glob`/`canon.py` check confirmed `cli.py`'s existing `--project-root`
+default (`DEFAULT_PROJECT_ROOT = Path(__file__).resolve().parents[2]`)
+resolves to the directory ABOVE `site/` — where `brand-assets/` genuinely
+lives (`canon.py`'s `CANON_FILES` are all `brand-assets/...`-relative,
+confirmed on disk at `Amazon Drop Ship/brand-assets/`, a sibling of
+`site/`, not inside it). `public/winnie`, `dist/`, etc. are a DIFFERENT
+real directory — inside `site/` itself. Had `cmd_media_audit` inherited
+`--project-root`, the containment audit would have silently resolved to a
+nonexistent path, scanned zero files, and reported a false `ok: true` — a
+dangerously empty-but-passing audit, worse than no audit. Fixed by giving
+`public_media_guard.py` and `write_path_audit.py` their own `site_root`
+parameter (never `project_root`) defaulting to `Path(__file__).resolve()
+.parent.parent` (correctly `site/`, since both modules live in
+`nookguard/`), and wiring a separate `--site-root` CLI flag (not
+`--project-root`) into `media-audit`, `write-path-audit`, and `deploy`.
+Documented permanently in `public_media_guard.py`'s own module comment so
+it can't silently regress.
+
+**Two further real bugs caught by this commit's own tests, not shipped
+silently:**
+1. `cmd_media_audit`'s first version only folded `--store-root` into the
+   approved-hash search when `--store-root-extra` was ALSO given — a
+   caller passing just `--store-root` (the normal, single-store case) had
+   it silently dropped, contradicting the `--store-root-extra` argument's
+   own help text ("The primary --store-root is always included"). Caught
+   by `test_media_audit_cli_approves_file_released_through_real_store_
+   root`. Fixed: `--store-root` is now unconditionally the first entry in
+   `store_roots`; `cmd_deploy` was changed to match the same convention
+   (previously it ignored `--store-root` entirely, always defaulting to
+   `<site_root>/nookguard_store`).
+2. `deploy.py`'s deployment-URL regex required exactly two dot-separated
+   labels before `.pages.dev` (matching a preview URL like
+   `<hash>.<project>.pages.dev`) but would have failed to capture a real
+   Cloudflare Pages PRODUCTION url, which has only one label
+   (`<project>.pages.dev`). Caught by
+   `test_run_wrangler_deploy_missing_id_returns_none_not_guessed`. Fixed
+   to accept one-or-more labels.
+
+**Real-environment findings, not code bugs — required for requirements
+3-4:**
+- Requirement 3 ("no old generation script can write directly to public
+  media"): a real repository `Glob` for `scripts/gen_*.py` found NO
+  matches — the historical `gen_garage_images.py`/`gen_product_images.py`
+  etc. scripts the parent CLAUDE.md documents as live daily-pipeline
+  tooling are not present in this checked-out `site/` tree. `write_path_
+  audit.py`'s own docstring documents this scope limitation explicitly
+  (it can only see this repository, not `C:\Users\weare\Documents\Claude\
+  Scheduled\*` or other projects). Containment is therefore enforced going
+  forward by the mechanism (H008 hook + `mediactl media-audit` + the
+  deploy gate) regardless of what future script might attempt a write, not
+  by modifying scripts that don't currently exist here.
+- Requirement 4 ("keep both legacy scheduled tasks disabled"): confirmed
+  via a real `mcp__scheduled-tasks__list_scheduled_tasks` call — all 6
+  Nest & Nook-relevant scheduled tasks (`nest-and-nook-daily-blog-post`,
+  `nest-and-nook-daily-image-and-page-build`, plus the 4 VoidCast tasks)
+  report `enabled: false`. No code change required; verification only.
+
+**Changed files:**
+- `nookguard/public_media_guard.py` (new) — the containment rule
+  (requirement 1): a public media file is allowed if EITHER its exact
+  (relative_path, sha256) matches the committed baseline snapshot
+  (pre-existing, untouched legacy content) OR its real sha256 is present
+  in a real `ReleaseManifestEntry.candidate_sha256` from any given
+  NookGuard store's `releases/` directory. Anything else — new or
+  modified, not approved — is UNAPPROVED and blocks. Exports
+  `is_published_media_path()` (used by both this module and `hooks.py`,
+  removing the prior duplicated `_MEDIA_EXTENSIONS`/`_PUBLISHED_MEDIA_
+  DIRS` constants that used to live only in `hooks.py`),
+  `snapshot_public_media()`, `load_baseline()`/`write_baseline()`,
+  `collect_approved_hashes()`, `audit_public_media()`.
+- `nookguard/public_media_baseline.json` (new) — real, generated snapshot:
+  344 real published-media files under `site/public/{winnie,cursors,pins,
+  tools,recipes,products}`, each with its real sha256, as of this commit.
+- `nookguard/gen_public_media_baseline.py` (new) — the one-time generator
+  for the baseline above (`python -m nookguard.gen_public_media_
+  baseline`); documented as a deliberate re-baselining tool, not a routine
+  step (re-running it after an unapproved write would silently grandfather
+  it in).
+- `nookguard/write_path_audit.py` (new) — requirement 5's static,
+  enumerative audit. Marker-PAIR matching (a write-call marker AND a
+  media-path marker must appear on the SAME line — same discipline as
+  `hooks.py`'s H002), scanning `.py/.mjs/.js/.ts/.ps1/.sh` files,
+  excluding `node_modules/dist/.git/nookguard_store/__pycache__/.astro/
+  tests`. The `tests` exclusion was added after this module's own
+  CLI-level test caught 5 real matches against the live repo, all of them
+  its own test fixtures deliberately constructing synthetic write-call-
+  shaped text to prove the detector works — a documented, expected false-
+  positive source (cli.py's own `cmd_write_path_audit` docstring already
+  flagged "a legitimate test fixture" as a real possibility), not a
+  containment gap.
+- `nookguard/deploy.py` (new) — requirements 6-8. `check_cloudflare_
+  credentials()`: real, multi-scope (Process/User/Machine) Windows
+  env-var check for `CLOUDFLARE_API_TOKEN`/`CLOUDFLARE_ACCOUNT_ID`,
+  same "classify, don't crash" pattern as `cli_reviewer.check_claude_cli_
+  auth()`. Confirmed via a real, unmocked call on this machine: both
+  variables are genuinely absent at every scope. `run_wrangler_deploy()`:
+  real, injectable subprocess wrapper around `wrangler pages deploy`,
+  parsing the real deployment URL/ID out of wrangler's own stdout — never
+  fabricated; a not-yet-observed ID format returns `None`, not a guess.
+  Module docstring explicitly documents what this module does NOT and
+  cannot do from this environment: disable Cloudflare Pages' automatic
+  "deploy on push to main" GitHub integration (requirement 7) — a
+  dashboard-only setting reachable only via Maurice's own Cloudflare
+  account, with no API token available here to do it programmatically
+  either.
+- `nookguard/hooks.py` — `check_write_existing_media_overwrite` renamed to
+  `check_write_to_published_media` and STRENGTHENED: H008 previously only
+  denied overwriting an EXISTING published-media file; it now denies ANY
+  Write to a published media path, new file or existing overwrite alike —
+  closing the gap where a brand-new unauthorized image could be written
+  straight to `public/winnie/` by any live Claude session.
+- `nookguard/cli.py` — three new commands: `media-audit` (repository-
+  validation gate, delegates to `audit_public_media()`), `write-path-
+  audit` (delegates to `run_write_path_audit()`, purely enumerative, `ok`
+  is always true), `deploy` (the controlled production-deployment
+  command: refuses to proceed past an unapproved-media-audit result,
+  refuses to proceed past missing Cloudflare credentials, only then
+  attempts a real `wrangler pages deploy` and returns its real
+  deployment_id/deployment_url). All three take `--site-root` (default
+  `DEFAULT_SITE_ROOT`), never `--project-root` — see the path-convention
+  bug above.
+- `nookguard/tests/test_hooks.py` — updated for the H008 rename;
+  `test_h008_allows_write_of_new_media_file` (asserted the old, weaker
+  behavior) replaced with `test_h008_denies_write_of_new_media_file`
+  (asserts the new, strengthened behavior).
+- `nookguard/tests/test_public_media_guard.py` (new, 15 tests) — real
+  filesystem fixtures throughout (real files, real hashes, real
+  `ReleaseManifestEntry` records on disk) — no synthetic hash comparisons.
+  Covers path matching, snapshot/baseline round-trip, `collect_approved_
+  hashes()` across single/multiple/missing/corrupt store roots, and
+  `audit_public_media()`'s five real outcomes (baseline-unchanged passes,
+  brand-new file fails, baseline file modified-in-place fails, a file
+  approved via a real release manifest entry passes, files removed since
+  baseline are reported).
+- `nookguard/tests/test_write_path_audit.py` (new, 8 tests) — marker-pair
+  matching (both markers same line = found; either alone = not found),
+  deploy-marker detection, excluded-directory skipping, extension
+  filtering, and a real regression-guard test against the actual live
+  `site/` tree (0 media-write findings, matching the confirmed manual
+  result).
+- `nookguard/tests/test_deploy.py` (new, 10 tests) — dependency-injection
+  pattern (fake `env`/`subprocess_runner`) for available/missing/
+  persistent-scope-fallback/probe-exception credential cases, PLUS one
+  real, unmocked `check_cloudflare_credentials()` call confirming this
+  machine's genuine absence; `run_wrangler_deploy()` success (real-shaped
+  stdout parsing), missing-ID-not-guessed, wrangler-not-found, timeout,
+  nonzero-exit, and preview-vs-production branch selection.
+- `nookguard/tests/test_cli.py` (+9 tests) — CLI-level coverage for
+  `media-audit` (clean-against-baseline, flags-new-unapproved-file,
+  approves-via-real-release, and a real run against the actual live
+  `site/` tree with its real committed baseline — confirmed clean, 344
+  files, 0 unapproved), `write-path-audit` (real site tree clean, plus a
+  synthetic-finding case), and `deploy` (refuses on unapproved media; a
+  real, unmocked call against the actual site tree honestly stops at
+  `cloudflare_credentials_unavailable` — matching the same real-
+  environment-failure discipline as `test_canary_run_reports_which_step_
+  failed` and `test_regression_live_review_mode_runs_real_corpus_
+  unmocked`).
+
+**Tests run:** `python -m pytest nookguard/tests/ -q` (Desktop Commander,
+real Windows Python, via a `.ps1` script file). First real run surfaced 4
+genuine failures (the store-root bug, the URL-regex bug, and two instances
+of the `tests/`-directory self-match, described above) — all fixed, not
+worked around, then a second real run surfaced one further self-match (this
+module's OWN docstring, in the paragraph explaining the `tests/`
+exclusion, literally contained a `.save(`+`public/winnie` example on one
+line and matched its own detector) — fixed by splitting the example across
+two lines. **Result, final run:** 365/365 passed, 0 failures (up from 323
+— +42: 15 `test_public_media_guard.py`, 8 `test_write_path_audit.py`, 10
+`test_deploy.py`, 4 `test_hooks.py` net change, 9 `test_cli.py`, minus the
+1 replaced `test_hooks.py` case counted once).
+
+**Honest, explicitly-scoped limitations, not closed by this commit:**
+(1) Requirement 7 (disable Cloudflare Pages' automatic deploy-on-push)
+cannot be performed or verified from this environment — dashboard-only,
+Maurice's own Cloudflare account required, no API token available here
+either; `deploy.py`'s module docstring documents this rather than
+claiming it done. (2) Requirements 6/8 (configure real deployment, capture
+a real deployment ID) are built as real, working, tested mechanisms but
+have never been exercised end-to-end — Cloudflare credentials are
+confirmed genuinely absent on this machine at every scope; `mediactl
+deploy` correctly refuses rather than fabricating a deployment. (3)
+Requirement 3's "no old generation script can write directly" is
+satisfied by there being no such script in this checked-out repository
+right now, not by having modified one — see the real-environment finding
+above; if a legacy script is ever reintroduced or copied in from another
+location, H008 + `media-audit` + the deploy gate are the actual backstop.
+
+**Commit:** pending (to be recorded here once pushed).
+
+**Next:** Commit 22 — final live canary: reuse or recreate the canary
+candidate, run the real Claude observer/judge, run the full live-review
+regression corpus, produce real desktop/mobile staging screenshots,
+release with a content-hashed filename, deploy through the now-controlled
+Cloudflare release path (gated on real credentials, per the limitation
+above), fetch and verify real production bytes, and only then evaluate
+whether NookGuard meets every one of the nine real conditions required to
+be declared OPERATIONAL.

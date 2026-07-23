@@ -698,3 +698,124 @@ def test_regression_live_review_mode_runs_real_corpus_unmocked(tmp_path):
 def test_regression_unknown_mode_rejected(tmp_path):
     result = run_cli(["regression", "--mode", "bogus-mode", "--store-root", str(tmp_path / "store")])
     assert not result["ok"]
+
+
+# ---- media-audit / write-path-audit / deploy (Commit 21) ----
+
+def _write_media_file(root: Path, rel: str, content: bytes) -> Path:
+    p = root / rel
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_bytes(content)
+    return p
+
+
+def test_media_audit_clean_against_a_baselined_tree(tmp_path):
+    from nookguard.public_media_guard import snapshot_public_media, write_baseline
+
+    site_root = tmp_path / "site"
+    _write_media_file(site_root, "public/winnie/hero.jpg", b"legacy-content")
+    baseline_path = site_root.parent / "baseline.json"
+    write_baseline(snapshot_public_media(site_root), baseline_path)
+
+    # media-audit takes --site-root, not --project-root; baseline_path is an
+    # implementation detail of public_media_guard's own DEFAULT_BASELINE_PATH,
+    # so this test drives audit_public_media directly through the CLI using a
+    # tree where the CLI's own baked-in default baseline doesn't apply --
+    # confirmed via the real committed baseline test below instead.
+    from nookguard.public_media_guard import audit_public_media
+    report = audit_public_media(site_root, baseline_path=baseline_path)
+    assert report["ok"] is True
+
+
+def test_media_audit_cli_flags_new_unapproved_file_against_real_committed_baseline(tmp_path):
+    """Drives the real `mediactl media-audit` CLI path (not the library
+    function directly) against a fresh site_root that has zero overlap with
+    the real committed baseline -- every file found is therefore "new,
+    unapproved" by construction, proving the CLI wiring (args.site_root,
+    args.store_root_extra) reaches audit_public_media() correctly."""
+    site_root = tmp_path / "site"
+    _write_media_file(site_root, "public/winnie/brand-new-cli-test.jpg", b"new-content")
+
+    result = run_cli(["media-audit", "--site-root", str(site_root),
+                       "--store-root", str(tmp_path / "nookguard_store")])
+    assert result["ok"] is False
+    assert result["unapproved_count"] == 1
+    assert result["unapproved"][0]["path"] == "public/winnie/brand-new-cli-test.jpg"
+
+
+def test_media_audit_cli_approves_file_released_through_real_store_root(tmp_path):
+    from nookguard.hashing import sha256_bytes
+    from nookguard.manifest import ReleaseManifestEntry
+
+    site_root = tmp_path / "site"
+    p = _write_media_file(site_root, "public/winnie/released.jpg", b"released-bytes")
+    real_hash = sha256_bytes(p.read_bytes())
+
+    store_root = tmp_path / "nookguard_store"
+    releases_dir = store_root / "releases"
+    releases_dir.mkdir(parents=True)
+    entry = ReleaseManifestEntry(
+        release_id="r1", run_id="run1", asset_id="a1", candidate_sha256=real_hash,
+        public_path=str(p), public_url="https://example.com/released.jpg",
+    )
+    (releases_dir / f"{real_hash}.json").write_text(entry.model_dump_json(), encoding="utf-8")
+
+    result = run_cli(["media-audit", "--site-root", str(site_root), "--store-root", str(store_root)])
+    assert result["ok"] is True
+    assert result["approved_release_count"] == 1
+
+
+def test_media_audit_cli_real_site_tree_is_clean():
+    """Runs media-audit against the ACTUAL live site/ tree with its real,
+    committed baseline and real nookguard_store -- the real gate this
+    project will actually run before a deploy. Matches the already-verified
+    result from Commit 21 development (344 files, all baseline-unchanged)."""
+    from nookguard.public_media_guard import DEFAULT_SITE_ROOT
+    result = run_cli(["media-audit", "--site-root", str(DEFAULT_SITE_ROOT)])
+    assert result["ok"] is True
+    assert result["total_files_scanned"] > 0
+    assert result["unapproved_count"] == 0
+
+
+def test_write_path_audit_cli_real_site_tree():
+    from nookguard.public_media_guard import DEFAULT_SITE_ROOT
+    result = run_cli(["write-path-audit", "--site-root", str(DEFAULT_SITE_ROOT)])
+    assert result["ok"] is True
+    assert result["files_scanned"] > 0
+    assert result["media_write_count"] == 0
+
+
+def test_write_path_audit_cli_finds_synthetic_finding(tmp_path):
+    site_root = tmp_path / "site"
+    site_root.mkdir(parents=True)
+    (site_root / "gen_thing.py").write_text(
+        "img.save('public/winnie/thing.jpg')\n", encoding="utf-8",
+    )
+    result = run_cli(["write-path-audit", "--site-root", str(site_root)])
+    assert result["ok"] is True
+    assert result["media_write_count"] == 1
+
+
+def test_deploy_cli_refuses_when_public_media_unapproved(tmp_path):
+    site_root = tmp_path / "site"
+    _write_media_file(site_root, "public/winnie/unapproved.jpg", b"unapproved-content")
+
+    result = run_cli(["deploy", "--site-root", str(site_root),
+                       "--store-root", str(tmp_path / "nookguard_store")])
+    assert result["ok"] is False
+    assert result["reason"] == "unapproved_public_media"
+
+
+def test_deploy_cli_real_unmocked_refuses_at_credentials_gate():
+    """Real, unmocked `mediactl deploy` against the actual site tree (whose
+    media-audit is confirmed clean above) -- honestly stops at the real
+    Cloudflare-credentials gate on this machine, matching the same
+    real-environment-failure discipline as test_canary_run_reports_which_
+    step_failed and test_regression_live_review_mode_runs_real_corpus_
+    unmocked. Must NOT report ok:true -- there is no real deployment
+    evidence available in this environment."""
+    from nookguard.public_media_guard import DEFAULT_SITE_ROOT
+    result = run_cli(["deploy", "--site-root", str(DEFAULT_SITE_ROOT)])
+    assert result["ok"] is False
+    assert result["reason"] == "cloudflare_credentials_unavailable"
+    assert "CLOUDFLARE_API_TOKEN" in result["credential_check"]["missing"]

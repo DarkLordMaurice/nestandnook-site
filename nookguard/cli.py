@@ -27,6 +27,7 @@ from .agent_runner import (
 from .canon import CanonRegistry
 from .cli_reviewer import check_claude_cli_auth
 from .dedup import DedupRegistry
+from .deploy import WranglerDeployError, check_cloudflare_credentials, run_wrangler_deploy
 from .exceptions import (
     HashMismatchError,
     InvalidTransitionError,
@@ -48,6 +49,7 @@ from .preview import PageCaptureReport
 from .preview_aggregator import aggregate_preview
 from .production_verifier import verify_production
 from .prompt_compiler import compile_prompt
+from .public_media_guard import DEFAULT_SITE_ROOT, audit_public_media
 from .regression_corpus import run_regression_corpus
 from .regression_live import run_live_review_regression_corpus
 from .release import ReleaseIntegrityError, publish_candidate
@@ -56,6 +58,7 @@ from .run_report import write_run_report
 from .schemas import AssetContract, GenerationAttempt
 from .state_machine import AssetState, transition
 from .store import Store
+from .write_path_audit import report_to_dict, run_write_path_audit
 from .validators import image as image_validator
 
 DEFAULT_STORE_ROOT = Path("nookguard_store")
@@ -539,6 +542,104 @@ def cmd_auth_check(args: argparse.Namespace) -> dict[str, Any]:
     -- this command is just the CLI-shaped wrapper around it."""
     result = check_claude_cli_auth()
     return {"ok": result["authenticated"], **result}
+
+
+def cmd_media_audit(args: argparse.Namespace) -> dict[str, Any]:
+    """Commit 21, requirements 1-2: the real "repository validation" gate.
+    Delegates entirely to public_media_guard.audit_public_media() -- every
+    real file currently under the published media directories is checked
+    against the committed baseline (pre-existing, untouched legacy content
+    is fine) and the union of every NookGuard release manifest across the
+    given store root(s) (a real, approved release is fine). Anything else
+    -- new or modified, not approved -- is reported by name under
+    `unapproved`, and `ok` is false. This is also the exact check
+    `cmd_deploy` below runs before it will do anything real.
+
+    Uses `--site-root`, NOT `--project-root` -- public/winnie etc. live
+    inside `site/`, a different real directory than `--project-root`'s
+    default (the outer business-project root where `brand-assets/`
+    lives). See public_media_guard.py's DEFAULT_SITE_ROOT comment for the
+    real, confirmed-on-disk reason this distinction exists.
+
+    `--store-root` is ALWAYS included in the approved-hash search (its
+    docstring on the `--store-root-extra` argument below promises exactly
+    this) -- a real bug caught by this command's own CLI-level test
+    (test_media_audit_cli_approves_file_released_through_real_store_root):
+    the first version of this function only included `--store-root` when
+    `--store-root-extra` was ALSO given, silently dropping the primary
+    store root whenever a caller passed just `--store-root` on its own,
+    which is the normal, single-store case."""
+    site_root = Path(args.site_root)
+    store_roots = [Path(args.store_root)]
+    if args.store_root_extra:
+        store_roots += [Path(r) for r in args.store_root_extra]
+    report = audit_public_media(site_root, store_roots=store_roots)
+    return report
+
+
+def cmd_write_path_audit(args: argparse.Namespace) -> dict[str, Any]:
+    """Commit 21, requirement 5: enumerates every real code path in this
+    repository (scope documented in write_path_audit.py's own docstring)
+    that looks capable of writing to a published media path or invoking a
+    deployment. Purely additive/enumerative -- see that module's docstring
+    for why `ok` isn't a meaningful concept here the way it is for
+    media-audit; a real "media_write" finding is worth Maurice's own
+    review, not an automatic block, since a false positive (e.g. a
+    legitimate test fixture) is a real possibility a static text search
+    can't rule out on its own. Uses `--site-root`, same reason as
+    cmd_media_audit above."""
+    report = run_write_path_audit(Path(args.site_root))
+    return {"ok": True, **report_to_dict(report)}
+
+
+def cmd_deploy(args: argparse.Namespace) -> dict[str, Any]:
+    """Commit 21, requirements 2/6/8: the controlled production-deployment
+    command. Refuses to run past either real gate:
+    1. public_media_guard.audit_public_media() must be clean -- an
+       unapproved public media file must never reach a real deployment,
+       matching requirement 2's 'enforce this... in the production
+       deployment command.'
+    2. check_cloudflare_credentials() must report real, available
+       credentials -- see deploy.py's own module docstring for why this
+       command does not (and, from this environment, cannot) verify or
+       perform requirement 7's manual Cloudflare-dashboard step (disabling
+       automatic deploy-on-push) itself; refusing to run without real
+       credentials is the concrete guard against ever becoming a second,
+       uncoordinated deploy path alongside a still-active GitHub
+       auto-deploy.
+    Only if both pass does this attempt a real `wrangler pages deploy`
+    call and return its real deployment_id/deployment_url (requirement 8)
+    -- never a fabricated one. Uses `--site-root`, same reason as
+    cmd_media_audit above, and the same `--store-root`-is-always-included
+    convention as cmd_media_audit's fix above -- the deploy gate must see
+    exactly the same approved-hash set `mediactl media-audit` reports, not
+    a silently narrower one."""
+    site_root = Path(args.site_root)
+    audit = audit_public_media(site_root, store_roots=[Path(args.store_root)])
+    if not audit["ok"]:
+        return {"ok": False, "reason": "unapproved_public_media", "media_audit": audit,
+                "error": f"{audit['unapproved_count']} public media file(s) are not approved by any "
+                         "NookGuard release manifest or the committed baseline -- refusing to deploy. "
+                         "Run `mediactl media-audit` for the full list."}
+
+    cred_check = check_cloudflare_credentials()
+    if not cred_check["available"]:
+        return {"ok": False, "reason": "cloudflare_credentials_unavailable", "credential_check": cred_check,
+                "error": "Cloudflare credentials are not available -- refusing to deploy. "
+                         + cred_check["instructions"]}
+
+    dist_dir = Path(args.dist_dir)
+    if not dist_dir.is_absolute():
+        dist_dir = site_root / dist_dir
+
+    try:
+        deploy_result = run_wrangler_deploy(
+            dist_dir=str(dist_dir), project_name=args.project_name, env_name=args.env,
+        )
+    except WranglerDeployError as e:
+        return {"ok": False, "reason": e.reason, "error": str(e)}
+
+    return {"ok": True, "media_audit": audit, **deploy_result}
 
 
 def cmd_integrate(args: argparse.Namespace) -> dict[str, Any]:
@@ -1087,6 +1188,27 @@ def build_parser() -> argparse.ArgumentParser:
 
     p = sub.add_parser("auth-check"); _common(p)
     p.set_defaults(func=cmd_auth_check)
+
+    p = sub.add_parser("media-audit"); _common(p)
+    # --site-root, NOT --project-root -- see cmd_media_audit's own
+    # docstring and public_media_guard.py's DEFAULT_SITE_ROOT comment for
+    # the real, confirmed-on-disk reason these are different directories.
+    p.add_argument("--site-root", default=str(DEFAULT_SITE_ROOT))
+    p.add_argument("--store-root-extra", action="append", default=None,
+                    help="Additional NookGuard store root(s) whose release manifests also count as "
+                         "approved (repeatable). The primary --store-root is always included.")
+    p.set_defaults(func=cmd_media_audit)
+
+    p = sub.add_parser("write-path-audit"); _common(p)
+    p.add_argument("--site-root", default=str(DEFAULT_SITE_ROOT))
+    p.set_defaults(func=cmd_write_path_audit)
+
+    p = sub.add_parser("deploy"); _common(p)
+    p.add_argument("--site-root", default=str(DEFAULT_SITE_ROOT))
+    p.add_argument("--dist-dir", default="dist")
+    p.add_argument("--project-name", default="nestandnook-site")
+    p.add_argument("--env", default="production", choices=["production", "preview"])
+    p.set_defaults(func=cmd_deploy)
 
     p = sub.add_parser("integrate"); _common(p)
     p.add_argument("--candidate-sha256", required=True)
