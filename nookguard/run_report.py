@@ -63,11 +63,31 @@ from .store import Store
 # with no outgoing transition other than PROD_VERIFIED are the "regenerate
 # only" states (state_machine._REGENERATE_SOURCES); PROD_VERIFIED is the
 # one success terminal.
-REJECTED_STATES = frozenset({
+#
+# These 9 are NOT all the same kind of outcome, and treating them as one
+# undifferentiated "rejected" bucket is a real bug this module shipped with
+# (caught 2026-07-22 during a live canary run -- see BUILD-LOG Commit 18).
+# A candidate correctly caught as bad content (SEMANTIC_FAIL, TECHNICAL_FAIL,
+# OWNER_REJECTED, etc.) is a genuinely resolved, no-further-action outcome.
+# REVIEW_ERROR is NOT that -- it means the review process itself never
+# completed, so no real decision was ever reached; folding it into
+# "rejected" let a run whose only asset hit a real Anthropic-API
+# authentication failure during `observe` still report
+# terminal_status=PROD_VERIFIED / ok=true, because nothing in the old logic
+# distinguished "correctly rejected" from "never actually reviewed." That is
+# exactly the kind of self-certifying false positive NookGuard exists to
+# prevent, now caught in its own completion-reporting code. PROD_MISMATCH is
+# also pulled out for the same reason in the other direction: it means
+# released bytes do NOT match the approved candidate, which must always
+# block a "production verified" claim, not be silently absorbed into
+# "rejected, nothing to do."
+CONTENT_REJECTED_STATES = frozenset({
     AssetState.GENERATION_BLOCKED, AssetState.TECHNICAL_FAIL, AssetState.SEMANTIC_FAIL,
-    AssetState.FAIL_EVIDENCE, AssetState.FAIL_REFERENCE, AssetState.REVIEW_ERROR,
-    AssetState.OWNER_REJECTED, AssetState.PREVIEW_REVIEW_FAIL, AssetState.PROD_MISMATCH,
+    AssetState.FAIL_EVIDENCE, AssetState.FAIL_REFERENCE, AssetState.OWNER_REJECTED,
+    AssetState.PREVIEW_REVIEW_FAIL,
 })
+PROCESS_ERROR_STATES = frozenset({AssetState.REVIEW_ERROR})
+PROD_MISMATCH_STATES = frozenset({AssetState.PROD_MISMATCH})
 # "Cleared review" -- has passed judgment (or an owner) and is proceeding
 # toward release, whether or not it has arrived yet. production_verified
 # (below) is always a subset of this set, never a sibling of it -- matches
@@ -167,8 +187,24 @@ def default_regression_runner(store_root: Path) -> dict[str, Any]:
     prove the regression corpus still passes NOW, not recall a prior run's
     narrated result (nothing in this pipeline persists regression-run
     results anywhere to recall from -- see cli.py, cmd_regression_run
-    doesn't log to the ledger)."""
+    doesn't log to the ledger).
+
+    A real defect here, caught 2026-07-22 by actually running `mediactl
+    run-report` twice against the same store (see BUILD-LOG Commit 18):
+    the base scratch directory used to be reused as-is across calls
+    (`mkdir(..., exist_ok=True)` only at the top level), but at least one
+    regression fixture (`_run_otter_aviary_stale_bytes_and_furniture`)
+    creates its OWN subdirectories with no `exist_ok`, assuming a truly
+    fresh directory every time -- true under pytest's `tmp_path` (always
+    new), false here on a second real invocation, and it crashed with a
+    raw `FileExistsError` instead of returning a normal report. The fix:
+    wipe and recreate the scratch directory on every call, since it holds
+    nothing but disposable fixture scratch files, never real evidence."""
+    import shutil
+
     base = store_root / "_regression_tmp"
+    if base.exists():
+        shutil.rmtree(base)
     base.mkdir(parents=True, exist_ok=True)
 
     def tmp_dir_factory(name: str) -> Path:
@@ -207,6 +243,7 @@ def build_run_report(
     asset_ids = _asset_ids_for_run(events)
 
     approved = rejected = needs_owner = production_verified = in_progress = 0
+    process_error = prod_mismatch = 0
     unknown_state_assets: list[str] = []
     for asset_id in asset_ids:
         raw_state = store.get_state(asset_id)
@@ -214,7 +251,11 @@ def build_run_report(
             unknown_state_assets.append(asset_id)
             continue
         state = AssetState(raw_state)
-        if state in REJECTED_STATES:
+        if state in PROCESS_ERROR_STATES:
+            process_error += 1
+        elif state in PROD_MISMATCH_STATES:
+            prod_mismatch += 1
+        elif state in CONTENT_REJECTED_STATES:
             rejected += 1
         elif state in NEEDS_OWNER_STATES:
             needs_owner += 1
@@ -236,6 +277,18 @@ def build_run_report(
         blocking.append(
             f"{len(unknown_state_assets)} asset(s) referenced in ledger events but have no "
             f"recorded state in the store: {', '.join(unknown_state_assets)}"
+        )
+    if process_error:
+        blocking.append(
+            f"{process_error} asset(s) hit a review-process error (state: review_error) -- the "
+            f"review process itself did not complete, so no real decision was ever reached for "
+            f"these; this is never treated as a resolved outcome, regardless of any other asset's "
+            f"state in this run"
+        )
+    if prod_mismatch:
+        blocking.append(
+            f"{prod_mismatch} asset(s) released but production bytes do not match the approved "
+            f"candidate (state: prod_mismatch)"
         )
     if needs_owner:
         blocking.append(f"{needs_owner} asset(s) awaiting owner decision (state: needs_owner)")
@@ -274,6 +327,8 @@ def build_run_report(
             "needs_owner": needs_owner,
             "production_verified": production_verified,
             "in_progress": in_progress,
+            "process_error": process_error,
+            "prod_mismatch": prod_mismatch,
         },
         regression_suite=regression,
         evidence_index=str(evidence_path),
@@ -295,11 +350,13 @@ def render_markdown(report: RunReport) -> str:
         "",
         "## Assets",
         "",
-        "| approved | rejected | needs_owner | production_verified | in_progress |",
-        "|---|---|---|---|---|",
+        "| approved | rejected | needs_owner | production_verified | in_progress | "
+        "process_error | prod_mismatch |",
+        "|---|---|---|---|---|---|---|",
         f"| {report.assets['approved']} | {report.assets['rejected']} | "
         f"{report.assets['needs_owner']} | {report.assets['production_verified']} | "
-        f"{report.assets['in_progress']} |",
+        f"{report.assets['in_progress']} | {report.assets['process_error']} | "
+        f"{report.assets['prod_mismatch']} |",
         "",
         "## Regression suite",
         "",
@@ -337,7 +394,9 @@ def render_owner_summary(report: RunReport) -> str:
         f"Run {report.run_id}: {headline}",
         f"Assets — approved {report.assets['approved']}, rejected {report.assets['rejected']}, "
         f"needs owner {report.assets['needs_owner']}, live-verified "
-        f"{report.assets['production_verified']}, still in progress {report.assets['in_progress']}",
+        f"{report.assets['production_verified']}, still in progress {report.assets['in_progress']}, "
+        f"review-process errors {report.assets['process_error']}, "
+        f"production mismatches {report.assets['prod_mismatch']}",
         f"Regression suite: {report.regression_suite['passed']} passed, "
         f"{report.regression_suite['failed']} failed",
     ]

@@ -16,7 +16,13 @@ from pathlib import Path
 import nookguard.cli as cli_module
 from nookguard.cli import run_cli
 from nookguard.ledger import Ledger
-from nookguard.run_report import build_run_report, render_markdown, render_owner_summary, write_run_report
+from nookguard.run_report import (
+    build_run_report,
+    default_regression_runner,
+    render_markdown,
+    render_owner_summary,
+    write_run_report,
+)
 from nookguard.schemas import BlindObservation, ContractJudgment, PageReviewResult, RequirementJudgment, RequirementResult
 from nookguard.state_machine import AssetState
 from nookguard.store import Store
@@ -43,6 +49,7 @@ def test_no_assets_for_run_is_incomplete():
         assert report.assets == {
             "approved": 0, "rejected": 0, "needs_owner": 0,
             "production_verified": 0, "in_progress": 0,
+            "process_error": 0, "prod_mismatch": 0,
         }
 
 
@@ -76,11 +83,86 @@ def test_mixed_asset_states_bucket_correctly_and_block():
             "needs_owner": 1,           # a3
             "production_verified": 1,   # a1 only
             "in_progress": 0,
+            "process_error": 0,
+            "prod_mismatch": 0,
         }
         assert report.terminal_status == "INCOMPLETE"
         assert any("needs_owner" in b or "needs owner" in b.lower() for b in report.blocking)
         assert any("approved but not yet production-verified" in b for b in report.blocking)
         assert report.repository_commit == "deadbeefcafefeed0000000000000000000000"
+
+
+def test_review_error_never_yields_prod_verified():
+    """Regression test for a real defect caught 2026-07-22 during a live
+    canary run (see BUILD-LOG Commit 18): a lone asset that hit
+    REVIEW_ERROR -- meaning the review process itself never completed, no
+    decision was ever reached -- was originally folded into the same
+    'rejected' bucket as a genuinely resolved content rejection, so the
+    report claimed terminal_status=PROD_VERIFIED / ok=true even though
+    nothing had actually been reviewed. This must never regress: a
+    review_error asset must always block, and must be distinctly named in
+    both `assets` and `blocking`, never silently absorbed into 'rejected'."""
+    with tempfile.TemporaryDirectory() as d:
+        root = Path(d)
+        store, ledger = Store(root), Ledger(root / "events.jsonl")
+        run_id = "review-error-run"
+        ledger.append(run_id=run_id, event_type="generation.registered",
+                       actor_role="test", payload={}, asset_id="a1")
+        store.set_state("a1", AssetState.REVIEW_ERROR.value)
+
+        report = build_run_report(
+            store, ledger, run_id,
+            repository_commit_resolver=_fixed_commit,
+            regression_runner=lambda _root: PASSING_REGRESSION,
+        )
+        assert report.assets["process_error"] == 1
+        assert report.assets["rejected"] == 0
+        assert report.terminal_status == "INCOMPLETE"
+        assert any("review_error" in b or "review-process error" in b for b in report.blocking)
+
+
+def test_prod_mismatch_never_yields_prod_verified():
+    """Same class of bug, other direction: a released asset whose
+    production bytes don't match the approved candidate must always block
+    terminal_status=PROD_VERIFIED, not be silently treated as an
+    acceptable resolved rejection."""
+    with tempfile.TemporaryDirectory() as d:
+        root = Path(d)
+        store, ledger = Store(root), Ledger(root / "events.jsonl")
+        run_id = "prod-mismatch-run"
+        ledger.append(run_id=run_id, event_type="generation.registered",
+                       actor_role="test", payload={}, asset_id="a1")
+        store.set_state("a1", AssetState.PROD_MISMATCH.value)
+
+        report = build_run_report(
+            store, ledger, run_id,
+            repository_commit_resolver=_fixed_commit,
+            regression_runner=lambda _root: PASSING_REGRESSION,
+        )
+        assert report.assets["prod_mismatch"] == 1
+        assert report.assets["rejected"] == 0
+        assert report.terminal_status == "INCOMPLETE"
+        assert any("prod_mismatch" in b for b in report.blocking)
+
+
+def test_default_regression_runner_is_safe_to_call_twice_against_same_store():
+    """Regression test for a real defect caught 2026-07-22 (see BUILD-LOG
+    Commit 18): the first live invocation of `mediactl run-report` against
+    a real store succeeded, but running it again against the SAME store
+    (a completely normal thing to do -- check status, resolve something,
+    check again) crashed with a raw FileExistsError, because the scratch
+    directory used for regression fixtures was reused as-is across calls
+    while at least one fixture creates its own subdirectories assuming a
+    fresh directory every time. Must never regress: calling this twice in
+    a row against the same store_root must succeed both times with the
+    same real result."""
+    with tempfile.TemporaryDirectory() as d:
+        store_root = Path(d)
+        first = default_regression_runner(store_root)
+        second = default_regression_runner(store_root)
+        assert first["all_passed"] is True
+        assert second["all_passed"] is True
+        assert first["passed"] == second["passed"] == 10
 
 
 def test_regression_failure_blocks_even_with_clean_assets():

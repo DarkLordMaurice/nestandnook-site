@@ -2029,3 +2029,105 @@ run-report` into whatever process is meant to call it in a real run.
 Absent further direction, this project's spec-driven build sequence is
 complete — everything named in Appendix A plus Section 24 exists as real,
 tested code.
+
+---
+
+## Commit 18: live canary + acceptance test — two real defects found and fixed in `run_report.py`
+
+**Completed:** 2026-07-22
+
+**Context:** Maurice ordered a real, non-simulated operational acceptance
+test — a genuine low-risk new asset through the real state machine, real
+Hugging Face generation, real fresh Claude observer/judge sessions (no
+monkeypatch/stub/simulate), the historical regression corpus through the
+real observer/judge process, real `mediactl run-report` evidence, and an
+explicit instruction not to declare NookGuard operational unless the real
+production hash matches the approved hash and every critical regression
+gets its expected verdict. Full results, including the hard technical wall
+this run hit and everything it could not verify, are reported to Maurice
+directly (not duplicated here) — this entry covers only the real code
+changes made as a direct result of running the test for real.
+
+**Two real defects in already-shipped Commit 17 code, both caught only
+because the tool was actually run against a real store, not because
+anything in its own test suite caught them first:**
+
+1. **A `REVIEW_ERROR` asset could make a run report `terminal_status:
+   PROD_VERIFIED` / `ok: true`.** The live canary's single asset hit a
+   real Anthropic API authentication failure during `observe` (this
+   sandbox has no `ANTHROPIC_API_KEY` anywhere — confirmed absent from
+   process, User, and Machine environment scopes) and correctly
+   transitioned to `REVIEW_ERROR`. `run_report.py`'s original
+   `REJECTED_STATES` set folded `REVIEW_ERROR` in with genuinely resolved
+   content rejections (`SEMANTIC_FAIL`, `OWNER_REJECTED`, etc.), and
+   nothing in the blocking logic distinguished "the review process itself
+   never completed" from "review completed and correctly said no." The
+   result: a run whose only asset was never actually reviewed by anything
+   still reported itself complete and verified — precisely the
+   self-certifying false positive this entire project exists to prevent,
+   now found in its own completion-reporting code.
+2. **`default_regression_runner` crashed on a second real call against
+   the same store.** Re-running `mediactl run-report` — a completely
+   normal thing to do — hit a raw `FileExistsError` inside the regression
+   corpus's `otter_aviary_stale_bytes_and_furniture` fixture, because the
+   scratch directory used for fixture files was reused as-is across calls
+   (only `exist_ok=True` at the top level) while that fixture creates its
+   own subdirectories assuming a genuinely fresh directory every time —
+   true under pytest's `tmp_path`, false on a second real invocation.
+
+**Changed files:**
+- `nookguard/run_report.py` — split the old single `REJECTED_STATES` into
+  three distinct sets: `CONTENT_REJECTED_STATES` (a real, resolved,
+  no-further-action rejection — unchanged behavior), `PROCESS_ERROR_STATES`
+  (`REVIEW_ERROR` — always blocks, always surfaced by name, never folded
+  into "rejected"), and `PROD_MISMATCH_STATES` (`PROD_MISMATCH` — pulled
+  out for the same reason in the other direction: released bytes not
+  matching approved must always block a "production verified" claim).
+  `RunReport.assets` gained two new keys, `process_error` and
+  `prod_mismatch`, in both the dataclass and the markdown/owner-summary
+  renderers. `default_regression_runner` now wipes and recreates its
+  scratch directory (`shutil.rmtree` + `mkdir`) on every call instead of
+  assuming it starts empty — safe, since that directory holds nothing but
+  disposable fixture scratch files, never real evidence.
+- `nookguard/tests/test_run_report.py` — updated the two existing
+  `assets == {...}` dict-equality assertions for the two new keys, and
+  added three new regression tests specifically for this incident:
+  `test_review_error_never_yields_prod_verified`,
+  `test_prod_mismatch_never_yields_prod_verified`, and
+  `test_default_regression_runner_is_safe_to_call_twice_against_same_store`
+  — all three would have failed against the pre-fix code, and exist so
+  this exact class of bug cannot silently regress.
+
+**Tests run:** `python -m pytest nookguard/tests/test_run_report.py -v`
+(both immediately after each fix and again after both), then the full
+suite `python -m pytest nookguard/tests/ -q` (all via Desktop Commander,
+real Windows Python 3.14.5)
+**Result:** 12/12 in `test_run_report.py` (up from 10 — 3 new, 1 removed
+duplicate count is not applicable, net +3 including the twice-call test);
+full suite 288/288 passed, 0 failures (up from 285 — confirms no
+regression anywhere else from the bucketing change).
+
+**Real evidence this fix is correct, from the live run itself, not just
+from the new unit tests:** re-running `mediactl run-report` against the
+actual live-canary store after the fix produced
+`"ok": false, "terminal_status": "INCOMPLETE", "assets": {"process_error":
+1, ...}, "blocking": ["1 asset(s) hit a review-process error (state:
+review_error) -- the review process itself did not complete..."]` — the
+honest, correct answer, replacing the pre-fix run's incorrect `"ok": true,
+"terminal_status": "PROD_VERIFIED"`.
+
+**Commit:** pending (written together with the code/test changes above in
+the same commit).
+
+**Unresolved risks:** none new beyond what Commit 17 already documented —
+this entry is a correctness fix to already-shipped code, not new scope.
+The underlying reason this bug existed to be found — no live
+`ANTHROPIC_API_KEY` anywhere in this environment, so `observe`/`judge`
+cannot be exercised for real here — remains exactly the standing gap
+Commit 7's `agent_runner.py` already documented ("Not exercised live in
+this session (no API key configured here)"); this commit does not close
+that gap, it only fixes how honestly the reporting layer behaves when
+that gap is hit.
+
+**Next:** none pre-specified; see Maurice's direct acceptance-test report
+for the full picture of what this live run did and did not verify.
