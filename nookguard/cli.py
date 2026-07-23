@@ -32,6 +32,9 @@ from .agent_runner import (
 )
 from .canon import CanonRegistry
 from .cli_reviewer import check_claude_cli_auth
+from .containment import (
+    ContainmentViolation, close_containment, cleanup_scratch, create_scratch, open_containment,
+)
 from .dedup import DedupRegistry
 from .deploy import WranglerDeployError, check_cloudflare_credentials, run_wrangler_deploy
 from .exceptions import (
@@ -41,7 +44,7 @@ from .exceptions import (
     NookGuardError,
     StaleCanonError,
 )
-from .hashing import sha256_bytes
+from .hashing import sha256_bytes, sha256_canonical_json
 from .ledger import Ledger
 from .off_the_clock_schema import (
     OFF_THE_CLOCK_CATEGORIES,
@@ -78,6 +81,115 @@ def _store(root: Path) -> Store:
 
 def _ledger(root: Path) -> Ledger:
     return Ledger(root / "events.jsonl")
+
+
+# ---- Commit 24: reviewer containment + response custody helpers ----
+# Shared by observe-prepare/-submit, judge-prepare/-submit, and
+# preview-review-prepare/-submit -- one real implementation of "create a
+# scratch dir, open containment, run the reviewer, close containment,
+# invalidate on violation" rather than three near-duplicate copies that
+# could quietly drift apart.
+
+def _site_root(args: argparse.Namespace) -> Path:
+    # cli.py already distinguishes --project-root (business-project root,
+    # brand-assets/ etc.) from the real site/ directory -- see
+    # public_media_guard.py's own module docstring for why conflating them
+    # is a real, previously-hit bug. cmd_media_audit/cmd_deploy already take
+    # an explicit --site-root; containment reuses that same convention,
+    # defaulting to the real site/ dir when a command has no such flag of
+    # its own (observe/judge/preview-review commands don't take --site-root
+    # today -- default to public_media_guard.DEFAULT_SITE_ROOT).
+    from .public_media_guard import DEFAULT_SITE_ROOT
+    return Path(getattr(args, "site_root", None) or DEFAULT_SITE_ROOT)
+
+
+def _open_review_containment(
+    args: argparse.Namespace, root: Path, label: str, candidate_path: Path | None, instructions: str,
+) -> tuple[Path, str]:
+    scratch_dir = create_scratch(root, label, candidate_path, instructions)
+    open_containment(root, scratch_dir, project_root=Path(args.project_root), site_root=_site_root(args))
+    return scratch_dir, scratch_dir.name
+
+
+def _close_review_containment(args: argparse.Namespace, root: Path, containment_id: str):
+    """Returns the closed ContainmentRecord on success. Raises
+    ContainmentViolation (uncaught here -- every call site below is
+    responsible for converting that into a real REVIEW_ERROR-equivalent
+    process failure, never a silently-accepted result) if anything outside
+    the scratch directory changed during the reviewer's turn."""
+    return close_containment(root, containment_id, project_root=Path(args.project_root), site_root=_site_root(args))
+
+
+def _validate_submit_hashes(
+    *, args: argparse.Namespace, response_text: str, expected_review_pack_sha256: str | None = None,
+    expected_contact_sheet_sha256: str | None = None,
+) -> Optional[dict[str, Any]]:
+    """Commit 24, requirements 5-6: every production-mode submit command now
+    requires the caller to supply (not just a --response-file, but) the
+    reviewer session ID it actually used, the raw response's own sha256, and
+    either the review-pack sha256 (observe/judge) or the contact-sheet
+    sha256 (preview-review) -- each independently re-verified here against
+    the real bytes/values on this side, rather than trusted at face value.
+    Returns an {"ok": False, ...} dict (the standard cli.py error contract)
+    on any mismatch, or None if everything checks out clean."""
+    if not args.reviewer_session_id or not args.reviewer_session_id.strip():
+        return {"ok": False, "error": "missing or empty --reviewer-session-id", "reason": "missing_session_id"}
+
+    actual_response_sha256 = sha256_bytes(response_text.encode("utf-8"))
+    if actual_response_sha256 != args.raw_response_sha256:
+        return {"ok": False, "error": "raw-response-sha256 mismatch: the response file's actual bytes do "
+                                       f"not hash to the supplied --raw-response-sha256 (expected "
+                                       f"{args.raw_response_sha256}, computed {actual_response_sha256}) -- "
+                                       "refusing to trust a response whose custody chain doesn't check out",
+                "reason": "raw_response_hash_mismatch",
+                "expected_raw_response_sha256": args.raw_response_sha256,
+                "actual_raw_response_sha256": actual_response_sha256}
+
+    if expected_review_pack_sha256 is not None:
+        supplied = getattr(args, "review_pack_sha256", None)
+        if supplied != expected_review_pack_sha256:
+            return {"ok": False, "error": "review-pack-sha256 mismatch: the supplied --review-pack-sha256 "
+                                           f"({supplied}) does not match the real review pack this candidate/"
+                                           f"role actually produces ({expected_review_pack_sha256})",
+                    "reason": "review_pack_hash_mismatch",
+                    "expected_review_pack_sha256": expected_review_pack_sha256,
+                    "supplied_review_pack_sha256": supplied}
+
+    if expected_contact_sheet_sha256 is not None:
+        supplied = getattr(args, "contact_sheet_sha256", None)
+        if supplied != expected_contact_sheet_sha256:
+            return {"ok": False, "error": "contact-sheet-sha256 mismatch: the supplied "
+                                           f"--contact-sheet-sha256 ({supplied}) does not match the real "
+                                           f"contact sheet on disk ({expected_contact_sheet_sha256})",
+                    "reason": "contact_sheet_hash_mismatch",
+                    "expected_contact_sheet_sha256": expected_contact_sheet_sha256,
+                    "supplied_contact_sheet_sha256": supplied}
+    return None
+
+
+def _persist_review_evidence(
+    root: Path, kind: str, key: str, *, raw_response: str, parsed_result: dict[str, Any] | None,
+    diagnostics: dict[str, Any],
+) -> dict[str, str]:
+    """Commit 24, requirement 7: the untouched raw response, the parsed/
+    validated result, and the parsing diagnostics are three SEPARATE files
+    -- never merged into one, so a later audit can always tell what the
+    model literally said apart from what NookGuard's own code concluded
+    from it. `kind` is 'observe'/'judge'/'preview_review'; `key` is
+    whatever uniquely identifies this specific submission (e.g.
+    '{candidate_sha256}_{role}')."""
+    evidence_dir = Path(root) / "review_evidence" / kind
+    evidence_dir.mkdir(parents=True, exist_ok=True)
+    raw_path = evidence_dir / f"{key}.raw_response.txt"
+    diag_path = evidence_dir / f"{key}.parsing_diagnostics.json"
+    raw_path.write_text(raw_response, encoding="utf-8")
+    diag_path.write_text(json.dumps(diagnostics, indent=2), encoding="utf-8")
+    result = {"raw_response_path": str(raw_path), "parsing_diagnostics_path": str(diag_path)}
+    if parsed_result is not None:
+        parsed_path = evidence_dir / f"{key}.parsed_result.json"
+        parsed_path.write_text(json.dumps(parsed_result, indent=2, default=str), encoding="utf-8")
+        result["parsed_result_path"] = str(parsed_path)
+    return result
 
 
 def cmd_run_start(args: argparse.Namespace) -> dict[str, Any]:
@@ -190,9 +302,31 @@ def cmd_generate(args: argparse.Namespace) -> dict[str, Any]:
     # candidate it produces could never be reviewed afterward -- that is
     # pure wasted generation cost/risk with no possible resolution. The
     # stub adapter is exempt (it exists purely for tests/dev and is never
-    # a real, reviewable asset); --skip-auth-check exists only so tests
-    # can inject a fake check without a real CLI/credential, never for
-    # real production use.
+    # a real, reviewable asset).
+    #
+    # Real correctness defect found and corrected 2026-07-23, during the
+    # first genuine attempt to generate a fresh candidate after Commit 23:
+    # this gate's rationale ("could not be reviewed afterward") was written
+    # when `claude_cli_executor` (a separate, manually-authenticated Claude
+    # Code CLI process) was the ONLY way review could happen -- so
+    # check_claude_cli_auth() was a correct proxy for "can this candidate
+    # be reviewed." Commit 23 made that proxy stale without updating this
+    # gate: review can now also happen via observe-prepare/-submit and
+    # judge-prepare/-submit, driven by a live, already-authenticated Cowork
+    # orchestrating agent's own subagents -- a real, working review path
+    # that check_claude_cli_auth() knows nothing about and will always
+    # report unauthenticated for, even though review genuinely CAN proceed.
+    # `--skip-auth-check` was previously documented as test-only; it is now
+    # the correct, real flag for exactly this production scenario: a live
+    # orchestrating agent calling `generate` is, by construction, already
+    # committing to perform observe-prepare/-submit and judge-prepare/
+    # -submit itself afterward (Commit 23's whole design), so the
+    # candidate is NOT actually unreviewable -- check_claude_cli_auth()
+    # was just asking the wrong question. This flag still has no legitimate
+    # use for a truly unattended caller with no live agent behind it (a bare
+    # scheduled subprocess with nobody able to perform the subagent half) --
+    # that caller genuinely cannot complete review either way, and should
+    # either use the real CLI-auth path or not generate at all.
     if args.adapter != "stub" and not getattr(args, "skip_auth_check", False):
         auth_result = check_claude_cli_auth()
         if not auth_result["authenticated"]:
@@ -408,15 +542,26 @@ def cmd_observe_prepare(args: argparse.Namespace) -> dict[str, Any]:
     (its own, separate login `mediactl` could never share with the
     orchestrating session), the orchestrating agent can now perform the
     actual model call itself, via its own Task/Agent tool, using exactly
-    the system prompt/instruction/image path this command returns. This
-    command performs and writes NOTHING -- safe to call repeatedly. Same
-    OBSERVING precondition `mediactl observe` has always had."""
+    the system prompt/instruction/image path this command returns.
+
+    Commit 24: that "image path" is no longer a path inside the real
+    quarantine store. This command now builds a purpose-built, single-use
+    reviewer scratch directory (containment.create_scratch) containing only
+    a COPY of the candidate bytes plus the instructions, opens containment
+    tracking against it (a pre-review snapshot of every protected root,
+    excluding that scratch dir), and returns the scratch copy's path as
+    `image_path` instead -- the reviewer subagent never receives a path
+    that resolves inside nookguard_store/quarantine, the real site source
+    tree, or any evidence directory. This command still performs and writes
+    NOTHING to any of the protected roots themselves (only the new,
+    dedicated scratch dir) -- safe to call repeatedly. Same OBSERVING
+    precondition `mediactl observe` has always had."""
     root = Path(args.store_root)
     store = _store(root)
     try:
         attempt = store.load_attempt(args.candidate_sha256)
         contract = store.load_spec(attempt.spec_sha256)
-        candidate_path = str(store.candidate_path(args.candidate_sha256))
+        candidate_path = store.candidate_path(args.candidate_sha256)
     except FileNotFoundError as e:
         return {"ok": False, "error": str(e)}
 
@@ -427,12 +572,18 @@ def cmd_observe_prepare(args: argparse.Namespace) -> dict[str, Any]:
     if args.role not in OBSERVER_ROLES:
         return {"ok": False, "error": f"Unknown --role '{args.role}', expected one of {OBSERVER_ROLES}"}
 
-    pack = build_review_pack(args.candidate_sha256, candidate_path, args.role)
+    pack = build_review_pack(args.candidate_sha256, str(candidate_path), args.role)
     prompt = build_observer_prompt(pack)
+    instructions_text = prompt["system_prompt"] + "\n\n---\n\n" + prompt["instruction"]
+    scratch_dir, containment_id = _open_review_containment(
+        args, root, f"observe-{args.role}-{args.candidate_sha256[:12]}", candidate_path, instructions_text,
+    )
+    scratch_image_path = scratch_dir / f"candidate{candidate_path.suffix}"
     return {"ok": True, "asset_id": contract.asset_id, "candidate_sha256": args.candidate_sha256,
             "role": prompt["role"], "system_prompt": prompt["system_prompt"],
-            "instruction": prompt["instruction"], "image_path": prompt["image_path"],
-            "review_pack_sha256": pack.review_pack_sha256}
+            "instruction": prompt["instruction"], "image_path": str(scratch_image_path),
+            "review_pack_sha256": pack.review_pack_sha256, "containment_id": containment_id,
+            "reviewer_scratch_dir": str(scratch_dir)}
 
 
 def cmd_observe_submit(args: argparse.Namespace) -> dict[str, Any]:
@@ -444,13 +595,24 @@ def cmd_observe_submit(args: argparse.Namespace) -> dict[str, Any]:
     never for the parsed/validated result. Transitions OBSERVING -> JUDGING
     only once BOTH roles have been submitted, mirroring `mediactl observe`'s
     original all-or-nothing behavior, just spread across two calls (in
-    either order) instead of one loop."""
+    either order) instead of one loop.
+
+    Commit 24: production-mode submission now REQUIRES --containment-id
+    (from the matching observe-prepare call), --reviewer-session-id,
+    --raw-response-sha256, and --review-pack-sha256 -- all independently
+    re-verified against real values on this side (never trusted at face
+    value), and the response is only ever accepted via --response-file
+    (inline JSON on the command line was never supported by this command
+    and remains unsupported, per requirement 6). Containment is closed
+    (post-review snapshot + diff) before the response is parsed at all --
+    a containment violation is a process failure (REVIEW_ERROR-equivalent),
+    never a silently-accepted pass or fail."""
     root = Path(args.store_root)
     store, ledger = _store(root), _ledger(root)
     try:
         attempt = store.load_attempt(args.candidate_sha256)
         contract = store.load_spec(attempt.spec_sha256)
-        candidate_path = str(store.candidate_path(args.candidate_sha256))
+        candidate_path = store.candidate_path(args.candidate_sha256)
     except FileNotFoundError as e:
         return {"ok": False, "error": str(e)}
 
@@ -460,24 +622,58 @@ def cmd_observe_submit(args: argparse.Namespace) -> dict[str, Any]:
                                        "(asset must be in observing state)"}
     if args.role not in OBSERVER_ROLES:
         return {"ok": False, "error": f"Unknown --role '{args.role}', expected one of {OBSERVER_ROLES}"}
+    if not args.containment_id:
+        return {"ok": False, "error": "missing --containment-id (from the matching observe-prepare call)",
+                "reason": "missing_containment_id"}
 
     response_text = Path(args.response_file).read_text(encoding="utf-8")
-    pack = build_review_pack(args.candidate_sha256, candidate_path, args.role)
+    pack = build_review_pack(args.candidate_sha256, str(candidate_path), args.role)
 
+    hash_error = _validate_submit_hashes(
+        args=args, response_text=response_text, expected_review_pack_sha256=pack.review_pack_sha256,
+    )
+    if hash_error is not None:
+        return hash_error
+
+    scratch_dir = root / "reviewer_scratch" / args.containment_id
     try:
-        obs = finalize_observation(pack, response_text)
+        _close_review_containment(args, root, args.containment_id)
+    except ContainmentViolation as e:
+        transition(current, AssetState.REVIEW_ERROR, asset_id=contract.asset_id)
+        store.set_state(contract.asset_id, AssetState.REVIEW_ERROR.value)
+        ledger.append(run_id=args.run_id, event_type="containment.violation", actor_role=args.actor_role,
+                      payload={"candidate_sha256": args.candidate_sha256, "role": args.role,
+                               "containment_id": args.containment_id, "violations": e.violations},
+                      asset_id=contract.asset_id)
+        cleanup_scratch(scratch_dir)
+        return {"ok": False, "error": str(e), "reason": "containment_violation", "violations": e.violations}
+    except FileNotFoundError as e:
+        return {"ok": False, "error": str(e), "reason": "containment_not_found"}
+
+    diagnostics: dict[str, Any] = {}
+    try:
+        obs = finalize_observation(pack, response_text, session_id=args.reviewer_session_id,
+                                    diagnostics_out=diagnostics)
     except ReviewSessionError as e:
         transition(current, AssetState.REVIEW_ERROR, asset_id=contract.asset_id)
         store.set_state(contract.asset_id, AssetState.REVIEW_ERROR.value)
         ledger.append(run_id=args.run_id, event_type="observation.error", actor_role=args.actor_role,
                       payload={"candidate_sha256": args.candidate_sha256, "role": e.role,
                                "reason": e.reason}, asset_id=contract.asset_id)
+        _persist_review_evidence(root, "observe", f"{args.candidate_sha256}_{args.role}",
+                                  raw_response=response_text, parsed_result=None, diagnostics=diagnostics)
+        cleanup_scratch(scratch_dir)
         return {"ok": False, "error": str(e), "role": e.role}
 
     store.save_observation(obs)
+    _persist_review_evidence(root, "observe", f"{args.candidate_sha256}_{args.role}",
+                              raw_response=response_text, parsed_result=obs.model_dump(mode="json"),
+                              diagnostics=diagnostics)
+    cleanup_scratch(scratch_dir)
     ledger.append(run_id=args.run_id, event_type="observation.submitted", actor_role=args.actor_role,
                   payload={"candidate_sha256": args.candidate_sha256, "role": args.role,
-                           "reviewer_session_id": obs.reviewer_session_id},
+                           "reviewer_session_id": obs.reviewer_session_id, "containment_id": args.containment_id,
+                           "raw_response_sha256": args.raw_response_sha256},
                   asset_id=contract.asset_id, actor_session_id=args.session_id)
 
     other_role = [r for r in OBSERVER_ROLES if r != args.role][0]
@@ -555,9 +751,13 @@ def cmd_judge_prepare(args: argparse.Namespace) -> dict[str, Any]:
     """Commit 23: the judge-side counterpart to observe-prepare. Returns the
     real system prompt and requirement/observation payload a live
     orchestrating agent needs to perform the judge session itself (via its
-    own Task/Agent tool) -- writes nothing, safe to call repeatedly. Same
-    JUDGING precondition `mediactl judge` has always had (both observations
-    must already be saved, via observe-submit or the atomic observe)."""
+    own Task/Agent tool) -- writes nothing but the new dedicated scratch dir
+    (Commit 24, same pattern as observe-prepare) -- safe to call repeatedly.
+    Same JUDGING precondition `mediactl judge` has always had (both
+    observations must already be saved, via observe-submit or the atomic
+    observe). The judge never sees an image (Appendix D boundary,
+    unaffected by containment) -- its scratch dir holds only the system
+    prompt + payload as instructions.txt, no candidate copy."""
     root = Path(args.store_root)
     store = _store(root)
     try:
@@ -574,8 +774,15 @@ def cmd_judge_prepare(args: argparse.Namespace) -> dict[str, Any]:
                                        "(asset must be in judging state, set by mediactl observe/observe-submit)"}
 
     prompt = build_judge_prompt(contract, blind_obs, adversarial_obs)
+    payload_json = json.dumps(prompt["payload"], indent=2)
+    review_pack_sha256 = sha256_canonical_json(prompt["payload"])
+    instructions_text = prompt["system_prompt"] + "\n\n---\n\n" + payload_json
+    _scratch_dir, containment_id = _open_review_containment(
+        args, root, f"judge-{args.candidate_sha256[:12]}", None, instructions_text,
+    )
     return {"ok": True, "asset_id": contract.asset_id, "candidate_sha256": args.candidate_sha256,
-            "system_prompt": prompt["system_prompt"], "payload_json": json.dumps(prompt["payload"], indent=2)}
+            "system_prompt": prompt["system_prompt"], "payload_json": payload_json,
+            "review_pack_sha256": review_pack_sha256, "containment_id": containment_id}
 
 
 def cmd_judge_submit(args: argparse.Namespace) -> dict[str, Any]:
@@ -583,7 +790,14 @@ def cmd_judge_submit(args: argparse.Namespace) -> dict[str, Any]:
     own live Task/Agent subagent call using judge-prepare's exact
     system_prompt/payload_json) and runs it through the identical parse/
     enrich/schema-validate/save/aggregate/enqueue logic `mediactl judge`
-    has always used."""
+    has always used.
+
+    Commit 24: same custody requirements as observe-submit --
+    --containment-id, --reviewer-session-id, --raw-response-sha256, and
+    --review-pack-sha256 (a hash of the exact requirements/forbidden-
+    objects/observations payload the judge was shown, matching what
+    judge-prepare returned) are all required and independently
+    re-verified. Containment is closed before the response is trusted."""
     root = Path(args.store_root)
     store, ledger = _store(root), _ledger(root)
     try:
@@ -598,20 +812,54 @@ def cmd_judge_submit(args: argparse.Namespace) -> dict[str, Any]:
     if current != AssetState.JUDGING:
         return {"ok": False, "error": f"Illegal state {current.value} for judge-submit "
                                        "(asset must be in judging state)"}
+    if not args.containment_id:
+        return {"ok": False, "error": "missing --containment-id (from the matching judge-prepare call)",
+                "reason": "missing_containment_id"}
 
     response_text = Path(args.response_file).read_text(encoding="utf-8")
     prompt = build_judge_prompt(contract, blind_obs, adversarial_obs)
+    real_review_pack_sha256 = sha256_canonical_json(prompt["payload"])
 
+    hash_error = _validate_submit_hashes(
+        args=args, response_text=response_text, expected_review_pack_sha256=real_review_pack_sha256,
+    )
+    if hash_error is not None:
+        return hash_error
+
+    scratch_dir = root / "reviewer_scratch" / args.containment_id
     try:
-        judgment = finalize_judgment(blind_obs, attempt.spec_sha256, prompt["payload"], response_text)
+        _close_review_containment(args, root, args.containment_id)
+    except ContainmentViolation as e:
+        transition(current, AssetState.REVIEW_ERROR, asset_id=contract.asset_id)
+        store.set_state(contract.asset_id, AssetState.REVIEW_ERROR.value)
+        ledger.append(run_id=args.run_id, event_type="containment.violation", actor_role=args.actor_role,
+                      payload={"candidate_sha256": args.candidate_sha256, "role": "judge",
+                               "containment_id": args.containment_id, "violations": e.violations},
+                      asset_id=contract.asset_id)
+        cleanup_scratch(scratch_dir)
+        return {"ok": False, "error": str(e), "reason": "containment_violation", "violations": e.violations}
+    except FileNotFoundError as e:
+        return {"ok": False, "error": str(e), "reason": "containment_not_found"}
+
+    diagnostics: dict[str, Any] = {}
+    try:
+        judgment = finalize_judgment(blind_obs, attempt.spec_sha256, prompt["payload"], response_text,
+                                      session_id=args.reviewer_session_id, diagnostics_out=diagnostics)
     except ReviewSessionError as e:
         transition(current, AssetState.REVIEW_ERROR, asset_id=contract.asset_id)
         store.set_state(contract.asset_id, AssetState.REVIEW_ERROR.value)
         ledger.append(run_id=args.run_id, event_type="judgment.error", actor_role=args.actor_role,
                       payload={"candidate_sha256": args.candidate_sha256, "reason": e.reason},
                       asset_id=contract.asset_id)
+        _persist_review_evidence(root, "judge", args.candidate_sha256,
+                                  raw_response=response_text, parsed_result=None, diagnostics=diagnostics)
+        cleanup_scratch(scratch_dir)
         return {"ok": False, "error": str(e), "role": e.role}
     store.save_judgment(judgment)
+    _persist_review_evidence(root, "judge", args.candidate_sha256,
+                              raw_response=response_text, parsed_result=judgment.model_dump(mode="json"),
+                              diagnostics=diagnostics)
+    cleanup_scratch(scratch_dir)
 
     result = aggregate(contract, judgment, blind_obs, adversarial_obs)
     transition(AssetState.JUDGING, result.state, asset_id=contract.asset_id)
@@ -628,7 +876,8 @@ def cmd_judge_submit(args: argparse.Namespace) -> dict[str, Any]:
 
     ledger.append(run_id=args.run_id, event_type="judgment.completed", actor_role=args.actor_role,
                   payload={"candidate_sha256": args.candidate_sha256, "result": result.state.value,
-                           "reasons": result.reasons, "queued_for_owner": queued},
+                           "reasons": result.reasons, "queued_for_owner": queued,
+                           "containment_id": args.containment_id, "raw_response_sha256": args.raw_response_sha256},
                   asset_id=contract.asset_id, actor_session_id=args.session_id)
     return {"ok": True, "asset_id": contract.asset_id, "result": result.state.value,
             "reasons": result.reasons, "queued_for_owner": queued}
@@ -960,7 +1209,15 @@ def cmd_preview_review_prepare(args: argparse.Namespace) -> dict[str, Any]:
     """Commit 23: the preview-reviewer counterpart to observe-prepare.
     Returns the real system prompt, instruction, and contact-sheet path a
     live orchestrating agent needs to perform the page-review session
-    itself. Writes nothing, safe to call repeatedly. Same PREVIEWED
+    itself.
+
+    Commit 24: the "contact-sheet path" is now a COPY inside a dedicated
+    reviewer scratch directory, same containment pattern as observe-prepare
+    -- and per requirement 4, this scratch directory is also the ONLY place
+    the reviewer is permitted to create crops (the instructions file says
+    so explicitly, and containment's post-review diff enforces it: any
+    crop written outside the scratch dir invalidates the review). Writes
+    only the new scratch dir -- safe to call repeatedly. Same PREVIEWED
     precondition `mediactl preview-review` has always had."""
     root = Path(args.store_root)
     store = _store(root)
@@ -983,9 +1240,24 @@ def cmd_preview_review_prepare(args: argparse.Namespace) -> dict[str, Any]:
     capture_reports = [PageCaptureReport(**r) for r in capture["reports"]]
     viewports_captured = [r.viewport_name for r in capture_reports]
     prompt = build_page_review_prompt(capture["contact_sheet_path"], capture["page_url"], viewports_captured)
+    contact_sheet_path = Path(prompt["image_path"])
+    contact_sheet_sha256 = sha256_bytes(contact_sheet_path.read_bytes())
+
+    instructions_text = (
+        prompt["system_prompt"] + "\n\n---\n\n" + prompt["instruction"]
+        + "\n\nIf you need to inspect a region more closely and choose to create a cropped "
+          "image, you may create it ONLY inside this same directory as the contact sheet you "
+          "were given -- creating any file outside this directory invalidates your review."
+    )
+    scratch_dir, containment_id = _open_review_containment(
+        args, root, f"preview-review-{args.candidate_sha256[:12]}", contact_sheet_path, instructions_text,
+    )
+    scratch_image_path = scratch_dir / f"candidate{contact_sheet_path.suffix}"
     return {"ok": True, "asset_id": contract.asset_id, "system_prompt": prompt["system_prompt"],
-            "instruction": prompt["instruction"], "image_path": prompt["image_path"],
-            "page_url": prompt["page_url"], "viewports_captured": viewports_captured}
+            "instruction": prompt["instruction"], "image_path": str(scratch_image_path),
+            "page_url": prompt["page_url"], "viewports_captured": viewports_captured,
+            "contact_sheet_sha256": contact_sheet_sha256, "containment_id": containment_id,
+            "reviewer_scratch_dir": str(scratch_dir)}
 
 
 def cmd_preview_review_submit(args: argparse.Namespace) -> dict[str, Any]:
@@ -993,7 +1265,15 @@ def cmd_preview_review_submit(args: argparse.Namespace) -> dict[str, Any]:
     own live Task/Agent subagent call using preview-review-prepare's exact
     system_prompt/instruction/image_path) and runs it through the identical
     parse/enrich/schema-validate/save/aggregate logic `mediactl preview-
-    review` has always used."""
+    review` has always used.
+
+    Commit 24: same custody requirements as observe-submit --
+    --containment-id, --reviewer-session-id, --raw-response-sha256, and
+    --contact-sheet-sha256 (the real contact sheet's own sha256, matching
+    what preview-review-prepare returned) are all required and
+    independently re-verified. Containment is closed (which also validates
+    that any crop the reviewer created landed inside its scratch dir, per
+    requirement 4) before the response is trusted."""
     root = Path(args.store_root)
     store, ledger = _store(root), _ledger(root)
     try:
@@ -1006,6 +1286,9 @@ def cmd_preview_review_submit(args: argparse.Namespace) -> dict[str, Any]:
     if current != AssetState.PREVIEWED:
         return {"ok": False, "error": f"Illegal state {current.value} for preview-review-submit "
                                        "(asset must be in previewed state)"}
+    if not args.containment_id:
+        return {"ok": False, "error": "missing --containment-id (from the matching "
+                                       "preview-review-prepare call)", "reason": "missing_containment_id"}
 
     try:
         capture = store.load_preview_capture(args.candidate_sha256)
@@ -1015,18 +1298,49 @@ def cmd_preview_review_submit(args: argparse.Namespace) -> dict[str, Any]:
     capture_reports = [PageCaptureReport(**r) for r in capture["reports"]]
     viewports_captured = [r.viewport_name for r in capture_reports]
     response_text = Path(args.response_file).read_text(encoding="utf-8")
+    real_contact_sheet_sha256 = sha256_bytes(Path(capture["contact_sheet_path"]).read_bytes())
 
+    hash_error = _validate_submit_hashes(
+        args=args, response_text=response_text, expected_contact_sheet_sha256=real_contact_sheet_sha256,
+    )
+    if hash_error is not None:
+        return hash_error
+
+    scratch_dir = root / "reviewer_scratch" / args.containment_id
+    try:
+        _close_review_containment(args, root, args.containment_id)
+    except ContainmentViolation as e:
+        transition(current, AssetState.REVIEW_ERROR, asset_id=contract.asset_id)
+        store.set_state(contract.asset_id, AssetState.REVIEW_ERROR.value)
+        ledger.append(run_id=args.run_id, event_type="containment.violation", actor_role=args.actor_role,
+                      payload={"candidate_sha256": args.candidate_sha256, "role": "preview_reviewer",
+                               "containment_id": args.containment_id, "violations": e.violations},
+                      asset_id=contract.asset_id)
+        cleanup_scratch(scratch_dir)
+        return {"ok": False, "error": str(e), "reason": "containment_violation", "violations": e.violations}
+    except FileNotFoundError as e:
+        return {"ok": False, "error": str(e), "reason": "containment_not_found"}
+
+    diagnostics: dict[str, Any] = {}
     try:
         review = finalize_page_review(capture["page_url"], viewports_captured,
-                                       capture["contact_sheet_path"], response_text)
+                                       capture["contact_sheet_path"], response_text,
+                                       session_id=args.reviewer_session_id, diagnostics_out=diagnostics)
     except ReviewSessionError as e:
         transition(current, AssetState.REVIEW_ERROR, asset_id=contract.asset_id)
         store.set_state(contract.asset_id, AssetState.REVIEW_ERROR.value)
         ledger.append(run_id=args.run_id, event_type="preview_review.error", actor_role=args.actor_role,
                       payload={"candidate_sha256": args.candidate_sha256, "reason": e.reason},
                       asset_id=contract.asset_id)
+        _persist_review_evidence(root, "preview_review", args.candidate_sha256,
+                                  raw_response=response_text, parsed_result=None, diagnostics=diagnostics)
+        cleanup_scratch(scratch_dir)
         return {"ok": False, "error": str(e), "role": e.role}
     store.save_page_review(args.candidate_sha256, review)
+    _persist_review_evidence(root, "preview_review", args.candidate_sha256,
+                              raw_response=response_text, parsed_result=review.model_dump(mode="json"),
+                              diagnostics=diagnostics)
+    cleanup_scratch(scratch_dir)
 
     result = aggregate_preview(capture_reports, review)
     transition(current, result.state, asset_id=contract.asset_id)
@@ -1034,7 +1348,8 @@ def cmd_preview_review_submit(args: argparse.Namespace) -> dict[str, Any]:
 
     ledger.append(run_id=args.run_id, event_type="preview_review.completed", actor_role=args.actor_role,
                   payload={"candidate_sha256": args.candidate_sha256, "result": result.state.value,
-                           "reasons": result.reasons},
+                           "reasons": result.reasons, "containment_id": args.containment_id,
+                           "raw_response_sha256": args.raw_response_sha256},
                   asset_id=contract.asset_id, actor_session_id=args.session_id)
     return {"ok": True, "asset_id": contract.asset_id, "result": result.state.value, "reasons": result.reasons}
 
@@ -1424,11 +1739,13 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--prompt", required=True)
     p.add_argument("--adapter", default="stub")
     # Commit 19: real (non-stub) generation refuses to run unless a real
-    # auth-check passes first -- see cmd_generate's docstring. This flag
-    # exists ONLY so tests can inject a fake/skipped check without a real
-    # CLI or credential present; it must never be passed in real production
-    # use (there is no real use case for generating a candidate that is
-    # known in advance to be unreviewable).
+    # auth-check passes first -- see cmd_generate's docstring, and its
+    # Commit 23 correction: this flag is legitimate real-production usage
+    # when the caller is a live orchestrating agent that will itself
+    # perform observe-prepare/-submit and judge-prepare/-submit afterward
+    # (Commit 23's subagent-driven review) -- NOT legitimate for a bare
+    # unattended caller with no live agent able to complete review either
+    # way.
     p.add_argument("--skip-auth-check", action="store_true", default=False)
     p.set_defaults(func=cmd_generate)
 
@@ -1467,6 +1784,12 @@ def build_parser() -> argparse.ArgumentParser:
     # contract (cmd_observe_prepare/cmd_observe_submit's own graceful
     # `role not in OBSERVER_ROLES` check), not a raw argparse SystemExit.
     p.add_argument("--role", required=True)
+    p.add_argument("--site-root", default=None,
+                    help="Optional override for the site tree Commit 24 containment snapshots/diffs "
+                         "against (defaults to the real site/ directory, public_media_guard."
+                         "DEFAULT_SITE_ROOT). Exists so tests and dry runs can point containment at a "
+                         "small fixture directory instead of hashing the entire real site tree on "
+                         "every call -- production use should leave this unset.")
     p.set_defaults(func=cmd_observe_prepare)
 
     p = sub.add_parser("observe-submit"); _common(p)
@@ -1480,6 +1803,26 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--response-file", required=True,
                     help="Path to a file containing the raw model response text obtained via the "
                          "caller's own Task/Agent subagent call using observe-prepare's system_prompt.")
+    p.add_argument("--containment-id", required=True,
+                    help="The containment_id returned by observe-prepare. Custody chain: submit closes "
+                         "this containment and rejects the review if anything outside the reviewer's "
+                         "scratch directory changed (Commit 24 requirement 2).")
+    p.add_argument("--reviewer-session-id", required=True,
+                    help="Opaque identifier for the actual reviewer session/subagent invocation that "
+                         "produced --response-file (Commit 24 requirement 5).")
+    p.add_argument("--raw-response-sha256", required=True,
+                    help="SHA-256 of the exact bytes in --response-file, computed by the caller before "
+                         "submission. Must match a fresh hash of --response-file's contents or the "
+                         "submission is rejected -- this is the check for tampering/substitution between "
+                         "prepare and submit (Commit 24 requirement 5).")
+    p.add_argument("--review-pack-sha256", required=True,
+                    help="The review_pack_sha256 the caller was shown at observe-prepare time. Must "
+                         "match the pack's real, freshly recomputed hash or the submission is rejected "
+                         "(Commit 24 requirement 5).")
+    p.add_argument("--site-root", default=None,
+                    help="Must match the --site-root the matching observe-prepare call used (both "
+                         "default to the real site/ directory when unset). See observe-prepare's own "
+                         "--site-root help for why this override exists.")
     p.set_defaults(func=cmd_observe_submit)
 
     p = sub.add_parser("judge"); _common(p)
@@ -1488,6 +1831,9 @@ def build_parser() -> argparse.ArgumentParser:
 
     p = sub.add_parser("judge-prepare"); _common(p)
     p.add_argument("--candidate-sha256", required=True)
+    p.add_argument("--site-root", default=None,
+                    help="Optional containment site-root override -- see observe-prepare's own "
+                         "--site-root help.")
     p.set_defaults(func=cmd_judge_prepare)
 
     p = sub.add_parser("judge-submit"); _common(p)
@@ -1495,6 +1841,25 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--response-file", required=True,
                     help="Path to a file containing the raw model response text obtained via the "
                          "caller's own Task/Agent subagent call using judge-prepare's system_prompt.")
+    p.add_argument("--containment-id", required=True,
+                    help="The containment_id returned by judge-prepare. Custody chain: submit closes "
+                         "this containment and rejects the review if anything outside the reviewer's "
+                         "scratch directory changed (Commit 24 requirement 2).")
+    p.add_argument("--reviewer-session-id", required=True,
+                    help="Opaque identifier for the actual reviewer session/subagent invocation that "
+                         "produced --response-file (Commit 24 requirement 5).")
+    p.add_argument("--raw-response-sha256", required=True,
+                    help="SHA-256 of the exact bytes in --response-file, computed by the caller before "
+                         "submission. Must match a fresh hash of --response-file's contents or the "
+                         "submission is rejected (Commit 24 requirement 5).")
+    p.add_argument("--review-pack-sha256", required=True,
+                    help="The review_pack_sha256 (sha256_canonical_json of the judge payload) the "
+                         "caller was shown at judge-prepare time. Must match the freshly recomputed "
+                         "hash of the real payload or the submission is rejected (Commit 24 "
+                         "requirement 5).")
+    p.add_argument("--site-root", default=None,
+                    help="Must match the --site-root the matching judge-prepare call used -- see "
+                         "observe-prepare's own --site-root help.")
     p.set_defaults(func=cmd_judge_submit)
 
     p = sub.add_parser("review-retry"); _common(p)
@@ -1541,6 +1906,9 @@ def build_parser() -> argparse.ArgumentParser:
 
     p = sub.add_parser("preview-review-prepare"); _common(p)
     p.add_argument("--candidate-sha256", required=True)
+    p.add_argument("--site-root", default=None,
+                    help="Optional containment site-root override -- see observe-prepare's own "
+                         "--site-root help.")
     p.set_defaults(func=cmd_preview_review_prepare)
 
     p = sub.add_parser("preview-review-submit"); _common(p)
@@ -1548,6 +1916,25 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--response-file", required=True,
                     help="Path to a file containing the raw model response text obtained via the "
                          "caller's own Task/Agent subagent call using preview-review-prepare's system_prompt.")
+    p.add_argument("--containment-id", required=True,
+                    help="The containment_id returned by preview-review-prepare. Custody chain: submit "
+                         "closes this containment and rejects the review if anything outside the "
+                         "reviewer's scratch directory changed -- including any crop file created "
+                         "outside that directory (Commit 24 requirements 2 and 4).")
+    p.add_argument("--reviewer-session-id", required=True,
+                    help="Opaque identifier for the actual reviewer session/subagent invocation that "
+                         "produced --response-file (Commit 24 requirement 5).")
+    p.add_argument("--raw-response-sha256", required=True,
+                    help="SHA-256 of the exact bytes in --response-file, computed by the caller before "
+                         "submission. Must match a fresh hash of --response-file's contents or the "
+                         "submission is rejected (Commit 24 requirement 5).")
+    p.add_argument("--contact-sheet-sha256", required=True,
+                    help="SHA-256 of the contact sheet image the caller was shown at "
+                         "preview-review-prepare time. Must match a fresh hash of the real contact "
+                         "sheet file or the submission is rejected (Commit 24 requirement 5).")
+    p.add_argument("--site-root", default=None,
+                    help="Must match the --site-root the matching preview-review-prepare call used -- "
+                         "see observe-prepare's own --site-root help.")
     p.set_defaults(func=cmd_preview_review_submit)
 
     p = sub.add_parser("release"); _common(p)

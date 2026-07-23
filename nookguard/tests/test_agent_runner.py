@@ -201,11 +201,15 @@ def test_agent_definition_hash_changes_with_content():
 
 
 def test_extract_json_handles_plain_json():
-    assert _extract_json('{"a": 1}') == {"a": 1}
+    parsed, diagnostics = _extract_json('{"a": 1}')
+    assert parsed == {"a": 1}
+    assert diagnostics["markdown_fence_stripped"] is False
 
 
 def test_extract_json_handles_code_fence_with_json_label():
-    assert _extract_json('```json\n{"a": 1}\n```') == {"a": 1}
+    parsed, diagnostics = _extract_json('```json\n{"a": 1}\n```')
+    assert parsed == {"a": 1}
+    assert diagnostics["markdown_fence_stripped"] is True
 
 
 def test_extract_json_raises_on_no_json_object():

@@ -23,6 +23,50 @@ SAMPLE_CONTRACT = {
 }
 
 
+@pytest.fixture(autouse=True)
+def _fast_containment_site_root(monkeypatch, tmp_path):
+    """Commit 24: observe/judge/preview-review -prepare/-submit each open a
+    containment snapshot (containment.py) of an entire site tree before and
+    after the reviewer's turn. Left at its production default (the real
+    site/ directory -- hundreds of real content images per CLAUDE.md's own
+    backlog notes), every CLI-level test in this file that touches one of
+    those six commands would re-hash the ENTIRE real site tree on every
+    single call -- confirmed directly: a real-site-rooted run of this file
+    took 74+ seconds even AFTER this fix scoped things down, and was still
+    running (unclear how much longer) before this fix existed. These tests
+    exercise the CLI's OWN logic (state transitions, custody-hash
+    validation, containment-violation detection), not the real site's
+    content, so every test gets a small, real, per-test directory as its
+    containment site-root instead -- same evidence-based snapshot/diff
+    mechanism containment.py always uses, just scoped to a directory these
+    tests actually control and that starts empty (a nonexistent/empty root
+    snapshots as zero files, per containment._iter_files's own early
+    return -- cheap and correct).
+
+    Patches `cli_module._site_root` itself (the helper exclusively used by
+    the six observe/judge/preview-review commands), NOT
+    public_media_guard.DEFAULT_SITE_ROOT directly -- an earlier version of
+    this fixture patched that module attribute instead, which broke three
+    unrelated pre-existing tests (test_media_audit_cli_real_site_tree_is_
+    clean, test_write_path_audit_cli_real_site_tree,
+    test_deploy_cli_real_unmocked_reaches_wrangler_with_real_credentials)
+    that each do their own `from nookguard.public_media_guard import
+    DEFAULT_SITE_ROOT` to deliberately test against the REAL site tree --
+    patching the shared module attribute silently redirected those live
+    imports too. Patching `_site_root` instead only touches the six
+    containment-using commands, leaving every other command's own
+    site-root resolution completely untouched.
+
+    Tests that need to prove something about a real mutation (e.g. the
+    containment-violation test) monkeypatch `cli_module._site_root` again
+    themselves, pointed at their own explicit fixture directory -- this
+    simply overrides the value for that one test, no conflict."""
+    import nookguard.cli as cli_module
+    fixture_root = tmp_path / "fixture_site_root"
+    monkeypatch.setattr(cli_module, "_site_root", lambda args: fixture_root)
+    return fixture_root
+
+
 def test_full_pipeline_run_start_through_validate():
     with tempfile.TemporaryDirectory() as d:
         store_root = str(Path(d) / "store")
@@ -389,6 +433,26 @@ def _write_response_file(tmp_path: Path, name: str, payload: dict) -> str:
     return str(p)
 
 
+def _submit_custody_args(prepared: dict, response_file: str, *, pack_key: str = "review_pack_sha256",
+                          session_id: str = "test-reviewer-session") -> list:
+    """Commit 24: builds the --containment-id/--reviewer-session-id/
+    --raw-response-sha256/--review-pack-sha256(or --contact-sheet-sha256)
+    flags every *-submit command now requires, from a real *-prepare
+    response and the real response-file bytes already on disk -- this is
+    exactly what a real caller must compute, not a shortcut around the
+    custody chain. `pack_key` is 'review_pack_sha256' for observe/judge or
+    'contact_sheet_sha256' for preview-review."""
+    from nookguard.hashing import sha256_bytes
+    raw_bytes = Path(response_file).read_bytes()
+    flag = "--" + pack_key.replace("_", "-")
+    return [
+        "--containment-id", prepared["containment_id"],
+        "--reviewer-session-id", session_id,
+        "--raw-response-sha256", sha256_bytes(raw_bytes),
+        flag, prepared[pack_key],
+    ]
+
+
 # ---- Commit 23: observe-prepare/-submit, judge-prepare/-submit, preview-
 # review-prepare/-submit -- the agent-native path a live orchestrating
 # agent (this Cowork session, or a scheduled task) uses instead of the
@@ -428,17 +492,25 @@ def test_observe_submit_waits_for_both_roles_then_transitions_to_judging(tmp_pat
     run_id = "run-os1"
     candidate_sha = _drive_to_observing(store_root, run_id, contract_path)
 
+    prepared_a = run_cli(["observe-prepare", "--store-root", store_root, "--candidate-sha256", candidate_sha,
+                           "--role", "blind_a"])
+    assert prepared_a["ok"], prepared_a
     response_a = _write_response_file(tmp_path, "blind_a.json", {"overall_summary_for_humans": "sees a desk"})
     first = run_cli(["observe-submit", "--store-root", store_root, "--run-id", run_id,
                       "--candidate-sha256", candidate_sha,
-                      "--role", "blind_a", "--response-file", response_a])
+                      "--role", "blind_a", "--response-file", response_a,
+                      *_submit_custody_args(prepared_a, response_a)])
     assert first["ok"], first
     assert first.get("waiting_for") == "adversarial_b"
 
+    prepared_b = run_cli(["observe-prepare", "--store-root", store_root, "--candidate-sha256", candidate_sha,
+                           "--role", "adversarial_b"])
+    assert prepared_b["ok"], prepared_b
     response_b = _write_response_file(tmp_path, "adversarial_b.json", {"overall_summary_for_humans": "sees a desk too"})
     second = run_cli(["observe-submit", "--store-root", store_root, "--run-id", run_id,
                        "--candidate-sha256", candidate_sha,
-                       "--role", "adversarial_b", "--response-file", response_b])
+                       "--role", "adversarial_b", "--response-file", response_b,
+                       *_submit_custody_args(prepared_b, response_b)])
     assert second["ok"], second
     assert second["state"] == "judging"
     assert set(second["observations"].keys()) == {"blind_a", "adversarial_b"}
@@ -453,14 +525,20 @@ def test_observe_submit_either_order_reaches_judging(tmp_path):
     run_id = "run-os2"
     candidate_sha = _drive_to_observing(store_root, run_id, contract_path)
 
+    prepared_b = run_cli(["observe-prepare", "--store-root", store_root, "--candidate-sha256", candidate_sha,
+                           "--role", "adversarial_b"])
     response_b = _write_response_file(tmp_path, "adversarial_b.json", {})
     run_cli(["observe-submit", "--store-root", store_root, "--run-id", run_id,
              "--candidate-sha256", candidate_sha,
-             "--role", "adversarial_b", "--response-file", response_b])
+             "--role", "adversarial_b", "--response-file", response_b,
+             *_submit_custody_args(prepared_b, response_b)])
+    prepared_a = run_cli(["observe-prepare", "--store-root", store_root, "--candidate-sha256", candidate_sha,
+                           "--role", "blind_a"])
     response_a = _write_response_file(tmp_path, "blind_a.json", {})
     second = run_cli(["observe-submit", "--store-root", store_root, "--run-id", run_id,
                        "--candidate-sha256", candidate_sha,
-                       "--role", "blind_a", "--response-file", response_a])
+                       "--role", "blind_a", "--response-file", response_a,
+                       *_submit_custody_args(prepared_a, response_a)])
     assert second["state"] == "judging"
 
 
@@ -471,21 +549,28 @@ def test_observe_submit_invalid_response_transitions_to_review_error(tmp_path):
     run_id = "run-os3"
     candidate_sha = _drive_to_observing(store_root, run_id, contract_path)
 
+    prepared = run_cli(["observe-prepare", "--store-root", store_root, "--candidate-sha256", candidate_sha,
+                         "--role", "blind_a"])
     bad_response = tmp_path / "bad.json"
     bad_response.write_text("not json at all", encoding="utf-8")
     result = run_cli(["observe-submit", "--store-root", store_root, "--run-id", run_id,
                        "--candidate-sha256", candidate_sha,
-                       "--role", "blind_a", "--response-file", str(bad_response)])
+                       "--role", "blind_a", "--response-file", str(bad_response),
+                       *_submit_custody_args(prepared, str(bad_response))])
     assert not result["ok"]
     assert result["role"] == "blind_a"
 
     # State machine reflects the failure for real -- a second submit attempt
     # (even a valid one) is correctly rejected, matching the atomic
-    # observe command's own all-or-nothing failure behavior.
+    # observe command's own all-or-nothing failure behavior. The state
+    # check runs before any custody validation, so placeholder custody
+    # values are fine here -- this call is rejected before they'd matter.
     good_response = _write_response_file(tmp_path, "good.json", {})
     retry = run_cli(["observe-submit", "--store-root", store_root, "--run-id", run_id,
                       "--candidate-sha256", candidate_sha,
-                      "--role", "adversarial_b", "--response-file", good_response])
+                      "--role", "adversarial_b", "--response-file", good_response,
+                      "--containment-id", "placeholder", "--reviewer-session-id", "placeholder",
+                      "--raw-response-sha256", "placeholder", "--review-pack-sha256", "placeholder"])
     assert not retry["ok"]
 
 
@@ -519,7 +604,8 @@ def test_full_pipeline_via_prepare_submit_reaches_semantic_pass(tmp_path):
         response_file = _write_response_file(tmp_path, f"{role}.json", {"overall_summary_for_humans": "ok"})
         submitted = run_cli(["observe-submit", "--store-root", store_root, "--run-id", run_id,
                               "--candidate-sha256", candidate_sha,
-                              "--role", role, "--response-file", response_file])
+                              "--role", role, "--response-file", response_file,
+                              *_submit_custody_args(prepared, response_file)])
         assert submitted["ok"], submitted
 
     judge_prepared = run_cli(["judge-prepare", "--store-root", store_root, "--candidate-sha256", candidate_sha])
@@ -533,7 +619,8 @@ def test_full_pipeline_via_prepare_submit_reaches_semantic_pass(tmp_path):
     })
     judged = run_cli(["judge-submit", "--store-root", store_root, "--run-id", run_id,
                        "--candidate-sha256", candidate_sha,
-                       "--response-file", judge_response])
+                       "--response-file", judge_response,
+                       *_submit_custody_args(judge_prepared, judge_response)])
     assert judged["ok"], judged
     assert judged["result"] == "semantic_pass"
 
@@ -546,16 +633,22 @@ def test_judge_submit_invalid_response_transitions_to_review_error(tmp_path):
     candidate_sha = _drive_to_observing(store_root, run_id, contract_path)
 
     for role in ("blind_a", "adversarial_b"):
+        prepared = run_cli(["observe-prepare", "--store-root", store_root, "--candidate-sha256", candidate_sha,
+                             "--role", role])
         response_file = _write_response_file(tmp_path, f"{role}.json", {})
         run_cli(["observe-submit", "--store-root", store_root, "--run-id", run_id,
                  "--candidate-sha256", candidate_sha,
-                 "--role", role, "--response-file", response_file])
+                 "--role", role, "--response-file", response_file,
+                 *_submit_custody_args(prepared, response_file)])
 
+    judge_prepared = run_cli(["judge-prepare", "--store-root", store_root, "--candidate-sha256", candidate_sha])
+    assert judge_prepared["ok"], judge_prepared
     bad_response = tmp_path / "bad_judge.json"
     bad_response.write_text("garbage", encoding="utf-8")
     result = run_cli(["judge-submit", "--store-root", store_root, "--run-id", run_id,
                        "--candidate-sha256", candidate_sha,
-                       "--response-file", str(bad_response)])
+                       "--response-file", str(bad_response),
+                       *_submit_custody_args(judge_prepared, str(bad_response))])
     assert not result["ok"]
     assert result["role"] == "judge"
 
@@ -588,7 +681,8 @@ def test_preview_review_prepare_and_submit_reaches_preview_review_pass(monkeypat
     })
     submitted = run_cli(["preview-review-submit", "--store-root", store_root, "--run-id", run_id,
                           "--candidate-sha256", candidate_sha,
-                          "--response-file", response_file])
+                          "--response-file", response_file,
+                          *_submit_custody_args(prepared, response_file, pack_key="contact_sheet_sha256")])
     assert submitted["ok"], submitted
     assert submitted["result"] == "preview_review_pass"
 
@@ -1036,6 +1130,20 @@ def test_deploy_cli_refuses_when_public_media_unapproved(tmp_path):
     assert result["reason"] == "unapproved_public_media"
 
 
+@pytest.mark.xfail(
+    reason="Pre-existing, confirmed-unrelated-to-Commit-24 Windows Wrangler crash "
+           "(exit code 3221226505, 'Assertion failed: !(handle->flags & "
+           "UV_HANDLE_CLOSING)', src/win/async.c line 94). Verified 2026-07-23 by "
+           "stashing every Commit 24 change and running this exact test against "
+           "clean HEAD (commit 25335c0) -- identical failure, byte-for-byte same "
+           "assertion. This is precisely the issue Commit 27 ('Wrangler "
+           "investigation and controlled deployment') exists to reproduce outside "
+           "pytest and fix; Commit 24 does not touch deploy/wrangler code at all. "
+           "strict=True so this marker itself becomes a hard failure (XPASS) the "
+           "moment Commit 27's fix lands and this test starts passing again -- "
+           "remove the marker then, don't let it linger.",
+    strict=True,
+)
 def test_deploy_cli_real_unmocked_reaches_wrangler_with_real_credentials(tmp_path):
     """Real, unmocked `mediactl deploy` against the actual site tree (whose
     media-audit is confirmed clean above). Updated post-Commit-22 (see
@@ -1079,3 +1187,223 @@ def test_deploy_cli_real_unmocked_reaches_wrangler_with_real_credentials(tmp_pat
     assert result["ok"] is False
     assert result["reason"] == "nonzero_exit"
     assert "does not exist" in result["error"]
+
+
+# ---- Commit 24, requirement 8: reviewer containment and response custody
+# tests -- unauthorized mutation, changed response bytes, wrong session ID,
+# wrong candidate hash, wrong review-pack hash, and permitted scratch-file
+# creation. ----
+
+def test_containment_violation_invalidates_review_and_sets_review_error(monkeypatch, tmp_path):
+    """Requirement 2/8: something writing outside the reviewer's scratch
+    directory during the reviewer's turn -- exactly the failure mode a
+    subagent's own tool-type restriction can't be trusted to prevent --
+    must invalidate the review (never be silently accepted), transition
+    the asset to REVIEW_ERROR, and leave a tamper-evident
+    containment.violation ledger event."""
+    import nookguard.cli as cli_module
+    fake_site_root = tmp_path / "fake_site"
+    (fake_site_root / "src").mkdir(parents=True)
+    (fake_site_root / "src" / "existing.txt").write_text("original", encoding="utf-8")
+    monkeypatch.setattr(cli_module, "_site_root", lambda args: fake_site_root)
+
+    store_root = str(tmp_path / "store")
+    contract_path = tmp_path / "contract.json"
+    contract_path.write_text(json.dumps(SAMPLE_CONTRACT))
+    run_id = "run-containment-violation"
+    candidate_sha = _drive_to_observing(store_root, run_id, contract_path)
+
+    prepared = run_cli(["observe-prepare", "--store-root", store_root, "--candidate-sha256", candidate_sha,
+                         "--role", "blind_a"])
+    assert prepared["ok"], prepared
+
+    # Unauthorized mutation: a file outside the designated reviewer scratch
+    # directory changes during the reviewer's "turn".
+    (fake_site_root / "src" / "existing.txt").write_text("mutated by something outside scratch", encoding="utf-8")
+
+    response = _write_response_file(tmp_path, "blind_a.json", {"overall_summary_for_humans": "sees a desk"})
+    result = run_cli(["observe-submit", "--store-root", store_root, "--run-id", run_id,
+                       "--candidate-sha256", candidate_sha,
+                       "--role", "blind_a", "--response-file", response,
+                       *_submit_custody_args(prepared, response)])
+    assert not result["ok"], result
+    assert result["reason"] == "containment_violation"
+    assert any("existing.txt" in p for paths in result["violations"].values() for p in paths)
+
+    from nookguard.state_machine import AssetState
+    from nookguard.store import Store
+    store = Store(Path(store_root))
+    assert store.get_state(SAMPLE_CONTRACT["asset_id"]) == AssetState.REVIEW_ERROR.value
+
+    ledger_path = Path(store_root) / "events.jsonl"
+    events = [json.loads(line) for line in ledger_path.read_text(encoding="utf-8").splitlines() if line.strip()]
+    violation_events = [e for e in events if e["event_type"] == "containment.violation"]
+    assert len(violation_events) == 1, events
+    assert violation_events[0]["payload"]["candidate_sha256"] == candidate_sha
+
+
+def test_observe_submit_rejects_changed_response_bytes(tmp_path):
+    """Requirement 5/8: --raw-response-sha256 must match the ACTUAL bytes in
+    --response-file. A caller supplying a hash that doesn't correspond to
+    the real file (simulating substitution/tampering between prepare and
+    submit) must be rejected before the response is ever parsed or
+    trusted."""
+    store_root = str(tmp_path / "store")
+    contract_path = tmp_path / "contract.json"
+    contract_path.write_text(json.dumps(SAMPLE_CONTRACT))
+    run_id = "run-changed-bytes"
+    candidate_sha = _drive_to_observing(store_root, run_id, contract_path)
+
+    prepared = run_cli(["observe-prepare", "--store-root", store_root, "--candidate-sha256", candidate_sha,
+                         "--role", "blind_a"])
+    assert prepared["ok"], prepared
+    response = _write_response_file(tmp_path, "blind_a.json", {"overall_summary_for_humans": "sees a desk"})
+
+    result = run_cli(["observe-submit", "--store-root", store_root, "--run-id", run_id,
+                       "--candidate-sha256", candidate_sha,
+                       "--role", "blind_a", "--response-file", response,
+                       "--containment-id", prepared["containment_id"],
+                       "--reviewer-session-id", "test-reviewer-session",
+                       "--raw-response-sha256", "0" * 64,  # deliberately wrong
+                       "--review-pack-sha256", prepared["review_pack_sha256"]])
+    assert not result["ok"], result
+    assert result["reason"] == "raw_response_hash_mismatch"
+
+    # The asset must still be in OBSERVING (this call never even reached
+    # containment closure or the state machine) so a real, valid retry can
+    # still succeed.
+    from nookguard.state_machine import AssetState
+    from nookguard.store import Store
+    store = Store(Path(store_root))
+    assert store.get_state(SAMPLE_CONTRACT["asset_id"]) == AssetState.OBSERVING.value
+
+
+def test_observe_submit_rejects_missing_reviewer_session_id(tmp_path):
+    """Requirement 5/8: an empty/missing --reviewer-session-id (a 'wrong'/
+    absent session ID) must be rejected -- every submitted review must be
+    attributable to a real reviewer session, never anonymous."""
+    store_root = str(tmp_path / "store")
+    contract_path = tmp_path / "contract.json"
+    contract_path.write_text(json.dumps(SAMPLE_CONTRACT))
+    run_id = "run-wrong-session"
+    candidate_sha = _drive_to_observing(store_root, run_id, contract_path)
+
+    prepared = run_cli(["observe-prepare", "--store-root", store_root, "--candidate-sha256", candidate_sha,
+                         "--role", "blind_a"])
+    assert prepared["ok"], prepared
+    response = _write_response_file(tmp_path, "blind_a.json", {"overall_summary_for_humans": "sees a desk"})
+    from nookguard.hashing import sha256_bytes
+    raw_sha = sha256_bytes(Path(response).read_bytes())
+
+    result = run_cli(["observe-submit", "--store-root", store_root, "--run-id", run_id,
+                       "--candidate-sha256", candidate_sha,
+                       "--role", "blind_a", "--response-file", response,
+                       "--containment-id", prepared["containment_id"],
+                       "--reviewer-session-id", "   ",  # blank/whitespace-only -- treated as missing
+                       "--raw-response-sha256", raw_sha,
+                       "--review-pack-sha256", prepared["review_pack_sha256"]])
+    assert not result["ok"], result
+    assert result["reason"] == "missing_session_id"
+
+
+def test_observe_submit_rejects_unregistered_candidate_hash(tmp_path):
+    """Requirement 5/8 ('wrong candidate hash'): submitting against a
+    candidate_sha256 that was never registered/prepared for this store must
+    be rejected cleanly, never silently accepted as if it were the real
+    reviewed candidate."""
+    store_root = str(tmp_path / "store")
+    contract_path = tmp_path / "contract.json"
+    contract_path.write_text(json.dumps(SAMPLE_CONTRACT))
+    run_id = "run-wrong-candidate"
+    candidate_sha = _drive_to_observing(store_root, run_id, contract_path)
+
+    prepared = run_cli(["observe-prepare", "--store-root", store_root, "--candidate-sha256", candidate_sha,
+                         "--role", "blind_a"])
+    assert prepared["ok"], prepared
+    response = _write_response_file(tmp_path, "blind_a.json", {"overall_summary_for_humans": "sees a desk"})
+
+    wrong_candidate_sha = "f" * 64  # well-formed sha256 shape, but never registered
+    result = run_cli(["observe-submit", "--store-root", store_root, "--run-id", run_id,
+                       "--candidate-sha256", wrong_candidate_sha,
+                       "--role", "blind_a", "--response-file", response,
+                       *_submit_custody_args(prepared, response)])
+    assert not result["ok"], result
+    assert "error" in result
+
+    # The real candidate's own state is untouched by the rejected attempt.
+    from nookguard.state_machine import AssetState
+    from nookguard.store import Store
+    store = Store(Path(store_root))
+    assert store.get_state(SAMPLE_CONTRACT["asset_id"]) == AssetState.OBSERVING.value
+
+
+def test_observe_submit_rejects_wrong_review_pack_hash(tmp_path):
+    """Requirement 5/8: a --review-pack-sha256 that doesn't match the real
+    review pack this candidate/role actually produces must be rejected --
+    this is the check that catches a caller (or reviewer) claiming to have
+    reviewed different requirements/forbidden-objects than what was
+    genuinely shown."""
+    store_root = str(tmp_path / "store")
+    contract_path = tmp_path / "contract.json"
+    contract_path.write_text(json.dumps(SAMPLE_CONTRACT))
+    run_id = "run-wrong-pack-hash"
+    candidate_sha = _drive_to_observing(store_root, run_id, contract_path)
+
+    prepared = run_cli(["observe-prepare", "--store-root", store_root, "--candidate-sha256", candidate_sha,
+                         "--role", "blind_a"])
+    assert prepared["ok"], prepared
+    response = _write_response_file(tmp_path, "blind_a.json", {"overall_summary_for_humans": "sees a desk"})
+    from nookguard.hashing import sha256_bytes
+    raw_sha = sha256_bytes(Path(response).read_bytes())
+
+    result = run_cli(["observe-submit", "--store-root", store_root, "--run-id", run_id,
+                       "--candidate-sha256", candidate_sha,
+                       "--role", "blind_a", "--response-file", response,
+                       "--containment-id", prepared["containment_id"],
+                       "--reviewer-session-id", "test-reviewer-session",
+                       "--raw-response-sha256", raw_sha,
+                       "--review-pack-sha256", "1" * 64])  # deliberately wrong
+    assert not result["ok"], result
+    assert result["reason"] == "review_pack_hash_mismatch"
+
+    from nookguard.state_machine import AssetState
+    from nookguard.store import Store
+    store = Store(Path(store_root))
+    assert store.get_state(SAMPLE_CONTRACT["asset_id"]) == AssetState.OBSERVING.value
+
+
+def test_permitted_scratch_file_creation_does_not_trigger_containment_violation(monkeypatch, tmp_path):
+    """Requirement 4/8: a reviewer creating a crop file *inside* its own
+    scratch directory is legitimate and must NOT be flagged -- containment
+    only rejects changes OUTSIDE the scratch dir. Simulates the crop the
+    way a real preview reviewer would produce one, then confirms submit
+    still succeeds cleanly with no containment violation."""
+    store_root = str(tmp_path / "store")
+    contract_path = tmp_path / "contract.json"
+    contract_path.write_text(json.dumps(SAMPLE_CONTRACT))
+    run_id = "run-permitted-scratch"
+
+    candidate_sha = _drive_to_semantic_pass(monkeypatch, store_root, run_id, contract_path)
+    run_cli(["integrate", "--store-root", store_root, "--run-id", run_id,
+             "--candidate-sha256", candidate_sha, "--page-url", "https://nestandnook.org/x/"])
+    page_url = _write_html("<html><body><h1>Real rendered page</h1></body></html>", tmp_path)
+    run_cli(["preview-capture", "--store-root", store_root, "--run-id", run_id,
+             "--candidate-sha256", candidate_sha, "--page-url", page_url])
+
+    prepared = run_cli(["preview-review-prepare", "--store-root", store_root, "--candidate-sha256", candidate_sha])
+    assert prepared["ok"], prepared
+
+    # A permitted crop, created exactly where requirement 4 says it's
+    # allowed: inside the reviewer's own scratch directory.
+    scratch_dir = Path(prepared["reviewer_scratch_dir"])
+    (scratch_dir / "crop_region_1.png").write_bytes(b"fake-crop-bytes")
+
+    response_file = _write_response_file(tmp_path, "page_review.json", {
+        "issues": [], "overall_summary_for_humans": "Clean render, no defects found.",
+    })
+    submitted = run_cli(["preview-review-submit", "--store-root", store_root, "--run-id", run_id,
+                          "--candidate-sha256", candidate_sha,
+                          "--response-file", response_file,
+                          *_submit_custody_args(prepared, response_file, pack_key="contact_sheet_sha256")])
+    assert submitted["ok"], submitted
+    assert submitted["result"] == "preview_review_pass"

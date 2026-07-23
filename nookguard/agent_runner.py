@@ -132,20 +132,35 @@ def _default_executor(system_prompt: str, user_content: list[dict[str, Any]]) ->
     return "".join(block.text for block in response.content if block.type == "text")
 
 
-def _extract_json(raw_text: str) -> dict[str, Any]:
+def _extract_json(raw_text: str) -> tuple[dict[str, Any], dict[str, Any]]:
     """Model responses sometimes wrap JSON in a markdown code fence despite
     explicit instructions not to -- strip that, then take the first balanced
-    {...} span rather than assuming the whole string is clean JSON."""
+    {...} span rather than assuming the whole string is clean JSON.
+
+    Commit 24, requirement 7: returns (parsed, diagnostics) instead of just
+    parsed -- `diagnostics` is the real, checkable record of what parsing
+    actually did to the raw text (was a fence stripped, where the brace span
+    was found, what top-level keys came out) so a caller can persist it
+    SEPARATELY from both the untouched raw response and the final schema-
+    validated result, per requirement 7's three-way split."""
     text = raw_text.strip()
+    diagnostics: dict[str, Any] = {
+        "raw_length": len(raw_text), "stripped_length": len(text), "markdown_fence_stripped": False,
+    }
     if text.startswith("```"):
+        diagnostics["markdown_fence_stripped"] = True
         text = text.strip("`")
         if text.lower().startswith("json"):
             text = text[4:]
         text = text.strip()
     start, end = text.find("{"), text.rfind("}")
+    diagnostics["brace_start_index"] = start
+    diagnostics["brace_end_index"] = end
     if start == -1 or end == -1 or end < start:
         raise json.JSONDecodeError("no JSON object found in response", text, 0)
-    return json.loads(text[start:end + 1])
+    parsed = json.loads(text[start:end + 1])
+    diagnostics["parsed_top_level_keys"] = sorted(parsed.keys()) if isinstance(parsed, dict) else None
+    return parsed, diagnostics
 
 
 def build_observer_prompt(review_pack: ReviewPack, *, agents_dir: Path = AGENTS_DIR) -> dict[str, Any]:
@@ -180,6 +195,7 @@ def finalize_observation(
     *,
     agents_dir: Path = AGENTS_DIR,
     session_id: str | None = None,
+    diagnostics_out: dict[str, Any] | None = None,
 ) -> BlindObservation:
     """The exact parse/enrich/schema-validate logic run_observer_session has
     always used, taking an already-obtained raw_response instead of calling
@@ -187,16 +203,22 @@ def finalize_observation(
     Task/Agent tool call gets the identical real validation a CLI/API
     executor's response would have gotten. `session_id` is injectable for
     tests; a real caller lets it default to a fresh uuid4, exactly as
-    before."""
+    before. `diagnostics_out`, if given a dict, is populated in place with
+    `_extract_json`'s parsing diagnostics (Commit 24, requirement 7) --
+    optional and additive, every existing call site is unaffected."""
     role = review_pack.observer_role
     prompt_file = ("adversarial_observer_system_prompt.md" if role == "adversarial_b"
                    else "blind_observer_system_prompt.md")
     session_id = session_id or str(uuid.uuid4())
 
     try:
-        parsed = _extract_json(raw_response)
+        parsed, diagnostics = _extract_json(raw_response)
     except Exception as e:
+        if diagnostics_out is not None:
+            diagnostics_out["error"] = str(e)
         raise ReviewSessionError(role, f"session failed or returned invalid JSON: {e}", raw_response=raw_response)
+    if diagnostics_out is not None:
+        diagnostics_out.update(diagnostics)
 
     parsed["candidate_sha256"] = review_pack.candidate_sha256
     parsed["review_pack_sha256"] = review_pack.review_pack_sha256
@@ -268,16 +290,23 @@ def finalize_judgment(
     *,
     agents_dir: Path = AGENTS_DIR,
     session_id: str | None = None,
+    diagnostics_out: dict[str, Any] | None = None,
 ) -> ContractJudgment:
     """The exact parse/enrich/schema-validate logic run_judge_session has
     always used. `payload` is the same dict build_judge_prompt() returned
     (needed again here only to recompute context_bundle_sha256 identically
-    to before) -- a caller always has it already, from the prepare step."""
+    to before) -- a caller always has it already, from the prepare step.
+    `diagnostics_out` -- see finalize_observation's docstring, same
+    contract."""
     session_id = session_id or str(uuid.uuid4())
     try:
-        parsed = _extract_json(raw_response)
+        parsed, diagnostics = _extract_json(raw_response)
     except Exception as e:
+        if diagnostics_out is not None:
+            diagnostics_out["error"] = str(e)
         raise ReviewSessionError("judge", f"session failed or returned invalid JSON: {e}", raw_response=raw_response)
+    if diagnostics_out is not None:
+        diagnostics_out.update(diagnostics)
 
     parsed["candidate_sha256"] = blind_observation.candidate_sha256
     parsed["judge_session_id"] = session_id
@@ -348,15 +377,22 @@ def finalize_page_review(
     *,
     agents_dir: Path = AGENTS_DIR,
     session_id: str | None = None,
+    diagnostics_out: dict[str, Any] | None = None,
 ) -> PageReviewResult:
     """The exact parse/enrich/schema-validate logic run_page_review_session
-    has always used, taking an already-obtained raw_response."""
+    has always used, taking an already-obtained raw_response.
+    `diagnostics_out` -- see finalize_observation's docstring, same
+    contract."""
     session_id = session_id or str(uuid.uuid4())
     try:
-        parsed = _extract_json(raw_response)
+        parsed, diagnostics = _extract_json(raw_response)
     except Exception as e:
+        if diagnostics_out is not None:
+            diagnostics_out["error"] = str(e)
         raise ReviewSessionError("page_reviewer", f"session failed or returned invalid JSON: {e}",
                                   raw_response=raw_response)
+    if diagnostics_out is not None:
+        diagnostics_out.update(diagnostics)
 
     parsed["page_url"] = page_url
     parsed.setdefault("viewports_reviewed", viewports_captured)
