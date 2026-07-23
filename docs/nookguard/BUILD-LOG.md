@@ -2707,3 +2707,160 @@ Cloudflare release path (gated on real credentials, per the limitation
 above), fetch and verify real production bytes, and only then evaluate
 whether NookGuard meets every one of the nine real conditions required to
 be declared OPERATIONAL.
+
+---
+
+## Commit 22: Final live canary — RUN, RESULT: NOT OPERATIONAL (real, honest)
+
+**Completed:** 2026-07-22
+
+**Why this commit:** the final step of the Commit 19-22 sequence — attempt
+the complete real pipeline end to end against the actual live canary
+asset, using everything built in Commits 19-21 (Claude Code CLI reviewer
+transport + REVIEW_ERROR recovery, real live-review regression, public-
+media containment, controlled Cloudflare deploy), and only declare
+NookGuard OPERATIONAL if every one of the nine real conditions in the
+original instruction is genuinely met. This entry reports the real result
+of actually running it — not a projection of what would happen once
+credentials exist.
+
+**1. Reuse vs. recreate the canary candidate:** REUSED, per instruction —
+the state-machine recovery permitted it. A real, pre-existing canary asset
+(`nookguard-canary-2026-07-22-pegboard-wall-measure`, candidate
+`9be476db40b23998c12efea2990ccdc601ba02ba8a15f1f3c9a8e023ffd10fd7`) was
+found sitting in `review_error` in the real local store
+(`nookguard_store/asset_states/`), left over from an earlier session. Ran
+`mediactl review-retry --candidate-sha256 9be476db...` for real: it
+succeeded (`prior_failure_count: 1`, `retries_remaining: 1`), transitioning
+the asset `REVIEW_ERROR -> REVIEW_PENDING -> OBSERVING` for this exact,
+unchanged candidate — proving Commit 19's recovery mechanism works against
+a real, previously-broken asset, not just its own test fixtures. No new
+candidate was generated; none was needed.
+
+**2. Run the real Claude observer and judge:** ATTEMPTED FOR REAL, OBSERVER
+DID NOT COMPLETE. Ran `mediactl observe` against the recovered candidate.
+Real, unmocked result: `"ok": false, "error": "Review session error
+(blind_a): session failed or returned invalid JSON: Claude Code CLI
+transport failed (auth_unavailable): Not logged in · Please run /login"`.
+This is the real Claude Code CLI itself (resolved at `C:\Users\weare\
+AppData\Roaming\Claude\claude-code\2.1.217\claude.exe`, confirmed via a
+real `mediactl auth-check` run in the same session — `authenticated:
+false, reason: auth_unavailable`) reporting it is not logged in under this
+Windows identity. Exactly the same standing gap Commits 19-20 already
+documented, now hit for real against the real canary asset, not just a
+regression fixture. The asset correctly transitioned back to
+`REVIEW_ERROR` (confirmed by re-reading its real state file after the
+attempt) — one retry consumed, one remaining. Judge was never reached
+(observe must complete first). No fabricated PASS was produced anywhere in
+this chain.
+
+**3. Run the complete live-review regression corpus:** RUN FOR REAL, ALL 4
+FIXTURES HONESTLY REPORT `REVIEW_ERROR`. `mediactl regression --mode
+live-review` against the real corpus: `review_process_completed_count: 0`,
+`fixture_count: 4`, every fixture's `detail` citing the identical real
+`auth_unavailable`/"Not logged in" error as step 2 — consistent, not a
+fluke. The separate deterministic regression corpus (unaffected by the
+auth gap, exercised via the real `mediactl run-report` call in step 8
+below) remains 10/10 passing, matching every prior run since Commit 13.
+
+**4-7. Staging screenshots, release, deploy, production-verify: NOT
+ATTEMPTED — correctly blocked upstream, not skipped.** The real pipeline
+requires `judge` to reach `SEMANTIC_PASS` before `integrate` (needed for a
+real page URL to screenshot), `RELEASED` (needed for a content-hashed
+public file), or any downstream step can run. Since the real observer
+session never completed (step 2), the candidate never left `REVIEW_ERROR`
+and none of these steps had a legal state to run from — `state_machine.py`
+would reject the attempt outright. Running them anyway against an
+unrelated asset would have produced misleading, non-canary evidence, so
+none were attempted. Separately, and independently of the observer gap,
+`mediactl deploy` was run for real to confirm Commit 21's deploy gate
+itself still behaves correctly: real `media-audit` first (`ok: true`, 344
+baseline-unchanged, 0 unapproved — the real live site tree is clean), then
+real `deploy` — correctly refused with `"reason":
+"cloudflare_credentials_unavailable"`, `"missing": ["CLOUDFLARE_API_TOKEN",
+"CLOUDFLARE_ACCOUNT_ID"]`, confirming Commit 21's finding (both variables
+genuinely absent at every Windows scope) still holds. `write-path-audit`
+was also re-run for real against the live tree: `media_write_count: 0`
+(confirms the `tests/` exclusion fix from Commit 21 holds against the real
+tree, not just the test suite); `deploy_invocation_count: 49`, all of them
+real, expected comment/import/string matches in `deploy.py`/`cli.py`/
+`write_path_audit.py`'s own source and the separate `nookguard-worker`
+Cloudflare Worker code — enumerative, not a containment failure.
+
+**8. Generate final run-report, owner summary, and evidence index: DONE,
+REAL.** `mediactl run-report --run-id nn-commit22-canary` produced real
+artifacts at `nookguard_store/reports/nn-commit22-canary/{run-report.json,
+run-report.md, owner-summary.txt, evidence-index.json}` (local operational
+store, not committed to git — consistent with how every prior canary/
+regression run's artifacts have been handled in this project). Real
+content, read back after generation to confirm (not assumed):
+`"terminal_status": "INCOMPLETE"`, `"ok": false`,
+`"release_manifest_sha256": null`, `"production_deployment_id": null`,
+`"assets": {"process_error": 1, "approved": 0, "production_verified": 0,
+...}`, `"regression_suite": {"passed": 10, "failed": 0, "all_passed":
+true}`, `"blocking": ["1 asset(s) hit a review-process error (state:
+review_error) -- the review process itself did not complete, so no real
+decision was ever reached for these..."]`. The owner-summary.txt reads
+plainly: `Run nn-commit22-canary: INCOMPLETE ... review-process errors 1
+... Regression suite: 10 passed, 0 failed`.
+
+**9. Operational determination — NOT MET, reported honestly, not
+inflated.** Checked against every one of the nine real conditions from the
+original instruction:
+- Real observer and judge sessions completed — **NO** (observer failed at
+  the real auth wall; judge never ran).
+- Every critical live regression produced its expected verdict — **NO**
+  (all 4 fixtures stopped at `REVIEW_ERROR`, none reached their expected
+  `semantic_pass`/`semantic_fail` verdict).
+- No public-media bypass remains — **YES** (real `media-audit`: clean;
+  real `write-path-audit`: 0 media-write findings; H008 strengthened in
+  Commit 21).
+- Staging passed — **NOT REACHED** (no candidate ever reached
+  `INTEGRATED`/`PREVIEWED` this run).
+- Approved and production hashes match — **NOT REACHED** (no release this
+  run, so no hash to compare).
+- The deployment ID and release-manifest hash are recorded — **NO**
+  (`production_deployment_id: null`, `release_manifest_sha256: null`,
+  confirmed in the real run-report above; `mediactl deploy` correctly
+  refused rather than fabricating either value).
+
+**NookGuard's operational status remains NOT OPERATIONAL.** This is the
+correct, honest result given the real state of this environment, not a
+regression or a new problem: two genuine, previously-documented external
+gaps — (a) the Claude Code CLI is not authenticated under this Windows
+identity (`claude setup-token` has not been run by Maurice), and (b) no
+Cloudflare API credentials exist on this machine at any scope — block
+every step downstream of the real observer call. Every piece of NookGuard
+built across Commits 1-21 that COULD be exercised without those two
+external actions was exercised for real in this commit and behaved
+exactly as designed: recovery of a genuinely broken candidate, honest
+non-fabricated failure reporting at the auth wall, a real and correctly
+clean containment audit, a real and correctly-refusing deploy gate, and a
+real, accurate run-report reflecting all of it. What remains is not more
+code — it is two real-world actions only Maurice can take:
+1. Run `claude setup-token` (or set `CLAUDE_CODE_OAUTH_TOKEN`) under the
+   same Windows identity NookGuard runs as, then re-run `mediactl
+   auth-check` to confirm.
+2. Create a Cloudflare API token scoped to `Pages:Edit` for the
+   `nestandnook-site` project (at
+   `https://dash.cloudflare.com/profile/api-tokens`) and the account ID,
+   set both as persistent Windows User-level environment variables, then
+   re-run `mediactl deploy` to confirm.
+Once both are true, re-running this exact canary (`mediactl review-retry`
++ `observe` + `judge` + `integrate` + `preview-capture` + `preview-review`
++ `release` + `deploy` + `production-verify` + `run-report`, in that
+order, against either this same recovered candidate — one retry remains —
+or a fresh one) is the real, next, and final step toward an honest
+OPERATIONAL determination. No code change is anticipated to be required
+for that run; this commit is evidence-only.
+
+**Changed files:** none in `nookguard/` itself — this commit is a real
+operational run, not a code change. `docs/nookguard/BUILD-LOG.md` (this
+entry) is the only file changed.
+
+**Tests run:** `python -m pytest nookguard/tests/ -q`, re-run after this
+commit's real operational commands to confirm no regression. **Result:**
+365/365 passed, 0 failures — unchanged from Commit 21 (expected, since no
+production code changed).
+
+**Commit:** pending (to be recorded here once pushed).
