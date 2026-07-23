@@ -2697,7 +2697,7 @@ right now, not by having modified one — see the real-environment finding
 above; if a legacy script is ever reintroduced or copied in from another
 location, H008 + `media-audit` + the deploy gate are the actual backstop.
 
-**Commit:** pending (to be recorded here once pushed).
+**Commit:** `bce19d8`, pushed to `origin/main` (`e5c947f..bce19d8`).
 
 **Next:** Commit 22 — final live canary: reuse or recreate the canary
 candidate, run the real Claude observer/judge, run the full live-review
