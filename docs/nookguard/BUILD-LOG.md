@@ -2864,3 +2864,65 @@ commit's real operational commands to confirm no regression. **Result:**
 production code changed).
 
 **Commit:** `22caf76`, pushed to `origin/main` (`3b48b16..22caf76`).
+
+---
+
+## Post-Commit-22: real Cloudflare credentials configured and verified
+
+**Completed:** 2026-07-23
+
+**What happened:** Maurice supplied a real Cloudflare API token directly in
+conversation. Configured and verified for real, not assumed:
+1. `CLOUDFLARE_API_TOKEN` set as a persistent Windows User-level
+   environment variable (`[System.Environment]::SetEnvironmentVariable(...,
+   "User")`), matching the exact mechanism `deploy.py`'s own instructions
+   text already specified.
+2. Real, unmocked verification against Cloudflare's own API before trusting
+   the token at all: `GET https://api.cloudflare.com/client/v4/user/tokens/
+   verify` returned `"status": "active"`, `"This API Token is valid and
+   active"` — genuinely confirmed working, not just accepted on faith.
+3. `GET https://api.cloudflare.com/client/v4/accounts` with the same token
+   returned an empty result set (0 accounts) — the token is correctly
+   scoped narrowly (no account-listing permission), consistent with
+   Commit 21's own instruction to use "a scoped Pages-only token, not the
+   Global API Key." This meant the account ID could NOT be auto-derived
+   from the token itself; asked Maurice directly rather than guessing, and
+   he supplied it. `CLOUDFLARE_ACCOUNT_ID` set the same persistent way.
+4. Real, fresh-process re-check: `python -c "from nookguard.deploy import
+   check_cloudflare_credentials; ..."` in a brand-new PowerShell process
+   (not the one that set the variables) returned `{"available": true,
+   "missing": [], "instructions": ""}` — confirms both variables are
+   genuinely reaching a fresh process, not just visible in the process that
+   set them (the exact HF_TOKEN-style failure mode this project has hit
+   before). **Commit 21 requirement 6 is now genuinely satisfied.**
+
+The scratch `.ps1` files used to set/verify the token were deleted
+immediately after use; the raw token value was never written to any
+committed file, `BUILD-LOG.md`, or memory.
+
+**Deliberately NOT done yet: no real `mediactl deploy` was attempted.**
+`deploy.py`'s own module docstring and Commit 21 requirement 7 both flag a
+real, unresolved risk: Cloudflare Pages' automatic "deploy on push to
+main" GitHub integration has never been confirmed disabled (dashboard-only
+setting, Maurice's own account). Running a real `mediactl deploy` before
+confirming that would risk becoming a second, uncoordinated deploy path
+alongside a still-active auto-deploy — exactly the scenario `cmd_deploy`
+was built to avoid triggering blind. Asked Maurice to confirm requirement
+7's dashboard step (or explicitly waive it) before the first real
+`mediactl deploy` is attempted.
+
+**What this changes for Commit 22's NOT OPERATIONAL determination:** one
+of the two real external blockers (Cloudflare credentials) is now
+resolved. The other — Claude Code CLI not authenticated under this
+Windows identity — is untouched; the real observer/judge session still
+cannot complete, so the canary still cannot legitimately declare
+OPERATIONAL. Once Claude CLI auth is also resolved AND requirement 7 is
+confirmed, the next real step is exactly what Commit 22's own "Next"
+section already specifies: re-run `review-retry` (one retry remains on the
+existing candidate) through `observe`/`judge`/`integrate`/`preview-
+capture`/`preview-review`/`release`/`deploy`/`production-verify`/`run-
+report`, in that order.
+
+**Changed files:** none — this is a real-environment credential
+configuration, not a code change. This `BUILD-LOG.md` entry is the only
+file touched.
