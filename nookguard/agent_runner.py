@@ -19,7 +19,18 @@ That's not just documentation, it's the actual function signature, so a
 future call site literally cannot pass contract data into an observer call
 without a visible type error. `run_judge_session()` is the only function in
 this module that ever sees contract requirements, and it never sees the
-image."""
+image.
+
+Commit 19 default-transport change: every function below now defaults to
+`cli_reviewer.claude_cli_executor` (fresh, non-interactive `claude -p`
+processes, authenticated via the operator's own Claude subscription), not
+`_default_executor` (the direct Anthropic Messages API call requiring a
+separate ANTHROPIC_API_KEY this environment has never had -- see
+docs/nookguard/BUILD-LOG.md's Commit 18 entry, the real finding that
+started this commit). `_default_executor` remains fully defined and
+importable below -- pass `executor=_default_executor` explicitly at any
+call site to opt back into the direct-API transport; nothing about the
+function signatures changed, only the default value."""
 
 from __future__ import annotations
 
@@ -31,6 +42,7 @@ from typing import Any, Callable
 
 from pydantic import ValidationError
 
+from .cli_reviewer import claude_cli_executor
 from .hashing import sha256_bytes, sha256_canonical_json
 from .review_pack import ReviewPack
 from .schemas import AssetContract, BlindObservation, ContractJudgment, PageReviewResult
@@ -78,8 +90,13 @@ def _image_to_content_block(image_path: str) -> dict[str, Any]:
 
 def _default_executor(system_prompt: str, user_content: list[dict[str, Any]]) -> str:
     """Real Anthropic Messages API call: no tools attached, no conversation
-    history, a single stateless turn. Not exercised live in this session (no
-    API key configured here) -- see BUILD-LOG's unresolved-risks note."""
+    history, a single stateless turn. As of Commit 19 this is NO LONGER the
+    default `executor=` value on any of the three functions below --
+    `cli_reviewer.claude_cli_executor` is -- but this remains a fully real,
+    working, opt-in transport (pass `executor=_default_executor`
+    explicitly). Not exercised live in this environment (no
+    ANTHROPIC_API_KEY configured here, confirmed absent from process/User/
+    Machine scopes -- see BUILD-LOG's Commit 18 entry)."""
     import anthropic
     client = anthropic.Anthropic()
     response = client.messages.create(
@@ -110,7 +127,7 @@ def _extract_json(raw_text: str) -> dict[str, Any]:
 def run_observer_session(
     review_pack: ReviewPack,
     *,
-    executor: SessionExecutor = _default_executor,
+    executor: SessionExecutor = claude_cli_executor,
     agents_dir: Path = AGENTS_DIR,
 ) -> BlindObservation:
     """The ONLY inputs this function's signature allows are a ReviewPack and
@@ -156,7 +173,7 @@ def run_judge_session(
     blind_observation: BlindObservation,
     adversarial_observation: BlindObservation,
     *,
-    executor: SessionExecutor = _default_executor,
+    executor: SessionExecutor = claude_cli_executor,
     agents_dir: Path = AGENTS_DIR,
 ) -> ContractJudgment:
     """Sees contract requirements + both observation reports -- never the
@@ -199,7 +216,7 @@ def run_page_review_session(
     page_url: str,
     viewports_captured: list[str],
     *,
-    executor: SessionExecutor = _default_executor,
+    executor: SessionExecutor = claude_cli_executor,
     agents_dir: Path = AGENTS_DIR,
 ) -> PageReviewResult:
     """Commit 10's page reviewer. Sees a contact sheet image (rendered

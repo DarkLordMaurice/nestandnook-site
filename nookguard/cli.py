@@ -14,7 +14,7 @@ import sys
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
+from typing import Any, Optional
 
 from .adapters import AVAILABLE_ADAPTERS
 from .aggregator import aggregate
@@ -25,6 +25,7 @@ from .agent_runner import (
     run_page_review_session,
 )
 from .canon import CanonRegistry
+from .cli_reviewer import check_claude_cli_auth
 from .dedup import DedupRegistry
 from .exceptions import (
     HashMismatchError,
@@ -175,6 +176,20 @@ def cmd_generate(args: argparse.Namespace) -> dict[str, Any]:
             "exist until Commit 5 wraps the real Hugging Face pipeline. This command will not "
             "pretend to call a real model."
         )}
+    # Commit 19, requirement 7: real generation must not proceed if the
+    # candidate it produces could never be reviewed afterward -- that is
+    # pure wasted generation cost/risk with no possible resolution. The
+    # stub adapter is exempt (it exists purely for tests/dev and is never
+    # a real, reviewable asset); --skip-auth-check exists only so tests
+    # can inject a fake check without a real CLI/credential, never for
+    # real production use.
+    if args.adapter != "stub" and not getattr(args, "skip_auth_check", False):
+        auth_result = check_claude_cli_auth()
+        if not auth_result["authenticated"]:
+            return {"ok": False, "error": "auth-check failed -- refusing to generate a real "
+                                           "candidate that could not be reviewed afterward "
+                                           f"(reason: {auth_result.get('reason')})",
+                    "reason": "auth_check_failed", "auth_check": auth_result}
     root = Path(args.store_root)
     store = _store(root)
     try:
@@ -411,6 +426,107 @@ def cmd_judge(args: argparse.Namespace) -> dict[str, Any]:
                   asset_id=contract.asset_id, actor_session_id=args.session_id)
     return {"ok": True, "asset_id": contract.asset_id, "result": result.state.value,
             "reasons": result.reasons, "queued_for_owner": queued}
+
+
+MAX_REVIEW_RETRIES = 3
+
+
+def _review_error_event_count(ledger: Ledger, asset_id: str, candidate_sha256: str) -> int:
+    """Counts every historical review-process-failure event for this exact
+    (asset_id, candidate_sha256) pair -- observation.error and
+    judgment.error both count, and nothing is ever removed from the ledger,
+    so this is a true, tamper-evident count of every past failed attempt at
+    reviewing this specific candidate, not a mutable counter that could be
+    reset or lost."""
+    count = 0
+    for event in ledger.for_asset(asset_id):
+        if event.event_type in ("observation.error", "judgment.error"):
+            if event.payload.get("candidate_sha256") == candidate_sha256:
+                count += 1
+    return count
+
+
+def _last_review_error_candidate(ledger: Ledger, asset_id: str) -> Optional[str]:
+    """The candidate_sha256 named in the MOST RECENT review-process-failure
+    event for this asset -- used to confirm a review-retry request is for
+    the exact same candidate that actually failed, not a different (newer or
+    older) one that happens to share the asset_id."""
+    last: Optional[str] = None
+    for event in ledger.for_asset(asset_id):
+        if event.event_type in ("observation.error", "judgment.error"):
+            last = event.payload.get("candidate_sha256")
+    return last
+
+
+def cmd_review_retry(args: argparse.Namespace) -> dict[str, Any]:
+    """Commit 19, requirement 8: REVIEW_ERROR -> REVIEW_PENDING -> OBSERVING
+    recovery, permitted ONLY for the exact same, unchanged candidate hash
+    that actually failed review, and ONLY within a bounded retry count. This
+    is the only place in NookGuard allowed to walk the REVIEW_ERROR ->
+    REVIEW_PENDING edge that state_machine.py's TRANSITIONS table makes
+    legal -- the table only proves the edge exists, this function proves
+    it's earned. After this returns ok:true the asset is sitting in
+    OBSERVING exactly as if `review-pack-build` had just run; the existing,
+    unmodified `observe` command resumes review from there with no other
+    wiring needed, because it always builds review packs fresh from the
+    candidate file itself on every call."""
+    root = Path(args.store_root)
+    store, ledger = _store(root), _ledger(root)
+    try:
+        attempt = store.load_attempt(args.candidate_sha256)
+        contract = store.load_spec(attempt.spec_sha256)
+    except FileNotFoundError as e:
+        return {"ok": False, "error": str(e)}
+
+    current = AssetState(store.get_state(contract.asset_id))
+    if current != AssetState.REVIEW_ERROR:
+        return {"ok": False, "error": f"Illegal transition {current.value} -> review-retry "
+                                       "(asset must be in review_error state)"}
+
+    last_failed_candidate = _last_review_error_candidate(ledger, contract.asset_id)
+    if last_failed_candidate is not None and last_failed_candidate != args.candidate_sha256:
+        return {"ok": False, "error": "changed_candidate: the candidate that actually failed "
+                                       f"review was {last_failed_candidate}, not "
+                                       f"{args.candidate_sha256} -- review-retry only recovers "
+                                       "the exact, unchanged candidate that failed; a different "
+                                       "candidate requires the normal review-pack-build/observe "
+                                       "path, not a retry",
+                "reason": "changed_candidate"}
+
+    retry_count = _review_error_event_count(ledger, contract.asset_id, args.candidate_sha256)
+    if retry_count >= MAX_REVIEW_RETRIES:
+        return {"ok": False, "error": f"retry_exhausted: this candidate has already failed review "
+                                       f"{retry_count} time(s), at or beyond the bound of "
+                                       f"{MAX_REVIEW_RETRIES} -- a new generation attempt is "
+                                       "required, this state is no longer recoverable in place",
+                "reason": "retry_exhausted", "retry_count": retry_count}
+
+    transition(AssetState.REVIEW_ERROR, AssetState.REVIEW_PENDING, asset_id=contract.asset_id)
+    store.set_state(contract.asset_id, AssetState.REVIEW_PENDING.value)
+    ledger.append(run_id=args.run_id, event_type="review.retry_approved", actor_role=args.actor_role,
+                  payload={"candidate_sha256": args.candidate_sha256, "prior_failure_count": retry_count,
+                           "retries_remaining": MAX_REVIEW_RETRIES - retry_count - 1},
+                  asset_id=contract.asset_id, actor_session_id=args.session_id)
+
+    transition(AssetState.REVIEW_PENDING, AssetState.OBSERVING, asset_id=contract.asset_id)
+    store.set_state(contract.asset_id, AssetState.OBSERVING.value)
+    ledger.append(run_id=args.run_id, event_type="review.retry_resumed", actor_role=args.actor_role,
+                  payload={"candidate_sha256": args.candidate_sha256},
+                  asset_id=contract.asset_id, actor_session_id=args.session_id)
+
+    return {"ok": True, "asset_id": contract.asset_id, "state": AssetState.OBSERVING.value,
+            "prior_failure_count": retry_count, "retries_remaining": MAX_REVIEW_RETRIES - retry_count - 1}
+
+
+def cmd_auth_check(args: argparse.Namespace) -> dict[str, Any]:
+    """Commit 19, requirement 7: a real, minimal Claude Code CLI smoke test
+    -- must run under the same Windows identity and environment the
+    scheduled task runs as, and must pass before generation begins (see
+    cmd_generate's auth-check gate above). Delegates entirely to
+    cli_reviewer.check_claude_cli_auth, which does the real subprocess call
+    -- this command is just the CLI-shaped wrapper around it."""
+    result = check_claude_cli_auth()
+    return {"ok": result["authenticated"], **result}
 
 
 def cmd_integrate(args: argparse.Namespace) -> dict[str, Any]:
@@ -870,6 +986,13 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--spec", required=True)
     p.add_argument("--prompt", required=True)
     p.add_argument("--adapter", default="stub")
+    # Commit 19: real (non-stub) generation refuses to run unless a real
+    # auth-check passes first -- see cmd_generate's docstring. This flag
+    # exists ONLY so tests can inject a fake/skipped check without a real
+    # CLI or credential present; it must never be passed in real production
+    # use (there is no real use case for generating a candidate that is
+    # known in advance to be unreviewable).
+    p.add_argument("--skip-auth-check", action="store_true", default=False)
     p.set_defaults(func=cmd_generate)
 
     p = sub.add_parser("register"); _common(p)
@@ -895,6 +1018,13 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("judge"); _common(p)
     p.add_argument("--candidate-sha256", required=True)
     p.set_defaults(func=cmd_judge)
+
+    p = sub.add_parser("review-retry"); _common(p)
+    p.add_argument("--candidate-sha256", required=True)
+    p.set_defaults(func=cmd_review_retry)
+
+    p = sub.add_parser("auth-check"); _common(p)
+    p.set_defaults(func=cmd_auth_check)
 
     p = sub.add_parser("integrate"); _common(p)
     p.add_argument("--candidate-sha256", required=True)

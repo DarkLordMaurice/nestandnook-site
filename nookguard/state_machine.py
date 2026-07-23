@@ -31,6 +31,7 @@ class AssetState(str, Enum):
     FAIL_REFERENCE = "fail_reference"
     NEEDS_OWNER = "needs_owner"
     REVIEW_ERROR = "review_error"
+    REVIEW_PENDING = "review_pending"
     OWNER_APPROVED = "owner_approved"
     OWNER_REJECTED = "owner_rejected"
     INTEGRATED = "integrated"
@@ -47,13 +48,29 @@ class AssetState(str, Enum):
 # section 27's "no automatic fix in place" rule, enforced structurally: this
 # table has no edge from a FAIL state back to a PASS state for the SAME asset
 # state machine instance. A repair means a new AssetState() for a new attempt.
+#
+# REVIEW_ERROR is deliberately NOT in this set as of Commit 19 -- this is a
+# real, considered semantic change, not an oversight. Every OTHER state here
+# means "content was actually judged and correctly found bad" -- that is a
+# content-level verdict that genuinely must never be reused. REVIEW_ERROR
+# means something categorically different: the REVIEW PROCESS ITSELF never
+# completed (a live-canary example: a real Anthropic API authentication
+# failure mid-`observe`, see docs/nookguard/BUILD-LOG.md's Commit 18 entry)
+# -- no content verdict was ever reached, good or bad. Once the underlying
+# infrastructure/authentication problem is fixed, retrying review of the
+# EXACT SAME, UNCHANGED candidate bytes is not "fixing a bad candidate and
+# reusing it" (the actual banana-bread-foil/goat-fence failure mode this
+# rule exists to prevent) -- it is simply completing a review that never
+# ran. See TRANSITIONS' REVIEW_ERROR -> REVIEW_PENDING -> OBSERVING edges
+# below for the state-graph side of this, and cli.py's `cmd_review_retry`
+# for the enforced guards (unchanged candidate_sha256, bounded retry count)
+# that make sure this can never become a backdoor for reusing bad content.
 _REGENERATE_SOURCES = {
     AssetState.GENERATION_BLOCKED,
     AssetState.TECHNICAL_FAIL,
     AssetState.SEMANTIC_FAIL,
     AssetState.FAIL_EVIDENCE,
     AssetState.FAIL_REFERENCE,
-    AssetState.REVIEW_ERROR,
     AssetState.OWNER_REJECTED,
     AssetState.PREVIEW_REVIEW_FAIL,
     AssetState.PROD_MISMATCH,
@@ -81,6 +98,18 @@ TRANSITIONS: dict[AssetState, set[AssetState]] = {
         AssetState.NEEDS_OWNER,
         AssetState.REVIEW_ERROR,
     },
+    # Commit 19 process-recovery path -- see the long comment on
+    # _REGENERATE_SOURCES above for why this exists and why it is safe.
+    # REVIEW_PENDING has exactly one legal forward edge, back to OBSERVING
+    # -- never directly to a PASS state -- so recovering from REVIEW_ERROR
+    # always means running a REAL, FRESH observer/judge cycle again, never
+    # skipping straight to a verdict. cmd_review_retry (cli.py) is the only
+    # caller allowed to walk this edge, and only after checking the
+    # candidate_sha256 is unchanged and the retry count is within bounds --
+    # those are business-logic guards enforced there, not by this table;
+    # this table only says the edge is legal, not when it's earned.
+    AssetState.REVIEW_ERROR: {AssetState.REVIEW_PENDING},
+    AssetState.REVIEW_PENDING: {AssetState.OBSERVING},
     AssetState.NEEDS_OWNER: {AssetState.OWNER_APPROVED, AssetState.OWNER_REJECTED},
     AssetState.OWNER_APPROVED: {AssetState.INTEGRATED},
     AssetState.SEMANTIC_PASS: {AssetState.INTEGRATED},

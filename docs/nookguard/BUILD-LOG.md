@@ -2130,3 +2130,182 @@ that gap is hit.
 
 **Next:** none pre-specified; see Maurice's direct acceptance-test report
 for the full picture of what this live run did and did not verify.
+
+---
+
+## Commit 19: Claude Code CLI reviewer transport + REVIEW_ERROR process recovery — DONE
+
+**Completed:** 2026-07-23
+
+**Why this commit:** Maurice's explicit instruction following the Commit 18
+live-canary result — the canary's single hard technical wall was that
+`observe`/`judge` go through `agent_runner._default_executor`, a direct
+Anthropic Messages API call requiring `ANTHROPIC_API_KEY`, which this
+environment has never had (confirmed absent from process/User/Machine
+environment scopes). Maurice's instruction: replace that default transport
+with fresh, non-interactive Claude Code CLI (`claude -p`) processes running
+under the operator's own authenticated Claude subscription instead, make
+`REVIEW_ERROR` a recoverable process state (not a dead end) for the exact
+unchanged candidate that hit it, add `mediactl auth-check`, and gate real
+generation on it passing first.
+
+**Research before code:** read `nookguard/exceptions.py` (the
+`NookGuardError` subclass convention), `nookguard/agent_runner.py` in full
+(the exact `SessionExecutor = Callable[[str, list[dict]], str]` contract
+every transport must match), `nookguard/state_machine.py` in full (the
+`TRANSITIONS` dict vs. `_REGENERATE_SOURCES` set are two independent
+structures, not derived from each other), `nookguard/ledger.py` in full
+(append-only, `for_asset()`, payload shape), and `nookguard/cli.py`'s
+`cmd_observe`/`cmd_judge` (confirmed both `observation.error` and
+`judgment.error` ledger events already carry `candidate_sha256` in their
+payload — no schema change needed to build retry guards on top). Then
+empirically probed the real machine (a throwaway script, deleted after):
+confirmed the bundled Claude Code CLI is real and present at
+`%APPDATA%\Claude\claude-code\2.1.217\claude.exe` (not on PATH by default),
+confirmed `claude auth status` returns genuinely unauthenticated
+(`{"loggedIn": false, "authMethod": "none"}`), and confirmed the real JSON
+envelope shape a `claude -p --output-format json` call returns on an auth
+failure: exit code 1, `{"type":"result","is_error":true,"result":"Not
+logged in · Please run /login", ...}` — this module's auth-failure
+detection is built on that observed shape, not a guess.
+
+**Two real bugs caught by the probe script itself, before any test ever
+ran:** (1) `"\C"` inside the module's non-raw docstring (referencing
+`%APPDATA%\Claude\...`) produced a real `SyntaxWarning: invalid escape
+sequence` — fixed by making the docstring a raw string (`r"""`). (2) the
+"disable all tools" case was originally written as `--tools none`, a
+guess; re-reading the real `claude --help` output showed the documented
+convention is an empty string (`--tools ""`), and a live probe call with
+`tools=""` confirmed the CLI accepted it (reached the real
+`auth_unavailable` classification rather than an argument-parsing error)
+— fixed to always pass `--tools` with the real value, including `""`.
+
+**Changed files:**
+- `nookguard/cli_reviewer.py` (new) — the whole `ClaudeCodeCliReviewer`
+  transport. `resolve_claude_cli_path()` (explicit override →
+  `NOOKGUARD_CLAUDE_CLI_PATH` env var → PATH → bundled desktop-app install
+  dir, returns `None` rather than raising, matching
+  `adapters/huggingface.py`'s `_resolve_hf_token` convention for a
+  different missing-credential problem). `run_claude_cli()` is the one
+  real subprocess call site — `subprocess_runner`/`session_id_factory`/
+  `claude_path` are all injectable for tests, matching this codebase's
+  existing DI convention. Isolation is enforced by the actual argv, not
+  documentation: `--no-session-persistence` (nothing saved to resume),
+  freshly generated `--session-id` every call, `--tools` as an explicit
+  allowlist (`""` = none), no `--mcp-config` (no MCP servers reachable),
+  `--system-prompt` (full replace, never `--append-system-prompt`).
+  `ClaudeCliError` carries a fixed, checkable `reason` category
+  (`cli_not_found`, `spawn_failed`, `timeout`, `nonzero_exit`,
+  `malformed_json`, `auth_unavailable`, `cli_reported_error`) so callers
+  branch on real classification, never string-matching. `claude_cli_executor()`
+  matches `agent_runner.SessionExecutor`'s exact signature; an image
+  content block is decoded back to real bytes, written to a real temp
+  file (auto-cleaned in a `finally`), and the CLI is pointed at it via
+  `--add-dir` + a Read-tool instruction in the prompt text — the judge
+  role never receives an image (unchanged from before), so this path is
+  simply skipped for judge calls. `check_claude_cli_auth()` is
+  `mediactl auth-check`'s real logic — a genuine minimal `-p` smoke test,
+  never a config-file check. **One explicitly documented open question,
+  honestly flagged rather than assumed:** whether an image handed to the
+  CLI via `--add-dir` + Read actually reaches the model's real vision
+  input, since `agent_runner.py`'s own Commit 7 docstring warned an older
+  CLI behavior read local images as text — every real call in this
+  environment fails at the auth step before reaching that question, so it
+  remains unverified until real credentials exist.
+- `nookguard/agent_runner.py` — `run_observer_session`/`run_judge_session`/
+  `run_page_review_session`'s `executor=` default changed from
+  `_default_executor` (direct Messages API) to
+  `cli_reviewer.claude_cli_executor`. `_default_executor` remains fully
+  defined, real, and importable — pass `executor=_default_executor`
+  explicitly to opt back into the direct-API transport; no function
+  signature changed, only the default value. Full suite re-run
+  immediately after this single change confirmed 288/288 still passing
+  (every existing observe/judge/preview-review test monkeypatches the
+  whole function at `cli.py`'s imported name, so the raw default executor
+  is never actually exercised by those tests).
+- `nookguard/state_machine.py` — added `AssetState.REVIEW_PENDING`.
+  Removed `REVIEW_ERROR` from `_REGENERATE_SOURCES` (a deliberate,
+  documented semantic split from every other state in that set: every
+  other member means "content was judged and correctly found bad" —
+  `REVIEW_ERROR` means "the review process itself never completed," a
+  categorically different, process-level failure). Added
+  `REVIEW_ERROR: {REVIEW_PENDING}` and `REVIEW_PENDING: {OBSERVING}` to
+  `TRANSITIONS` — `REVIEW_PENDING` has exactly one legal forward edge, so
+  recovery always re-enters at `OBSERVING` and must earn a real, fresh
+  verdict; there is no edge to any PASS/approval state. The state graph
+  only proves this edge is legal, not that it's earned — `cmd_review_retry`
+  (cli.py) is the sole intended caller, and it enforces the actual
+  business guards (unchanged candidate hash, bounded retry count) the
+  table itself cannot express.
+- `nookguard/cli.py` — `cmd_generate` now calls `check_claude_cli_auth()`
+  and refuses to proceed for any non-stub adapter when it fails
+  (`{"ok": false, "reason": "auth_check_failed", ...}`) — generating a
+  real candidate that could never be reviewed afterward is pure wasted
+  cost/risk with no possible resolution. A new `--skip-auth-check` flag
+  exists solely so tests can exercise a real adapter call site without a
+  real CLI/credential present; it is never valid in real production use.
+  Added `MAX_REVIEW_RETRIES = 3`, `_review_error_event_count()` and
+  `_last_review_error_candidate()` (both pure ledger reads — no new
+  persistent counter, since nothing in the ledger is ever deleted, only
+  counted), `cmd_review_retry` (the `REVIEW_ERROR → REVIEW_PENDING →
+  OBSERVING` recovery command — rejects with `changed_candidate` if the
+  most recent review-failure ledger event names a different candidate
+  hash than the one being retried, rejects with `retry_exhausted` at or
+  beyond `MAX_REVIEW_RETRIES`, otherwise walks both transitions and logs
+  `review.retry_approved`/`review.retry_resumed`), and `cmd_auth_check`
+  (a thin wrapper around `cli_reviewer.check_claude_cli_auth`). Added the
+  `review-retry` and `auth-check` subparsers.
+- `nookguard/tests/test_cli_reviewer.py` (new, 13 tests) — successful CLI
+  review, missing authentication, malformed JSON, timeout, nonzero exit
+  (with and without an auth marker), spawn failure, CLI-not-found, and
+  `check_claude_cli_auth`'s three outcomes (success, auth failure with
+  instructions, CLI not found). Every test injects a fake
+  `subprocess_runner`; no real CLI or credential is ever touched.
+- `nookguard/tests/test_review_retry.py` (new, 7 tests) — unchanged-
+  candidate retry succeeds and genuinely resumes real (mocked) observe/
+  judge through to `semantic_pass` (not just a state-flag flip); rejected
+  when the asset isn't in `review_error`; rejected as `changed_candidate`
+  when the ledger's most recent failure names a different candidate;
+  rejected as `retry_exhausted` at the bound; `auth-check`'s CLI wrapper;
+  `generate`'s real auth-check refusal for a non-stub adapter; and
+  `--skip-auth-check` genuinely bypassing the gate (with the huggingface
+  adapter's own `generate` also mocked, so this test never attempts a
+  real network call).
+- `nookguard/tests/test_state_machine.py` — updated
+  `test_observing_can_reach_review_error_not_just_judging` (asserts
+  `not is_regenerate_source(REVIEW_ERROR)` now, with a comment explaining
+  why, instead of the old `is_regenerate_source` assertion this change
+  genuinely invalidated) and added
+  `test_review_error_recovers_only_to_review_pending_then_observing`
+  (proves the graph itself never allows a shortcut from `REVIEW_ERROR`/
+  `REVIEW_PENDING` straight to `SEMANTIC_PASS`/`INTEGRATED`/`RELEASED`).
+- `nookguard/tests/test_cli.py` — `test_generate_dispatches_to_huggingface_adapter`
+  updated to pass `--skip-auth-check` (this test is about adapter
+  dispatch, not the new auth gate, which has its own dedicated tests
+  above) — this was the one pre-existing test the new gate broke, caught
+  by running the full suite, not assumed.
+
+**Tests run:** `python -m pytest nookguard/tests/ -q` (Desktop Commander,
+real Windows Python, via a `.ps1` script file rather than an inline
+`-Command` string — this session's established fix for PowerShell
+quoting failures on multi-statement/quoted inline commands).
+**Result:** 308/308 passed, 0 failures (up from 288 — +13
+`test_cli_reviewer.py`, +7 `test_review_retry.py`, +1
+`test_state_machine.py` new test = +21, net +20 after accounting for the
+one pre-existing test that needed `--skip-auth-check` added rather than
+counted as new).
+
+**Unresolved risks, carried forward honestly, not closed by this commit:**
+whether the CLI's Read-tool image path actually reaches real vision input
+(flagged above, unverifiable in this environment); whether
+`claude setup-token`/`CLAUDE_CODE_OAUTH_TOKEN` actually authenticates a
+real headless/scheduled-task Windows identity the same way an interactive
+session would — neither can be confirmed until Maurice runs
+`claude setup-token` for real and a live `mediactl auth-check` passes.
+Commits 20-22 (live-review regression corpus, public-media containment,
+final live canary) all depend on that real authentication existing;
+none of it is simulated or assumed here.
+
+**Next:** Commit 20 — `mediactl regression --mode live-review` calling the
+real (now CLI-based) observer/judge against the real historical regression
+corpus image files, plus the OCR validator gap.

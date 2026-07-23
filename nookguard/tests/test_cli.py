@@ -297,9 +297,14 @@ def test_generate_dispatches_to_huggingface_adapter(monkeypatch, tmp_path):
                            "--spec", spec["spec_sha256"]])
         assert prompt["ok"], prompt
 
+        # Commit 19, requirement 7: real (non-stub) generation now gates on a
+        # real Claude CLI auth-check first. This test is about adapter
+        # dispatch, not auth-gating (that has its own dedicated tests in
+        # test_review_retry.py), so it opts out via --skip-auth-check --
+        # exactly what that flag exists for.
         gen = run_cli(["generate", "--store-root", store_root, "--run-id", run_id,
                         "--spec", spec["spec_sha256"], "--prompt", prompt["prompt_sha256"],
-                        "--adapter", "huggingface"])
+                        "--adapter", "huggingface", "--skip-auth-check"])
         assert gen["ok"], gen
         assert gen["adapter_version"] == hf_adapter.ADAPTER_VERSION
         assert gen["artifact_uri"].endswith(".jpg")

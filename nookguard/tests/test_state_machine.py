@@ -70,7 +70,37 @@ def test_observing_can_reach_review_error_not_just_judging():
     assert AssetState.REVIEW_ERROR in legal_next_states(AssetState.OBSERVING)
     s = transition(AssetState.OBSERVING, AssetState.REVIEW_ERROR)
     assert s == AssetState.REVIEW_ERROR
-    assert is_regenerate_source(s)
+    # Commit 19: REVIEW_ERROR is deliberately NOT a regenerate source
+    # anymore -- it means the review PROCESS failed, not that content was
+    # judged bad, so it is conditionally recoverable (see
+    # test_review_error_recovers_only_to_review_pending_then_observing
+    # below), unlike every genuine content-rejection state.
+    assert not is_regenerate_source(s)
+
+
+def test_review_error_recovers_only_to_review_pending_then_observing():
+    """Commit 19's process-recovery path, at the pure state-graph level
+    (the candidate-hash-unchanged / bounded-retry business guards live in
+    cli.py's cmd_review_retry, not here -- this test only proves the graph
+    itself never allows REVIEW_ERROR to skip straight to a verdict)."""
+    from nookguard.state_machine import legal_next_states
+
+    assert legal_next_states(AssetState.REVIEW_ERROR) == {AssetState.REVIEW_PENDING}
+    s = transition(AssetState.REVIEW_ERROR, AssetState.REVIEW_PENDING)
+    assert s == AssetState.REVIEW_PENDING
+
+    assert legal_next_states(AssetState.REVIEW_PENDING) == {AssetState.OBSERVING}
+    s = transition(s, AssetState.OBSERVING)
+    assert s == AssetState.OBSERVING
+
+    # Never a shortcut straight to a PASS/approval state from either
+    # recovery waypoint -- a recovered asset always re-enters at OBSERVING
+    # and must earn a real, fresh verdict.
+    for forbidden in (AssetState.SEMANTIC_PASS, AssetState.INTEGRATED, AssetState.RELEASED):
+        with pytest.raises(InvalidTransitionError):
+            transition(AssetState.REVIEW_ERROR, forbidden)
+        with pytest.raises(InvalidTransitionError):
+            transition(AssetState.REVIEW_PENDING, forbidden)
 
 
 def test_prod_mismatch_blocks_done_not_silently_fixed():
