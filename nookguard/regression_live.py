@@ -17,15 +17,34 @@ ReviewSessionError if the process itself failed) -- there is no fallback
 path that substitutes fabricated data for a failed or unavailable call.
 
 Honest scope note on "historical" fixtures, documented here rather than
-silently assumed: the literal original defective candidate bytes from the
-real incidents this project's regression corpus is named after (banana
-bread foil fusion, otter/aviary furniture, etc.) no longer exist anywhere
-in this repository -- consistent with this project's own "no fix in place,
-always regenerate" architecture (state_machine.py's _REGENERATE_SOURCES
-comment), the defective bytes were discarded once each page was corrected.
-This module therefore draws its images from two honestly-labeled,
-distinct sources (see each LiveRegressionFixture's `image_source_note`),
-never a fabricated verdict:
+silently assumed: this module's own fixtures (below) are synthetic PIL
+reproductions or an unrelated known-clean control photo, NOT the literal
+original defective bytes -- that part of the original note was accurate.
+
+CORRECTION (2026-07-23, Commit 25): the broader claim this docstring used
+to make -- that the real historical defective candidate bytes "no longer
+exist anywhere in this repository" -- was wrong, and was never actually
+verified against git history before being written; it was an assumption
+based on this project's "no fix in place, always regenerate" architecture
+(state_machine.py's _REGENERATE_SOURCES comment) rather than a checked
+fact. Commit 25's git archaeology proved otherwise: the real, literal
+defective bytes for the banana-bread-foil and furniture-in-enclosure
+incidents (plus a real object-count defect and a real reference-mismatch
+defect) are still present in git history, at the git blob committed one
+revision before each incident's fix commit, and were extracted byte-for-
+byte via `git show <rev>:<path>` -- see `real_regression_fixtures.py` and
+`regression_images_real/` for the real corpus this produced, and
+docs/nookguard/BUILD-LOG.md's Commit 25 entry for the exact commit hashes.
+That real corpus, not this module's synthetic one, is Commit 25's
+operational-acceptance evidence.
+
+This module still has a legitimate, narrower purpose despite that
+correction: it is a fast, deterministic parser/evidence-flow test corpus
+(see gen_regression_images.py's own docstring, relabeled the same day for
+the same reason) -- useful for exercising the pipeline's plumbing cheaply,
+not for demonstrating real defect-detection accuracy. It therefore still
+draws its images from two honestly-labeled, distinct sources (see each
+LiveRegressionFixture's `image_source_note`), never a fabricated verdict:
 
   1. A REAL, currently-published site photo (public/winnie/office-hero.jpg,
      copied verbatim into regression_images/) used as a known-clean
@@ -211,8 +230,11 @@ LIVE_FIXTURES: list[LiveRegressionFixture] = [
                         statement="foil is a separate, removable liner, not fused to the crust", critical=True),
         ]),
         expected_state=AssetState.SEMANTIC_FAIL.value,
-        image_source_note="purpose-built reproduction (PIL-rendered) -- the real 2026 incident's original "
-                           "candidate bytes no longer exist, per this project's regenerate-only architecture",
+        image_source_note="purpose-built reproduction (PIL-rendered), a parser/evidence-flow test fixture "
+                           "only -- see gen_regression_images.py's module docstring. The real incident's "
+                           "actual defective bytes DO still exist in git history (corrected 2026-07-23, "
+                           "Commit 25) and are used for real operational-acceptance evidence instead; see "
+                           "real_regression_fixtures.py's banana_foil fixture.",
     ),
     LiveRegressionFixture(
         fixture_id="unexpected_furniture_reproduction",
@@ -222,9 +244,11 @@ LIVE_FIXTURES: list[LiveRegressionFixture] = [
         contract_builder=lambda: _contract(
             forbidden_objects=["indoor furniture (armchair) in an outdoor animal enclosure"]),
         expected_state=AssetState.SEMANTIC_FAIL.value,
-        image_source_note="purpose-built reproduction (PIL-rendered) -- the real otter/aviary incident's "
-                           "original candidate bytes no longer exist, per this project's regenerate-only "
-                           "architecture",
+        image_source_note="purpose-built reproduction (PIL-rendered), a parser/evidence-flow test fixture "
+                           "only -- see gen_regression_images.py's module docstring. The real otter/aviary "
+                           "incident's actual defective bytes DO still exist in git history (corrected "
+                           "2026-07-23, Commit 25) and are used for real operational-acceptance evidence "
+                           "instead; see real_regression_fixtures.py's furniture_enclosure fixture.",
     ),
 ]
 

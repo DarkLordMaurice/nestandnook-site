@@ -3176,3 +3176,271 @@ pegboard-wall-measure`) is now terminally `semantic_fail` with zero
 generation attempt for this asset_id, if this canary is picked back up,
 starts clean from `review-pack-build` on a new candidate. This is
 expected, correct behavior, not a defect to fix.
+
+
+## Commit 24: Reviewer containment and response custody — DONE (retroactive entry)
+
+**Completed:** 2026-07-23. **Commit:** `ee49f5f363800597662e5d66f56a00533fb83ea0`.
+This entry is written retroactively (2026-07-23, during Commit 25) because the
+original Commit 24 push did not include a BUILD-LOG.md entry — a real gap in
+this log's own stated purpose ("evidence-backed record of what has actually
+been built"), noted here rather than silently left unfixed.
+
+**Changed:**
+- `nookguard/containment.py` (new) — `create_scratch`/`open_containment`/
+  `close_containment`. Every observe/judge/preview-review `-prepare` call now
+  builds a purpose-built, single-use scratch directory (candidate/contact-
+  sheet bytes + instructions only), snapshots the protected roots
+  (repository/ledger/manifest/quarantine/evidence/public_media) before the
+  reviewer runs, and the matching `-submit` call re-snapshots and diffs —
+  any change outside the reviewer's own scratch directory raises
+  `ContainmentViolation`, which the CLI converts to `REVIEW_ERROR` (never a
+  silently-accepted result) plus a `containment.violation` ledger event.
+- `nookguard/cli.py` — `-submit` commands now require `--containment-id`,
+  `--reviewer-session-id`, `--raw-response-sha256`, and `--review-pack-sha256`
+  (or `--contact-sheet-sha256` for preview-review), all independently
+  re-verified server-side against real recomputed values in
+  `_validate_submit_hashes()` — never trusted at face value from the caller.
+
+**Tests run:** full `nookguard/tests/` suite, real pytest invocation (not
+described from memory — see Commit 25's own test run below for the identical
+390-passed/1-xfailed baseline this entry's changes established).
+
+**Unresolved risk found and fixed later, during Commit 25 (see below):**
+`open_containment`/`close_containment` snapshot the whole `site_root`,
+excluding only that one call's own scratch directory — but its own
+bookkeeping file (`{containment_id}.containment.json`) is a SIBLING of the
+scratch directory, not a child, and is written after the pre-snapshot but
+before the post-snapshot. Whenever `store_root` is nested inside `site_root`
+(the real, normal production layout — not the small fixture root Commit 24's
+own tests used), this guarantees a false-positive "2 paths added outside
+scratch" violation on every real submit call. This was latent and untriggered
+by Commit 24's own test suite; Commit 25 hit it on the very first real
+`observe-submit` call against the real site tree and fixed it for real (see
+below), not routed around.
+
+
+## Commit 25: Real unlabeled visual regression corpus — RUN, RESULT: real evidence gathered, initial acceptance bar NOT met
+
+**Run:** 2026-07-23. Per the operational-acceptance instruction, NookGuard
+may only be declared OPERATIONAL after Commit 28 succeeds with no unresolved
+blocking limitations — this entry reports Commit 25's real results plainly,
+including two genuine misses, rather than declaring success.
+
+**What requirement 2 actually required and how it was met:** the corpus had
+to use real historical defective/clean image bytes, not fresh PIL placeholder
+renders with baked-in captions (the prior Commit 20 corpus's real, admitted
+limitation — see `gen_regression_images.py`, relabeled below). Git
+archaeology (done earlier in this session, before this log entry) extracted
+real JPEG bytes byte-for-byte via `git show <rev>:<path>` for 4 defect
+families, each with a real defective revision and a real corrected/clean
+revision:
+- `furniture_enclosure` — indoor cabinet/nightstand hallucinated into a real
+  outdoor aviary photo (commit `34700dae`, parent of its revert) vs. the same
+  scene correctly regenerated at HEAD (perches only).
+- `banana_foil` — gift-loaf foil wrap covering only ~15-20% of the loaf, one
+  end only (commit `02cf5e9`, parent of fix `6df32f3`) vs. the same scene at
+  HEAD with the wrap covering the full lengthwise body.
+- `object_count` — a cup collection meant to read as 8 distinct colors
+  instead rendering a tight 2-color alternating repeat (commit `02cf5e9`,
+  parent of fix `6df32f3`) vs. 8 genuinely distinct colors at HEAD.
+- `reference_mismatch` — an outdoor picnic-bench shape inside an otherwise
+  real indoor domestic room photo (commit `02cf5e9`, parent of fix
+  `6df32f3`) vs. the same room at HEAD with no picnic furniture. Honest
+  labeling note, stated here and in `real_regression_fixtures.py`'s module
+  docstring: this is the closest real, git-preserved incident to the literal
+  "goat-fence" defect family named in the operational-acceptance
+  instruction — no literally goat-specific fence-mismatch defect was ever
+  committed to this repository (this project's `scene_manifest.py`
+  pre-generation gate is documented as catching that exact continuity risk
+  BEFORE generation for goat/location shots). The substitution is disclosed,
+  not silently presented as the literal incident.
+
+**New files:**
+- `nookguard/real_regression_fixtures.py` — registers all 8 fixtures (4
+  families × defective/clean) into a fresh store root
+  (`nookguard_store_real_regression/`, gitignored-equivalent runtime state,
+  not committed — consistent with `nookguard_store/`'s existing precedent,
+  never committed in this project's history) via real
+  spec-lock → prompt-compile → `generate --adapter stub` (a throwaway,
+  discarded state-machine-transition-only call — the real historical bytes
+  are separately quarantined under their own real sha256 and registered as
+  the actual candidate, per `Store.quarantine_candidate`) → register →
+  validate → review-pack-build. Contracts are worded neutrally — no
+  requirement or forbidden-object statement reveals the expected verdict to
+  a blind observer (requirement 5).
+- `nookguard/commit25_driver.py` — thin CLI wrapper around
+  `observe-prepare/-submit` and `judge-prepare/-submit`, computing
+  `raw_response_sha256` itself so the orchestrating session doesn't
+  hand-compute it (a fixed real bug: an early off-by-one arg-parsing error,
+  `_, run_id, cand, role = sys.argv[:4]`, consumed the verb string itself as
+  `run_id` — caught via the resulting error citing a run_id where a
+  candidate_sha256 was expected, fixed by unpacking from `sys.argv[2:]`).
+- `nookguard/regression_images_real/` — the 8 real JPEG files.
+
+**Real bug found and fixed (not routed around):** `nookguard/containment.py`
+— see Commit 24's retroactive entry above for the full description. Fixed by
+excluding the specific containment record's own deterministic path
+(`_containment_path(store_root, containment_id).resolve()`), not the whole
+`reviewer_scratch` directory, from both the pre- and post-snapshot — this
+still fully protects sibling scratch directories belonging to other
+concurrent reviews. **Verified via full real test suite: 390 passed, 1
+xfailed (0:01:54), zero regressions** — run twice during this commit (once
+right after the containment fix, once again after all Commit 25 file changes
+were finalized), both clean.
+
+**Real architectural finding (not a bug, a discovered invariant):**
+`Store.save_attempt` is deliberately content-addressed and immutable ("one
+output, one record — no overwrite"), keyed on `candidate_sha256` alone,
+globally across the whole store, not scoped per asset_id. Attempting to
+re-quarantine round 1's literal real file bytes under a fresh asset_id for
+round 2 collided directly on round 1's already-saved attempt record for that
+same hash. This is a real, intentional anti-tamper property and was **not
+weakened** to make the corpus easier to run. Fixed instead by inserting a
+JPEG COM (comment) marker segment (`0xFFFE`) directly after the SOI marker
+(`0xFFD8`) for round ≥ 2 only — verified byte-for-byte to change the file's
+sha256 while leaving the decoded pixel data 100% identical to the original
+historical bytes (no re-encoding, no PIL re-save, no compression change).
+Reviewers never see file metadata, only the decoded image, so this cannot
+leak the round number or expected verdict.
+
+**Real operational finding: containment requires strictly sequential
+prepare→submit, never batched.** Round 2 was first attempted by calling
+`observe-prepare` for all 8 fixtures × 2 roles (16 calls) before submitting
+any of them — every subsequent submit then failed with a real
+`ContainmentViolation`, because each `observe-prepare` call's own scratch
+directory creation is a real, detectable change to the site tree, and it
+happened *after* the pre-snapshot of every OTHER already-open containment
+window. This is containment working as designed (concurrent review sessions
+are meant to be isolated and sequential in real operation, not batched) —
+not a bug to route around. Recovered the one asset this was attempted on via
+`review-retry` (state `review_error` → `observing`, `retries_remaining: 2`),
+abandoned the 15 other now-orphaned scratch directories in place (harmless —
+containment only flags *changes*, not the pre-existing presence of untouched
+orphaned files), and re-ran strictly sequentially from then on: prepare →
+spawn subagent → submit → close, one role at a time, one asset at a time.
+
+**Round 1 (all 8 fixtures, one full real prepare→observe→submit→judge→
+submit→aggregate pass each, 24 genuine Task/Agent subagent spawns — 8
+fixtures × {blind_a, adversarial_b, judge}):**
+
+| Fixture | Expected | Actual | Result | Real judge evidence |
+|---|---|---|---|---|
+| furniture_enclosure_defective | reject | `semantic_pass` | **MISS** | forbidden-object confidence 0.25 (both observers hedged: "keeper storage/feeding/nest box... consistent with... rather than indoor household case furniture"), below the aggregator's `FORBIDDEN_OBJECT_CONFIDENCE_THRESHOLD = 0.6` |
+| furniture_enclosure_clean | accept | `semantic_pass` | correct | no forbidden-object findings |
+| banana_foil_defective | reject | `semantic_fail` | correct | r1 false, confidence 0.95 ("foil covers ~15-20% of the loaf's surface with ~80% bare") |
+| banana_foil_clean | accept | `semantic_fail` | **MISS** | r1 false, confidence 0.55 — contract-wording defect, see below |
+| object_count_defective | reject | `semantic_fail` | correct | r1 false, confidence 0.85 (2-color alternating pattern) |
+| object_count_clean | accept | `semantic_pass` | correct | r1 true, confidence 0.93 (8 distinct colors) |
+| reference_mismatch_defective | reject | `semantic_fail` | correct | forbidden-object confidence 0.75/0.85 (both observers) |
+| reference_mismatch_clean | accept | `semantic_pass` | correct | forbidden-object confidence 0.3/0.3, both below threshold |
+
+**6 of 8 correct. Both misses reported honestly, not collapsed into a
+favorable majority (requirement 9):**
+1. **`furniture_enclosure_defective` — false negative, a genuine detection-
+   power limit, not a contract defect.** The real historical defect (an
+   indoor cabinet in an outdoor aviary) is legitimately ambiguous in a still
+   photo — a sloped-lid case could plausibly be real keeper equipment, and
+   both independent observers described it that way unprompted. Reproduced
+   deterministically in round 2 (below).
+2. **`banana_foil_clean` — false positive, a real contract-authoring defect
+   on my part.** The original r1 statement ("covers the entire loaf... the
+   majority of the loaf's surface is not left bare") never distinguished a
+   loaf's two normal, expected exposed cut-end faces from an actual bare
+   defect. Both observers accurately reported the clean image's exposed cut
+   ends; the judge, correctly given the ambiguous wording, read that as a
+   violation. Fixed before round 2 (see `real_regression_fixtures.py`'s
+   "Correction log" docstring) by explicitly excepting the two end-faces
+   while still failing the real defect pattern (one end only, ~80-90% bare).
+
+**Round 2 (partial — 1 of 8 fixtures completed, by explicit user decision):**
+After the contract fix, `furniture_enclosure_defective` was re-run as a
+fully independent second session set (fresh `-r2` asset_id, fresh candidate
+bytes via the JPEG-COM-marker technique above, fresh containment IDs, fresh
+subagent spawns for both observer roles and the judge). Result: **`semantic_
+pass` again — an exact reproduction of round 1's miss** (judge forbidden-
+object confidence 0.55, same sub-0.6-threshold outcome). This confirms the
+miss is deterministic given this contract wording and this real image, not
+sampling noise.
+
+Given the per-fixture cost turned out far higher than planned (~12
+sequential tool-level operations per fixture per round, driven by the
+sequential-only containment requirement above), and the round-1→round-2
+result on the one fixture tested twice already demonstrated determinism
+rather than randomness, the user was asked how to proceed and explicitly
+chose: **stop expanding rounds here; report on round 1 (all 8 fixtures) plus
+this single round-2 confirmation, rather than complete the full 3 rounds ×
+8 fixtures requirement 7 specifies.**
+
+**Requirement-by-requirement status, stated plainly:**
+1. No PIL placeholders as operational proof — MET. `gen_regression_images.py`
+   relabeled (below) so its own fixtures cannot be mistaken for this.
+2. Real historical bytes imported — MET (git archaeology, see above).
+3. Real fixtures for the 4 named defect families — MET, with the honest
+   `reference_mismatch`/"goat-fence" substitution disclosed above.
+4. Clean controls for false-positive testing — MET (4 clean controls run).
+5. Verdicts hidden from blind observers — MET (contracts worded neutrally;
+   confirmed by inspection of every review-pack payload sent to observers).
+6. Full real prepare→observe→submit→judge→submit→aggregate pipeline — MET
+   for all 8 round-1 fixtures and 1 round-2 fixture; genuine Task/Agent
+   subagent spawns throughout, real containment custody chain
+   (containment-id, reviewer-session-id, raw-response-sha256,
+   review-pack-sha256) on every call.
+7. **NOT MET.** Requirement specifies "at least 3 independent session sets"
+   per fixture. Only 1 fixture (`furniture_enclosure_defective`) received a
+   2nd round; none received a 3rd. This is a real, disclosed shortfall, not
+   a rounding error — see the explicit user decision above for why.
+8. **NOT MET.** "Every critical defective fixture rejected every run; every
+   clean control accepted every run" — round 1 alone had 2 misses (1 false
+   negative, 1 false positive, the latter since corrected for the contract
+   but not re-verified across 3 full rounds). Commit 25 does **not** claim
+   this bar is cleared.
+9. Each run reported separately, not collapsed — MET (see the two tables
+   above; both misses stated plainly, with real judge confidence numbers,
+   not summarized away).
+10. Annotated placeholders relabeled as parser/evidence-flow tests only —
+    MET. `gen_regression_images.py`'s module docstring rewritten in full to
+    state plainly that its fixtures are synthetic PIL renders solvable by
+    reading baked-in caption text, not real defect-detection evidence, and
+    to point at this corpus instead. `regression_live.py`'s module docstring
+    and two `image_source_note` fields corrected — they previously claimed
+    the real historical defective bytes "no longer exist anywhere in this
+    repository," which this same Commit 25's git archaeology proved false;
+    the claim was never actually checked against git history before being
+    written. Both corrections are in this commit.
+
+**Honest overall conclusion:** Commit 25 produced real, valuable evidence —
+a working real corpus, a real fixed containment bug, a real understood
+content-addressing invariant, and two real, understood, honestly-reported
+detection misses (one a genuine model limitation, one a fixed and
+re-confirmed-deterministic contract defect) — but it does **not** meet its
+own requirement 8 initial-acceptance bar, and explicitly does not meet
+requirement 7's 3-round minimum, by disclosed user decision rather than by
+omission. Per the standing operational-acceptance instruction, this alone is
+sufficient reason NookGuard must not be declared OPERATIONAL from this
+commit, and Commits 26-28 must not be treated as a formality.
+
+**Unresolved, carried forward:**
+- Requirement 7/8's literal bar is open. If revisited, the cheapest next
+  step is completing rounds 2-3 for the 7 fixtures that never got a second
+  round (the sequential-containment cost is now well understood and
+  estimable, ~12 operations/fixture/round), or a smaller confirmatory
+  sample if full completion is judged not worth the cost again.
+- The `furniture_enclosure_defective` false negative is a real, now-
+  twice-confirmed detection-power limit at the current
+  `FORBIDDEN_OBJECT_CONFIDENCE_THRESHOLD = 0.6` and observer-prompt design
+  — not something this commit attempted to fix (the user's explicit
+  instruction was to report honestly, not to tune thresholds/prompts to
+  pass). If this needs to be closed before OPERATIONAL, it requires a
+  deliberate design decision (lower the threshold, sharpen the adversarial
+  observer's furniture-detection prompt, or accept it as a known, bounded
+  risk), not a silent fix.
+- 7 of the 8 round-2 assets (`-r2` suffix) are left in `observing` state in
+  `nookguard_store_real_regression/` with orphaned, never-submitted
+  reviewer_scratch directories from the abandoned batched-prepare attempt —
+  inert and harmless (never touched again), left as-is rather than
+  force-cleaned, consistent with this store root not being committed to git
+  in the first place.
+
+**Next:** Commit 26 (actual site integration and preview) — gated on this
+entry's honest status, not on a false "operational" claim.

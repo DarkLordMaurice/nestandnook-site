@@ -226,16 +226,37 @@ def open_containment(
     ledger, manifest, quarantine, evidence, public_media), excluding the
     scratch dir itself, and persists the record so a later, separate
     close_containment() call (potentially in a different process/CLI
-    invocation) can find it again by id."""
+    invocation) can find it again by id.
+
+    Bug found and fixed 2026-07-23 (Commit 25's first real production run,
+    against the real nested nookguard_store/ layout instead of Commit 24's
+    own small fixture site root): this function's own bookkeeping write --
+    the `.containment.json` record persisted just below, at
+    `store_root/reviewer_scratch/{containment_id}.containment.json` -- is a
+    SIBLING of scratch_dir, not a child of it. The pre-snapshot above only
+    ever excluded scratch_dir itself, so whenever store_root lives inside
+    site_root (the normal, real production layout -- nookguard_store/
+    nested under site/), that bookkeeping file is created by this very call
+    AFTER the pre-snapshot is taken, and close_containment()'s post-snapshot
+    then always sees it as a spurious "added" file -- a guaranteed
+    self-inflicted containment violation on every single real review, with
+    zero relationship to reviewer misbehavior. Fixed by also excluding this
+    containment record's own deterministic path (known from containment_id
+    before it's written) from both the pre- and post-snapshot, in both this
+    function and close_containment below -- narrow enough that a SIBLING
+    scratch dir belonging to another concurrent review is still fully
+    protected, only this review's own bookkeeping file is exempted."""
     store_root = Path(store_root)
     scratch_dir = Path(scratch_dir)
     containment_id = scratch_dir.name
+    containment_file = _containment_path(store_root, containment_id).resolve()
+    exclude = [scratch_dir, containment_file]
 
     protected_roots = [str(Path(site_root).resolve())]
-    pre_snapshot = snapshot_paths([Path(site_root)], exclude_dirs=[scratch_dir])
+    pre_snapshot = snapshot_paths([Path(site_root)], exclude_dirs=exclude)
     pre_named = named_category_hashes(
         project_root=project_root, site_root=site_root, store_root=store_root,
-        exclude_dirs=[scratch_dir],
+        exclude_dirs=exclude,
     )
     record = ContainmentRecord(
         containment_id=containment_id, scratch_dir=str(scratch_dir.resolve()),
@@ -290,11 +311,13 @@ def close_containment(
                                  "open_containment() must run before close_containment()")
     pre = json.loads(path.read_text(encoding="utf-8"))
     scratch_dir = Path(pre["scratch_dir"])
+    containment_file = _containment_path(store_root, containment_id).resolve()
+    exclude = [scratch_dir, containment_file]
 
-    post_snapshot = snapshot_paths([Path(site_root)], exclude_dirs=[scratch_dir])
+    post_snapshot = snapshot_paths([Path(site_root)], exclude_dirs=exclude)
     post_named = named_category_hashes(
         project_root=project_root, site_root=site_root, store_root=store_root,
-        exclude_dirs=[scratch_dir],
+        exclude_dirs=exclude,
     )
     diff = diff_snapshots(pre["pre_snapshot"], post_snapshot)
     violations = {k: v for k, v in diff.items() if v}

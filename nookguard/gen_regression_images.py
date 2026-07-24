@@ -1,17 +1,33 @@
-"""Real image generation for nookguard/regression_images/ (Commit 20).
-Run once to (re)produce the live-review regression corpus's image files;
-committed as a permanent, reproducible script, not a throwaway one-off --
-if a regression image is ever lost or needs regenerating, run this file
-directly (`python -m nookguard.gen_regression_images`).
+"""PARSER / EVIDENCE-FLOW TEST FIXTURES ONLY -- NOT OPERATIONAL PROOF.
 
-Every file this writes is a REAL image (opens, decodes, has real pixel
-content): three are purpose-built PIL renders (documented as
-reproductions, since the real historical incidents' original defective
-candidate bytes no longer exist, per this project's regenerate-only
-architecture -- state_machine.py's `_REGENERATE_SOURCES`), one is a real
-copy of a real, currently-live site photo used as a known-clean control.
-See regression_live.py's module docstring for the full honesty note on
-image provenance."""
+Relabeled 2026-07-23 (Commit 25, requirement 10). Every image this module
+writes is a synthetic PIL render (a labeled rectangle, a captioned
+gradient, a drawn silhouette) OR a plain copy of an unrelated known-clean
+site photo -- none of them are real historical defective bytes. They
+exist solely to exercise this pipeline's parsing/schema/evidence-flow
+plumbing (does a candidate get quarantined, does review-pack-build run,
+does an observer/judge round trip through the CLI correctly) in cheap,
+fast, deterministic CI/test contexts -- NOT to demonstrate that NookGuard
+can actually detect real visual defects. A blind observer could trivially
+solve every one of these fixtures by reading the literal caption text
+baked into the image (e.g. "TAPE MEASURE", "ARMCHAIR (indoor furniture,
+outdoor enclosure)") rather than by making a real visual judgment, which
+is exactly why these must never be cited as evidence that the semantic
+review pipeline works. That evidence is `real_regression_fixtures.py`'s
+corpus instead: real historical defective/clean image bytes extracted
+byte-for-byte from git history (see `regression_images_real/` and
+docs/nookguard/BUILD-LOG.md's Commit 25 entry), reviewed blind (no
+caption, no label, no hint) through the full real prepare/observe/judge/
+aggregate pipeline. If you are looking for operational proof this
+pipeline catches real defects, use that corpus, not this one.
+
+Run once to (re)produce this test corpus's image files; committed as a
+permanent, reproducible script, not a throwaway one-off -- if a fixture
+image is ever lost or needs regenerating, run this file directly
+(`python -m nookguard.gen_regression_images`).
+
+See regression_live.py's module docstring for further context on this
+distinction."""
 
 from __future__ import annotations
 
@@ -82,6 +98,37 @@ def generate() -> list[str]:
     d.text((300, 420), "ARMCHAIR (indoor furniture, outdoor enclosure)", fill=(20, 20, 20), font=_font(18))
     img.save(OUT_DIR / "unexpected_furniture_reproduction.jpg", quality=90)
     written.append("unexpected_furniture_reproduction.jpg (real render)")
+
+    # 5. Goat-enclosure reference-mismatch reproduction -- outdoor enclosure
+    # with a smooth, uniform chain-link/vinyl-look fence instead of the real
+    # weathered wood rails/mesh the location's canon reference photography
+    # requires (regression_corpus.py's synthetic fixture 4, given a real
+    # image counterpart here, added 2026-07-23 for the live-subagent
+    # operational proof). The defect is deliberately in the FENCE material/
+    # pattern only -- clean, mechanically-uniform diamond mesh -- since that
+    # is what a real observer can actually describe from pixels alone; the
+    # judge-side continuity-constraint failure itself is evaluated from the
+    # contract's continuity_constraints field (aggregator.py), not from
+    # anything paintable into the image.
+    img = Image.new("RGB", (800, 500), color=(160, 200, 225))  # sky
+    d = ImageDraw.Draw(img)
+    d.rectangle([0, 320, 800, 500], fill=(140, 175, 100))  # ground/pen floor
+    # Smooth, uniform diamond-mesh chain-link fence -- clean and mechanical,
+    # not the weathered rough-cut wood rails a real barn/pen reference would
+    # show.
+    fence_color = (190, 195, 200)
+    for x in range(-20, 820, 30):
+        d.line([(x, 260), (x + 60, 340)], fill=fence_color, width=3)
+        d.line([(x + 60, 260), (x, 340)], fill=fence_color, width=3)
+    d.line([(0, 260), (800, 260)], fill=(150, 155, 160), width=6)
+    d.line([(0, 340), (800, 340)], fill=(150, 155, 160), width=6)
+    for x in range(0, 801, 200):
+        d.rectangle([x - 4, 250, x + 4, 350], fill=(170, 175, 180))
+    d.ellipse([340, 300, 460, 400], fill=(235, 235, 230), outline=(60, 60, 60), width=3)  # goat body (simple)
+    d.text((30, 30), "Smooth uniform chain-link fence (reproduction) -- reference photography "
+                      "shows rough-cut wood rails, not this.", fill=(20, 20, 20), font=_font(16))
+    img.save(OUT_DIR / "goat_enclosure_reference_mismatch_reproduction.jpg", quality=90)
+    written.append("goat_enclosure_reference_mismatch_reproduction.jpg (real render)")
 
     return written
 
